@@ -3,24 +3,53 @@
 import edu.chl.fohProximity.controller.ProjectController;
 import edu.chl.fohProximity.model.Project;
 import edu.chl.fohProximity.view.ProjectView;
+import org.newdawn.slick.Color;
+
 import javax.swing.SwingUtilities;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
 
 /*
   Application entry class (if using standard java and Swing)
 */
-public final class Main {
-<span class="nc" id="L12">	private Main() {</span>
-		/* No instances allowed! */
-<span class="nc" id="L14">	}</span>
+public class Main extends BasicGame
+{
+    public Main(String gamename)
+    {
+<span class="nc" id="L25">        super(gamename);</span>
+<span class="nc" id="L26">    }</span>
 
-	public static void main(String[] args) {
-<span class="nc" id="L17">		SwingUtilities.invokeLater(() -&gt; {</span>
-<span class="nc" id="L18">                    final Project project = new Project();</span>
-<span class="nc" id="L19">                    final ProjectView projectView = new ProjectView(project);</span>
-                    
-<span class="nc" id="L21">                    ProjectController.create(project, projectView);</span>
-<span class="nc" id="L22">                    projectView.setVisible(true);</span>
-<span class="nc" id="L23">                });</span>
-<span class="nc" id="L24">	}</span>
+    @Override
+<span class="nc" id="L29">    public void init(GameContainer gc) throws SlickException {}</span>
+
+    @Override
+<span class="nc" id="L32">    public void update(GameContainer gc, int i) throws SlickException {}</span>
+
+    @Override
+    public void render(GameContainer gc, Graphics g) throws SlickException
+    {
+<span class="nc" id="L37">        g.drawString(&quot;Howdy!&quot;, 10, 10);</span>
+<span class="nc" id="L38">    }</span>
+
+    public static void main(String[] args)
+    {
+        try
+        {
+            AppGameContainer appgc;
+<span class="nc" id="L45">            appgc = new AppGameContainer(new Main(&quot;Simple Slick Game&quot;));</span>
+<span class="nc" id="L46">            appgc.setDisplayMode(640, 480, false);</span>
+<span class="nc" id="L47">            appgc.start();</span>
+        }
+<span class="nc" id="L49">        catch (SlickException ex)</span>
+        {
+<span class="nc" id="L51">            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L52">        }</span>
+<span class="nc" id="L53">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.2.201409121644</span></div></body></html>

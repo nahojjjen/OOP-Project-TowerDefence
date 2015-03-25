@@ -7,24 +7,50 @@ import org.newdawn.slick.Color;
 
 import javax.swing.SwingUtilities;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
+
 /*
   Application entry class (if using standard java and Swing)
 */
-public final class Main {
-	private Main() {
-		/* No instances allowed! */
-	}
+public class Main extends BasicGame
+{
+    public Main(String gamename)
+    {
+        super(gamename);
+    }
 
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(() -> {
-                    final Project project = new Project();
-                    final ProjectView projectView = new ProjectView(project);
-                    
-                    ProjectController.create(project, projectView);
-                    projectView.setVisible(true);
-                });
-	}
+    @Override
+    public void init(GameContainer gc) throws SlickException {}
 
-    Color color = new Color(255, 0, 0, 1);
+    @Override
+    public void update(GameContainer gc, int i) throws SlickException {}
 
+    @Override
+    public void render(GameContainer gc, Graphics g) throws SlickException
+    {
+        g.scale(0.5f,0.5f);
+        g.drawString("Howdy!", 100, 100);
+
+    }
+
+    public static void main(String[] args)
+    {
+        try
+        {
+            AppGameContainer appgc;
+            appgc = new AppGameContainer(new Main("Simple Slick Game"));
+            appgc.setDisplayMode(640, 480, false);
+            appgc.start();
+        }
+        catch (SlickException ex)
+        {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
