@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Class-Path: annotations-2.0.3.jar
+Build-Jdk: 1.8.0_40
+Built-By: Tindra
+Created-By: IntelliJ IDEA
+Main-Class: edu.chalmers.projecttemplate.Main
+
