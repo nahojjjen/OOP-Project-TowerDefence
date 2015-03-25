@@ -3,6 +3,8 @@ package edu.chl.fohProximity;
 import edu.chl.fohProximity.controller.ProjectController;
 import edu.chl.fohProximity.model.Project;
 import edu.chl.fohProximity.view.ProjectView;
+import org.newdawn.slick.Color;
+
 import javax.swing.SwingUtilities;
 
 /*
@@ -22,4 +24,7 @@ public final class Main {
                     projectView.setVisible(true);
                 });
 	}
+
+    Color color = new Color(255, 0, 0, 1);
+
 }
