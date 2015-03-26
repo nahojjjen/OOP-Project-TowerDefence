@@ -1,11 +1,6 @@
 package edu.chl.fohProximity;
 
-import edu.chl.fohProximity.controller.ProjectController;
-import edu.chl.fohProximity.model.Project;
-import edu.chl.fohProximity.view.ProjectView;
-import org.newdawn.slick.Color;
 
-import javax.swing.SwingUtilities;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,6 +41,8 @@ public class Main extends BasicGame
             AppGameContainer appgc;
             appgc = new AppGameContainer(new Main("Simple Slick Game"));
             appgc.setDisplayMode(640, 480, false);
+            appgc.setTargetFrameRate(60);
+            appgc.setVSync(true);
             appgc.start();
         }
         catch (SlickException ex)
