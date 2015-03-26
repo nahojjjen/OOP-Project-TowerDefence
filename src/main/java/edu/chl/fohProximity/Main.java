@@ -1,15 +1,9 @@
 package edu.chl.fohProximity;
 
-
+import org.newdawn.slick.*;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.BasicGame;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
-
 /*
   Application entry class (if using standard java and Swing)
 */
@@ -29,7 +23,6 @@ public class Main extends BasicGame
     @Override
     public void render(GameContainer gc, Graphics g) throws SlickException
     {
-        g.scale(0.5f,0.5f);
         g.drawString("Howdy!", 100, 100);
 
     }
@@ -38,12 +31,14 @@ public class Main extends BasicGame
     {
         try
         {
+            System.setProperty("org.lwjgl.opengl.Display.enableHighDPI", "true");
             AppGameContainer appgc;
             appgc = new AppGameContainer(new Main("Simple Slick Game"));
             appgc.setDisplayMode(640, 480, false);
             appgc.setTargetFrameRate(60);
             appgc.setVSync(true);
             appgc.start();
+
         }
         catch (SlickException ex)
         {
