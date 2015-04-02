@@ -11,6 +11,7 @@ import java.util.List;
  * Created by Johan on 2015-04-02.
  */
 public class GodController {
+
     private static List<AbstractTower> towers = Map.getTowers();
     private static List<AbstractProjectile> projectiles = Map.getProjectiles();
     private static List<AbstractCreep> creeps = Map.getCreeps();
