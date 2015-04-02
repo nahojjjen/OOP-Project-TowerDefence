@@ -1,11 +1,15 @@
 package edu.chl.proximity.Models.Projectiles;
 
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Utilities.PointCalculations;
+
+import java.awt.*;
 
 /**
- * Created by Hanna Römer on 2015-04-02.
+ * Created by Hanna Römer on 2015-04-02, edited by Johan and Linda
  */
 public abstract class AbstractProjectile extends BoardObject{
     private ParticleEffect effect;
@@ -13,21 +17,15 @@ public abstract class AbstractProjectile extends BoardObject{
     private int speed;
     private Sound sound;
 
-    public AbstractProjectile(ParticleEffect particleEffect, int health, int speed, Sound sound){
+    public AbstractProjectile(ParticleEffect particleEffect, int health, int speed, Sound sound, Texture texture, Point position, double angle){
+        //position, texture, angle
+        super(position, texture, angle);
         this.effect=particleEffect;
         this.health=health;
         this.speed=speed;
         this.sound=sound;
     }
 
-    /**
-     * get the current coordinates for this projectile
-     *
-     * @return Point with the projectiles position
-     */
-    public Point getPoint() {
-        return position;
-    }
 
     /**
      * Get whether the projectile point intersects another point
@@ -38,33 +36,12 @@ public abstract class AbstractProjectile extends BoardObject{
      * @return true if the projectile intersects the given area
      */
     public boolean collidesWith(Point creeppos, int hitbox) {
-        if (creeppos.getY() - hitbox < position.getY() && position.getY() < creeppos.getY() + hitbox) {
-            if (creeppos.getX() - hitbox < position.getX() && position.getX() < creeppos.getX() + hitbox) {
+        if (creeppos.getY() - hitbox < getPosition().getY() && getPosition().getY() < creeppos.getY() + hitbox) {
+            if (creeppos.getX() - hitbox < getPosition().getX() && getPosition().getX() < creeppos.getX() + hitbox) {
                 return true;
             }
-
         }
         return false;
-    }
-
-    /**
-     * move the projectile
-     *
-     * @param x x coordinate
-     * @param y y coordinate
-     */
-    public void setPosition(int x, int y) {
-        Point point = new Point(x, y);
-        position = point;
-    }
-
-    /**
-     * change the andle of the projectile
-     *
-     * @param angle what angle the projectile should have
-     */
-    public void setAngle(double angle) {
-        this.angle = angle;
     }
 
     /**
@@ -72,24 +49,27 @@ public abstract class AbstractProjectile extends BoardObject{
      */
     public void move() {
         Point newPosition;
-        int xLenght = (int) (Math.cos(Math.toRadians(angle)) * speed);
-        int yLenght = (int) (Math.sin(Math.toRadians(angle)) * speed);
+        /*
+        System.out.println("real x movement:" + (Math.cos(Math.toRadians(angle)) * speed));
+        System.out.println("real y movement:" + (Math.sin(Math.toRadians(angle)) * speed));
+        */
+        int xLenght = (int) ((Math.cos(Math.toRadians(getAngle())) * speed)+0.5); //+0.5 to round to correct int aka 0.9 is 1
+        int yLenght = (int) ((Math.sin(Math.toRadians(getAngle())) * speed)+0.5);
 
-        newPosition = new Point(position.getX() + xLenght, position.getY() + yLenght);
-        position = newPosition;
+
+        //System.out.println("x movement= " + xLenght + " y-momement:" + yLenght);
+        newPosition = new Point((int)getPosition().getX() + xLenght, (int)getPosition().getY() + yLenght);
+        setPosition(newPosition);
     }
 
     /**
      * re-adjusts the projectiles angle to face the given point
      *
      * @param p what point the projectile should travel towards
-     * @throws SlickException
      */
-    public void faceTarget(Point p) throws SlickException {
+    public void faceTarget(Point p) {
         if (p != null) {
-            angle = Util.getVectorAngle(position, p);
-            getImage().setRotation((float) (angle + 90)); //+90 degrees because the source image is rotated
-        }else{
+            setAngle(PointCalculations.getVectorAngle(getPosition(), p));
             //angle remains unchanged, if there's no new point to look at.
         }
     }
@@ -101,35 +81,6 @@ public abstract class AbstractProjectile extends BoardObject{
         System.out.println("destroyed projectile?");
     }
 
-    /**
-     * get the image of the projectile (singleton)
-     *
-     * @return the Image of the projectile
-     */
-    public Image getImage() {
-        try {
-            if (projectileImage == null) {
-                projectileImage = new Image("src/Data/tower1/level1bullet.png");
-            }
-            return projectileImage;
-        } catch (SlickException e) {
-            System.out.println("slickexception in base");
-        }
-        return null;
-    }
 
-    /**
-     * checks whether bullet has traveled outside the frame //TODO fix static
-     * x-y val
-     *
-     * @return true if not visible
-     */
-    public boolean isOutsideView() {
-        if (position.getX() < 1800 && position.getY() < 800 && position.getX() > 0 && position.getY() > 0) {
-            return false;
-
-        }
-        return true;
-    }
 
 }
