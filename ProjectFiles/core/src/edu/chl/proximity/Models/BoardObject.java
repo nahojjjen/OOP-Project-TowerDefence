@@ -1,5 +1,9 @@
 package edu.chl.proximity.Models;
 
+import com.badlogic.gdx.graphics.Texture;
+
+import java.awt.*;
+
 /**
  * Created by Johan on 4/2/2015.
  */
@@ -7,34 +11,48 @@ public abstract class BoardObject {
     /**
      * Position on the gameboard
      */
-    private int position;
+    private Point position;
     /**
      * Image that is to be rendered
      */
-    private int image;
+    private Texture image;
     /**
      * Rotation property
      */
-    private int angle;
+    private double angle;
+
+
+    /**
+     * create a new board object
+     * @param position where the object will be created
+     * @param texture the texture of the object
+     * @param angle the rotation of the object (in degrees)
+     */
+    public BoardObject(Point position, Texture texture, double angle){
+        this.position = position;
+        this.image = texture;
+        this.angle = angle;
+    }
+
 
     //Getters and Setters
-    public int getPosition() {
+    public Point getPosition() {
         return position;
     }
 
-    public void setPosition(int position) {
+    public void setPosition(Point position) {
         this.position = position;
     }
 
-    public int getImage() {
+    public Texture getTexture() {
         return image;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setTexture(Texture texture) {
+        this.image = texture;
     }
 
-    public int getAngle() {
+    public double getAngle() {
         return angle;
     }
 
