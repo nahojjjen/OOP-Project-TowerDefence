@@ -2,10 +2,12 @@ package edu.chl.proximity.Models.Towers;
 
 import com.badlogic.gdx.graphics.Texture;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Projectiles.AbstractProjectile;
 
-import java.awt.*;
+import java.awt.Point;
+
 
 /**
  * Created by Johan on 4/2/2015.
@@ -19,9 +21,9 @@ public class AbstractTower extends BoardObject {
     /**
      *
      */
-    public AbstractTower(Point pos, Texture texture, AbstractProjectile projectile){
+    public AbstractTower(Point pos, Image image, AbstractProjectile projectile){
         //point texture angle
-        super(pos,texture,0);
+        super(pos, image, 0);
         projectileType = projectile;
     }
 

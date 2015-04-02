@@ -2,6 +2,7 @@ package edu.chl.proximity.Models;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.awt.*;
@@ -17,7 +18,7 @@ public abstract class BoardObject {
     /**
      * Image that is to be rendered
      */
-    private Texture image;
+    private Image image;
     /**
      * Rotation property
      */
@@ -27,12 +28,12 @@ public abstract class BoardObject {
     /**
      * create a new board object
      * @param position where the object will be created
-     * @param texture the texture of the object
+     * @param img the image of the object
      * @param angle the rotation of the object (in degrees)
      */
-    public BoardObject(Point position, Texture texture, double angle){
+    public BoardObject(Point position, Image img, double angle){
         this.position = position;
-        this.image = texture;
+        this.image = img;
         this.angle = angle;
     }
 
@@ -46,12 +47,12 @@ public abstract class BoardObject {
         this.position = position;
     }
 
-    public Texture getTexture() {
+    public Image getTexture() {
         return image;
     }
 
-    public void setTexture(Texture texture) {
-        this.image = texture;
+    public void setTexture(Image img) {
+        this.image = img;
     }
 
     public double getAngle() {
@@ -62,6 +63,10 @@ public abstract class BoardObject {
         this.angle = angle;
     }
 
+    public void render(SpriteBatch batch) {
+
+        image.render(batch, position, angle);
+    }
 
     /**
      * checks whether bullet has traveled outside the frame //TODO fix static

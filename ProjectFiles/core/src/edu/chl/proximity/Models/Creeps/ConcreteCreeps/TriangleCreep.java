@@ -2,6 +2,7 @@ package edu.chl.proximity.Models.Creeps.ConcreteCreeps;
 
 import com.badlogic.gdx.graphics.Texture;
 import edu.chl.proximity.Models.Creeps.AbstractCreep;
+import edu.chl.proximity.Models.Image;
 
 /**
  * Created by Johan on 2015-04-02.
@@ -9,7 +10,7 @@ import edu.chl.proximity.Models.Creeps.AbstractCreep;
 public class TriangleCreep  extends AbstractCreep{
 
     public TriangleCreep(){
-        super(new Texture("assets/Creeps/Line1/triangle.png"), 1);
+        super(new Image("assets/Creeps/Line1/triangle.png"), 1);
     }
 
     @Override

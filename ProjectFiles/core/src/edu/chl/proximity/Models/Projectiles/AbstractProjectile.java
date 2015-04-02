@@ -4,9 +4,10 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Utilities.PointCalculations;
 
-import java.awt.*;
+import java.awt.Point;
 
 /**
  * Created by Hanna Römer on 2015-04-02, edited by Johan and Linda
@@ -17,9 +18,9 @@ public abstract class AbstractProjectile extends BoardObject{
     private int speed;
     private Sound sound;
 
-    public AbstractProjectile(ParticleEffect particleEffect, int health, int speed, Sound sound, Texture texture, Point position, double angle){
+    public AbstractProjectile(ParticleEffect particleEffect, int health, int speed, Sound sound, Image image, Point position, double angle){
         //position, texture, angle
-        super(position, texture, angle);
+        super(position, image, angle);
         this.effect=particleEffect;
         this.health=health;
         this.speed=speed;

@@ -3,11 +3,12 @@ package edu.chl.proximity.Models.Creeps;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Paths.Path;
 import edu.chl.proximity.Utilities.PointCalculations;
 
-import java.awt.*;
+import java.awt.Point;
 
 /**
  * Created by Tindra on 02/04/15.
@@ -20,9 +21,9 @@ public abstract class AbstractCreep extends BoardObject {
     private Sound devolveSound;
     private double speed;
 
-    public AbstractCreep(Texture texture, int speed) {
+    public AbstractCreep(Image image, int speed) {
 
-        super(new Point(700,0), texture, 0 );
+        super(new Point(700,0), image, 0 );
         Map map = Map.getInstance();
         path = map.getPath();
         nextWayPoint = path.getWaypoint(0); //gets set by move method
