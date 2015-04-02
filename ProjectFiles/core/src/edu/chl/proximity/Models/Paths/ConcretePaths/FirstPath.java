@@ -22,7 +22,7 @@ public class FirstPath extends Path {
     /**
      * add rectangles covering the surface of the path
      */
-    private void initiatePathHitbox(){
+    public void initiatePathHitbox(){
         if(pathHitbox.size() < 1){
 
             pathHitbox.add(new Rectangle(0, 700, 1050, 30));

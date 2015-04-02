@@ -15,7 +15,7 @@ import java.awt.*;
 public abstract class AbstractCreep extends BoardObject {
 
     private Point nextWayPoint;
-    private int distanceToNextWayPoint;
+    private double distanceToNextWayPoint;
     private Path path;
     private Sound devolveSound;
     private double speed;
@@ -24,15 +24,16 @@ public abstract class AbstractCreep extends BoardObject {
 
         super(new Point(700,0), texture, 0 );
         Map map = Map.getInstance();
-        nextWayPoint = null; //gets set by move method
-        distanceToNextWayPoint = 9999999;
         path = map.getPath();
+        nextWayPoint = path.getWaypoint(0); //gets set by move method
+        distanceToNextWayPoint = 9999999;
+
         this.speed = speed;
         aimTowardsNextWaypoint();
 
     }
 
-    public void devolve() { }
+    public abstract void devolve();
 
     /**
      * move the creep based on its speed
@@ -41,17 +42,14 @@ public abstract class AbstractCreep extends BoardObject {
      * the creep is "on" its current waypoint //implementation comment, but relevant for using method
      */
     public void move() {
-        if (reachedWaypoint(path.getWaypoint(nextWayPoint))){
-            nextWayPoint++;
-            lenghtToNextWaypoint = 999999999; //this is a way of resetting the lenght, to make sure that the creep doesn't misstake the old lenght when approaching a new waypoint - remove to see bug
+        if (reachedWaypoint(nextWayPoint)){
+            path.getWaypoint(0);
+            distanceToNextWayPoint = 999999999; //this is a way of resetting the lenght, to make sure that the creep doesn't misstake the old lenght when approaching a new waypoint - remove to see bug
             aimTowardsNextWaypoint();
         }
         repositionCreep();
 
     }
-
-
-
     /**
      *
      * Get the angle an object requires to to travel from origin point to next
@@ -82,22 +80,20 @@ public abstract class AbstractCreep extends BoardObject {
         System.out.println("real x movement:" + (Math.cos(Math.toRadians(angle)) * speed));
         System.out.println("real y movement:" + (Math.sin(Math.toRadians(angle)) * speed));
         */
-        int xLenght = (int) ((Math.cos(Math.toRadians(angle)) * speed)+0.5);
-        int yLenght = (int) ((Math.sin(Math.toRadians(angle)) * speed)+0.5);
+        int xLenght = (int) ((Math.cos(Math.toRadians(getAngle())) * speed)+0.5); //+0.5 to round to correct int aka 0.9 is 1
+        int yLenght = (int) ((Math.sin(Math.toRadians(getAngle())) * speed)+0.5);
 
 
         //System.out.println("x movement= " + xLenght + " y-momement:" + yLenght);
-        newPosition = new Point(position.getX() + xLenght, position.getY() + yLenght);
-        position = newPosition;
+        newPosition = new Point((int)getPosition().getX() + xLenght, (int)getPosition().getY() + yLenght);
+        setPosition(newPosition);
     }
 
     /**
      * Sets the angle of the creep to face the next waypoint
      */
     private void aimTowardsNextWaypoint(){
-        angle= path.getAngleToNextPoint(position, path.getWaypoint(nextWaypoint));
-
-
+        setAngle(getAngleToNextPoint());
     }
 
     /**
@@ -107,30 +103,13 @@ public abstract class AbstractCreep extends BoardObject {
      * @return true if within distance of waypoint
      */
     private boolean reachedWaypoint(Point waypoint){
-        double oldLenghtToNextWayPoint = lenghtToNextWaypoint;
-        lenghtToNextWaypoint = Util.distanceBetweenNoSqrt(position, waypoint);
+        double olddistanceToNextWayPoint = distanceToNextWayPoint;
+        distanceToNextWayPoint = PointCalculations.distanceBetweenNoSqrt(super.getPosition(), waypoint);
         //System.out.println("distance = " + distance);
-        if (lenghtToNextWaypoint > oldLenghtToNextWayPoint){ //if you're no longer approaching the waypoint, you're leaving it
+        if (distanceToNextWayPoint > olddistanceToNextWayPoint){ //if you're no longer approaching the waypoint, you're leaving it
             return true;
         }
         return false;
-        //return lenghtToNextWaypoint < 10;
+        //return distanceToNextWayPoint < 10;
     }
-
-    /**
-     * get the image of the creep (singleton)
-     * @return The image of the creep
-     */
-    public Image getImage() {
-        try {
-            if (image == null){
-                image = new Image("src/Data/enemies/polygon.png");
-            }
-            return image;
-        } catch (SlickException e) {
-            System.out.println("slickexception in base");
-        }
-        return null;
-    }
-
 }
