@@ -20,57 +20,18 @@ public abstract class AbstractCreep extends BoardObject {
     private double speed;
 
     public AbstractCreep(Texture texture, int speed) {
-        Map map = new Map();
+
         super(new Point(700,0), texture, 0 );
+        Map map = new Map();
         nextWayPoint = null; //gets set by move method
         distanceToNextWayPoint = 9999999;
         path = map.getPath();
+        this.speed = speed;
+        aimTowardsNextWaypoint();
 
     }
 
-    public void devolve() {    }
-
-
-
-    /**
-     * create an abstract crerp
-     */
-    public Creep() {
-
-        path = Map.getPath();
-        position = new Point(0,700);
-        speed = 3;
-        aimTowardsNextWaypoint(); //make sure that all spawned creeps go towards the first point
-
-    }
-
-    /**
-     * get creep x coordinate
-     * @return x coordinate
-     */
-    public int getx() {
-        return position.getX();
-    }
-
-    /**
-     * get creep point
-     * @return point with creep coordinate on map
-     */
-    public Point getPoint() {
-        return position;
-    }
-
-    /**
-     * get creep y coordinate on map
-     * @return creep y coordinate
-     */
-    public int gety() {
-        return position.getY();
-    }
-
-    public double getAngle(){
-        return angle;
-    }
+    public void devolve() { }
 
     /**
      * move the creep based on its speed
@@ -80,8 +41,8 @@ public abstract class AbstractCreep extends BoardObject {
      */
     public void move() {
 
-        if (reachedWaypoint(path.getWaypoint(nextWaypoint))){
-            nextWaypoint++;
+        if (reachedWaypoint(path.getWaypoint(nextWayPoint))){
+            nextWayPoint++;
             lenghtToNextWaypoint = 999999999; //this is a way of resetting the lenght, to make sure that the creep doesn't misstake the old lenght when approaching a new waypoint - remove to see bug
             aimTowardsNextWaypoint();
         }

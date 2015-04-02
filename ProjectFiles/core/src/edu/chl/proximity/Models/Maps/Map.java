@@ -1,12 +1,12 @@
 package edu.chl.proximity.Models.Maps;
 
 import edu.chl.proximity.Models.Creeps.AbstractCreep;
-import edu.chl.proximity.Models.Factions.Faction;
 import edu.chl.proximity.Models.Paths.Path;
 import edu.chl.proximity.Models.Projectiles.AbstractProjectile;
 import edu.chl.proximity.Models.Towers.AbstractTower;
 import edu.chl.proximity.Models.Waves.Wave;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -31,7 +31,7 @@ public class Map {
     /**
      * List of Particles on map
      */
-    private ArrayList<AbstractParticle> particles;
+   // private ArrayList<AbstractParticle> particles;
     /**
      * List of Projectiles on map
      */
@@ -40,8 +40,21 @@ public class Map {
     private Path path;
     private String backgroundImage;
     private int resources;
-    private Faction faction;
+    //private Faction faction;
+    private Map map;
 
+
+    /**
+     * creates the map instance
+     */
+    private Map(){}
+
+    public Map getInstance(){
+        if (this.map == null){
+            this.map = new Map();
+        }
+        return map;
+    }
 
     //Getters and Setters;
     public ArrayList<Wave> getWaves() {
@@ -52,27 +65,25 @@ public class Map {
         this.waves = waves;
     }
 
-    public ArrayList<Tower> getTowers() {
+    public ArrayList<AbstractTower> getTowers() {
         return towers;
     }
 
-    public void setTowers(ArrayList<Tower> towers) {
+    public void setTowers(ArrayList<AbstractTower> towers) {
         this.towers = towers;
     }
+/*
+    public ArrayList<Particle> getParticles() {        return particles;    }
 
-    public ArrayList<Particle> getParticles() {
-        return particles;
-    }
+    public void setParticles(ArrayList<Particle> particles) {        this.particles = particles;    }
 
-    public void setParticles(ArrayList<Particle> particles) {
-        this.particles = particles;
-    }
+*/
 
-    public ArrayList<Projectile> getProjectiles() {
+    public ArrayList<AbstractProjectile> getProjectiles() {
         return projectiles;
     }
 
-    public void setProjectiles(ArrayList<Projectile> projectiles) {
+    public void setProjectiles(ArrayList<AbstractProjectile> projectiles) {
         this.projectiles = projectiles;
     }
 
@@ -84,33 +95,33 @@ public class Map {
         this.creeps = creeps;
     }
 
-    public Path getPath(){return path};
+    public Path getPath(){return path;}
 
-    public void setPath(Path newPath){ path = newPath};
+    public void setPath(Path newPath){ path = newPath;}
 
 
     /**
      * create a creep
      */
-    public static void spawnCreep() {
-        creeps.add(new Creep());
+    public void spawnCreep(AbstractCreep creep) {
+        creeps.add(creep);
     }
 
     /**
      * test method to test performance, spawns 1000 basic creeps.
      */
-    public static void spawnCreepMass() {
+    public void spawnCreepMass(AbstractCreep creep) {
         for (int i = 0; i < 1000; i++) {
-            creeps.add(new Creep());
+            creeps.add(creep);
         }
         System.out.println("amount of creeps = " + creeps.size());
     }
     /**
      * test method to test performance, spawns 1000 basic turrets.
      */
-    public static void spawnTurretMass()   {
+    public  void spawnTurretMass(AbstractTower tower)   {
         for (int i = 0; i < 1000; i++) {
-            towers.add(new MissileTower(new Point(500,500)));
+            towers.add(tower);
         }
         System.out.println("amount of creeps = " + creeps.size());
     }
@@ -118,9 +129,9 @@ public class Map {
      * adds some randomly placed turrets for testing purposes
      * @param amount amount of towers that should be placed
      */
-    public static void addSpreadTurrets(int amount)  {
+    public void addSpreadTurrets(int amount, AbstractTower tower)  {
         for (int i=0; i<amount; i++){
-            addTower(new MissileTower(new Point((int)(Math.random()*700), (int)(Math.random()*700))));
+            addTower(tower);
         }
     }
     /**
@@ -128,7 +139,7 @@ public class Map {
      *
      * @param p the projectile to be added
      */
-    public static void addProjectile(Projectile p) {
+    public void addProjectile(AbstractProjectile p) {
         projectiles.add(p);
     }
 
@@ -137,7 +148,7 @@ public class Map {
      *
      * @param t what tower should be added
      */
-    public static void addTower(MissileTower t) {
+    public  void addTower(AbstractTower t) {
         towers.add(t);
     }
 
@@ -146,9 +157,11 @@ public class Map {
      *
      * @param par what particle to add
      */
-    public static void addParticle(Particle par) {
+    /*
+    public  void addParticle(Particle par) {
         particles.add(par);
     }
+    */
 
 
 }
