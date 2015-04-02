@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Paths.Path;
+import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.awt.*;
 
@@ -22,7 +23,7 @@ public abstract class AbstractCreep extends BoardObject {
     public AbstractCreep(Texture texture, int speed) {
 
         super(new Point(700,0), texture, 0 );
-        Map map = new Map();
+        Map map = Map.getInstance();
         nextWayPoint = null; //gets set by move method
         distanceToNextWayPoint = 9999999;
         path = map.getPath();
@@ -40,7 +41,6 @@ public abstract class AbstractCreep extends BoardObject {
      * the creep is "on" its current waypoint //implementation comment, but relevant for using method
      */
     public void move() {
-
         if (reachedWaypoint(path.getWaypoint(nextWayPoint))){
             nextWayPoint++;
             lenghtToNextWaypoint = 999999999; //this is a way of resetting the lenght, to make sure that the creep doesn't misstake the old lenght when approaching a new waypoint - remove to see bug
@@ -48,6 +48,28 @@ public abstract class AbstractCreep extends BoardObject {
         }
         repositionCreep();
 
+    }
+
+
+
+    /**
+     *
+     * Get the angle an object requires to to travel from origin point to next
+     * waypoint.
+     *
+     * This method is a wrapper method for PointCalculations.getVectorAngle so that this
+     * method exists in Path.
+     *
+     * @return the angle the object needs to travel to travel from origin to
+     * nextWaypoint
+     */
+    public  double getAngleToNextPoint() {
+        if (this.getPosition() != null && this.nextWayPoint != null) {
+            double angle = PointCalculations.getVectorAngle(this.getPosition(), nextWayPoint);
+            return angle;
+        }
+        System.out.println("Error in abstractCreep: trying to get angle to next point- invalid point");
+        return 0;
     }
 
     /**

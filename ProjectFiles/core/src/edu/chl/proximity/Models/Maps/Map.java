@@ -41,7 +41,7 @@ public class Map {
     private String backgroundImage;
     private int resources;
     //private Faction faction;
-    private Map map;
+    private static Map map;
 
 
     /**
@@ -49,9 +49,9 @@ public class Map {
      */
     private Map(){}
 
-    public Map getInstance(){
-        if (this.map == null){
-            this.map = new Map();
+    public static Map getInstance(){
+        if (map == null){
+            map = new Map();
         }
         return map;
     }
