@@ -2,6 +2,7 @@ package edu.chl.proximity.Models;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.awt.*;
 
@@ -77,4 +78,15 @@ public abstract class BoardObject {
         return true;
     }
 
+    /**
+     * re-adjusts the projectiles angle to face the given point
+     *
+     * @param p what point the projectile should travel towards
+     */
+    public void faceTarget(Point p) {
+        if (p != null) {
+            angle = (PointCalculations.getVectorAngle(getPosition(), p));
+            //angle remains unchanged, if there's no new point to look at.
+        }
+    }
 }

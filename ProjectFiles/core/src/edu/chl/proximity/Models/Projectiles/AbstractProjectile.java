@@ -62,17 +62,7 @@ public abstract class AbstractProjectile extends BoardObject{
         setPosition(newPosition);
     }
 
-    /**
-     * re-adjusts the projectiles angle to face the given point
-     *
-     * @param p what point the projectile should travel towards
-     */
-    public void faceTarget(Point p) {
-        if (p != null) {
-            setAngle(PointCalculations.getVectorAngle(getPosition(), p));
-            //angle remains unchanged, if there's no new point to look at.
-        }
-    }
+
 
     /**
      * /TODO make destroy summon particle effects of destruciton
