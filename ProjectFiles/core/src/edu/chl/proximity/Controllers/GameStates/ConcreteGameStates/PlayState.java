@@ -2,6 +2,7 @@ package edu.chl.proximity.Controllers.GameStates.ConcreteGameStates;
 
 import edu.chl.proximity.Controllers.GameStateManager;
 import edu.chl.proximity.Controllers.GameStates.GameState;
+import edu.chl.proximity.Viewers.Renderer;
 
 /**
  * Created by Johan on 2015-04-02.
@@ -27,6 +28,7 @@ public class PlayState extends GameState {
     @Override
     public void draw() {
         System.out.println("Drawing PlayState!");
+        Renderer.render();
 
     }
 

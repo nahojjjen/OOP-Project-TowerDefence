@@ -19,7 +19,7 @@ public class Image {
         texture = t;
     }
 
-    public void render(SpriteBatch batch, Point p, double angle) {
+    public void render(SpriteBatch batch, Point p, double angle) { //TODO: make sure that render draws with the Point as center instead of upper left corner
         batch.draw(texture, (int)p.getX(), (int)p.getY(), texture.getWidth()/2,
                 texture.getHeight()/2, texture.getWidth(), texture.getHeight(),
                 1, 1, (int)angle, 0, 0, texture.getWidth(), texture.getHeight(), false, false);

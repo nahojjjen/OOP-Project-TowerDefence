@@ -11,7 +11,7 @@ import edu.chl.proximity.Utilities.PointCalculations;
 import java.awt.Point;
 
 /**
- * Created by Tindra on 02/04/15.
+ * Created by Tindra on 02/04/15. Modified by Johan Swanberg
  */
 public abstract class AbstractCreep extends BoardObject {
 
