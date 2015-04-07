@@ -1,46 +1,69 @@
 package edu.chl.proximity.Controllers;
 
+import com.badlogic.gdx.audio.Sound;
 import edu.chl.proximity.Models.Creeps.AbstractCreep;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Projectiles.AbstractProjectile;
 import edu.chl.proximity.Models.Towers.AbstractTower;
+import edu.chl.proximity.Utilities.PointCalculations;
 
+import java.awt.*;
+import java.util.Iterator;
 import java.util.List;
 
 /**
  * Created by Johan on 2015-04-02.
+ *
+ * This controller is not meant to survive, but rather be split appart into
+ * CreepController
+ * TowerController
+ * ProjectileController
+ * ParticleController
+ *
+ * this class exists right now because in the beginning we did not have a lot of contollers,
+ * so we didn't have a good reason to split them appart.
  */
 public class GodController {
 
-    private static List<AbstractTower> towers = Map.getTowers();
-    private static List<AbstractProjectile> projectiles = Map.getProjectiles();
-    private static List<AbstractCreep> creeps = Map.getCreeps();
-    private static List<Particle> particles = Map.getParticles();
+    private static List<AbstractTower> towers = Map.getInstance().getTowers();
+    private static List<AbstractProjectile> projectiles = Map.getInstance().getProjectiles();
+    private static List<AbstractCreep> creeps = Map.getInstance().getCreeps();
+    //private static List<Particle> particles = Map.getParticles();
 
     /**
      * update the animation & positions of the particle effects
      *
      * @param delta
      */
-    public static void updateParticles(int delta) {
-        for (Particle particle : particles) {
-            particle.getParticleSystem().update(delta);
-        }
-    }
+   // public static void updateParticles(int delta) {
+   //     for (Particle particle : particles) {
+   //         particle.getParticleSystem().update(delta);
+   //     }
+   // }
 
     /**
-     * get the creep listed in the model that is closest to the input point
+     * get the creep listed in the model (entire map)that is closest to the input point
      *
      * @param p what point should search around
      * @return the creep with the closest position
      */
-    public static Creep getClosestCreep(Point p) { //gör så den kollar på p istället för list.get(0)
+    public static AbstractCreep getClosestCreep(Point p) { //gör så den kollar på p istället för list.get(0)
+        return getClosestCreepInRange(Map.getInstance().getCreeps(), p);
+    }
+
+    /**
+     * Get the creep in a list that is closest to the tower.
+     * @param creepsInRange A list of creeps to search among
+     * @param p what point should it find the closest creep to
+     * @return the creep in the list that is closest to the point.
+     */
+    public static AbstractCreep getClosestCreepInRange(List<AbstractCreep> creepsInRange, Point p){
         if (creeps.size() > 0) { //make sure there's a creep that can be found
-            Creep closest = creeps.get(0); //starts with first creep to avoid null error
+            AbstractCreep closest = creeps.get(0); //starts with first creep to avoid null error
             double distanceToClosest = 9999999; //dummy startvalue to avoid null comparison
 
-            for (Creep creep : creeps) {
-                double distanceToThisCreep = Util.distanceBetween(creep.getPoint(), p);
+            for (AbstractCreep creep : creeps) {
+                double distanceToThisCreep = PointCalculations.distanceBetween(creep.getPosition(), p);
                 if (distanceToThisCreep < distanceToClosest) {
                     distanceToClosest = distanceToThisCreep;
                     closest = creep;
@@ -53,12 +76,11 @@ public class GodController {
 
 
     /**
-     * get the creep listed in the model that is closest to the input point
+     * get the creep that was added first in the list
      *
-     * @param p what point should search around
-     * @return the creep with the closest position
+     * @return the creep with position 0  in the creep list
      */
-    public static Creep getFirstCreep(Point p) { //gör så den kollar på p istället för list.get(0)
+    public static AbstractCreep getFirstCreepInList(Point p) { //gör så den kollar på p istället för list.get(0)
         if (creeps.size() != 0) {
             return creeps.get(0);
         }
@@ -67,56 +89,64 @@ public class GodController {
 
     /**
      * Target the closest creep and attempt to fire
-     *
-     * @throws SlickException
      */
-    public static void updateTowers() throws SlickException {
-        for (Tower tower : towers) {
-            Creep closestCreep = getClosestCreep(tower.getPoint());
+    public static void updateTowers() {
+        for (AbstractTower tower : towers) {
+            AbstractCreep closestCreep = getClosestCreep(tower.getPosition());
 
             if (closestCreep != null) {
-                Point closestCreepPosition = closestCreep.getPoint();
+                Point closestCreepPosition = closestCreep.getPosition();
                 tower.faceTarget(closestCreepPosition);
                 tower.shoot();
             }
             tower.reload();
-            tower.getAnimation().update(16); //16 should be delta in update, add as taketurn argument?
 
         }
     }
 
-    private static void playPoofSound() throws SlickException {
-        CreepDestroyedSound sound = new CreepDestroyedSound();
-        sound.playCreepDestroyedSound();
+    /**
+     * TODO: Fix this method for libGDX
+     */
+    private static void playPoofSound() {
+       // Sound sound = new Sound() {
+        //};
+        //sound.playCreepDestroyedSound();
+        System.out.println("In Godcontroller: Sound is trying to play, but method is not yet fixed for new library");
 
     }
 
-    public static void updateCreeps() throws SlickException {
-        for (Creep creep : creeps) {
-            creep.getImage().rotate(5);
+
+    public static void updateCreeps() {
+        for (AbstractCreep creep : creeps) {
+            //creep.getTexture().rotate(5); //TODO: rotate creep angle every turn
             creep.move();
+          /* TODO: fix so creeps that intersects base decrease its health
             if (Base.intersects(creep.getPoint(), 50)) {
                 creeps.iterator().remove();
                 Base.decreaseHealth(10);
                 System.out.println("base health = " + Base.health);
             }
+            */
         }
     }
 
-    public static void updateProjectiles() throws SlickException {
+    public static void updateProjectiles() {
         Iterator projectileIterator = projectiles.iterator();
 
         while (projectileIterator.hasNext()) {
             Object projectileObject = projectileIterator.next();
-            Projectile projectile = (Projectile) projectileObject;
-            Creep closestVictim = getClosestCreep(projectile.getPoint());
+            AbstractProjectile projectile = (AbstractProjectile) projectileObject;
+            AbstractCreep closestVictim = getClosestCreep(projectile.getPosition());
             if (closestVictim != null) {
-                projectile.faceTarget(closestVictim.getPoint());
-                if (projectile.collidesWith(closestVictim.getPoint(), 40)) {
-                    Controller.addParticle(new Particle(closestVictim.getPoint()));
+                projectile.faceTarget(closestVictim.getPosition());
+                if (projectile.collidesWith(closestVictim.getPosition(), 40)) {
+                    System.out.println("In GodController, a projectile has collided and is trying to add particles, and play a sound, but can not.");
+                    //todo: fix particles!
+                    //Controller.addParticle(new Particle(closestVictim.getPoint()));
                     playPoofSound();
                     creeps.remove(closestVictim);
                     projectileIterator.remove();
+
                 }
 
             }
@@ -129,8 +159,12 @@ public class GodController {
 
     }
 
-    public static void updateBackground() throws SlickException {
-        Background.getBackground().rotate((float) 0.05);
+    /** TODO: fix this method to rotate the background image, attatch background image as instance variable in map?
+     *
+     */
+    public static void updateBackground() {
+
+        //Background.getBackground().rotate((float) 0.05);
     }
 
 }
