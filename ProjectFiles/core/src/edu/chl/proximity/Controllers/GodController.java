@@ -1,10 +1,9 @@
 package edu.chl.proximity.Controllers;
 
-import com.badlogic.gdx.audio.Sound;
-import edu.chl.proximity.Models.Creeps.AbstractCreep;
+import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.Maps.Map;
-import edu.chl.proximity.Models.Projectiles.AbstractProjectile;
-import edu.chl.proximity.Models.Towers.AbstractTower;
+import edu.chl.proximity.Models.Projectiles.Projectile;
+import edu.chl.proximity.Models.Towers.Tower;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.awt.*;
@@ -25,9 +24,9 @@ import java.util.List;
  */
 public class GodController {
 
-    private static List<AbstractTower> towers = Map.getInstance().getTowers();
-    private static List<AbstractProjectile> projectiles = Map.getInstance().getProjectiles();
-    private static List<AbstractCreep> creeps = Map.getInstance().getCreeps();
+    private static List<Tower> towers = Map.getInstance().getTowers();
+    private static List<Projectile> projectiles = Map.getInstance().getProjectiles();
+    private static List<Creep> creeps = Map.getInstance().getCreeps();
     //private static List<Particle> particles = Map.getParticles();
 
     /**
@@ -47,7 +46,7 @@ public class GodController {
      * @param p what point should search around
      * @return the creep with the closest position
      */
-    public static AbstractCreep getClosestCreep(Point p) { //gör så den kollar på p istället för list.get(0)
+    public static Creep getClosestCreep(Point p) { //gör så den kollar på p istället för list.get(0)
         return getClosestCreepInRange(Map.getInstance().getCreeps(), p);
     }
 
@@ -57,12 +56,12 @@ public class GodController {
      * @param p what point should it find the closest creep to
      * @return the creep in the list that is closest to the point.
      */
-    public static AbstractCreep getClosestCreepInRange(List<AbstractCreep> creepsInRange, Point p){
+    public static Creep getClosestCreepInRange(List<Creep> creepsInRange, Point p){
         if (creeps.size() > 0) { //make sure there's a creep that can be found
-            AbstractCreep closest = creeps.get(0); //starts with first creep to avoid null error
+            Creep closest = creeps.get(0); //starts with first creep to avoid null error
             double distanceToClosest = 9999999; //dummy startvalue to avoid null comparison
 
-            for (AbstractCreep creep : creeps) {
+            for (Creep creep : creeps) {
                 double distanceToThisCreep = PointCalculations.distanceBetween(creep.getPosition(), p);
                 if (distanceToThisCreep < distanceToClosest) {
                     distanceToClosest = distanceToThisCreep;
@@ -80,7 +79,7 @@ public class GodController {
      *
      * @return the creep with position 0  in the creep list
      */
-    public static AbstractCreep getFirstCreepInList(Point p) { //gör så den kollar på p istället för list.get(0)
+    public static Creep getFirstCreepInList(Point p) { //gör så den kollar på p istället för list.get(0)
         if (creeps.size() != 0) {
             return creeps.get(0);
         }
@@ -91,8 +90,8 @@ public class GodController {
      * Target the closest creep and attempt to fire
      */
     public static void updateTowers() {
-        for (AbstractTower tower : towers) {
-            AbstractCreep closestCreep = getClosestCreep(tower.getPosition());
+        for (Tower tower : towers) {
+            Creep closestCreep = getClosestCreep(tower.getPosition());
 
             if (closestCreep != null) {
                 Point closestCreepPosition = closestCreep.getPosition();
@@ -117,7 +116,7 @@ public class GodController {
 
 
     public static void updateCreeps() {
-        for (AbstractCreep creep : creeps) {
+        for (Creep creep : creeps) {
             //creep.getTexture().rotate(5); //TODO: rotate creep angle every turn
             creep.move();
           /* TODO: fix so creeps that intersects base decrease its health
@@ -135,8 +134,8 @@ public class GodController {
 
         while (projectileIterator.hasNext()) {
             Object projectileObject = projectileIterator.next();
-            AbstractProjectile projectile = (AbstractProjectile) projectileObject;
-            AbstractCreep closestVictim = getClosestCreep(projectile.getPosition());
+            Projectile projectile = (Projectile) projectileObject;
+            Creep closestVictim = getClosestCreep(projectile.getPosition());
             if (closestVictim != null) {
                 projectile.faceTarget(closestVictim.getPosition());
                 if (projectile.collidesWith(closestVictim.getPosition(), 40)) {

@@ -13,7 +13,7 @@ import java.awt.Point;
 /**
  * Created by Tindra on 02/04/15. Modified by Johan Swanberg
  */
-public abstract class AbstractCreep extends BoardObject {
+public abstract class Creep extends BoardObject {
 
     private Point nextWayPoint;
     private double distanceToNextWayPoint;
@@ -21,7 +21,7 @@ public abstract class AbstractCreep extends BoardObject {
     private Sound devolveSound;
     private double speed;
 
-    public AbstractCreep(Image image, int speed) {
+    public Creep(Image image, int speed) {
 
         super(new Point(700,0), image, 0 );
         Map map = Map.getInstance();

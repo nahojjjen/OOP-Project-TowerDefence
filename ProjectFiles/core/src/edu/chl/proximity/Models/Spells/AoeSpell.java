@@ -1,10 +1,8 @@
 package edu.chl.proximity.Models.Spells;
 
-import com.badlogic.gdx.math.Polygon;
-import com.badlogic.gdx.math.Shape2D;
-import edu.chl.proximity.Models.Creeps.AbstractCreep;
+import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.Maps.Map;
-import edu.chl.proximity.Models.Towers.AbstractTower;
+import edu.chl.proximity.Models.Towers.Tower;
 import edu.chl.proximity.Utilities.Area;
 
 import java.util.List;
@@ -29,9 +27,9 @@ public abstract class AoeSpell extends Spell{
      * @param i how many steps the creeps should devolve. (1 to devolve each creep 1 step)
      */
     public void devolveCreepsInAoe(int i){
-        List<AbstractCreep> creepList = Map.getInstance().getCreeps();
+        List<Creep> creepList = Map.getInstance().getCreeps();
         for(int times = 0; times<i; times++){
-            for(AbstractCreep creep: creepList){
+            for(Creep creep: creepList){
                 if (area.contains(creep.getPosition())){ //point.getx returns a double, even though its stored as an int - bad java implementation
                     creep.devolve();
                 }
@@ -46,9 +44,9 @@ public abstract class AoeSpell extends Spell{
      * @param amount how many % to slow the creep
      */
     public void slowCreepsInAoe(double amount){
-        List<AbstractCreep> creepList = Map.getInstance().getCreeps();
+        List<Creep> creepList = Map.getInstance().getCreeps();
 
-        for(AbstractCreep creep: creepList){
+        for(Creep creep: creepList){
             if (area.contains(creep.getPosition())){ //point.getx returns a double, even though its stored as an int - bad java implementation
                 //TODO creep.slow(amount);
             }
@@ -62,9 +60,9 @@ public abstract class AoeSpell extends Spell{
      * @param change how much % the attackspeed should be (1 would keep the attackspeed, 2 would make it double the speed.)
      */
     public void speedUpTowersInAoe(double change){
-        List<AbstractTower> towers = Map.getInstance().getTowers();
+        List<Tower> towers = Map.getInstance().getTowers();
 
-        for(AbstractTower tower : towers){
+        for(Tower tower : towers){
             if (area.contains(tower.getPosition())){
                 //todo make reloadtime a variable and enable chaning it
             }

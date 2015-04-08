@@ -14,11 +14,13 @@ import edu.chl.proximity.Viewers.Renderer;
  * Created by Johan on 2015-04-07.
  */
 public class GameScreen implements Screen{
-    Game game ;
-    SpriteBatch batch = new SpriteBatch();
+    private Game game ;
+    private SpriteBatch batch = new SpriteBatch();
+    private Renderer renderer;
 
     public GameScreen(Game g){
         game =g ;
+        renderer = new Renderer();
     }
     @Override
     public void show() {
@@ -31,7 +33,7 @@ public class GameScreen implements Screen{
 
 
         batch.begin();
-        Renderer.render(batch);
+        renderer.render(batch);
         batch.end();
 
         GodController.updateBackground();

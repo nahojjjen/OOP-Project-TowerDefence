@@ -1,12 +1,11 @@
 package edu.chl.proximity.Models.Maps;
 
-import edu.chl.proximity.Models.Creeps.AbstractCreep;
+import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.Paths.Path;
-import edu.chl.proximity.Models.Projectiles.AbstractProjectile;
-import edu.chl.proximity.Models.Towers.AbstractTower;
+import edu.chl.proximity.Models.Projectiles.Projectile;
+import edu.chl.proximity.Models.Towers.Tower;
 import edu.chl.proximity.Models.Waves.Wave;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -19,7 +18,7 @@ public class Map {
     /**
      * Creep list
      */
-    private ArrayList<AbstractCreep> creeps = new ArrayList<AbstractCreep>();
+    private ArrayList<Creep> creeps = new ArrayList<Creep>();
     /**
      * Creep wave list
      */
@@ -27,7 +26,7 @@ public class Map {
     /**
      * List of Towers placed on map
      */
-    private ArrayList<AbstractTower> towers = new ArrayList<AbstractTower>();
+    private ArrayList<Tower> towers = new ArrayList<Tower>();
     /**
      * List of Particles on map
      */
@@ -35,7 +34,7 @@ public class Map {
     /**
      * List of Projectiles on map
      */
-    private ArrayList<AbstractProjectile> projectiles = new ArrayList<AbstractProjectile>();
+    private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 
     private Path path;
     private String backgroundImage;
@@ -65,11 +64,11 @@ public class Map {
         this.waves = waves;
     }
 
-    public ArrayList<AbstractTower> getTowers() {
+    public ArrayList<Tower> getTowers() {
         return towers;
     }
 
-    public void setTowers(ArrayList<AbstractTower> towers) {
+    public void setTowers(ArrayList<Tower> towers) {
         this.towers = towers;
     }
 /*
@@ -79,19 +78,19 @@ public class Map {
 
 */
 
-    public ArrayList<AbstractProjectile> getProjectiles() {
+    public ArrayList<Projectile> getProjectiles() {
         return projectiles;
     }
 
-    public void setProjectiles(ArrayList<AbstractProjectile> projectiles) {
+    public void setProjectiles(ArrayList<Projectile> projectiles) {
         this.projectiles = projectiles;
     }
 
-    public ArrayList<AbstractCreep> getCreeps() {
+    public ArrayList<Creep> getCreeps() {
         return creeps;
     }
 
-    public void setCreeps(ArrayList<AbstractCreep> creeps) {
+    public void setCreeps(ArrayList<Creep> creeps) {
         this.creeps = creeps;
     }
 
@@ -103,14 +102,14 @@ public class Map {
     /**
      * create a creep
      */
-    public void spawnCreep(AbstractCreep creep) {
+    public void spawnCreep(Creep creep) {
         creeps.add(creep);
     }
 
     /**
      * test method to test performance, spawns 1000 basic creeps.
      */
-    public void spawnCreepMass(AbstractCreep creep) {
+    public void spawnCreepMass(Creep creep) {
         for (int i = 0; i < 1000; i++) {
             creeps.add(creep);
         }
@@ -119,7 +118,7 @@ public class Map {
     /**
      * test method to test performance, spawns 1000 basic turrets.
      */
-    public  void spawnTurretMass(AbstractTower tower)   {
+    public  void spawnTurretMass(Tower tower)   {
         for (int i = 0; i < 1000; i++) {
             towers.add(tower);
         }
@@ -129,7 +128,7 @@ public class Map {
      * adds some randomly placed turrets for testing purposes
      * @param amount amount of towers that should be placed
      */
-    public void addSpreadTurrets(int amount, AbstractTower tower)  {
+    public void addSpreadTurrets(int amount, Tower tower)  {
         for (int i=0; i<amount; i++){
             addTower(tower);
         }
@@ -139,7 +138,7 @@ public class Map {
      *
      * @param p the projectile to be added
      */
-    public void addProjectile(AbstractProjectile p) {
+    public void addProjectile(Projectile p) {
         projectiles.add(p);
     }
 
@@ -148,7 +147,7 @@ public class Map {
      *
      * @param t what tower should be added
      */
-    public  void addTower(AbstractTower t) {
+    public  void addTower(Tower t) {
         towers.add(t);
     }
 

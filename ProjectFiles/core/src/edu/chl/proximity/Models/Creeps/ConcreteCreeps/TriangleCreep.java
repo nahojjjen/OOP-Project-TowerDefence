@@ -1,13 +1,12 @@
 package edu.chl.proximity.Models.Creeps.ConcreteCreeps;
 
-import com.badlogic.gdx.graphics.Texture;
-import edu.chl.proximity.Models.Creeps.AbstractCreep;
+import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.Image;
 
 /**
  * Created by Johan on 2015-04-02.
  */
-public class TriangleCreep  extends AbstractCreep{
+public class TriangleCreep  extends Creep {
 
     public TriangleCreep(){
         super(new Image("assets/Creeps/Line1/triangle.png"), 1);

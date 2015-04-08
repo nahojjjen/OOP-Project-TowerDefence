@@ -8,11 +8,10 @@ import edu.chl.proximity.Controllers.GameStates.GameScreen;
 import edu.chl.proximity.Controllers.GameStates.MenuScreen;
 
 public class Proximity extends Game {
-	SpriteBatch batch;
+
 	
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
 		this.setScreen(new GameScreen(this));
 	}
 
@@ -24,11 +23,4 @@ public class Proximity extends Game {
 		screen.render(Gdx.graphics.getDeltaTime());
 	}
 
-	/**
-	 * get the spritebatch of this application
-	 * @return the spritebatch
-	 */
-	public SpriteBatch getBatch(){
-		return batch;
-	}
 }

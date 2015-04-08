@@ -1,8 +1,8 @@
 package edu.chl.proximity.Models.Spells;
 
-import edu.chl.proximity.Models.Creeps.AbstractCreep;
+import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.Maps.Map;
-import edu.chl.proximity.Models.Towers.AbstractTower;
+import edu.chl.proximity.Models.Towers.Tower;
 
 import java.util.List;
 
@@ -27,9 +27,9 @@ public abstract class GlobalSpell extends Spell {
      * @param i how many steps the creeps should devolve. (1 to devolve each creep 1 step)
      */
     public void devolveAllCreeps(int i){
-        List<AbstractCreep> creepList = Map.getInstance().getCreeps();
+        List<Creep> creepList = Map.getInstance().getCreeps();
         for(int times = 0; times<i; times++){
-            for(AbstractCreep creep: creepList){
+            for(Creep creep: creepList){
 
                     creep.devolve();
 
@@ -44,9 +44,9 @@ public abstract class GlobalSpell extends Spell {
      * @param amount how many % to slow the creep
      */
     public void slowAllCreeps(double amount){
-        List<AbstractCreep> creepList = Map.getInstance().getCreeps();
+        List<Creep> creepList = Map.getInstance().getCreeps();
 
-        for(AbstractCreep creep: creepList){
+        for(Creep creep: creepList){
                 //TODO creep.slow(amount);
         }
 
@@ -58,9 +58,9 @@ public abstract class GlobalSpell extends Spell {
      * @param change how much % the attackspeed should be (1 would keep the attackspeed, 2 would make it double the speed.)
      */
     public void speedUpAllTowers(double change){
-        List<AbstractTower> towers = Map.getInstance().getTowers();
+        List<Tower> towers = Map.getInstance().getTowers();
 
-        for(AbstractTower tower : towers){
+        for(Tower tower : towers){
             //todo make reloadtime a variable and enable chaning it
         }
     }

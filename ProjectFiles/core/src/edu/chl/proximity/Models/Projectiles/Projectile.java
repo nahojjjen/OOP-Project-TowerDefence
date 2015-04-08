@@ -12,13 +12,13 @@ import java.awt.Point;
 /**
  * Created by Hanna Römer on 2015-04-02, edited by Johan and Linda
  */
-public abstract class AbstractProjectile extends BoardObject{
+public abstract class Projectile extends BoardObject{
     private ParticleEffect effect;
     private int health;
     private int speed;
     private Sound sound;
 
-    public AbstractProjectile(ParticleEffect particleEffect, int health, int speed, Sound sound, Image image, Point position, double angle){
+    public Projectile(ParticleEffect particleEffect, int health, int speed, Sound sound, Image image, Point position, double angle){
         //position, texture, angle
         super(position, image, angle);
         this.effect=particleEffect;

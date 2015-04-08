@@ -1,16 +1,11 @@
 package edu.chl.proximity.Viewers;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Rectangle;
-import edu.chl.proximity.Models.Creeps.AbstractCreep;
+import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.Maps.Map;
-import edu.chl.proximity.Models.Paths.Path;
-import edu.chl.proximity.Models.Projectiles.AbstractProjectile;
-import edu.chl.proximity.Models.Towers.AbstractTower;
+import edu.chl.proximity.Models.Projectiles.Projectile;
+import edu.chl.proximity.Models.Towers.Tower;
 
 import java.util.List;
 
@@ -26,7 +21,7 @@ import java.util.List;
  */
 public class Renderer {
 
-    public static void render(SpriteBatch batch) {
+    public void render(SpriteBatch batch) {
 
         //renderBackground(batch);
         renderPath(batch);
@@ -58,7 +53,7 @@ public class Renderer {
 
     /*
     private static void debuggRenderCreepAngle(){
-        List<AbstractCreep> creeps = Map.getInstance().getCreeps();
+        List<Creep> creeps = Map.getInstance().getCreeps();
         Image line = Debug.getLine();
         for (Creep creep : creeps) {
             line.setRotation((float) creep.getAngle());
@@ -77,23 +72,23 @@ public class Renderer {
     }
     */
 
-    private static void renderPath(Batch batch){
+    private void renderPath(Batch batch){
 //         batch.draw(Map.getInstance().getPath().getImage(), 0, Gdx.graphics.getHeight());
 
     }
-    private static void renderBackground(Batch batch) {
+    private void renderBackground(Batch batch) {
         //batch.draw(Map.getInstance().);
         //Map.getBackground().drawCentered(0, 0);
     }
 
-    private static void renderBase(Batch batch) {
+    private void renderBase(Batch batch) {
         //Base.getImage().draw(600, 200);
     }
 
-    private static void renderTowers(SpriteBatch batch)  {
-        List<AbstractTower> towers = Map.getInstance().getTowers();
+    private void renderTowers(SpriteBatch batch)  {
+        List<Tower> towers = Map.getInstance().getTowers();
    if (towers != null){
-       for (AbstractTower tower : towers) {
+       for (Tower tower : towers) {
            //tower.getAnimation().draw(tower.getPoint().getX()-20, tower.getPoint().getY()-20);
            tower.getTexture().render(batch, tower.getPosition(), tower.getAngle());
 
@@ -102,22 +97,22 @@ public class Renderer {
 
     }
 
-    private static void renderProjectiles(SpriteBatch batch)  {
+    private void renderProjectiles(SpriteBatch batch)  {
 
-        List<AbstractProjectile> projectiles = Map.getInstance().getProjectiles();
+        List<Projectile> projectiles = Map.getInstance().getProjectiles();
         if (projectiles != null){
-            for (AbstractProjectile projectile : projectiles) {
+            for (Projectile projectile : projectiles) {
                 projectile.getTexture().render(batch, projectile.getPosition(), projectile.getAngle());
             }
         }
 
     }
 
-    private static void renderCreeps(SpriteBatch batch)   {
+    private void renderCreeps(SpriteBatch batch)   {
 
-        List<AbstractCreep> creeps = Map.getInstance().getCreeps();
+        List<Creep> creeps = Map.getInstance().getCreeps();
         if (creeps != null){
-            for (AbstractCreep creep : creeps) {
+            for (Creep creep : creeps) {
                 creep.getTexture().render(batch, creep.getPosition(), creep.getAngle());
             }
         }
