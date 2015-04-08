@@ -19,7 +19,7 @@ public abstract class Creep extends BoardObject {
     private double distanceToNextWayPoint;
     private Path path;
     private Sound devolveSound;
-    private double speed;
+    private int speed;
 
     public Creep(Image image, int speed) {
 

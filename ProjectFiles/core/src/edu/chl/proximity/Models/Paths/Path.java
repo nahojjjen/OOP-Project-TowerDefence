@@ -16,8 +16,8 @@ import edu.chl.proximity.Utilities.PointCalculations;
 public abstract class Path {
 
     private  List<Point> waypoint = new ArrayList();
-    private Texture texture;
     private  List<Rectangle> pathHitbox =  new ArrayList();
+    private Texture texture;
 
     /**
      * get an instance of this path

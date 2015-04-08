@@ -6,9 +6,14 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import edu.chl.proximity.Controllers.GodController;
+import edu.chl.proximity.Models.Creeps.Triangle;
 import edu.chl.proximity.Models.Maps.Map;
+import edu.chl.proximity.Models.Towers.ShootingTower;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Viewers.Renderer;
+
+import java.awt.*;
+import java.util.Random;
 
 /**
  * Created by Johan on 2015-04-07.
@@ -21,10 +26,17 @@ public class GameScreen implements Screen{
     public GameScreen(Game g){
         game =g ;
         renderer = new Renderer();
+        Map.getInstance().addTower(new ShootingTower(new Point(50,50)));
+
+        for(int i = 0; i < 10; i++) {
+            Map.getInstance().spawnCreep(new Triangle());
+
+        }
     }
     @Override
     public void show() {
         System.out.println("Showing game Screen");
+
     }
 
     @Override
