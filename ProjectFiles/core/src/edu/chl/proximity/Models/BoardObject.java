@@ -47,7 +47,7 @@ public abstract class BoardObject {
         this.position = position;
     }
 
-    public Image getTexture() {
+    public Image getImage() {
         return image;
     }
 
@@ -66,6 +66,13 @@ public abstract class BoardObject {
     public void render(SpriteBatch batch) {
 
         image.render(batch, position, angle);
+    }
+
+    public int getWidth() {
+        return image.getTexture().getWidth();
+    }
+    public int getHeight() {
+        return image.getTexture().getHeight();
     }
 
     /**

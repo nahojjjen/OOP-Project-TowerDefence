@@ -24,11 +24,18 @@ import java.util.List;
  */
 public class GodController {
 
-    private static List<Tower> towers = Map.getInstance().getTowers();
-    private static List<Projectile> projectiles = Map.getInstance().getProjectiles();
-    private static List<Creep> creeps = Map.getInstance().getCreeps();
+    private static List<Tower> towers;
+    private static List<Projectile> projectiles;
+    private static List<Creep> creeps;
     //private static List<Particle> particles = Map.getParticles();
 
+    private Map map;
+    public GodController(Map map) {
+        this.map = map;
+        creeps = map.getCreeps();
+        projectiles = map.getProjectiles();
+        towers = map.getTowers();
+    }
     /**
      * update the animation & positions of the particle effects
      *
@@ -46,8 +53,8 @@ public class GodController {
      * @param p what point should search around
      * @return the creep with the closest position
      */
-    public static Creep getClosestCreep(Point p) { //gör så den kollar på p istället för list.get(0)
-        return getClosestCreepInRange(Map.getInstance().getCreeps(), p);
+    public Creep getClosestCreep(Point p) { //gör så den kollar på p istället för list.get(0)
+        return getClosestCreepInRange(map.getCreeps(), p);
     }
 
     /**
@@ -56,7 +63,7 @@ public class GodController {
      * @param p what point should it find the closest creep to
      * @return the creep in the list that is closest to the point.
      */
-    public static Creep getClosestCreepInRange(List<Creep> creepsInRange, Point p){
+    public Creep getClosestCreepInRange(List<Creep> creepsInRange, Point p){
         if (creeps.size() > 0) { //make sure there's a creep that can be found
             Creep closest = creeps.get(0); //starts with first creep to avoid null error
             double distanceToClosest = 9999999; //dummy startvalue to avoid null comparison
@@ -79,7 +86,7 @@ public class GodController {
      *
      * @return the creep with position 0  in the creep list
      */
-    public static Creep getFirstCreepInList(Point p) { //gör så den kollar på p istället för list.get(0)
+    public Creep getFirstCreepInList(Point p) { //gör så den kollar på p istället för list.get(0)
         if (creeps.size() != 0) {
             return creeps.get(0);
         }
@@ -89,7 +96,7 @@ public class GodController {
     /**
      * Target the closest creep and attempt to fire
      */
-    public static void updateTowers() {
+    public void updateTowers() {
         for (Tower tower : towers) {
             Creep closestCreep = getClosestCreep(tower.getPosition());
 
@@ -106,7 +113,7 @@ public class GodController {
     /**
      * TODO: Fix this method for libGDX
      */
-    private static void playPoofSound() {
+    private void playPoofSound() {
        // Sound sound = new Sound() {
         //};
         //sound.playCreepDestroyedSound();
@@ -115,7 +122,7 @@ public class GodController {
     }
 
 
-    public static void updateCreeps() {
+    public void updateCreeps() {
         for (Creep creep : creeps) {
             //creep.getTexture().rotate(5); //TODO: rotate creep angle every turn
             creep.move();
@@ -129,7 +136,7 @@ public class GodController {
         }
     }
 
-    public static void updateProjectiles() {
+    public void updateProjectiles() {
         Iterator projectileIterator = projectiles.iterator();
 
         while (projectileIterator.hasNext()) {
@@ -161,7 +168,7 @@ public class GodController {
     /** TODO: fix this method to rotate the background image, attatch background image as instance variable in map?
      *
      */
-    public static void updateBackground() {
+    public void updateBackground() {
 
         //Background.getBackground().rotate((float) 0.05);
     }

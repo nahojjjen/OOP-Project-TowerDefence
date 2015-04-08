@@ -7,29 +7,36 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import edu.chl.proximity.Controllers.GodController;
 import edu.chl.proximity.Models.Creeps.Triangle;
+import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
+import edu.chl.proximity.Models.Maps.StandardMap;
 import edu.chl.proximity.Models.Towers.ShootingTower;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Viewers.Renderer;
 
 import java.awt.*;
 import java.util.Random;
-
 /**
  * Created by Johan on 2015-04-07.
  */
 public class GameScreen implements Screen{
     private Game game ;
+    private Map currentMap;
     private SpriteBatch batch = new SpriteBatch();
     private Renderer renderer;
+    private GodController godController;
 
-    public GameScreen(Game g){
+    public GameScreen(Game g, Map map){
         game =g ;
-        renderer = new Renderer();
-        Map.getInstance().addTower(new ShootingTower(new Point(50,50)));
+        currentMap = map;
+        renderer = new Renderer(currentMap);
+        godController = new GodController(currentMap);
+        currentMap.addTower(new ShootingTower(new Point(50,50)));
+        GameData.getInstance().setMap(currentMap);
+
 
         for(int i = 0; i < 10; i++) {
-            Map.getInstance().spawnCreep(new Triangle());
+            currentMap.spawnCreep(new Triangle());
 
         }
     }
@@ -48,10 +55,10 @@ public class GameScreen implements Screen{
         renderer.render(batch);
         batch.end();
 
-        GodController.updateBackground();
-        GodController.updateCreeps();
-        GodController.updateProjectiles();
-        GodController.updateTowers();
+        godController.updateBackground();
+        godController.updateCreeps();
+        godController.updateProjectiles();
+        godController.updateTowers();
     }
 
     @Override

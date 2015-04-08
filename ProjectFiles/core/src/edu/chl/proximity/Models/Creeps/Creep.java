@@ -3,6 +3,7 @@ package edu.chl.proximity.Models.Creeps;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Paths.Path;
@@ -24,7 +25,7 @@ public abstract class Creep extends BoardObject {
     public Creep(Image image, int speed) {
 
         super(new Point(700,0), image, 0 );
-        Map map = Map.getInstance();
+        Map map = GameData.getInstance().getMap();
         path = map.getPath();
         nextWayPoint = path.getWaypoint(0); //gets set by move method
         distanceToNextWayPoint = 9999999;

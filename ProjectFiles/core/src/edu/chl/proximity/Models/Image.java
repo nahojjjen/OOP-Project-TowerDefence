@@ -24,4 +24,6 @@ public class Image {
                 texture.getHeight()/2, texture.getWidth(), texture.getHeight(),
                 1, 1, (int)angle, 0, 0, texture.getWidth(), texture.getHeight(), false, false);
     }
+
+    public Texture getTexture(){ return texture; }
 }

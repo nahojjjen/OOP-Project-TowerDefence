@@ -6,8 +6,7 @@ import java.util.List;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
-import edu.chl.proximity.Utilities.Image;
-import edu.chl.proximity.Utilities.PointCalculations;
+import edu.chl.proximity.Models.BoardObject;
 
 /**
  * The path the creep follows, and where you cannot place towers.
@@ -15,8 +14,8 @@ import edu.chl.proximity.Utilities.PointCalculations;
  */
 public abstract class Path {
 
-    private  List<Point> waypoint = new ArrayList();
-    private  List<Rectangle> pathHitbox =  new ArrayList();
+    protected List<Point> waypoint = new ArrayList();
+    protected List<Rectangle> pathHitbox =  new ArrayList();
     private Texture texture;
 
     /**
@@ -69,6 +68,15 @@ public abstract class Path {
     }
 
     /**
+     *
+     * @param o the boardObject to check if it intersects
+     * @return
+     */
+    public boolean intersects(BoardObject o) {
+        return intersects(new Rectangle((int)o.getPosition().getX(), (int)o.getPosition().getY(), o.getWidth(), o.getHeight()));
+    }
+
+    /**
      * add all the waypoints in the path
      */
     public abstract void initiatePoints() ;
@@ -80,7 +88,10 @@ public abstract class Path {
      * @return a point corresponding to the number input
      */
     public Point getWaypoint(int i) {
-        return waypoint.get(i);
+        if(waypoint != null)
+            return waypoint.get(i);
+        else
+            return null;
     }
 
 

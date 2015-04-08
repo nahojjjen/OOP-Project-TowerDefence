@@ -21,6 +21,12 @@ import java.util.List;
  */
 public class Renderer {
 
+    private Map map;
+
+    public Renderer(Map map) {
+        this.map = map;
+    }
+
     public void render(SpriteBatch batch) {
 
         //renderBackground(batch);
@@ -86,11 +92,11 @@ public class Renderer {
     }
 
     private void renderTowers(SpriteBatch batch)  {
-        List<Tower> towers = Map.getInstance().getTowers();
+        List<Tower> towers = map.getTowers();
    if (towers != null){
        for (Tower tower : towers) {
            //tower.getAnimation().draw(tower.getPoint().getX()-20, tower.getPoint().getY()-20);
-           tower.getTexture().render(batch, tower.getPosition(), tower.getAngle());
+           tower.getImage().render(batch, tower.getPosition(), tower.getAngle());
 
        }
    }
@@ -99,10 +105,10 @@ public class Renderer {
 
     private void renderProjectiles(SpriteBatch batch)  {
 
-        List<Projectile> projectiles = Map.getInstance().getProjectiles();
+        List<Projectile> projectiles = map.getProjectiles();
         if (projectiles != null){
             for (Projectile projectile : projectiles) {
-                projectile.getTexture().render(batch, projectile.getPosition(), projectile.getAngle());
+                projectile.getImage().render(batch, projectile.getPosition(), projectile.getAngle());
             }
         }
 
@@ -110,10 +116,10 @@ public class Renderer {
 
     private void renderCreeps(SpriteBatch batch)   {
 
-        List<Creep> creeps = Map.getInstance().getCreeps();
+        List<Creep> creeps = map.getCreeps();
         if (creeps != null){
             for (Creep creep : creeps) {
-                creep.getTexture().render(batch, creep.getPosition(), creep.getAngle());
+                creep.getImage().render(batch, creep.getPosition(), creep.getAngle());
             }
         }
 

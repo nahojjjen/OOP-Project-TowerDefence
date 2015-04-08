@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.Maps;
 
 import edu.chl.proximity.Models.Creeps.Creep;
+import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Paths.Path;
 import edu.chl.proximity.Models.Projectiles.Projectile;
 import edu.chl.proximity.Models.Towers.Tower;
@@ -11,33 +12,18 @@ import java.util.ArrayList;
 /**
  * Created by simongislen on 02/04/15.
  */
-public class Map {
+public abstract class Map {
 
     private int waveIndex;
 
-    /**
-     * Creep list
-     */
     private ArrayList<Creep> creeps = new ArrayList<Creep>();
-    /**
-     * Creep wave list
-     */
     private ArrayList<Wave> waves = new ArrayList<Wave>();
-    /**
-     * List of Towers placed on map
-     */
     private ArrayList<Tower> towers = new ArrayList<Tower>();
-    /**
-     * List of Particles on map
-     */
    // private ArrayList<AbstractParticle> particles;
-    /**
-     * List of Projectiles on map
-     */
     private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 
     private Path path;
-    private String backgroundImage;
+    private Image backgroundImage;
     private int resources;
     //private Faction faction;
     private static Map map;
@@ -46,13 +32,10 @@ public class Map {
     /**
      * creates the map instance
      */
-    private Map(){}
+    public Map(Path path, Image background){
+        this.path = path;
+        backgroundImage = background;
 
-    public static Map getInstance(){
-        if (map == null){
-            map = new Map();
-        }
-        return map;
     }
 
     //Getters and Setters;

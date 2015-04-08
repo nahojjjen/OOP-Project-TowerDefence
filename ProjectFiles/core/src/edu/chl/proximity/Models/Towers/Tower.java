@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.Towers;
 
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Projectiles.Projectile;
@@ -32,7 +33,7 @@ public abstract class Tower extends BoardObject {
      */
     public void shoot(){
         if(reloadTime < 1){
-            Map.getInstance().addProjectile(createProjectile());
+            GameData.getInstance().getMap().addProjectile(createProjectile());
             reloadTime = 100;
         }
 
