@@ -26,9 +26,8 @@ import java.util.List;
  */
 public class Renderer {
 
-    public static void render() {
-        SpriteBatch batch = new SpriteBatch(); //TODO: The batch could not be created every turn!!!
-        batch.begin();
+    public static void render(SpriteBatch batch) {
+
         //renderBackground(batch);
         renderPath(batch);
         renderBase(batch);
@@ -40,7 +39,6 @@ public class Renderer {
 
         //debuggRenderWaypoints();
         //debuggRenderCreepAngle();
-        batch.end();
 
     }
 

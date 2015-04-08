@@ -19,15 +19,15 @@ public class Map {
     /**
      * Creep list
      */
-    private ArrayList<AbstractCreep> creeps;
+    private ArrayList<AbstractCreep> creeps = new ArrayList<AbstractCreep>();
     /**
      * Creep wave list
      */
-    private ArrayList<Wave> waves;
+    private ArrayList<Wave> waves = new ArrayList<Wave>();
     /**
      * List of Towers placed on map
      */
-    private ArrayList<AbstractTower> towers;
+    private ArrayList<AbstractTower> towers = new ArrayList<AbstractTower>();
     /**
      * List of Particles on map
      */
@@ -35,7 +35,7 @@ public class Map {
     /**
      * List of Projectiles on map
      */
-    private ArrayList<AbstractProjectile> projectiles;
+    private ArrayList<AbstractProjectile> projectiles = new ArrayList<AbstractProjectile>();
 
     private Path path;
     private String backgroundImage;
