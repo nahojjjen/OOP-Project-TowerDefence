@@ -20,10 +20,9 @@ public abstract class Tower extends BoardObject {
     /**
      *
      */
-    public Tower(Point pos, Image image, Projectile projectile){
+    public Tower(Point pos, Image image){
         //point texture angle
         super(pos, image, 0);
-        projectileType = projectile;
     }
 
 
@@ -33,11 +32,13 @@ public abstract class Tower extends BoardObject {
      */
     public void shoot(){
         if(reloadTime < 1){
-            Map.getInstance().addProjectile(projectileType);
+            Map.getInstance().addProjectile(createProjectile());
             reloadTime = 100;
         }
 
     }
+
+    public abstract Projectile createProjectile();
     /**
      * decrease the reload time, tower can shoot when reload is at 0
      */
