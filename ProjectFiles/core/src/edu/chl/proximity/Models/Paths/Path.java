@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 
 /**
@@ -14,7 +15,7 @@ import edu.chl.proximity.Models.BoardObject;
  */
 public abstract class Path {
 
-    protected List<Point> waypoint = new ArrayList();
+    protected List<Vector2> waypoint = new ArrayList();
     protected List<Rectangle> pathHitbox =  new ArrayList();
     private Texture texture;
 
@@ -32,7 +33,7 @@ public abstract class Path {
      * get a list of all waypoints in this path
      * @return a list of points, in order- the points are waypoints on the path.
      */
-    public List<Point> getWaypoints() {
+    public List<Vector2> getWaypoints() {
         return waypoint;
     }
 
@@ -73,7 +74,7 @@ public abstract class Path {
      * @return
      */
     public boolean intersects(BoardObject o) {
-        return intersects(new Rectangle((int)o.getPosition().getX(), (int)o.getPosition().getY(), o.getWidth(), o.getHeight()));
+        return intersects(new Rectangle((int)o.getPosition().x, (int)o.getPosition().y, o.getWidth(), o.getHeight()));
     }
 
     /**
@@ -87,7 +88,7 @@ public abstract class Path {
      * @param i what point to get
      * @return a point corresponding to the number input
      */
-    public Point getWaypoint(int i) {
+    public Vector2 getWaypoint(int i) {
         if(waypoint != null)
             return waypoint.get(i);
         else

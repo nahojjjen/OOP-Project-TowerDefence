@@ -3,6 +3,7 @@ package edu.chl.proximity.Models;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.awt.*;
@@ -14,7 +15,7 @@ public abstract class BoardObject {
     /**
      * Position on the gameboard
      */
-    private Point position;
+    private Vector2 position;
     /**
      * Image that is to be rendered
      */
@@ -31,7 +32,7 @@ public abstract class BoardObject {
      * @param img the image of the object
      * @param angle the rotation of the object (in degrees)
      */
-    public BoardObject(Point position, Image img, double angle){
+    public BoardObject(Vector2 position, Image img, double angle){
         this.position = position;
         this.image = img;
         this.angle = angle;
@@ -39,11 +40,11 @@ public abstract class BoardObject {
 
 
     //Getters and Setters
-    public Point getPosition() {
+    public Vector2 getPosition() {
         return position;
     }
 
-    public void setPosition(Point position) {
+    public void setPosition(Vector2 position) {
         this.position = position;
     }
 
@@ -82,7 +83,7 @@ public abstract class BoardObject {
      * @return true if not visible
      */
     public boolean isOutsideView() {
-        if (getPosition().getX() < Gdx.graphics.getWidth()&& getPosition().getY() < Gdx.graphics.getHeight() && getPosition().getX() > 0 && getPosition().getY() > 0) {
+        if (getPosition().x < Gdx.graphics.getWidth()&& getPosition().y < Gdx.graphics.getHeight() && getPosition().x > 0 && getPosition().y > 0) {
             return false;
 
         }
@@ -93,11 +94,11 @@ public abstract class BoardObject {
     /**
      * re-adjusts the projectiles angle to face the given point
      *
-     * @param p what point the projectile should travel towards
+     * @param v what point the projectile should travel towards
      */
-    public void faceTarget(Point p) {
-        if (p != null) {
-            angle = (PointCalculations.getVectorAngle(getPosition(), p));
+    public void faceTarget(Vector2 v) {
+        if (v != null) {
+            angle = (PointCalculations.getVectorAngle(getPosition(), v));
             //angle remains unchanged, if there's no new point to look at.
         }
     }

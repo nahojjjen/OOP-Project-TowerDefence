@@ -2,6 +2,7 @@ package edu.chl.proximity.Models.Creeps;
 
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
@@ -16,15 +17,16 @@ import java.awt.Point;
  */
 public abstract class Creep extends BoardObject {
 
-    private Point nextWayPoint;
+    private Vector2 nextWayPoint;
     private double distanceToNextWayPoint;
     private Path path;
     private Sound devolveSound;
     private int speed;
+    private double moveAngle;
 
     public Creep(Image image, int speed) {
 
-        super(new Point(700,0), image, 0 );
+        super(new Vector2(700,0), image, 0 );
         Map map = GameData.getInstance().getMap();
         path = map.getPath();
         nextWayPoint = path.getWaypoint(0); //gets set by move method
@@ -44,8 +46,8 @@ public abstract class Creep extends BoardObject {
      * the creep is "on" its current waypoint //implementation comment, but relevant for using method
      */
     public void move() {
+        System.out.println(nextWayPoint);
         if (reachedWaypoint(nextWayPoint)){
-            path.getWaypoint(0);
             distanceToNextWayPoint = 999999999; //this is a way of resetting the lenght, to make sure that the creep doesn't misstake the old lenght when approaching a new waypoint - remove to see bug
             aimTowardsNextWaypoint();
         }
@@ -66,7 +68,9 @@ public abstract class Creep extends BoardObject {
     public  double getAngleToNextPoint() {
         if (this.getPosition() != null && this.nextWayPoint != null) {
             double angle = PointCalculations.getVectorAngle(this.getPosition(), nextWayPoint);
+            System.out.println("angle:" + angle);
             return angle;
+
         }
         System.out.println("Error in abstractCreep: trying to get angle to next point- invalid point");
         return 0;
@@ -77,17 +81,18 @@ public abstract class Creep extends BoardObject {
      * move() method.
      */
     private void repositionCreep(){
-        Point newPosition;
-        /*
-        System.out.println("real x movement:" + (Math.cos(Math.toRadians(angle)) * speed));
-        System.out.println("real y movement:" + (Math.sin(Math.toRadians(angle)) * speed));
-        */
-        int xLenght = (int) ((Math.cos(Math.toRadians(getAngle())) * speed)+0.5); //+0.5 to round to correct int aka 0.9 is 1
-        int yLenght = (int) ((Math.sin(Math.toRadians(getAngle())) * speed)+0.5);
+        Vector2 newPosition;
+
+        System.out.println("real x movement:" + (Math.cos(Math.toRadians(moveAngle)) * speed));
+        System.out.println("real y movement:" + (Math.sin(Math.toRadians(moveAngle)) * speed));
 
 
-        //System.out.println("x movement= " + xLenght + " y-momement:" + yLenght);
-        newPosition = new Point((int)getPosition().getX() + xLenght, (int)getPosition().getY() + yLenght);
+        float xLenght = (float)(Math.cos(Math.toRadians(moveAngle)) * speed); //+0.5 to round to correct int aka 0.9 is 1
+        float yLenght = (float)(Math.sin(Math.toRadians(moveAngle)) * speed);
+
+
+        System.out.println("x movement= " + xLenght + " y-momement:" + yLenght);
+        newPosition = new Vector2(getPosition().x + xLenght, getPosition().y + yLenght);
         setPosition(newPosition);
     }
 
@@ -95,7 +100,7 @@ public abstract class Creep extends BoardObject {
      * Sets the angle of the creep to face the next waypoint
      */
     private void aimTowardsNextWaypoint(){
-        setAngle(getAngleToNextPoint());
+        moveAngle = getAngleToNextPoint();
     }
 
     /**
@@ -104,7 +109,7 @@ public abstract class Creep extends BoardObject {
      * @param waypoint what waypoint to check for
      * @return true if within distance of waypoint
      */
-    private boolean reachedWaypoint(Point waypoint){
+    private boolean reachedWaypoint(Vector2 waypoint){
         double olddistanceToNextWayPoint = distanceToNextWayPoint;
         distanceToNextWayPoint = PointCalculations.distanceBetweenNoSqrt(super.getPosition(), waypoint);
         //System.out.println("distance = " + distance);

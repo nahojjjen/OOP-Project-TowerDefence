@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -60,7 +61,7 @@ public class GameScreen implements Screen{
         viewport.apply();
         
 
-       currentMap.addTower(new ShootingTower(new Point(0, 0)));//cameraPointCoordinates));
+       currentMap.addTower(new ShootingTower(new Vector2(0, 0)));//cameraPointCoordinates));
         for(int i = 0; i < 10; i++) {
             currentMap.spawnCreep(new Triangle());
 

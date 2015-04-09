@@ -2,6 +2,7 @@ package edu.chl.proximity.Utilities;
 
 import com.badlogic.gdx.math.Ellipse;
 import com.badlogic.gdx.math.Polygon;
+import com.badlogic.gdx.math.Vector2;
 
 import java.awt.*;
 
@@ -34,11 +35,11 @@ public class Area {
      * @param p
      * @return
      */
-    public boolean contains(Point p){
+    public boolean contains(Vector2 p){
         if (polygon != null){
-            return polygon.contains((int)p.getX(), (int)p.getY());
+            return polygon.contains((int)p.x, (int)p.y);
         }else if(ellipse != null){
-            return ellipse.contains((int)p.getX(), (int)p.getY());
+            return ellipse.contains((int)p.x, (int)p.y);
         }
     return false;
     }

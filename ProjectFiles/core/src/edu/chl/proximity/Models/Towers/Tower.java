@@ -1,5 +1,6 @@
 package edu.chl.proximity.Models.Towers;
 
+import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
@@ -21,7 +22,7 @@ public abstract class Tower extends BoardObject {
     /**
      *
      */
-    public Tower(Point pos, Image image){
+    public Tower(Vector2 pos, Image image){
         //point texture angle
         super(pos, image, 0);
     }

@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.Paths.ConcretePaths;
 
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Paths.Path;
 
 import java.awt.*;
@@ -48,33 +49,33 @@ public class FirstPath extends Path {
     public void initiatePoints(){
         if(waypoint != null) {
             if (waypoint.isEmpty()) {
-                waypoint.add(new Point(2, 716));
-                waypoint.add(new Point(435, 728));
-                waypoint.add(new Point(821, 730));
-                waypoint.add(new Point(1027, 724));
-                waypoint.add(new Point(1016, 552));
-                waypoint.add(new Point(957, 550));
-                waypoint.add(new Point(949, 638));
-                waypoint.add(new Point(674, 646));
-                waypoint.add(new Point(451, 628));
-                waypoint.add(new Point(457, 543));
-                waypoint.add(new Point(472, 459));
-                waypoint.add(new Point(265, 466));
-                waypoint.add(new Point(109, 462));
-                waypoint.add(new Point(104, 284));
-                waypoint.add(new Point(117, 101));
-                waypoint.add(new Point(313, 99));
-                waypoint.add(new Point(322, 229));
-                waypoint.add(new Point(304, 376));
-                waypoint.add(new Point(592, 406));
-                waypoint.add(new Point(886, 415));
-                waypoint.add(new Point(1033, 401));
-                waypoint.add(new Point(1047, 228));
-                waypoint.add(new Point(1033, 120));
-                waypoint.add(new Point(933, 98));
-                waypoint.add(new Point(845, 106));
-                waypoint.add(new Point(848, 272));
-                waypoint.add(new Point(672, 260));
+                waypoint.add(new Vector2(2, 716));
+                waypoint.add(new Vector2(435, 728));
+                waypoint.add(new Vector2(821, 730));
+                waypoint.add(new Vector2(1027, 724));
+                waypoint.add(new Vector2(1016, 552));
+                waypoint.add(new Vector2(957, 550));
+                waypoint.add(new Vector2(949, 638));
+                waypoint.add(new Vector2(674, 646));
+                waypoint.add(new Vector2(451, 628));
+                waypoint.add(new Vector2(457, 543));
+                waypoint.add(new Vector2(472, 459));
+                waypoint.add(new Vector2(265, 466));
+                waypoint.add(new Vector2(109, 462));
+                waypoint.add(new Vector2(104, 284));
+                waypoint.add(new Vector2(117, 101));
+                waypoint.add(new Vector2(313, 99));
+                waypoint.add(new Vector2(322, 229));
+                waypoint.add(new Vector2(304, 376));
+                waypoint.add(new Vector2(592, 406));
+                waypoint.add(new Vector2(886, 415));
+                waypoint.add(new Vector2(1033, 401));
+                waypoint.add(new Vector2(1047, 228));
+                waypoint.add(new Vector2(1033, 120));
+                waypoint.add(new Vector2(933, 98));
+                waypoint.add(new Vector2(845, 106));
+                waypoint.add(new Vector2(848, 272));
+                waypoint.add(new Vector2(672, 260));
 
             }
         }

@@ -3,6 +3,7 @@ package edu.chl.proximity.Models.Projectiles;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Utilities.PointCalculations;
@@ -18,7 +19,7 @@ public abstract class Projectile extends BoardObject{
     private int speed;
     private Sound sound;
 
-    public Projectile(ParticleEffect particleEffect, int health, int speed, Sound sound, Image image, Point position, double angle){
+    public Projectile(ParticleEffect particleEffect, int health, int speed, Sound sound, Image image, Vector2 position, double angle){
         //position, texture, angle
         super(position, image, angle);
         this.effect=particleEffect;
@@ -36,9 +37,9 @@ public abstract class Projectile extends BoardObject{
      * the 5 goes in both directions.
      * @return true if the projectile intersects the given area
      */
-    public boolean collidesWith(Point creeppos, int hitbox) {
-        if (creeppos.getY() - hitbox < getPosition().getY() && getPosition().getY() < creeppos.getY() + hitbox) {
-            if (creeppos.getX() - hitbox < getPosition().getX() && getPosition().getX() < creeppos.getX() + hitbox) {
+    public boolean collidesWith(Vector2 creeppos, int hitbox) {
+        if (creeppos.y - hitbox < getPosition().y && getPosition().y < creeppos.y + hitbox) {
+            if (creeppos.x - hitbox < getPosition().x && getPosition().x < creeppos.x + hitbox) {
                 return true;
             }
         }
@@ -49,17 +50,17 @@ public abstract class Projectile extends BoardObject{
      * Moves the projectile a step forward based on the current angle and speed
      */
     public void move() {
-        Point newPosition;
+        Vector2 newPosition;
         /*
         System.out.println("real x movement:" + (Math.cos(Math.toRadians(angle)) * speed));
         System.out.println("real y movement:" + (Math.sin(Math.toRadians(angle)) * speed));
         */
-        int xLenght = (int) ((Math.cos(Math.toRadians(getAngle())) * speed)+0.5); //+0.5 to round to correct int aka 0.9 is 1
-        int yLenght = (int) ((Math.sin(Math.toRadians(getAngle())) * speed)+0.5);
+        float xLenght = (float) ((Math.cos(Math.toRadians(getAngle())) * speed)+0.5); //+0.5 to round to correct int aka 0.9 is 1
+        float yLenght = (float) ((Math.sin(Math.toRadians(getAngle())) * speed)+0.5);
 
 
         //System.out.println("x movement= " + xLenght + " y-momement:" + yLenght);
-        newPosition = new Point((int)getPosition().getX() + xLenght, (int)getPosition().getY() + yLenght);
+        newPosition = new Vector2(getPosition().x + xLenght, getPosition().y + yLenght);
         setPosition(newPosition);
     }
 

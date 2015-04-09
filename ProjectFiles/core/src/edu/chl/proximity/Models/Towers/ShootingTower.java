@@ -1,5 +1,6 @@
 package edu.chl.proximity.Models.Towers;
 
+import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Projectiles.Bullet;
 import edu.chl.proximity.Models.Projectiles.Projectile;
@@ -17,7 +18,7 @@ public class ShootingTower extends Tower{
     /**
      * @param pos
      */
-    public ShootingTower(Point pos) {
+    public ShootingTower(Vector2 pos) {
         super(pos, img);
     }
 

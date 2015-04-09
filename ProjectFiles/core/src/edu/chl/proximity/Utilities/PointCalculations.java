@@ -1,5 +1,7 @@
 package edu.chl.proximity.Utilities;
 
+import com.badlogic.gdx.math.Vector2;
+
 import java.awt.*;
 
 /**
@@ -16,9 +18,9 @@ public class PointCalculations {
      * @param secondPoint the second point of the vector
      * @return The angle in degrees between two points
      */
-    public static double getVectorAngle(Point firstPoint, Point secondPoint) {
+    public static double getVectorAngle(Vector2 firstPoint, Vector2 secondPoint) {
         if (firstPoint != null && secondPoint != null) { //make sure there is a real vector
-            Point vector = new Point((int)secondPoint.getX() - (int)firstPoint.getX(), (int)secondPoint.getY() - (int)firstPoint.getY()); //to get a vector, subtract point a from point b
+            Point vector = new Point((int)secondPoint.x - (int)firstPoint.x, (int)secondPoint.y - (int)firstPoint.y); //to get a vector, subtract point a from point b
             double hypotenuse = Math.sqrt(vector.getX() * vector.getX() + vector.getY() * vector.getY());
             if (hypotenuse == 0) {
                 return 0;
@@ -40,10 +42,10 @@ public class PointCalculations {
      * @param p2 second point
      * @return length between these points
      */
-    public static double distanceBetween(Point p1, Point p2) {
+    public static double distanceBetween(Vector2 p1, Vector2 p2) {
 
         if (p1 != null && p2 != null) { //make sure there are 2 real poiints to measure from
-            Point distanceVector = new Point((int)p2.getX() - (int)p1.getX(), (int)p2.getY() - (int)p1.getY());
+            Point distanceVector = new Point((int)p2.x - (int)p1.x, (int)p2.y - (int)p1.y);
             double length = Math.sqrt(distanceVector.getX() * distanceVector.getX() + distanceVector.getY() * distanceVector.getY()); //C = sqrt(a^2+b^2)
             return length;
         }
@@ -62,10 +64,10 @@ public class PointCalculations {
      * @param p2 second point
      * @return length between these points
      */
-    public static double distanceBetweenNoSqrt(Point p1, Point p2) {
+    public static double distanceBetweenNoSqrt(Vector2 p1, Vector2 p2) {
 
         if (p1 != null && p2 != null) { //make sure there are 2 real poiints to measure from
-            Point distanceVector = new Point((int)p2.getX() - (int)p1.getX(), (int)p2.getY() - (int)p1.getY());
+            Point distanceVector = new Point((int)p2.x - (int)p1.x, (int)p2.y - (int)p1.y);
             double length = distanceVector.getX() * distanceVector.getX() + distanceVector.getY() * distanceVector.getY(); //C^2 = (a^2+b^2)
             return length;
         }

@@ -2,6 +2,7 @@ package edu.chl.proximity.Models.Projectiles;
 
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Utilities.Constants;
 
@@ -13,7 +14,7 @@ import java.awt.*;
 public class Bullet extends Projectile {
     private static Image img = new Image(Constants.filePath + "Projectiles/level1bullet.png");
 
-    public Bullet(Point position, double angle) {
+    public Bullet(Vector2 position, double angle) {
         super(null, 1, 3, null, img, position, angle);
     }
 }

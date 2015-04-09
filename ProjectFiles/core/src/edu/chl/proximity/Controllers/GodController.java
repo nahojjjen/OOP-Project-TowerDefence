@@ -1,5 +1,6 @@
 package edu.chl.proximity.Controllers;
 
+import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Projectiles.Projectile;
@@ -53,7 +54,7 @@ public class GodController {
      * @param p what point should search around
      * @return the creep with the closest position
      */
-    public Creep getClosestCreep(Point p) { //gör så den kollar på p istället för list.get(0)
+    public Creep getClosestCreep(Vector2 p) { //gör så den kollar på p istället för list.get(0)
         return getClosestCreepInRange(map.getCreeps(), p);
     }
 
@@ -63,7 +64,7 @@ public class GodController {
      * @param p what point should it find the closest creep to
      * @return the creep in the list that is closest to the point.
      */
-    public Creep getClosestCreepInRange(List<Creep> creepsInRange, Point p){
+    public Creep getClosestCreepInRange(List<Creep> creepsInRange, Vector2 p){
         if (creeps.size() > 0) { //make sure there's a creep that can be found
             Creep closest = creeps.get(0); //starts with first creep to avoid null error
             double distanceToClosest = 9999999; //dummy startvalue to avoid null comparison
@@ -101,7 +102,7 @@ public class GodController {
             Creep closestCreep = getClosestCreep(tower.getPosition());
 
             if (closestCreep != null) {
-                Point closestCreepPosition = closestCreep.getPosition();
+                Vector2 closestCreepPosition = closestCreep.getPosition();
                 tower.faceTarget(closestCreepPosition);
                 tower.shoot();
             }

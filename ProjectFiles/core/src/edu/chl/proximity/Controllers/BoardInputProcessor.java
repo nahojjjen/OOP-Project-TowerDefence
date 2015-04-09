@@ -34,6 +34,7 @@ public class BoardInputProcessor implements InputProcessor {
     public boolean touchDown (int x, int y, int pointer, int button) {
         //Calculates the real coordinates from the scaled coordinates
         Vector2 tmp = viewport.unproject(new Vector2(x, y));
+        System.out.println("Mouse x: " + (int)tmp.x + " Mouse y: " + (int)tmp.y);
 
         return true;
     }
