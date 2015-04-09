@@ -32,7 +32,6 @@ public class GameScreen implements Screen{
     private SpriteBatch batch = new SpriteBatch();
     private Renderer renderer;
     private GodController godController;
-
     private OrthographicCamera camera;
     private FitViewport viewport;
 
@@ -59,13 +58,10 @@ public class GameScreen implements Screen{
         camera.setToOrtho(true);
         viewport = new FitViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),camera);
         viewport.apply();
-        
 
-       currentMap.addTower(new ShootingTower(new Vector2(0, 0)));//cameraPointCoordinates));
-        for(int i = 0; i < 10; i++) {
-            currentMap.spawnCreep(new Triangle());
 
-        }
+        currentMap.addTower(new ShootingTower(new Vector2(0, 0)));//cameraPointCoordinates));
+
     }
 
 
@@ -79,6 +75,7 @@ public class GameScreen implements Screen{
     public void render(float delta) {
         //This method gets called every frame
         camera.update();
+
         batch.setProjectionMatrix(camera.combined );
 
         batch.begin();

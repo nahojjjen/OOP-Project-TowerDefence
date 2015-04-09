@@ -125,7 +125,7 @@ public class GodController {
 
     public void updateCreeps() {
         for (Creep creep : creeps) {
-            //creep.getTexture().rotate(5); //TODO: rotate creep angle every turn
+            creep.rotate(); //TODO: rotate creep angle every turn
             creep.move();
           /* TODO: fix so creeps that intersects base decrease its health
             if (Base.intersects(creep.getPoint(), 50)) {
@@ -146,7 +146,7 @@ public class GodController {
             Creep closestVictim = getClosestCreep(projectile.getPosition());
             if (closestVictim != null) {
                 projectile.faceTarget(closestVictim.getPosition());
-                if (projectile.collidesWith(closestVictim.getPosition(), 40)) {
+                if (projectile.collidesWith(closestVictim.getPosition(), 20)) {
                     System.out.println("In GodController, a projectile has collided and is trying to add particles, and play a sound, but can not.");
                     //todo: fix particles!
                     //Controller.addParticle(new Particle(closestVictim.getPoint()));

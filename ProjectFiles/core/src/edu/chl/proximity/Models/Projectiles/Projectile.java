@@ -38,8 +38,8 @@ public abstract class Projectile extends BoardObject{
      * @return true if the projectile intersects the given area
      */
     public boolean collidesWith(Vector2 creeppos, int hitbox) {
-        if (creeppos.y - hitbox < getPosition().y && getPosition().y < creeppos.y + hitbox) {
-            if (creeppos.x - hitbox < getPosition().x && getPosition().x < creeppos.x + hitbox) {
+        if (creeppos.y+20 - hitbox < getPosition().y && getPosition().y < creeppos.y+20 + hitbox) {
+            if (creeppos.x+20 - hitbox < getPosition().x && getPosition().x < creeppos.x+20 + hitbox) {
                 return true;
             }
         }

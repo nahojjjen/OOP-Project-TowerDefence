@@ -3,6 +3,7 @@ package edu.chl.proximity.Controllers;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
  * Created by Linda on 2015-04-09.
@@ -34,8 +35,8 @@ public class BoardInputProcessor implements InputProcessor {
     public boolean touchDown (int x, int y, int pointer, int button) {
         //Calculates the real coordinates from the scaled coordinates
         Vector2 tmp = viewport.unproject(new Vector2(x, y));
-        System.out.println("Mouse x: " + (int)tmp.x + " Mouse y: " + (int)tmp.y);
-
+        //System.out.println("Mouse x: " + (int)tmp.x + " Mouse y: " + (int)tmp.y);
+        PointCalculations.createPathTool((int)tmp.x, (int)tmp.y);
         return true;
     }
 

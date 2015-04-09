@@ -24,6 +24,7 @@ public abstract class Creep extends BoardObject {
     private Sound devolveSound;
     private int speed;
     private double moveAngle;
+    private double rndRotation;
 
     public Creep(Image image, int speed) {
 
@@ -32,7 +33,9 @@ public abstract class Creep extends BoardObject {
 
         Map map = GameData.getInstance().getMap();
         path = map.getPath();
+        rndRotation = (Math.random()*15) - 7.5;
         initiateMovement();
+
 
 
     }
@@ -42,6 +45,10 @@ public abstract class Creep extends BoardObject {
         nextWayPointID = 0;
         distanceToNextWayPoint = 9999999;
         aimTowardsNextWaypoint();
+    }
+
+    public void rotate() {
+        this.rotate(rndRotation);
     }
 
     public abstract void devolve();
@@ -111,7 +118,7 @@ public abstract class Creep extends BoardObject {
         nextWayPointID++;
         if(nextWayPointID >= path.getWaypoints().size()) {
             nextWayPointID = 0;
-            System.out.println("Base takes damage!");
+            System.out.println("Creep: Base takes damage!");
         }
         moveAngle = getAngleToNextPoint();
     }

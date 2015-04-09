@@ -64,6 +64,9 @@ public abstract class BoardObject {
         this.angle = angle;
     }
 
+    public void rotate(double a) {
+        angle += a;
+    }
     public void render(SpriteBatch batch) {
 
         image.render(batch, position, angle);

@@ -35,6 +35,10 @@ public class PointCalculations {
         return 0;
     }
 
+    public static void createPathTool(int x, int y) {
+        System.out.println("waypoint.add(new Vector2(" + x + ", " + y + "));");
+    }
+
     /**
      * get the distance between two points
      *
