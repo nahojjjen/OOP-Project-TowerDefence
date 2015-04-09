@@ -22,6 +22,7 @@ public class TestPath extends Path {
             if (waypoint.isEmpty()) {
                 waypoint.add(new Vector2(100, 100));
                 waypoint.add(new Vector2(200, 200));
+                waypoint.add(new Vector2(100, 400));
 
             }
         }

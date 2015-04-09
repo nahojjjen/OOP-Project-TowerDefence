@@ -89,10 +89,10 @@ public abstract class Path {
      * @return a point corresponding to the number input
      */
     public Vector2 getWaypoint(int i) {
-        if(waypoint != null)
+        if(waypoint != null) {
             return waypoint.get(i);
-        else
-            return null;
+        }
+        return null;
     }
 
 
