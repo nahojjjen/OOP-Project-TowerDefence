@@ -3,8 +3,13 @@ package edu.chl.proximity.Controllers.GameStates;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import edu.chl.proximity.Controllers.GodController;
 import edu.chl.proximity.Models.Creeps.Triangle;
 import edu.chl.proximity.Models.GameData;
@@ -26,20 +31,41 @@ public class GameScreen implements Screen{
     private Renderer renderer;
     private GodController godController;
 
+    private OrthographicCamera camera;
+    private FitViewport viewport;
+
+
+
+
+
     public GameScreen(Game g, Map map){
         game =g ;
         currentMap = map;
+
         renderer = new Renderer(currentMap);
         godController = new GodController(currentMap);
-        currentMap.addTower(new ShootingTower(new Point(50,50)));
         GameData.getInstance().setMap(currentMap);
 
+        fixCamera();
+    }
 
+
+
+    private void fixCamera(){
+        camera = new OrthographicCamera();//Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        camera.setToOrtho(true);
+        viewport = new FitViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),camera);
+        viewport.apply();
+        
+
+       currentMap.addTower(new ShootingTower(new Point(0,0)));//cameraPointCoordinates));
         for(int i = 0; i < 10; i++) {
             currentMap.spawnCreep(new Triangle());
 
         }
     }
+
+
     @Override
     public void show() {
         System.out.println("Showing game Screen");
@@ -49,10 +75,12 @@ public class GameScreen implements Screen{
     @Override
     public void render(float delta) {
         //This method gets called every frame
-
+        camera.update();
+        batch.setProjectionMatrix(camera.combined );
 
         batch.begin();
         renderer.render(batch);
+
         batch.end();
 
         godController.updateBackground();
@@ -63,7 +91,7 @@ public class GameScreen implements Screen{
 
     @Override
     public void resize(int width, int height) {
-        System.out.println("Resizing game screen");
+        viewport.update(width, height);
     }
 
     @Override
@@ -83,6 +111,6 @@ public class GameScreen implements Screen{
 
     @Override
     public void dispose() {
-
+        batch.dispose();
     }
 }

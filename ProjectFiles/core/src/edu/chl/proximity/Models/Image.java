@@ -14,9 +14,13 @@ public class Image {
 
     public Image(String s) {
         texture = new Texture(s);
+        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
+
     public Image(Texture t) {
         texture = t;
+
+        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Nearest);
     }
 
     public void render(SpriteBatch batch, Point p, double angle) { //TODO: make sure that render draws with the Point as center instead of upper left corner
