@@ -1,5 +1,6 @@
 package edu.chl.proximity.Controllers;
 
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.Maps.Map;
@@ -31,22 +32,13 @@ public class GodController {
     //private static List<Particle> particles = Map.getParticles();
 
     private Map map;
+
     public GodController(Map map) {
         this.map = map;
         creeps = map.getCreeps();
         projectiles = map.getProjectiles();
         towers = map.getTowers();
     }
-    /**
-     * update the animation & positions of the particle effects
-     *
-     * @param delta
-     */
-   // public static void updateParticles(int delta) {
-   //     for (Particle particle : particles) {
-   //         particle.getParticleSystem().update(delta);
-   //     }
-   // }
 
     /**
      * get the creep listed in the model (entire map)that is closest to the input point
@@ -149,6 +141,7 @@ public class GodController {
                 if (projectile.collidesWith(closestVictim.getPosition(), 20)) {
                     System.out.println("In GodController, a projectile has collided and is trying to add particles, and play a sound, but can not.");
                     //todo: fix particles!
+                    map.createExplosion((int)projectile.getPosition().x, (int)projectile.getPosition().y);
                     //Controller.addParticle(new Particle(closestVictim.getPoint()));
                     playPoofSound();
                     creeps.remove(closestVictim);

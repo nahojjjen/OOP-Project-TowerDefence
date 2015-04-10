@@ -1,16 +1,21 @@
 package edu.chl.proximity.Models.Maps;
 
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Paths.Path;
 import edu.chl.proximity.Models.Projectiles.Projectile;
 import edu.chl.proximity.Models.Towers.Tower;
 import edu.chl.proximity.Models.Waves.Wave;
+import edu.chl.proximity.Utilities.Constants;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by simongislen on 02/04/15.
+ * Created by simongislen on 02/04/15. Modified by Linda And Johan
  */
 public abstract class Map {
 
@@ -19,8 +24,12 @@ public abstract class Map {
     private ArrayList<Creep> creeps = new ArrayList<Creep>();
     private ArrayList<Wave> waves = new ArrayList<Wave>();
     private ArrayList<Tower> towers = new ArrayList<Tower>();
-   // private ArrayList<AbstractParticle> particles;
     private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
+
+
+    private ParticleEffectPool explosionEffectPool;
+    List<ParticleEffectPool.PooledEffect> bombEffects = new ArrayList();
+
 
     private Path path;
     private Image backgroundImage;
@@ -36,7 +45,43 @@ public abstract class Map {
         this.path = path;
         backgroundImage = background;
 
+        initiateParticles();
+
     }
+//////////////////////Particle work
+
+    /**
+     * create all the particle pools (currently only explosion)
+     */
+    private void initiateParticles(){
+        FileHandle particleEffectsImagesFolder = new FileHandle(Constants.filePath + "Particles/");
+
+        ParticleEffect explosionEffect = new ParticleEffect();
+        FileHandle explosionEffectFile = new FileHandle(Constants.filePath + "Particles/explosion");
+        explosionEffect.load(explosionEffectFile, particleEffectsImagesFolder);
+
+        explosionEffectPool  = new ParticleEffectPool(explosionEffect, 1, 100 );
+    }
+
+    /**
+     *
+     * @param x
+     * @param y
+     */
+    public void createExplosion(int x, int y){
+        ParticleEffectPool.PooledEffect effect = explosionEffectPool.obtain();
+        effect.setPosition(x,y);
+        bombEffects.add(effect);
+        effect.start();
+    }
+
+    public List<ParticleEffectPool.PooledEffect> getExplosions(){
+        return bombEffects;
+    }
+
+    /////////////////////////////////End particle work
+
+
 
     //Getters and Setters;
     public ArrayList<Wave> getWaves() {

@@ -1,6 +1,8 @@
 package edu.chl.proximity.Viewers;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.Maps.Map;
@@ -35,7 +37,7 @@ public class Renderer {
         renderTowers(batch);
         renderCreeps(batch);
         renderProjectiles(batch);
-        //renderParticles(batch);
+        renderParticles(batch);
 
 
         //debuggRenderWaypoints();
@@ -126,12 +128,19 @@ public class Renderer {
     }
 
 
-    /*
-    private static void renderParticles(SpriteBatch batch)   {
-        List<Particle> particles = Map.getParticles();
-        for (Particle particle : particles) {
-            particle.getParticleSystem().render();
+
+    private  void renderParticles(SpriteBatch batch)   {
+        List<ParticleEffectPool.PooledEffect> explosions = map.getExplosions();
+
+        for (int i = explosions.size() - 1; i >= 0; i--) {
+            ParticleEffectPool.PooledEffect explosion = explosions.get(i);
+            explosion.draw(batch, Gdx.graphics.getDeltaTime());
+            if(explosion.isComplete()){
+                System.out.println("In renderer: Explosion effect is marked complete and removed");
+                explosion.free();
+                explosions.remove(explosion);
+            }
         }
     }
-    */
+
 }
