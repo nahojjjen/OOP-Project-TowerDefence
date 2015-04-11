@@ -26,9 +26,11 @@ import java.util.List;
 public class Renderer {
 
     private Map map;
+    private ParticleManager particleManager ;
 
     public Renderer() {
         this.map = GameData.getInstance().getMap();
+        this.particleManager = map.getParticleManager();
     }
 
     public void render(SpriteBatch batch) {
@@ -92,7 +94,7 @@ public class Renderer {
 
 
     private  void renderParticles(SpriteBatch batch)   {
-
+        particleManager.renderAllParticles(batch);
     }
 
 }

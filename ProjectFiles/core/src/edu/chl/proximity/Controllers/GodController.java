@@ -29,7 +29,6 @@ public class GodController {
     private static List<Tower> towers;
     private static List<Projectile> projectiles;
     private static List<Creep> creeps;
-    //private static List<Particle> particles = Map.getParticles();
 
     private Map map;
 
@@ -139,12 +138,12 @@ public class GodController {
             if (closestVictim != null) {
                 projectile.faceTarget(closestVictim.getPosition());
                 if (projectile.collidesWith(closestVictim.getPosition(), 20)) {
-                    System.out.println("In GodController, a projectile has collided and is trying to add particles, and play a sound, but can not.");
-                    //todo: fix particles!
+                    System.out.println("In GodController is trying play a sound, but can not.");
+
                     map.getParticleManager().getExplosionEffect().createEffect((int)projectile.getPosition().x, (int)projectile.getPosition().y);
-                    //Controller.addParticle(new Particle(closestVictim.getPoint()));
                     playPoofSound();
                     creeps.remove(closestVictim);
+                    map.getParticleManager().getCreepDiesEffect().createEffect(closestVictim.getPosition().x, closestVictim.getPosition().y);
                     projectileIterator.remove();
 
                 }
