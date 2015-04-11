@@ -13,12 +13,11 @@ import java.util.List;
 /**
  * Created by Johan on 2015-04-11. Group work with Linda
  */
-public class TargetClosest implements TargetingMethod{
+public class TargetClosest extends TargetingMethod{
     public Map map = GameData.getInstance().getMap();
 
 
     public Creep getTarget(Vector2 position, double range){
-        double rangePow = range*range;
         double rangeToClosest;
         Creep closestCreep;
         if(map.getCreeps().size() > 0){
@@ -27,7 +26,7 @@ public class TargetClosest implements TargetingMethod{
 
             for (Creep creep:map.getCreeps()){
                 double rangeToCurrent = PointCalculations.distanceBetweenNoSqrt(position, creep.getPosition());
-                if (rangeToCurrent < rangePow){
+                if (isWithinRange(creep, position, range)){
                     if (rangeToCurrent < rangeToClosest){
                         rangeToClosest = rangeToCurrent;
                         closestCreep = creep;
