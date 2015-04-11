@@ -26,6 +26,11 @@ public abstract class Creep extends BoardObject {
     private double moveAngle;
     private double rndRotation;
 
+    /**
+     * create a new creep with an image and a speed
+     * @param image what image the creep should have (it will rotate a random amount automatically)
+     * @param speed what speed the creep will have
+     */
     public Creep(Image image, int speed) {
 
         super(new Vector2(0, 300), image, 0);
@@ -35,11 +40,31 @@ public abstract class Creep extends BoardObject {
         path = map.getPath();
         rndRotation = (Math.random()*15) - 7.5;
         initiateMovement();
-
-
-
     }
 
+    /**
+     * get the number of the waypoint this creep is currently traveling towards
+     * Guaranteed to be >=0
+     * @return (int) the number of the waypoint the creep is traveling towards
+     *
+     */
+    public int getNextWayPointID(){
+        return nextWayPointID;
+    }
+
+    /**
+     * get the distance this creep has to the next waypoing (squared because of calculation optimization)
+     * This value can be negative since for one frame the creep is considered to have "passed" the waypoint,
+     * and not yet chosen the next waypoint.
+     * @return (double) the distance this creep has to the next waypoint
+     */
+    public double getDistanceToNextWayPoint(){
+        return distanceToNextWayPoint;
+    }
+
+    /**
+     * Give the creep the first angle & direction to the first waypoint
+     */
     private void initiateMovement() {
         this.setPosition(new Vector2(path.getWaypoint(0)));
         nextWayPointID = 0;
@@ -47,10 +72,24 @@ public abstract class Creep extends BoardObject {
         aimTowardsNextWaypoint();
     }
 
+    /**
+     * show the "poof" particleEffect that creeps do when they die
+     */
+    public void displayDeathEffect(){
+        Map map = GameData.getInstance().getMap();
+        map.getParticleManager().getCreepDiesEffect().createEffect(getPosition().x, getPosition().y);
+    }
+
+    /**
+     * rotate the creeps image a random amount (a creep is assigned a random rotation amount on creation)
+     */
     public void rotate() {
         this.rotate(rndRotation);
     }
 
+    /**
+     * Devolve this creep, aka "kill" / remove the creep, call this method when the creep has taken fatal damage
+     */
     public abstract void devolve();
 
     /**
@@ -69,15 +108,14 @@ public abstract class Creep extends BoardObject {
 
     }
     /**
-     *
-     * Get the angle an object requires to to travel from origin point to next
+     * Get the angle the creep requires to to travel from origin point to next
      * waypoint.
      *
      * This method is a wrapper method for PointCalculations.getVectorAngle so that this
      * method exists in Path.
      *
      * @return the angle the object needs to travel to travel from origin to
-     * nextWaypoint
+     * nextWaypoint in degrees.
      */
     public  double getAngleToNextPoint() {
         if (this.getPosition() != null && path.getWaypoint(nextWayPointID)!= null) {
@@ -87,16 +125,17 @@ public abstract class Creep extends BoardObject {
 
         }
         System.out.println("Error in abstractCreep: trying to get angle to next point- invalid point");
+        //dont handle this as exception because try-catch takes resources & the error is not fatal, instead default to no rotation.
         return 0;
     }
 
     /**
-     * the method that changes the value "position" of the creep, part of the
+     * the method that changes the value "position" of the creep, used in the
      * move() method.
      */
     private void repositionCreep(){
         Vector2 newPosition;
-
+        //do not remove below comments, useful for misc debugging:
         //System.out.println("real x movement:" + (Math.cos(Math.toRadians(moveAngle)) * speed));
         //System.out.println("real y movement:" + (Math.sin(Math.toRadians(moveAngle)) * speed));
 
@@ -111,12 +150,13 @@ public abstract class Creep extends BoardObject {
     }
 
     /**
-     * Sets the angle of the creep to face the next waypoint
+     * Sets the moveAngle of the creep to face the next waypoint
      */
     private void aimTowardsNextWaypoint(){
 
         nextWayPointID++;
         if(nextWayPointID >= path.getWaypoints().size()) {
+            //TODO: instead decrease base health & destroy creep
             nextWayPointID = 0;
             System.out.println("Creep: Base takes damage!");
         }
@@ -133,11 +173,9 @@ public abstract class Creep extends BoardObject {
 
         double olddistanceToNextWayPoint = distanceToNextWayPoint;
         distanceToNextWayPoint = PointCalculations.distanceBetweenNoSqrt(super.getPosition(), waypoint);
-        //System.out.println("distance = " + distance);
         if (distanceToNextWayPoint > olddistanceToNextWayPoint){ //if you're no longer approaching the waypoint, you're leaving it
             return true;
         }
         return false;
-        //return distanceToNextWayPoint < 10;
     }
 }

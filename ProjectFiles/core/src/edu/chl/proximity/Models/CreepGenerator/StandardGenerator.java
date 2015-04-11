@@ -1,10 +1,11 @@
 package edu.chl.proximity.Models.CreepGenerator;
 
-import edu.chl.proximity.Models.Creeps.Triangle;
+import edu.chl.proximity.Models.Creeps.ConcreteCreeps.Triangle;
 import edu.chl.proximity.Models.Maps.Map;
 
 /**
  * Created by Floompa on 2015-04-08.
+ * A class that adds a creep every 50th frame
  */
 public class StandardGenerator {
 

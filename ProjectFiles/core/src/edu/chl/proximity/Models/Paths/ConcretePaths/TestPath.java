@@ -10,6 +10,9 @@ import java.awt.*;
  */
 public class TestPath extends Path {
 
+    /**
+     * because this is a test path, it does not have a hitbox -> its possible to place towers on top of it
+     */
     @Override
     public void initiatePathHitbox() {
 

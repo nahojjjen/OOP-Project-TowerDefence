@@ -17,6 +17,8 @@ import java.util.List;
 
 /**
  * Created by simongislen on 02/04/15. Modified by Linda And Johan
+ * The map holds all information related to an instance of the game except for the player details
+ * The games current map is accessible from GameData.
  */
 public abstract class Map {
 
@@ -26,10 +28,7 @@ public abstract class Map {
     private ArrayList<Wave> waves = new ArrayList<Wave>();
     private ArrayList<Tower> towers = new ArrayList<Tower>();
     private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
-
     private ParticleManager particleManager = new ParticleManager();
-
-
 
     private Path path;
     private Image backgroundImage;
@@ -39,7 +38,9 @@ public abstract class Map {
 
 
     /**
-     * creates the map instance
+     * Create a map with the specified path and image background
+     * @param path what path the creeps should follow on this map.
+     * @param background What background image should be displayed on this map
      */
     public Map(Path path, Image background){
         this.path = path;
@@ -49,7 +50,8 @@ public abstract class Map {
 
     /**
      * get the particleManager in the map
-     * @return
+     * @return An object that keeps track of all the particle-effects in play, and that can also create
+     * new particle effects.
      */
     public ParticleManager getParticleManager(){
         return particleManager;
@@ -59,49 +61,40 @@ public abstract class Map {
     public ArrayList<Wave> getWaves() {
         return waves;
     }
-
     public void setWaves(ArrayList<Wave> waves) {
         this.waves = waves;
     }
-
     public ArrayList<Tower> getTowers() {
         return towers;
     }
-
     public void setTowers(ArrayList<Tower> towers) {
         this.towers = towers;
     }
-
     public ArrayList<Projectile> getProjectiles() {
         return projectiles;
     }
-
     public void setProjectiles(ArrayList<Projectile> projectiles) {
         this.projectiles = projectiles;
     }
-
     public ArrayList<Creep> getCreeps() {
         return creeps;
     }
-
     public void setCreeps(ArrayList<Creep> creeps) {
         this.creeps = creeps;
     }
-
     public Path getPath(){return path;}
-
     public void setPath(Path newPath){ path = newPath;}
 
 
     /**
-     * create a creep
+     * Add a creep to the map.
      */
     public void addCreep(Creep creep) {
         creeps.add(creep);
     }
 
     /**
-     * test method to test performance, spawns 1000 basic creeps.
+     * test method to test performance, spawns 1000 of specified creep & prints out how many creeps are currently on the map.
      */
     public void addCreepMass(Creep creep, int amount) {
         if (amount > 1) {
@@ -114,18 +107,18 @@ public abstract class Map {
 
 
     /**
-     * test method to test performance, spawns 1000 basic turrets.
+     * test method to test performance, spawns 1000  turrets. & prints out how many towers are on the map
      */
     public  void spawnTurretMass(Tower tower)   {
         for (int i = 0; i < 1000; i++) {
             towers.add(tower);
         }
-        System.out.println("amount of creeps = " + creeps.size());
+        System.out.println("amount of towers = " + towers.size());
     }
 
 
     /**
-     * add a projectile to the model
+     * Add a projectile to the map
      *
      * @param p the projectile to be added
      */
@@ -134,7 +127,7 @@ public abstract class Map {
     }
 
     /**
-     * add a tower to the model
+     * add a tower to the map
      *
      * @param t what tower should be added
      */

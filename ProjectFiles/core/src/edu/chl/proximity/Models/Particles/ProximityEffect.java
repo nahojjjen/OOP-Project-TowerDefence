@@ -13,12 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * @author Johan
  * Created by Johan on 2015-04-11. Group work with Linda.
- *
  */
-
 public class ProximityEffect {
-    private ParticleEffectPool effectPool; //effects that can be cretaed
+    private ParticleEffectPool effectPool; //effects that can be created
     List<ParticleEffectPool.PooledEffect> effects = new ArrayList(); //effects currently on the map
 
     /**
@@ -35,9 +34,8 @@ public class ProximityEffect {
         ParticleEffect effect = new ParticleEffect();
         effect.load(effectFile, particleEffectsImagesFolder);
 
-        //loads this effect into the pool, so the pool knows what kind of effect to populate itself with
+        //loads the example effect into the pool, so the pool knows what kind of effect to populate itself with (see pool-design pattern)
          effectPool = new ParticleEffectPool(effect, 1, maxPoolAmount );
-
     }
 
 

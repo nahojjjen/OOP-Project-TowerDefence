@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import edu.chl.proximity.Controllers.BoardInputProcessor;
 import edu.chl.proximity.Controllers.GodController;
-import edu.chl.proximity.Models.Creeps.Triangle;
+import edu.chl.proximity.Models.Creeps.ConcreteCreeps.Triangle;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Towers.ShootingTower;

@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Johan on 2015-04-11.
+ * Created by Johan on 2015-04-11. Group programing with Linda.
+ * A class that keeps track of all effects that can be displayed, and has the ability to render them
  */
 public class ParticleManager {
     private ProximityEffect explosionEffect;
