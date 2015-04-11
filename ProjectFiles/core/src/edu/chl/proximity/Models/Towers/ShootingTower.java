@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Projectiles.Bullet;
 import edu.chl.proximity.Models.Projectiles.Projectile;
+import edu.chl.proximity.Models.Towers.TargetingMethods.TargetClosest;
 import edu.chl.proximity.Utilities.Constants;
 
 import java.awt.*;
@@ -17,9 +18,10 @@ public class ShootingTower extends Tower{
 
     /**
      * @param pos
+     *  double range, TargetingMethod targetingMethod, int reloadTime
      */
     public ShootingTower(Vector2 pos) {
-        super(pos, img);
+        super(pos, img, 1000, new TargetClosest(), 100);
     }
 
     public Projectile createProjectile() {

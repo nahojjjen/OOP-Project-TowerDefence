@@ -2,12 +2,12 @@ package edu.chl.proximity.Models.Towers;
 
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
-import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Projectiles.Projectile;
-
-import java.awt.Point;
+import edu.chl.proximity.Models.Towers.TargetingMethods.TargetingMethod;
+import edu.chl.proximity.Utilities.PointCalculations;
 
 
 /**
@@ -16,15 +16,23 @@ import java.awt.Point;
 public abstract class Tower extends BoardObject {
 
     private int bulletSpeed = 10;
-    private int reloadTime = 0;
+    private int reloadTime;
+    private int currentReload = 0;
+
     private Projectile projectileType;
+    private TargetingMethod targetingMethod;
+    private double range;
+    private Creep currentTarget;
 
     /**
      *
      */
-    public Tower(Vector2 pos, Image image){
+    public Tower(Vector2 pos, Image image, double range, TargetingMethod targetingMethod, int reloadTime){
         //point texture angle
         super(pos, image, 0);
+        this.range = range;
+        this.targetingMethod = targetingMethod;
+        this.reloadTime = reloadTime;
     }
 
 
@@ -33,20 +41,30 @@ public abstract class Tower extends BoardObject {
      * if the tower shoots, start the reload time
      */
     public void shoot(){
-        if(reloadTime < 1){
+        if(currentReload < 1 && currentTarget != null){
             GameData.getInstance().getMap().addProjectile(createProjectile());
-            reloadTime = 100;
+            currentReload = reloadTime;
         }
+    }
 
+    /**
+     * Targets the closest creep, if one is in range.
+     */
+    public void target(){
+        currentTarget = targetingMethod.getTarget(getPosition(), range);
+        if (currentTarget != null) {
+            this.setAngle(PointCalculations.getVectorAngle(this.getPosition(), currentTarget.getPosition()) - 90); //-90 because all asset images are created facing upwards
+        }
     }
 
     public abstract Projectile createProjectile();
+
     /**
      * decrease the reload time, tower can shoot when reload is at 0
      */
     public void reload(){
-        if(reloadTime > 0){
-            reloadTime --;
+        if(currentReload > 0){
+            currentReload --;
         }
     }
 
