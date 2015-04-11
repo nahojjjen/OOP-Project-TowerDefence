@@ -25,7 +25,7 @@ public class ShootingTower extends Tower{
     }
 
     public Projectile createProjectile() {
-        return new Bullet(this.getPosition(), 0);
+        return new Bullet(this.getPosition(), 0, getTarget());
 
     }
 }

@@ -57,6 +57,10 @@ public abstract class Tower extends BoardObject {
         }
     }
 
+    public Creep getTarget(){
+        return currentTarget;
+    }
+
     public abstract Projectile createProjectile();
 
     /**

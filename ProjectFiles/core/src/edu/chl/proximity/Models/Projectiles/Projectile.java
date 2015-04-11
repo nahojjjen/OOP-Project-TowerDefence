@@ -5,10 +5,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Creeps.Creep;
+import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
+import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.awt.Point;
+import java.util.Iterator;
 
 /**
  * Created by Hanna Römer on 2015-04-02, edited by Johan and Linda
@@ -18,16 +22,24 @@ public abstract class Projectile extends BoardObject{
     private int health;
     private int speed;
     private Sound sound;
+    private Creep target;
 
-    public Projectile(ParticleEffect particleEffect, int health, int speed, Sound sound, Image image, Vector2 position, double angle){
+    public Projectile(ParticleEffect particleEffect, int health, int speed, Sound sound, Image image, Vector2 position, double angle, Creep target){
         //position, texture, angle
         super(position, image, angle);
         this.effect=particleEffect;
         this.health=health;
         this.speed=speed;
         this.sound=sound;
+        this.target = target;
     }
 
+    /**
+     * readjust the angle so the projectile is facing the current target
+     */
+    public void reAngle(){
+        faceTarget(target.getPosition());
+    }
 
     /**
      * Get whether the projectile point intersects another point
@@ -46,6 +58,19 @@ public abstract class Projectile extends BoardObject{
         return false;
     }
 
+    public void checkCollision(Iterator projectileIterator){
+        Map map = GameData.getInstance().getMap();
+        if(collidesWith(target.getPosition(), 20)){
+            map.getParticleManager().getExplosionEffect().createEffect((int) getPosition().x, (int) getPosition().y);
+
+            map.getCreeps().remove(target);
+
+            map.getParticleManager().getCreepDiesEffect().createEffect(target.getPosition().x, target.getPosition().y);
+            projectileIterator.remove();
+            //map.getProjectiles().remove(this);
+        }
+    }
+
     /**
      * Moves the projectile a step forward based on the current angle and speed
      */
@@ -55,8 +80,8 @@ public abstract class Projectile extends BoardObject{
         System.out.println("real x movement:" + (Math.cos(Math.toRadians(angle)) * speed));
         System.out.println("real y movement:" + (Math.sin(Math.toRadians(angle)) * speed));
         */
-        float xLenght = (float) ((Math.cos(Math.toRadians(getAngle())) * speed)+0.5); //+0.5 to round to correct int aka 0.9 is 1
-        float yLenght = (float) ((Math.sin(Math.toRadians(getAngle())) * speed)+0.5);
+        float xLenght = (float) ((Math.cos(Math.toRadians(getAngle())) * speed)); //+0.5 to round to correct int aka 0.9 is 1
+        float yLenght = (float) ((Math.sin(Math.toRadians(getAngle())) * speed));
 
 
         //System.out.println("x movement= " + xLenght + " y-momement:" + yLenght);

@@ -21,6 +21,18 @@ public class ProjectileController {
     }
 
     public void update() {
+        Iterator projectileIterator = projectiles.iterator();
+
+        while (projectileIterator.hasNext()) {
+            Object projectileObject = projectileIterator.next();
+            Projectile projectile = (Projectile) projectileObject;
+
+            projectile.reAngle();
+            projectile.move(); //check if outside board and remove if true?
+            projectile.checkCollision(projectileIterator);
+
+        }
+
         /*
 
 
