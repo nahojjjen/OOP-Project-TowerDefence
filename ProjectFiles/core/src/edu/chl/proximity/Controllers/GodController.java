@@ -141,7 +141,7 @@ public class GodController {
                 if (projectile.collidesWith(closestVictim.getPosition(), 20)) {
                     System.out.println("In GodController, a projectile has collided and is trying to add particles, and play a sound, but can not.");
                     //todo: fix particles!
-                    map.createExplosion((int)projectile.getPosition().x, (int)projectile.getPosition().y);
+                    map.getParticleManager().getExplosionEffect().createEffect((int)projectile.getPosition().x, (int)projectile.getPosition().y);
                     //Controller.addParticle(new Particle(closestVictim.getPoint()));
                     playPoofSound();
                     creeps.remove(closestVictim);

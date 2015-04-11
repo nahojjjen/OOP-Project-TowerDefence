@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.Image;
+import edu.chl.proximity.Models.Particles.ParticleManager;
 import edu.chl.proximity.Models.Paths.Path;
 import edu.chl.proximity.Models.Projectiles.Projectile;
 import edu.chl.proximity.Models.Towers.Tower;
@@ -26,9 +27,8 @@ public abstract class Map {
     private ArrayList<Tower> towers = new ArrayList<Tower>();
     private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 
+    private ParticleManager particleManager = new ParticleManager();
 
-    private ParticleEffectPool explosionEffectPool;
-    List<ParticleEffectPool.PooledEffect> bombEffects = new ArrayList();
 
 
     private Path path;
@@ -44,44 +44,16 @@ public abstract class Map {
     public Map(Path path, Image background){
         this.path = path;
         backgroundImage = background;
-
-        initiateParticles();
-
     }
-//////////////////////Particle work
+
 
     /**
-     * create all the particle pools (currently only explosion)
+     * get the particleManager in the map
+     * @return
      */
-    private void initiateParticles(){
-        FileHandle particleEffectsImagesFolder = new FileHandle(Constants.filePath + "Particles/");
-
-        ParticleEffect explosionEffect = new ParticleEffect();
-        FileHandle explosionEffectFile = new FileHandle(Constants.filePath + "Particles/explosion");
-        explosionEffect.load(explosionEffectFile, particleEffectsImagesFolder);
-
-        explosionEffectPool  = new ParticleEffectPool(explosionEffect, 1, 100 );
+    public ParticleManager getParticleManager(){
+        return particleManager;
     }
-
-    /**
-     *
-     * @param x
-     * @param y
-     */
-    public void createExplosion(int x, int y){
-        ParticleEffectPool.PooledEffect effect = explosionEffectPool.obtain();
-        effect.setPosition(x,y);
-        bombEffects.add(effect);
-        effect.start();
-    }
-
-    public List<ParticleEffectPool.PooledEffect> getExplosions(){
-        return bombEffects;
-    }
-
-    /////////////////////////////////End particle work
-
-
 
     //Getters and Setters;
     public ArrayList<Wave> getWaves() {
@@ -99,12 +71,6 @@ public abstract class Map {
     public void setTowers(ArrayList<Tower> towers) {
         this.towers = towers;
     }
-/*
-    public ArrayList<Particle> getParticles() {        return particles;    }
-
-    public void setParticles(ArrayList<Particle> particles) {        this.particles = particles;    }
-
-*/
 
     public ArrayList<Projectile> getProjectiles() {
         return projectiles;
@@ -130,19 +96,23 @@ public abstract class Map {
     /**
      * create a creep
      */
-    public void spawnCreep(Creep creep) {
+    public void addCreep(Creep creep) {
         creeps.add(creep);
     }
 
     /**
      * test method to test performance, spawns 1000 basic creeps.
      */
-    public void spawnCreepMass(Creep creep) {
-        for (int i = 0; i < 1000; i++) {
-            creeps.add(creep);
+    public void addCreepMass(Creep creep, int amount) {
+        if (amount > 1) {
+            for (int i = 0; i < amount; i++) {
+                creeps.add(creep);
+            }
+            System.out.println("amount of creeps = " + creeps.size());
         }
-        System.out.println("amount of creeps = " + creeps.size());
     }
+
+
     /**
      * test method to test performance, spawns 1000 basic turrets.
      */
@@ -152,15 +122,8 @@ public abstract class Map {
         }
         System.out.println("amount of creeps = " + creeps.size());
     }
-    /**
-     * adds some randomly placed turrets for testing purposes
-     * @param amount amount of towers that should be placed
-     */
-    public void addSpreadTurrets(int amount, Tower tower)  {
-        for (int i=0; i<amount; i++){
-            addTower(tower);
-        }
-    }
+
+
     /**
      * add a projectile to the model
      *
@@ -179,16 +142,6 @@ public abstract class Map {
         towers.add(t);
     }
 
-    /**
-     * add a particle to the model
-     *
-     * @param par what particle to add
-     */
-    /*
-    public  void addParticle(Particle par) {
-        particles.add(par);
-    }
-    */
 
 
 }

@@ -19,7 +19,7 @@ public class StandardGenerator {
         counter++;
         if(counter > 50) {
             counter = 0;
-            map.spawnCreep(new Triangle());
+            map.addCreep(new Triangle());
         }
     }
 }
