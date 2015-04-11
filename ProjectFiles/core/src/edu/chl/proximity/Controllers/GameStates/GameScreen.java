@@ -36,7 +36,7 @@ public class GameScreen implements Screen{
         currentMap = map;
         GameData.getInstance().setMap(currentMap);
         renderer = new Renderer();
-        godController = new GodController(currentMap);
+        godController = new GodController();
 
         fixCamera();
         Gdx.input.setInputProcessor(new BoardInputProcessor(viewport));
@@ -77,10 +77,7 @@ public class GameScreen implements Screen{
 
         batch.end();
 
-        godController.updateBackground();
-        godController.updateCreeps();
-        godController.updateProjectiles();
-        godController.updateTowers();
+        godController.updateAllControllers();
     }
 
     @Override
