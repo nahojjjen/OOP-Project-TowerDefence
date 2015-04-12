@@ -3,6 +3,7 @@ package edu.chl.proximity.Models.Maps;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
+import edu.chl.proximity.Models.Backgrounds.Background;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Particles.ParticleManager;
@@ -31,7 +32,7 @@ public abstract class Map {
     private ParticleManager particleManager = new ParticleManager();
 
     private Path path;
-    private Image backgroundImage;
+    private Background background;
     private int resources;
     //private Faction faction;
     private static Map map;
@@ -42,9 +43,9 @@ public abstract class Map {
      * @param path what path the creeps should follow on this map.
      * @param background What background image should be displayed on this map
      */
-    public Map(Path path, Image background){
+    public Map(Path path, Background background){
         this.path = path;
-        backgroundImage = background;
+        this.background = background;
     }
 
 
@@ -84,6 +85,7 @@ public abstract class Map {
     }
     public Path getPath(){return path;}
     public void setPath(Path newPath){ path = newPath;}
+    public Background getBackground(){ return  background;}
 
 
     /**

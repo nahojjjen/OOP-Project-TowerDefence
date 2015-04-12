@@ -88,9 +88,7 @@ public abstract class BoardObject {
     public boolean isOutsideView() {
         if (getPosition().x < Gdx.graphics.getWidth()&& getPosition().y < Gdx.graphics.getHeight() && getPosition().x > 0 && getPosition().y > 0) {
             return false;
-
         }
-        System.out.println("Board object found outside board, removing!");
         return true;
     }
 

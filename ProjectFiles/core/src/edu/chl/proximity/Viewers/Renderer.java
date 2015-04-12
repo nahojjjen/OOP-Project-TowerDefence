@@ -35,7 +35,7 @@ public class Renderer {
 
     public void render(SpriteBatch batch) {
 
-        //renderBackground(batch);
+        renderBackground(batch);
         renderPath(batch);
         renderBase(batch);
         renderTowers(batch);
@@ -48,9 +48,8 @@ public class Renderer {
     private void renderPath(Batch batch){
         //   batch.draw(Map.getInstance().getPath().getImage(), 0, Gdx.graphics.getHeight());
     }
-    private void renderBackground(Batch batch) {
-        //batch.draw(Map.getInstance().);
-        //Map.getBackground().drawCentered(0, 0);
+    private void renderBackground(SpriteBatch batch) {
+        map.getBackground().render(batch);
     }
 
     private void renderBase(Batch batch) {
