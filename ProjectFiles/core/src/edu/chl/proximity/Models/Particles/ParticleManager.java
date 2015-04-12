@@ -20,7 +20,7 @@ public class ParticleManager {
      * create all the particle pools (currently only explosion)
      */
     public ParticleManager() {
-        allEffects.add(new ProximityEffect("explosion", 100));
+        allEffects.add(new ProximityEffect("explosion2", 100));
         allEffects.add(new ProximityEffect("creepdies", 1000));
     }
 

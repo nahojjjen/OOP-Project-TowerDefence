@@ -1,6 +1,8 @@
 package edu.chl.proximity.Models.CreepGenerator;
 
+import com.badlogic.gdx.Game;
 import edu.chl.proximity.Models.Creeps.ConcreteCreeps.Triangle;
+import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
 
 /**
@@ -13,9 +15,10 @@ public class StandardGenerator {
     private Map map;
 
 
-    public StandardGenerator(Map map) {
-        this.map = map;
+    public StandardGenerator() {
+        this.map = GameData.getInstance().getMap();
     }
+
     public void tick() {
         counter++;
         if(counter > 50) {

@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import edu.chl.proximity.Controllers.BoardInputProcessor;
 import edu.chl.proximity.Controllers.GodController;
+import edu.chl.proximity.Models.CreepGenerator.StandardGenerator;
 import edu.chl.proximity.Models.Creeps.ConcreteCreeps.Triangle;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
@@ -29,7 +30,7 @@ public class GameScreen implements Screen{
 
 
 
-
+    private StandardGenerator generator;
 
     public GameScreen(Game g, Map map){
         game =g ;
@@ -41,7 +42,7 @@ public class GameScreen implements Screen{
         fixCamera();
         Gdx.input.setInputProcessor(new BoardInputProcessor(viewport));
 
-        map.addCreep(new Triangle());
+        generator = new StandardGenerator(); //for debugg, tick is in render
 
     }
 
@@ -78,6 +79,7 @@ public class GameScreen implements Screen{
         batch.end();
 
         godController.updateAllControllers();
+        generator.tick();
     }
 
     @Override
