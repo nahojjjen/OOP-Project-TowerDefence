@@ -29,7 +29,7 @@ public class Bullet extends Projectile {
      */
     public Bullet(Vector2 position, double angle, Creep target) {
         //Arguments: ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, Vector2 position, double angle, Creep target
-        super(GameData.getInstance().getMap().getParticleManager().getExplosionEffect(), 1, 8, sound, img, position, angle, target);
+        super(GameData.getInstance().getMap().getParticleManager().getExplosionEffect(), 2, 8, sound, img, position, angle, target);
 
 
     }

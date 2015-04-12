@@ -58,7 +58,7 @@ public abstract class Projectile extends BoardObject{
      */
     public void reAngle(){
         if (target != null){
-            faceTarget(target.getPosition());
+            faceTarget(target.getPosition()); //TODO only missiles that auto-target should face-target continously
         }else{
             System.out.println("In projectile: trying to reAngle to a target that doesnt exist");
         }
@@ -126,5 +126,6 @@ public abstract class Projectile extends BoardObject{
         //System.out.println("x movement= " + xLenght + " y-momement:" + yLenght);
         newPosition = new Vector2(getPosition().x + xLenght, getPosition().y + yLenght);
         setPosition(newPosition);
+
     }
 }

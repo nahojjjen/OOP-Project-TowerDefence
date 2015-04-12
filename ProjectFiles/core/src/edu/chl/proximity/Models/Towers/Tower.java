@@ -58,7 +58,7 @@ public abstract class Tower extends BoardObject {
     public void target(){
         currentTarget = targetingMethod.getTarget(getPosition(), range);
         if (currentTarget != null) {
-            this.setAngle(PointCalculations.getVectorAngle(this.getPosition(), currentTarget.getPosition()) - 90); //-90 because all asset images are created facing upwards
+            this.setAngle(PointCalculations.getVectorAngle(this.getPosition(), currentTarget.getPosition()));
         }
     }
 
