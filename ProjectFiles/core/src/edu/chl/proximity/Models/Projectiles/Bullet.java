@@ -1,6 +1,9 @@
 package edu.chl.proximity.Models.Projectiles;
 
+import com.badlogic.gdx.Audio;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Creeps.Creep;
@@ -16,6 +19,7 @@ import java.awt.*;
  */
 public class Bullet extends Projectile {
     private static Image img = new Image(Constants.filePath + "Projectiles/level1bullet.png");
+    private static Sound sound = Gdx.audio.newSound(new FileHandle(Constants.filePath + "Sounds/poof.ogg"));
 
     /**
      * create a new bullet projectile
@@ -25,6 +29,8 @@ public class Bullet extends Projectile {
      */
     public Bullet(Vector2 position, double angle, Creep target) {
         //Arguments: ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, Vector2 position, double angle, Creep target
-        super(GameData.getInstance().getMap().getParticleManager().getExplosionEffect(), 1, 3, null, img, position, angle, target);
+        super(GameData.getInstance().getMap().getParticleManager().getExplosionEffect(), 1, 8, sound, img, position, angle, target);
+
+
     }
 }

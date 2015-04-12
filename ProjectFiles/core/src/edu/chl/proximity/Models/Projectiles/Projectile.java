@@ -46,6 +46,14 @@ public abstract class Projectile extends BoardObject{
     }
 
     /**
+     * getter for projectile target
+     * @return creep the current target for the projectile
+     */
+    public Creep getTarget(){
+        return  target;
+    }
+
+    /**
      * readjust the angle so the projectile is facing the current target
      */
     public void reAngle(){
@@ -58,7 +66,7 @@ public abstract class Projectile extends BoardObject{
     }
 
     /**
-     * Get whether the projectile point intersects another object
+     * Get whether the projectile point intersects another area
      *
      * @param creeppos what other position should be compared
      * @param hitbox how big the hitbox the projectile should check for. (the hitbox of the creep)
@@ -75,21 +83,24 @@ public abstract class Projectile extends BoardObject{
     }
 
     /**
-     * This method is run every frame to see if the projectile should run its collision logic.
+     *  Play all the logic the bullet does on collision.
      * @param projectileIterator the iterator so that if the projectile needs to be removed, it can be removed without
      *                           causing a concurentModificationException in the ProjectileController.
      */
-    public void checkCollision(Iterator projectileIterator){
-        Map map = GameData.getInstance().getMap();
-        if(collidesWith(target.getPosition(), 20)){
+    public void doCollisionEffect(Iterator projectileIterator){
+        if (effect != null){
             effect.createEffect((int) getPosition().x, (int) getPosition().y); //display the effect this projectile has
-            target.devolve();//devolve the target one step on collision
-            decreaseProjectileHealth(projectileIterator);
-            //TODO if the target is hit, then how do we decide the new target? Depends on the type of projectile, should the projectile have a movement method?
-            target = null;
-            reAngle();
-            //map.getProjectiles().remove(this);
         }
+        if (target != null){
+            target.devolve();//devolve the target one step on collision
+        }
+        if (sound != null){
+            sound.play(0.1f, 0.3f,1);
+        }
+        target = null;
+        //TODO if the target is hit, then how do we decide the new target? Depends on the type of projectile, should the projectile have a movement method?
+        reAngle();
+        decreaseProjectileHealth(projectileIterator);
     }
 
     /**
@@ -101,7 +112,6 @@ public abstract class Projectile extends BoardObject{
         if (health <= 0){
             iterator.remove();
         }
-
     }
 
     /**
@@ -109,28 +119,12 @@ public abstract class Projectile extends BoardObject{
      */
     public void move() {
         Vector2 newPosition;
-        /*
-        System.out.println("real x movement:" + (Math.cos(Math.toRadians(angle)) * speed));
-        System.out.println("real y movement:" + (Math.sin(Math.toRadians(angle)) * speed));
-        */
-        float xLenght = (float) ((Math.cos(Math.toRadians(getAngle())) * speed)); //+0.5 to round to correct int aka 0.9 is 1
+        //System.out.println("real x movement:" + (Math.cos(Math.toRadians(angle)) * speed));
+        //System.out.println("real y movement:" + (Math.sin(Math.toRadians(angle)) * speed));
+        float xLenght = (float) ((Math.cos(Math.toRadians(getAngle())) * speed));
         float yLenght = (float) ((Math.sin(Math.toRadians(getAngle())) * speed));
-
-
         //System.out.println("x movement= " + xLenght + " y-momement:" + yLenght);
         newPosition = new Vector2(getPosition().x + xLenght, getPosition().y + yLenght);
         setPosition(newPosition);
     }
-
-
-
-    /**
-     * /TODO make destroy summon particle effects of destruciton
-     */
-    public void destroy() {
-        System.out.println("destroyed projectile?");
-    }
-
-
-
 }

@@ -1,6 +1,5 @@
 package edu.chl.proximity.Controllers.SubControllers;
 
-import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Projectiles.Projectile;
@@ -29,7 +28,9 @@ public class ProjectileController {
 
             projectile.reAngle();
             projectile.move(); //check if outside board and remove if true?
-            projectile.checkCollision(projectileIterator);
+            if(projectile.collidesWith(projectile.getTarget().getPosition(), 20)){
+                projectile.doCollisionEffect(projectileIterator);
+            }
 
         }
 
