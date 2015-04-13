@@ -6,6 +6,8 @@ import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Utilities.Constants;
 
+import java.util.Iterator;
+
 /**
  * Created by Linda on 2015-04-08.
  */
@@ -19,13 +21,11 @@ public class Triangle extends Creep {
     }
 
 
-    /**
-     * on death,
-     */
     @Override
     public void devolve() {
         Map map = GameData.getInstance().getMap();
         displayDeathEffect();
-        map.getCreeps().remove(this);
+        map.getCreepKillStack().add(this);
     }
+
 }

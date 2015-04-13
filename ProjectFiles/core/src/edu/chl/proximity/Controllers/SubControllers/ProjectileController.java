@@ -14,34 +14,28 @@ import java.util.List;
 public class ProjectileController {
 
     private List<Projectile> projectiles;
+    private List<Creep> creeps;
+    private Map map;
 
     public ProjectileController(){
-        Map map = GameData.getInstance().getMap();
+        map = GameData.getInstance().getMap();
         projectiles = map.getProjectiles();
+        creeps = map.getCreeps();
     }
 
     public void update() {
-        Iterator projectileIterator = projectiles.iterator();
-
-        while (projectileIterator.hasNext()) {
-            Object projectileObject = projectileIterator.next();
-            Projectile projectile = (Projectile) projectileObject;
-
+        for (Projectile projectile:projectiles){
             projectile.reAngle();
-            projectile.move(); //check if outside board and remove if true?
-            Creep target = projectile.getTarget();
-            if (target != null){
-                if(projectile.collidesWith(target.getPosition(), 20)){
-                    projectile.doCollisionEffect(projectileIterator);
+            projectile.move();
+
+            for (Creep creep : creeps){
+                if(projectile.collidesWith(creep.getPosition(), 20)) {
+                    projectile.doCollisionEffect(creep);
                 }
             }
             if (projectile.isOutsideView()){
-                projectileIterator.remove();
+                map.getProjectileKillStack().add(projectile);
             }
-
-
         }
-
     }
-
 }

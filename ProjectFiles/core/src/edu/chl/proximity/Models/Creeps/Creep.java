@@ -11,6 +11,7 @@ import edu.chl.proximity.Models.Paths.Path;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.awt.Point;
+import java.util.Iterator;
 
 /**
  * Created by Tindra on 02/04/15. Modified by Johan Swanberg

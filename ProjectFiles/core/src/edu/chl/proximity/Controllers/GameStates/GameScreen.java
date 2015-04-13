@@ -8,12 +8,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import edu.chl.proximity.Controllers.BoardInputProcessor;
-import edu.chl.proximity.Controllers.GodController;
+import edu.chl.proximity.Controllers.MainController;
 import edu.chl.proximity.Models.CreepGenerator.StandardGenerator;
-import edu.chl.proximity.Models.Creeps.ConcreteCreeps.Triangle;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
-import edu.chl.proximity.Models.Towers.ShootingTower;
+import edu.chl.proximity.Models.Towers.BulletTower;
+import edu.chl.proximity.Models.Towers.MissileTower;
 import edu.chl.proximity.Viewers.Renderer;
 
 /**
@@ -24,7 +24,7 @@ public class GameScreen implements Screen{
     private Map currentMap;
     private SpriteBatch batch = new SpriteBatch();
     private Renderer renderer;
-    private GodController godController;
+    private MainController mainController;
     private OrthographicCamera camera;
     private FitViewport viewport;
 
@@ -37,7 +37,7 @@ public class GameScreen implements Screen{
         currentMap = map;
         GameData.getInstance().setMap(currentMap);
         renderer = new Renderer();
-        godController = new GodController();
+        mainController = new MainController();
 
         fixCamera();
         Gdx.input.setInputProcessor(new BoardInputProcessor(viewport));
@@ -55,7 +55,9 @@ public class GameScreen implements Screen{
         viewport.apply();
 
 
-        currentMap.addTower(new ShootingTower(new Vector2(0, 0)));//cameraPointCoordinates));
+        currentMap.addTower(new MissileTower(new Vector2(0, 0)));//cameraPointCoordinates));
+        currentMap.addTower(new BulletTower(new Vector2(400,200)));
+        currentMap.addTower(new BulletTower(new Vector2(400,300)));
 
     }
 
@@ -78,7 +80,7 @@ public class GameScreen implements Screen{
 
         batch.end();
 
-        godController.updateAllControllers();
+        mainController.updateAllControllers();
         generator.tick();
     }
 

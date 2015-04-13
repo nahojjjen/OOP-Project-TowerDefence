@@ -23,7 +23,6 @@ public abstract class Projectile extends BoardObject{
     private int health;
     private int speed;
     private Sound sound;
-    private Creep target;
 
     /**
      * Create a new projectile type
@@ -34,36 +33,20 @@ public abstract class Projectile extends BoardObject{
      * @param image what image does the bullet have
      * @param position where should the projectile be created
      * @param angle what angle should the image of the projectile have
-     * @param target what target should the projectile check for
      */
-    public Projectile(ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, Vector2 position, double angle, Creep target){
+    public Projectile(ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, Vector2 position, double angle){
         super(position, image, angle);
         this.effect=particleEffect;
         this.health=health;
         this.speed=speed;
         this.sound=sound;
-        this.target = target;
     }
 
-    /**
-     * getter for projectile target
-     * @return creep the current target for the projectile
-     */
-    public Creep getTarget(){
-        return  target;
-    }
 
     /**
      * readjust the angle so the projectile is facing the current target
      */
-    public void reAngle(){
-        if (target != null){
-            faceTarget(target.getPosition()); //TODO only missiles that auto-target should face-target continously
-        }else{
-            System.out.println("In projectile: trying to reAngle to a target that doesnt exist");
-        }
-
-    }
+    public abstract void reAngle();
 
     /**
      * Get whether the projectile point intersects another area
@@ -84,33 +67,45 @@ public abstract class Projectile extends BoardObject{
 
     /**
      *  Play all the logic the bullet does on collision.
-     * @param projectileIterator the iterator so that if the projectile needs to be removed, it can be removed without
-     *                           causing a concurentModificationException in the ProjectileController.
      */
-    public void doCollisionEffect(Iterator projectileIterator){
-        if (effect != null){
-            effect.createEffect((int) getPosition().x, (int) getPosition().y); //display the effect this projectile has
-        }
-        if (target != null){
-            target.devolve();//devolve the target one step on collision
-        }
-        if (sound != null){
-            sound.play(0.1f, 0.3f,1);
-        }
-        target = null;
-        //TODO if the target is hit, then how do we decide the new target? Depends on the type of projectile, should the projectile have a movement method?
+    public void doCollisionEffect(Creep creep){
+        collide(creep);
+        playParticleEffect();
+        playSound();
         reAngle();
-        decreaseProjectileHealth(projectileIterator);
+        decreaseProjectileHealth();
     }
 
     /**
-     * decrease the projectiles health by one, remove it if its 0
-     * @param iterator the iterator that should remove the projectile from the map if projectile health is 0
+     * the logic that happens that is specific to this projectile, most often creep.devolve
      */
-    private void decreaseProjectileHealth(Iterator iterator){
+    public abstract void collide(Creep creep);
+
+    /**
+     * play the effect connected to this projectile (example, the explosion effect of the missile, smoke & circles))
+     */
+    public void playParticleEffect(){
+        if (effect != null){
+            effect.createEffect((int) getPosition().x, (int) getPosition().y); //display the effect this projectile has
+        }
+    }
+
+    /**
+     * play the sound connected to this projectile, example explosion sound.
+     */
+    public void playSound(){
+        if (sound != null){
+            sound.play(0.1f, 0.3f, 1);
+        }
+
+    }
+    /**
+     * decrease the projectiles health by one, remove it if its 0
+     */
+    private void decreaseProjectileHealth(){
         health--;
         if (health <= 0){
-            iterator.remove();
+            GameData.getInstance().getMap().getProjectileKillStack().add(this);
         }
     }
 
