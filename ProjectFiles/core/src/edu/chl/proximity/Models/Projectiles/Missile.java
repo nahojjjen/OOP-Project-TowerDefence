@@ -38,9 +38,15 @@ public class Missile extends Projectile {
     @Override
     public void reAngle() {
             if (target != null){
-                faceTarget(target.getPosition());
+                if(GameData.getInstance().getMap().getCreeps().contains((target))) {
+                    faceTarget(target.getPosition());
+                }
+                else {
+                    // Keep angle
+                }
+
             }else{
-                System.out.println("In projectile: trying to reAngle to a target that doesnt exist");
+                throw new IllegalStateException("Missile: Trying to reangle but target is null");
             }
     }
 
