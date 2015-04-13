@@ -28,6 +28,6 @@ public class BulletTower extends Tower {
 
     @Override
     public Projectile createProjectile() {
-        return new Bullet(getPosition(), PointCalculations.getVectorAngle(getPosition(),getTarget().getPosition()), getTarget());
+        return new Bullet(getCenter(), PointCalculations.getVectorAngle(getPosition(),getTarget().getPosition()), getTarget());
     }
 }

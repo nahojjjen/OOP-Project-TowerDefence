@@ -23,7 +23,7 @@ public class MissileTower extends Tower{
     }
 
     public Projectile createProjectile() {
-        return new Missile(this.getPosition(), 0, getTarget());
+        return new Missile(getCenter(), 0, getTarget());
 
     }
 }
