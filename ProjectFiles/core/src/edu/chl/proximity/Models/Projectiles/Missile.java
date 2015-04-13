@@ -8,9 +8,10 @@ import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Utilities.Constants;
+import edu.chl.proximity.Utilities.PointCalculations;
 
-import java.awt.*;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by Linda on 2015-04-08. Edited by Johan
@@ -19,6 +20,7 @@ public class Missile extends Projectile {
 
     private static Image img = new Image(Constants.filePath + "Projectiles/missile.png");
     private static Sound sound = Gdx.audio.newSound(new FileHandle(Constants.filePath + "Sounds/poof.ogg"));
+    private double range = 40;
     private Creep target;
 
     /**
@@ -43,7 +45,14 @@ public class Missile extends Projectile {
     }
 
     @Override
-    public void collide(Creep creep) {
-        creep.devolve();
+    public void attack(Creep unusedCreep) {
+        List<Creep> creepList = GameData.getInstance().getMap().getCreeps();
+        for(Creep creep: creepList) {
+            if(PointCalculations.distanceBetweenNoSqrt(this.getCenter(), creep.getCenter()) < range*range){
+                creep.devolve();
+            }
+        }
+
+
     }
 }

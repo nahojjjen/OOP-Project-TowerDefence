@@ -27,12 +27,13 @@ public class ProjectileController {
         for (Projectile projectile:projectiles){
             projectile.reAngle();
             projectile.move();
-
+            /*
             for (Creep creep : creeps){
                 if(projectile.collidesWith(creep.getPosition(), 20)) {
-                    projectile.doCollisionEffect(creep);
+                    projectile.collide();
                 }
-            }
+            }*/
+            projectile.checkCollision();
             if (projectile.isOutsideView()){
                 map.getProjectileKillStack().add(projectile);
             }

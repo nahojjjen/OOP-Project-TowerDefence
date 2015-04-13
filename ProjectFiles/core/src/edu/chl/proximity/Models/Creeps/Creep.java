@@ -78,7 +78,7 @@ public abstract class Creep extends BoardObject {
      */
     public void displayDeathEffect(){
         Map map = GameData.getInstance().getMap();
-        map.getParticleManager().getCreepDiesEffect().createEffect(getPosition().x, getPosition().y);
+        map.getParticleManager().getCreepDiesEffect().createEffect(this.getCenter());
     }
 
     /**

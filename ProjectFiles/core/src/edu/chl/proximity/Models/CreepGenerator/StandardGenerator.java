@@ -21,7 +21,7 @@ public class StandardGenerator {
 
     public void tick() {
         counter++;
-        if(counter > 50) {
+        if(counter > 30) {
             counter = 0;
             map.addCreep(new Triangle());
         }

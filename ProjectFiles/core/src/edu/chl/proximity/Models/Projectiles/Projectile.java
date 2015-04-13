@@ -1,19 +1,14 @@
 package edu.chl.proximity.Models.Projectiles;
 
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
-import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Particles.ProximityEffect;
-import edu.chl.proximity.Utilities.PointCalculations;
 
-import java.awt.Point;
-import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by Hanna Römer on 2015-04-02, edited by Johan and Linda
@@ -68,18 +63,29 @@ public abstract class Projectile extends BoardObject{
     /**
      *  Play all the logic the bullet does on collision.
      */
-    public void doCollisionEffect(Creep creep){
-        collide(creep);
+    public void collide(Creep creep){
         playParticleEffect();
         playSound();
         reAngle();
         decreaseProjectileHealth();
+        attack(creep);
+    }
+
+    public void checkCollision() {
+        List<Creep> creeps = GameData.getInstance().getMap().getCreeps();
+
+        for (Creep creep : creeps){
+        if(collidesWith(creep.getPosition(), 20)) {
+            collide(creep);
+        }
+    }
+
     }
 
     /**
      * the logic that happens that is specific to this projectile, most often creep.devolve
      */
-    public abstract void collide(Creep creep);
+    public abstract void attack(Creep creep);
 
     /**
      * play the effect connected to this projectile (example, the explosion effect of the missile, smoke & circles))
