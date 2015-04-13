@@ -10,7 +10,7 @@ import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
- * Created by Johan on 2015-04-13.
+ * Created by Johan on 2015-04-13. group work with linda
  */
 public class BulletTower extends Tower {
 
