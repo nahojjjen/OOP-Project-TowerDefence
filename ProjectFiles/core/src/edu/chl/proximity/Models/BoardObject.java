@@ -103,4 +103,12 @@ public abstract class BoardObject {
             //angle remains unchanged, if there's no new point to look at.
         }
     }
+
+    /**
+     * Gets the center of this object
+     * @return the vector in center of this BoardObject
+     */
+    public Vector2 getCenter() {
+        return new Vector2(this.getPosition().x+(this.getWidth()/2), this.getPosition().y + (this.getHeight()/2));
+    }
 }
