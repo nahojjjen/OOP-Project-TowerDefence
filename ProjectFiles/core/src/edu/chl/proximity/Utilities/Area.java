@@ -7,7 +7,8 @@ import com.badlogic.gdx.math.Vector2;
 import java.awt.*;
 
 /**
- * Created by Johan on 2015-04-02.
+ * @author Johan Swanberg
+ * @date 2015-04-02
  * a class that represents an area, either defined by an elipse or a polygon
  * if both are present then the polygon will be used
  *

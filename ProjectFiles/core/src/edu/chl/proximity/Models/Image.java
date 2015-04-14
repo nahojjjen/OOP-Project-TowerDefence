@@ -7,7 +7,9 @@ import com.badlogic.gdx.math.Vector2;
 import java.awt.*;
 
 /**
- * Created by Floompa on 2015-04-02.
+ * @author Linda Evaldsson
+ * @date 2015-04-02
+ *
  */
 public class Image {
 

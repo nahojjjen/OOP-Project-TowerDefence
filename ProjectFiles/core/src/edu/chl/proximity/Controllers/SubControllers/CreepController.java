@@ -35,7 +35,7 @@ public class CreepController {
      *
      * @return the creep with position 0  in the creep list
      */
-    public Creep getFirstCreepInList(Point p) { //gör så den kollar på p istället för list.get(0)
+    public Creep getFirstCreepInList(Point p) { //gÃ¶r sÃ¥ den kollar pÃ¥ p istÃ¤llet fÃ¶r list.get(0)
         if (creeps.size() != 0) {
             return creeps.get(0);
         }

@@ -5,7 +5,7 @@ import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
- * Created by Johan on 2015-04-11.Group work with Linda
+ * Created by Johan on 2015-04-11. Group work with Linda
  */
 public abstract class TargetingMethod {
 

@@ -1,7 +1,8 @@
 package edu.chl.proximity.Utilities;
 
 /**
- * Created by Johan on 4/2/2015 edited by Linda
+ * @author Johan Swanberg and Linda Evaldsson
+ * @date 2015-04-02
  */
 public class Constants {
 

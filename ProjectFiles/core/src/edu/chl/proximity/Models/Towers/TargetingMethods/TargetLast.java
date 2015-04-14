@@ -9,7 +9,8 @@ import edu.chl.proximity.Utilities.PointCalculations;
 import java.util.List;
 
 /**
- * Created by Johan on 2015-04-11.
+ * @author Johan Swanberg
+ * @date 2015-04-11
  */
 public class TargetLast extends TargetingMethod {
 

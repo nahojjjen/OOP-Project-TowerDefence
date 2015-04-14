@@ -14,8 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Johan
- * Created by Johan on 2015-04-11. Group work with Linda.
+ * @author Johan Swanberg and Linda Evaldsson
+ * @date 2015-04-11
+ *
  */
 public class ProximityEffect {
     private ParticleEffectPool effectPool; //effects that can be created

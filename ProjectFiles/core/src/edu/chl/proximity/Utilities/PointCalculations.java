@@ -5,7 +5,9 @@ import com.badlogic.gdx.math.Vector2;
 import java.awt.*;
 
 /**
- * Created by Johan on 2015-04-02.
+ * @author Johan Swanberg
+ * @author Linda Evaldsson (revised)
+ * @date 2015-04-02
  */
 public class PointCalculations {
 
@@ -35,6 +37,11 @@ public class PointCalculations {
         return 0;
     }
 
+    /**
+     * Tool for creating new Paths. Prints out the code for the path.
+     * @param x X position for a point on the path
+     * @param y Y position for a point on the path
+     */
     public static void createPathTool(int x, int y) {
         System.out.println("waypoint.add(new Vector2(" + x + ", " + y + "));");
     }

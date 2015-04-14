@@ -9,7 +9,8 @@ import edu.chl.proximity.Utilities.PointCalculations;
 import java.awt.*;
 
 /**
- * Created by Johan on 4/2/2015.
+ * @author Johan Swanberg and Linda Evaldsson (group work)
+ * @date 2015-04-02
  */
 public abstract class BoardObject {
     /**

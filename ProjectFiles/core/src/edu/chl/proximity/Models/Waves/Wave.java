@@ -1,7 +1,8 @@
 package edu.chl.proximity.Models.Waves;
 
 /**
- * Created by simongislen on 02/04/15.
+ * @author Simon Gislén
+ * @date 2015-04-02
  */
 public abstract class Wave {
 }

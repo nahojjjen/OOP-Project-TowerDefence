@@ -6,7 +6,8 @@ import edu.chl.proximity.Models.Paths.Path;
 import java.awt.*;
 
 /**
- * Created by Linda on 2015-04-09.
+ * @author Linda Evaldsson
+ * @date 2015-04-09
  */
 public class TestPath extends Path {
 

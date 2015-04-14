@@ -12,7 +12,10 @@ import edu.chl.proximity.Utilities.Constants;
 import java.util.Iterator;
 
 /**
- * Created by Johan on 2015-04-13.
+ * @author Linda Evaldsson and Johan Swanberg (group work)
+ * @date 2015-04-13
+ *
+ * A bullet is a simple bullet that has a static angle and kills one creep.
  */
 public class Bullet extends Projectile {
 

@@ -14,7 +14,11 @@ import java.awt.Point;
 import java.util.Iterator;
 
 /**
- * Created by Tindra on 02/04/15. Modified by Johan Swanberg
+ * @author Linda Evaldsson
+ * @author Johan Swanberg (revised)
+ * @date 2015-04-02
+ *
+ * An abstract class for creeps. Concrete creeps extends this class.
  */
 public abstract class Creep extends BoardObject {
 
@@ -25,7 +29,8 @@ public abstract class Creep extends BoardObject {
     private Sound devolveSound;
     private int speed;
     private double moveAngle;
-    private double rndRotation;
+    private double randomRotation;
+    private Vector2 velocity;
 
     /**
      * create a new creep with an image and a speed
@@ -39,7 +44,7 @@ public abstract class Creep extends BoardObject {
 
         Map map = GameData.getInstance().getMap();
         path = map.getPath();
-        rndRotation = (Math.random()*15) - 7.5;
+        randomRotation = (Math.random()*15) - 7.5;
         initiateMovement();
     }
 
@@ -69,8 +74,9 @@ public abstract class Creep extends BoardObject {
     private void initiateMovement() {
         this.setPosition(new Vector2(path.getWaypoint(0)));
         nextWayPointID = 0;
-        distanceToNextWayPoint = 9999999;
         aimTowardsNextWaypoint();
+        distanceToNextWayPoint = Double.MAX_VALUE;
+
     }
 
     /**
@@ -85,7 +91,7 @@ public abstract class Creep extends BoardObject {
      * rotate the creeps image a random amount (a creep is assigned a random rotation amount on creation)
      */
     public void rotate() {
-        this.rotate(rndRotation);
+        this.rotate(randomRotation);
     }
 
     /**
@@ -102,7 +108,7 @@ public abstract class Creep extends BoardObject {
     public void move() {
         //System.out.println(path.getWaypoint(nextWayPointID));
         if (reachedWaypoint(path.getWaypoint((nextWayPointID)))){
-            distanceToNextWayPoint = 999999999; //this is a way of resetting the lenght, to make sure that the creep doesn't misstake the old lenght when approaching a new waypoint - remove to see bug
+            distanceToNextWayPoint = Double.MAX_VALUE; //this is a way of resetting the lenght, to make sure that the creep doesn't misstake the old lenght when approaching a new waypoint - remove to see bug
             aimTowardsNextWaypoint();
         }
         repositionCreep();
@@ -119,12 +125,16 @@ public abstract class Creep extends BoardObject {
      * nextWaypoint in degrees.
      */
     public  double getAngleToNextPoint() {
+
+
         if (this.getPosition() != null && path.getWaypoint(nextWayPointID)!= null) {
             double angle = PointCalculations.getVectorAngle(this.getPosition(), path.getWaypoint(nextWayPointID));
             //System.out.println("angle:" + angle);
             return angle;
 
         }
+
+
         System.out.println("Error in abstractCreep: trying to get angle to next point- invalid point");
         //dont handle this as exception because try-catch takes resources & the error is not fatal, instead default to no rotation.
         return 0;
@@ -141,13 +151,15 @@ public abstract class Creep extends BoardObject {
         //System.out.println("real y movement:" + (Math.sin(Math.toRadians(moveAngle)) * speed));
 
 
-        float xLenght = (float)(Math.cos(Math.toRadians(moveAngle)) * speed); //+0.5 to round to correct int aka 0.9 is 1
-        float yLenght = (float)(Math.sin(Math.toRadians(moveAngle)) * speed);
-
-
         //System.out.println("x movement= " + xLenght + " y-momement:" + yLenght);
-        newPosition = new Vector2(getPosition().x + xLenght, getPosition().y + yLenght);
-        setPosition(newPosition);
+
+        float xLength = (float)(Math.cos(Math.toRadians(moveAngle)) * speed); //+0.5 to round to correct int aka 0.9 is 1
+        float yLength = (float)(Math.sin(Math.toRadians(moveAngle)) * speed);
+        velocity = new Vector2(xLength, yLength);
+
+        //System.out.println(velocity);
+        this.setPosition(new Vector2(getPosition().x + velocity.x, getPosition().y + velocity.y));
+
     }
 
     /**

@@ -9,8 +9,10 @@ import edu.chl.proximity.Utilities.Area;
 import java.util.List;
 
 /**
+ * @author Johan Swanberg
+ * @date 2015-04-02
+ *
  * A class that allows you to affect creeps/towers/projectiles in an area.
- * Created by Johan on 2015-04-02.
  */
 
 

@@ -1,7 +1,9 @@
 package edu.chl.proximity.Models.Spells;
 
 /**
- * Created by Johan on 2015-04-02.
+ * @author Johan Swanberg
+ * @date 2015-04-02
+ *
  */
 public abstract class Spell {
 

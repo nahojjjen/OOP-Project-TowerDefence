@@ -8,7 +8,9 @@ import edu.chl.proximity.Models.Towers.TargetingMethods.TargetClosest;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
- * Created by Floompa on 2015-04-08.
+ * @author Linda Evaldsson and Johan Swanberg
+ * @date 2015-04-08
+ *
  */
 public class MissileTower extends Tower{
     private static Image img = new Image(Constants.filePath + "Towers/Missile/1.png");

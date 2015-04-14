@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Johan on 2015-04-11. Group programing with Linda.
+ * @author Johan Swanberg and Linda Evaldsson (Group work)
+ * @date 2015-04-11
+ *
  * A class that keeps track of all effects that can be displayed, and has the ability to render them
  */
 public class ParticleManager {

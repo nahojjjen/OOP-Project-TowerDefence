@@ -11,7 +11,10 @@ import edu.chl.proximity.Utilities.PointCalculations;
 
 
 /**
- * Created by Johan on 4/2/2015.
+ * @author Johan Swanberg
+ * @author Linda Evaldsson (revised)
+ * @date 2015-04-02
+ *
  */
 public abstract class Tower extends BoardObject {
 

@@ -11,7 +11,11 @@ import edu.chl.proximity.Models.Particles.ProximityEffect;
 import java.util.List;
 
 /**
- * Created by Hanna Römer on 2015-04-02, edited by Johan and Linda
+ * @author Hanna RÃ¶mer
+ * @author Linda Evaldsson, Johan Swanberg (revised)
+ * @date 2015-04-02
+ *
+ * An abstract class for projectiles. All projectiles extend this class.
  */
 public abstract class Projectile extends BoardObject{
     private ProximityEffect effect;

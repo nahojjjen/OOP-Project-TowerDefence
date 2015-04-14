@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Johan on 2015-04-11. Group work with Linda
+ * @author Johan Swanberg and Linda Evaldsson (group work)
+ * @date 2015-04-11
+ *
  */
 public class TargetClosest extends TargetingMethod{
     public Map map = GameData.getInstance().getMap();

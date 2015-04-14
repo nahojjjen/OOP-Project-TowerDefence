@@ -9,12 +9,15 @@ import edu.chl.proximity.Utilities.Constants;
 import java.util.Iterator;
 
 /**
- * Created by Linda on 2015-04-08.
+ * @author Linda Evaldsson
+ * @author Johan Swanberg (revised)
+ * @date 2015-04-08
+ * A class for the concrete creep Triangle
  */
 public class Triangle extends Creep {
 
     private static Image img = new Image(Constants.filePath + "Creeps/Line1/triangle.png");
-    private static int speed = 3;
+    private static int speed = 1;
 
     public Triangle() {
         super(img, speed);

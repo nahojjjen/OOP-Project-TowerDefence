@@ -14,7 +14,11 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by Linda on 2015-04-08. Edited by Johan
+ * @author Linda Evaldsson
+ * @author Johan Swanberg (revised)
+ * @date 2015-04-08
+ *
+ * A missile is a target-following projectile that kills all creeps in a radius.
  */
 public class Missile extends Projectile {
 
@@ -37,7 +41,8 @@ public class Missile extends Projectile {
 
     @Override
     public void reAngle() {
-            if (target != null){
+            if (target != null) {
+                //Check if the target is still on the board
                 if(GameData.getInstance().getMap().getCreeps().contains((target))) {
                     faceTarget(target.getPosition());
                 }
@@ -45,7 +50,7 @@ public class Missile extends Projectile {
                     // Keep angle
                 }
 
-            }else{
+            } else {
                 throw new IllegalStateException("Missile: Trying to reangle but target is null");
             }
     }

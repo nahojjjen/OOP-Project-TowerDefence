@@ -4,7 +4,8 @@ import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Paths.Path;
 
 /**
- * Created by Linda and Johan on 2015-04-13.
+ * @author Linda Evaldsson and Johan Swanberg (group work)
+ * @date 2015-04-13
  */
 public class SecondTestPath extends Path{
 

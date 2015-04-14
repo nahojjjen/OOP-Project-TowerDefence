@@ -6,7 +6,10 @@ import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
 
 /**
- * Created by Floompa on 2015-04-08.
+ * @author Linda Evaldsson
+ * @author Johan Swanberg (revised)
+ * @date 2015-04-08
+ *
  * A class that adds a creep every 50th frame
  */
 public class StandardGenerator {
@@ -23,7 +26,8 @@ public class StandardGenerator {
         counter++;
         if(counter > 4) {
             counter = 0;
-            map.addCreep(new Triangle());
+            map.addCreepMass(new Triangle(), 2);
+            //map.addCreep(new Triangle());
         }
     }
 }

@@ -8,7 +8,9 @@ import edu.chl.proximity.Models.Towers.Tower;
 import java.util.List;
 
 /**
- * Created by Johan on 2015-04-02.
+ * @author Johan Swanberg
+ * @date 2015-04-02
+ *
  * A class for effects that affect all towers/projectiles/creeps on the map.
  */
 public abstract class GlobalSpell extends Spell {

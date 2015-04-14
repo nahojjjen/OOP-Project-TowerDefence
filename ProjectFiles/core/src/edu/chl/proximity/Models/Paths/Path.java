@@ -1,6 +1,5 @@
 package edu.chl.proximity.Models.Paths;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +9,10 @@ import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 
 /**
+ * @author Johan Swanberg
+ * @date 2015-04-03
+ *
  * The path the creep follows, and where you cannot place towers.
- * @author Johan
  */
 public abstract class Path {
 

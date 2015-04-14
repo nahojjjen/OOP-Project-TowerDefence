@@ -3,7 +3,9 @@ package edu.chl.proximity.Models;
 import edu.chl.proximity.Models.Maps.Map;
 
 /**
- * Created by Floompa on 2015-04-08.
+ * @author Linda Evaldsson and Johan Swanberg (group work)
+ * @date 2015-04-08
+ *
  */
 public class GameData {
 

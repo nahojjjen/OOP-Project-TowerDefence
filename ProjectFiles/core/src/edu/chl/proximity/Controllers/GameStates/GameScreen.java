@@ -17,7 +17,7 @@ import edu.chl.proximity.Models.Towers.MissileTower;
 import edu.chl.proximity.Viewers.Renderer;
 
 /**
- * Created by Johan on 2015-04-07.
+ * Created by Johan on 2015-04-07. Group work with Linda
  */
 public class GameScreen implements Screen{
     private Game game ;

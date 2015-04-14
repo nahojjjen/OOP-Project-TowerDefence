@@ -6,7 +6,9 @@ import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Image;
 
 /**
- * Created by Johan on 2015-04-12.
+ * @author Johan Swanberg
+ * @date 2015-04-12
+ *
  */
 public class Background extends BoardObject {
     /**

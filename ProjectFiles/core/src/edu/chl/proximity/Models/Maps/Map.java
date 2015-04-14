@@ -14,7 +14,10 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Created by simongislen on 02/04/15. Modified by Linda And Johan
+ * @author Simon Gislén
+ * @author Linda Evaldsson, Johan Swanberg (revised)
+ * @date 2015-04-02
+ *
  * The map holds all information related to an instance of the game except for the player details
  * The games current map is accessible from GameData.
  */
