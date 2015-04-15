@@ -191,4 +191,9 @@ public abstract class Creep extends BoardObject {
         }
         return false;
     }
+
+    public void slowDown(double percentage, int time){
+        Double newSpeed= (1 - percentage/100)*speed;
+        speed=newSpeed.intValue();
+    }
 }
