@@ -1,5 +1,6 @@
 package edu.chl.proximity.Models.Players;
 
+import edu.chl.proximity.Models.Factions.Faction;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 
 /**
@@ -9,14 +10,33 @@ import edu.chl.proximity.Models.ResourceSystem.Resources;
  */
 public class Player {
     private Resources resources;
+    private Faction faction;
     private int level;
 
     /**
      * Create a new player with starting resources of 300 points,
      * 300 lines and 0 polygons
+     * @param faction the players faction
      */
-    public Player(){
+    public Player(Faction faction){
         resources=new Resources(300, 300, 0);
+        this.faction=faction;
+    }
+
+    /**
+     * Change the players faction
+     * @param f the player's new faction
+     */
+    public void setFacton(Faction f){
+        this.faction=f;
+    }
+
+    /**
+     * Get the player's current faction
+     * @return the player's faction
+     */
+    public Faction getFaction() {
+        return faction;
     }
 
     /**
