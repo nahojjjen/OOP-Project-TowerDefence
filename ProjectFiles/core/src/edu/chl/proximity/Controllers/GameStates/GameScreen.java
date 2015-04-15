@@ -2,6 +2,7 @@ package edu.chl.proximity.Controllers.GameStates;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -33,6 +34,7 @@ public class GameScreen implements Screen{
     private StandardGenerator generator;
 
     public GameScreen(Game g, Map map){
+
         game =g ;
         currentMap = map;
         GameData.getInstance().setMap(currentMap);
@@ -50,6 +52,8 @@ public class GameScreen implements Screen{
 
     private void fixCamera(){
         camera = new OrthographicCamera();//Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+
         camera.setToOrtho(true);
         viewport = new FitViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),camera);
         viewport.apply();
