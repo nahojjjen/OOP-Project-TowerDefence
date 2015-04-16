@@ -6,6 +6,7 @@ import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Utilities.PointCalculations;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,13 +28,24 @@ public class TargetLast extends TargetingMethod {
     @Override
     public Creep getTarget(Vector2 towerPosition, double towerRange) {
         if (creeps.size() > 0) { //can only get a target if there are enemies
-            Creep target = creeps.get(0); //start with a creep so a comparison can be made
+            List<Creep> inRange = new ArrayList<Creep>();
+            for (Creep c : creeps) {
+                if (isWithinRange(c, towerPosition, towerRange)) {
+                    System.out.println(isWithinRange(c, towerPosition, towerRange));
+                    inRange.add(c);
+                }
+            }
+            if (inRange.size() <= 0) {
+                return null;
+            }
+
+            Creep target = inRange.get(0); //start with a creep so a comparison can be made
             double distanceToWaypoint = 0; //the first creep does not have to be checked, more efficient to hard-code in dummy data
             int waypointNumber = 99999;
 
             //cycle through all creeps, check if they're within range, get what waypoint they're on, remember the one with the highest waypoint & shortest distance to waypoint
-            for (Creep creep : creeps) {
-                if (isWithinRange(creep, towerPosition, towerRange) && creep.getDistanceToNextWayPoint() > distanceToWaypoint && creep.getNextWayPointID() < waypointNumber) {
+            for (Creep creep : inRange) {
+                if (creep.getDistanceToNextWayPoint() > distanceToWaypoint && creep.getNextWayPointID() < waypointNumber) {
                     target = creep;
                     distanceToWaypoint = creep.getDistanceToNextWayPoint();
                     waypointNumber = creep.getNextWayPointID();

@@ -39,7 +39,6 @@ public class TargetFirst extends TargetingMethod {
 
                 }
             }
-            System.out.println(inRange.size());
             if (inRange.size() <= 0) {
                 return null;
             }
@@ -60,28 +59,3 @@ public class TargetFirst extends TargetingMethod {
         return null;
     }
 }
-
-
-            /**
-            Creep target = creeps.get(0); //start with a creep so a comparison can be made
-            double distanceToWaypoint = 9999999999.9; //the first creep does not have to be checked, more efficient to hard-code in dummy data
-            int waypointNumber = 0;
-
-            //cycle through all creeps, check if they're within range, get what waypoint they're on, remember the one with the highest waypoint & shortest distance to waypoint
-            for (Creep creep:creeps){
-                    if (isWithinRange(creep,towerPosition,towerRange) && creep.getDistanceToNextWayPoint() < distanceToWaypoint && creep.getNextWayPointID() > waypointNumber){
-                        target = creep;
-                        distanceToWaypoint = creep.getDistanceToNextWayPoint();
-                        waypointNumber = creep.getNextWayPointID();
-                    }
-
-
-            }
-            return target;
-        }
-
-        return null;
-    }
-
-}
-**/
