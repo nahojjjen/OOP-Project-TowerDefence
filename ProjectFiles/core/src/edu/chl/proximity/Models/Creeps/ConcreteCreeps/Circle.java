@@ -28,9 +28,8 @@ public class Circle extends Creep {
 
     @Override
     public void devolve() {
-        Map map = GameData.getInstance().getMap();
-        displayDeathEffect();
-        map.getCreepKillStack().add(this);
+        destroy();
     }
+
 
 }

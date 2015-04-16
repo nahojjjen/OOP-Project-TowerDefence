@@ -105,6 +105,14 @@ public abstract class Creep extends BoardObject {
     }
 
     /**
+     * destroys the creep
+     */
+    public void destroy() {
+        Map map = GameData.getInstance().getMap();
+        displayDeathEffect();
+        map.getCreepKillStack().add(this);
+    }
+    /**
      * rotate the creeps image a random amount (a creep is assigned a random rotation amount on creation)
      */
     public void rotate() {
@@ -186,11 +194,15 @@ public abstract class Creep extends BoardObject {
 
         nextWayPointID++;
         if(nextWayPointID >= path.getWaypoints().size()) {
-            //TODO: instead decrease base health & destroy creep
-            nextWayPointID = 0;
+
+            devolve();
+            //TODO: Decrease base health
+            destroy();
             System.out.println("Creep: Base takes damage!");
         }
-        moveAngle = getAngleToNextPoint();
+        else {
+            moveAngle = getAngleToNextPoint();
+        }
     }
 
     /**
