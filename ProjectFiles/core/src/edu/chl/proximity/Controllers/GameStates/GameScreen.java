@@ -15,6 +15,7 @@ import edu.chl.proximity.Models.CreepGenerator.StandardGenerator;
 import edu.chl.proximity.Models.Factions.Faction;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
+import edu.chl.proximity.Models.Players.Player;
 import edu.chl.proximity.Models.Towers.BulletTower;
 import edu.chl.proximity.Models.Towers.MissileTower;
 import edu.chl.proximity.Viewers.Renderer;
@@ -36,16 +37,16 @@ public class GameScreen implements Screen{
 
     private WaveController waveController;
 
-    public GameScreen(Game g, Map map, Faction faction){
+    public GameScreen(Game g, Map map, Player player){
 
         game =g ;
         currentMap = map;
         GameData.getInstance().setMap(currentMap);
-        GameData.getInstance().setFaction(faction);
+        GameData.getInstance().setPlayer(player);
         renderer = new Renderer();
         mainController = new MainController();
 
-        map.setBase(faction.getNewBase());
+        map.setBase(player.getFaction().getNewBase());
         fixCamera();
         Gdx.input.setInputProcessor(new BoardInputProcessor(viewport));
 
@@ -55,24 +56,26 @@ public class GameScreen implements Screen{
 
     }
 
+    /**
+     * Debug code that adds towers, sets gamespeed and sets resources and such, that should not be available to the player
+     */
+    private void runDebugCode(){
 
-private void runDebugCode(){
+        currentMap.addTower(new MissileTower(new Vector2(0, 0)));//cameraPointCoordinates));
+        //currentMap.addTower(new BulletTower(new Vector2(400,200)));
+        currentMap.addTower(new BulletTower(new Vector2(400,300)));
+        GameData.getInstance().setGameSpeed(4);
+    }
 
-    //currentMap.addTower(new MissileTower(new Vector2(0, 0)));//cameraPointCoordinates));
-    //currentMap.addTower(new BulletTower(new Vector2(400,200)));
-    currentMap.addTower(new BulletTower(new Vector2(400,300)));
-    GameData.getInstance().setGameSpeed(10);
-}
+    /**
+     * Attatches a camera object that views the game-data and interprets it as visual information, and a viewport
+     * that scales this information to fit the screen. These objects are part of the LibGDX library.
+     */
     private void fixCamera(){
         camera = new OrthographicCamera();//Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
-
         camera.setToOrtho(true);
         viewport = new FitViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),camera);
         viewport.apply();
-
-
-
     }
 
 

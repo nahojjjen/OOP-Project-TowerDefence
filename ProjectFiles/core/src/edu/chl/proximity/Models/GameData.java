@@ -2,6 +2,7 @@ package edu.chl.proximity.Models;
 
 import edu.chl.proximity.Models.Factions.Faction;
 import edu.chl.proximity.Models.Maps.Map;
+import edu.chl.proximity.Models.Players.Player;
 
 /**
  * @author Linda Evaldsson and Johan Swanberg (group work)
@@ -15,8 +16,8 @@ public class GameData {
 
     private static GameData gameData;
     private Map map;
+    private Player player;
     private int gameSpeed = 1;
-    private Faction faction;
 
     private GameData() {}
 
@@ -50,21 +51,6 @@ public class GameData {
     }
 
     /**
-     * get the current faction the player has choosen
-     * @return (Faction) that the player is playing
-     */
-    public Faction getFaction(){
-        return faction;
-    }
-
-    /**
-     * set the faction the player has choosen
-     * @param faction what faction to set
-     */
-    public void setFaction(Faction faction){
-        this.faction =faction;
-    }
-    /**
      * set the map of the current game
      * @param map what map to se the game to
      */
@@ -79,4 +65,7 @@ public class GameData {
     public Map getMap() {
         return map;
     }
+
+    public Player getPlayer(){return player;}
+    public void setPlayer(Player inputPlayer){player = inputPlayer;}
 }

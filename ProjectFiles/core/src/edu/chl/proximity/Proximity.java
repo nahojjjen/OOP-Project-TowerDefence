@@ -9,6 +9,7 @@ import edu.chl.proximity.Controllers.GameStates.GameScreen;
 import edu.chl.proximity.Controllers.GameStates.MenuScreen;
 import edu.chl.proximity.Models.Factions.ConcreteFactions.Planes;
 import edu.chl.proximity.Models.Maps.StandardMap;
+import edu.chl.proximity.Models.Players.Player;
 
 
 public class Proximity extends Game {
@@ -16,7 +17,7 @@ public class Proximity extends Game {
 	
 	@Override
 	public void create () {
-		this.setScreen(new GameScreen(this, new StandardMap(), new Planes()));
+		this.setScreen(new GameScreen(this, new StandardMap(), new Player(new Planes())));
 	}
 
 	@Override
