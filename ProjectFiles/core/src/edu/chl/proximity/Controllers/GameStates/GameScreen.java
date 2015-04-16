@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import edu.chl.proximity.Controllers.BoardInputProcessor;
 import edu.chl.proximity.Controllers.MainController;
+import edu.chl.proximity.Controllers.SubControllers.WaveController;
 import edu.chl.proximity.Models.CreepGenerator.StandardGenerator;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
@@ -19,9 +20,10 @@ import edu.chl.proximity.Viewers.Renderer;
 
 /**
  * Created by Johan on 2015-04-07. Group work with Linda
+ * revised by Simon Gislen 16/04
  */
 public class GameScreen implements Screen{
-    private Game game ;
+    private Game game;
     private Map currentMap;
     private SpriteBatch batch = new SpriteBatch();
     private Renderer renderer;
@@ -31,7 +33,7 @@ public class GameScreen implements Screen{
 
 
 
-    private StandardGenerator generator;
+    private WaveController waveController;
 
     public GameScreen(Game g, Map map){
 
@@ -44,7 +46,7 @@ public class GameScreen implements Screen{
         fixCamera();
         Gdx.input.setInputProcessor(new BoardInputProcessor(viewport));
 
-        generator = new StandardGenerator(); //for debugg, tick is in render
+        waveController = new WaveController();
 
     }
 
@@ -59,8 +61,8 @@ public class GameScreen implements Screen{
         viewport.apply();
 
 
-        currentMap.addTower(new MissileTower(new Vector2(0, 0)));//cameraPointCoordinates));
-        currentMap.addTower(new BulletTower(new Vector2(400,200)));
+        //currentMap.addTower(new MissileTower(new Vector2(0, 0)));//cameraPointCoordinates));
+        //currentMap.addTower(new BulletTower(new Vector2(400,200)));
         currentMap.addTower(new BulletTower(new Vector2(400,300)));
 
     }
@@ -85,7 +87,7 @@ public class GameScreen implements Screen{
         batch.end();
 
         mainController.updateAllControllers();
-        generator.tick();
+        waveController.update();
     }
 
     @Override

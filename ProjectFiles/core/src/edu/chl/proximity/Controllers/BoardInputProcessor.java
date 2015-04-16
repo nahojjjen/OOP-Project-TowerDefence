@@ -3,10 +3,13 @@ package edu.chl.proximity.Controllers;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import edu.chl.proximity.Models.GameData;
+import edu.chl.proximity.Models.Towers.MissileTower;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
  * Created by Linda on 2015-04-09.
+ * Revised by Simon Gislen 16/04
  */
 public class BoardInputProcessor implements InputProcessor {
 
@@ -36,7 +39,8 @@ public class BoardInputProcessor implements InputProcessor {
         //Calculates the real coordinates from the scaled coordinates
         Vector2 tmp = viewport.unproject(new Vector2(x, y));
         //System.out.println("Mouse x: " + (int)tmp.x + " Mouse y: " + (int)tmp.y);
-        PointCalculations.createPathTool((int)tmp.x, (int)tmp.y);
+        //PointCalculations.createPathTool((int)tmp.x, (int)tmp.y);
+        GameData.getInstance().getMap().addTower(new MissileTower(tmp));
         return true;
     }
 
