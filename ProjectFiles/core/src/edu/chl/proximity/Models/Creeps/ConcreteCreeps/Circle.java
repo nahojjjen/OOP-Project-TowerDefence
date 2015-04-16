@@ -6,32 +6,31 @@ import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Utilities.Constants;
 
-import java.util.Iterator;
-
 /**
- * @author Linda Evaldsson
- * @author Johan Swanberg (revised)
- * @date 2015-04-08
- * A class for the concrete creep Triangle
+ * Created by Simon Gislen on 14/04/15.
  */
-public class Triangle extends Creep {
+public class Circle extends Creep {
 
-    private static Image img = new Image(Constants.filePath + "Creeps/Line1/triangle.png");
-    private static int speed = 1;
+    private static Image img = new Image(Constants.filePath + "Creeps/Line2/7.png");
+    private static int speed = 3;
 
-    public Triangle() {
+    public Circle() {
         super(img, speed);
     }
 
+    /**
+     * Constructor to create a Circle with properties from another creep.
+     * @param oldCreep a Creep object from which position is used.
+     */
+    public Circle(Creep oldCreep) {
+        super(img, speed, oldCreep);
+    }
 
     @Override
     public void devolve() {
         Map map = GameData.getInstance().getMap();
         displayDeathEffect();
         map.getCreepKillStack().add(this);
-
-        //Adds a circle instance when this creep dies.
-        map.addCreep(new Circle(this));
     }
 
 }

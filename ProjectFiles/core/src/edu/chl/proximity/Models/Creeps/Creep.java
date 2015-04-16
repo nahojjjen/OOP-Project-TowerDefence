@@ -16,9 +16,13 @@ import java.util.Iterator;
 /**
  * @author Linda Evaldsson
  * @author Johan Swanberg (revised)
+ * @author Simon Gislen, 16/04 (revised)
  * @date 2015-04-02
  *
  * An abstract class for creeps. Concrete creeps extends this class.
+=======
+ * Created by Tindra on 02/04/15. Modified by Johan Swanberg
+ * Revised by Simon Gislen, 16/04, Added support for creep devolution.
  */
 public abstract class Creep extends BoardObject {
 
@@ -46,6 +50,19 @@ public abstract class Creep extends BoardObject {
         path = map.getPath();
         randomRotation = (Math.random()*15) - 7.5;
         initiateMovement();
+    }
+
+    public Creep(Image image, int speed, Creep oldCreep) {
+        super(oldCreep.getPosition(), image, 0);
+        System.out.println(oldCreep.getPosition());
+        this.speed = speed;
+        nextWayPointID = oldCreep.nextWayPointID;
+        distanceToNextWayPoint = oldCreep.distanceToNextWayPoint;
+
+        Map map = GameData.getInstance().getMap();
+        path = map.getPath();
+        randomRotation = (Math.random()*15) - 7.5;
+        aimTowardsNextWaypoint();
     }
 
     /**
@@ -194,6 +211,6 @@ public abstract class Creep extends BoardObject {
 
     public void slowDown(double percentage, int time){
         Double newSpeed= (1 - percentage/100)*speed;
-        speed=newSpeed.intValue();
+        speed =newSpeed.intValue();
     }
 }
