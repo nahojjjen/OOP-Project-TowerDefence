@@ -21,9 +21,8 @@ public class CreepController {
 
     public void update() {
         for (Creep creep : creeps) {
-            creep.rotate(); //TODO: rotate creep angle every turn
+            creep.rotate();
             creep.move();
-            //TODO: fix so creeps that intersects base decrease its health
         }
     }
 

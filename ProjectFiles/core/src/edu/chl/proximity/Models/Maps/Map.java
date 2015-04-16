@@ -1,7 +1,10 @@
 package edu.chl.proximity.Models.Maps;
 
 import edu.chl.proximity.Models.Backgrounds.Background;
+import edu.chl.proximity.Models.Bases.Base;
 import edu.chl.proximity.Models.Creeps.Creep;
+import edu.chl.proximity.Models.Factions.Faction;
+import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Particles.ParticleManager;
 import edu.chl.proximity.Models.Paths.Path;
 import edu.chl.proximity.Models.Projectiles.Projectile;
@@ -35,9 +38,7 @@ public abstract class Map {
 
     private Path path;
     private Background background;
-    private int resources;
-    //private Faction faction;
-    private static Map map;
+    private Base base;
 
 
     /**
@@ -48,7 +49,9 @@ public abstract class Map {
     public Map(Path path, Background background){
         this.path = path;
         this.background = background;
+
     }
+
 
 
     /**
@@ -90,7 +93,8 @@ public abstract class Map {
     public Background getBackground(){ return  background;}
     public Set<Creep> getCreepKillStack(){ return creepKillStack;}
     public Set<Projectile> getProjectileKillStack(){ return projectileKillStack;}
-
+    public Base getBase(){return base;}
+    public void setBase(Base base){ this.base = base;}
 
     /**
      * Add a creep to the map.

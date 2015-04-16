@@ -26,10 +26,9 @@ public class Triangle extends Creep {
 
     @Override
     public void devolve() {
-        destroy();
-
-        //Adds a circle instance when this creep dies.
-        GameData.getInstance().getMap().addCreep(new Circle(this));
+        Map map = GameData.getInstance().getMap();
+        displayDeathEffect();
+        map.getCreepKillStack().add(this);
     }
 
 }

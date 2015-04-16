@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chl.proximity.Models.Bases.Base;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
@@ -28,11 +29,18 @@ public class Renderer {
     private Map map;
     private ParticleManager particleManager ;
 
+    /**
+     * create a new renderer that can show everything in a game instance
+     */
     public Renderer() {
         this.map = GameData.getInstance().getMap();
         this.particleManager = map.getParticleManager();
     }
 
+    /**
+     * render everything in the current game
+     * @param batch what object should draw on the screen
+     */
     public void render(SpriteBatch batch) {
 
         renderBackground(batch);
@@ -41,6 +49,7 @@ public class Renderer {
         renderTowers(batch);
         renderCreeps(batch);
         renderProjectiles(batch);
+        renderBase(batch);
         renderParticles(batch);
 
     }
@@ -52,10 +61,24 @@ public class Renderer {
         map.getBackground().render(batch);
     }
 
-    private void renderBase(Batch batch) {
-        //Base.getImage().draw(600, 200);
+    /**
+     * render the current base
+     * @param batch what graphics batch object that should draw on the creen
+     */
+    private void renderBase(SpriteBatch batch) {
+        Base base = GameData.getInstance().getMap().getBase();
+        if (base.getImage() != null && base != null){
+            base.render(batch);
+        } else{
+            System.out.println("In Renderer: There was no base to be found");
+        }
+
     }
 
+    /**
+     * render out all towers on the map
+     * @param batch what graphics batch object that should draw on the creen
+     */
     private void renderTowers(SpriteBatch batch)  {
         List<Tower> towers = map.getTowers();
            if (towers != null){
@@ -68,6 +91,10 @@ public class Renderer {
 
     }
 
+    /**
+     * render all projectiles that are on the map
+     * @param batch what graphics batch object that should draw on the creen
+     */
     private void renderProjectiles(SpriteBatch batch)  {
 
         List<Projectile> projectiles = map.getProjectiles();
@@ -79,6 +106,10 @@ public class Renderer {
 
     }
 
+    /**
+     * render all creeps that are on the map
+     * @param batch what graphics batch object that should draw on the creen
+     */
     private void renderCreeps(SpriteBatch batch)   {
 
         List<Creep> creeps = map.getCreeps();
@@ -90,8 +121,10 @@ public class Renderer {
 
     }
 
-
-
+    /**
+     * render all particles that are on the map
+     * @param batch what graphics batch object that should draw on the creen
+     */
     private  void renderParticles(SpriteBatch batch)   {
         particleManager.renderAllParticles(batch);
     }

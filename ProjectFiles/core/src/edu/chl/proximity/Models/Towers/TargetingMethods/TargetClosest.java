@@ -22,31 +22,18 @@ public class TargetClosest extends TargetingMethod{
     public Creep getTarget(Vector2 position, double range){
         double rangeToClosest;
         Creep closestCreep;
-        List<Creep> creeps = map.getCreeps();
-
         if(map.getCreeps().size() > 0){
-            List<Creep> inRange = new ArrayList<Creep>();
-            for (Creep c : creeps) {
-                if (isWithinRange(c, position, range)) {
-                    System.out.println(isWithinRange(c, position, range));
-                    inRange.add(c);
-                }
-            }
-            if (inRange.size() <= 0) {
-                return null;
-            }
-
-            closestCreep = inRange.get(0);
+            closestCreep = map.getCreeps().get(0);
             rangeToClosest = PointCalculations.distanceBetweenNoSqrt(closestCreep.getPosition(), position);
 
-            for (Creep creep:inRange){
+            for (Creep creep:map.getCreeps()){
                 double rangeToCurrent = PointCalculations.distanceBetweenNoSqrt(position, creep.getPosition());
-                //if (isWithinRange(creep, position, range)){
+                if (isWithinRange(creep, position, range)){
                     if (rangeToCurrent < rangeToClosest){
                         rangeToClosest = rangeToCurrent;
                         closestCreep = creep;
                     }
-                //}
+                }
             }
 
             return closestCreep;

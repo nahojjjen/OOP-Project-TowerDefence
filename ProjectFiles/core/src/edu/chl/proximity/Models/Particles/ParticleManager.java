@@ -25,6 +25,8 @@ public class ParticleManager {
         allEffects.add(new ProximityEffect("explosion2", 100));
         allEffects.add(new ProximityEffect("creepdies", 1000));
         allEffects.add(new ProximityEffect("bulleteffect", 100));
+        allEffects.add(new ProximityEffect("baseDamage", 15));
+        allEffects.add(new ProximityEffect("baseGlitter", 1));
     }
 
     /**
@@ -40,6 +42,8 @@ public class ParticleManager {
     public ProximityEffect getExplosionEffect() {return allEffects.get(0);}
     public ProximityEffect getCreepDiesEffect() {return allEffects.get(1);}
     public ProximityEffect getBulletEffect() {return allEffects.get(2);}
+    public ProximityEffect getBaseDamageEffect() {return allEffects.get(3);}
+    public ProximityEffect getBaseCracksEffect() {return allEffects.get(4);}
 
 }
 

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import edu.chl.proximity.Controllers.GameStates.GameScreen;
 import edu.chl.proximity.Controllers.GameStates.MenuScreen;
+import edu.chl.proximity.Models.Factions.ConcreteFactions.Planes;
 import edu.chl.proximity.Models.Maps.StandardMap;
 
 
@@ -15,7 +16,7 @@ public class Proximity extends Game {
 	
 	@Override
 	public void create () {
-		this.setScreen(new GameScreen(this, new StandardMap()));
+		this.setScreen(new GameScreen(this, new StandardMap(), new Planes()));
 	}
 
 	@Override
