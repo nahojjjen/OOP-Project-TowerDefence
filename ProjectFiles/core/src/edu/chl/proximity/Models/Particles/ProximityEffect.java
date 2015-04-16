@@ -55,10 +55,13 @@ public class ProximityEffect {
      * @param y where to create the effect in y-coordinate
      */
     public void createEffect(float x, float y) {
-        ParticleEffectPool.PooledEffect effect = effectPool.obtain();
-        effect.setPosition(x, y);
-        effects.add(effect);
-        effect.start();
+        if (effectPool != null){
+            ParticleEffectPool.PooledEffect effect = effectPool.obtain();
+            effect.setPosition(x, y);
+            effects.add(effect);
+            effect.start();
+        }
+
     }
     /**
      * Create a new ParticleEffect at the given location

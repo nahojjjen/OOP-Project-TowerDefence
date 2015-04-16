@@ -12,7 +12,7 @@ import edu.chl.proximity.Utilities.Constants;
  */
 public class ShardBase extends Base {
     public ShardBase(){
-        super(new Image(Constants.filePath + "Bases/base1.png"),GameData.getInstance().getMap().getParticleManager().getBaseDamageEffect(), GameData.getInstance().getMap().getParticleManager().getBaseCracksEffect());
+        super(new Image(Constants.filePath + "Bases/base1.png"),null,null);//GameData.getInstance().getMap().getParticleManager().getBaseDamageEffect(), GameData.getInstance().getMap().getParticleManager().getBaseCracksEffect());
 
     }
 

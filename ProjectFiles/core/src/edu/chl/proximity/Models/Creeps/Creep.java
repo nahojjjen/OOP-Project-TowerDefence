@@ -196,9 +196,9 @@ public abstract class Creep extends BoardObject {
         if(nextWayPointID >= path.getWaypoints().size()) {
 
             devolve();
-            //TODO: Decrease base health
             destroy();
-            System.out.println("Creep: Base takes damage!");
+            GameData.getInstance().getMap().getBase().damage();
+
         }
         else {
             moveAngle = getAngleToNextPoint();
