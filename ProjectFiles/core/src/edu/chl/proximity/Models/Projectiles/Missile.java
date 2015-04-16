@@ -10,12 +10,14 @@ import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 /**
  * @author Linda Evaldsson
  * @author Johan Swanberg (revised)
+ * @author Simon Gislen (revised)
  * @date 2015-04-08
  *
  * A missile is a target-following projectile that kills all creeps in a radius.
@@ -57,7 +59,7 @@ public class Missile extends Projectile {
 
     @Override
     public void attack(Creep unusedCreep) {
-        List<Creep> creepList = GameData.getInstance().getMap().getCreeps();
+        List<Creep> creepList = new ArrayList<Creep>(GameData.getInstance().getMap().getCreeps());
         for(Creep creep: creepList) {
             if(PointCalculations.distanceBetweenNoSqrt(this.getCenter(), creep.getCenter()) < range*range){
                 creep.devolve();
