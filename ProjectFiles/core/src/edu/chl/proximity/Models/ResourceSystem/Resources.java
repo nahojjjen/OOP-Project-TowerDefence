@@ -47,6 +47,17 @@ public class Resources {
     }
 
     /**
+     * Add all points, lines and polygons from another
+     * resources to this resources
+     * @param r the instance of resources who's points, lines and polygons is to be added.
+     */
+    public void addResources(Resources r){
+        points+=r.getPoints();
+        lines +=r.getLines();
+        polygons +=r.getPolygons();
+    }
+
+    /**
      * Add given amount of points to current
      * amount of points
      * @param p amount of points to add

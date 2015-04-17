@@ -23,7 +23,7 @@ public class BulletTower extends Tower {
      *  double range, TargetingMethod targetingMethod, int reloadTime
      */
     public BulletTower(Vector2 pos) {
-        super(pos, img, 5, new TargetFirst(), 60);
+        super(pos, img, 150, new TargetFirst(), 60);
     }
 
 
