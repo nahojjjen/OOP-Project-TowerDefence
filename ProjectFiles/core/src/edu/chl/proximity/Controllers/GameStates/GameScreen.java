@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import edu.chl.proximity.Controllers.BoardInputProcessor;
 import edu.chl.proximity.Controllers.MainController;
 import edu.chl.proximity.Controllers.SubControllers.WaveController;
+import edu.chl.proximity.Models.ControlPanel;
 import edu.chl.proximity.Models.CreepGenerator.StandardGenerator;
 import edu.chl.proximity.Models.Factions.Faction;
 import edu.chl.proximity.Models.GameData;
@@ -29,6 +30,7 @@ public class GameScreen implements Screen{
     private Map currentMap;
     private SpriteBatch batch = new SpriteBatch();
     private Renderer renderer;
+    private ControlPanel controlPanel = new ControlPanel();
     private MainController mainController;
     private OrthographicCamera camera;
     private FitViewport viewport;
@@ -45,6 +47,8 @@ public class GameScreen implements Screen{
         GameData.getInstance().setPlayer(player);
         renderer = new Renderer();
         mainController = new MainController();
+        renderer.setControlPanel(controlPanel);
+        mainController.setControlPanel(controlPanel);
 
         map.setBase(player.getFaction().getNewBase());
         fixCamera();

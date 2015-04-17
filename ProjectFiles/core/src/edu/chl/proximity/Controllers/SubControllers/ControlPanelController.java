@@ -1,0 +1,26 @@
+package edu.chl.proximity.Controllers.SubControllers;
+
+import edu.chl.proximity.Models.ControlPanel;
+import edu.chl.proximity.Models.GameData;
+
+/**
+ * @author Linda Evaldsson
+ * @date 2015-04-17
+ */
+public class ControlPanelController {
+
+    private ControlPanel controlPanel;
+
+    public ControlPanelController() {
+        controlPanel = new ControlPanel();
+    }
+    public void setControlPanel(ControlPanel controlPanel) {
+        this.controlPanel = controlPanel;
+    }
+
+    public void update() {
+        controlPanel.setHealth(100);
+        controlPanel.setResources(GameData.getInstance().getPlayer().getResources());
+
+    }
+}

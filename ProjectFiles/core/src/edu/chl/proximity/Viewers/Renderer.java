@@ -33,7 +33,7 @@ public class Renderer {
     private Map map;
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
     private ParticleManager particleManager ;
-    private ControlPanel controlPanel = new ControlPanel();
+    private ControlPanel controlPanel;
 
     /**
      * create a new renderer that can show everything in a game instance
@@ -43,6 +43,10 @@ public class Renderer {
         this.particleManager = map.getParticleManager();
         shapeRenderer.setAutoShapeType(true);
 
+    }
+
+    public void setControlPanel(ControlPanel controlPanel) {
+        this.controlPanel = controlPanel;
     }
 
     /**

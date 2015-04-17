@@ -1,10 +1,8 @@
 package edu.chl.proximity.Controllers;
 
 import com.badlogic.gdx.Game;
-import edu.chl.proximity.Controllers.SubControllers.BackgroundController;
-import edu.chl.proximity.Controllers.SubControllers.CreepController;
-import edu.chl.proximity.Controllers.SubControllers.ProjectileController;
-import edu.chl.proximity.Controllers.SubControllers.TowerController;
+import edu.chl.proximity.Controllers.SubControllers.*;
+import edu.chl.proximity.Models.ControlPanel;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Projectiles.Projectile;
@@ -24,6 +22,7 @@ public class MainController {
     private TowerController towerController = new TowerController();
     private ProjectileController projectileController = new ProjectileController();
     private BackgroundController backgroundController = new BackgroundController();
+    private ControlPanelController controlPanelController = new ControlPanelController();
 
 
     public MainController() {}
@@ -33,8 +32,13 @@ public class MainController {
         towerController.update();
         projectileController.update();
         backgroundController.update();
+        controlPanelController.update();
         clearKillStacks();
 
+    }
+
+    public void setControlPanel(ControlPanel controlPanel) {
+        controlPanelController.setControlPanel(controlPanel);
     }
 
     /**
