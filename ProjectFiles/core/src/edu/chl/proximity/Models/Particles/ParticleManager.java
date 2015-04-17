@@ -25,8 +25,8 @@ public class ParticleManager {
         allEffects.add(new ProximityEffect("explosion2", 100));
         allEffects.add(new ProximityEffect("creepdies", 1000));
         allEffects.add(new ProximityEffect("bulleteffect", 100));
-    //        allEffects.add(new ProximityEffect("baseDamage", 15));
-    //    allEffects.add(new ProximityEffect("baseGlitter", 1));
+        allEffects.add(new ProximityEffect("baseDamage", 15));
+        allEffects.add(new ProximityEffect("baseGlitter", 1));
     }
 
     /**
