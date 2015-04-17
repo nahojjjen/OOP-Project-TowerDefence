@@ -13,25 +13,21 @@ import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Particles.ParticleManager;
+import edu.chl.proximity.Models.Paths.Path;
 import edu.chl.proximity.Models.Projectiles.Projectile;
 import edu.chl.proximity.Models.Towers.Tower;
 
+import java.awt.*;
 import java.util.List;
 
 /**
- * Created by Johan on 2015-04-02.
- *
- * Should be split into
- * towerRenderer
- * projectileRenderer
- * Creeprenderer
- * DebugRenderer
+ * @author Johan on 2015-04-02
+ * @revised by linda
  * etc
  */
 public class Renderer {
 
     private Map map;
-    private ShapeRenderer shapeRenderer = new ShapeRenderer();
     private ParticleManager particleManager ;
     private ControlPanel controlPanel;
 
@@ -41,7 +37,6 @@ public class Renderer {
     public Renderer() {
         this.map = GameData.getInstance().getMap();
         this.particleManager = map.getParticleManager();
-        shapeRenderer.setAutoShapeType(true);
 
     }
 
@@ -53,10 +48,13 @@ public class Renderer {
      * render everything in the current game
      * @param batch what object should draw on the screen
      */
-    public void render(SpriteBatch batch) {
+    public void render(SpriteBatch batch, ShapeRenderer shapeRenderer) {
 
         renderBackground(batch);
-        renderPath(batch);
+
+        batch.end();
+        renderPath( shapeRenderer);
+        batch.begin();
         renderBase(batch);
         renderTowers(batch);
         renderCreeps(batch);
@@ -81,9 +79,25 @@ public class Renderer {
         controlPanel.render(batch);
     }
 
-    private void renderPath(Batch batch){
-        //   batch.draw(Map.getInstance().getPath().getImage(), 0, Gdx.graphics.getHeight());
+    /**
+     * automatically renders the lines between the waypoints of the current path
+     * Uses the shaperenderer, so you need to stop the SpriteBatch before calling this method,
+     * or you get a completely white blank screen.
+     * @param shapeRenderer what shaperenderer to use to draw the lines
+     */
+    private void renderPath( ShapeRenderer shapeRenderer){
+        List<Vector2> waypoints = GameData.getInstance().getMap().getPath().getWaypoints();
+
+        shapeRenderer.begin();
+        shapeRenderer.setColor(new Color(0.4f, 0.6f, 0.9f, 0));
+
+        for (int i = 1; i<waypoints.size(); i++){
+            shapeRenderer.line(waypoints.get(i-1).x +20 ,waypoints.get(i-1).y+20, waypoints.get(i).x+20,waypoints.get(i).y+20);
+        }
+        shapeRenderer.end();
+
     }
+
     private void renderBackground(SpriteBatch batch) {
         map.getBackground().render(batch);
     }

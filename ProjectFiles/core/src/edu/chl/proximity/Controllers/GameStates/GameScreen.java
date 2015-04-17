@@ -6,6 +6,7 @@ import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import edu.chl.proximity.Controllers.BoardInputProcessor;
@@ -22,13 +23,14 @@ import edu.chl.proximity.Models.Towers.MissileTower;
 import edu.chl.proximity.Viewers.Renderer;
 
 /**
- * Created by Johan on 2015-04-07. Group work with Linda
+ * @author Johan on 2015-04-07. Group work with Linda
  * revised by Simon Gislen 16/04
  */
 public class GameScreen implements Screen{
     private Game game;
     private Map currentMap;
     private SpriteBatch batch = new SpriteBatch();
+    private ShapeRenderer shapeRenderer = new ShapeRenderer();
     private Renderer renderer;
     private ControlPanel controlPanel = new ControlPanel();
     private MainController mainController;
@@ -50,6 +52,8 @@ public class GameScreen implements Screen{
         renderer.setControlPanel(controlPanel);
         mainController.setControlPanel(controlPanel);
 
+        shapeRenderer.setAutoShapeType(true);
+
         map.setBase(player.getFaction().getNewBase());
         fixCamera();
         Gdx.input.setInputProcessor(new BoardInputProcessor(viewport));
@@ -68,7 +72,7 @@ public class GameScreen implements Screen{
         currentMap.addTower(new MissileTower(new Vector2(0, 0)));//cameraPointCoordinates));
         //currentMap.addTower(new BulletTower(new Vector2(400,200)));
         currentMap.addTower(new BulletTower(new Vector2(400,300)));
-        GameData.getInstance().setGameSpeed(1);
+        GameData.getInstance().setGameSpeed(10);
     }
 
     /**
@@ -80,6 +84,8 @@ public class GameScreen implements Screen{
         camera.setToOrtho(true);
         viewport = new FitViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),camera);
         viewport.apply();
+
+
     }
 
 
@@ -94,10 +100,11 @@ public class GameScreen implements Screen{
         //This method gets called every frame
         camera.update();
 
+        shapeRenderer.setProjectionMatrix(camera.combined);
         batch.setProjectionMatrix(camera.combined);
 
         batch.begin();
-        renderer.render(batch);
+        renderer.render(batch, shapeRenderer);
 
         batch.end();
         for (int i=0; i<GameData.getInstance().getGameSpeed(); i++){

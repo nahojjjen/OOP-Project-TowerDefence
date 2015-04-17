@@ -19,7 +19,7 @@ public class ControlPanelController {
     }
 
     public void update() {
-        controlPanel.setHealth(100);
+        controlPanel.setHealth(GameData.getInstance().getMap().getBase().getLife());
         controlPanel.setResources(GameData.getInstance().getPlayer().getResources());
 
     }
