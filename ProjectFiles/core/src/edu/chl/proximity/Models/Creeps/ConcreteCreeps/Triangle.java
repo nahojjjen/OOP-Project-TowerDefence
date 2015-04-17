@@ -29,6 +29,9 @@ public class Triangle extends Creep {
         Map map = GameData.getInstance().getMap();
         displayDeathEffect();
         map.getCreepKillStack().add(this);
+
+        //Devolves into a Circle.
+        map.addCreep(new Circle(this));
     }
 
 }
