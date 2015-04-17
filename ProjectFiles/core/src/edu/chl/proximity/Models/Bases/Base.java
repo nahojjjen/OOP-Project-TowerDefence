@@ -17,7 +17,7 @@ public abstract class Base extends BoardObject{
     private ProximityEffect cracksEffect; //The effect to show passivly that intensifies when base is damaged
 
     public Base( Image image, ProximityEffect damageEffect, ProximityEffect cracksEffect){
-        super(null, image, 0);
+        super(null, image, 180);
 
         this.cracksEffect = cracksEffect;
 

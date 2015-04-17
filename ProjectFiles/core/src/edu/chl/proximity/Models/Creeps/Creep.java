@@ -194,8 +194,6 @@ public abstract class Creep extends BoardObject {
 
         nextWayPointID++;
         if(nextWayPointID >= path.getWaypoints().size()) {
-
-            devolve();
             destroy();
             GameData.getInstance().getMap().getBase().damage();
 

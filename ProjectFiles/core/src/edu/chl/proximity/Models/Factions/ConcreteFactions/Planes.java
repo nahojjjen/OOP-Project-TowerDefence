@@ -1,5 +1,6 @@
 package edu.chl.proximity.Models.Factions.ConcreteFactions;
 
+import edu.chl.proximity.Models.Bases.Base;
 import edu.chl.proximity.Models.Bases.ShardBase;
 import edu.chl.proximity.Models.Factions.Faction;
 
@@ -9,6 +10,11 @@ import edu.chl.proximity.Models.Factions.Faction;
 public class Planes extends Faction {
 
     public Planes(){
-        super(1); //should also specify whay spells should be added
+        super(); //should also specify whay spells should be added
+    }
+
+    @Override
+    public Base getNewBase() {
+        return new ShardBase();
     }
 }
