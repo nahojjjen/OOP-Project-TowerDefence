@@ -1,10 +1,14 @@
 package edu.chl.proximity.Viewers;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Bases.Base;
+import edu.chl.proximity.Models.ControlPanel;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
@@ -27,7 +31,9 @@ import java.util.List;
 public class Renderer {
 
     private Map map;
+    private ShapeRenderer shapeRenderer = new ShapeRenderer();
     private ParticleManager particleManager ;
+    private ControlPanel controlPanel = new ControlPanel();
 
     /**
      * create a new renderer that can show everything in a game instance
@@ -35,6 +41,8 @@ public class Renderer {
     public Renderer() {
         this.map = GameData.getInstance().getMap();
         this.particleManager = map.getParticleManager();
+        shapeRenderer.setAutoShapeType(true);
+
     }
 
     /**
@@ -51,7 +59,22 @@ public class Renderer {
         renderProjectiles(batch);
         renderBase(batch);
         renderParticles(batch);
+        renderControlPanel(batch);
 
+    }
+
+    /**
+     * Draws out the control panel
+     * @param batch what graphics batch object that should draw on the screen
+     */
+    private void renderControlPanel(SpriteBatch batch) {
+        /*batch.end();
+        shapeRenderer.begin();
+        shapeRenderer.setColor(Color.RED);
+        controlPanel.render(shapeRenderer);
+        shapeRenderer.end();
+        batch.begin();*/
+        controlPanel.render(batch);
     }
 
     private void renderPath(Batch batch){
@@ -63,7 +86,7 @@ public class Renderer {
 
     /**
      * render the current base
-     * @param batch what graphics batch object that should draw on the creen
+     * @param batch what graphics batch object that should draw on the screen
      */
     private void renderBase(SpriteBatch batch) {
         Base base = GameData.getInstance().getMap().getBase();
