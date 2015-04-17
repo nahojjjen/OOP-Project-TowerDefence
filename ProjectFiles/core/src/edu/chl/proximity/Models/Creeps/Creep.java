@@ -52,6 +52,13 @@ public abstract class Creep extends BoardObject {
         initiateMovement();
     }
 
+
+    /**
+     * @author Simon Gislen
+     * @param image what image the creep should have (it will rotate a random amount automatically)
+     * @param speed what speed the creep will have
+     * @param oldCreep The old creep from which the location on the screen is taken.
+     */
     public Creep(Image image, int speed, Creep oldCreep) {
         super(oldCreep.getPosition(), image, 0);
         System.out.println(oldCreep.getPosition());
@@ -62,7 +69,7 @@ public abstract class Creep extends BoardObject {
         Map map = GameData.getInstance().getMap();
         path = map.getPath();
         randomRotation = (Math.random()*15) - 7.5;
-        aimTowardsNextWaypoint();
+        moveAngle = getAngleToNextPoint();
     }
 
     /**

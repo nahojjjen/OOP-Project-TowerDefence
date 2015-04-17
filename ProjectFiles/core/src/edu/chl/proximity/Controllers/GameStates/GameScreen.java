@@ -64,7 +64,7 @@ public class GameScreen implements Screen{
         currentMap.addTower(new MissileTower(new Vector2(0, 0)));//cameraPointCoordinates));
         //currentMap.addTower(new BulletTower(new Vector2(400,200)));
         currentMap.addTower(new BulletTower(new Vector2(400,300)));
-        GameData.getInstance().setGameSpeed(4);
+        GameData.getInstance().setGameSpeed(1);
     }
 
     /**

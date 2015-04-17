@@ -8,6 +8,7 @@ import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Particles.ProximityEffect;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -76,7 +77,7 @@ public abstract class Projectile extends BoardObject{
     }
 
     public void checkCollision() {
-        List<Creep> creeps = GameData.getInstance().getMap().getCreeps();
+        List<Creep> creeps = new ArrayList<Creep>(GameData.getInstance().getMap().getCreeps());
 
         for (Creep creep : creeps){
         if(collidesWith(creep.getPosition(), 20)) {
