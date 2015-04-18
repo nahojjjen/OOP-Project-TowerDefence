@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Projectiles.Projectile;
 import edu.chl.proximity.Models.Projectiles.SlowDownBullet;
+import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Towers.TargetingMethods.TargetClosest;
 import edu.chl.proximity.Models.Towers.TargetingMethods.TargetFirst;
 import edu.chl.proximity.Utilities.Constants;
@@ -22,7 +23,7 @@ public class SlowTower extends Tower {
      * @param pos Position of tower
      */
     public SlowTower(Vector2 pos){
-        super(pos, img, 1000, new TargetFirst(), 1000);
+        super(pos, img, 1000, new TargetFirst(), 1000, new Resources(100,100,0));
     }
 
     @Override

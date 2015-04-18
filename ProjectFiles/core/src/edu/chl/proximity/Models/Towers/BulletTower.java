@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Projectiles.Bullet;
 import edu.chl.proximity.Models.Projectiles.Projectile;
+import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Towers.TargetingMethods.TargetClosest;
 import edu.chl.proximity.Models.Towers.TargetingMethods.TargetFirst;
 import edu.chl.proximity.Utilities.Constants;
@@ -23,7 +24,7 @@ public class BulletTower extends Tower {
      *  double range, TargetingMethod targetingMethod, int reloadTime
      */
     public BulletTower(Vector2 pos) {
-        super(pos, img, 150, new TargetFirst(), 60);
+        super(pos, img, 150, new TargetFirst(), 60, new Resources(150,0,0));
     }
 
 

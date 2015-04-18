@@ -6,6 +6,7 @@ import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Projectiles.Projectile;
+import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Utilities.PointCalculations;
 
@@ -26,6 +27,7 @@ public abstract class Tower extends BoardObject {
     private TargetingMethod targetingMethod;
     private double range;
     private Creep currentTarget;
+    private Resources cost;
 
     /**
      * Create a new type of tower
@@ -35,14 +37,18 @@ public abstract class Tower extends BoardObject {
      * @param targetingMethod how the tower should decide what target to shoot
      * @param reloadTime how long it takes the tower to shoot another bullet (in frames)
      */
-    public Tower(Vector2 pos, Image image, double range, TargetingMethod targetingMethod, int reloadTime){
+    public Tower(Vector2 pos, Image image, double range, TargetingMethod targetingMethod, int reloadTime, Resources cost){
         //arguments: Position, texture, image rotation-angle
         super(pos, image, 0);
         this.range = range;
         this.targetingMethod = targetingMethod;
         this.reloadTime = reloadTime;
+        this.cost=cost;
     }
 
+    //Getter and setter for cost
+    public Resources getCost(){return cost;}
+    public void setCost(Resources newCost){cost=newCost;}
 
     /**
      * create a projectile at the towers location, if the tower can shoot (aka is not reloading)

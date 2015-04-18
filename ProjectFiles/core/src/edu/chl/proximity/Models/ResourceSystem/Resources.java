@@ -84,6 +84,16 @@ public class Resources {
         polygons += p;
     }
 
+    /**
+     * Remove all points, lines and polygons of another
+     * resources from this resources
+     * @param r Resources that are to be removed
+     */
+    public void removeResources(Resources r){
+        points-=r.getPoints();
+        lines-=r.getLines();
+        polygons=r.getPolygons();
+    }
 
     /**
      * Remove given amount of points to current
