@@ -2,7 +2,6 @@ package edu.chl.proximity.Controllers.GameStates;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -12,14 +11,10 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import edu.chl.proximity.Controllers.BoardInputProcessor;
 import edu.chl.proximity.Controllers.MainController;
 import edu.chl.proximity.Controllers.SubControllers.WaveController;
-import edu.chl.proximity.Models.ControlPanel;
-import edu.chl.proximity.Models.CreepGenerator.StandardGenerator;
-import edu.chl.proximity.Models.Factions.Faction;
+import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Players.Player;
-import edu.chl.proximity.Models.Towers.BulletTower;
-import edu.chl.proximity.Models.Towers.MissileTower;
 import edu.chl.proximity.Models.Towers.SlowTower;
 import edu.chl.proximity.Viewers.Renderer;
 
@@ -33,7 +28,7 @@ public class GameScreen implements Screen{
     private SpriteBatch batch = new SpriteBatch();
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
     private Renderer renderer;
-    private ControlPanel controlPanel = new ControlPanel();
+    private ControlPanel controlPanel;
     private MainController mainController;
     private OrthographicCamera camera;
     private FitViewport viewport;
@@ -47,6 +42,7 @@ public class GameScreen implements Screen{
         game =g ;
         currentMap = map;
         GameData.getInstance().setMap(currentMap);
+        controlPanel = new ControlPanel(); //Must be set after map is set in GameData
         GameData.getInstance().setPlayer(player);
         renderer = new Renderer();
         mainController = new MainController();

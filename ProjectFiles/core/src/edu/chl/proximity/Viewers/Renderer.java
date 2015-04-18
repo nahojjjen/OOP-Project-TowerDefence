@@ -1,23 +1,18 @@
 package edu.chl.proximity.Viewers;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Bases.Base;
-import edu.chl.proximity.Models.ControlPanel;
+import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Particles.ParticleManager;
-import edu.chl.proximity.Models.Paths.Path;
 import edu.chl.proximity.Models.Projectiles.Projectile;
 import edu.chl.proximity.Models.Towers.Tower;
 
-import java.awt.*;
 import java.util.List;
 
 /**
@@ -53,7 +48,7 @@ public class Renderer {
         renderBackground(batch);
 
         batch.end();
-        renderPath( shapeRenderer);
+        renderPath(shapeRenderer);
         batch.begin();
         renderBase(batch);
         renderTowers(batch);

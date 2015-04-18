@@ -1,8 +1,7 @@
 package edu.chl.proximity.Controllers;
 
-import com.badlogic.gdx.Game;
 import edu.chl.proximity.Controllers.SubControllers.*;
-import edu.chl.proximity.Models.ControlPanel;
+import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Projectiles.Projectile;

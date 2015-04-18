@@ -1,6 +1,6 @@
 package edu.chl.proximity.Controllers.SubControllers;
 
-import edu.chl.proximity.Models.ControlPanel;
+import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.GameData;
 
 /**
