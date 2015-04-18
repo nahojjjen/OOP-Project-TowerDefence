@@ -9,6 +9,8 @@ import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Paths.Path;
 import edu.chl.proximity.Utilities.PointCalculations;
+import java.awt.event.*;
+import javax.swing.*;
 
 import java.awt.Point;
 import java.util.Iterator;
@@ -226,8 +228,23 @@ public abstract class Creep extends BoardObject {
         return false;
     }
 
-    public void slowDown(double percentage, int time){
+    public void slowDown(double percentage, int milliSec){
+        final int origSpeed=speed;
         Double newSpeed= (1 - percentage/100)*speed;
         speed =newSpeed.intValue();
+
+        ActionListener taskPerformer = new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                speed=origSpeed;
+            }
+        };
+        Timer timer = new Timer(milliSec ,taskPerformer);
+        timer.setRepeats(false);
+        timer.start();
+        try {
+            Thread.sleep(5000);
+        }catch (InterruptedException e){
+
+        }
     }
 }
