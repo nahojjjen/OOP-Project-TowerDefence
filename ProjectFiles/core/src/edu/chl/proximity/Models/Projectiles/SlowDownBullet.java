@@ -10,7 +10,7 @@ import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
- * Created by User on 2015-04-18.
+ * Created by Hanna on 2015-04-18.
  */
 public class SlowDownBullet extends Projectile{
     private static Image img = new Image(Constants.filePath + "Projectiles/bullet.png");;
@@ -18,6 +18,7 @@ public class SlowDownBullet extends Projectile{
     private double percent;
     private int time;
     private Creep target;
+
 
     public SlowDownBullet(Vector2 position, double angle, Creep target, double slowDownPercent, int slowDownTime){
         super(GameData.getInstance().getMap().getParticleManager().getExplosionEffect(), 1, 20, sound, img, position, angle);
@@ -35,7 +36,6 @@ public class SlowDownBullet extends Projectile{
             else {
                 // Keep angle
             }
-
         } else {
             throw new IllegalStateException("SlowDownBullet: Trying to reangle but target is null");
         }

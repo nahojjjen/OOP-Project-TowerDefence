@@ -233,6 +233,7 @@ public abstract class Creep extends BoardObject {
         Double newSpeed= (1 - percentage/100)*speed;
         speed =newSpeed.intValue();
 
+        /**
         ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 speed=origSpeed;
@@ -245,6 +246,6 @@ public abstract class Creep extends BoardObject {
             Thread.sleep(5000);
         }catch (InterruptedException e){
 
-        }
+        }**/
     }
 }

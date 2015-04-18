@@ -20,6 +20,7 @@ import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Players.Player;
 import edu.chl.proximity.Models.Towers.BulletTower;
 import edu.chl.proximity.Models.Towers.MissileTower;
+import edu.chl.proximity.Models.Towers.SlowTower;
 import edu.chl.proximity.Viewers.Renderer;
 
 /**
@@ -69,10 +70,11 @@ public class GameScreen implements Screen{
      */
     private void runDebugCode(){
 
-        currentMap.addTower(new MissileTower(new Vector2(0, 0)));//cameraPointCoordinates));
+        //currentMap.addTower(new MissileTower(new Vector2(0, 0)));//cameraPointCoordinates));
+        currentMap.addTower(new SlowTower(new Vector2(300, 300)));
         //currentMap.addTower(new BulletTower(new Vector2(400,200)));
-        currentMap.addTower(new BulletTower(new Vector2(400,300)));
-        GameData.getInstance().setGameSpeed(10);
+        //currentMap.addTower(new BulletTower(new Vector2(400,300)));
+        GameData.getInstance().setGameSpeed(1);
     }
 
     /**
