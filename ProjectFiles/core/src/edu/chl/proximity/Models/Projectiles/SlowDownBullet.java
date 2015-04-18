@@ -10,7 +10,9 @@ import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
- * Created by Hanna on 2015-04-18.
+ * @Author Hanna Römer
+ * @Date 2015-04-18
+ * A class representing a bullet that slows down it's target a certain percentage
  */
 public class SlowDownBullet extends Projectile{
     private static Image img = new Image(Constants.filePath + "Projectiles/bullet.png");;
@@ -19,13 +21,21 @@ public class SlowDownBullet extends Projectile{
     private int time;
     private Creep target;
 
-
+    /**
+     * Create a new SlowDownBullet
+     * @param position Starting position of bullet
+     * @param angle Angle bullet should start with
+     * @param target Creep that bullet should aim for
+     * @param slowDownPercent Percentage of speed the target creep will loose
+     * @param slowDownTime Amount of time the target creep will be slowed down
+     */
     public SlowDownBullet(Vector2 position, double angle, Creep target, double slowDownPercent, int slowDownTime){
-        super(GameData.getInstance().getMap().getParticleManager().getExplosionEffect(), 1, 20, sound, img, position, angle);
+        super(GameData.getInstance().getMap().getParticleManager().getExplosionEffect(), 1, 10, sound, img, position, angle);
         this.target=target;
         this.percent=slowDownPercent;
         this.time=slowDownTime;
     }
+
 
     public void reAngle() {
         if (target != null) {
