@@ -22,12 +22,12 @@ public class SlowTower extends Tower {
      * @param pos Position of tower
      */
     public SlowTower(Vector2 pos){
-        super(pos, img, 1000, new TargetFirst(), 50);
+        super(pos, img, 1000, new TargetFirst(), 1000);
     }
 
     @Override
     public Projectile createProjectile() {
-        return new SlowDownBullet(getCenter(), PointCalculations.getVectorAngle(getPosition(),getTarget().getPosition()), getTarget(), 20, 5000);
+        return new SlowDownBullet(getCenter(), PointCalculations.getVectorAngle(getPosition(),getTarget().getPosition()), getTarget(), 50, 200);
     }
 
 }

@@ -34,9 +34,11 @@ public abstract class Creep extends BoardObject {
     private Path path;
     private Sound devolveSound;
     private int speed;
+    private int backUpSpeed;
     private double moveAngle;
     private double randomRotation;
     private Vector2 velocity;
+    private int slowDownTime;
 
     /**
      * create a new creep with an image and a speed
@@ -47,6 +49,7 @@ public abstract class Creep extends BoardObject {
 
         super(new Vector2(0, 300), image, 0);
         this.speed = speed;
+        this.backUpSpeed=speed;
 
         Map map = GameData.getInstance().getMap();
         path = map.getPath();
@@ -146,6 +149,7 @@ public abstract class Creep extends BoardObject {
             aimTowardsNextWaypoint();
         }
         repositionCreep();
+        checkIfSpeedUp();
 
     }
     /**
@@ -228,24 +232,18 @@ public abstract class Creep extends BoardObject {
         return false;
     }
 
-    public void slowDown(double percentage, int milliSec){
-        final int origSpeed=speed;
+    public void slowDown(double percentage, int nbrOfTicks){
         Double newSpeed= (1 - percentage/100)*speed;
         speed =newSpeed.intValue();
+        slowDownTime=nbrOfTicks;
+    }
 
-        /**
-        ActionListener taskPerformer = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                speed=origSpeed;
-            }
-        };
-        Timer timer = new Timer(milliSec ,taskPerformer);
-        timer.setRepeats(false);
-        timer.start();
-        try {
-            Thread.sleep(5000);
-        }catch (InterruptedException e){
-
-        }**/
+    public void checkIfSpeedUp(){
+        if(slowDownTime>0){
+            slowDownTime--;
+        }else if(slowDownTime==0) {
+            speed = backUpSpeed;
+            slowDownTime = -1;
+        }
     }
 }
