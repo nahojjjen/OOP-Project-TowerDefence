@@ -1,8 +1,12 @@
 package edu.chl.proximity.Controllers;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.ControlPanel.ControlPanel;
+import edu.chl.proximity.Models.ControlPanel.ControlPanelTower;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
@@ -11,11 +15,15 @@ import edu.chl.proximity.Utilities.PointCalculations;
 public class BoardInputProcessor implements InputProcessor {
 
     Viewport viewport;
+    ControlPanel controlPanel;
 
     public BoardInputProcessor(Viewport v) {
         viewport = v;
     }
 
+    public void setControlPanel(ControlPanel controlPanel) {
+        this.controlPanel = controlPanel;
+    }
     @Override
     public boolean keyDown (int keycode) {
         return false;
@@ -36,7 +44,23 @@ public class BoardInputProcessor implements InputProcessor {
         //Calculates the real coordinates from the scaled coordinates
         Vector2 tmp = viewport.unproject(new Vector2(x, y));
         //System.out.println("Mouse x: " + (int)tmp.x + " Mouse y: " + (int)tmp.y);
-        PointCalculations.createPathTool((int)tmp.x, (int)tmp.y);
+        PointCalculations.createPathTool((int) tmp.x, (int) tmp.y);
+
+
+        //Todo: Move this handling to separate class
+        //Checks if the Control Panel is clicked
+        if(tmp.x > Gdx.graphics.getWidth() - controlPanel.getWidth()){
+            System.out.println("BoardInputProcessor: ControlPanel is clicked");
+
+            //Checks if a tower on the ControlPanel is clicked
+            ControlPanelTower cpTower = controlPanel.getTowerOnPosition(tmp);
+            if(cpTower != null) {
+                System.out.println("BoardInputProcessor: Clicked on Tower");
+                cpTower.getTower();
+            }
+
+        }
+
         return true;
     }
 

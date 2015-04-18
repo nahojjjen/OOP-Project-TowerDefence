@@ -1,6 +1,7 @@
 package edu.chl.proximity.Utilities;
 
 import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Models.BoardObject;
 
 import java.awt.*;
 
@@ -83,5 +84,20 @@ public class PointCalculations {
             return length;
         }
         return 0;
+    }
+
+    /**
+     * Checks if a point is within a BoardObject
+     * @param point The Point that should be controlled
+     * @param object The object that should be controlled
+     * @return True of the point is within the object entered, false otherwise
+     */
+    public static boolean isPointInObject(Vector2 point, BoardObject object) {
+        boolean isWithinHorizontally = object.getPosition().x < point.x && object.getPosition().x + object.getWidth() > point.x;
+        boolean isWithinVertically = object.getPosition().y < point.y && object.getPosition().y + object.getHeight() > point.y;
+        if(isWithinHorizontally && isWithinVertically) {
+            return true;
+        }
+        return false;
     }
 }

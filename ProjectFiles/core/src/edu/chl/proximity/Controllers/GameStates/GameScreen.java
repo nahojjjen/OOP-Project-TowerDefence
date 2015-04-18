@@ -53,7 +53,9 @@ public class GameScreen implements Screen{
 
         map.setBase(player.getFaction().getNewBase());
         fixCamera();
-        Gdx.input.setInputProcessor(new BoardInputProcessor(viewport));
+        BoardInputProcessor inputProcessor = new BoardInputProcessor(viewport);
+        inputProcessor.setControlPanel(controlPanel);
+        Gdx.input.setInputProcessor(inputProcessor);
 
         waveController = new WaveController();
 

@@ -3,6 +3,7 @@ package edu.chl.proximity.Models.ControlPanel;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.ProximityFont;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
@@ -10,6 +11,7 @@ import edu.chl.proximity.Models.Towers.BulletTower;
 import edu.chl.proximity.Models.Towers.MissileTower;
 import edu.chl.proximity.Models.Towers.SlowTower;
 import edu.chl.proximity.Utilities.Constants;
+import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -111,6 +113,19 @@ public class ControlPanel {
         polygonText.setText("Polygons: " + resources.getPolygons());
         pointText.setText("Points: " + resources.getPolygons());
 
+    }
+
+    /**
+     * Returns the ControlPanelTower in the Vector2-position taken as parameter. If none returns null
+     * @param position The position to check for objects on
+     * @return The ControlPanelTower in the position taken as parameter. Null if there is none.
+     */
+    public ControlPanelTower getTowerOnPosition(Vector2 position) {
+        for(ControlPanelTower cpTower : controlPanelTowerList) {
+            if(PointCalculations.isPointInObject(position, cpTower))
+                return cpTower;
+        }
+        return null;
     }
 
     public void setWidth(int width) {
