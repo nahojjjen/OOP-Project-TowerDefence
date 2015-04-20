@@ -46,12 +46,12 @@ public abstract class AoeSpell extends Spell{
      * call this method if you want the concrete aoeSpell to slow all creeps in the polygon
      * @param amount how many % to slow the creep
      */
-    public void slowCreepsInAoe(double amount){
+    public void slowCreepsInAoe(double amount, int frames){
         List<Creep> creepList = GameData.getInstance().getMap().getCreeps();
 
         for(Creep creep: creepList){
             if (area.contains(creep.getPosition())){ //point.getx returns a double, even though its stored as an int - bad java implementation
-                //TODO creep.slow(amount);
+                creep.slowDown(amount,frames);
             }
         }
 

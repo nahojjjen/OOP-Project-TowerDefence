@@ -26,7 +26,7 @@ public class Image {
         texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Nearest);
     }
 
-    public void render(SpriteBatch batch, Vector2 p, double angle) { //TODO: make sure that render draws with the Point as center instead of upper left corner
+    public void render(SpriteBatch batch, Vector2 p, double angle) {
         batch.draw(texture, (int)p.x, (int)p.y, texture.getWidth()/2,
                 texture.getHeight()/2, texture.getWidth(), texture.getHeight(),
                 1, 1, (int)angle, 0, 0, texture.getWidth(), texture.getHeight(), false, false);

@@ -13,8 +13,6 @@ import java.util.List;
  * A class that keeps track of all effects that can be displayed, and has the ability to render them
  */
 public class ParticleManager {
-    private ProximityEffect explosionEffect;
-    private ProximityEffect creepDiesEffect;
 
     List<ProximityEffect> allEffects = new ArrayList();
 

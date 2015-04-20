@@ -83,8 +83,8 @@ public class ControlPanel {
         controlPanelTowerList.add(new ControlPanelTower(new Vector2(0, 0), new SlowTower(new Vector2(0, 0))));
 
         for(int i = 0; i < controlPanelTowerList.size(); i++) {
-            System.out.println(i % towersPerRow);
-            System.out.println(i/towersPerRow);
+            System.out.println("In controllpanel: Towers per row: " + i % towersPerRow);
+            System.out.println("In controlpanel: i/towers per row "+ i/towersPerRow);
             controlPanelTowerList.get(i).setPosition(new Vector2(position.x + 30 + 50 * (i % towersPerRow), 150 + 50 * (i/towersPerRow)));
         }
     }

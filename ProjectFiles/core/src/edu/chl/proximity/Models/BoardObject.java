@@ -81,7 +81,7 @@ public abstract class BoardObject {
     }
 
     /**
-     * checks whether bullet has traveled outside the frame //TODO fix static
+     * checks whether bullet has traveled outside the frame
      * x-y val
      *
      * @return true if not visible

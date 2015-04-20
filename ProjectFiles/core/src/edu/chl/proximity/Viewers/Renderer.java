@@ -47,7 +47,7 @@ public class Renderer {
 
         renderBackground(batch);
 
-        batch.end();
+        batch.end(); //spritebatch needs to end  for shaperenderer to work
         renderPath(shapeRenderer);
         batch.begin();
         renderBase(batch);

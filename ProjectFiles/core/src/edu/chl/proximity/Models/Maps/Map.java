@@ -111,7 +111,7 @@ public abstract class Map {
             for (int i = 0; i < amount; i++) {
                 creeps.add(creep);
             }
-            System.out.println("amount of creeps = " + creeps.size());
+            System.out.println("In Map:(Add creep mass) amount of creeps = " + creeps.size());
         }
     }
 
@@ -123,7 +123,7 @@ public abstract class Map {
         for (int i = 0; i < 1000; i++) {
             towers.add(tower);
         }
-        System.out.println("amount of towers = " + towers.size());
+        System.out.println("In Map: (spawn turret mass) amount of towers = " + towers.size());
     }
 
 

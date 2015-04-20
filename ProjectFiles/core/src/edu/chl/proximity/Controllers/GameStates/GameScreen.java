@@ -15,6 +15,7 @@ import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Players.Player;
+import edu.chl.proximity.Models.Towers.BulletTower;
 import edu.chl.proximity.Models.Towers.SlowTower;
 import edu.chl.proximity.Viewers.Renderer;
 
@@ -90,10 +91,7 @@ public class GameScreen implements Screen{
 
 
     @Override
-    public void show() {
-        System.out.println("Showing game Screen");
-
-    }
+    public void show() {    }
 
     @Override
     public void render(float delta) {
