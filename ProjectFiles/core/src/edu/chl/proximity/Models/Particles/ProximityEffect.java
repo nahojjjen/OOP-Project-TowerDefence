@@ -39,7 +39,6 @@ public class ProximityEffect {
         effect.load(effectFile, particleEffectsImagesFolder);
         flipAllEmitterY(effect.getEmitters());
 
-
         //loads the example effect into the pool, so the pool knows what kind of effect to populate itself with (see pool-design pattern)
          effectPool = new ParticleEffectPool(effect, 1, maxPoolAmount );
     }
@@ -76,7 +75,7 @@ public class ProximityEffect {
 
     /**
      * A method that manually flips all the particle emitters so that it's not upside down
-     * This method needs to exist because the effect.flipY is bugged & doesnt work.
+     * This method needs to exist because the effect.flipY supplied by the library is bugged & doesnt work.
      * @param emitters all the emitters that should be flipped
      */
     private void flipAllEmitterY(Array<ParticleEmitter> emitters){
@@ -85,13 +84,6 @@ public class ProximityEffect {
         }
     }
 
-    /**
-     * get all the current effects
-     * @return a list of all current effects
-     */
-    public List<ParticleEffectPool.PooledEffect> getActiveEffects(){
-        return effects;
-    }
     /**
      * Create a new ParticleEffect at the given location
      *
@@ -122,17 +114,15 @@ public class ProximityEffect {
      * @param batch what rendering batch to use
      */
     public  void renderAllActiveEffects(SpriteBatch batch) {
-        Map map = GameData.getInstance().getMap();
 
         for (int i = effects.size() - 1; i >= 0; i--) {
             ParticleEffectPool.PooledEffect effect = effects.get(i);
 
             effect.draw(batch, Gdx.graphics.getDeltaTime()*GameData.getInstance().getGameSpeed());
 
-
             System.out.println("In Proximityeffect: particle life is at x %: "+ effect.getEmitters().get(0).getPercentComplete());
             System.out.println("in proximityEffect: is particle complete?" + effect.isComplete());
-            if(effect.getEmitters().get(0).getPercentComplete() >= 1){//effect.isComplete()){
+            if(effect.getEmitters().get(0).getPercentComplete() >= 0){//effect.isComplete()){
                 effect.free(); //put the effect back in the pool if it is done )
                 effects.remove(effect); //remove the finished effect from the list of active effects
             }
