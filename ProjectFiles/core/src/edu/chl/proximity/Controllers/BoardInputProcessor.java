@@ -7,6 +7,10 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanelTower;
+import edu.chl.proximity.Models.GameData;
+import edu.chl.proximity.Models.Towers.BulletTower;
+import edu.chl.proximity.Models.Towers.MissileTower;
+import edu.chl.proximity.Models.Towers.SlowTower;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
@@ -16,6 +20,7 @@ public class BoardInputProcessor implements InputProcessor {
 
     Viewport viewport;
     ControlPanel controlPanel;
+    private int tempCounter=0;
 
     public BoardInputProcessor(Viewport v) {
         viewport = v;
@@ -41,6 +46,8 @@ public class BoardInputProcessor implements InputProcessor {
 
     @Override
     public boolean touchDown (int x, int y, int pointer, int button) {
+
+
         //Calculates the real coordinates from the scaled coordinates
         Vector2 tmp = viewport.unproject(new Vector2(x, y));
         //System.out.println("Mouse x: " + (int)tmp.x + " Mouse y: " + (int)tmp.y);
@@ -59,6 +66,16 @@ public class BoardInputProcessor implements InputProcessor {
                 cpTower.getTower();
             }
 
+        }
+
+        tempCounter++;
+        if (tempCounter % 3== 0){
+            GameData.getInstance().getMap().addTower(new SlowTower(tmp));
+        }else if(tempCounter%3 ==1){
+
+            GameData.getInstance().getMap().addTower(new MissileTower(tmp));
+        }else{
+            GameData.getInstance().getMap().addTower(new BulletTower(tmp));
         }
 
         return true;
