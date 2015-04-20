@@ -106,7 +106,7 @@ public abstract class Projectile extends BoardObject{
      */
     public void playSound(){
         if (sound != null){
-            sound.play(0.1f, 0.3f, 1);
+            sound.play(0.1f, 0.5f, 1);
         }
 
     }

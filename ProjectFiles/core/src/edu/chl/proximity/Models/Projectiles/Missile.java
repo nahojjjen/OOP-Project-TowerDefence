@@ -24,7 +24,7 @@ import java.util.List;
 public class Missile extends Projectile {
 
     private static Image img = new Image(Constants.filePath + "Projectiles/missile.png");
-    private static Sound sound = Gdx.audio.newSound(new FileHandle(Constants.filePath + "Sounds/poof.ogg"));
+    private static Sound sound = Gdx.audio.newSound(new FileHandle(Constants.filePath + "Sounds/explosion.ogg"));
     private double range = 40;
     private Creep target;
 

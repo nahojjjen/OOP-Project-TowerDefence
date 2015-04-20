@@ -27,6 +27,7 @@ public class ParticleManager {
         allEffects.add(new ProximityEffect("bulleteffect", 100));
         allEffects.add(new ProximityEffect("baseDamage", 15));
         allEffects.add(new ProximityEffect("baseGlitter", 1));
+        allEffects.add(new ProximityEffect("frostBlast", 10));
     }
 
     /**
@@ -44,6 +45,7 @@ public class ParticleManager {
     public ProximityEffect getBulletEffect() {return allEffects.get(2);}
     public ProximityEffect getBaseDamageEffect() {return allEffects.get(3);}
     public ProximityEffect getBaseCracksEffect() {return allEffects.get(4);}
+    public ProximityEffect getFrostBlastEffect() {return allEffects.get(5);}
 
 }
 

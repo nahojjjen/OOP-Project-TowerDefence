@@ -11,7 +11,7 @@ import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
- * @Author Hanna Römer
+ * @Author Hanna Rï¿½mer
  * @Date 2015-04-15
  * A class representing a tower that shoots bullets that slows down the creeps
  */
@@ -23,7 +23,7 @@ public class SlowTower extends Tower {
      * @param pos Position of tower
      */
     public SlowTower(Vector2 pos){
-        super(pos, img, 1000, new TargetFirst(), 1000, new Resources(100,100,0));
+        super(pos, img, 500, new TargetFirst(), 50, new Resources(100,100,0));
     }
 
     @Override
