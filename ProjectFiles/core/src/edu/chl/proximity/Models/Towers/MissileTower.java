@@ -22,7 +22,7 @@ public class MissileTower extends Tower{
      *  double range, TargetingMethod targetingMethod, int reloadTime
      */
     public MissileTower(Vector2 pos) {
-        super(pos, img, 1000, new TargetClosest(), 100, new Resources(300, 200, 0));
+        super(pos, img, 200, new TargetClosest(), 100, new Resources(300, 200, 0));
     }
 
     public Projectile createProjectile() {

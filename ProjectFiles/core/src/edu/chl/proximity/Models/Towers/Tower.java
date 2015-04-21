@@ -49,6 +49,7 @@ public abstract class Tower extends BoardObject {
     //Getter and setter for cost
     public Resources getCost(){return cost;}
     public void setCost(Resources newCost){cost=newCost;}
+    public double getRange(){return range;}
 
     /**
      * create a projectile at the towers location, if the tower can shoot (aka is not reloading)

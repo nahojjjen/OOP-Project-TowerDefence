@@ -87,7 +87,7 @@ public abstract class BoardObject {
      * @return true if not visible
      */
     public boolean isOutsideView() {
-        if (getPosition().x < Gdx.graphics.getWidth()&& getPosition().y < Gdx.graphics.getHeight() && getPosition().x > 0 && getPosition().y > 0) {
+        if (getCenter().x < Gdx.graphics.getWidth()&& getCenter().y < Gdx.graphics.getHeight() && getCenter().x > 0 && getCenter().y > 0) {
             return false;
         }
         return true;
@@ -100,7 +100,7 @@ public abstract class BoardObject {
      */
     public void faceTarget(Vector2 v) {
         if (v != null) {
-            angle = (PointCalculations.getVectorAngle(getPosition(), v));
+            angle = (PointCalculations.getVectorAngle(getCenter(), v));
             //angle remains unchanged, if there's no new point to look at.
         }
     }

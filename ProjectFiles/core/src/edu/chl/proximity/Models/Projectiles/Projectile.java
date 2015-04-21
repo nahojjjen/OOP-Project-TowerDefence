@@ -97,7 +97,7 @@ public abstract class Projectile extends BoardObject{
      */
     public void playParticleEffect(){
         if (effect != null){
-            effect.createEffect((int) getPosition().x, (int) getPosition().y); //display the effect this projectile has
+            effect.createEffect((int) getCenter().x, (int) getCenter().y); //display the effect this projectile has
         }
     }
 

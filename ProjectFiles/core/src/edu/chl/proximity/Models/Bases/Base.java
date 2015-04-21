@@ -23,7 +23,7 @@ public abstract class Base extends BoardObject{
 
         this.damageEffect = damageEffect;
         Path path = GameData.getInstance().getMap().getPath();
-        Vector2 basePosition = (path.getWaypoint(path.getWaypoints().size()-1));
+        Vector2 basePosition = new Vector2(path.getWaypoint(path.getWaypoints().size()-1));
         basePosition.add(-1*getWidth()/2, -1* getHeight()/2); //position the base centered at last waypoint
         setPosition(basePosition);
     }
@@ -80,7 +80,7 @@ public abstract class Base extends BoardObject{
      * show the damage effect connected to this base at the base location
      */
     public void showDamageEffect(){
-        damageEffect.createEffect(this.getPosition().x, this.getPosition().y);
+        damageEffect.createEffect(this.getCenter().x, this.getCenter().y);
     }
 
     /**

@@ -23,7 +23,7 @@ public class SlowTower extends Tower {
      * @param pos Position of tower
      */
     public SlowTower(Vector2 pos){
-        super(pos, img, 500, new TargetFirst(), 50, new Resources(100,100,0));
+        super(pos, img, 100, new TargetFirst(), 50, new Resources(100,100,0));
     }
 
     @Override

@@ -41,7 +41,7 @@ public class SlowDownBullet extends Projectile{
         if (target != null) {
             //Check if the target is still on the board
             if(GameData.getInstance().getMap().getCreeps().contains((target))) {
-                faceTarget(target.getPosition());
+                faceTarget(target.getCenter());
             }
             else {
                 // Keep angle
