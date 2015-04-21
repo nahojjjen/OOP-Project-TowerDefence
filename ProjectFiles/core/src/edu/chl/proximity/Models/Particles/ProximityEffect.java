@@ -115,14 +115,12 @@ public class ProximityEffect {
      */
     public  void renderAllActiveEffects(SpriteBatch batch) {
 
-        for (int i = effects.size() - 1; i >= 0; i--) {
+        for (int i = 0; i<effects.size(); i++) {
             ParticleEffectPool.PooledEffect effect = effects.get(i);
 
             effect.draw(batch, Gdx.graphics.getDeltaTime()*GameData.getInstance().getGameSpeed());
 
-            System.out.println("In Proximityeffect: particle life is at x %: "+ effect.getEmitters().get(0).getPercentComplete());
-            System.out.println("in proximityEffect: is particle complete?" + effect.isComplete());
-            if(effect.getEmitters().get(0).getPercentComplete() >= 0){//effect.isComplete()){
+            if(effect.getEmitters().get(0).getPercentComplete() >= 0 && !effect.getEmitters().get(0).isContinuous()){//effect.isComplete()){
                 effect.free(); //put the effect back in the pool if it is done )
                 effects.remove(effect); //remove the finished effect from the list of active effects
             }
