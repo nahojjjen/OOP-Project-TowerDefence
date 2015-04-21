@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import edu.chl.proximity.Controllers.BoardInputProcessor;
 import edu.chl.proximity.Controllers.MainController;
 import edu.chl.proximity.Controllers.SubControllers.WaveController;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
@@ -45,17 +44,15 @@ public class GameScreen implements Screen{
         controlPanel = new ControlPanel(); //Must be set after map is set in GameData
         GameData.getInstance().setPlayer(player);
         renderer = new Renderer();
-        mainController = new MainController();
+        fixCamera();
+        mainController = new MainController(viewport);
         renderer.setControlPanel(controlPanel);
         mainController.setControlPanel(controlPanel);
 
         shapeRenderer.setAutoShapeType(true);
 
         map.setBase(player.getFaction().getNewBase());
-        fixCamera();
-        BoardInputProcessor inputProcessor = new BoardInputProcessor(viewport);
-        inputProcessor.setControlPanel(controlPanel);
-        Gdx.input.setInputProcessor(inputProcessor);
+        Gdx.input.setInputProcessor(mainController);
 
         runDebugCode();
 
