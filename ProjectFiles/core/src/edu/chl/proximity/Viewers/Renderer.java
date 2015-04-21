@@ -1,6 +1,8 @@
 package edu.chl.proximity.Viewers;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -48,7 +50,15 @@ public class Renderer {
         renderBackground(batch);
 
         batch.end(); //spritebatch needs to end  for shaperenderer to work
+        shapeRenderer.begin();
         renderPath(shapeRenderer);
+        shapeRenderer.end();
+
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        renderAllTowerRanges(shapeRenderer);
+        shapeRenderer.end();
+
+
         batch.begin();
         renderBase(batch);
         renderTowers(batch);
@@ -83,16 +93,25 @@ public class Renderer {
     private void renderPath( ShapeRenderer shapeRenderer){
         List<Vector2> waypoints = GameData.getInstance().getMap().getPath().getWaypoints();
 
-        shapeRenderer.begin();
         shapeRenderer.setColor(new Color(0.4f, 0.6f, 0.9f, 0));
 
         for (int i = 1; i<waypoints.size(); i++){
             shapeRenderer.line(waypoints.get(i-1).x +20 ,waypoints.get(i-1).y+20, waypoints.get(i).x+20,waypoints.get(i).y+20);
         }
-        shapeRenderer.end();
-
     }
 
+    /**
+     * render a circle around all towers that show their range
+     * @param shapeRenderer what shaperenderer to use to show the graphics
+     */
+    private void renderAllTowerRanges(ShapeRenderer shapeRenderer){
+        for (Tower tower:GameData.getInstance().getMap().getTowers()){
+            Vector2 towerCenter = tower.getCenter();
+            Gdx.gl.glEnable(GL20.GL_BLEND); //enables transparency
+            shapeRenderer.setColor(0.5f,0.5f,1f,0.2f);
+            shapeRenderer.circle(towerCenter.x,towerCenter.y,(float)tower.getRange());
+        }
+    }
     private void renderBackground(SpriteBatch batch) {
         map.getBackground().render(batch);
     }
@@ -117,6 +136,7 @@ public class Renderer {
      */
     private void renderTowers(SpriteBatch batch)  {
         List<Tower> towers = map.getTowers();
+
            if (towers != null){
                for (Tower tower : towers) {
                    //tower.getAnimation().draw(tower.getPoint().getX()-20, tower.getPoint().getY()-20);
