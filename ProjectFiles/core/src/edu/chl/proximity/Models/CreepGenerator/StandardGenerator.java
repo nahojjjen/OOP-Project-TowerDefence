@@ -17,7 +17,9 @@ import java.util.ArrayList;
  * @author Simon Gislen
  * @date 2015-04-08
  *
+ * ---
  * Revised Simon Gislen 16/04: Modified purpose of class to handle creep spawning logic.
+ * Revised Simon Gislen 21/04:
  */
 public class StandardGenerator {
     private Map map;
@@ -38,6 +40,7 @@ public class StandardGenerator {
     public Wave generateWaveForWaveIndex(int waveIndex) {
 
         //Defaults
+
         double spawnInterval = 1;
         double cooldown = 4;
         ArrayList<Creep> creeps = new ArrayList<Creep>();
@@ -80,10 +83,10 @@ public class StandardGenerator {
 
         } else {
             //Some endless algorithm
-            for (int i = 0; i < waveIndex; i++) {
+            for (int i = 0; i < (int)(waveIndex/2); i++) {
                 creeps.add(new Circle());
             }
-            for (int i = 0; i < waveIndex/2; i++) {
+            for (int i = 0; i < (int)(waveIndex/5); i++) {
                 creeps.add(new Line1(4));
             }
 
