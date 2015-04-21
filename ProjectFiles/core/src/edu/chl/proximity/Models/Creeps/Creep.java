@@ -49,7 +49,7 @@ public abstract class Creep extends BoardObject {
 
         super(new Vector2(0, 300), image, 0);
         this.speed = speed;
-        this.backUpSpeed=speed;
+        this.backUpSpeed = speed;
 
         Map map = GameData.getInstance().getMap();
         path = map.getPath();
@@ -68,6 +68,7 @@ public abstract class Creep extends BoardObject {
         super(oldCreep.getPosition(), image, 0);
         System.out.println("In creep: Old creep position:  "+oldCreep.getPosition());
         this.speed = speed;
+        this.backUpSpeed = speed;
         nextWayPointID = oldCreep.nextWayPointID;
         distanceToNextWayPoint = oldCreep.distanceToNextWayPoint;
 
@@ -237,7 +238,7 @@ public abstract class Creep extends BoardObject {
      * @param percentage how many percent slower the creep should be
      * @param nbrOfTicks how many frames the creep should be slowed
      */
-    public void slowDown(double percentage, int nbrOfTicks){
+    public void slowDown(double percentage, int nbrOfTicks) {
         if(slowDownTime<0) {
             Double newSpeed = (1 - percentage / 100) * speed;
             speed = newSpeed.intValue();
