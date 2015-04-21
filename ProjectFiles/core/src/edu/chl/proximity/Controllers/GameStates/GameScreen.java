@@ -21,7 +21,10 @@ import edu.chl.proximity.Viewers.Renderer;
 
 /**
  * @author Johan on 2015-04-07. Group work with Linda
+ *
+ * ---
  * revised by Simon Gislen 16/04
+ * revised by Simon Gislen 21/04
  */
 public class GameScreen implements Screen{
     private Game game;
@@ -34,13 +37,9 @@ public class GameScreen implements Screen{
     private OrthographicCamera camera;
     private FitViewport viewport;
 
-
-
-    private WaveController waveController;
-
     public GameScreen(Game g, Map map, Player player){
 
-        game =g ;
+        game = g;
         currentMap = map;
         GameData.getInstance().setMap(currentMap);
         controlPanel = new ControlPanel(); //Must be set after map is set in GameData
@@ -57,8 +56,6 @@ public class GameScreen implements Screen{
         BoardInputProcessor inputProcessor = new BoardInputProcessor(viewport);
         inputProcessor.setControlPanel(controlPanel);
         Gdx.input.setInputProcessor(inputProcessor);
-
-        waveController = new WaveController();
 
         runDebugCode();
 
@@ -85,8 +82,6 @@ public class GameScreen implements Screen{
         camera.setToOrtho(true);
         viewport = new FitViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),camera);
         viewport.apply();
-
-
     }
 
 
@@ -107,7 +102,6 @@ public class GameScreen implements Screen{
         batch.end();
         for (int i=0; i<GameData.getInstance().getGameSpeed(); i++){
             mainController.updateAllControllers();
-            waveController.update();
         }
 
     }

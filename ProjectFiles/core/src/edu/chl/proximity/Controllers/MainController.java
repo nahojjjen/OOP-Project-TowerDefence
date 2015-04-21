@@ -13,6 +13,8 @@ import java.util.Set;
 /**
  * Created by Johan on 2015-04-02. Group work with Linda
  *
+ * ----
+ * Revised by Simon Gislen 21/04
  */
 public class MainController {
 
@@ -22,11 +24,12 @@ public class MainController {
     private ProjectileController projectileController = new ProjectileController();
     private BackgroundController backgroundController = new BackgroundController();
     private ControlPanelController controlPanelController = new ControlPanelController();
-
+    private WaveController waveController = new WaveController();
 
     public MainController() {}
 
-    public void updateAllControllers(){
+    public void updateAllControllers() {
+        waveController.update();
         creepController.update();
         towerController.update();
         projectileController.update();
@@ -43,7 +46,7 @@ public class MainController {
     /**
      * Remove all objects marked for deletion this frame.
      */
-    public void clearKillStacks(){
+    public void clearKillStacks() {
         clearProjectileStack();
         clearCreepStack();
     }
