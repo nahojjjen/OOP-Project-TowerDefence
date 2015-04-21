@@ -16,7 +16,7 @@ import java.util.Iterator;
  */
 public class Triangle extends Creep {
 
-    private static Image img = new Image(Constants.filePath + "Creeps/Line1/triangle.png");
+    private static Image img = new Image(Constants.filePath + "Creeps/Line3/triangle.png");
     private static int speed = 1;
 
     public Triangle() {
@@ -27,11 +27,9 @@ public class Triangle extends Creep {
     @Override
     public void devolve() {
         Map map = GameData.getInstance().getMap();
-        displayDeathEffect();
-        map.getCreepKillStack().add(this);
-
-        //Devolves into a Circle.
         map.addCreep(new Circle(this));
+
+        destroy();
     }
 
 }

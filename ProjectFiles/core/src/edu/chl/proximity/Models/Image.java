@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 import java.awt.*;
+import java.io.File;
 
 /**
  * @author Linda Evaldsson
@@ -24,6 +25,10 @@ public class Image {
         texture = t;
 
         texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Nearest);
+    }
+    public Image(File f) {
+        texture = new Texture(f.getPath());
+        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
 
     public void render(SpriteBatch batch, Vector2 p, double angle) {

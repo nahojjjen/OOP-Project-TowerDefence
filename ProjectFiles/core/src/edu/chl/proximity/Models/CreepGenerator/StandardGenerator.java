@@ -2,6 +2,7 @@ package edu.chl.proximity.Models.CreepGenerator;
 
 import com.badlogic.gdx.Game;
 import edu.chl.proximity.Models.Creeps.ConcreteCreeps.Circle;
+import edu.chl.proximity.Models.Creeps.ConcreteCreeps.Line1;
 import edu.chl.proximity.Models.Creeps.ConcreteCreeps.Triangle;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
@@ -45,9 +46,9 @@ public class StandardGenerator {
         if (waveIndex <= 5) {
 
             for (int i = 0; i < 5; i++) {
-                creeps.add(new Circle());
+                creeps.add(new Line1(1));
             }
-            creeps.add(new Triangle());
+            //creeps.add(new Triangle());
 
             switch (waveIndex) {
                 case 2: {
@@ -56,13 +57,13 @@ public class StandardGenerator {
                 break;
                 case 3: {
                     for (int i = 0; i < 5; i++) {
-                        creeps.add(new Circle());
+                        creeps.add(new Line1(2));
                     }
                 }
                 break;
                 case 4: {
                     for (int i = 0; i < 10; i++) {
-                        creeps.add(new Circle());
+                        creeps.add(new Line1(3));
                     }
                     spawnInterval = 0.5;
                 }
@@ -74,17 +75,19 @@ public class StandardGenerator {
                     spawnInterval = 1;
                 }
                 break;
-            }
-        } else {
-            //Some endless algorithm
-            for (int i = 0; i < waveIndex * 2; i++) {
-                creeps.add(new Circle());
-            }
-            for (int i = 0; i < waveIndex; i++) {
-                creeps.add(new Triangle());
+
             }
 
-            spawnInterval = Math.max(3 / waveIndex, 0.1);
+        } else {
+            //Some endless algorithm
+            for (int i = 0; i < waveIndex; i++) {
+                creeps.add(new Circle());
+            }
+            for (int i = 0; i < waveIndex/2; i++) {
+                creeps.add(new Line1(4));
+            }
+
+            spawnInterval = Math.max(3 / waveIndex, 0.2);
 
         }
         return new Wave(creeps, spawnInterval, cooldown);
