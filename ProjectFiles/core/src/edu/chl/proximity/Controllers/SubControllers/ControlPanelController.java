@@ -34,10 +34,9 @@ public class ControlPanelController implements ClickHandler {
 
 
     public void touchDown (Vector2 clickedPoint, int pointer, int button) {
-        System.out.println("MainController: ControlPanel is clicked");
+
         ControlPanelTower cpTower = controlPanel.getTowerOnPosition(clickedPoint);
         if(cpTower != null) {
-            System.out.println("MainController: Clicked on Tower");
             cpTower.getTower();
         }
 

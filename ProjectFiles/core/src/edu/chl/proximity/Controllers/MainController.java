@@ -35,6 +35,7 @@ public class MainController implements InputProcessor{
     private BackgroundController backgroundController = new BackgroundController();
     private ControlPanelController controlPanelController = new ControlPanelController();
     private WaveController waveController = new WaveController();
+    private MapController mapController = new MapController();
     private List<ClickHandler> clickHandlers = new ArrayList<ClickHandler>();
 
     private Viewport viewport;
@@ -44,6 +45,7 @@ public class MainController implements InputProcessor{
     public MainController(Viewport v) {
         viewport=v;
         clickHandlers.add(controlPanelController);
+        clickHandlers.add(mapController);
     }
 
     public void setControlPanel(ControlPanel controlPanel) {
@@ -88,7 +90,6 @@ public class MainController implements InputProcessor{
                 }
             }
 
-            System.out.println(o.getClass());
             if(o instanceof Projectile) {
                 Projectile projectile = (Projectile)o;
                 if (projectile != null) {
@@ -132,15 +133,7 @@ public class MainController implements InputProcessor{
                 controller.touchDown(clickedPoint, pointer, button);
         }
 
-        tempCounter++;
-        if (tempCounter % 3== 0){
-            GameData.getInstance().getMap().addTower(new SlowTower(clickedPoint));
-        }else if(tempCounter%3 ==1){
 
-            GameData.getInstance().getMap().addTower(new MissileTower(clickedPoint));
-        }else{
-            GameData.getInstance().getMap().addTower(new BulletTower(clickedPoint));
-        }
 
         return true;
     }
