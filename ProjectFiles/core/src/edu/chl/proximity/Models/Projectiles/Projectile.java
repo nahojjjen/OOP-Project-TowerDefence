@@ -116,7 +116,7 @@ public abstract class Projectile extends BoardObject{
     private void decreaseProjectileHealth(){
         health--;
         if (health <= 0){
-            GameData.getInstance().getMap().getProjectileKillStack().add(this);
+            GameData.getInstance().getMap().getRemoveStack().add(this);
         }
     }
 

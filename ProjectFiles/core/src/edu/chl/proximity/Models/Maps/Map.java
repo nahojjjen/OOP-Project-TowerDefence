@@ -2,9 +2,8 @@ package edu.chl.proximity.Models.Maps;
 
 import edu.chl.proximity.Models.Backgrounds.Background;
 import edu.chl.proximity.Models.Bases.Base;
+import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Creeps.Creep;
-import edu.chl.proximity.Models.Factions.Faction;
-import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Particles.ParticleManager;
 import edu.chl.proximity.Models.Paths.Path;
 import edu.chl.proximity.Models.Projectiles.Projectile;
@@ -13,7 +12,6 @@ import edu.chl.proximity.Models.Waves.Wave;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -33,8 +31,12 @@ public abstract class Map {
     private ArrayList<Tower> towers = new ArrayList<Tower>();
     private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
     private ParticleManager particleManager = new ParticleManager();
-    private Set<Creep> creepKillStack = new HashSet<Creep>();
-    private Set<Projectile> projectileKillStack = new HashSet<Projectile>();
+
+
+
+    //private Set<Creep> creepKillStack = new HashSet<Creep>();
+    //private Set<Projectile> projectileKillStack = new HashSet<Projectile>();
+    private Set<BoardObject> removeStack = new HashSet<BoardObject>();
 
     private Path path;
     private Background background;
@@ -50,6 +52,10 @@ public abstract class Map {
         this.path = path;
         this.background = background;
 
+    }
+
+    public Set<BoardObject> getRemoveStack() {
+        return removeStack;
     }
 
 
@@ -91,8 +97,6 @@ public abstract class Map {
     public Path getPath(){return path;}
     public void setPath(Path newPath){ path = newPath;}
     public Background getBackground(){ return  background;}
-    public Set<Creep> getCreepKillStack(){ return creepKillStack;}
-    public Set<Projectile> getProjectileKillStack(){ return projectileKillStack;}
     public Base getBase(){return base;}
     public void setBase(Base base){ this.base = base;}
 

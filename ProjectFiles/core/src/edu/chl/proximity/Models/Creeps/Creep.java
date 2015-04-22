@@ -123,7 +123,7 @@ public abstract class Creep extends BoardObject {
     public void destroy() {
         Map map = GameData.getInstance().getMap();
         displayDeathEffect();
-        map.getCreepKillStack().add(this);
+        map.getRemoveStack().add(this);
     }
     /**
      * rotate the creeps image a random amount (a creep is assigned a random rotation amount on creation)

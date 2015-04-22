@@ -35,7 +35,7 @@ public class ProjectileController {
             }*/
             projectile.checkCollision();
             if (projectile.isOutsideView()){
-                map.getProjectileKillStack().add(projectile);
+                map.getRemoveStack().add(projectile);
             }
         }
     }

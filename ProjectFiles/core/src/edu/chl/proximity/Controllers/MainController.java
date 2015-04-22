@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sun.prism.image.ViewPort;
 import edu.chl.proximity.Controllers.SubControllers.*;
+import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanelTower;
 import edu.chl.proximity.Models.Creeps.Creep;
@@ -67,16 +68,41 @@ public class MainController implements InputProcessor{
     /**
      * Remove all objects marked for deletion this frame.
      */
+
     public void clearKillStacks() {
-        clearProjectileStack();
-        clearCreepStack();
+        Set<BoardObject> killStack = GameData.getInstance().getMap().getRemoveStack();
+        Iterator killIterator = killStack.iterator();
+
+        List<Creep> creepList = GameData.getInstance().getMap().getCreeps();
+        List<Projectile> projectileList = GameData.getInstance().getMap().getProjectiles();
+
+        while (killIterator.hasNext()){
+            BoardObject o = (BoardObject)killIterator.next();
+            if(o instanceof Creep) {
+                Creep creep = (Creep)o;
+                if (creep != null) {
+                    killIterator.remove();
+                    creepList.remove(creep);
+                }
+            }
+
+            System.out.println(o.getClass());
+            if(o instanceof Projectile) {
+                Projectile projectile = (Projectile)o;
+                if (projectile != null) {
+                    killIterator.remove();
+                    projectileList.remove(projectile);
+                }
+            }
+        }
+
     }
 
     /**
      * clear all creeps that have been marked for deletion this frame
      */
     public void clearCreepStack(){
-        Set<Creep> creepKillSet = GameData.getInstance().getMap().getCreepKillStack();
+        /*Set<Creep> creepKillSet = GameData.getInstance().getMap().getCreepKillStack();
         Iterator creepIterator = creepKillSet.iterator();
         List<Creep> creepList = GameData.getInstance().getMap().getCreeps();
 
@@ -86,14 +112,14 @@ public class MainController implements InputProcessor{
                 creepIterator.remove();
                 creepList.remove(creep);
             }
-        }
+        }*/
     }
 
     /**
      * clear all projectiles that have been marked for deletion this frame
      */
     public void clearProjectileStack(){
-        Set<Projectile> projectiles = GameData.getInstance().getMap().getProjectileKillStack();
+        /*Set<Projectile> projectiles = GameData.getInstance().getMap().getProjectileKillStack();
         Iterator projectileIterator = projectiles.iterator();
         List<Projectile> projectileList = GameData.getInstance().getMap().getProjectiles();
 
@@ -103,7 +129,7 @@ public class MainController implements InputProcessor{
                 projectileIterator.remove();
                 projectileList.remove(projectile);
             }
-        }
+        }*/
 
     }
 

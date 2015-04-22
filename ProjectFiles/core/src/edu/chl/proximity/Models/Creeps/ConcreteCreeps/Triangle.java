@@ -27,6 +27,8 @@ public class Triangle extends Creep {
     @Override
     public void devolve() {
         Map map = GameData.getInstance().getMap();
+        displayDeathEffect();
+        map.getRemoveStack().add(this);
         map.addCreep(new Circle(this));
 
         destroy();
