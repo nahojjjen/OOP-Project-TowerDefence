@@ -14,7 +14,7 @@ import edu.chl.proximity.Utilities.PointCalculations;
  * @author Johan Swanberg and Linda Evaldsson (group work)
  * @date 2015-04-09
  */
-public class BulletTower extends Tower {
+public class BulletTower extends Tower implements Cloneable {
 
 
     private static Image img = new Image(Constants.filePath + "Towers/Bullet/1.png");
@@ -31,5 +31,10 @@ public class BulletTower extends Tower {
     @Override
     public Projectile createProjectile() {
         return new Bullet(getCenter(), PointCalculations.getVectorAngle(getPosition(),getTarget().getPosition()), getTarget());
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException{
+        return super.clone();
     }
 }

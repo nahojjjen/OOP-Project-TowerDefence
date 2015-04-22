@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
+import edu.chl.proximity.Models.Holdables.Holdable;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Projectiles.Projectile;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
@@ -17,13 +18,11 @@ import edu.chl.proximity.Utilities.PointCalculations;
  * @date 2015-04-02
  *
  */
-public abstract class Tower extends BoardObject {
+public abstract class Tower extends BoardObject implements Holdable, Cloneable{
 
-    private int bulletSpeed = 10;
     private int reloadTime;
     private int currentReload = 0;
 
-    private Projectile projectileType;
     private TargetingMethod targetingMethod;
     private double range;
     private Creep currentTarget;
@@ -50,6 +49,10 @@ public abstract class Tower extends BoardObject {
     public Resources getCost(){return cost;}
     public void setCost(Resources newCost){cost=newCost;}
     public double getRange(){return range;}
+
+    private void setProjectileType(Projectile projectile) {
+
+    }
 
     /**
      * create a projectile at the towers location, if the tower can shoot (aka is not reloading)
@@ -82,6 +85,8 @@ public abstract class Tower extends BoardObject {
      */
     public abstract Projectile createProjectile();
 
+
+
     /**
      * progress the towers reload, tower can shoot when reload is at 0
      */
@@ -90,5 +95,14 @@ public abstract class Tower extends BoardObject {
             currentReload --;
         }
     }
+
+    @Override
+    public void placeObject(Vector2 position) {
+        this.setCenter(position);
+        GameData.getInstance().getMap().addTower(this);
+        GameData.getInstance().getHand().setItem(null);
+    }
+
+
 
 }

@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models;
 
 import edu.chl.proximity.Models.Factions.Faction;
+import edu.chl.proximity.Models.Holdables.Hand;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Players.Player;
 
@@ -17,6 +18,7 @@ public class GameData {
     private static GameData gameData;
     private Map map;
     private Player player;
+    private Hand hand = new Hand();
     private int gameSpeed = 1;
 
     private GameData() {}
@@ -68,4 +70,7 @@ public class GameData {
 
     public Player getPlayer(){return player;}
     public void setPlayer(Player inputPlayer){player = inputPlayer;}
+
+    public Hand getHand() { return hand; }
+
 }

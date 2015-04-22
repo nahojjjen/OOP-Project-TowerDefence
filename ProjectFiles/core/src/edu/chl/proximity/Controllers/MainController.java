@@ -36,6 +36,7 @@ public class MainController implements InputProcessor{
     private ControlPanelController controlPanelController = new ControlPanelController();
     private WaveController waveController = new WaveController();
     private MapController mapController = new MapController();
+    private HandController handController = new HandController();
     private List<ClickHandler> clickHandlers = new ArrayList<ClickHandler>();
 
     private Viewport viewport;
@@ -46,6 +47,7 @@ public class MainController implements InputProcessor{
         viewport=v;
         clickHandlers.add(controlPanelController);
         clickHandlers.add(mapController);
+        clickHandlers.add(handController);
     }
 
     public void setControlPanel(ControlPanel controlPanel) {
@@ -150,7 +152,12 @@ public class MainController implements InputProcessor{
 
     @Override
     public boolean mouseMoved (int x, int y) {
-        //ystem.out.println("Test");
+        Vector2 tmp = new Vector2(x, y);
+        for(ClickHandler controller : clickHandlers) {
+            controller.mouseMoved(tmp);
+            /*if(controller.getModel().containsPoint(clickedPoint))
+                controller.touchDown(clickedPoint, pointer, button);*/
+        }
         return true;
     }
 

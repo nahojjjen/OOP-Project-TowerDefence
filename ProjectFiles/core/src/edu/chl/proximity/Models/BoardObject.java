@@ -12,7 +12,7 @@ import java.awt.*;
  * @author Johan Swanberg and Linda Evaldsson (group work)
  * @date 2015-04-02
  */
-public abstract class BoardObject {
+public abstract class BoardObject implements Cloneable {
     /**
      * Position on the gameboard
      */
@@ -133,7 +133,19 @@ public abstract class BoardObject {
         return new Vector2(this.getPosition().x+(this.getWidth()/2), this.getPosition().y + (this.getHeight()/2));
     }
 
+    public void setCenter(Vector2 pos) {
+        setPosition(new Vector2(pos.x - this.getWidth()/2, pos.y - this.getHeight()/2));
+    }
+
     public boolean containsPoint(Vector2 point) {
         return PointCalculations.isPointInObject(point, this);
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException{
+        BoardObject clone = (BoardObject)super.clone();
+        clone.setPosition(new Vector2(position.x, position.y));
+        clone.setImage((Image)image.clone());
+        return clone;
     }
 }

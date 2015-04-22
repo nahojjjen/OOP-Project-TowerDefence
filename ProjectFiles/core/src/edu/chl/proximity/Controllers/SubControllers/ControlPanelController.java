@@ -32,12 +32,17 @@ public class ControlPanelController implements ClickHandler {
         return controlPanel;
     }
 
+    @Override
+    public void mouseMoved(Vector2 newPosition) {
+
+    }
+
 
     public void touchDown (Vector2 clickedPoint, int pointer, int button) {
 
         ControlPanelTower cpTower = controlPanel.getTowerOnPosition(clickedPoint);
         if(cpTower != null) {
-            cpTower.getTower();
+            GameData.getInstance().getHand().setItem(cpTower.getTower());
         }
 
     }

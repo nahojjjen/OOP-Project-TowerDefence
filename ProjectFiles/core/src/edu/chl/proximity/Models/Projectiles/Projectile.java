@@ -18,7 +18,7 @@ import java.util.List;
  *
  * An abstract class for projectiles. All projectiles extend this class.
  */
-public abstract class Projectile extends BoardObject{
+public abstract class Projectile extends BoardObject implements Cloneable{
     private ProximityEffect effect;
     private int health;
     private int speed;
@@ -134,4 +134,5 @@ public abstract class Projectile extends BoardObject{
         setPosition(newPosition);
 
     }
+
 }

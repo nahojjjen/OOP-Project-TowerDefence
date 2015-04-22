@@ -23,8 +23,11 @@ public class ControlPanelTower extends BoardObject{
      * @return a copy of tower
      */
     public Tower getTower(){
-        //Todo: Make it return copy of tower
-        System.out.println("ControlPanelTower: Tower: " + tower.getClass());
+        try {
+            return (Tower)tower.clone();
+        } catch (CloneNotSupportedException e){
+            System.out.println("ControlPanelTower: Error, Clone not supported");
+        }
         return null;
     }
 }

@@ -12,7 +12,7 @@ import java.io.File;
  * @date 2015-04-02
  *
  */
-public class Image {
+public class Image implements Cloneable {
 
     private Texture texture;
 
@@ -38,4 +38,8 @@ public class Image {
     }
 
     public Texture getTexture(){ return texture; }
+
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }

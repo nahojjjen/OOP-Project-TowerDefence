@@ -6,6 +6,7 @@ import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Models.Backgrounds.Background;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.GameData;
+import edu.chl.proximity.Models.Holdables.Holdable;
 import edu.chl.proximity.Models.Towers.BulletTower;
 import edu.chl.proximity.Models.Towers.MissileTower;
 import edu.chl.proximity.Models.Towers.SlowTower;
@@ -14,7 +15,12 @@ import edu.chl.proximity.Models.Towers.SlowTower;
 /**
  * @author Linda Evaldsson
  * @date 2015-04-22
+ *
+ * A class for controlling clicks on the Map.
+ *
  */
+
+//Todo: Possibly add update-method and add CreepController, ProjectileController, WaveController and TowerController to this Controller
 public class MapController implements ClickHandler {
 
     private Background model = new Background(null);
@@ -22,20 +28,21 @@ public class MapController implements ClickHandler {
 
     public MapController() {
         model.setPosition(new Vector2(0,0));
-        model.setWidth(Gdx.graphics.getWidth()-300);
+        model.setWidth(Gdx.graphics.getWidth() - 300);
         model.setHeight(Gdx.graphics.getHeight());
     }
 
+
     @Override
     public void touchDown(Vector2 clickedPoint, int pointer, int button) {
-        tempCounter++;
-        if (tempCounter % 3== 0){
-            GameData.getInstance().getMap().addTower(new SlowTower(clickedPoint));
-        }else if(tempCounter%3 ==1){
 
-            GameData.getInstance().getMap().addTower(new MissileTower(clickedPoint));
-        }else{
-            GameData.getInstance().getMap().addTower(new BulletTower(clickedPoint));
+        //Checks what item is currently picked up
+        Holdable item = GameData.getInstance().getHand().getItem();
+
+        if(item != null) {
+            //Places the currently picked up item on the map
+            item.placeObject(clickedPoint);
+        } else {
         }
 
     }
@@ -43,5 +50,10 @@ public class MapController implements ClickHandler {
     @Override
     public BoardObject getModel() {
         return model;
+    }
+
+    @Override
+    public void mouseMoved(Vector2 newPosition) {
+
     }
 }

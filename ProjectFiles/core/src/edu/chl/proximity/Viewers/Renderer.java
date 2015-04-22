@@ -67,6 +67,7 @@ public class Renderer {
         renderBase(batch);
         renderParticles(batch);
         renderControlPanel(batch);
+        GameData.getInstance().getHand().render(batch);
 
     }
 
