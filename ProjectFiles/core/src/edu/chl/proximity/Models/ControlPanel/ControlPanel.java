@@ -23,7 +23,7 @@ import java.util.List;
  * @date 2015-04-17
  * The class managing the information to the right of the screen
  */
-public class ControlPanel {
+public class ControlPanel extends BoardObject{
 
     //The texts that are displayed
     private ProximityFont healthText;
@@ -31,12 +31,9 @@ public class ControlPanel {
     private ProximityFont polygonText;
     private ProximityFont pointText;
 
-    //Width and heigh of the ControlPanel
-    private int width = 300;
-    private int height = Gdx.graphics.getHeight();
-
-    //Position of the ControlPanel on the display
-    private Vector2 position;
+    //Width and heigh of the ControlPanel when it is initiated
+    private static int width = 300;
+    private static int height = Gdx.graphics.getHeight();
 
     //The towers that are rendered on the ControlPanel
     private List<ControlPanelTower> controlPanelTowerList = new ArrayList<ControlPanelTower>();
@@ -45,24 +42,20 @@ public class ControlPanel {
     private int towersPerRow = 1;
 
     //The background of the ControlPanel
-    private Image background = new Image(Constants.filePath + "Backgrounds/temporaryControlPanelBackground.png");
+    private static Image background = new Image(Constants.filePath + "Backgrounds/temporaryControlPanelBackground.png");
 
     /**
      * Create a new instance of the controll panel
      */
     public ControlPanel() {
-        initiatePosition();
+        super(new Vector2(Gdx.graphics.getWidth() - width, 0), background, 0, width, height);
+
         initiateText();
         initiateControlPanelTowers();
 
     }
 
-    /**
-     * Initiates the position of this ControlPanel
-     */
-    public void initiatePosition() {
-        this.position = new Vector2(Gdx.graphics.getWidth() - width, 0); //set the top left corner of the control panel;
-    }
+
 
     /**
      * Initiates all the texts of this ControlPanel
@@ -85,24 +78,10 @@ public class ControlPanel {
         for(int i = 0; i < controlPanelTowerList.size(); i++) {
             System.out.println("In controllpanel: Towers per row: " + i % towersPerRow);
             System.out.println("In controlpanel: i/towers per row "+ i/towersPerRow);
-            controlPanelTowerList.get(i).setPosition(new Vector2(position.x + 30 + 50 * (i % towersPerRow), 150 + 50 * (i/towersPerRow)));
+            controlPanelTowerList.get(i).setPosition(new Vector2(getPosition().x + 30 + 50 * (i % towersPerRow), 150 + 50 * (i/towersPerRow)));
         }
     }
 
-
-    public int getHeight() {
-        return height;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public void setHeight(int height) { this.height = height;}
-
-    public void setPosition(Vector2 position) {
-        this.position = position;
-    }
 
     public void setHealth(int percent){
         healthText.setText("Liv: " + percent + "%");
@@ -128,9 +107,6 @@ public class ControlPanel {
         return null;
     }
 
-    public void setWidth(int width) {
-        this.width = width;
-    }
 
     /**
      * Create a new text within the controlpanel
@@ -140,7 +116,7 @@ public class ControlPanel {
      * @return a ProximityFont object corresponding to this information
      */
     private ProximityFont createFont(float x, float y, String s){
-        return new ProximityFont(new Vector2(position.x + x, y), s);
+        return new ProximityFont(new Vector2(getPosition().x + x, y), s);
         //return new ProximityFont(new Vector2(width + x, y), s);
     }
 
@@ -149,7 +125,7 @@ public class ControlPanel {
      * @param batch what batch to render the controlpanel
      */
     public void render(SpriteBatch batch) {
-        background.render(batch, position, 0);
+        super.render(batch);
         healthText.draw(batch);
         lineText.draw(batch);
         pointText.draw(batch);

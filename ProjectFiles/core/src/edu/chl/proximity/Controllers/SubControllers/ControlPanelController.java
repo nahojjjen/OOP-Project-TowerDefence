@@ -1,5 +1,6 @@
 package edu.chl.proximity.Controllers.SubControllers;
 
+import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.GameData;
 
@@ -21,6 +22,13 @@ public class ControlPanelController {
     public void update() {
         controlPanel.setHealth(GameData.getInstance().getMap().getBase().getLife());
         controlPanel.setResources(GameData.getInstance().getPlayer().getResources());
+
+    }
+
+    public BoardObject getModel() {
+        return controlPanel;
+    }
+    public void touchDown (int x, int y, int pointer, int button) {
 
     }
 }

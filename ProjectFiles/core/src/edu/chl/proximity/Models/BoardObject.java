@@ -26,6 +26,9 @@ public abstract class BoardObject {
      */
     private double angle;
 
+    private int width = 0;
+    private int height = 0;
+
 
     /**
      * create a new board object
@@ -37,6 +40,15 @@ public abstract class BoardObject {
         this.position = position;
         this.image = img;
         this.angle = angle;
+        if(img != null) {
+            width = img.getTexture().getWidth();
+            height = img.getTexture().getHeight();
+        }
+    }
+    public BoardObject(Vector2 position, Image img, double angle, int width, int height) {
+        this(position, img, angle);
+        this.width = width;
+        this.height = height;
     }
 
 
@@ -53,7 +65,7 @@ public abstract class BoardObject {
         return image;
     }
 
-    public void setTexture(Image img) {
+    public void setImage(Image img) {
         this.image = img;
     }
 
@@ -69,15 +81,23 @@ public abstract class BoardObject {
         angle += a;
     }
     public void render(SpriteBatch batch) {
-
-        image.render(batch, position, angle);
+        if(image != null) {
+            image.render(batch, position, angle);
+        }
     }
 
     public int getWidth() {
-        return image.getTexture().getWidth();
+        return width;
     }
     public int getHeight() {
-        return image.getTexture().getHeight();
+        return height;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     /**
@@ -111,5 +131,9 @@ public abstract class BoardObject {
      */
     public Vector2 getCenter() {
         return new Vector2(this.getPosition().x+(this.getWidth()/2), this.getPosition().y + (this.getHeight()/2));
+    }
+
+    public boolean containsPoint(Vector2 point) {
+        return PointCalculations.isPointInObject(point, this);
     }
 }
