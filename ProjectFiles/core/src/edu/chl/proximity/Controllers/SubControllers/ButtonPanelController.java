@@ -8,7 +8,8 @@ import edu.chl.proximity.Models.ButtonsPanel.PlayPauseButton;
 import edu.chl.proximity.Models.ButtonsPanel.SpeedButton;
 
 /**
- * Created by Hanna on 2015-04-23.
+ * @author Hanna Römer
+ * @date 2015-04-23.
  */
 public class ButtonPanelController implements ClickHandler{
     private ButtonPanel buttonPanel;

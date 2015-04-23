@@ -6,7 +6,8 @@ import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
- * Created by Hanna on 2015-04-22.
+ * @author Hanna Römer
+ * @date 2015-05-23
  */
 public class PlayPauseButton extends BoardObject {
     private static Image pauseImage= new Image(Constants.filePath + "Buttons/PauseButton.png");
@@ -21,8 +22,10 @@ public class PlayPauseButton extends BoardObject {
     public void toggle(){
         if(super.getImage().equals(pauseImage)){
             super.setImage(playImage);
+            System.out.println("Should be play now");
         }else{
             super.setImage(pauseImage);
+            System.out.println("Should be pause now");
         }
     }
 

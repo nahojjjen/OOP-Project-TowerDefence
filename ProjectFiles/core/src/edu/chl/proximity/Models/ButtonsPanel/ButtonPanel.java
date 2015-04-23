@@ -10,7 +10,8 @@ import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
- * Created by Hanna on 2015-04-22.
+ * @author Hanna Römer
+ * @date 2015-04-22.
  */
 public class ButtonPanel extends BoardObject {
     private static Image background = null;
@@ -52,7 +53,6 @@ public class ButtonPanel extends BoardObject {
             ppButton.toggle();
             GameData.getInstance().setGameSpeed(0);
         }
-        System.out.println("Pause/Play");
     }
 
     public void pressedSpeedButton(){
@@ -63,7 +63,6 @@ public class ButtonPanel extends BoardObject {
         }
         GameData.getInstance().setGameSpeed(speed);
         speedButton.toggle();
-        System.out.println("SpeedUp");
     }
 
     public void pressedProperiesButton(){
