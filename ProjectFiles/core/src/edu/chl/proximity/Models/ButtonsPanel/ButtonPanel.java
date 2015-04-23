@@ -17,13 +17,17 @@ public class ButtonPanel extends BoardObject {
     private static Image background = null;
     private static int width=300;
     private static int height=70;
+
     private static Vector2 position= new Vector2(Gdx.graphics.getWidth()-width, Gdx.graphics.getHeight()-height);
     private static Vector2 ppPos=new Vector2(position.x+20, position.y);
     private static Vector2 sPos=new Vector2(position.x+80, position.y);
+    private static Vector2 prPos=new Vector2(position.x+150, position.y);
+
     private boolean pause=false;
     private int speed=1;
     private PlayPauseButton ppButton=new PlayPauseButton(ppPos);
     private SpeedButton speedButton=new SpeedButton(sPos);
+    private PropertiesButton prButton=new PropertiesButton(prPos);
 
     public ButtonPanel() {
         super(position, background, 0, width, height);
@@ -39,6 +43,8 @@ public class ButtonPanel extends BoardObject {
             return ppButton;
         }else if(PointCalculations.isPointInObject(position, speedButton)){
             return speedButton;
+        }else if(PointCalculations.isPointInObject(position, prButton)){
+            return prButton;
         }
         return null;
     }
@@ -76,6 +82,7 @@ public class ButtonPanel extends BoardObject {
         super.render(batch);
         ppButton.render(batch);
         speedButton.render(batch);
+        prButton.render(batch);
     }
 
 }
