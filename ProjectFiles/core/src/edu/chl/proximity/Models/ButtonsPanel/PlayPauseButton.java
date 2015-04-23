@@ -10,7 +10,7 @@ import edu.chl.proximity.Utilities.Constants;
  */
 public class PlayPauseButton extends BoardObject {
     private static Image pauseImage= new Image(Constants.filePath + "Buttons/PauseButton.png");
-    private static Image playImage= new Image(Constants.filePath + "Buttons/PauseButton.png");
+    private static Image playImage= new Image(Constants.filePath + "Buttons/PlayButton.png");
     private static int height=50;
     private static int width=50;
 
