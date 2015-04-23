@@ -11,6 +11,9 @@ import java.awt.*;
 /**
  * @author Johan Swanberg and Linda Evaldsson (group work)
  * @date 2015-04-02
+ *
+ * --
+ * 23/15 Modified by Simon Gislen
  */
 public abstract class BoardObject implements Cloneable {
     /**
@@ -45,6 +48,10 @@ public abstract class BoardObject implements Cloneable {
             height = img.getTexture().getHeight();
         }
     }
+    public BoardObject() {
+        //Empty constructor for subclasses
+    }
+
     public BoardObject(Vector2 position, Image img, double angle, int width, int height) {
         this(position, img, angle);
         this.width = width;
