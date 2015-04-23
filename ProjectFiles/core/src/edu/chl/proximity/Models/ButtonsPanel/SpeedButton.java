@@ -7,7 +7,8 @@ import edu.chl.proximity.Utilities.Constants;
 
 /**
  * @author Hanna Römer
- * @date 2015-04-23.
+ * @date 2015-04-23
+ * Represents the visuals for a speed button
  */
 public class SpeedButton extends BoardObject{
     private static Image twoArrows=new Image(Constants.filePath + "Buttons/FastPlayButton.png");
@@ -16,10 +17,17 @@ public class SpeedButton extends BoardObject{
     private static int height=50;
     private static int width=50;
 
+    /**
+     * Create a new speed button
+     * @param position What position the button shall have
+     */
     public SpeedButton(Vector2 position){
         super(position,twoArrows,0,width,height);
     }
 
+    /**
+     * Toggles the image on the button between 1xSpeed, 2xSpeed and 3xSpeed-images
+     */
     public void toggle(){
         if(super.getImage().equals(twoArrows)){
             super.setImage(threeArrows);

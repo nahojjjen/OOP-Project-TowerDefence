@@ -6,12 +6,13 @@ import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
-import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
  * @author Hanna Römer
- * @date 2015-04-22.
+ * @date 2015-04-22
+ *
+ * Class used for managing the buttons to the far bottom right
  */
 public class ButtonPanel extends BoardObject {
     private static Image background = null;
@@ -29,6 +30,10 @@ public class ButtonPanel extends BoardObject {
     private SpeedButton speedButton=new SpeedButton(sPos);
     private PropertiesButton prButton=new PropertiesButton(prPos);
 
+
+    /**
+     * Create a new instance of ButtonPanel
+     */
     public ButtonPanel() {
         super(position, background, 0, width, height);
         GameData.getInstance().setGameSpeed(speed);
@@ -38,6 +43,11 @@ public class ButtonPanel extends BoardObject {
         return pause;
     }
 
+    /**
+     * Get which button is on speciefies position, if any are
+     * @param position position to be checked for buttons
+     * @return button on specified position. If there is no button there, null is returned
+     */
     public BoardObject getButtonOnPosition(Vector2 position){
         if(PointCalculations.isPointInObject(position, ppButton)){
             return ppButton;
@@ -49,6 +59,9 @@ public class ButtonPanel extends BoardObject {
         return null;
     }
 
+    /**
+     * Called if the pause/play button is pressed. Toggles the button and pauses/playes the game.
+     */
     public void pressedPausePlay(){
         if(pause){
             pause=false;
@@ -61,6 +74,10 @@ public class ButtonPanel extends BoardObject {
         }
     }
 
+    /**
+     * Called if the Speed button is pressed. Increases speed and toggles button.
+     * If speed is greater than 3 it is set to 1.
+     */
     public void pressedSpeedButton(){
         if(speed==3){
             speed=1;
@@ -78,6 +95,10 @@ public class ButtonPanel extends BoardObject {
         System.out.print("Properties were pressed");
     }
 
+    /**
+     * Render the buttonPanel
+     * @param batch What batch to render the buttonPanel
+     */
     public void render(SpriteBatch batch){
         super.render(batch);
         ppButton.render(batch);

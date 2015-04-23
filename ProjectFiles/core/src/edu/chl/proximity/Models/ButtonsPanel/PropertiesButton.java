@@ -8,6 +8,7 @@ import edu.chl.proximity.Utilities.Constants;
 /**
  * @author Hanna Römer
  * @date 2015-04-23
+ * Represents the  visuals for a properties button
  */
 public class PropertiesButton extends BoardObject{
     private static Image image=new Image(Constants.filePath + "Buttons/PauseButton.png");
