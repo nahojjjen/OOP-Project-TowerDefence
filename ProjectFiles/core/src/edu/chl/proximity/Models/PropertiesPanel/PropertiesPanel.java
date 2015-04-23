@@ -1,4 +1,4 @@
-package edu.chl.proximity.Models.PopertiesPanel;
+package edu.chl.proximity.Models.PropertiesPanel;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -8,17 +8,18 @@ import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Utilities.Constants;
 
-import javax.sound.sampled.*;
-
 /**
  * @author Hanna Römer
  * @date 2015-04-23
  */
 public class PropertiesPanel extends BoardObject{
-    private static Image background = new Image(Constants.filePath + "Backgrounds/temporaryControlPanelBackground.png");
+    private static Image background = new Image(Constants.filePath + "Backgrounds/TempPropPanel.png");
     private static int height= Gdx.graphics.getHeight()-400;
-    private static int width = 300;
-    private static Vector2 position=new Vector2(200,200);
+    private static int width = 1000;
+    private static Vector2 position=new Vector2(300,200);
+    private Vector2 resumePos=new Vector2(position.x+50,position.y+50);
+
+    private ResumeButton resumeButton=new ResumeButton(resumePos);
 
     private boolean isVisible=false;
 
@@ -26,7 +27,7 @@ public class PropertiesPanel extends BoardObject{
      * Create a new properies panel
      */
     public PropertiesPanel(){
-        super(position, background, 0, height, width);
+        super(position, background, 0);
     }
 
     public void setVisability(boolean isVisible){
@@ -47,5 +48,6 @@ public class PropertiesPanel extends BoardObject{
 
     public void render(SpriteBatch batch){
         super.render(batch);
+        resumeButton.render(batch);
     }
 }

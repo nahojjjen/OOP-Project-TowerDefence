@@ -9,14 +9,12 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import edu.chl.proximity.Controllers.MainController;
-import edu.chl.proximity.Controllers.SubControllers.WaveController;
 import edu.chl.proximity.Models.ButtonsPanel.ButtonPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Players.Player;
-import edu.chl.proximity.Models.PopertiesPanel.PropertiesPanel;
-import edu.chl.proximity.Models.Towers.BulletTower;
+import edu.chl.proximity.Models.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Towers.SlowTower;
 import edu.chl.proximity.Viewers.Renderer;
 

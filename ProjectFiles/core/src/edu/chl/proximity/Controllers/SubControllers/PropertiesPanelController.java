@@ -3,7 +3,7 @@ package edu.chl.proximity.Controllers.SubControllers;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.PopertiesPanel.PropertiesPanel;
+import edu.chl.proximity.Models.PropertiesPanel.PropertiesPanel;
 
 /**
  * @author Hanna Römer

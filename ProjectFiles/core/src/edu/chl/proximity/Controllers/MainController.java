@@ -9,7 +9,7 @@ import edu.chl.proximity.Models.ButtonsPanel.ButtonPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
-import edu.chl.proximity.Models.PopertiesPanel.PropertiesPanel;
+import edu.chl.proximity.Models.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Projectiles.Projectile;
 import edu.chl.proximity.Utilities.PointCalculations;
 

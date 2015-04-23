@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
-import edu.chl.proximity.Models.PopertiesPanel.PropertiesPanel;
+import edu.chl.proximity.Models.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
