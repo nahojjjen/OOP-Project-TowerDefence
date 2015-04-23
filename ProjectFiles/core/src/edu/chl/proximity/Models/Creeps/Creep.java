@@ -46,36 +46,33 @@ public abstract class Creep extends BoardObject {
      * @param speed what speed the creep will have
      */
     public Creep(Image image, int speed) {
-
-        super(new Vector2(0, 300), image, 0);
-        this.speed = speed;
-        this.backUpSpeed = speed;
-
-        Map map = GameData.getInstance().getMap();
-        path = map.getPath();
-        randomRotation = (Math.random()*15) - 7.5;
+        super(null, image, 0);
+        setupCreep(speed);
         initiateMovement();
     }
 
-
     /**
-     * @author Simon Gislen
      * @param image what image the creep should have (it will rotate a random amount automatically)
      * @param speed what speed the creep will have
      * @param oldCreep The old creep from which the location on the screen is taken.
      */
     public Creep(Image image, int speed, Creep oldCreep) {
         super(oldCreep.getPosition(), image, 0);
-        System.out.println("In creep: Old creep position:  "+oldCreep.getPosition());
-        this.speed = speed;
-        this.backUpSpeed = speed;
+        setupCreep(speed);
         nextWayPointID = oldCreep.nextWayPointID;
         distanceToNextWayPoint = oldCreep.distanceToNextWayPoint;
+
+        moveAngle = getAngleToNextPoint();
+    }
+
+    //Setup method that is common to constructors
+    public void setupCreep(int speed) {
+        this.speed = speed;
+        this.backUpSpeed = speed;
 
         Map map = GameData.getInstance().getMap();
         path = map.getPath();
         randomRotation = (Math.random()*15) - 7.5;
-        moveAngle = getAngleToNextPoint();
     }
 
     /**

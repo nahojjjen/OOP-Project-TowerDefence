@@ -23,8 +23,9 @@ public class Line1 extends Creep {
     private static int speed = 5;
 
     public Line1(int creepLineIndex) {
-        super(getCreepImage(creepLineIndex), speed);
+        super(null, speed);
         this.creepLineIndex = creepLineIndex;
+        setTexture(getCreepImage());
     }
 
     /**
@@ -32,8 +33,9 @@ public class Line1 extends Creep {
      * @param oldCreep a Creep object from which position is used.
      */
     public Line1(Line1 oldCreep) {
-        super(getCreepImage(oldCreep.getCreepLineIndex() - 1), speed, oldCreep);
+        super(null, speed, oldCreep);
         this.creepLineIndex = oldCreep.getCreepLineIndex() - 1;
+        setTexture(getCreepImage());
     }
 
 
@@ -55,7 +57,7 @@ public class Line1 extends Creep {
     }
 
     //Helpers
-    public static Image getCreepImage(int creepLineIndex) {
+    public Image getCreepImage() {
         Image image = null;
         for (File imageFile : imageFiles) {
             String name = imageFile.getName();
