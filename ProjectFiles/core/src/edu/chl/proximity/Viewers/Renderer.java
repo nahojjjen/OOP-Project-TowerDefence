@@ -1,5 +1,6 @@
 package edu.chl.proximity.Viewers;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -7,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Bases.Base;
+import edu.chl.proximity.Models.ButtonsPanel.ButtonPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
@@ -27,6 +29,7 @@ public class Renderer {
     private Map map;
     private ParticleManager particleManager ;
     private ControlPanel controlPanel;
+    private ButtonPanel buttonPanel;
 
     /**
      * create a new renderer that can show everything in a game instance
@@ -40,6 +43,7 @@ public class Renderer {
     public void setControlPanel(ControlPanel controlPanel) {
         this.controlPanel = controlPanel;
     }
+    public void setButtonPanel(ButtonPanel buttonPanel){ this.buttonPanel=buttonPanel;}
 
     /**
      * render everything in the current game
@@ -83,6 +87,7 @@ public class Renderer {
         shapeRenderer.end();
         batch.begin();*/
         controlPanel.render(batch);
+        buttonPanel.render(batch);
     }
 
     /**

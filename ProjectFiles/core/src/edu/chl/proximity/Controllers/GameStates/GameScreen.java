@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import edu.chl.proximity.Controllers.MainController;
 import edu.chl.proximity.Controllers.SubControllers.WaveController;
+import edu.chl.proximity.Models.ButtonsPanel.ButtonPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
@@ -32,6 +33,7 @@ public class GameScreen implements Screen{
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
     private Renderer renderer;
     private ControlPanel controlPanel;
+    private ButtonPanel buttonPanel;
     private MainController mainController;
     private OrthographicCamera camera;
     private FitViewport viewport;
@@ -42,11 +44,13 @@ public class GameScreen implements Screen{
         currentMap = map;
         GameData.getInstance().setMap(currentMap);
         controlPanel = new ControlPanel(); //Must be set after map is set in GameData
+        buttonPanel=new ButtonPanel();
         GameData.getInstance().setPlayer(player);
         renderer = new Renderer();
         fixCamera();
         mainController = new MainController(viewport);
         renderer.setControlPanel(controlPanel);
+        renderer.setButtonPanel(buttonPanel);
         mainController.setControlPanel(controlPanel);
 
         shapeRenderer.setAutoShapeType(true);

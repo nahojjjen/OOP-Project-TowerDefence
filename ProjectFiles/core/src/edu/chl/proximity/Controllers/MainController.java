@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Controllers.SubControllers.*;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.ButtonsPanel.ButtonPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
@@ -37,6 +38,7 @@ public class MainController implements InputProcessor{
     private WaveController waveController = new WaveController();
     private MapController mapController = new MapController();
     private HandController handController = new HandController();
+    private ButtonPanelController buttonPanelController=new ButtonPanelController();
     private List<ClickHandler> clickHandlers = new ArrayList<ClickHandler>();
 
     private Viewport viewport;
@@ -47,6 +49,7 @@ public class MainController implements InputProcessor{
         viewport=v;
         clickHandlers.add(controlPanelController);
         clickHandlers.add(mapController);
+        clickHandlers.add(buttonPanelController);
         clickHandlers.add(handController);
     }
 

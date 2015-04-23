@@ -19,8 +19,8 @@ public class ButtonPanel extends BoardObject {
     private static Vector2 position= new Vector2(Gdx.graphics.getWidth()-width, Gdx.graphics.getHeight()-height);
     private boolean pause=false;
     private int speed=1;
-    private PlayPauseButton ppButton=new PlayPauseButton(position.add(10,10));
-    private SpeedButton speedButton=new SpeedButton(position.add(70,10));
+    private PlayPauseButton ppButton=new PlayPauseButton(position.add(0,0));
+    private SpeedButton speedButton=new SpeedButton(position.add(50,0));
 
     public ButtonPanel() {
         super(position, background, 0, width, height);
@@ -52,17 +52,17 @@ public class ButtonPanel extends BoardObject {
         }
     }
 
-    public void speedButtonPressed(){
+    public void pressedSpeedButton(){
         if(speed==3){
             speed=1;
         }else{
             speed++;
         }
         GameData.getInstance().setGameSpeed(speed);
-        speedButton.toogle();
+        speedButton.toggle();
     }
 
-    public void propertiesButtonPressed(){
+    public void pressedProperiesButton(){
         System.out.print("Properties were pressed");
     }
 
