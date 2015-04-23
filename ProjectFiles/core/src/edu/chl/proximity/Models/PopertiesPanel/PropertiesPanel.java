@@ -19,13 +19,19 @@ public class PropertiesPanel extends BoardObject{
     private static int width = 300;
     private static Vector2 position=new Vector2(200,200);
 
+    /**
+     * Create a new properies panel
+     */
     public PropertiesPanel(){
         super(position, background, 0, height, width);
     }
 
-
-    public void setSoundAt(float frequency){
-        GameData.VOLUME=frequency;
+    /**
+     * Set the sound at a specified level from 0 to 4
+     * @param level What level the sound is to be set at
+     */
+    public void setSoundAt(int level){
+        GameData.VOLUME=level*0.05f;
         //TODO make button(s) display current soundlevel
     }
 }

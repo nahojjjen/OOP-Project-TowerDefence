@@ -15,14 +15,24 @@ public class SoundButton extends BoardObject{
     private static int height=50;
     private static int width=50;
 
+    /**
+     * Create a new sound button
+     * @param position At what position the button is to be placed
+     */
     public SoundButton(Vector2 position){
         super(position,onImage,0,width,height);
     }
 
+    /**
+     * Set the button's image to the one for sound on
+     */
     public void setSoundOn(){
         setImage(onImage);
     }
 
+    /**
+     * Set the button's image to the one for sound off
+     */
     public void setSoundOff(){
         setImage(offImage);
     }
