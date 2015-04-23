@@ -18,4 +18,12 @@ public class PlayPauseButton extends BoardObject {
         super(position,pauseImage,0,width,height);
     }
 
+    public void toggle(){
+        if(super.getImage().equals(pauseImage)){
+            super.setImage(playImage);
+        }else{
+            super.setImage(pauseImage);
+        }
+    }
+
 }
