@@ -10,8 +10,8 @@ import edu.chl.proximity.Utilities.Constants;
  * @date 2015-04-23.
  */
 public class SpeedButton extends BoardObject{
-    private static Image twoArrows=new Image(Constants.filePath + "Buttons/FF2Button.png");
-    private static Image threeArrows=new Image(Constants.filePath + "Buttons/FF2Button.png");
+    private static Image twoArrows=new Image(Constants.filePath + "Buttons/FastPlayButton.png");
+    private static Image threeArrows=new Image(Constants.filePath + "Buttons/FastPlayButton.png");
     private static Image oneArrow=new Image(Constants.filePath + "Buttons/FF2Button.png");
     private static int height=50;
     private static int width=50;

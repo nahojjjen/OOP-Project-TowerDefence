@@ -61,11 +61,13 @@ public class ButtonPanel extends BoardObject {
         }else{
             speed++;
         }
-        GameData.getInstance().setGameSpeed(speed);
         speedButton.toggle();
+        if(!pause) {
+            GameData.getInstance().setGameSpeed(speed);
+        }
     }
 
-    public void pressedProperiesButton(){
+    public void pressedPropertiesButton(){
         System.out.print("Properties were pressed");
     }
 

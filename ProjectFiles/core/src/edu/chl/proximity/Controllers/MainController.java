@@ -60,6 +60,10 @@ public class MainController implements InputProcessor{
         controlPanelController.setControlPanel(controlPanel);
     }
 
+    public void setButtonPanel(ButtonPanel buttonPanel){
+        buttonPanelController.setButtonPanel(buttonPanel);
+    }
+
     public void updateAllControllers() {
         waveController.update();
         creepController.update();
