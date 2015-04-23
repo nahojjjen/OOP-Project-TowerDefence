@@ -4,6 +4,7 @@ import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Maps.Map;
+import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Utilities.Constants;
 
 import javax.imageio.ImageIO;
@@ -15,6 +16,8 @@ import java.lang.reflect.Field;
 /**
  * @author Simon Gislén
  * @date 2015-04-21
+ *
+ * 23/04 Modified by Simon. Adding resources when killing creeps
  */
 public class Line1 extends Creep {
 
@@ -45,9 +48,12 @@ public class Line1 extends Creep {
     public void devolve() {
 
         if (creepLineIndex != 1) {
-            Map map = GameData.getInstance().getMap();
+            GameData gameData = GameData.getInstance();
             //Devolves into a new Line 1.
-            map.addCreep(new Line1(this));
+            gameData.getMap().addCreep(new Line1(this));
+
+            Resources res = gameData.getPlayer().getResources();
+            res.addResources(getCreepResource());
         }
         destroy();
     }
@@ -71,5 +77,10 @@ public class Line1 extends Creep {
             image = new Image(Constants.filePath + "Creeps/Line1/7.png");
         }
         return image;
+    }
+
+    //Logic to obtain creep resource
+    public Resources getCreepResource() {
+        return new Resources(creepLineIndex * 2, creepLineIndex, 0);
     }
 }

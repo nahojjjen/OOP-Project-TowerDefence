@@ -1,14 +1,17 @@
 package edu.chl.proximity.Models.Creeps.ConcreteCreeps;
 
+import com.badlogic.gdx.Game;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Maps.Map;
+import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
  * @author Simon Gislén
  * @date 2015-04-14
+ * 23/04 Modified by Simon. Adding resources when killing creeps
  */
 public class Circle extends Creep {
 
@@ -29,8 +32,16 @@ public class Circle extends Creep {
 
     @Override
     public void devolve() {
+
+        Resources res = GameData.getInstance().getPlayer().getResources();
+        res.addResources(getCreepResource());
+
         destroy();
     }
 
+    //Logic to obtain creep resource
+    public Resources getCreepResource() {
+        return new Resources(10, 20, 0);
+    }
 
 }

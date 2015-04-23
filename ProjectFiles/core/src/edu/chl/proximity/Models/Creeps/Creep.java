@@ -8,6 +8,7 @@ import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Paths.Path;
+import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Utilities.PointCalculations;
 import java.awt.event.*;
 import javax.swing.*;
@@ -24,9 +25,9 @@ import java.util.Iterator;
  *
  * 08/04 modified by Linda Evaldsson. Refactoring to Creep instead of AbstractCreep. speed-variable changed to int instead of double.
  * 16/04 modified by Simon Gislén. Added support for creep devolution.
- *
+ * 23/04 Modified by Simon. Adding resources when killing creeps
+ * 
  * An abstract class for creeps. Concrete creeps extends this class.
- *
  */
 public abstract class Creep extends BoardObject {
 
@@ -135,6 +136,11 @@ public abstract class Creep extends BoardObject {
      * Devolve this creep, aka "kill" / remove the creep, call this method when the creep has taken fatal damage
      */
     public abstract void devolve();
+
+    /**
+     * @return Resources the player gets when the player kills the creep.
+     */
+    public abstract Resources getCreepResource();
 
     /**
      * move the creep based on its speed
