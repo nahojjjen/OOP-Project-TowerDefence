@@ -25,6 +25,12 @@ public class PropertiesPanelController implements ClickHandler{
     }
 
     public void touchDown(Vector2 clickedPoint, int pointer, int button){
+        if(propertiesPanel.getIfVisible()){
 
+        }
     }
+
+    public void show(){ propertiesPanel.setVisability(true);}
+
+    public void hide(){ propertiesPanel.setVisability(false);}
 }

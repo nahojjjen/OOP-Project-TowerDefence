@@ -15,12 +15,17 @@ import edu.chl.proximity.Models.GameData;
  */
 public class ButtonPanelController implements ClickHandler{
     private ButtonPanel buttonPanel;
+    private PropertiesPanelController ppController;
 
     public ButtonPanelController(){
         buttonPanel = new ButtonPanel();
     }
 
     public void setButtonPanel(ButtonPanel buttonPanel) { this.buttonPanel = buttonPanel;}
+
+    public void setPpropertiesPanelController(PropertiesPanelController propertiesPanelController){
+        this.ppController=propertiesPanelController;
+    }
 
     public void update(){};
 
@@ -42,12 +47,8 @@ public class ButtonPanelController implements ClickHandler{
         }else if(touchedButton instanceof SpeedButton){
             buttonPanel.pressedSpeedButton();
         }else if(touchedButton instanceof PropertiesButton){
-            if(GameData.VOLUME>0) {
-                GameData.VOLUME = 0;
-            }else{
-                GameData.VOLUME=0.1f;
-            }
-
+            buttonPanel.pauseGame();
+            ppController.show();
         }
 
     }

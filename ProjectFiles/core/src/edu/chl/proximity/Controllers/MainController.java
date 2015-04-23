@@ -9,6 +9,7 @@ import edu.chl.proximity.Models.ButtonsPanel.ButtonPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
+import edu.chl.proximity.Models.PopertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Projectiles.Projectile;
 import edu.chl.proximity.Utilities.PointCalculations;
 
@@ -43,6 +44,7 @@ public class MainController implements InputProcessor{
     private MapController mapController = new MapController();
     private HandController handController = new HandController();
     private ButtonPanelController buttonPanelController=new ButtonPanelController();
+    private PropertiesPanelController propertiesPanelController=new PropertiesPanelController();
     private PersistentObjectController persistentObjectController = new PersistentObjectController();
     private List<ClickHandler> clickHandlers = new ArrayList<ClickHandler>();
 
@@ -52,10 +54,12 @@ public class MainController implements InputProcessor{
 
     public MainController(Viewport v) {
         viewport=v;
+        buttonPanelController.setPpropertiesPanelController(propertiesPanelController);
         clickHandlers.add(controlPanelController);
         clickHandlers.add(mapController);
         clickHandlers.add(buttonPanelController);
         clickHandlers.add(handController);
+        clickHandlers.add(propertiesPanelController);
     }
 
     public void setControlPanel(ControlPanel controlPanel) {
@@ -66,6 +70,8 @@ public class MainController implements InputProcessor{
     public void setButtonPanel(ButtonPanel buttonPanel){
         buttonPanelController.setButtonPanel(buttonPanel);
     }
+
+    public void setPropertiesPanel(PropertiesPanel propertiesPanel) {propertiesPanelController.setPropertiesPanel(propertiesPanel);}
 
     public void updateAllControllers() {
         waveController.update();

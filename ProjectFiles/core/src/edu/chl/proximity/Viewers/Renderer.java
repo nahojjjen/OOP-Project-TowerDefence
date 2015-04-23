@@ -53,7 +53,7 @@ public class Renderer {
     }
     public void setButtonPanel(ButtonPanel buttonPanel){ this.buttonPanel=buttonPanel;}
 
-    public void setPropertiesPanel(PropertiesPanel propertiesPanel{ this.propertiesPanel=propertiesPanel;}
+    public void setPropertiesPanel(PropertiesPanel propertiesPanel){ this.propertiesPanel=propertiesPanel;}
 
     /**
      * render everything in the current game
@@ -105,7 +105,9 @@ public class Renderer {
         buttonPanel.render(batch);
     }
     private void renderPropertiesPanel(SpriteBatch batch){
-
+        if(propertiesPanel.getIfVisible()){
+            propertiesPanel.render(batch);
+        }
     }
 
     /**

@@ -15,6 +15,7 @@ import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Players.Player;
+import edu.chl.proximity.Models.PopertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Towers.BulletTower;
 import edu.chl.proximity.Models.Towers.SlowTower;
 import edu.chl.proximity.Viewers.Renderer;
@@ -39,6 +40,7 @@ public class GameScreen implements Screen{
     private Renderer renderer;
     private ControlPanel controlPanel;
     private ButtonPanel buttonPanel;
+    private PropertiesPanel propertiesPanel;
     private MainController mainController;
     private OrthographicCamera camera;
     private FitViewport viewport;
@@ -48,17 +50,25 @@ public class GameScreen implements Screen{
         game = g;
         currentMap = map;
         GameData.getInstance().setMap(currentMap);
+
         controlPanel = new ControlPanel(); //Must be set after map is set in GameData
         buttonPanel=new ButtonPanel();
+        propertiesPanel=new PropertiesPanel();
+
         GameData.getInstance().setPlayer(player);
         renderer = new Renderer();
         fixCamera();
         mainController = new MainController(viewport);
+
         renderer.setControlPanel(controlPanel);
         renderer.setButtonPanel(buttonPanel);
+        renderer.setPropertiesPanel(propertiesPanel);
 
         mainController.setControlPanel(controlPanel);
         mainController.setButtonPanel(buttonPanel);
+        mainController.setPropertiesPanel(propertiesPanel);
+
+
 
         shapeRenderer.setAutoShapeType(true);
 
@@ -66,6 +76,7 @@ public class GameScreen implements Screen{
         Gdx.input.setInputProcessor(mainController);
 
         runDebugCode();
+
 
     }
 
@@ -91,6 +102,7 @@ public class GameScreen implements Screen{
         viewport = new FitViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),camera);
         viewport.apply();
     }
+
 
 
     @Override
