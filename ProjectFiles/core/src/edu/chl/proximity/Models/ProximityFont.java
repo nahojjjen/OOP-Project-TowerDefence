@@ -7,9 +7,10 @@ import com.badlogic.gdx.math.Vector2;
 
 /**
  * @author Linda Evaldsson
- * @revised by johan
  * @date 2015-04-17
  * A class defining text in the game, is has a font, position and a string
+ *
+ * Unknown date modified by Johan Swanberg
  */
 public class ProximityFont {
 

@@ -20,11 +20,16 @@ import edu.chl.proximity.Models.Towers.SlowTower;
 import edu.chl.proximity.Viewers.Renderer;
 
 /**
- * @author Johan on 2015-04-07. Group work with Linda
+ * @author Johan Swanberg and Linda Evaldsson
+ * @date 2015-04-07
+ *
+ * A class for handling the GameScreen, the screen that is showed when a game is played.
  *
  * ---
- * revised by Simon Gislen 16/04
- * revised by Simon Gislen 21/04
+ * 08/04 Modified by Johan Swanberg. Switch to Screen from GameState.
+ * 08/04 modified by Linda Evaldsson. Added som spawning logic for testing.
+ * 16/04 modified by Simon Gislen
+ * 21/04 modified by Simon Gislen
  */
 public class GameScreen implements Screen{
     private Game game;

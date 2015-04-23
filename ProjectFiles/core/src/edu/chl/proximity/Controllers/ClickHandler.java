@@ -5,7 +5,7 @@ import edu.chl.proximity.Models.BoardObject;
 
 /**
  * @author Linda Evaldsson
- * Created by Linda on 2015-04-22.
+ * @date 2015-04-22
  *
  * This interface is for the Controllers that handle clicks, they should implement this interface
  */

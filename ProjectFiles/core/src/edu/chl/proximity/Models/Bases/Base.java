@@ -8,7 +8,10 @@ import edu.chl.proximity.Models.Particles.ProximityEffect;
 import edu.chl.proximity.Models.Paths.Path;
 
 /**
- * @author Johan on 2015-04-16.
+ * @author Johan Swanberg
+ * @date 2015-04-16
+ *
+ * A model of the base on the map
  */
 public abstract class Base extends BoardObject{
 

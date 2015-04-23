@@ -11,7 +11,7 @@ import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
- * @author Johan Swanberg and Linda Evaldsson (group work)
+ * @author Johan Swanberg and Linda Evaldsson
  * @date 2015-04-09
  */
 public class BulletTower extends Tower implements Cloneable {

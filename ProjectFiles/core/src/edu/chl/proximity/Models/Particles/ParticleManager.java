@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Johan Swanberg and Linda Evaldsson (Group work)
+ * @author Johan Swanberg and Linda Evaldsson
  * @date 2015-04-11
  *
  * A class that keeps track of all effects that can be displayed, and has the ability to render them

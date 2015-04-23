@@ -10,8 +10,10 @@ import java.util.Iterator;
 
 /**
  * @author Linda Evaldsson
- * @author Johan Swanberg (revised)
  * @date 2015-04-08
+ *
+ * ---
+ * Uknown date modified by Johan Swanberg
  * A class for the concrete creep Triangle
  */
 public class Triangle extends Creep {

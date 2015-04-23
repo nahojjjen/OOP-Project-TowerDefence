@@ -6,7 +6,7 @@ import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Players.Player;
 
 /**
- * @author Linda Evaldsson and Johan Swanberg (group work)
+ * @author Linda Evaldsson and Johan Swanberg
  * @date 2015-04-08
  *
  * This class keeps track of the collected data of this current game-instance,

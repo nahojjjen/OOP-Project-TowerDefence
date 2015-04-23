@@ -16,8 +16,9 @@ import java.util.List;
 
 /**
  * @author Linda Evaldsson
- * @author Johan Swanberg (revised)
  * @date 2015-04-08
+ *
+ * Unknown date modified by Johan Swanberg
  *
  * A missile is a target-following projectile that kills all creeps in a radius.
  */

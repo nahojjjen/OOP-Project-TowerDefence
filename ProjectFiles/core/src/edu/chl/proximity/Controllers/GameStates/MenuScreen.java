@@ -9,7 +9,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
 /**
- * Created by Johan on 2015-04-07.
+ * @author Johan Swanberg
+ * @date 2015-04-07
+ *
+ * A class for handling the MenuScreen, the screen for the menu
+ *
+ * 08/04 Modified by Johan Swanberg. Switch to Screen from GameState.
+ *
  */
 public class MenuScreen implements Screen {
 

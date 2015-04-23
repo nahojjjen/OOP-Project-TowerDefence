@@ -7,7 +7,8 @@ import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
- * Created by Simon Gislen on 14/04/15.
+ * @author Simon Gislén
+ * @date 2015-04-14
  */
 public class Circle extends Creep {
 

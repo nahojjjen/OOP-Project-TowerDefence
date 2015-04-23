@@ -10,8 +10,8 @@ import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
- * @Author Hanna R�mer
- * @Date 2015-04-18
+ * @author Hanna Römer
+ * @date 2015-04-18
  * A class representing a bullet that slows down it's target a certain percentage
  */
 public class SlowDownBullet extends Projectile{

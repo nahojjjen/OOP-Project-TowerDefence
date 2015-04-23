@@ -9,6 +9,8 @@ import edu.chl.proximity.Models.Image;
  * @author Johan Swanberg
  * @date 2015-04-12
  *
+ * A background for the game
+ *
  */
 public class Background extends BoardObject {
     /**

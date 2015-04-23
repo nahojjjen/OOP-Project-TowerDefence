@@ -13,8 +13,11 @@ import java.util.List;
 
 /**
  * @author Hanna Römer
- * @author Linda Evaldsson, Johan Swanberg (revised)
  * @date 2015-04-02
+ *
+ * 08/04 modified by Linda Evaldsson. Refactoring to Projectile instead of AbstractProjectile.
+ * Unknown date modified by Linda Evaldsson
+ * Unknown date modified by Johan Swanberg
  *
  * An abstract class for projectiles. All projectiles extend this class.
  */

@@ -8,7 +8,6 @@ import edu.chl.proximity.Models.Image;
  * @author Linda Evaldsson
  * @date 2015-04-22
  *
- *
  * This is a class for handling what is currently picked upp, "in the hand".
  */
 public class Hand {

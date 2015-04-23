@@ -8,6 +8,8 @@ import edu.chl.proximity.Models.Towers.Tower;
 /**
  * @author Linda Evaldsson
  * @date 2015-04-18
+ *
+ * ControlPanelTower is a class that can display Towers
  */
 public class ControlPanelTower extends BoardObject{
 

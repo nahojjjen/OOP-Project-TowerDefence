@@ -17,14 +17,16 @@ import java.util.Iterator;
 
 /**
  * @author Linda Evaldsson
- * @author Johan Swanberg (revised)
- * @author Simon Gislen, 16/04 (revised)
  * @date 2015-04-02
  *
+ * ---
+ * Unknown date modified by Johan Swanberg
+ *
+ * 08/04 modified by Linda Evaldsson. Refactoring to Creep instead of AbstractCreep. speed-variable changed to int instead of double.
+ * 16/04 modified by Simon Gislén. Added support for creep devolution.
+ *
  * An abstract class for creeps. Concrete creeps extends this class.
-=======
- * Created by Tindra on 02/04/15. Modified by Johan Swanberg
- * Revised by Simon Gislen, 16/04, Added support for creep devolution.
+ *
  */
 public abstract class Creep extends BoardObject {
 

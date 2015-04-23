@@ -17,9 +17,11 @@ import java.util.ArrayList;
  * @author Simon Gislen
  * @date 2015-04-08
  *
+ * Unknown date modified by Johan Swanberg
+ *
  * ---
- * Revised Simon Gislen 16/04: Modified purpose of class to handle creep spawning logic.
- * Revised Simon Gislen 21/04:
+ * 16/04 modified by Simon Gislén. Modified purpose of class to handle creep spawning logic.
+ * 21/04 modified by Simon Gislén.
  */
 public class StandardGenerator {
     private Map map;

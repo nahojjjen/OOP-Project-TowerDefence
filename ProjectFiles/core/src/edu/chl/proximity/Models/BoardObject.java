@@ -9,12 +9,16 @@ import edu.chl.proximity.Utilities.PointCalculations;
 import java.awt.*;
 
 /**
- * @author Johan Swanberg and Linda Evaldsson (group work)
+ * @author Johan Swanberg and Linda Evaldsson
  * @date 2015-04-02
  *
- * --
- * 23/15 Modified by Simon Gislen
- */
+ * An object that can be placed on the board.
+ *
+ * ---
+ * 02/04 modified by Simon Gislén. Added properties.
+ * 08/04 modified by Linda Evaldsson. Getters for width and height created.
+ * 23/04 modified Simon Gislén. Added empty constructor.
+>*/
 public abstract class BoardObject implements Cloneable {
     /**
      * Position on the gameboard

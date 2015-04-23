@@ -13,7 +13,8 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 
 /**
- * @author simongislen on 21/04/15.
+ * @author Simon Gislén
+ * @date 2015-04-21
  */
 public class Line1 extends Creep {
 

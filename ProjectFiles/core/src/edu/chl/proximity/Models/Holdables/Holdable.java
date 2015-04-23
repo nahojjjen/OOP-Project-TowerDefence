@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Image;
 
 /**
- * @uuthor Linda Evaldsson
+ * @author Linda Evaldsson
  * @date 2015-04-22
  */
 public interface Holdable {

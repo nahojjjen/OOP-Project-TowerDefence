@@ -2,15 +2,16 @@ package edu.chl.proximity;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import edu.chl.proximity.Controllers.GameStates.GameScreen;
-import edu.chl.proximity.Controllers.GameStates.MenuScreen;
 import edu.chl.proximity.Models.Factions.ConcreteFactions.Planes;
 import edu.chl.proximity.Models.Maps.StandardMap;
 import edu.chl.proximity.Models.Players.Player;
-
+/**
+ *
+ * 08/04 Modified by Johan Swanberg. Switch to Screen from GameState.
+ * 08/04 modified by Linda Evaldsson. Changes in structure, removed SpriteBatch.
+ */
 
 public class Proximity extends Game {
 

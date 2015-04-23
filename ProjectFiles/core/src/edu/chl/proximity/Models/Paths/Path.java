@@ -13,6 +13,8 @@ import edu.chl.proximity.Models.BoardObject;
  * @date 2015-04-03
  *
  * The path the creep follows, and where you cannot place towers.
+ *
+ * 08/04 modified by Linda Evaldsson. Added intersetcs-method.
  */
 public abstract class Path {
 

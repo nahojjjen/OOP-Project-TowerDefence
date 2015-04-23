@@ -20,9 +20,15 @@ import edu.chl.proximity.Models.Towers.Tower;
 import java.util.List;
 
 /**
- * @author Johan on 2015-04-02
- * @revised by linda
- * etc
+ * @author Johan Swanberg
+ * @date 2015-04-02
+ *
+ * ---
+ *
+ * 07/04 Modified by Johan Swanberg. Updated so it doesn't crash the program on run.
+ * 08/04 Modified by Johan Swanberg. Switch to Screen from GameState.
+ * 08/04 modified by Linda Evaldsson. Made methods non-static.
+ * Unknown date modified by Linda Evaldsson
  */
 public class Renderer {
 

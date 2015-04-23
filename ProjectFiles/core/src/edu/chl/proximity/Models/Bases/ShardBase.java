@@ -6,7 +6,8 @@ import edu.chl.proximity.Models.Particles.ProximityEffect;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
- * Created by Johan on 2015-04-16.
+ * @author Johan Swanberg
+ * @date 2015-04-16
  *
  * The base of the Planes Faction
  */

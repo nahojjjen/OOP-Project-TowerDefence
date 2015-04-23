@@ -19,9 +19,11 @@ import java.util.List;
 
 /**
  * @author Linda Evaldsson
- * @revised by Johan Swanberg
  * @date 2015-04-17
+ *
  * The class managing the information to the right of the screen
+ *
+ * Unknown date modified by Johan Swanberg
  */
 public class ControlPanel extends BoardObject{
 

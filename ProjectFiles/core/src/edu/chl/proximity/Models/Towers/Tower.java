@@ -14,8 +14,10 @@ import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
  * @author Johan Swanberg
- * @author Linda Evaldsson (revised)
  * @date 2015-04-02
+ *
+ * ---
+ * 08/04 modified by Linda Evaldsson. Refactoring to Tower instead of AbstracTower. Removed Projectile as parameter for the constructor.
  *
  */
 public abstract class Tower extends BoardObject implements Holdable, Cloneable{

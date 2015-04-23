@@ -20,13 +20,14 @@ import java.util.Set;
  * @author Linda Evaldsson, Johan Swanberg (revised)
  * @date 2015-04-02
  *
- * 23/04 Modified by Simon Gislen, added Persistant Object management
- *
  * The map holds all information related to an instance of the game except for the player details
  * The games current map is accessible from GameData.
  *
- *
- */
+ * ---
+ * 08/04 Modified by Johan Swanberg. Switch to Screen from GameState.
+ * 08/04 modified by Linda Evaldsson. Made Map-class abstract. It is no longer a singleton.
+ * 23/04 Modified by Simon Gislen, added Persistant Object management
+ * */
 public abstract class Map {
 
     private int waveIndex;

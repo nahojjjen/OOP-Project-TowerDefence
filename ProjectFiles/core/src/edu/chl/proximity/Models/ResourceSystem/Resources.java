@@ -1,8 +1,8 @@
 package edu.chl.proximity.Models.ResourceSystem;
 
 /**
- * @Author Hanna Römer
- * @Date 2015-04-15.
+ * @author Hanna RÃ¶mer
+ * @date 2015-04-15.
  * Class containing the different resources in the game; points, lines and polygons
  */
 public class Resources {

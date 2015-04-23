@@ -10,7 +10,7 @@ import edu.chl.proximity.Models.Paths.Path;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
- * @author Linda Evaldsson and Johan Swanberg (Group work)
+ * @author Linda Evaldsson and Johan Swanberg
  * @date 2015-04-08
  */
 public class StandardMap extends Map {

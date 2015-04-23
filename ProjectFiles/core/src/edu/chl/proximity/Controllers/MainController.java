@@ -10,9 +10,6 @@ import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Projectiles.Projectile;
-import edu.chl.proximity.Models.Towers.BulletTower;
-import edu.chl.proximity.Models.Towers.MissileTower;
-import edu.chl.proximity.Models.Towers.SlowTower;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.ArrayList;
@@ -21,12 +18,18 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Created by Johan on 2015-04-02. Group work with Linda
+ * @author Johan Swanberg and Linda Evaldsson
+ * @date 2015-04-02
  *
- * ----
- * 21/04 Modified by Simon Gislen added WaveController
- * Revised by Hanna R�mer 21/04
+ * MainController controls all the SubControllers in the game. It updates the
+ * controllers 60 times per second and also handles input that is delegated to
+ * the SubControllers.
+ *
+ * 07/04 Modified by Johan Swanberg. Updated so it doesn't crash the program on run.
+ * 21/04 Modified by Simon Gislén. Addded WaveController
+ * 21/04 Modified by Hanna Römer.
  * 23/04 Modified by Simon Gislen Added PersistentObjectController
+ * 23/04 Modified by Linda Evaldsson. Added unprojection to the mouseMoved-method.
  */
 public class MainController implements InputProcessor{
 
@@ -162,11 +165,10 @@ public class MainController implements InputProcessor{
 
     @Override
     public boolean mouseMoved (int x, int y) {
-        Vector2 tmp = new Vector2(x, y);
+        Vector2 clickedPoint = viewport.unproject(new Vector2(x, y));
         for(ClickHandler controller : clickHandlers) {
-            controller.mouseMoved(tmp);
-            /*if(controller.getModel().containsPoint(clickedPoint))
-                controller.touchDown(clickedPoint, pointer, button);*/
+            if(controller.getModel().containsPoint(clickedPoint))
+                controller.mouseMoved(clickedPoint);
         }
         return true;
     }

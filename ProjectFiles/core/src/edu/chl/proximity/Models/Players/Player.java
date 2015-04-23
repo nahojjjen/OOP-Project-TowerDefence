@@ -4,9 +4,9 @@ import edu.chl.proximity.Models.Factions.Faction;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 
 /**
- * @author Hanna Römer
+ * @author Hanna RÃ¶mer
  * @date 2015-04-15
- * A class epresenting the player. 
+ * A class representing the player.
  */
 public class Player {
     private Resources resources;
