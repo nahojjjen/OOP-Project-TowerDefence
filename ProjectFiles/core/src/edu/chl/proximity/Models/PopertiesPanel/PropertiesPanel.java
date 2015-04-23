@@ -18,44 +18,14 @@ public class PropertiesPanel extends BoardObject{
     private static int height= Gdx.graphics.getHeight()-400;
     private static int width = 300;
     private static Vector2 position=new Vector2(200,200);
-    private boolean soundOff=false;
 
     public PropertiesPanel(){
-        super(position,background,0,height,width);
+        super(position, background, 0, height, width);
     }
 
 
-    public void pressedSoundButton(){
-        if(soundOff){
-            soundOff=true;
-            GameData.VOLUME=0.1f;
-        }else{
-            soundOff=false;
-            GameData.VOLUME=0f;
-        }
-        setSound();
+    public void setSoundAt(float frequency){
+        GameData.VOLUME=frequency;
+        //TODO make button(s) display current soundlevel
     }
-
-
-    public void setSound(){
-        if(soundOff){
-            GameData.VOLUME=0f;
-        }else{
-            GameData.VOLUME=0.1f;
-        }
-
-        /**
-        Mixer.Info[] infos = AudioSystem.getMixerInfo();
-        for (Mixer.Info info: infos) {
-            Mixer mixer = AudioSystem.getMixer(info);
-            for(Line line: mixer.getSourceLines()){
-                BooleanControl bc = (BooleanControl) line.getControl(BooleanControl.Type.MUTE);
-                if (bc != null) {
-                    bc.setValue(soundOff); // true to mute the line, false to unmute
-                }
-            }
-        }**/
-    }
-
-
 }
