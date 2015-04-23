@@ -75,6 +75,17 @@ public class ButtonPanel extends BoardObject {
     }
 
     /**
+     * Pauses game
+     */
+    public void pauseGame(){
+        if(!pause){
+            pause=true;
+            ppButton.toggle();
+            GameData.getInstance().setGameSpeed(0);
+        }
+    }
+
+    /**
      * Called if the Speed button is pressed. Increases speed and toggles button.
      * If speed is greater than 3 it is set to 1.
      */
