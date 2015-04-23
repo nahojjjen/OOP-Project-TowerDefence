@@ -7,6 +7,7 @@ import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Utilities.Constants;
+import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
  * @author Hanna Römer
@@ -46,8 +47,17 @@ public class PropertiesPanel extends BoardObject{
         //TODO make button(s) display current soundlevel
     }
 
+    public BoardObject getButtonOnPosition(Vector2 position){
+        if(PointCalculations.isPointInObject(position, resumeButton)) {
+            return resumeButton;
+        }
+        return null;
+    }
+
     public void render(SpriteBatch batch){
         super.render(batch);
         resumeButton.render(batch);
     }
+
+
 }
