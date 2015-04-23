@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.PopertiesPanel;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.GameData;
@@ -33,5 +34,9 @@ public class PropertiesPanel extends BoardObject{
     public void setSoundAt(int level){
         GameData.VOLUME=level*0.05f;
         //TODO make button(s) display current soundlevel
+    }
+
+    public void render(SpriteBatch batch){
+        super.render(batch);
     }
 }
