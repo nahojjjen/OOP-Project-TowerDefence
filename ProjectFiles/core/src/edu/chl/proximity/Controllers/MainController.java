@@ -24,8 +24,9 @@ import java.util.Set;
  * Created by Johan on 2015-04-02. Group work with Linda
  *
  * ----
- * Revised by Simon Gislen 21/04
- * Revised by Hanna Römer 21/04
+ * 21/04 Modified by Simon Gislen added WaveController
+ * Revised by Hanna Rï¿½mer 21/04
+ * 23/04 Modified by Simon Gislen Added PersistentObjectController
  */
 public class MainController implements InputProcessor{
 
@@ -39,6 +40,7 @@ public class MainController implements InputProcessor{
     private MapController mapController = new MapController();
     private HandController handController = new HandController();
     private ButtonPanelController buttonPanelController=new ButtonPanelController();
+    private PersistentObjectController persistentObjectController = new PersistentObjectController();
     private List<ClickHandler> clickHandlers = new ArrayList<ClickHandler>();
 
     private Viewport viewport;
@@ -63,6 +65,7 @@ public class MainController implements InputProcessor{
         creepController.update();
         towerController.update();
         projectileController.update();
+        persistentObjectController.update();
         backgroundController.update();
         controlPanelController.update();
         clearKillStacks();
