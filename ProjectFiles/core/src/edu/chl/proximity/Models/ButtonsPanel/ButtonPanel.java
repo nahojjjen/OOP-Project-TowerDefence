@@ -1,19 +1,21 @@
 package edu.chl.proximity.Models.ButtonsPanel;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Utilities.Constants;
+import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
  * Created by Hanna on 2015-04-22.
  */
 public class ButtonPanel extends BoardObject {
-    private static Image background = new Image(Constants.filePath + "Backgrounds/temporaryControlPanelBackground.png");
+    private static Image background = null;
     private static int width=300;
-    private static int height=200;
+    private static int height=70;
     private static Vector2 position= new Vector2(0,0);
     private boolean pause=false;
     private int speed=1;
@@ -29,7 +31,14 @@ public class ButtonPanel extends BoardObject {
         return pause;
     }
 
-    public 
+    public BoardObject getButtonOnPosition(Vector2 position){
+        if(PointCalculations.isPointInObject(position, ppButton)){
+            return ppButton;
+        }else if(PointCalculations.isPointInObject(position, speedButton)){
+            return speedButton;
+        }
+        return null;
+    }
 
     public void pressedPausePlay(){
         if(pause){
@@ -55,6 +64,12 @@ public class ButtonPanel extends BoardObject {
 
     public void propertiesButtonPressed(){
         System.out.print("Properties were pressed");
+    }
+
+    public void render(SpriteBatch batch){
+        super.render(batch);
+        ppButton.render(batch);
+        speedButton.render(batch);
     }
 
 }
