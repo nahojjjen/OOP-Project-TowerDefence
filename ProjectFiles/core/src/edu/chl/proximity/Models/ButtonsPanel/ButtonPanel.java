@@ -29,6 +29,8 @@ public class ButtonPanel extends BoardObject {
         return pause;
     }
 
+    public 
+
     public void pressedPausePlay(){
         if(pause){
             pause=false;
@@ -48,6 +50,7 @@ public class ButtonPanel extends BoardObject {
             speed++;
         }
         GameData.getInstance().setGameSpeed(speed);
+        speedButton.toogle();
     }
 
     public void propertiesButtonPressed(){
