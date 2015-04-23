@@ -7,6 +7,7 @@ import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.Particles.ParticleManager;
 import edu.chl.proximity.Models.Paths.Path;
 import edu.chl.proximity.Models.Projectiles.Projectile;
+import edu.chl.proximity.Models.Spells.PersistentObject;
 import edu.chl.proximity.Models.Towers.Tower;
 import edu.chl.proximity.Models.Waves.Wave;
 
@@ -19,14 +20,19 @@ import java.util.Set;
  * @author Linda Evaldsson, Johan Swanberg (revised)
  * @date 2015-04-02
  *
+ * 23/04 Modified by Simon Gislen, added Persistant Object management
+ *
  * The map holds all information related to an instance of the game except for the player details
  * The games current map is accessible from GameData.
+ *
+ *
  */
 public abstract class Map {
 
     private int waveIndex;
 
     private ArrayList<Creep> creeps = new ArrayList<Creep>();
+    private ArrayList<PersistentObject> persistentObjects = new ArrayList<PersistentObject>();
     private ArrayList<Wave> waves = new ArrayList<Wave>();
     private ArrayList<Tower> towers = new ArrayList<Tower>();
     private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
@@ -99,6 +105,12 @@ public abstract class Map {
     public Background getBackground(){ return  background;}
     public Base getBase(){return base;}
     public void setBase(Base base){ this.base = base;}
+    public ArrayList<PersistentObject> getPersistentObjects() {
+        return persistentObjects;
+    }
+    public void setPersistentObjects(ArrayList<PersistentObject> persistentObjects) {
+        this.persistentObjects = persistentObjects;
+    }
 
     /**
      * Add a creep to the map.
@@ -148,7 +160,5 @@ public abstract class Map {
     public  void addTower(Tower t) {
         towers.add(t);
     }
-
-
 
 }
