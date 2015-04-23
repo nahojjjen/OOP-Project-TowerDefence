@@ -16,7 +16,7 @@ public class ButtonPanel extends BoardObject {
     private static Image background = null;
     private static int width=300;
     private static int height=70;
-    private static Vector2 position= new Vector2(0,0);
+    private static Vector2 position= new Vector2(Gdx.graphics.getWidth()-width, Gdx.graphics.getHeight()-height);
     private boolean pause=false;
     private int speed=1;
     private PlayPauseButton ppButton=new PlayPauseButton(position.add(10,10));
