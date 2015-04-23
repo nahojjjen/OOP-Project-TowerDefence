@@ -20,11 +20,20 @@ public class PropertiesPanel extends BoardObject{
     private static int width = 300;
     private static Vector2 position=new Vector2(200,200);
 
+    private boolean isVisible=false;
+
     /**
      * Create a new properies panel
      */
     public PropertiesPanel(){
         super(position, background, 0, height, width);
+    }
+
+    public void setVisability(boolean isVisible){
+        this.isVisible=isVisible;
+    }
+    public boolean getIfVisible(){
+        return isVisible;
     }
 
     /**

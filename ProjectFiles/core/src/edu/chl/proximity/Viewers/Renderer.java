@@ -14,6 +14,7 @@ import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Particles.ParticleManager;
+import edu.chl.proximity.Models.PopertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Projectiles.Projectile;
 import edu.chl.proximity.Models.Towers.Tower;
 
@@ -36,6 +37,7 @@ public class Renderer {
     private ParticleManager particleManager ;
     private ControlPanel controlPanel;
     private ButtonPanel buttonPanel;
+    private PropertiesPanel propertiesPanel;
 
     /**
      * create a new renderer that can show everything in a game instance
@@ -50,6 +52,8 @@ public class Renderer {
         this.controlPanel = controlPanel;
     }
     public void setButtonPanel(ButtonPanel buttonPanel){ this.buttonPanel=buttonPanel;}
+
+    public void setPropertiesPanel(PropertiesPanel propertiesPanel{ this.propertiesPanel=propertiesPanel;}
 
     /**
      * render everything in the current game
@@ -77,6 +81,9 @@ public class Renderer {
         renderBase(batch);
         renderParticles(batch);
         renderControlPanel(batch);
+        renderButtonPanel(batch);
+        renderPropertiesPanel(batch);
+
         GameData.getInstance().getHand().render(batch);
 
     }
@@ -93,7 +100,12 @@ public class Renderer {
         shapeRenderer.end();
         batch.begin();*/
         controlPanel.render(batch);
+    }
+    private void renderButtonPanel(SpriteBatch batch){
         buttonPanel.render(batch);
+    }
+    private void renderPropertiesPanel(SpriteBatch batch){
+
     }
 
     /**
