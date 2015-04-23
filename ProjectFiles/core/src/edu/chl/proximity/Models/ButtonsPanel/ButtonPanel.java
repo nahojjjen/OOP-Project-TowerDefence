@@ -3,11 +3,9 @@ package edu.chl.proximity.Models.ButtonsPanel;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Utilities.Constants;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Hanna on 2015-04-22.
@@ -16,9 +14,37 @@ public class ButtonPanel extends BoardObject {
     private static Image background = new Image(Constants.filePath + "Backgrounds/temporaryControlPanelBackground.png");
     private static int width=300;
     private static int height=200;
-    private PlayPauseButton ppButton=new PlayPauseButton();
+    private static Vector2 position= new Vector2(0,0);
+    private boolean pause=false;
+    private int speed=1;
+    private PlayPauseButton ppButton=new PlayPauseButton(position.add(10,10));
 
     public ButtonPanel() {
-        super(new Vector2(Gdx.graphics.getWidth() - 300, 0), background, 0, width, height);
+        super(position, background, 0, width, height);
+        GameData.getInstance().setGameSpeed(speed);
     }
+
+    public void pressedPausePlay(){
+        if(pause){
+            pause=false;
+            GameData.getInstance().setGameSpeed(speed);
+        }else{
+            pause=true;
+            GameData.getInstance().setGameSpeed(0);
+        }
+    }
+
+    public void speedButtonPressed(){
+        if(speed==3){
+            speed=1;
+        }else{
+            speed++;
+        }
+        GameData.getInstance().setGameSpeed(speed);
+    }
+
+    public void propertiesButtonPressed(){
+        System.out.print("Properties were pressed");
+    }
+
 }

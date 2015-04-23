@@ -14,8 +14,8 @@ public class PlayPauseButton extends BoardObject {
     private static int height=50;
     private static int width=50;
 
-    public PlayPauseButton(){
-        super(new Vector2(0,0),pauseImage,0,width,height);
+    public PlayPauseButton(Vector2 position){
+        super(position,pauseImage,0,width,height);
     }
 
 }
