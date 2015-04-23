@@ -25,7 +25,7 @@ public class Line1 extends Creep {
     public Line1(int creepLineIndex) {
         super(null, speed);
         this.creepLineIndex = creepLineIndex;
-        setTexture(getCreepImage());
+        setImage(getCreepImage());
     }
 
     /**
@@ -35,7 +35,7 @@ public class Line1 extends Creep {
     public Line1(Line1 oldCreep) {
         super(null, speed, oldCreep);
         this.creepLineIndex = oldCreep.getCreepLineIndex() - 1;
-        setTexture(getCreepImage());
+        setImage(getCreepImage());
     }
 
 
