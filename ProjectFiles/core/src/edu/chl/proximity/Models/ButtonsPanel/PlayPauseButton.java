@@ -30,10 +30,8 @@ public class PlayPauseButton extends BoardObject {
     public void toggle(){
         if(super.getImage().equals(pauseImage)){
             setImage(playImage);
-            System.out.println("Should be play now");
         }else{
             setImage(pauseImage);
-            System.out.println("Should be pause now");
         }
     }
 
