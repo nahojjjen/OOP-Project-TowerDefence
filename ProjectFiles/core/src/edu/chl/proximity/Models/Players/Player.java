@@ -4,14 +4,23 @@ import edu.chl.proximity.Models.Factions.Faction;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 
 /**
+<<<<<<< HEAD
  * @author Hanna Römer
  * @date 2015-04-15
  * A class representing the player.
+=======
+ * @author Hanna R�mer
+ * @date 2015-04-15
+ * A class epresenting the player.
+ *
+ * 23/04 Modified by Simon. Adding depth to leveling up
+>>>>>>> Dev: Adds XP when killing creeps
  */
 public class Player {
     private Resources resources;
     private Faction faction;
-    private int level;
+    private int experiencePoints;
+    private double level;
 
     /**
      * Create a new player with starting resources of 300 points,
@@ -19,7 +28,7 @@ public class Player {
      * @param faction the players faction
      */
     public Player(Faction faction){
-        resources=new Resources(300, 300, 0);
+        resources = new Resources(300, 300, 0);
         this.faction=faction;
     }
 
@@ -40,27 +49,11 @@ public class Player {
     }
 
     /**
-     * Set the player level
-     * @param level what the player's level is set to
+     * Adds xp to the player. this method in turn handles leveling up
      */
-    public void setLevel(int level){
-        this.level=level;
-    }
-
-    /**
-     * Increase the player's level by one
-     */
-    public void levelUp(){
-        level += 1;
-    }
-
-    /**
-     * Increases the player's level by a given amount.
-     * @param l amount the player's level is to
-     *          be increased by
-     */
-    public void levelUpByAmount(int l){
-        level+=l;
+    public void addExperiencePoints(int xp) {
+        experiencePoints += xp;
+        level = (Math.sqrt(100 * (2 * experiencePoints + 25)) + 50)/100;
     }
 
     /**
@@ -71,11 +64,4 @@ public class Player {
         return resources;
     }
 
-    /**
-     * Get the player's current level
-     * @return the player's level
-     */
-    public int getLevel(){
-        return level;
-    }
 }

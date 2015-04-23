@@ -17,7 +17,7 @@ import java.util.Iterator;
  * Uknown date modified by Johan Swanberg
  * A class for the concrete creep Triangle
  *
- * 23/04 Modified by Simon. Adding resources when killing creeps
+ * 23/04 Modified by Simon. Adding resources XP when killing creeps
  */
 public class Triangle extends Creep {
 
@@ -45,5 +45,9 @@ public class Triangle extends Creep {
     //Logic to obtain creep resource
     public Resources getCreepResource() {
         return new Resources(20, 10, 0);
+    }
+    //Logic to obtain creep xp
+    public int getCreepExperiencePoints() {
+        return 10;
     }
 }

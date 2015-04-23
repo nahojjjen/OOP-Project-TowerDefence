@@ -11,7 +11,7 @@ import edu.chl.proximity.Utilities.Constants;
 /**
  * @author Simon Gislén
  * @date 2015-04-14
- * 23/04 Modified by Simon. Adding resources when killing creeps
+ * 23/04 Modified by Simon. Adding resources and XP when killing creeps
  */
 public class Circle extends Creep {
 
@@ -42,6 +42,10 @@ public class Circle extends Creep {
     //Logic to obtain creep resource
     public Resources getCreepResource() {
         return new Resources(10, 20, 0);
+    }
+    //Logic to obtain creep xp
+    public int getCreepExperiencePoints() {
+        return 8;
     }
 
 }

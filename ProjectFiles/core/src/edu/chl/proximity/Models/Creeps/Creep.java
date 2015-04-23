@@ -25,7 +25,7 @@ import java.util.Iterator;
  *
  * 08/04 modified by Linda Evaldsson. Refactoring to Creep instead of AbstractCreep. speed-variable changed to int instead of double.
  * 16/04 modified by Simon Gislén. Added support for creep devolution.
- * 23/04 Modified by Simon. Adding resources when killing creeps
+ * 23/04 Modified by Simon. Adding resources and XP when killing creeps
  * 
  * An abstract class for creeps. Concrete creeps extends this class.
  */
@@ -141,6 +141,11 @@ public abstract class Creep extends BoardObject {
      * @return Resources the player gets when the player kills the creep.
      */
     public abstract Resources getCreepResource();
+
+    /**
+     * @return XP the player gets when the player kills the creep.
+     */
+    public abstract int getCreepExperiencePoints();
 
     /**
      * move the creep based on its speed
