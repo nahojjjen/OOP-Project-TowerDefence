@@ -3,6 +3,7 @@ package edu.chl.proximity.Models.PopertiesPanel;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Utilities.Constants;
 
@@ -27,14 +28,23 @@ public class PropertiesPanel extends BoardObject{
     public void pressedSoundButton(){
         if(soundOff){
             soundOff=true;
+            GameData.VOLUME=0.1f;
         }else{
             soundOff=false;
+            GameData.VOLUME=0f;
         }
         setSound();
     }
 
 
     public void setSound(){
+        if(soundOff){
+            GameData.VOLUME=0f;
+        }else{
+            GameData.VOLUME=0.1f;
+        }
+
+        /**
         Mixer.Info[] infos = AudioSystem.getMixerInfo();
         for (Mixer.Info info: infos) {
             Mixer mixer = AudioSystem.getMixer(info);
@@ -44,7 +54,7 @@ public class PropertiesPanel extends BoardObject{
                     bc.setValue(soundOff); // true to mute the line, false to unmute
                 }
             }
-        }
+        }**/
     }
 
 

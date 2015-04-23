@@ -7,6 +7,7 @@ import edu.chl.proximity.Models.ButtonsPanel.ButtonPanel;
 import edu.chl.proximity.Models.ButtonsPanel.PlayPauseButton;
 import edu.chl.proximity.Models.ButtonsPanel.PropertiesButton;
 import edu.chl.proximity.Models.ButtonsPanel.SpeedButton;
+import edu.chl.proximity.Models.GameData;
 
 /**
  * @author Hanna Römer
@@ -41,7 +42,12 @@ public class ButtonPanelController implements ClickHandler{
         }else if(touchedButton instanceof SpeedButton){
             buttonPanel.pressedSpeedButton();
         }else if(touchedButton instanceof PropertiesButton){
-            buttonPanel.pressedPropertiesButton();
+            if(GameData.VOLUME>0) {
+                GameData.VOLUME = 0;
+            }else{
+                GameData.VOLUME=0.1f;
+            }
+
         }
 
     }

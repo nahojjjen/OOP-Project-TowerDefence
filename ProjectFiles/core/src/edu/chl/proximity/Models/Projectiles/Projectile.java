@@ -109,7 +109,7 @@ public abstract class Projectile extends BoardObject implements Cloneable{
      */
     public void playSound(){
         if (sound != null){
-            sound.play(0.1f, 0.5f, 1);
+            sound.play(GameData.VOLUME, 0.5f, 1);
         }
 
     }

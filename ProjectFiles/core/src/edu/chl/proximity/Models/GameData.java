@@ -21,6 +21,8 @@ public class GameData {
     private Hand hand = new Hand();
     private int gameSpeed = 1;
 
+    public static float VOLUME= 0.1f;
+
     private GameData() {}
 
     /**
