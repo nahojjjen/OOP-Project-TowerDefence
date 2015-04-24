@@ -92,7 +92,7 @@ public class ControlPanel extends BoardObject{
     public void setResources(Resources resources){
         lineText.setText("Lines: " + resources.getLines());
         polygonText.setText("Polygons: " + resources.getPolygons());
-        pointText.setText("Points: " + resources.getPolygons());
+        pointText.setText("Points: " + resources.getPoints());
 
     }
 
