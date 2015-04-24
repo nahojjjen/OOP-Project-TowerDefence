@@ -37,8 +37,8 @@ public abstract class Creep extends BoardObject {
     private double distanceToNextWayPoint;
     private Path path;
     private Sound devolveSound;
-    private int speed;
-    private int backUpSpeed;
+    private double speed;
+    private double backUpSpeed;
     private double moveAngle;
     private double randomRotation;
     private Vector2 velocity;
@@ -49,7 +49,7 @@ public abstract class Creep extends BoardObject {
      * @param image what image the creep should have (it will rotate a random amount automatically)
      * @param speed what speed the creep will have
      */
-    public Creep(Image image, int speed) {
+    public Creep(Image image, double speed) {
         super(null, image, 0);
         setupCreep(speed);
         initiateMovement();
@@ -70,7 +70,7 @@ public abstract class Creep extends BoardObject {
     }
 
     //Setup method that is common to constructors
-    public void setupCreep(int speed) {
+    public void setupCreep(double speed) {
         this.speed = speed;
         this.backUpSpeed = speed;
 
