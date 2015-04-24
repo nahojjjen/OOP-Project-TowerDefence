@@ -4,10 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.GameData;
-import edu.chl.proximity.Models.PropertiesPanel.MainMenuButton;
-import edu.chl.proximity.Models.PropertiesPanel.PropertiesPanel;
-import edu.chl.proximity.Models.PropertiesPanel.ResumeButton;
-import edu.chl.proximity.Models.PropertiesPanel.SoundButton;
+import edu.chl.proximity.Models.PropertiesPanel.*;
 
 /**
  * @author Hanna Römer
@@ -39,6 +36,9 @@ public class PropertiesPanelController implements ClickHandler{
                 propertiesPanel.pressedMainMenuButton();
             }else if(touchedButton instanceof SoundButton){
                 propertiesPanel.pressedSoundButton();
+            }else if(touchedButton instanceof SoundBar){
+                int level=((SoundBar) touchedButton).getLevel();
+                propertiesPanel.pressedBar(level);
             }
         }
     }

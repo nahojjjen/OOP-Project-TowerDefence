@@ -9,11 +9,14 @@ import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Hanna Römer
  * @date 2015-04-23
  *
- * 24/04 edited by Hanna Römer. Added SoundButton and MainMenuButton
+ * 24/04 edited by Hanna Römer. Added SoundButton, MainMenuButton and Sound-bars
  */
 public class PropertiesPanel extends BoardObject{
     private static Image background = new Image(Constants.filePath + "Backgrounds/TempPropPanel.png");
@@ -26,6 +29,8 @@ public class PropertiesPanel extends BoardObject{
     private MainMenuButton mainMenuButton=new MainMenuButton(mainMenuPos);
     private SoundButton soundButton=new SoundButton(soundPos);
 
+    private ArrayList<SoundBar> bars=new ArrayList<SoundBar>();
+
     private boolean isVisible=false;
 
     /**
@@ -33,6 +38,15 @@ public class PropertiesPanel extends BoardObject{
      */
     public PropertiesPanel(){
         super(position, background, 0);
+        setBars();
+    }
+
+    private void setBars(){
+        Vector2 pos=new Vector2(soundPos.x+50,soundPos.y);
+        for (int n=1; n<9; n++) {
+            bars.add(new SoundBar(pos,n));
+            pos.add(64,0);
+        }
     }
 
     /**
@@ -72,7 +86,16 @@ public class PropertiesPanel extends BoardObject{
         }else if(PointCalculations.isPointInObject(position,soundButton)){
             return soundButton;
         }
+        for(SoundBar bar:bars){
+            if(PointCalculations.isPointInObject(position,bar)){
+                return bar;
+            }
+        }
         return null;
+    }
+
+    public void pressedBar(int level){
+        System.out.print("Pressed bar at level " + level);
     }
 
     /**
@@ -113,6 +136,9 @@ public class PropertiesPanel extends BoardObject{
         resumeButton.render(batch);
         mainMenuButton.render(batch);
         soundButton.render(batch);
+        for(SoundBar bar:bars){
+            bar.render(batch);
+        }
     }
 
 
