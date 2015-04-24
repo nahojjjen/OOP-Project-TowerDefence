@@ -9,8 +9,8 @@ import java.util.List;
 /**
  * @author Johan Swanberg and Linda Evaldsson
  * @date 2015-04-11
- *
  * A class that keeps track of all effects that can be displayed, and has the ability to render them
+ *
  */
 public class ParticleManager {
 
@@ -26,6 +26,7 @@ public class ParticleManager {
         allEffects.add(new ProximityEffect("baseDamage", 15));
         allEffects.add(new ProximityEffect("baseGlitter", 1));
         allEffects.add(new ProximityEffect("frostBlast", 10));
+        allEffects.add(new ProximityEffect("frostField", 1));
     }
 
     /**
@@ -44,6 +45,7 @@ public class ParticleManager {
     public ProximityEffect getBaseDamageEffect() {return allEffects.get(3);}
     public ProximityEffect getBaseCracksEffect() {return allEffects.get(4);}
     public ProximityEffect getFrostBlastEffect() {return allEffects.get(5);}
+    public ProximityEffect getFrostField() {return allEffects.get(6);}
 
 }
 

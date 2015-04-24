@@ -9,15 +9,21 @@ import edu.chl.proximity.Models.Image;
  * @author simongislen
  * @date 23/04/15.
  * Defines a marker that effects nearby objects
+ *
+ * 04-24 Modified by Johan, added position & makes the object add itself to map on creation
  */
 
 public abstract class PersistentObject extends BoardObject {
 
     private int counter;
 
-    public PersistentObject(int counter) {
-        super();
+    public PersistentObject(Vector2 position, int counter) {
+        super(position, null, 0);
         this.counter = counter;
+
+        if (position != null){
+            GameData.getInstance().getMap().getPersistentObjects().add(this);
+        }
     }
 
     /**

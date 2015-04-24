@@ -18,6 +18,7 @@ import java.util.List;
 /**
  * @author Johan Swanberg and Linda Evaldsson
  * @date 2015-04-11
+ * 04-24 Modified by Johan, adds working rotation & angle modification and createeffect returns the created effect
  *
  */
 public class ProximityEffect {
@@ -43,6 +44,7 @@ public class ProximityEffect {
          effectPool = new ParticleEffectPool(effect, 1, maxPoolAmount );
     }
 
+
     /**
      * changes the direction and "spray" of a particle-effect
      * @param angle what general angle the effect should move towards
@@ -54,6 +56,9 @@ public class ProximityEffect {
         for (int i=0; i<emitters.size; i++) {
             emitters.get(i).getAngle().setHighMax(angle + spread/2);
             emitters.get(i).getAngle().setHighMin(angle - spread/2);
+            emitters.get(i).getAngle().setLowMax(angle + spread/2);
+            emitters.get(i).getAngle().setLowMin(angle - spread/2);
+
         }
     }
 
@@ -90,23 +95,23 @@ public class ProximityEffect {
      * @param x where to create the effect in x-coordinate
      * @param y where to create the effect in y-coordinate
      */
-    public void createEffect(float x, float y) {
+    public ParticleEffect createEffect(float x, float y) {
         if (effectPool != null){
             ParticleEffectPool.PooledEffect effect = effectPool.obtain();
             effect.setPosition(x, y);
             effects.add(effect);
             effect.start();
-
+            return effect;
         }
-
+        return null;
     }
     /**
      * Create a new ParticleEffect at the given location
      *
      * @param vector The vector point where this effect should be created
      */
-    public void createEffect(Vector2 vector) {
-        createEffect(vector.x, vector.y);
+    public ParticleEffect createEffect(Vector2 vector) {
+        return createEffect(vector.x, vector.y);
     }
 
     /**
