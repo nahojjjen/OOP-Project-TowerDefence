@@ -12,13 +12,19 @@ import edu.chl.proximity.Utilities.PointCalculations;
 /**
  * @author Hanna Römer
  * @date 2015-04-23
+ *
+ * 24/04 edited by Hanna Römer. Added SoundButton and MainMenuButton
  */
 public class PropertiesPanel extends BoardObject{
     private static Image background = new Image(Constants.filePath + "Backgrounds/TempPropPanel.png");
     private static Vector2 position=new Vector2(300,200);
-    private Vector2 resumePos=new Vector2(position.x+95,position.y+50);
+    private Vector2 resumePos=new Vector2(position.x+95,position.y+20);
+    private Vector2 mainMenuPos = new Vector2(position.x+95,resumePos.y+100);
+    private Vector2 soundPos = new Vector2(position.x + 100, mainMenuPos.y+100);
 
     private ResumeButton resumeButton=new ResumeButton(resumePos);
+    private MainMenuButton mainMenuButton=new MainMenuButton(mainMenuPos);
+    private SoundButton soundButton=new SoundButton(soundPos);
 
     private boolean isVisible=false;
 
@@ -51,7 +57,6 @@ public class PropertiesPanel extends BoardObject{
      */
     public void setSoundAt(int level){
         GameData.VOLUME=level*0.05f;
-        //TODO make button(s) display current soundlevel
     }
 
     /**
@@ -62,16 +67,41 @@ public class PropertiesPanel extends BoardObject{
     public BoardObject getButtonOnPosition(Vector2 position){
         if(PointCalculations.isPointInObject(position, resumeButton)) {
             return resumeButton;
+        }else if(PointCalculations.isPointInObject(position,mainMenuButton)){
+            return mainMenuButton;
+        }else if(PointCalculations.isPointInObject(position,soundButton)){
+            return soundButton;
         }
         return null;
     }
 
     /**
-     * Called if the Resume-button is pressed
+     * Called if the Resume-button is pressed. Resumes game
      */
     public void pressedResumeButton(){
         setVisability(false);
         GameData.getInstance().getButtonPanel().startGame();
+    }
+
+    /**
+     * Called if MainMenu-button is pressed
+     */
+    public void pressedMainMenuButton(){
+
+    }
+
+    /**
+     * Called if Sound on/off button is pressed. Mutes/turns on sound
+     */
+    public void pressedSoundButton(){
+        if(GameData.VOLUME>0){
+            GameData.VOLUME=0f;
+            soundButton.setSoundOff();
+        }else{
+            GameData.VOLUME=0.1f;
+            soundButton.setSoundOn();
+        }
+
     }
 
     /**
@@ -81,6 +111,8 @@ public class PropertiesPanel extends BoardObject{
     public void render(SpriteBatch batch){
         super.render(batch);
         resumeButton.render(batch);
+        mainMenuButton.render(batch);
+        soundButton.render(batch);
     }
 
 

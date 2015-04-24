@@ -4,12 +4,16 @@ import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.GameData;
+import edu.chl.proximity.Models.PropertiesPanel.MainMenuButton;
 import edu.chl.proximity.Models.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.PropertiesPanel.ResumeButton;
+import edu.chl.proximity.Models.PropertiesPanel.SoundButton;
 
 /**
  * @author Hanna Römer
  * @date 2015-04-23
+ *
+ * 24/04 edit by Hanna Römer. Added possibility of MainMenuButton or SoundButton being pressed.
  */
 public class PropertiesPanelController implements ClickHandler{
     private PropertiesPanel propertiesPanel=new PropertiesPanel();
@@ -31,6 +35,10 @@ public class PropertiesPanelController implements ClickHandler{
             BoardObject touchedButton=propertiesPanel.getButtonOnPosition(clickedPoint);
             if(touchedButton instanceof ResumeButton){
                 propertiesPanel.pressedResumeButton();
+            }else if(touchedButton instanceof MainMenuButton){
+                propertiesPanel.pressedMainMenuButton();
+            }else if(touchedButton instanceof SoundButton){
+                propertiesPanel.pressedSoundButton();
             }
         }
     }
