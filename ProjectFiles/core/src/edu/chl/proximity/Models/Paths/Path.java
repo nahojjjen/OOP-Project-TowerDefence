@@ -15,12 +15,12 @@ import edu.chl.proximity.Models.BoardObject;
  * The path the creep follows, and where you cannot place towers.
  *
  * 08/04 modified by Linda Evaldsson. Added intersetcs-method.
+ * 04-24 modified by Johan Swanberg, removed unused texture
  */
 public abstract class Path {
 
     protected List<Vector2> waypoint = new ArrayList();
     protected List<Rectangle> pathHitbox =  new ArrayList();
-    private Texture texture;
 
     /**
      * get an instance of this path
@@ -99,13 +99,4 @@ public abstract class Path {
     }
 
 
-    /**
-     * get the image of the Path (singleton)
-     *
-     * @return the image of the base
-     */
-    public  Texture getImage() {
-        return texture;
-
-    }
 }

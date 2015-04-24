@@ -30,6 +30,7 @@ import java.util.List;
  * 08/04 modified by Linda Evaldsson. Made methods non-static.
  * Unknown date modified by Linda Evaldsson
  * 23/04 Modified by Hanna Römer. Added ButtonPanel and PropertiesPanel + necessary methods for them
+ * 24/04 Modified by Johan Swanberg - Added creep debug view and fixed path render to not be missaligned
  */
 public class Renderer {
 
@@ -141,7 +142,7 @@ public class Renderer {
         shapeRenderer.setColor(new Color(0.4f, 0.6f, 0.9f, 0));
 
         for (int i = 1; i<waypoints.size(); i++){
-            shapeRenderer.line(waypoints.get(i-1).x +20 ,waypoints.get(i-1).y+20, waypoints.get(i).x+20,waypoints.get(i).y+20);
+            shapeRenderer.line(waypoints.get(i-1).x  ,waypoints.get(i-1).y, waypoints.get(i).x,waypoints.get(i).y);
         }
     }
 
