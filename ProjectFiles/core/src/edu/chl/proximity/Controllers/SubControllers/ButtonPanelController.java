@@ -15,7 +15,6 @@ import edu.chl.proximity.Models.GameData;
  */
 public class ButtonPanelController implements ClickHandler{
     private ButtonPanel buttonPanel;
-    //private PropertiesPanelController ppController;
 
     public ButtonPanelController(){
         buttonPanel = new ButtonPanel();

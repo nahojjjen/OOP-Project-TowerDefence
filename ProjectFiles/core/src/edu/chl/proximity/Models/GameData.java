@@ -14,6 +14,7 @@ import edu.chl.proximity.Models.PropertiesPanel.PropertiesPanel;
  * This class keeps track of the collected data of this current game-instance,
  * A collection of the current map, played factions, gamespeed and misc information.
  *
+ * 23/04 added ButtonPanel, PropertiesPanel and volume of game.
  */
 public class GameData {
 

@@ -13,7 +13,7 @@ import edu.chl.proximity.Utilities.PointCalculations;
  * @author Hanna Römer
  * @date 2015-04-22
  *
- * Class used for managing the buttons to the far bottom right
+ * Class used for managing the buttons to the far bottom right. Keeps track of the game's speed
  */
 public class ButtonPanel extends BoardObject {
     private static Image background = null;
@@ -43,6 +43,10 @@ public class ButtonPanel extends BoardObject {
         GameData.getInstance().setGameSpeed(speed);
     }
 
+    /**
+     * Get wether or not the game is paused
+     * @return true if game is paused, false otherwise
+     */
     public boolean isPaused(){
         return pause;
     }
@@ -89,6 +93,9 @@ public class ButtonPanel extends BoardObject {
         }
     }
 
+    /**
+     * Starts the game again if it's paused
+     */
     public void startGame(){
         if(pause){
             pause=false;
@@ -114,6 +121,10 @@ public class ButtonPanel extends BoardObject {
         GameData.getInstance().setGameSpeed(speed);
     }
 
+    /**
+     * Called if the propertiesButton is pressed
+     * Pauses game and tells the properiespanel to be visible
+     */
     public void pressedPropertiesButton(){
         pauseGame();
         GameData.getInstance().getPropertiesPanel().setVisability(true);

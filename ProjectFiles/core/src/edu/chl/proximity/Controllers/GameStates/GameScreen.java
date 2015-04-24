@@ -30,6 +30,7 @@ import edu.chl.proximity.Viewers.Renderer;
  * 08/04 modified by Linda Evaldsson. Added som spawning logic for testing.
  * 16/04 modified by Simon Gislen
  * 21/04 modified by Simon Gislen
+ * 23/04 modified by Hanna Römer. Added ButtonPanel and PropertiesPanel.
  */
 public class GameScreen implements Screen{
     private Game game;
