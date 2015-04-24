@@ -26,6 +26,7 @@ import java.util.Iterator;
  * 08/04 modified by Linda Evaldsson. Refactoring to Creep instead of AbstractCreep. speed-variable changed to int instead of double.
  * 16/04 modified by Simon Gislén. Added support for creep devolution.
  * 23/04 Modified by Simon. Adding resources and XP when killing creeps
+ * 24/04 modified by Johan, creeps now use their center when calculating movement instead of upper left corner
  * 
  * An abstract class for creeps. Concrete creeps extends this class.
  */
@@ -102,7 +103,7 @@ public abstract class Creep extends BoardObject {
      * Give the creep the first angle & direction to the first waypoint
      */
     private void initiateMovement() {
-        this.setPosition(new Vector2(path.getWaypoint(0)));
+        this.setCenter(new Vector2(path.getWaypoint(0)));
         nextWayPointID = 0;
         aimTowardsNextWaypoint();
         distanceToNextWayPoint = Double.MAX_VALUE;
@@ -174,16 +175,12 @@ public abstract class Creep extends BoardObject {
      * nextWaypoint in degrees.
      */
     public  double getAngleToNextPoint() {
-
-
         if (this.getPosition() != null && path.getWaypoint(nextWayPointID)!= null) {
-            double angle = PointCalculations.getVectorAngle(this.getPosition(), path.getWaypoint(nextWayPointID));
+            double angle = PointCalculations.getVectorAngle(this.getCenter(), path.getWaypoint(nextWayPointID));
             //System.out.println("angle:" + angle);
             return angle;
 
         }
-
-
         System.out.println("In Creep: Error in abstractCreep: trying to get angle to next point- invalid point, trying to calculate angle to null");
         //dont handle this as exception because try-catch takes resources & the error is not fatal, instead default to no rotation.
         return 0;
@@ -236,7 +233,7 @@ public abstract class Creep extends BoardObject {
     private boolean reachedWaypoint(Vector2 waypoint){
 
         double olddistanceToNextWayPoint = distanceToNextWayPoint;
-        distanceToNextWayPoint = PointCalculations.distanceBetweenNoSqrt(super.getPosition(), waypoint);
+        distanceToNextWayPoint = PointCalculations.distanceBetweenNoSqrt(getCenter(), waypoint);
         if (distanceToNextWayPoint > olddistanceToNextWayPoint){ //if you're no longer approaching the waypoint, you're leaving it
             return true;
         }

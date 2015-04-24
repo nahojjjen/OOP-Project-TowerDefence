@@ -18,16 +18,17 @@ import java.lang.reflect.Field;
  * @date 2015-04-21
  *
  * 23/04 Modified by Simon. Adding resources and XP when killing creeps
+ * 24/4 Modified by Johan Swanberg - Makes creeps correctly follow path by making getCenter work correctly- fixing images
  */
 public class Line1 extends Creep {
 
-    private static File[] imageFiles = new File(Constants.filePath + "Creeps/Line1/").listFiles();
+    private static File[] imageFiles = new File(Constants.filePath + "Creeps/Line3/").listFiles();
     private int creepLineIndex;
-    //private static Image img = new Image(Constants.filePath + "Creeps/Line2/7.png");
+    private static Image img = new Image(Constants.filePath + "Creeps/Line2/7.png"); //dummy image to get correct resolution
     private static int speed = 5;
 
     public Line1(int creepLineIndex) {
-        super(null, speed);
+        super(img, speed);
         this.creepLineIndex = creepLineIndex;
         setImage(getCreepImage());
     }
@@ -37,7 +38,7 @@ public class Line1 extends Creep {
      * @param oldCreep a Creep object from which position is used.
      */
     public Line1(Line1 oldCreep) {
-        super(null, speed, oldCreep);
+        super(img, speed, oldCreep);
         this.creepLineIndex = oldCreep.getCreepLineIndex() - 1;
         setImage(getCreepImage());
     }
