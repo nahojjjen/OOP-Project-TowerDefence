@@ -37,7 +37,6 @@ public class PropertiesPanelController implements ClickHandler{
             }else if(touchedButton instanceof SoundButton){
                 propertiesPanel.pressedSoundButton();
             }else if(touchedButton instanceof SoundBar){
-                System.out.println("SOOOUUUUND-BAAAAR");
                 int level=((SoundBar) touchedButton).getLevel();
                 propertiesPanel.pressedBar(level);
             }

@@ -15,9 +15,9 @@ public class SoundBar extends BoardObject{
     private int level;
 
     public SoundBar(Vector2 position, int level){
-        super(position,null,0);
-        filled=new Image(Constants.filePath + "Buttons/PlayButton.png");
-        empty = new Image(Constants.filePath + "Buttons/PauseButton.png");
+        super(position,null,0,16,32);
+        filled=new Image(Constants.filePath + "Buttons/SoundBarFilled.png");
+        empty = new Image(Constants.filePath + "Buttons/SoundBarEmpty.png");
         super.setImage(filled);
         this.level=level;
     }

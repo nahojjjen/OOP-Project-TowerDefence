@@ -31,6 +31,7 @@ public class PropertiesPanel extends BoardObject{
 
     private ArrayList<SoundBar> bars=new ArrayList<SoundBar>();
 
+    private int backUpLevel;
     private boolean isVisible=false;
 
     /**
@@ -38,13 +39,28 @@ public class PropertiesPanel extends BoardObject{
      */
     public PropertiesPanel(){
         super(position, background, 0);
-        setBars();
+        initBars();
+        setBarsAt(4);
+        setSoundAt(4);
     }
 
-    private void setBars(){
-        Vector2 pos=new Vector2(soundPos.x+35,soundPos.y);
+    private void initBars(){
+        Vector2 pos=new Vector2(soundPos.x+50,soundPos.y+15);
         for (int n=1; n<9; n++) {
-            bars.add(new SoundBar(new Vector2(pos.x+n*15,pos.y),n));
+            bars.add(new SoundBar(new Vector2(pos.x + n * 18, pos.y), n));
+        }
+    }
+
+
+    private void setBarsAt(int level){
+        setBarsEmpty();
+        for(int n=0;n<level;n++){
+            bars.get(n).setFilled();
+        }
+    }
+    private void setBarsEmpty(){
+        for(SoundBar bar:bars){
+            bar.setEmpty();
         }
     }
 
@@ -69,7 +85,36 @@ public class PropertiesPanel extends BoardObject{
      * @param level What level the sound is to be set at
      */
     public void setSoundAt(int level){
-        GameData.VOLUME=level*0.05f;
+
+        switch (level){
+            case 0: GameData.VOLUME=0f;
+                    break;
+            case 1: GameData.VOLUME=0.0125f;
+                    backUpLevel=1;
+                    break;
+            case 2: GameData.VOLUME=0.025f;
+                    backUpLevel=2;
+                    break;
+            case 3: GameData.VOLUME=0.05f;
+                    backUpLevel=3;
+                    break;
+            case 4: GameData.VOLUME=0.1f;
+                    backUpLevel=4;
+                    break;
+            case 5: GameData.VOLUME=0.2f;
+                    backUpLevel=5;
+                    break;
+            case 6: GameData.VOLUME=0.4f;
+                    backUpLevel=6;
+                    break;
+            case 7: GameData.VOLUME=0.8f;
+                    backUpLevel=7;
+                    break;
+            case 8: GameData.VOLUME=0.16f;
+                    backUpLevel=8;
+                    break;
+        }
+
     }
 
     /**
@@ -79,9 +124,7 @@ public class PropertiesPanel extends BoardObject{
      */
     public BoardObject getButtonOnPosition(Vector2 position){
         for(SoundBar bar:bars){
-            System.out.println("Hello?" + PointCalculations.isPointInObject(position,bar));
             if(PointCalculations.isPointInObject(position,bar)){
-                System.out.println("Why aren't you returning?");
                 return bar;
             }
         }
@@ -96,7 +139,8 @@ public class PropertiesPanel extends BoardObject{
     }
 
     public void pressedBar(int level){
-        System.out.print("Pressed bar at level " + level);
+        setBarsAt(level);
+        setSoundAt(level);
     }
 
     /**
@@ -119,10 +163,12 @@ public class PropertiesPanel extends BoardObject{
      */
     public void pressedSoundButton(){
         if(GameData.VOLUME>0){
-            GameData.VOLUME=0f;
+            setSoundAt(0);
+            setBarsAt(0);
             soundButton.setSoundOff();
         }else{
-            GameData.VOLUME=0.1f;
+            setSoundAt(backUpLevel);
+            setBarsAt(backUpLevel);
             soundButton.setSoundOn();
         }
 
