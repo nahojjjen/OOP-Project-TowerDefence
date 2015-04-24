@@ -1,6 +1,8 @@
 package edu.chl.proximity.Models.Projectiles;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Creeps.Creep;
@@ -27,7 +29,7 @@ public abstract class Projectile extends BoardObject implements Cloneable{
     private int health;
     private int speed;
     private Sound sound;
-
+    private RandomXS128 rndGenerator = new RandomXS128();
     /**
      * Create a new projectile type
      * @param particleEffect what effect should be played when the bullet hits
@@ -107,12 +109,24 @@ public abstract class Projectile extends BoardObject implements Cloneable{
 
     /**
      * play the sound connected to this projectile, example explosion sound.
+     * Plays the sound relative to the creep position and gives a slight random putch
      */
     public void playSound(){
         if (sound != null){
-            sound.play(GameData.VOLUME, 0.5f, 1);
+            float xSoundPosition = getXSoundPosition();
+            float rndPitch = (rndGenerator.nextFloat()/2) + 0.5f;
+            sound.play(GameData.VOLUME, rndPitch, xSoundPosition);
         }
+    }
 
+    /**
+     * get where the projectile is x-wise
+     * @return a value between -1 and 1, where -1 is furthest to the left, 0 is in the middle of the map and 1 is to the right.
+     */
+    private float getXSoundPosition(){
+        return ((getCenter().x / 800)-0.5f)*2;
+        //getCenter/800 returns a value between 0 and 1, 0 if to left and 1 if to right.
+        //-0.5 makes the value between -0.5,+0,5, *2 makes it -1,1 -> between left and right ear
     }
     /**
      * decrease the projectiles health by one, remove it if its 0
