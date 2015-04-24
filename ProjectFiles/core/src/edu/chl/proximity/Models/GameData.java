@@ -1,9 +1,11 @@
 package edu.chl.proximity.Models;
 
+import edu.chl.proximity.Models.ButtonsPanel.ButtonPanel;
 import edu.chl.proximity.Models.Factions.Faction;
 import edu.chl.proximity.Models.Holdables.Hand;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Players.Player;
+import edu.chl.proximity.Models.PropertiesPanel.PropertiesPanel;
 
 /**
  * @author Linda Evaldsson and Johan Swanberg
@@ -19,9 +21,12 @@ public class GameData {
     private Map map;
     private Player player;
     private Hand hand = new Hand();
+    private ButtonPanel buttonPanel;
+    private PropertiesPanel propertiesPanel;
     private int gameSpeed = 1;
 
     public static float VOLUME= 0.1f;
+
 
     private GameData() {}
 
@@ -72,6 +77,12 @@ public class GameData {
 
     public Player getPlayer(){return player;}
     public void setPlayer(Player inputPlayer){player = inputPlayer;}
+
+    public ButtonPanel getButtonPanel(){ return buttonPanel;}
+    public void setButtonPanel(ButtonPanel buttonPanel){this.buttonPanel=buttonPanel;}
+
+    public PropertiesPanel getPropertiesPanel(){ return propertiesPanel;}
+    public void setPropertiesPanel(PropertiesPanel propertiesPanel){ this.propertiesPanel=propertiesPanel;}
 
     public Hand getHand() { return hand; }
 

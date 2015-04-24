@@ -54,7 +54,6 @@ public class MainController implements InputProcessor{
 
     public MainController(Viewport v) {
         viewport=v;
-        buttonPanelController.setPpropertiesPanelController(propertiesPanelController);
         clickHandlers.add(controlPanelController);
         clickHandlers.add(mapController);
         clickHandlers.add(buttonPanelController);

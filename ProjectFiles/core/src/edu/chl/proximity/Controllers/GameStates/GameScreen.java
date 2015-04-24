@@ -66,7 +66,8 @@ public class GameScreen implements Screen{
         mainController.setButtonPanel(buttonPanel);
         mainController.setPropertiesPanel(propertiesPanel);
 
-
+        GameData.getInstance().setButtonPanel(buttonPanel);
+        GameData.getInstance().setPropertiesPanel(propertiesPanel);
 
         shapeRenderer.setAutoShapeType(true);
 

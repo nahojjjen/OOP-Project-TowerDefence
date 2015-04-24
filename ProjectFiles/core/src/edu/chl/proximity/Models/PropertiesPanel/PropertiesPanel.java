@@ -54,6 +54,11 @@ public class PropertiesPanel extends BoardObject{
         return null;
     }
 
+    public void pressedResumeButton(){
+        setVisability(false);
+        GameData.getInstance().getButtonPanel().startGame();
+    }
+
     public void render(SpriteBatch batch){
         super.render(batch);
         resumeButton.render(batch);

@@ -30,12 +30,9 @@ public class PropertiesPanelController implements ClickHandler{
         if(propertiesPanel.getIfVisible()){
             BoardObject touchedButton=propertiesPanel.getButtonOnPosition(clickedPoint);
             if(touchedButton instanceof ResumeButton){
-                propertiesPanel.setVisability(false);
+                propertiesPanel.pressedResumeButton();
             }
         }
     }
 
-    public void show(){ propertiesPanel.setVisability(true);}
-
-    public void hide(){ propertiesPanel.setVisability(false);}
 }
