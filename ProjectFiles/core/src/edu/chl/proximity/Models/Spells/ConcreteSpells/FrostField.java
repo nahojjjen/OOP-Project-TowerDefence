@@ -14,7 +14,7 @@ import edu.chl.proximity.Utilities.PointCalculations;
 import java.util.List;
 
 /**
- * Created by Johan on 2015-04-24.
+ * @author by Johan on 2015-04-24.
  */
 public class FrostField extends PersistentObject{
 
