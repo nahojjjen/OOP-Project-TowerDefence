@@ -18,6 +18,7 @@ import java.util.List;
  * 08/04 modified by Linda Evaldsson. Refactoring to Projectile instead of AbstractProjectile.
  * Unknown date modified by Linda Evaldsson
  * Unknown date modified by Johan Swanberg
+ * 04-24 modified by Johan Swanberg, fixed projectile hitbox origin to center
  *
  * An abstract class for projectiles. All projectiles extend this class.
  */
@@ -60,8 +61,8 @@ public abstract class Projectile extends BoardObject implements Cloneable{
      */
     public boolean collidesWith(Vector2 creeppos, int hitbox) {
         //+20 because the creep image is 40x40 pixels, and we want to check for the center of the image
-        if (creeppos.y+20 - hitbox < getPosition().y && getPosition().y < creeppos.y+20 + hitbox) {
-            if (creeppos.x+20 - hitbox < getPosition().x && getPosition().x < creeppos.x+20 + hitbox) {
+        if (creeppos.y+20 - hitbox < getCenter().y && getCenter().y < creeppos.y+20 + hitbox) {
+            if (creeppos.x+20 - hitbox < getCenter().x && getCenter().x < creeppos.x+20 + hitbox) {
                 return true;
             }
         }
