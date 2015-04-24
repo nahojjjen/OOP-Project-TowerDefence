@@ -69,6 +69,7 @@ public class Renderer {
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         renderAllTowerRanges(shapeRenderer);
+        debugRenderAllCentersAndUpperLeftCorners(shapeRenderer);
         shapeRenderer.end();
 
 
@@ -86,6 +87,24 @@ public class Renderer {
         GameData.getInstance().getHand().render(batch);
 
     }
+
+
+    private void debugRenderAllCentersAndUpperLeftCorners(ShapeRenderer shapeRenderer){
+        Color red = new Color(1,0,0,1);
+        Color blue = new Color(0, 0, 1, 1);
+
+        for (Creep creep:map.getCreeps()){
+
+            shapeRenderer.setColor(blue); //hitbox
+            shapeRenderer.rect(creep.getPosition().x, creep.getPosition().y, 40, 40);
+
+            shapeRenderer.setColor(red); //center
+            shapeRenderer.circle(creep.getCenter().x, creep.getCenter().y, 4);
+
+
+        }
+    }
+
 
     /**
      * Draws out the control panel
