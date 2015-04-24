@@ -42,10 +42,9 @@ public class PropertiesPanel extends BoardObject{
     }
 
     private void setBars(){
-        Vector2 pos=new Vector2(soundPos.x+50,soundPos.y);
+        Vector2 pos=new Vector2(soundPos.x+35,soundPos.y);
         for (int n=1; n<9; n++) {
-            bars.add(new SoundBar(pos,n));
-            pos.add(64,0);
+            bars.add(new SoundBar(new Vector2(pos.x+n*15,pos.y),n));
         }
     }
 
@@ -79,17 +78,19 @@ public class PropertiesPanel extends BoardObject{
      * @return Button on given position, null if none are
      */
     public BoardObject getButtonOnPosition(Vector2 position){
+        for(SoundBar bar:bars){
+            System.out.println("Hello?" + PointCalculations.isPointInObject(position,bar));
+            if(PointCalculations.isPointInObject(position,bar)){
+                System.out.println("Why aren't you returning?");
+                return bar;
+            }
+        }
         if(PointCalculations.isPointInObject(position, resumeButton)) {
             return resumeButton;
         }else if(PointCalculations.isPointInObject(position,mainMenuButton)){
             return mainMenuButton;
         }else if(PointCalculations.isPointInObject(position,soundButton)){
             return soundButton;
-        }
-        for(SoundBar bar:bars){
-            if(PointCalculations.isPointInObject(position,bar)){
-                return bar;
-            }
         }
         return null;
     }

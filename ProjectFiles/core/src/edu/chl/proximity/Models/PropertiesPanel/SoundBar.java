@@ -10,12 +10,15 @@ import edu.chl.proximity.Utilities.Constants;
  * @date 2015-04-24
  */
 public class SoundBar extends BoardObject{
-    private static Image filled=new Image(Constants.filePath + "Buttons/SoundOffButton.png");
-    private static Image empty = new Image(Constants.filePath + "Buttons/SoundOnButton.png");
+    private Image filled;
+    private Image empty;
     private int level;
 
     public SoundBar(Vector2 position, int level){
         super(position,null,0);
+        filled=new Image(Constants.filePath + "Buttons/PlayButton.png");
+        empty = new Image(Constants.filePath + "Buttons/PauseButton.png");
+        super.setImage(filled);
         this.level=level;
     }
 
