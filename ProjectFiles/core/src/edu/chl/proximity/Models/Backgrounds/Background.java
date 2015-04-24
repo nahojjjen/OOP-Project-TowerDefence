@@ -19,7 +19,7 @@ public class Background extends BoardObject {
      * @param img      the image of the object
      */
     public Background(Image img) {
-        super(new Vector2(-700,-300), img, 0);
+        super(new Vector2(0,0), img, 0);
     }
 
     /**
