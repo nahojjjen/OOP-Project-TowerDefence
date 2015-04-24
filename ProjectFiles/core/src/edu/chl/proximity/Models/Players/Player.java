@@ -28,7 +28,7 @@ public class Player {
      * @param faction the players faction
      */
     public Player(Faction faction){
-        resources = new Resources(300, 300, 0);
+        resources = new Resources(0, 0, 0);
         this.faction=faction;
     }
 
