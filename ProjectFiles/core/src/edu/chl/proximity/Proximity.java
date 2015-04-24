@@ -4,7 +4,10 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import edu.chl.proximity.Controllers.GameStates.GameScreen;
+import edu.chl.proximity.Controllers.GameStates.MenuScreen;
 import edu.chl.proximity.Models.Factions.ConcreteFactions.Planes;
+import edu.chl.proximity.Models.GameData;
+import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Maps.StandardMap;
 import edu.chl.proximity.Models.Players.Player;
 /**
@@ -14,12 +17,24 @@ import edu.chl.proximity.Models.Players.Player;
  */
 
 public class Proximity extends Game {
+	public enum State{GAME,MAIN_MENU}
 
-	
+	public void changeScreen(State state, Map map, Player player){
+		switch(state){
+			case GAME:
+				this.setScreen(new GameScreen(this,map,player));
+				break;
+			case MAIN_MENU:
+				this.setScreen(new MenuScreen(this));
+		}
+	}
+
 	@Override
 	public void create () {
 		this.setScreen(new GameScreen(this, new StandardMap(), new Player(new Planes())));
+		GameData.getInstance().setGame(this);
 	}
+
 
 	@Override
 	public void render () {

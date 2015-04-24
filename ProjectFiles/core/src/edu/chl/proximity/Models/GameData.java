@@ -1,11 +1,17 @@
 package edu.chl.proximity.Models;
 
+import com.badlogic.gdx.Game;
+import edu.chl.proximity.Controllers.GameStates.GameScreen;
+import edu.chl.proximity.Controllers.GameStates.MenuScreen;
 import edu.chl.proximity.Models.ButtonsPanel.ButtonPanel;
+import edu.chl.proximity.Models.Factions.ConcreteFactions.Planes;
 import edu.chl.proximity.Models.Factions.Faction;
 import edu.chl.proximity.Models.Holdables.Hand;
 import edu.chl.proximity.Models.Maps.Map;
+import edu.chl.proximity.Models.Maps.StandardMap;
 import edu.chl.proximity.Models.Players.Player;
 import edu.chl.proximity.Models.PropertiesPanel.PropertiesPanel;
+import edu.chl.proximity.Proximity;
 
 /**
  * @author Linda Evaldsson and Johan Swanberg
@@ -26,10 +32,20 @@ public class GameData {
     private PropertiesPanel propertiesPanel;
     private int gameSpeed = 1;
 
+    private Proximity proximity;
+
     public static float VOLUME= 0.1f;
 
 
     private GameData() {}
+
+
+    public void setGame(Proximity proximity){
+        this.proximity=proximity;
+    }
+    public Proximity getGame(){
+        return proximity;
+    }
 
     /**
      * set the speed in which the game logic updates
