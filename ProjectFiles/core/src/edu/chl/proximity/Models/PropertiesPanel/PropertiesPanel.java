@@ -110,7 +110,7 @@ public class PropertiesPanel extends BoardObject{
             case 7: GameData.VOLUME=0.8f;
                     backUpLevel=7;
                     break;
-            case 8: GameData.VOLUME=0.16f;
+            case 8: GameData.VOLUME=1.6f;
                     backUpLevel=8;
                     break;
         }
