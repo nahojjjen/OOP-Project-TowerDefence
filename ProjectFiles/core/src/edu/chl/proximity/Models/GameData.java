@@ -9,6 +9,7 @@ import edu.chl.proximity.Models.Factions.Faction;
 import edu.chl.proximity.Models.Holdables.Hand;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Maps.StandardMap;
+import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.Players.Player;
 import edu.chl.proximity.Models.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Proximity;
@@ -20,7 +21,8 @@ import edu.chl.proximity.Proximity;
  * This class keeps track of the collected data of this current game-instance,
  * A collection of the current map, played factions, gamespeed and misc information.
  *
- * 23/04 added ButtonPanel, PropertiesPanel and volume of game.
+ * 23/04 edited by Hanna Römer. Added ButtonPanel, PropertiesPanel and sound volume of game.
+ * 24/04 edited by Hanna Römer. Added Proximity and MainMenu + their setters and getters
  */
 public class GameData {
 
@@ -28,6 +30,7 @@ public class GameData {
     private Map map;
     private Player player;
     private Hand hand = new Hand();
+    private MainMenu mainMenu;
     private ButtonPanel buttonPanel;
     private PropertiesPanel propertiesPanel;
     private int gameSpeed = 1;
@@ -94,6 +97,9 @@ public class GameData {
 
     public Player getPlayer(){return player;}
     public void setPlayer(Player inputPlayer){player = inputPlayer;}
+
+    public MainMenu getMainMenu(){ return mainMenu;}
+    public void setMainMenu(MainMenu mainMenu){ this.mainMenu=mainMenu;}
 
     public ButtonPanel getButtonPanel(){ return buttonPanel;}
     public void setButtonPanel(ButtonPanel buttonPanel){this.buttonPanel=buttonPanel;}

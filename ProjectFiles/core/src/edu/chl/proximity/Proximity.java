@@ -14,6 +14,7 @@ import edu.chl.proximity.Models.Players.Player;
  *
  * 08/04 Modified by Johan Swanberg. Switch to Screen from GameState.
  * 08/04 modified by Linda Evaldsson. Changes in structure, removed SpriteBatch.
+ * 24/04 modified by Hanna Römer. Added method to change screen, between GameScreen and MenuScreen
  */
 
 public class Proximity extends Game {
