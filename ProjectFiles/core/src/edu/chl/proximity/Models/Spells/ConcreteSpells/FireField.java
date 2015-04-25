@@ -26,8 +26,9 @@ import java.util.List;
             for (Creep creep:creeps){
                 if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getCenter()) < 60 * 60) {
                     GameData.getInstance().getMap().getParticleManager().getFireCreepEffect().createEffect(creep.getCenter());
+                    //creep.slowDown(-20, 1); //speeds up creeps
                     if(counter % 20 ==0)
-                        creep.slowDown(-160, 1); //speeds up creeps
+
                         creep.devolve();
                 }
 
