@@ -9,6 +9,7 @@ import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Particles.ProximityEffect;
+import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,18 +58,24 @@ public abstract class Projectile extends BoardObject implements Cloneable{
     /**
      * Get whether the projectile point intersects another area
      *
-     * @param creeppos what other position should be compared
+     * @param creep what other creep position should be compared
      * @param hitbox how big the hitbox the projectile should check for. (the hitbox of the creep)
      * @return true if the projectile intersects the given area
      */
-    public boolean collidesWith(Vector2 creeppos, int hitbox) {
+    public boolean collidesWith(Creep creep, int hitbox) {
+
         //+20 because the creep image is 40x40 pixels, and we want to check for the center of the image
+        /*
+        Vector2 creeppos = creep.getCenter();
         if (creeppos.y+20 - hitbox < getCenter().y && getCenter().y < creeppos.y+20 + hitbox) {
             if (creeppos.x+20 - hitbox < getCenter().x && getCenter().x < creeppos.x+20 + hitbox) {
                 return true;
             }
         }
         return false;
+        */
+        System.out.println(PointCalculations.distanceBetweenNoSqrt(getCenter(), creep.getCenter()));
+        return (PointCalculations.distanceBetweenNoSqrt(getCenter(), creep.getCenter()) < 20*20); //radious 10
     }
 
     /**
@@ -86,7 +93,7 @@ public abstract class Projectile extends BoardObject implements Cloneable{
         List<Creep> creeps = GameData.getInstance().getMap().getCreeps();
 
         for (Creep creep : creeps){
-        if(collidesWith(creep.getPosition(), 20)) {
+        if(collidesWith(creep, 20)) {
             collide(creep);
         }
     }

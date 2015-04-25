@@ -9,6 +9,7 @@ import java.awt.*;
  * @author Johan Swanberg
  * @author Linda Evaldsson (revised)
  * @date 2015-04-02
+ * 25/04 modified by Johan Swanberg, made distance calculation use vector 2 in all steps
  */
 public class PointCalculations {
 
@@ -57,8 +58,8 @@ public class PointCalculations {
     public static double distanceBetween(Vector2 p1, Vector2 p2) {
 
         if (p1 != null && p2 != null) { //make sure there are 2 real poiints to measure from
-            Point distanceVector = new Point((int)p2.x - (int)p1.x, (int)p2.y - (int)p1.y);
-            double length = Math.sqrt(distanceVector.getX() * distanceVector.getX() + distanceVector.getY() * distanceVector.getY()); //C = sqrt(a^2+b^2)
+            Vector2 distanceVector = new Vector2((int)p2.x - (int)p1.x, (int)p2.y - (int)p1.y);
+            double length = Math.sqrt(distanceVector.x * distanceVector.x + distanceVector.y * distanceVector.y); //C = sqrt(a^2+b^2)
             return length;
         }
         return 0;
@@ -79,8 +80,8 @@ public class PointCalculations {
     public static double distanceBetweenNoSqrt(Vector2 p1, Vector2 p2) {
 
         if (p1 != null && p2 != null) { //make sure there are 2 real poiints to measure from
-            Point distanceVector = new Point((int)p2.x - (int)p1.x, (int)p2.y - (int)p1.y);
-            double length = distanceVector.getX() * distanceVector.getX() + distanceVector.getY() * distanceVector.getY(); //C^2 = (a^2+b^2)
+            Vector2 distanceVector = new Vector2((int)p2.x - (int)p1.x, (int)p2.y - (int)p1.y);
+            double length = distanceVector.x * distanceVector.x + distanceVector.y * distanceVector.y; //C^2 = (a^2+b^2)
             return length;
         }
         return 0;

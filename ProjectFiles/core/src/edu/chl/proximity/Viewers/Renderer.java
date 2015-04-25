@@ -92,13 +92,13 @@ public class Renderer {
 
 
     private void debugRenderAllCentersAndUpperLeftCorners(ShapeRenderer shapeRenderer){
-        Color red = new Color(1,0,0,1);
-        Color blue = new Color(0, 0, 1, 1);
+        Color red = new Color(1,0,0,0.8f);
+        Color blue = new Color(0, 0, 1, 0.8f);
 
         for (Creep creep:map.getCreeps()){
 
             shapeRenderer.setColor(blue); //hitbox
-            shapeRenderer.rect(creep.getPosition().x, creep.getPosition().y, 40, 40);
+            shapeRenderer.circle(creep.getCenter().x, creep.getCenter().y, 20, 20);
 
             shapeRenderer.setColor(red); //center
             shapeRenderer.circle(creep.getCenter().x, creep.getCenter().y, 4);
