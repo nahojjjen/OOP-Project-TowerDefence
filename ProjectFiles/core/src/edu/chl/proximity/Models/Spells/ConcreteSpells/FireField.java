@@ -16,7 +16,7 @@ import java.util.List;
 
         public FireField(Vector2 position){
             super(position, 120); //600 frames = 10 seconds @ 60 fps
-            GameData.getInstance().getMap().getParticleManager().getFrostField().createEffect(position);
+            GameData.getInstance().getMap().getParticleManager().getFireFieldEffect().createEffect(position);
 
         }
 
@@ -25,11 +25,10 @@ import java.util.List;
             List<Creep> creeps = GameData.getInstance().getMap().getCreeps();
             for (Creep creep:creeps){
                 if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getCenter()) < 60 * 60) {
-                    creep.slowDown(-160, 1); //speeds up creeps
-
+                    GameData.getInstance().getMap().getParticleManager().getFireCreepEffect().createEffect(creep.getCenter());
                     if(counter % 20 ==0)
+                        creep.slowDown(-160, 1); //speeds up creeps
                         creep.devolve();
-                        GameData.getInstance().getMap().getParticleManager().getFrostBlastEffect().createEffect(creep.getCenter());
                 }
 
             }

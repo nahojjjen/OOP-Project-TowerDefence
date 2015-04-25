@@ -29,6 +29,8 @@ public class ParticleManager {
         allEffects.add(new ProximityEffect("frostField", 1));
         allEffects.add(new ProximityEffect("lightningCreepEffect", 100));
         allEffects.add(new ProximityEffect("lightningOriginSpellEffect", 1));
+        allEffects.add(new ProximityEffect("fireField", 1));
+        allEffects.add(new ProximityEffect("fireCreepEffect", 100));
     }
 
     /**
@@ -50,6 +52,8 @@ public class ParticleManager {
     public ProximityEffect getFrostField() {return allEffects.get(6);}
     public ProximityEffect getLightningCreepEffect() {return allEffects.get(7);}
     public ProximityEffect getLightningOriginSpellEffect() {return allEffects.get(8);}
+    public ProximityEffect getFireFieldEffect() {return allEffects.get(9);}
+    public ProximityEffect getFireCreepEffect() {return allEffects.get(10);}
 
 }
 
