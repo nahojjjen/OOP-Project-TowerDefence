@@ -33,7 +33,7 @@ public abstract class PersistentObject extends BoardObject {
      */
     public void tick() {
 
-        if (counter == 0) {
+        if (counter <= 0) {
             GameData.getInstance().getMap().getRemoveStack().add(this);
             return;
         }

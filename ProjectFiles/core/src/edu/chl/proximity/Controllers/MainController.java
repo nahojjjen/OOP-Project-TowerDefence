@@ -12,6 +12,8 @@ import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Projectiles.Projectile;
+import edu.chl.proximity.Models.Spells.ConcreteSpells.ChainLightning;
+import edu.chl.proximity.Models.Spells.PersistentObject;
 import edu.chl.proximity.Models.Towers.Tower;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.PointCalculations;
@@ -106,6 +108,8 @@ public class MainController implements InputProcessor{
 
         List<Creep> creepList = GameData.getInstance().getMap().getCreeps();
         List<Projectile> projectileList = GameData.getInstance().getMap().getProjectiles();
+        List<Tower> towerList = GameData.getInstance().getMap().getTowers();
+        List<PersistentObject> persistentObjects = GameData.getInstance().getMap().getPersistentObjects();
 
         while (killIterator.hasNext()){
             BoardObject o = (BoardObject)killIterator.next();
@@ -124,6 +128,20 @@ public class MainController implements InputProcessor{
                     projectileList.remove(projectile);
                 }
             }
+            if(o instanceof Tower) {
+                Tower tower = (Tower)o;
+                if (tower != null) {
+                    killIterator.remove();
+                    towerList.remove(tower);
+                }
+            }
+            if(o instanceof PersistentObject) {
+                PersistentObject persistentObject = (PersistentObject)o;
+                if (persistentObject != null) {
+                    killIterator.remove();
+                    persistentObjects.remove(persistentObject);
+                }
+            }
         }
 
     }
@@ -138,15 +156,14 @@ public class MainController implements InputProcessor{
         List<Creep> creepList = GameData.getInstance().getMap().getCreeps();
         List<Projectile> projectileList = GameData.getInstance().getMap().getProjectiles();
         List<Tower> towerList = GameData.getInstance().getMap().getTowers();
+        List<PersistentObject> persistentObjectList = GameData.getInstance().getMap().getPersistentObjects();
 
         while (addIterator.hasNext()){
             BoardObject o = (BoardObject)addIterator.next();
             if(o instanceof Creep) {
                 Creep creep = (Creep)o;
                 creepList.add(creep);
-
             }
-
             if(o instanceof Projectile) {
                 Projectile projectile = (Projectile)o;
                 projectileList.add(projectile);
@@ -154,6 +171,10 @@ public class MainController implements InputProcessor{
             if(o instanceof Tower) {
                 Tower tower = (Tower)o;
                 towerList.add(tower);
+            }
+            if(o instanceof PersistentObject) {
+                PersistentObject persistentObject = (PersistentObject)o;
+                persistentObjectList.add(persistentObject);
             }
             addIterator.remove();
         }
@@ -182,6 +203,7 @@ public class MainController implements InputProcessor{
         //Calculates the real coordinates from the scaled coordinates
         Vector2 clickedPoint = viewport.unproject(new Vector2(x, y));
 
+        ChainLightning effect = new ChainLightning(clickedPoint);
         //For creating paths during the developing state
         PointCalculations.createPathTool((int) clickedPoint.x, (int) clickedPoint.y);
 
