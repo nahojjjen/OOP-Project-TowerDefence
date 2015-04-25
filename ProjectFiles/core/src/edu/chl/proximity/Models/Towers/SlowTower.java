@@ -28,7 +28,7 @@ public class SlowTower extends Tower {
 
     @Override
     public Projectile createProjectile() {
-        return new SlowDownBullet(getCenter(), PointCalculations.getVectorAngle(getPosition(),getTarget().getPosition()), getTarget(), 50, 200);
+        return new SlowDownBullet(getCenter(), getAngle(), getTarget(), 50, 200);
     }
 
 }
