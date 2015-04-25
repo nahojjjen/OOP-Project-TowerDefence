@@ -95,7 +95,7 @@ public abstract class Path {
         if(waypoint != null) {
             return waypoint.get(i);
         }
-        return null;
+        return waypoint.get(i-1);
     }
 
 

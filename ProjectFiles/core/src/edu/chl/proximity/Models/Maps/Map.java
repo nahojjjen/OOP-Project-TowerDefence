@@ -27,6 +27,7 @@ import java.util.Set;
  * 08/04 Modified by Johan Swanberg. Switch to Screen from GameState.
  * 08/04 modified by Linda Evaldsson. Made Map-class abstract. It is no longer a singleton.
  * 23/04 Modified by Simon Gislen, added Persistant Object management
+ * 25/04 Modified by Johan Swanberg, adds adding Stack
  * */
 public abstract class Map {
 
@@ -40,10 +41,8 @@ public abstract class Map {
     private ParticleManager particleManager = new ParticleManager();
 
 
-
-    //private Set<Creep> creepKillStack = new HashSet<Creep>();
-    //private Set<Projectile> projectileKillStack = new HashSet<Projectile>();
     private Set<BoardObject> removeStack = new HashSet<BoardObject>();
+    private Set<BoardObject> addStack = new HashSet<BoardObject>();
 
     private Path path;
     private Background background;
@@ -63,6 +62,9 @@ public abstract class Map {
 
     public Set<BoardObject> getRemoveStack() {
         return removeStack;
+    }
+    public Set<BoardObject> getAddStack() {
+        return addStack;
     }
 
 
@@ -117,41 +119,19 @@ public abstract class Map {
      * Add a creep to the map.
      */
     public void addCreep(Creep creep) {
-        creeps.add(creep);
+        addStack.add(creep);
+        System.out.println("In Map: addcreep used");
     }
-
-    /**
-     * test method to test performance, spawns 1000 of specified creep & prints out how many creeps are currently on the map.
-     */
-    public void addCreepMass(Creep creep, int amount) {
-        if (amount > 1) {
-            for (int i = 0; i < amount; i++) {
-                creeps.add(creep);
-            }
-            System.out.println("In Map:(Add creep mass) amount of creeps = " + creeps.size());
-        }
-    }
-
-
-    /**
-     * test method to test performance, spawns 1000  turrets. & prints out how many towers are on the map
-     */
-    public  void spawnTurretMass(Tower tower)   {
-        for (int i = 0; i < 1000; i++) {
-            towers.add(tower);
-        }
-        System.out.println("In Map: (spawn turret mass) amount of towers = " + towers.size());
-    }
-
-
     /**
      * Add a projectile to the map
      *
      * @param p the projectile to be added
      */
     public void addProjectile(Projectile p) {
-        projectiles.add(p);
+        addStack.add(p);
+        System.out.println("In Map: addProjectile used");
     }
+
 
     /**
      * add a tower to the map
@@ -159,7 +139,9 @@ public abstract class Map {
      * @param t what tower should be added
      */
     public  void addTower(Tower t) {
-        towers.add(t);
+        addStack.add(t);
+
+        System.out.println("In Map: addTower used");
     }
 
 }

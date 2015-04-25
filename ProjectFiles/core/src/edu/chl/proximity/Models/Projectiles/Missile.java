@@ -59,7 +59,7 @@ public class Missile extends Projectile {
 
     @Override
     public void attack(Creep unusedCreep) {
-        List<Creep> creepList = new ArrayList<Creep>(GameData.getInstance().getMap().getCreeps());
+        List<Creep> creepList =GameData.getInstance().getMap().getCreeps();
         for(Creep creep: creepList) {
             if(PointCalculations.distanceBetweenNoSqrt(this.getCenter(), creep.getCenter()) < range*range){
                 creep.devolve();

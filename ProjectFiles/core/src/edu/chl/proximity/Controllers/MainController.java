@@ -12,6 +12,7 @@ import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Projectiles.Projectile;
+import edu.chl.proximity.Models.Towers.Tower;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.PointCalculations;
 
@@ -86,6 +87,7 @@ public class MainController implements InputProcessor{
             backgroundController.update();
             controlPanelController.update();
             clearKillStacks();
+            clearAddStacks();
         }
 
     }
@@ -98,7 +100,6 @@ public class MainController implements InputProcessor{
     /**
      * Remove all objects marked for deletion this frame.
      */
-
     public void clearKillStacks() {
         Set<BoardObject> killStack = GameData.getInstance().getMap().getRemoveStack();
         Iterator killIterator = killStack.iterator();
@@ -127,7 +128,37 @@ public class MainController implements InputProcessor{
 
     }
 
+    /**
+     * Add all objects marked for adding this frame.
+     */
+    public void clearAddStacks() {
+        Set<BoardObject> addStack = GameData.getInstance().getMap().getAddStack();
+        Iterator addIterator = addStack.iterator();
 
+        List<Creep> creepList = GameData.getInstance().getMap().getCreeps();
+        List<Projectile> projectileList = GameData.getInstance().getMap().getProjectiles();
+        List<Tower> towerList = GameData.getInstance().getMap().getTowers();
+
+        while (addIterator.hasNext()){
+            BoardObject o = (BoardObject)addIterator.next();
+            if(o instanceof Creep) {
+                Creep creep = (Creep)o;
+                creepList.add(creep);
+
+            }
+
+            if(o instanceof Projectile) {
+                Projectile projectile = (Projectile)o;
+                projectileList.add(projectile);
+            }
+            if(o instanceof Tower) {
+                Tower tower = (Tower)o;
+                towerList.add(tower);
+            }
+            addIterator.remove();
+        }
+
+    }
 
     @Override
     public boolean keyDown (int keycode) {

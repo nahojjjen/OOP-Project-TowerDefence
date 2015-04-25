@@ -83,7 +83,7 @@ public abstract class Projectile extends BoardObject implements Cloneable{
     }
 
     public void checkCollision() {
-        List<Creep> creeps = new ArrayList<Creep>(GameData.getInstance().getMap().getCreeps());
+        List<Creep> creeps = GameData.getInstance().getMap().getCreeps();
 
         for (Creep creep : creeps){
         if(collidesWith(creep.getPosition(), 20)) {
