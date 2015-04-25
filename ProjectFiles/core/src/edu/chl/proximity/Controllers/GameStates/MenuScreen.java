@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import edu.chl.proximity.Controllers.MainController;
 import edu.chl.proximity.Models.GameData;
+import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.Players.Player;
 import edu.chl.proximity.Viewers.MenuRenderer;
@@ -41,11 +42,12 @@ public class MenuScreen implements Screen {
 
 
 
-    public MenuScreen(Game g, MainMenu mainMenu, Player player){
+    public MenuScreen(Game g, MainMenu mainMenu, Map map, Player player){
         this.game = g;
         this.mainMenu=mainMenu;
         GameData.getInstance().setMainMenu(mainMenu);
         GameData.getInstance().setPlayer(player);
+        GameData.getInstance().setMap(map);
         menuRenderer=new MenuRenderer();
         fixCamera();
         mainController=new MainController(viewport);

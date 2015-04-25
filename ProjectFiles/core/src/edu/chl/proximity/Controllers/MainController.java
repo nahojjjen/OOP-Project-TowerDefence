@@ -9,8 +9,10 @@ import edu.chl.proximity.Models.ButtonsPanel.ButtonPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
+import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Projectiles.Projectile;
+import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.ArrayList;
@@ -46,6 +48,7 @@ public class MainController implements InputProcessor{
     private ButtonPanelController buttonPanelController=new ButtonPanelController();
     private PropertiesPanelController propertiesPanelController=new PropertiesPanelController();
     private PersistentObjectController persistentObjectController = new PersistentObjectController();
+    private MainMenuController mainMenuController=new MainMenuController();
     private List<ClickHandler> clickHandlers = new ArrayList<ClickHandler>();
 
     private Viewport viewport;
@@ -59,6 +62,7 @@ public class MainController implements InputProcessor{
         clickHandlers.add(buttonPanelController);
         clickHandlers.add(handController);
         clickHandlers.add(propertiesPanelController);
+        clickHandlers.add(mainMenuController);
     }
 
     public void setControlPanel(ControlPanel controlPanel) {
@@ -73,14 +77,16 @@ public class MainController implements InputProcessor{
     public void setPropertiesPanel(PropertiesPanel propertiesPanel) {propertiesPanelController.setPropertiesPanel(propertiesPanel);}
 
     public void updateAllControllers() {
-        waveController.update();
-        creepController.update();
-        towerController.update();
-        projectileController.update();
-        persistentObjectController.update();
-        backgroundController.update();
-        controlPanelController.update();
-        clearKillStacks();
+        if(GameData.getInstance().getGame().getCurrentScreen().equals(Proximity.State.GAME)) {
+            waveController.update();
+            creepController.update();
+            towerController.update();
+            projectileController.update();
+            persistentObjectController.update();
+            backgroundController.update();
+            controlPanelController.update();
+            clearKillStacks();
+        }
 
     }
 

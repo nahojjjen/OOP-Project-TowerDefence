@@ -19,7 +19,7 @@ public class MenuRenderer {
     }
 
     public void render(SpriteBatch batch, ShapeRenderer shapeRenderer){
-
+        mainMenu.render(batch);
     }
 
 }

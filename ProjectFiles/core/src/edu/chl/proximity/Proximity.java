@@ -27,13 +27,21 @@ public class Proximity extends Game {
 				this.setScreen(new GameScreen(this,map,player));
 				break;
 			case MAIN_MENU:
-				this.setScreen(new MenuScreen(this,mainMenu,player));
+				this.setScreen(new MenuScreen(this,mainMenu,map, player));
+		}
+	}
+	public State getCurrentScreen(){
+		if(this.getScreen() instanceof GameScreen){
+			return State.GAME;
+		}else{
+			return State.MAIN_MENU;
 		}
 	}
 
 	@Override
 	public void create () {
-		this.setScreen(new GameScreen(this, new StandardMap(), new Player(new Planes())));
+		//this.setScreen(new GameScreen(this, new StandardMap(), new Player(new Planes())));
+		this.setScreen(new MenuScreen(this,new MainMenu(),new StandardMap(), new Player(new Planes())));
 		GameData.getInstance().setGame(this);
 	}
 
