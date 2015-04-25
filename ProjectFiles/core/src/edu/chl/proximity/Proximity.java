@@ -9,6 +9,7 @@ import edu.chl.proximity.Models.Factions.ConcreteFactions.Planes;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Maps.StandardMap;
+import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.Players.Player;
 /**
  *
@@ -20,13 +21,13 @@ import edu.chl.proximity.Models.Players.Player;
 public class Proximity extends Game {
 	public enum State{GAME,MAIN_MENU}
 
-	public void changeScreen(State state, Map map, Player player){
+	public void changeScreen(State state, Map map,MainMenu mainMenu, Player player){
 		switch(state){
 			case GAME:
 				this.setScreen(new GameScreen(this,map,player));
 				break;
 			case MAIN_MENU:
-				this.setScreen(new MenuScreen(this));
+				this.setScreen(new MenuScreen(this,mainMenu,player));
 		}
 	}
 
