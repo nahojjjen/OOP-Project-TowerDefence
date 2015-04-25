@@ -147,6 +147,7 @@ public class MainController implements InputProcessor{
     @Override
     public boolean touchDown (int x, int y, int pointer, int button) {
 
+
         //Calculates the real coordinates from the scaled coordinates
         Vector2 clickedPoint = viewport.unproject(new Vector2(x, y));
 
@@ -155,6 +156,8 @@ public class MainController implements InputProcessor{
 
         //Runs through the clickable controllers and informs them if their models is clicked
         for(ClickHandler controller : clickHandlers) {
+            System.out.print(controller.getClass());
+            System.out.println(controller.getModel().containsPoint(clickedPoint));
             if(controller.getModel().containsPoint(clickedPoint))
                 controller.touchDown(clickedPoint, pointer, button);
         }

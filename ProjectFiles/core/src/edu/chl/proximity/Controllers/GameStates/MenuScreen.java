@@ -45,9 +45,11 @@ public class MenuScreen implements Screen {
     public MenuScreen(Game g, MainMenu mainMenu, Map map, Player player){
         this.game = g;
         this.mainMenu=mainMenu;
-        GameData.getInstance().setMainMenu(mainMenu);
+
+        GameData.getInstance().setMainMenu(this.mainMenu);
         GameData.getInstance().setPlayer(player);
         GameData.getInstance().setMap(map);
+
         menuRenderer=new MenuRenderer();
         fixCamera();
         mainController=new MainController(viewport);
