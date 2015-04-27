@@ -22,8 +22,8 @@ public abstract class PersistentObject extends BoardObject {
         this.counter = counter;
 
         if (position != null){
-            //GameData.getInstance().getMap().getAddstack.add(this); this needs to be made for concurrent modificaiton
-            GameData.getInstance().getMap().getPersistentObjects().add(this);
+            GameData.getInstance().getMap().getAddStack().add(this);// this needs to be made for concurrent modificaiton
+            //GameData.getInstance().getMap().getPersistentObjects().add(this);
         }
     }
 
