@@ -38,7 +38,7 @@ public class ChainLightning extends PersistentObject {
             if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getCenter()) < range * range) {
                 creep.devolve();
                 if (!alreadyHitCreeps.contains(creep)) {
-                    GameData.getInstance().getMap().getAddStack().add(new ChainLightning(creep.getCenter(), alreadyHitCreeps));
+                    //GameData.getInstance().getMap().getAddStack().add(new ChainLightning(creep.getCenter(), alreadyHitCreeps));
                     //ChainLightning newSpark = new ChainLightning(creep.getCenter(), alreadyHitCreeps);
                     GameData.getInstance().getMap().getParticleManager().getLightningCreepEffect().createEffect(creep.getCenter()); //create minor lightning effect
                 }

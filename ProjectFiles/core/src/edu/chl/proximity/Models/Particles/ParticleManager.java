@@ -31,6 +31,8 @@ public class ParticleManager {
         allEffects.add(new ProximityEffect("lightningOriginSpellEffect", 1));
         allEffects.add(new ProximityEffect("fireField", 1));
         allEffects.add(new ProximityEffect("fireCreepEffect", 100));
+        allEffects.add(new ProximityEffect("dirtSmokeEffect", 100));
+        allEffects.add(new ProximityEffect("wallOfStoneSpell2", 1));
     }
 
     /**
@@ -54,6 +56,8 @@ public class ParticleManager {
     public ProximityEffect getLightningOriginSpellEffect() {return allEffects.get(8);}
     public ProximityEffect getFireFieldEffect() {return allEffects.get(9);}
     public ProximityEffect getFireCreepEffect() {return allEffects.get(10);}
+    public ProximityEffect getDirtSmokeEffect() {return allEffects.get(11);}
+    public ProximityEffect getWallOfStone() {return allEffects.get(12);}
 
 }
 

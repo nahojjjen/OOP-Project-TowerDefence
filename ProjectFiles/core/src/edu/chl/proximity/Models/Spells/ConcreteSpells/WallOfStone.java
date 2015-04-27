@@ -14,8 +14,8 @@ import java.util.List;
 public class WallOfStone extends PersistentObject {
 
     public WallOfStone(Vector2 position) {
-        super(position, 600); //600 frames = 10 seconds @ 60 fps
-        GameData.getInstance().getMap().getParticleManager().getFrostField().createEffect(position);
+        super(position, 120); //600 frames = 10 seconds @ 60 fps
+        GameData.getInstance().getMap().getParticleManager().getWallOfStone().createEffect(position);
     }
 
     @Override
@@ -24,6 +24,7 @@ public class WallOfStone extends PersistentObject {
         for (Creep creep : creeps) {
             if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getCenter()) < 60 * 60) {
                 creep.slowDown(100, 1);
+                GameData.getInstance().getMap().getParticleManager().getDirtSmokeEffect().createEffect(creep.getCenter());
             }
         }
     }
