@@ -18,6 +18,11 @@ import java.util.List;
 /**
  * @author Johan Swanberg and Linda Evaldsson
  * @date 2015-04-11
+ *
+ * A class that describes a "type" of graphical particle-effect, for instance all frostBolt effects. This class is instanciated
+ * in ParticleManager.  One "proximityEffect" keeps track of all effects of its given type.
+ * To create an effect, call  GameData.getInstance().getMap().getParticleManager().getEFFECTNAME().createEffect(Position);
+ *
  * 04-24 Modified by Johan, adds working rotation & angle modification and createeffect returns the created effect
  *
  */
