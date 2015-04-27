@@ -19,6 +19,7 @@ import java.util.Iterator;
  * A class for the concrete creep Triangle
  *
  * 23/04 Modified by Simon. Adding resources XP when killing creeps
+ * 27-4 Modified by Johan Swanberg - Crashfix for when a creep gets hit by several projectiles the same frame
  */
 public class Triangle extends Creep {
 
@@ -32,18 +33,22 @@ public class Triangle extends Creep {
 
     @Override
     public void devolve() {
-        Map map = GameData.getInstance().getMap();
-        displayDeathEffect();
-        map.getRemoveStack().add(this);
+        if(isDead()){
+            Map map = GameData.getInstance().getMap();
+            displayDeathEffect();
+            map.getRemoveStack().add(this);
 
-        map.addCreep(new Circle(this));
+            map.addCreep(new Circle(this));
 
-        Player p = GameData.getInstance().getPlayer();
-        Resources res = p.getResources();
-        res.addResources(getCreepResource());
-        p.addExperiencePoints(getCreepExperiencePoints());
+            Player p = GameData.getInstance().getPlayer();
+            Resources res = p.getResources();
+            res.addResources(getCreepResource());
+            p.addExperiencePoints(getCreepExperiencePoints());
 
-        destroy();
+            destroy();
+        }
+        markAsDead();
+
     }
 
     //Logic to obtain creep resource

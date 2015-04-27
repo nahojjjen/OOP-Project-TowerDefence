@@ -3,23 +3,23 @@ package edu.chl.proximity.Models.Creeps.ConcreteCreeps;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
-import edu.chl.proximity.Models.Maps.Map;
 import edu.chl.proximity.Models.Players.Player;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Utilities.Constants;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Field;
 
 /**
  * @author Simon Gislén
  * @date 2015-04-21
  *
+ * A class which describes an evolutionary line of monsters, or so called "creeps", the creeps
+ * can spawn at different "levels", a level means different speeds, images etc. When a level 5 creep dies,
+ * a level 4 creep takes its place, it "devolves", same for level 3, 2 etc.
+ *
  * 23/04 Modified by Simon. Adding resources and XP when killing creeps
  * 24/4 Modified by Johan Swanberg - Makes creeps correctly follow path by making getCenter work correctly- fixing images
+ * 27-4 Modified by Johan Swanberg - Crashfix for when a creep gets hit by several projectiles the same frame
  */
 public class Line1 extends Creep {
 
@@ -48,7 +48,7 @@ public class Line1 extends Creep {
     //Logic for devolving line1 creeps
     @Override
     public void devolve() {
-
+    if (!isDead()){
         if (creepLineIndex != 1) {
             GameData gameData = GameData.getInstance();
             //Devolves into a new Line 1.
@@ -60,6 +60,8 @@ public class Line1 extends Creep {
             p.addExperiencePoints(getCreepExperiencePoints());
         }
         destroy();
+    }
+        markAsDead(); //make sure that the creep cannot be killed by several projectiles in the same frame
     }
 
     //Getters

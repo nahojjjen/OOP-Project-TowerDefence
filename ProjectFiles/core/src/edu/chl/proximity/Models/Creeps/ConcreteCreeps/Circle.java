@@ -13,6 +13,7 @@ import edu.chl.proximity.Utilities.Constants;
  * @author Simon Gislén
  * @date 2015-04-14
  * 23/04 Modified by Simon. Adding resources and XP when killing creeps
+ * 27-4 Modified by Johan Swanberg - Crashfix for when a creep gets hit by several projectiles the same frame
  */
 public class Circle extends Creep {
 
@@ -33,13 +34,15 @@ public class Circle extends Creep {
 
     @Override
     public void devolve() {
+        if (!isDead()){
+            Player p = GameData.getInstance().getPlayer();
+            Resources res = p.getResources();
+            res.addResources(getCreepResource());
+            p.addExperiencePoints(getCreepExperiencePoints());
 
-        Player p = GameData.getInstance().getPlayer();
-        Resources res = p.getResources();
-        res.addResources(getCreepResource());
-        p.addExperiencePoints(getCreepExperiencePoints());
-
-        destroy();
+            destroy();
+        }
+        markAsDead();
     }
 
     //Logic to obtain creep resource

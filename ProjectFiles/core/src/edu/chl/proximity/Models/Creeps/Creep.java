@@ -43,6 +43,13 @@ public abstract class Creep extends BoardObject {
     private double randomRotation;
     private Vector2 velocity;
     private int slowDownTime;
+    private boolean isDead = false;
+
+    public void markAsDead(){
+        isDead = true;
+    }
+
+    public boolean isDead(){return isDead;}
 
     /**
      * create a new creep with an image and a speed
