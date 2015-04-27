@@ -4,6 +4,7 @@ import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Image;
 import edu.chl.proximity.Models.Maps.Map;
+import edu.chl.proximity.Models.Players.Player;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Utilities.Constants;
 
@@ -53,8 +54,10 @@ public class Line1 extends Creep {
             //Devolves into a new Line 1.
             gameData.getMap().addCreep(new Line1(this));
 
-            Resources res = gameData.getPlayer().getResources();
+            Player p = GameData.getInstance().getPlayer();
+            Resources res = p.getResources();
             res.addResources(getCreepResource());
+            p.addExperiencePoints(getCreepExperiencePoints());
         }
         destroy();
     }
@@ -86,6 +89,6 @@ public class Line1 extends Creep {
     }
     //Logic to obtain creep xp
     public int getCreepExperiencePoints() {
-        return creepLineIndex * 2;
+        return (creepLineIndex + 1) * 3;
     }
 }
