@@ -10,7 +10,8 @@ import edu.chl.proximity.Models.Image;
  * @date 23/04/15.
  * Defines a marker that effects nearby objects
  *
- * 04-24 Modified by Johan, added position & makes the object add itself to map on creation
+ * 24/04 Modified by Johan, added position & makes the object add itself to map on creation
+ * 27/04 Modified by Johan, persistentobject now uses addStack
  */
 
 public abstract class PersistentObject extends BoardObject {
@@ -23,7 +24,6 @@ public abstract class PersistentObject extends BoardObject {
 
         if (position != null){
             GameData.getInstance().getMap().getAddStack().add(this);// this needs to be made for concurrent modificaiton
-            //GameData.getInstance().getMap().getPersistentObjects().add(this);
         }
     }
 

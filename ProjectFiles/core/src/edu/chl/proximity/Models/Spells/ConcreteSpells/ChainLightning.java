@@ -26,8 +26,10 @@ public class ChainLightning extends PersistentObject {
 
     public ChainLightning(Vector2 position, List<Creep> alreadyHitCreeps) {
         super(position, 1); //600 frames = 10 seconds @ 60 fps
-        range = 50;
+        range = 100;
         this.alreadyHitCreeps = alreadyHitCreeps;
+
+        GameData.getInstance().getMap().getParticleManager().getLightningOriginSpellEffect().createEffect(position); //create original lightning effect
 
     }
 
@@ -39,7 +41,7 @@ public class ChainLightning extends PersistentObject {
                 creep.devolve();
                 if (!alreadyHitCreeps.contains(creep)) {
                     //GameData.getInstance().getMap().getAddStack().add(new ChainLightning(creep.getCenter(), alreadyHitCreeps));
-                    //ChainLightning newSpark = new ChainLightning(creep.getCenter(), alreadyHitCreeps);
+                    ChainLightning newSpark = new ChainLightning(creep.getCenter(), alreadyHitCreeps);
                     GameData.getInstance().getMap().getParticleManager().getLightningCreepEffect().createEffect(creep.getCenter()); //create minor lightning effect
                 }
 
