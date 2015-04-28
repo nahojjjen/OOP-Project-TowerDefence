@@ -26,7 +26,7 @@ public class Line1 extends Creep {
     private static File[] imageFiles = new File(Constants.filePath + "Creeps/Line3/").listFiles();
     private int creepLineIndex;
     private static Image img = new Image(Constants.filePath + "Creeps/Line2/7.png"); //dummy image to get correct resolution
-    private static int speed = 5;
+    private static int speed = 3;
 
     public Line1(int creepLineIndex) {
         super(img, speed);
@@ -54,11 +54,12 @@ public class Line1 extends Creep {
             //Devolves into a new Line 1.
             gameData.getMap().addCreep(new Line1(this));
 
-            Player p = GameData.getInstance().getPlayer();
-            Resources res = p.getResources();
-            res.addResources(getCreepResource());
-            p.addExperiencePoints(getCreepExperiencePoints());
         }
+        Player p = GameData.getInstance().getPlayer();
+        Resources res = p.getResources();
+        res.addResources(getCreepResource());
+        p.addExperiencePoints(getCreepExperiencePoints());
+
         destroy();
     }
         markAsDead(); //make sure that the creep cannot be killed by several projectiles in the same frame
@@ -87,10 +88,10 @@ public class Line1 extends Creep {
 
     //Logic to obtain creep resource
     public Resources getCreepResource() {
-        return new Resources(creepLineIndex * 2, creepLineIndex, 0);
+        return new Resources((creepLineIndex + 1) * 2, creepLineIndex, 0);
     }
     //Logic to obtain creep xp
     public int getCreepExperiencePoints() {
-        return (creepLineIndex + 1) * 3;
+        return 5;
     }
 }

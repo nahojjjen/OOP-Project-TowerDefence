@@ -51,7 +51,7 @@ public class Circle extends Creep {
     }
     //Logic to obtain creep xp
     public int getCreepExperiencePoints() {
-        return 8;
+        return 4;
     }
 
 }
