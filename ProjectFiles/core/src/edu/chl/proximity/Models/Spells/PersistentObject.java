@@ -12,14 +12,16 @@ import edu.chl.proximity.Models.Image;
  *
  * 24/04 Modified by Johan, added position & makes the object add itself to map on creation
  * 27/04 Modified by Johan, persistentobject now uses addStack
+ * 28/4 Modified by Johan, persistant objects now have to be started
  */
 
 public abstract class PersistentObject extends BoardObject {
 
     private int counter;
+    private boolean started= false;
 
-    public PersistentObject(Vector2 position, int counter) {
-        super(position, null, 0);
+    public PersistentObject(Vector2 position, Image icon, int counter) {
+        super(position, icon, 0);
         this.counter = counter;
 
         if (position != null){
@@ -32,14 +34,18 @@ public abstract class PersistentObject extends BoardObject {
      * When the counter reaches zero, the object is destroyed.
      */
     public void tick() {
-
-        if (counter <= 0) {
-            GameData.getInstance().getMap().getRemoveStack().add(this);
-            return;
+    if (started){
+            if (counter <= 0) {
+                GameData.getInstance().getMap().getRemoveStack().add(this);
+                return;
+            }
+            performEffect(counter);
+            counter--;
         }
-        performEffect(counter);
-        counter--;
     }
 
+    public void start(){
+        started = true;
+    }
     public abstract void performEffect(int counter);
 }

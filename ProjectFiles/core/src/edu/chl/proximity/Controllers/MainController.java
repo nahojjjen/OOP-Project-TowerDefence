@@ -18,6 +18,7 @@ import edu.chl.proximity.Models.Spells.ConcreteSpells.FireField;
 import edu.chl.proximity.Models.Spells.ConcreteSpells.FrostField;
 import edu.chl.proximity.Models.Spells.ConcreteSpells.WallOfStone;
 import edu.chl.proximity.Models.Spells.PersistentObject;
+import edu.chl.proximity.Models.Spells.Spell;
 import edu.chl.proximity.Models.Towers.Tower;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.PointCalculations;
@@ -207,19 +208,20 @@ public class MainController implements InputProcessor{
 
         //Calculates the real coordinates from the scaled coordinates
         Vector2 clickedPoint = viewport.unproject(new Vector2(x, y));
-
+        Spell effect = new WallOfStone();
         if (counter % 4 == 0){
-            WallOfStone effect = new WallOfStone(clickedPoint);
+             effect = new WallOfStone();
+
         }else if(counter % 4 == 1){
-            ChainLightning effect = new ChainLightning(clickedPoint);
+             effect = new ChainLightning();
             System.out.println("In MainController: Cycling through spells to create, lightning not working correctly.");
         }else if(counter % 4 == 2){
-            FireField effect = new FireField(clickedPoint);
+             effect = new FireField();
         }else if(counter % 4 == 3){
-            FrostField effect = new FrostField(clickedPoint);
+             effect = new FrostField();
         }
         counter++;
-
+        effect.placeObject(clickedPoint);
         //For creating paths during the developing state
         PointCalculations.createPathTool((int) clickedPoint.x, (int) clickedPoint.y);
 

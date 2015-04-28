@@ -8,19 +8,20 @@ import edu.chl.proximity.Models.GameData;
 import edu.chl.proximity.Models.Particles.ParticleManager;
 import edu.chl.proximity.Models.Particles.ProximityEffect;
 import edu.chl.proximity.Models.Spells.PersistentObject;
+import edu.chl.proximity.Models.Spells.Spell;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.List;
 
 /**
+ * A circle where all creeps inside are slowed.
  * @author by Johan on 2015-04-24.
  */
-public class FrostField extends PersistentObject{
+public class FrostField extends Spell {
 
-    public FrostField(Vector2 position){
-        super(position, 600); //600 frames = 10 seconds @ 60 fps
-        GameData.getInstance().getMap().getParticleManager().getFrostField().createEffect(position);
+    public FrostField(){
+        super(null, 600); //600 frames = 10 seconds @ 60 fps
 
     }
 
@@ -28,12 +29,18 @@ public class FrostField extends PersistentObject{
     public void performEffect(int counter) {
         List<Creep> creeps = GameData.getInstance().getMap().getCreeps();
         for (Creep creep:creeps){
-            if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getCenter()) < 60 * 60) {
+            if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getPosition()) < 60 * 60) {
                 creep.slowDown(60,1);
                 if(counter % 10 ==0)
                 GameData.getInstance().getMap().getParticleManager().getFrostBlastEffect().createEffect(creep.getCenter());
             }
 
         }
+    }
+
+
+    @Override
+    public void playParticleEffect() {
+        GameData.getInstance().getMap().getParticleManager().getFrostField().createEffect(getPosition());
     }
 }

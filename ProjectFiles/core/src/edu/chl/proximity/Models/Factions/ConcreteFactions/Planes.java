@@ -27,9 +27,9 @@ public class Planes extends Faction {
 
     @Override
     public void configureSpells() {
-        addSpell(new FrostField(null));
-        addSpell(new WallOfStone(null));
-        addSpell(new FireField(null));
-        addSpell(new ChainLightning(null));
+        addSpell(new FrostField());
+        addSpell(new WallOfStone());
+        addSpell(new FireField());
+        addSpell(new ChainLightning());
     }
 }
