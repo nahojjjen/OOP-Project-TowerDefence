@@ -3,10 +3,7 @@ package edu.chl.proximity.Controllers.SubControllers;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.ButtonsPanel.ButtonPanel;
-import edu.chl.proximity.Models.ButtonsPanel.PlayPauseButton;
-import edu.chl.proximity.Models.ButtonsPanel.PropertiesButton;
-import edu.chl.proximity.Models.ButtonsPanel.SpeedButton;
+import edu.chl.proximity.Models.ButtonsPanel.*;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanelTower;
 import edu.chl.proximity.Models.GameData;
@@ -74,8 +71,10 @@ public class ControlPanelController implements ClickHandler {
 
         //ButtonPanel
         touchedButton=buttonPanel.getButtonOnPosition(clickedPoint);
-        if(touchedButton instanceof PlayPauseButton){
-            buttonPanel.pressedPausePlay();
+        if(touchedButton instanceof PlayButton) {
+            buttonPanel.pressedPlay();
+        }else if(touchedButton instanceof PauseButton){
+            buttonPanel.pressedPause();
         }else if(touchedButton instanceof SpeedButton){
             buttonPanel.pressedSpeedButton();
         }else if(touchedButton instanceof PropertiesButton){

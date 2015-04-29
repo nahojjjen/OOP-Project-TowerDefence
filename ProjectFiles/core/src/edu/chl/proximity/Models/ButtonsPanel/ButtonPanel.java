@@ -23,16 +23,18 @@ public class ButtonPanel extends BoardObject {
     private static int height=70;
 
     private static Vector2 position= new Vector2(Gdx.graphics.getWidth()-width, Gdx.graphics.getHeight()-height);
-    private static Vector2 ppPos=new Vector2(position.x+20, position.y);
-    private static Vector2 sPos=new Vector2(position.x+80, position.y);
-    private static Vector2 prPos=new Vector2(position.x+150, position.y);
+    private static Vector2 playPos=new Vector2(position.x+20, position.y);
+    private static Vector2 pausePos=new Vector2(playPos.x+60, position.y);
+    private static Vector2 speedPos=new Vector2(pausePos.x+60, position.y);
+    private static Vector2 propPos=new Vector2(speedPos.x+60, position.y);
 
     private boolean pause=false;
     private int speed=1;
 
-    private PlayPauseButton ppButton=new PlayPauseButton(ppPos);
-    private SpeedButton speedButton=new SpeedButton(sPos);
-    private PropertiesButton prButton=new PropertiesButton(prPos);
+    private PlayButton playButton=new PlayButton(playPos);
+    private PauseButton pauseButton=new PauseButton(pausePos);
+    private SpeedButton speedButton=new SpeedButton(speedPos);
+    private PropertiesButton prButton=new PropertiesButton(propPos);
 
     private PropertiesPanel pPanel = new PropertiesPanel();
 
@@ -59,8 +61,10 @@ public class ButtonPanel extends BoardObject {
      * @return button on specified position. If there is no button there, null is returned
      */
     public BoardObject getButtonOnPosition(Vector2 position){
-        if(PointCalculations.isPointInObject(position, ppButton)){
-            return ppButton;
+        if(PointCalculations.isPointInObject(position, playButton)) {
+            return playButton;
+        }else if(PointCalculations.isPointInObject(position,pauseButton)){
+            return pauseButton;
         }else if(PointCalculations.isPointInObject(position, speedButton)){
             return speedButton;
         }else if(PointCalculations.isPointInObject(position, prButton)){
@@ -81,7 +85,14 @@ public class ButtonPanel extends BoardObject {
             GameData.getInstance().setGameSpeed(0);
 
         }
-
+    }
+    public void pressedPlay(){
+        GameData.getInstance().setGameSpeed(1);
+    }
+    public void pressedPause(){
+        GameData.getInstance().setGameSpeed(0);
+        playButton.setRightImage();
+        speedButton.setRightImage();
     }
 
     /**
@@ -106,18 +117,10 @@ public class ButtonPanel extends BoardObject {
 
     /**
      * Called if the Speed button is pressed. Increases speed and toggles button.
-     * If speed is greater than 3 it is set to 1.
+     * If speed is greater than 2 it is set to 1.
      */
     public void pressedSpeedButton(){
-        if(speed==2){
-            speed=1;
-        }else{
-            speed=2;
-        }
-        if(pause){
-            pressedPausePlay();
-        }
-        GameData.getInstance().setGameSpeed(speed);
+        GameData.getInstance().setGameSpeed(2);
     }
 
     /**
@@ -125,7 +128,7 @@ public class ButtonPanel extends BoardObject {
      * Pauses game and tells the properiespanel to be visible
      */
     public void pressedPropertiesButton(){
-        pauseGame();
+        pressedPause();
         GameData.getInstance().getPropertiesPanel().setVisability(true);
     }
 
@@ -136,7 +139,8 @@ public class ButtonPanel extends BoardObject {
      */
     public void render(SpriteBatch batch){
         super.render(batch);
-        ppButton.render(batch);
+        playButton.render(batch);
+        pauseButton.render(batch);
         speedButton.render(batch);
         prButton.render(batch);
     }
