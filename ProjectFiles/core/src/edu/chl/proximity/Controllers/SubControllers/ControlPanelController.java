@@ -59,10 +59,12 @@ public class ControlPanelController implements ClickHandler {
     public void touchDown (Vector2 clickedPoint, int pointer, int button) {
         if(GameData.getInstance().getGameSpeed()!=0) {
 
+
             ControlPanelTower cpTower = controlPanel.getTowerOnPosition(clickedPoint);
             if (cpTower != null) {
                 GameData.getInstance().getHand().setItem(cpTower.getTower());
             }
+
         }
         BoardObject touchedButton;
 

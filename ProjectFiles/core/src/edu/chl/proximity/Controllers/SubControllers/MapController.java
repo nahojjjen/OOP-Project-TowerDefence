@@ -38,13 +38,17 @@ public class MapController implements ClickHandler {
     @Override
     public void touchDown(Vector2 clickedPoint, int pointer, int button) {
 
-        //Checks what item is currently picked up
-        Holdable item = GameData.getInstance().getHand().getItem();
+        //Checks if the click is within the map
+        if(model.containsPoint(clickedPoint)) {
+            //Checks what item is currently picked up
+            Holdable item = GameData.getInstance().getHand().getItem();
 
-        if(item != null) {
-            //Places the currently picked up item on the map
-            item.placeObject(clickedPoint);
-        } else {
+            if (item != null) {
+                //Places the currently picked up item on the map
+                item.placeObject(clickedPoint);
+            } else {
+
+            }
         }
 
     }
