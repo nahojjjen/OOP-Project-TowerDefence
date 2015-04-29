@@ -14,6 +14,8 @@ import edu.chl.proximity.Utilities.PointCalculations;
  * @date 2015-04-22
  *
  * Class used for managing the buttons to the far bottom right. Keeps track of the game's speed
+ *
+ * 29/04 modified by Hanna. Buttons themselves now keeps track if what image they should have.
  */
 public class ButtonPanel extends BoardObject {
     private static Image background = null;
@@ -73,11 +75,9 @@ public class ButtonPanel extends BoardObject {
     public void pressedPausePlay(){
         if(pause){
             pause=false;
-            ppButton.toggle();
             GameData.getInstance().setGameSpeed(speed);
         }else{
             pause=true;
-            ppButton.toggle();
             GameData.getInstance().setGameSpeed(0);
 
         }
@@ -90,7 +90,6 @@ public class ButtonPanel extends BoardObject {
     public void pauseGame(){
         if(!pause){
             pause=true;
-            ppButton.toggle();
             GameData.getInstance().setGameSpeed(0);
         }
     }
@@ -101,7 +100,6 @@ public class ButtonPanel extends BoardObject {
     public void startGame(){
         if(pause){
             pause=false;
-            ppButton.toggle();
             GameData.getInstance().setGameSpeed(speed);
         }
     }
@@ -111,12 +109,11 @@ public class ButtonPanel extends BoardObject {
      * If speed is greater than 3 it is set to 1.
      */
     public void pressedSpeedButton(){
-        if(speed==3){
+        if(speed==2){
             speed=1;
         }else{
-            speed++;
+            speed=2;
         }
-        speedButton.toggle();
         if(pause){
             pressedPausePlay();
         }
@@ -131,6 +128,7 @@ public class ButtonPanel extends BoardObject {
         pauseGame();
         GameData.getInstance().getPropertiesPanel().setVisability(true);
     }
+
 
     /**
      * Render the buttonPanel
