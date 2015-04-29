@@ -9,22 +9,19 @@ import edu.chl.proximity.Utilities.Constants;
 
 /**
  * @author Hanna Römer
- * @date 2015-04-23
- * Represents the visuals for a speed button
- *
- * 29/04 modified Hanna. Button keeps track of what image it should have
+ * @date 2015-04-29
  */
-public class SpeedButton extends BoardObject{
-    private static Image upImage=new Image(Constants.filePath + "Buttons/FastPlayButton.png");
-    private static Image downImage=new Image(Constants.filePath + "Buttons/DownFastPlayButton.png");
+public class PauseButton extends BoardObject{
+    public static Image upImage = new Image(Constants.filePath + "Buttons/PauseButton.png");
+    public static Image downImage = new Image(Constants.filePath + "Buttons/DownPauseButton.png");
     private static int height=50;
     private static int width=50;
 
     /**
-     * Create a new speed button
+     * Create a new Pause button
      * @param position What position the button shall have
      */
-    public SpeedButton(Vector2 position){
+    public PauseButton(Vector2 position){
         super(position,upImage,0,width,height);
     }
 
@@ -32,19 +29,20 @@ public class SpeedButton extends BoardObject{
      * Sets image depending on what the current game-speed is
      */
     public void setRightImage(){
-        if(GameData.getInstance().getGameSpeed()==1){
-            super.setImage(upImage);
-        }else if(GameData.getInstance().getGameSpeed() >1){
+        if(GameData.getInstance().getGameSpeed()==0){
             super.setImage(downImage);
+        }else{
+            super.setImage(upImage);
         }
     }
 
     /**
      * Renders the button with what image it should currently have
-     * @param batch what batch to render the SpeedButton
+     * @param batch what batch to render the PauseButton
      */
     public void render(SpriteBatch batch){
         setRightImage();
         super.render(batch);
     }
+
 }
