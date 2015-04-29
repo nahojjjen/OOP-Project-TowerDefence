@@ -3,14 +3,12 @@ package edu.chl.proximity.Controllers;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.sun.net.httpserver.Filter;
 import edu.chl.proximity.Controllers.SubControllers.*;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.ButtonsPanel.ButtonPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.Creeps.Creep;
 import edu.chl.proximity.Models.GameData;
-import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Projectiles.Projectile;
 import edu.chl.proximity.Models.Spells.ConcreteSpells.ChainLightning;
@@ -41,6 +39,7 @@ import java.util.Set;
  * 21/04 Modified by Hanna Römer.
  * 23/04 Modified by Simon Gislen Added PersistentObjectController
  * 23/04 Modified by Linda Evaldsson. Added unprojection to the mouseMoved-method.
+ * 29/04 modified by Linda Evaldsson. Updated how the clicking sends signals to the controllers that handle clicks.
  */
 public class MainController implements InputProcessor{
 
@@ -53,8 +52,6 @@ public class MainController implements InputProcessor{
     private WaveController waveController = new WaveController();
     private MapController mapController = new MapController();
     private HandController handController = new HandController();
-    private ButtonPanelController buttonPanelController=new ButtonPanelController();
-    private PropertiesPanelController propertiesPanelController=new PropertiesPanelController();
     private PersistentObjectController persistentObjectController = new PersistentObjectController();
     private MainMenuController mainMenuController=new MainMenuController();
     private List<ClickHandler> clickHandlers = new ArrayList<ClickHandler>();
@@ -67,9 +64,9 @@ public class MainController implements InputProcessor{
         viewport=v;
         clickHandlers.add(controlPanelController);
         clickHandlers.add(mapController);
-        clickHandlers.add(buttonPanelController);
+        //clickHandlers.add(buttonPanelController);
         clickHandlers.add(handController);
-        clickHandlers.add(propertiesPanelController);
+        //clickHandlers.add(propertiesPanelController);
         clickHandlers.add(mainMenuController);
     }
 
@@ -79,10 +76,10 @@ public class MainController implements InputProcessor{
     }
 
     public void setButtonPanel(ButtonPanel buttonPanel){
-        buttonPanelController.setButtonPanel(buttonPanel);
+        controlPanelController.setButtonPanel(buttonPanel);
     }
 
-    public void setPropertiesPanel(PropertiesPanel propertiesPanel) {propertiesPanelController.setPropertiesPanel(propertiesPanel);}
+    public void setPropertiesPanel(PropertiesPanel propertiesPanel) {controlPanelController.setPropertiesPanel(propertiesPanel);}
 
     public void updateAllControllers() {
         if(GameData.getInstance().getGame().getCurrentScreen().equals(Proximity.State.GAME)) {
@@ -98,11 +95,6 @@ public class MainController implements InputProcessor{
         }
 
     }
-
-    /*
-    public void setControlPanel(ControlPanel controlPanel) {
-        controlPanelController.setControlPanel(controlPanel);
-    }*/
 
     /**
      * Remove all objects marked for deletion this frame.
@@ -222,15 +214,15 @@ public class MainController implements InputProcessor{
         }
         counter++;
         effect.placeObject(clickedPoint);
+
         //For creating paths during the developing state
         PointCalculations.createPathTool((int) clickedPoint.x, (int) clickedPoint.y);
 
         //Runs through the clickable controllers and informs them if their models is clicked
         for(ClickHandler controller : clickHandlers) {
-            System.out.print(controller.getClass());
-            System.out.println(controller.getModel().containsPoint(clickedPoint));
-            if(controller.getModel().containsPoint(clickedPoint))
+            if(controller.isModelClicked(clickedPoint))
                 controller.touchDown(clickedPoint, pointer, button);
+
         }
 
 
@@ -252,9 +244,10 @@ public class MainController implements InputProcessor{
     public boolean mouseMoved (int x, int y) {
         Vector2 clickedPoint = viewport.unproject(new Vector2(x, y));
         for(ClickHandler controller : clickHandlers) {
-            if(controller.getModel().containsPoint(clickedPoint))
+            if(controller.isModelClicked(clickedPoint))
                 controller.mouseMoved(clickedPoint);
-        }
+            }
+
         return true;
     }
 

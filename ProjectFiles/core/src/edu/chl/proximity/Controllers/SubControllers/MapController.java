@@ -11,6 +11,9 @@ import edu.chl.proximity.Models.Towers.BulletTower;
 import edu.chl.proximity.Models.Towers.MissileTower;
 import edu.chl.proximity.Models.Towers.SlowTower;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * @author Linda Evaldsson
@@ -25,11 +28,13 @@ public class MapController implements ClickHandler {
 
     private Background model = new Background(null);
     private int tempCounter = 0;
+    private List<BoardObject> models = new ArrayList<BoardObject>();
 
     public MapController() {
         model.setPosition(new Vector2(0,0));
         model.setWidth(Gdx.graphics.getWidth() - 300);
         model.setHeight(Gdx.graphics.getHeight());
+        models.add(model);
     }
 
 
@@ -48,8 +53,8 @@ public class MapController implements ClickHandler {
     }
 
     @Override
-    public BoardObject getModel() {
-        return model;
+    public boolean isModelClicked(Vector2 clickedPoint) {
+        return model.containsPoint(clickedPoint);
     }
 
     @Override

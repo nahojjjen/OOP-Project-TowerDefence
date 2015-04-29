@@ -79,7 +79,9 @@ public class ButtonPanel extends BoardObject {
             pause=true;
             ppButton.toggle();
             GameData.getInstance().setGameSpeed(0);
+
         }
+
     }
 
     /**

@@ -3,6 +3,8 @@ package edu.chl.proximity.Controllers;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 
+import java.util.List;
+
 /**
  * @author Linda Evaldsson
  * @date 2015-04-22
@@ -19,13 +21,12 @@ public interface ClickHandler {
      */
     public void touchDown (Vector2 clickedPoint, int pointer, int button);
 
-    //Todo: Possibly change from "BoardObject" to another type of object (some type of rectangle or Area-object)
-
     /**
-     * Returns a model that reflects the area that the ClickHandler should be listening in to
-     * @return a BoardObject that has the size and position for the area
+     * Method that checks wheter this controllers models are clicked
+     * @param clickedPoint The point that was clicked
+     * @return true if the models are clicked, false otherwise
      */
-    public BoardObject getModel();
+    public boolean isModelClicked(Vector2 clickedPoint);
 
     /**
      * Method called when the mouse is moved

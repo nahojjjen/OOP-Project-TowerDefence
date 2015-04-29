@@ -11,12 +11,16 @@ import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.MenuModels.StartButton;
 import edu.chl.proximity.Proximity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Hanna Römer
  * @date 2015-04-25
  */
 public class MainMenuController implements ClickHandler{
     private Background model=new Background(null);
+    //private List<BoardObject> models = new ArrayList<BoardObject>();
     private MainMenu mainMenu=GameData.getInstance().getMainMenu();
 
     public MainMenuController() {
@@ -24,8 +28,10 @@ public class MainMenuController implements ClickHandler{
         model.setWidth(Gdx.graphics.getWidth());
         model.setHeight(Gdx.graphics.getHeight());
     }
-    public BoardObject getModel() {
-        return model;
+
+
+    public boolean isModelClicked(Vector2 clickedPoint) {
+        return model.containsPoint(clickedPoint);
     }
     @Override
     public void touchDown(Vector2 clickedPoint, int pointer, int button) {

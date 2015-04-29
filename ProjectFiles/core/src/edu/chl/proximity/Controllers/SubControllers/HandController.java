@@ -7,6 +7,9 @@ import edu.chl.proximity.Models.Backgrounds.Background;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.GameData;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Linda Evaldsson
  * @date 2015-04-2
@@ -15,7 +18,6 @@ import edu.chl.proximity.Models.GameData;
  *
  */
 public class HandController implements ClickHandler {
-
     private Background model = new Background(null);
 
     public HandController() {
@@ -32,8 +34,8 @@ public class HandController implements ClickHandler {
     }
 
     @Override
-    public BoardObject getModel() {
-        return model;
+    public boolean isModelClicked(Vector2 clickedPoint) {
+        return model.containsPoint(clickedPoint);
     }
 
     @Override
