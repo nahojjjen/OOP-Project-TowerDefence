@@ -49,10 +49,6 @@ public class MapController implements ClickHandler {
 
     }
 
-    @Override
-    public boolean isModelClicked(Vector2 clickedPoint) {
-        return model.containsPoint(clickedPoint);
-    }
 
     @Override
     public void mouseMoved(Vector2 newPosition) {

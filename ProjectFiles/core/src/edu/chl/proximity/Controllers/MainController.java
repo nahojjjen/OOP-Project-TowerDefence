@@ -222,8 +222,8 @@ public class MainController implements InputProcessor{
 
         //Runs through the clickable controllers and informs them if their models is clicked
         for(ClickHandler controller : clickHandlers) {
-            if(controller.isModelClicked(clickedPoint))
-                controller.touchDown(clickedPoint, pointer, button);
+
+            controller.touchDown(clickedPoint, pointer, button);
 
         }
 
@@ -246,10 +246,8 @@ public class MainController implements InputProcessor{
     public boolean mouseMoved (int x, int y) {
         Vector2 clickedPoint = viewport.unproject(new Vector2(x, y));
         for(ClickHandler controller : clickHandlers) {
-            if(controller.isModelClicked(clickedPoint))
-                controller.mouseMoved(clickedPoint);
-            }
-
+            controller.mouseMoved(clickedPoint);
+        }
         return true;
     }
 

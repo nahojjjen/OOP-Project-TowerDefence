@@ -30,11 +30,6 @@ public class HandController implements ClickHandler {
     }
 
     @Override
-    public boolean isModelClicked(Vector2 clickedPoint) {
-        return model.containsPoint(clickedPoint);
-    }
-
-    @Override
     public void mouseMoved(Vector2 newPosition) {
 
         //Updates the position of the hand to be the position of the mouse

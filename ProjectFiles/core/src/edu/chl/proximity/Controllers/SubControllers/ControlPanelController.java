@@ -49,18 +49,6 @@ public class ControlPanelController implements ClickHandler {
         profilePanel.updateExperience();
     }
 
-    public boolean isModelClicked(Vector2 clickedPoint) {
-
-        for(BoardObject model : models) {
-            if(model.containsPoint(clickedPoint))
-                return true;
-        }
-        return false;
-    }
-
-    public List<BoardObject> getModels() {
-        return models;
-    }
 
     @Override
     public void mouseMoved(Vector2 newPosition) {

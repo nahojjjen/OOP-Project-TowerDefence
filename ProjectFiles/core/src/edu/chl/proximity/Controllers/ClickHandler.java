@@ -22,13 +22,6 @@ public interface ClickHandler {
     public void touchDown (Vector2 clickedPoint, int pointer, int button);
 
     /**
-     * Method that checks wheter this controllers models are clicked
-     * @param clickedPoint The point that was clicked
-     * @return true if the models are clicked, false otherwise
-     */
-    public boolean isModelClicked(Vector2 clickedPoint);
-
-    /**
      * Method called when the mouse is moved
      * @param newPosition The position the mouse was moved to
      */
