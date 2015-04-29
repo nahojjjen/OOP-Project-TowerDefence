@@ -79,7 +79,7 @@ public class MainController implements InputProcessor{
         controlPanelController.setButtonPanel(buttonPanel);
     }
 
-    public void setPropertiesPanel(PropertiesPanel propertiesPanel) {controlPanelController.setPropertiesPanel(propertiesPanel);}
+    //public void setPropertiesPanel(PropertiesPanel propertiesPanel) {controlPanelController.setPropertiesPanel(propertiesPanel);}
 
     public void updateAllControllers() {
         if(GameData.getInstance().getGame().getCurrentScreen().equals(Proximity.State.GAME)) {

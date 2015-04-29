@@ -16,9 +16,12 @@ import java.util.List;
  * @author Hanna Römer
  * @date 2015-04-23
  *
- * 24/04 edited by Hanna Römer. Added SoundButton, MainMenuButton and Sound-bars
+ * 24/04 modified by Hanna Römer. Added SoundButton, MainMenuButton and Sound-bars
+ * 29/04 modified by Hanna Römer. Made into singleton.
  */
 public class PropertiesPanel extends BoardObject{
+    private static PropertiesPanel propertiesPanel;
+
     private static Image background = new Image(Constants.filePath + "Backgrounds/TempPropPanel.png");
     private static Vector2 position=new Vector2(300,200);
     private Vector2 resumePos=new Vector2(position.x+95,position.y+20);
@@ -42,6 +45,16 @@ public class PropertiesPanel extends BoardObject{
         initBars();
         setBarsAt(4);
         setSoundAt(4);
+    }
+
+
+    public static PropertiesPanel getInstance(){
+        if(propertiesPanel==null){
+            propertiesPanel=new PropertiesPanel();
+        }
+
+        return propertiesPanel;
+
     }
 
     private void initBars(){
@@ -148,7 +161,7 @@ public class PropertiesPanel extends BoardObject{
      */
     public void pressedResumeButton(){
         setVisability(false);
-        GameData.getInstance().getButtonPanel().startGame();
+        GameData.getInstance().setGameSpeed(1);
     }
 
     /**

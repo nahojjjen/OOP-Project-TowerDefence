@@ -36,8 +36,6 @@ public class ButtonPanel extends BoardObject {
     private SpeedButton speedButton=new SpeedButton(speedPos);
     private PropertiesButton prButton=new PropertiesButton(propPos);
 
-    private PropertiesPanel pPanel = new PropertiesPanel();
-
 
     /**
      * Create a new instance of ButtonPanel
@@ -129,7 +127,7 @@ public class ButtonPanel extends BoardObject {
      */
     public void pressedPropertiesButton(){
         pressedPause();
-        GameData.getInstance().getPropertiesPanel().setVisability(true);
+        PropertiesPanel.getInstance().setVisability(true);
     }
 
 

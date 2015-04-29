@@ -23,6 +23,7 @@ import edu.chl.proximity.Proximity;
  *
  * 23/04 edited by Hanna Römer. Added ButtonPanel, PropertiesPanel and sound volume of game.
  * 24/04 edited by Hanna Römer. Added Proximity and MainMenu + their setters and getters
+ * 29/04 edited by Hanna Römer. Removed ButtonPanel and PropertiesButton.
  */
 public class GameData {
 
@@ -31,8 +32,7 @@ public class GameData {
     private Player player;
     private Hand hand = new Hand();
     private MainMenu mainMenu;
-    private ButtonPanel buttonPanel;
-    private PropertiesPanel propertiesPanel;
+
     private int gameSpeed = 1;
 
     private Proximity proximity;
@@ -101,11 +101,6 @@ public class GameData {
     public MainMenu getMainMenu(){ return mainMenu;}
     public void setMainMenu(MainMenu mainMenu){ this.mainMenu=mainMenu;}
 
-    public ButtonPanel getButtonPanel(){ return buttonPanel;}
-    public void setButtonPanel(ButtonPanel buttonPanel){this.buttonPanel=buttonPanel;}
-
-    public PropertiesPanel getPropertiesPanel(){ return propertiesPanel;}
-    public void setPropertiesPanel(PropertiesPanel propertiesPanel){ this.propertiesPanel=propertiesPanel;}
 
     public Hand getHand() { return hand; }
 

@@ -17,12 +17,13 @@ import java.util.List;
  * @date 2015-04-17
  *
  * 29/04 modified by Linda Evaldsson. Merged this class with PropertiesPanelController (created by Hanna Römer 2015-04-23) and ButtonPanelController (created by Hanna Römer 2015-04-23).
+ * 29/04 added Play and Pause Buttons to possible clicked buttons on ButtonsPanel. Removed PausePlayButton option.
  */
 public class ControlPanelController implements ClickHandler {
 
     private ControlPanel controlPanel = new ControlPanel();
     private ButtonPanel buttonPanel = new ButtonPanel();
-    private PropertiesPanel propertiesPanel=new PropertiesPanel();
+    private PropertiesPanel propertiesPanel=PropertiesPanel.getInstance();
 
     private List<BoardObject> models = new ArrayList<BoardObject>();
 

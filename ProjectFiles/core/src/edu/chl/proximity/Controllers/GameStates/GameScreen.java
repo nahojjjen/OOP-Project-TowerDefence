@@ -31,6 +31,7 @@ import edu.chl.proximity.Viewers.Renderer;
  * 16/04 modified by Simon Gislen
  * 21/04 modified by Simon Gislen
  * 23/04 modified by Hanna Römer. Added ButtonPanel and PropertiesPanel.
+ * 29/04 modified by Hanna Römer. Removed PropertiesPanel since it's singleton
  */
 public class GameScreen implements Screen{
     private Game game;
@@ -40,7 +41,7 @@ public class GameScreen implements Screen{
     private Renderer renderer;
     private ControlPanel controlPanel;
     private ButtonPanel buttonPanel;
-    private PropertiesPanel propertiesPanel;
+
     private MainController mainController;
     private OrthographicCamera camera;
     private FitViewport viewport;
@@ -53,7 +54,7 @@ public class GameScreen implements Screen{
 
         controlPanel = new ControlPanel(); //Must be set after map is set in GameData
         buttonPanel=new ButtonPanel();
-        propertiesPanel=new PropertiesPanel();
+        //propertiesPanel=new PropertiesPanel();
 
         GameData.getInstance().setPlayer(player);
         renderer = new Renderer();
@@ -62,14 +63,9 @@ public class GameScreen implements Screen{
 
         renderer.setControlPanel(controlPanel);
         renderer.setButtonPanel(buttonPanel);
-        renderer.setPropertiesPanel(propertiesPanel);
 
         mainController.setControlPanel(controlPanel);
         mainController.setButtonPanel(buttonPanel);
-        mainController.setPropertiesPanel(propertiesPanel);
-
-        GameData.getInstance().setButtonPanel(buttonPanel);
-        GameData.getInstance().setPropertiesPanel(propertiesPanel);
 
         shapeRenderer.setAutoShapeType(true);
 

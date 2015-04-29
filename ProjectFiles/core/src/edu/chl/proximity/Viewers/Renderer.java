@@ -31,6 +31,7 @@ import java.util.List;
  * Unknown date modified by Linda Evaldsson
  * 23/04 Modified by Hanna Römer. Added ButtonPanel and PropertiesPanel + necessary methods for them
  * 24/04 Modified by Johan Swanberg - Added creep debug view and fixed path render to not be missaligned
+ * 29/04 modified by Hanna Römer. Removed PropertiesPanel instance and setter since it's a singleton. 
  */
 public class Renderer {
 
@@ -38,7 +39,6 @@ public class Renderer {
     private ParticleManager particleManager ;
     private ControlPanel controlPanel;
     private ButtonPanel buttonPanel;
-    private PropertiesPanel propertiesPanel;
 
     /**
      * create a new renderer that can show everything in a game instance
@@ -54,7 +54,6 @@ public class Renderer {
     }
     public void setButtonPanel(ButtonPanel buttonPanel){ this.buttonPanel=buttonPanel;}
 
-    public void setPropertiesPanel(PropertiesPanel propertiesPanel){ this.propertiesPanel=propertiesPanel;}
 
     /**
      * render everything in the current game
@@ -124,9 +123,10 @@ public class Renderer {
     private void renderButtonPanel(SpriteBatch batch){
         buttonPanel.render(batch);
     }
+
     private void renderPropertiesPanel(SpriteBatch batch){
-        if(propertiesPanel.getIfVisible()){
-            propertiesPanel.render(batch);
+        if(PropertiesPanel.getInstance().getIfVisible()){
+            PropertiesPanel.getInstance().render(batch);
         }
     }
 
