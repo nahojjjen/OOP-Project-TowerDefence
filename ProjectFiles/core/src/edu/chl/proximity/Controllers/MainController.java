@@ -7,6 +7,7 @@ import edu.chl.proximity.Controllers.SubControllers.*;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.ButtonPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
+import edu.chl.proximity.Models.ControlPanel.ProfilePanel;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
@@ -77,6 +78,10 @@ public class MainController implements InputProcessor{
     public void setButtonPanel(ButtonPanel buttonPanel){
         controlPanelController.setButtonPanel(buttonPanel);
     }
+    public void setProfilePanel(ProfilePanel profilePanel){
+        controlPanelController.setProfilePanel(profilePanel);
+    }
+
 
     //public void setPropertiesPanel(PropertiesPanel propertiesPanel) {controlPanelController.setPropertiesPanel(propertiesPanel);}
 

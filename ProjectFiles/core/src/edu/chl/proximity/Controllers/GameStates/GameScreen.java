@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import edu.chl.proximity.Controllers.MainController;
 import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.ButtonPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
+import edu.chl.proximity.Models.ControlPanel.ProfilePanel;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.Player;
@@ -35,8 +36,7 @@ public class GameScreen implements Screen{
     private SpriteBatch batch = new SpriteBatch();
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
     private Renderer renderer;
-    private ControlPanel controlPanel;
-    private ButtonPanel buttonPanel;
+
 
     private MainController mainController;
     private OrthographicCamera camera;
@@ -48,20 +48,23 @@ public class GameScreen implements Screen{
         currentMap = map;
         GameData.getInstance().setMap(currentMap);
 
-        controlPanel = new ControlPanel(); //Must be set after map is set in GameData
-        buttonPanel=new ButtonPanel();
-        //propertiesPanel=new PropertiesPanel();
+        ControlPanel controlPanel = new ControlPanel(); //Must be set after map is set in GameData
+        ButtonPanel buttonPanel = new ButtonPanel();
+        ProfilePanel profilePanel = new ProfilePanel();
 
         GameData.getInstance().setPlayer(player);
-        renderer = new Renderer();
+        this.renderer = new Renderer();
         fixCamera();
+
         mainController = new MainController(viewport);
 
         renderer.setControlPanel(controlPanel);
         renderer.setButtonPanel(buttonPanel);
+        renderer.setProfilePanel(profilePanel);
 
         mainController.setControlPanel(controlPanel);
         mainController.setButtonPanel(buttonPanel);
+        mainController.setProfilePanel(profilePanel);
 
         shapeRenderer.setAutoShapeType(true);
 

@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Models.ControlPanel.ProfilePanel;
 import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.ButtonPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
@@ -39,6 +40,7 @@ public class Renderer {
     private ParticleManager particleManager ;
     private ControlPanel controlPanel;
     private ButtonPanel buttonPanel;
+    private ProfilePanel profilePanel;
 
     /**
      * create a new renderer that can show everything in a game instance
@@ -53,7 +55,9 @@ public class Renderer {
         this.controlPanel = controlPanel;
     }
     public void setButtonPanel(ButtonPanel buttonPanel){ this.buttonPanel=buttonPanel;}
-
+    public void setProfilePanel(ProfilePanel profilePanel) {
+        this.profilePanel = profilePanel;
+    }
 
     /**
      * render everything in the current game
@@ -84,6 +88,8 @@ public class Renderer {
         renderControlPanel(batch);
         renderButtonPanel(batch);
         renderPropertiesPanel(batch);
+        renderProfilePanel(batch);
+
 
         GameData.getInstance().getHand().render(batch);
 
@@ -124,6 +130,9 @@ public class Renderer {
         buttonPanel.render(batch);
     }
 
+    private void renderProfilePanel(SpriteBatch batch) {
+        profilePanel.render(batch);
+    }
     private void renderPropertiesPanel(SpriteBatch batch){
         if(PropertiesPanel.getInstance().getIfVisible()){
             PropertiesPanel.getInstance().render(batch);
