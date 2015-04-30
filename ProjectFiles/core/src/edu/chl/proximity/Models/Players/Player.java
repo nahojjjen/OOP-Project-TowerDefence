@@ -14,6 +14,7 @@ import edu.chl.proximity.Models.ResourceSystem.Resources;
  * A class epresenting the player.
  *
  * 23/04 Modified by Simon. Adding depth to leveling up
+ * 28/04 Modified by Simon. Adding level
 >>>>>>> Dev: Adds XP when killing creeps
  */
 public class Player {
@@ -67,5 +68,8 @@ public class Player {
     //Returns XP
     public int getExperience() {
         return experiencePoints;
+    }
+    public double getLevel() {
+        return level;
     }
 }
