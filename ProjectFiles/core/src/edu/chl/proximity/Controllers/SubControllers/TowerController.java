@@ -1,10 +1,8 @@
 package edu.chl.proximity.Controllers.SubControllers;
 
-import com.badlogic.gdx.math.Vector2;
-import edu.chl.proximity.Models.Creeps.Creep;
-import edu.chl.proximity.Models.GameData;
-import edu.chl.proximity.Models.Maps.Map;
-import edu.chl.proximity.Models.Towers.Tower;
+import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Map.Towers.Tower;
 
 import java.util.List;
 

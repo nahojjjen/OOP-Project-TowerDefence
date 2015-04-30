@@ -5,17 +5,17 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import edu.chl.proximity.Controllers.GameStates.GameScreen;
 import edu.chl.proximity.Controllers.GameStates.MenuScreen;
-import edu.chl.proximity.Models.Factions.ConcreteFactions.Planes;
-import edu.chl.proximity.Models.GameData;
-import edu.chl.proximity.Models.Maps.Map;
-import edu.chl.proximity.Models.Maps.StandardMap;
+import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Planes;
+import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Map.Maps.StandardMap;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
-import edu.chl.proximity.Models.Players.Player;
+import edu.chl.proximity.Models.Player.Players.Player;
 /**
  *
  * 08/04 Modified by Johan Swanberg. Switch to Screen from GameState.
  * 08/04 modified by Linda Evaldsson. Changes in structure, removed SpriteBatch.
- * 24/04 modified by Hanna Römer. Added method to change screen, between GameScreen and MenuScreen
+ * 24/04 modified by Hanna Rï¿½mer. Added method to change screen, between GameScreen and MenuScreen
  */
 
 public class Proximity extends Game {

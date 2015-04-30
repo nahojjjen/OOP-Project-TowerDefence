@@ -2,8 +2,7 @@ package edu.chl.proximity.Models.ControlPanel;
 
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Image;
-import edu.chl.proximity.Models.Towers.Tower;
+import edu.chl.proximity.Models.Map.Towers.Tower;
 
 /**
  * @author Linda Evaldsson

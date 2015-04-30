@@ -1,11 +1,10 @@
 package edu.chl.proximity.Controllers.SubControllers;
 
-import edu.chl.proximity.Models.Creeps.Creep;
-import edu.chl.proximity.Models.GameData;
-import edu.chl.proximity.Models.Maps.Map;
-import edu.chl.proximity.Models.Projectiles.Projectile;
+import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 
-import java.util.Iterator;
 import java.util.List;
 
 /**

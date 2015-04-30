@@ -3,12 +3,8 @@ package edu.chl.proximity.Controllers.SubControllers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Controllers.ClickHandler;
-import edu.chl.proximity.Models.Backgrounds.Background;
-import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.GameData;
-
-import java.util.ArrayList;
-import java.util.List;
+import edu.chl.proximity.Models.Utils.Background;
+import edu.chl.proximity.Models.Utils.GameData;
 
 /**
  * @author Linda Evaldsson

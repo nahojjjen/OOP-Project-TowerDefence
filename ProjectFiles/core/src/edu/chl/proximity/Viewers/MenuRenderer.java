@@ -2,12 +2,12 @@ package edu.chl.proximity.Viewers;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import edu.chl.proximity.Models.GameData;
+import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
-import edu.chl.proximity.Models.Particles.ParticleManager;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 
 /**
- * @author Hanna Römer
+ * @author Hanna Rï¿½mer
  * @date 2015-04-25
  */
 public class MenuRenderer {

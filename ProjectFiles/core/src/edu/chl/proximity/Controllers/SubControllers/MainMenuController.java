@@ -3,19 +3,15 @@ package edu.chl.proximity.Controllers.SubControllers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Controllers.ClickHandler;
-import edu.chl.proximity.Models.Backgrounds.Background;
+import edu.chl.proximity.Models.Utils.Background;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.GameData;
-import edu.chl.proximity.Models.Holdables.Holdable;
+import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.MenuModels.StartButton;
 import edu.chl.proximity.Proximity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * @author Hanna Römer
+ * @author Hanna Rï¿½mer
  * @date 2015-04-25
  */
 public class MainMenuController implements ClickHandler{

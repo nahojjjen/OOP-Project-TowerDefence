@@ -6,17 +6,13 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import edu.chl.proximity.Controllers.MainController;
-import edu.chl.proximity.Models.ButtonsPanel.ButtonPanel;
+import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.ButtonPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
-import edu.chl.proximity.Models.GameData;
-import edu.chl.proximity.Models.Maps.Map;
-import edu.chl.proximity.Models.Players.Player;
-import edu.chl.proximity.Models.PropertiesPanel.PropertiesPanel;
-import edu.chl.proximity.Models.Spells.ConcreteSpells.FrostField;
-import edu.chl.proximity.Models.Towers.SlowTower;
+import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Viewers.Renderer;
 
 /**
@@ -30,8 +26,8 @@ import edu.chl.proximity.Viewers.Renderer;
  * 08/04 modified by Linda Evaldsson. Added som spawning logic for testing.
  * 16/04 modified by Simon Gislen
  * 21/04 modified by Simon Gislen
- * 23/04 modified by Hanna Römer. Added ButtonPanel and PropertiesPanel.
- * 29/04 modified by Hanna Römer. Removed PropertiesPanel since it's singleton
+ * 23/04 modified by Hanna Rï¿½mer. Added ButtonPanel and PropertiesPanel.
+ * 29/04 modified by Hanna Rï¿½mer. Removed PropertiesPanel since it's singleton
  */
 public class GameScreen implements Screen{
     private Game game;

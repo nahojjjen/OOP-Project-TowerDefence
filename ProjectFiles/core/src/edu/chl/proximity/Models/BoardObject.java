@@ -1,12 +1,9 @@
 package edu.chl.proximity.Models;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Utilities.PointCalculations;
-
-import java.awt.*;
 
 /**
  * @author Johan Swanberg and Linda Evaldsson
@@ -27,7 +24,7 @@ public abstract class BoardObject implements Cloneable {
     /**
      * Image that is to be rendered
      */
-    private Image image;
+    private edu.chl.proximity.Models.Utils.Image image;
     /**
      * Rotation property
      */
@@ -43,7 +40,7 @@ public abstract class BoardObject implements Cloneable {
      * @param img the image of the object
      * @param angle the rotation of the object (in degrees)
      */
-    public BoardObject(Vector2 position, Image img, double angle){
+    public BoardObject(Vector2 position, edu.chl.proximity.Models.Utils.Image img, double angle){
         this.position = position;
         this.image = img;
         this.angle = angle;
@@ -56,7 +53,7 @@ public abstract class BoardObject implements Cloneable {
         //Empty constructor for subclasses
     }
 
-    public BoardObject(Vector2 position, Image img, double angle, int width, int height) {
+    public BoardObject(Vector2 position, edu.chl.proximity.Models.Utils.Image img, double angle, int width, int height) {
         this(position, img, angle);
         this.width = width;
         this.height = height;
@@ -72,11 +69,11 @@ public abstract class BoardObject implements Cloneable {
         this.position = position;
     }
 
-    public Image getImage() {
+    public edu.chl.proximity.Models.Utils.Image getImage() {
         return image;
     }
 
-    public void setImage(Image img) {
+    public void setImage(edu.chl.proximity.Models.Utils.Image img) {
         this.image = img;
     }
 
@@ -156,7 +153,7 @@ public abstract class BoardObject implements Cloneable {
     public Object clone() throws CloneNotSupportedException{
         BoardObject clone = (BoardObject)super.clone();
         clone.setPosition(new Vector2(position.x, position.y));
-        clone.setImage((Image)image.clone());
+        clone.setImage((edu.chl.proximity.Models.Utils.Image)image.clone());
         return clone;
     }
 }

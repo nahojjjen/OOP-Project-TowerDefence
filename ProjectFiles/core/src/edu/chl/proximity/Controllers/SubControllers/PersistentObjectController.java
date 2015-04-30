@@ -1,7 +1,7 @@
 package edu.chl.proximity.Controllers.SubControllers;
 
-import edu.chl.proximity.Models.GameData;
-import edu.chl.proximity.Models.Spells.PersistentObject;
+import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Player.Spells.PersistentObject;
 
 import java.util.ArrayList;
 

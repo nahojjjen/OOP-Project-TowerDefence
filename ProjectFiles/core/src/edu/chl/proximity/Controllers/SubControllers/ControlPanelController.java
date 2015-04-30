@@ -3,11 +3,12 @@ package edu.chl.proximity.Controllers.SubControllers;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.ButtonsPanel.*;
+import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.*;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanelTower;
-import edu.chl.proximity.Models.GameData;
-import edu.chl.proximity.Models.PropertiesPanel.*;
+import edu.chl.proximity.Models.ControlPanel.ProfilePanel;
+import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +17,16 @@ import java.util.List;
  * @author Linda Evaldsson
  * @date 2015-04-17
  *
- * 29/04 modified by Linda Evaldsson. Merged this class with PropertiesPanelController (created by Hanna Römer 2015-04-23) and ButtonPanelController (created by Hanna Römer 2015-04-23).
+ * 29/04 modified by Linda Evaldsson. Merged this class with PropertiesPanelController (created by Hanna Rï¿½mer 2015-04-23) and ButtonPanelController (created by Hanna Rï¿½mer 2015-04-23).
  * 29/04 added Play and Pause Buttons to possible clicked buttons on ButtonsPanel. Removed PausePlayButton option.
+ * 30/04 modified by Simon Gislen. Added ProfilePanel.
  */
 public class ControlPanelController implements ClickHandler {
 
     private ControlPanel controlPanel = new ControlPanel();
     private ButtonPanel buttonPanel = new ButtonPanel();
     private PropertiesPanel propertiesPanel=PropertiesPanel.getInstance();
+    private ProfilePanel profilePanel = new ProfilePanel();
 
     private List<BoardObject> models = new ArrayList<BoardObject>();
 
@@ -31,16 +34,18 @@ public class ControlPanelController implements ClickHandler {
         models.add(controlPanel);
         models.add(buttonPanel);
         models.add(propertiesPanel);
+        models.add(profilePanel);
     }
 
     public void setControlPanel(ControlPanel controlPanel) { this.controlPanel = controlPanel;}
     public void setPropertiesPanel(PropertiesPanel propertiesPanel){ this.propertiesPanel=propertiesPanel;}
     public void setButtonPanel(ButtonPanel buttonPanel) { this.buttonPanel = buttonPanel;}
+    public void setProfilePanel(ProfilePanel profilePanel) { this.profilePanel = profilePanel;}
 
     public void update() {
         controlPanel.setHealth(GameData.getInstance().getMap().getBase().getLife());
         controlPanel.setResources(GameData.getInstance().getPlayer().getResources());
-
+        profilePanel.updateExperience();
     }
 
     public boolean isModelClicked(Vector2 clickedPoint) {

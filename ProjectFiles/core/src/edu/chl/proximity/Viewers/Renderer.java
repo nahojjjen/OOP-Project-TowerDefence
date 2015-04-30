@@ -6,16 +6,16 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-import edu.chl.proximity.Models.Bases.Base;
-import edu.chl.proximity.Models.ButtonsPanel.ButtonPanel;
+import edu.chl.proximity.Models.Map.Bases.Base;
+import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.ButtonPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
-import edu.chl.proximity.Models.Creeps.Creep;
-import edu.chl.proximity.Models.GameData;
-import edu.chl.proximity.Models.Maps.Map;
-import edu.chl.proximity.Models.Particles.ParticleManager;
-import edu.chl.proximity.Models.PropertiesPanel.PropertiesPanel;
-import edu.chl.proximity.Models.Projectiles.Projectile;
-import edu.chl.proximity.Models.Towers.Tower;
+import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
+import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
+import edu.chl.proximity.Models.Map.Projectiles.Projectile;
+import edu.chl.proximity.Models.Map.Towers.Tower;
 
 import java.util.List;
 
@@ -29,9 +29,9 @@ import java.util.List;
  * 08/04 Modified by Johan Swanberg. Switch to Screen from GameState.
  * 08/04 modified by Linda Evaldsson. Made methods non-static.
  * Unknown date modified by Linda Evaldsson
- * 23/04 Modified by Hanna Römer. Added ButtonPanel and PropertiesPanel + necessary methods for them
+ * 23/04 Modified by Hanna Rï¿½mer. Added ButtonPanel and PropertiesPanel + necessary methods for them
  * 24/04 Modified by Johan Swanberg - Added creep debug view and fixed path render to not be missaligned
- * 29/04 modified by Hanna Römer. Removed PropertiesPanel instance and setter since it's a singleton. 
+ * 29/04 modified by Hanna Rï¿½mer. Removed PropertiesPanel instance and setter since it's a singleton. 
  */
 public class Renderer {
 

@@ -3,13 +3,10 @@ package edu.chl.proximity.Controllers.SubControllers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Controllers.ClickHandler;
-import edu.chl.proximity.Models.Backgrounds.Background;
+import edu.chl.proximity.Models.Utils.Background;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.GameData;
-import edu.chl.proximity.Models.Holdables.Holdable;
-import edu.chl.proximity.Models.Towers.BulletTower;
-import edu.chl.proximity.Models.Towers.MissileTower;
-import edu.chl.proximity.Models.Towers.SlowTower;
+import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Player.Holdables.Holdable;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -4,16 +4,13 @@ package edu.chl.proximity.Models.ControlPanel;
  * Created by simongislen on 28/04/15.
  */
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.GameData;
-import edu.chl.proximity.Models.Players.Player;
-import edu.chl.proximity.Models.ProximityFont;
+import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Player.Players.Player;
+import edu.chl.proximity.Models.Utils.ProximityFont;
 
 /**
  * @author Simon Gislen

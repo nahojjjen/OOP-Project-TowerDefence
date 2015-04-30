@@ -7,15 +7,12 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import edu.chl.proximity.Controllers.MainController;
-import edu.chl.proximity.Models.GameData;
-import edu.chl.proximity.Models.Maps.Map;
+import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
-import edu.chl.proximity.Models.Players.Player;
+import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Viewers.MenuRenderer;
 
 /**
@@ -25,7 +22,7 @@ import edu.chl.proximity.Viewers.MenuRenderer;
  * A class for handling the MenuScreen, the screen for the menu
  *
  * 08/04 Modified by Johan Swanberg. Switch to Screen from GameState.
- * 25/04 modified by Hanna Römer. Added Game,MainMenu, SpriteBatch, ShapeRenderer,MenuRenderer,MainController, OrthographicCamera and FitViewport
+ * 25/04 modified by Hanna Rï¿½mer. Added Game,MainMenu, SpriteBatch, ShapeRenderer,MenuRenderer,MainController, OrthographicCamera and FitViewport
  */
 public class MenuScreen implements Screen {
 

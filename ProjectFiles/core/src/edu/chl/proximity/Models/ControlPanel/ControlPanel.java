@@ -4,12 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Image;
-import edu.chl.proximity.Models.ProximityFont;
-import edu.chl.proximity.Models.ResourceSystem.Resources;
-import edu.chl.proximity.Models.Towers.BulletTower;
-import edu.chl.proximity.Models.Towers.MissileTower;
-import edu.chl.proximity.Models.Towers.SlowTower;
+import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Models.Utils.ProximityFont;
+import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
+import edu.chl.proximity.Models.Map.Towers.BulletTower;
+import edu.chl.proximity.Models.Map.Towers.MissileTower;
+import edu.chl.proximity.Models.Map.Towers.SlowTower;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
 
