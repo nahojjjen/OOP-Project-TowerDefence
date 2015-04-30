@@ -1,5 +1,6 @@
 package edu.chl.proximity.Utilities;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 
@@ -12,7 +13,7 @@ import java.awt.*;
  * 25/04 modified by Johan Swanberg, made distance calculation use vector 2 in all steps
  */
 public class PointCalculations {
-
+    private static MathUtils utils = new MathUtils();
     /**
      * Calculates the angle between two points
      * todo: change to use Tan instead of cos, sin and sqrt.
@@ -24,17 +25,20 @@ public class PointCalculations {
      */
     public static double getVectorAngle(Vector2 firstPoint, Vector2 secondPoint) {
         if (firstPoint != null && secondPoint != null) { //make sure there is a real vector
-            Point vector = new Point((int)secondPoint.x - (int)firstPoint.x, (int)secondPoint.y - (int)firstPoint.y); //to get a vector, subtract point a from point b
-            double hypotenuse = Math.sqrt(vector.getX() * vector.getX() + vector.getY() * vector.getY());
+            /*
+            Vector2 vector = new Vector2(secondPoint.x - firstPoint.x, secondPoint.y - firstPoint.y); //to get a vector, subtract point a from point b
+            double hypotenuse = Math.sqrt(vector.x * vector.x + vector.y * vector.y);
             if (hypotenuse == 0) {
                 return 0;
             }
-            double angle = Math.acos(vector.getX() / hypotenuse);
+            double angle = Math.acos(vector.x / hypotenuse);
             double angleDegrees = Math.toDegrees(angle);
-            if (vector.getY() > 0) {
+            if (vector.y > 0) {
                 return angleDegrees;
             }
             return -1 * angleDegrees;
+            */
+            return utils.radiansToDegrees*(utils.atan2(secondPoint.y-firstPoint.y,secondPoint.x-firstPoint.x));
         }
         return 0;
     }
@@ -48,22 +52,7 @@ public class PointCalculations {
         System.out.println("waypoint.add(new Vector2(" + x + ", " + y + "));");
     }
 
-    /**
-     * get the distance between two points
-     *
-     * @param p1 first point
-     * @param p2 second point
-     * @return length between these points
-     */
-    public static double distanceBetween(Vector2 p1, Vector2 p2) {
 
-        if (p1 != null && p2 != null) { //make sure there are 2 real poiints to measure from
-            Vector2 distanceVector = new Vector2((int)p2.x - (int)p1.x, (int)p2.y - (int)p1.y);
-            double length = Math.sqrt(distanceVector.x * distanceVector.x + distanceVector.y * distanceVector.y); //C = sqrt(a^2+b^2)
-            return length;
-        }
-        return 0;
-    }
 
     /**
      * get the distance between two points, except no square root to optimize
@@ -78,9 +67,8 @@ public class PointCalculations {
      * @return length between these points
      */
     public static double distanceBetweenNoSqrt(Vector2 p1, Vector2 p2) {
-
         if (p1 != null && p2 != null) { //make sure there are 2 real poiints to measure from
-            Vector2 distanceVector = new Vector2((int)p2.x - (int)p1.x, (int)p2.y - (int)p1.y);
+            Vector2 distanceVector = new Vector2(p2.x - p1.x, p2.y - p1.y);
             double length = distanceVector.x * distanceVector.x + distanceVector.y * distanceVector.y; //C^2 = (a^2+b^2)
             return length;
         }
