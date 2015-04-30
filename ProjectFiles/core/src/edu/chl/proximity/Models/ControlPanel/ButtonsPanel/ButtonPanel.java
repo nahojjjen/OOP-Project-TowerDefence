@@ -15,7 +15,7 @@ import edu.chl.proximity.Utilities.PointCalculations;
  *
  * Class used for managing the buttons to the far bottom right. Keeps track of the game's speed
  *
- * 29/04 modified by Hanna. Buttons themselves now keeps track if what image they should have.
+ * 29/04 modified by Hanna Römer. Buttons themselves now keeps track if what image they should have. Replaced PLayPauseButton with a play and a pause button.
  */
 public class ButtonPanel extends BoardObject {
     private static Image background = null;
@@ -23,9 +23,9 @@ public class ButtonPanel extends BoardObject {
     private static int height=70;
 
     private static Vector2 position= new Vector2(Gdx.graphics.getWidth()-width, Gdx.graphics.getHeight()-height);
-    private static Vector2 playPos=new Vector2(position.x+20, position.y);
-    private static Vector2 pausePos=new Vector2(playPos.x+60, position.y);
-    private static Vector2 speedPos=new Vector2(pausePos.x+60, position.y);
+    private static Vector2 pausePos=new Vector2(position.x+20, position.y);
+    private static Vector2 playPos=new Vector2(pausePos.x+60, position.y);
+    private static Vector2 speedPos=new Vector2(playPos.x+60, position.y);
     private static Vector2 propPos=new Vector2(speedPos.x+60, position.y);
 
     private boolean pause=false;

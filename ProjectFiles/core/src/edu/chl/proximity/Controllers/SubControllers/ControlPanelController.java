@@ -18,8 +18,9 @@ import java.util.List;
  * @date 2015-04-17
  *
  * 29/04 modified by Linda Evaldsson. Merged this class with PropertiesPanelController (created by Hanna Rï¿½mer 2015-04-23) and ButtonPanelController (created by Hanna Rï¿½mer 2015-04-23).
- * 29/04 added Play and Pause Buttons to possible clicked buttons on ButtonsPanel. Removed PausePlayButton option.
+ * 29/04 modified by Hanna Römer. Added Play and Pause Buttons to possible clicked buttons on ButtonsPanel. Removed PausePlayButton option.
  * 30/04 modified by Simon Gislen. Added ProfilePanel.
+ * 30/04 modified by Hanna Römer. Cannot click on anything else when propertiesPanel is open, cannot place towers when game is paused.
  */
 public class ControlPanelController implements ClickHandler {
 
@@ -68,29 +69,40 @@ public class ControlPanelController implements ClickHandler {
 
 
     public void touchDown (Vector2 clickedPoint, int pointer, int button) {
+        if(GameData.getInstance().getGameSpeed()!=0) {
 
-        ControlPanelTower cpTower = controlPanel.getTowerOnPosition(clickedPoint);
-        if(cpTower != null) {
-            GameData.getInstance().getHand().setItem(cpTower.getTower());
+            ControlPanelTower cpTower = controlPanel.getTowerOnPosition(clickedPoint);
+            if (cpTower != null) {
+                GameData.getInstance().getHand().setItem(cpTower.getTower());
+            }
         }
         BoardObject touchedButton;
 
         //ButtonPanel
-        touchedButton=buttonPanel.getButtonOnPosition(clickedPoint);
-        if(touchedButton instanceof PlayButton) {
-            buttonPanel.pressedPlay();
-        }else if(touchedButton instanceof PauseButton){
-            buttonPanel.pressedPause();
-        }else if(touchedButton instanceof SpeedButton){
-            buttonPanel.pressedSpeedButton();
-        }else if(touchedButton instanceof PropertiesButton){
-            buttonPanel.pressedPropertiesButton();
+        if(!propertiesPanel.getIfVisible()) {
+            touchedButton = buttonPanel.getButtonOnPosition(clickedPoint);
+            if (touchedButton != null) {
+                GameData.getInstance().getHand().setItem(null);
+            }
+            if (touchedButton instanceof PlayButton) {
+                buttonPanel.pressedPlay();
+            } else if (touchedButton instanceof PauseButton) {
+                buttonPanel.pressedPause();
+            } else if (touchedButton instanceof SpeedButton) {
+                buttonPanel.pressedSpeedButton();
+            } else if (touchedButton instanceof PropertiesButton) {
+                buttonPanel.pressedPropertiesButton();
+            }
         }
+
 
         //PropertiesPanel
 
         if (propertiesPanel.getIfVisible()) {
             touchedButton = propertiesPanel.getButtonOnPosition(clickedPoint);
+            if(touchedButton!=null){
+                GameData.getInstance().getHand().setItem(null);
+            }
             if (touchedButton instanceof ResumeButton) {
                 propertiesPanel.pressedResumeButton();
             } else if (touchedButton instanceof MainMenuButton) {

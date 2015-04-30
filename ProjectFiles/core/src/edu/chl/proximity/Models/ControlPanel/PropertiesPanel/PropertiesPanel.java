@@ -58,7 +58,7 @@ public class PropertiesPanel extends BoardObject{
     private void initBars(){
         Vector2 pos=new Vector2(soundPos.x+50,soundPos.y+15);
         for (int n=1; n<9; n++) {
-            bars.add(new SoundBar(new Vector2(pos.x + n * 18, pos.y), n));
+            bars.add(new SoundBar(new Vector2(pos.x + n * 17, pos.y), n));
         }
     }
 

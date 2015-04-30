@@ -247,8 +247,8 @@ public abstract class Creep extends BoardObject {
      * @param nbrOfTicks how many frames the creep should be slowed
      */
     public void slowDown(double percentage, int nbrOfTicks) {
-        if(slowDownTime<0) {
-            Double newSpeed = (1 - percentage / 100) * speed;
+        Double newSpeed = (1 - percentage / 100) * backUpSpeed;
+        if(slowDownTime<0 || newSpeed.intValue()<=speed) {
             speed = newSpeed.intValue();
             slowDownTime = nbrOfTicks;
         }
