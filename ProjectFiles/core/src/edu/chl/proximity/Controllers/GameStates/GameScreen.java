@@ -75,6 +75,7 @@ public class GameScreen implements Screen{
 
 
     }
+    GameData gameData;
 
     /**
      * Debug code that adds towers, sets gamespeed and sets resources and such, that should not be available to the player

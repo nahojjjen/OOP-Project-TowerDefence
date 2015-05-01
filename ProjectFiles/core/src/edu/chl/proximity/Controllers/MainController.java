@@ -53,7 +53,6 @@ public class MainController implements InputProcessor{
     private MapController mapController = new MapController();
     private HandController handController = new HandController();
     private PersistentObjectController persistentObjectController = new PersistentObjectController();
-    private MainMenuController mainMenuController=new MainMenuController();
     private List<ClickHandler> clickHandlers = new ArrayList<ClickHandler>();
 
     private Viewport viewport;
@@ -67,7 +66,6 @@ public class MainController implements InputProcessor{
         //clickHandlers.add(buttonPanelController);
         clickHandlers.add(handController);
         //clickHandlers.add(propertiesPanelController);
-        clickHandlers.add(mainMenuController);
     }
 
     public void setControlPanel(ControlPanel controlPanel) {

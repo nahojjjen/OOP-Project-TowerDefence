@@ -40,8 +40,8 @@ public class Proximity extends Game {
 
 	@Override
 	public void create () {
-		this.setScreen(new GameScreen(this, new StandardMap(), new Player(new Planes())));
-		//this.setScreen(new MenuScreen(this,new MainMenu(),new StandardMap(), new Player(new Planes())));
+		//this.setScreen(new GameScreen(this, new StandardMap(), new Player(new Planes())));
+		this.setScreen(new MenuScreen(this,new MainMenu(),new StandardMap(), new Player(new Planes())));
 		GameData.getInstance().setGame(this);
 	}
 

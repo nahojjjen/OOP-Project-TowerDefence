@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import edu.chl.proximity.Controllers.MainController;
+import edu.chl.proximity.Controllers.MainMenuController;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
@@ -27,12 +28,11 @@ import edu.chl.proximity.Viewers.MenuRenderer;
 public class MenuScreen implements Screen {
 
     private Game game;
-    private Stage stage;
     private MainMenu mainMenu;
     private SpriteBatch batch = new SpriteBatch();
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
     private MenuRenderer menuRenderer;
-    private MainController mainController;
+    private MainMenuController mainMenuController;
     private OrthographicCamera camera;
     private FitViewport viewport;
 
@@ -49,18 +49,11 @@ public class MenuScreen implements Screen {
 
         menuRenderer=new MenuRenderer();
         fixCamera();
-        mainController=new MainController(viewport);
+        mainMenuController=new MainMenuController();
+        mainMenuController.setMainMenu(mainMenu);
         shapeRenderer.setAutoShapeType(true);
-        Gdx.input.setInputProcessor(mainController);
+        Gdx.input.setInputProcessor(mainMenuController);
 
-        //stage = new Stage();
-        //Gdx.input.setInputProcessor(stage);
-
-       //needs a skin or similar // -   TextButton playBtn = new TextButton("Play", new ImageTextButton.ImageTextButtonStyle());
-        //playBtn.setPosition(300,300);
-       // playBtn.setSize(100, 100);
-
-       // stage.addActor(playBtn);
     }
 
     /**
@@ -90,9 +83,6 @@ public class MenuScreen implements Screen {
         menuRenderer.render(batch, shapeRenderer);
         batch.end();
 
-        for (int i=0; i<GameData.getInstance().getGameSpeed(); i++){
-            mainController.updateAllControllers();
-        }
         //stage.act(delta);
         //stage.draw();
     }
