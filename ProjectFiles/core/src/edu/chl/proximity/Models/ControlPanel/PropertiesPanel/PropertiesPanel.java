@@ -3,8 +3,11 @@ package edu.chl.proximity.Models.ControlPanel.PropertiesPanel;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.Maps.StandardMap;
+import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
 
@@ -16,6 +19,7 @@ import java.util.ArrayList;
  *
  * 24/04 modified by Hanna R�mer. Added SoundButton, MainMenuButton and Sound-bars
  * 29/04 modified by Hanna R�mer. Made into singleton.
+ * 01/05 modified by Hanna Römer. MainMenuButton now takes you to the mainMenu
  */
 public class PropertiesPanel extends BoardObject{
     private static PropertiesPanel propertiesPanel;
@@ -166,7 +170,8 @@ public class PropertiesPanel extends BoardObject{
      * Called if MainMenu-button is pressed
      */
     public void pressedMainMenuButton(){
-
+        setVisability(false);
+        GameData.getInstance().getGame().changeScreen(Proximity.State.MAIN_MENU,GameData.getInstance().getMap(),new MainMenu(), GameData.getInstance().getPlayer());
     }
 
     /**

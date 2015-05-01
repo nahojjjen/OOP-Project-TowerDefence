@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.sun.prism.image.ViewPort;
 import edu.chl.proximity.Controllers.MainController;
 import edu.chl.proximity.Controllers.MainMenuController;
 import edu.chl.proximity.Models.Utils.GameData;
@@ -43,14 +44,17 @@ public class MenuScreen implements Screen {
         this.game = g;
         this.mainMenu=mainMenu;
 
-        GameData.getInstance().setMainMenu(this.mainMenu);
+        GameData.getInstance().setMainMenu(mainMenu);
         GameData.getInstance().setPlayer(player);
         GameData.getInstance().setMap(map);
 
         menuRenderer=new MenuRenderer();
         fixCamera();
+
+
         mainMenuController=new MainMenuController();
         mainMenuController.setMainMenu(mainMenu);
+
         shapeRenderer.setAutoShapeType(true);
         Gdx.input.setInputProcessor(mainMenuController);
 
@@ -65,6 +69,7 @@ public class MenuScreen implements Screen {
         camera.setToOrtho(true);
         viewport = new FitViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),camera);
         viewport.apply();
+        viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 
     @Override
@@ -89,7 +94,7 @@ public class MenuScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-
+        viewport.update(width,height);
     }
 
     @Override

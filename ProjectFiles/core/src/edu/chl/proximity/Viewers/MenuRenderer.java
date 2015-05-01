@@ -15,6 +15,7 @@ public class MenuRenderer {
     private ParticleManager particleManager ;
 
     public MenuRenderer(){
+
         mainMenu= GameData.getInstance().getMainMenu();
     }
 

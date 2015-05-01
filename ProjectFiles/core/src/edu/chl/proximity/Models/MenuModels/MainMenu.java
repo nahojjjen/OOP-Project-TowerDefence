@@ -20,7 +20,7 @@ public class MainMenu {
     private Faction faction;
     private Player player;
     private Map map;
-    private StartButton startButton=new StartButton(new Vector2(200,200));
+    private StartButton startButton=new StartButton(new Vector2(0,0));
 
 
     public MainMenu(){
@@ -39,6 +39,9 @@ public class MainMenu {
     }
 
     public void pressedStart(){
+        GameData.getInstance().setMainMenu(this);
+        GameData.getInstance().setPlayer(player);
+        GameData.getInstance().setMap(map);
         GameData.getInstance().getGame().changeScreen(Proximity.State.GAME,map,this,player);
     }
 
