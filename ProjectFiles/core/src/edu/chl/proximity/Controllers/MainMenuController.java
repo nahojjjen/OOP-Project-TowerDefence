@@ -3,6 +3,7 @@ package edu.chl.proximity.Controllers;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.MenuModels.FactionChooser.FactionChooser;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.MenuModels.StartButton;
 
@@ -41,6 +42,8 @@ public class MainMenuController implements InputProcessor{
         BoardObject touchedButton=mainMenu.getButtonOnPosition(new Vector2(x,y));
         if(touchedButton instanceof StartButton){
             mainMenu.pressedStart();
+        }else if(touchedButton instanceof FactionChooser){
+            mainMenu.pressedFactionChooser(new Vector2(x, y));
         }
         return true;
     }

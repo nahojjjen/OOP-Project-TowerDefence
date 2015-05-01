@@ -1,5 +1,6 @@
 package edu.chl.proximity.Models.Utils;
 
+import com.badlogic.gdx.Gdx;
 import edu.chl.proximity.Models.Player.Holdables.Hand;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
