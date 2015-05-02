@@ -65,8 +65,8 @@ public class PointCalculations {
      * @return True of the point is within the object entered, false otherwise
      */
     public static boolean isPointInObject(Vector2 point, BoardObject object) {
-        boolean isWithinHorizontally = object.getPosition().x < point.x && object.getPosition().x + object.getWidth() > point.x;
-        boolean isWithinVertically = object.getPosition().y < point.y && object.getPosition().y + object.getHeight() > point.y;
+        boolean isWithinHorizontally = object.getPosition().x <= point.x && object.getPosition().x + object.getWidth() >= point.x;
+        boolean isWithinVertically = object.getPosition().y <= point.y && object.getPosition().y + object.getHeight() >= point.y;
         if(isWithinHorizontally && isWithinVertically) {
             return true;
         }

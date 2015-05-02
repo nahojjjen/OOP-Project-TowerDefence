@@ -115,7 +115,12 @@ public abstract class BoardObject implements Cloneable {
      * @return true if not visible
      */
     public boolean isOutsideView() {
-        if (getCenter().x < Gdx.graphics.getWidth()&& getCenter().y < Gdx.graphics.getHeight() && getCenter().x > 0 && getCenter().y > 0) {
+        //1280 = game width
+        //720 = game height
+        if (position == null){
+            return true;
+        }
+        if (getCenter().x <= 1280 && getCenter().y <= 720 && getCenter().x >= 0 && getCenter().y >= 0) {
             return false;
         }
         return true;
@@ -153,7 +158,10 @@ public abstract class BoardObject implements Cloneable {
     public Object clone() throws CloneNotSupportedException{
         BoardObject clone = (BoardObject)super.clone();
         clone.setPosition(new Vector2(position.x, position.y));
-        clone.setImage((edu.chl.proximity.Models.Utils.Image)image.clone());
+        if (image != null){
+            clone.setImage((edu.chl.proximity.Models.Utils.Image)image.clone());
+        }
+
         return clone;
     }
 }
