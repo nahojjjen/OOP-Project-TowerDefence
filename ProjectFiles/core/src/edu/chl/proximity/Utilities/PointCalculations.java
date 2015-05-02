@@ -16,8 +16,6 @@ public class PointCalculations {
     private static MathUtils utils = new MathUtils();
     /**
      * Calculates the angle between two points
-     * todo: change to use Tan instead of cos, sin and sqrt.
-     * todo unit-test: 0 degrees, two intersecting points, null points, normal points, negative points
      *
      * @param firstPoint the first point of the vector
      * @param secondPoint the second point of the vector
@@ -25,19 +23,6 @@ public class PointCalculations {
      */
     public static double getVectorAngle(Vector2 firstPoint, Vector2 secondPoint) {
         if (firstPoint != null && secondPoint != null) { //make sure there is a real vector
-            /*
-            Vector2 vector = new Vector2(secondPoint.x - firstPoint.x, secondPoint.y - firstPoint.y); //to get a vector, subtract point a from point b
-            double hypotenuse = Math.sqrt(vector.x * vector.x + vector.y * vector.y);
-            if (hypotenuse == 0) {
-                return 0;
-            }
-            double angle = Math.acos(vector.x / hypotenuse);
-            double angleDegrees = Math.toDegrees(angle);
-            if (vector.y > 0) {
-                return angleDegrees;
-            }
-            return -1 * angleDegrees;
-            */
             return utils.radiansToDegrees*(utils.atan2(secondPoint.y-firstPoint.y,secondPoint.x-firstPoint.x));
         }
         return 0;
@@ -51,8 +36,6 @@ public class PointCalculations {
     public static void createPathTool(int x, int y) {
         System.out.println("waypoint.add(new Vector2(" + x + ", " + y + "));");
     }
-
-
 
     /**
      * get the distance between two points, except no square root to optimize
