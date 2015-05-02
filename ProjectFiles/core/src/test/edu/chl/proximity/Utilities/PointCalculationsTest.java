@@ -31,9 +31,7 @@ public class PointCalculationsTest {
         Vector2 v1 = new Vector2(0,0);
         Vector2 v2 = new Vector2(0,10);
         Vector2 v3 = new Vector2(0,-10);
-        Vector2 v4 = new Vector2(6123,1561);
 
-        System.out.println(PointCalculations.distanceBetweenNoSqrt(v1,v1));
         assertTrue(PointCalculations.distanceBetweenNoSqrt(v1, v1) == 0); //  (one point case)
         assertTrue(PointCalculations.distanceBetweenNoSqrt(v1,v2) == 100);  //  (normal case)
         assertTrue(PointCalculations.distanceBetweenNoSqrt(v1,v3) == 100);  //  (negative case)
@@ -43,6 +41,6 @@ public class PointCalculationsTest {
 
     @Test
     public void testIsPointInObject() throws Exception {
-        
+
     }
 }
