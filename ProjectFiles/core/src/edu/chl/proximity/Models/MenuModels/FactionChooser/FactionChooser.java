@@ -1,5 +1,6 @@
 package edu.chl.proximity.Models.MenuModels.FactionChooser;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
@@ -22,17 +23,17 @@ import java.util.List;
  *01/05 modified by Hanna Römer. Added factionList, name, factionImage, Prev + Next buttons and that you can click buttons.
  */
 public class FactionChooser extends BoardObject{
-    private static Vector2 pos = new Vector2(300,0);
-    private Vector2 imagePos=new Vector2(pos.x+100,pos.y + 10);
+    private static Vector2 pos = new Vector2(0, Gdx.graphics.getHeight()-240);
+    private Vector2 imagePos=new Vector2(pos.x+162,pos.y + 100);
 
-    private static Image image=new Image(Constants.filePath + "Backgrounds/tempPropPanel.png");
+    private static Image image=new Image(Constants.filePath + "Backgrounds/factionChooser.png");
 
     private List<Faction> factions= new ArrayList<Faction>();
 
-    private ProximityFont name=new ProximityFont(new Vector2(imagePos.x,imagePos.y+100),null);
+    private ProximityFont name=new ProximityFont(new Vector2(pos.x+180,pos.y+10),null);
     private FactionImage factionImage=new FactionImage(imagePos);
-    private NextPrevButton prev = new NextPrevButton(new Vector2(imagePos.x-60, imagePos.y), new Image(Constants.filePath + "Buttons/PLayButton.png"));
-    private NextPrevButton next = new NextPrevButton(new Vector2(imagePos.x+100, imagePos.y),new Image(Constants.filePath + "Buttons/PLayButton.png"));
+    private NextPrevButton prev = new NextPrevButton(new Vector2(pos.x+8, pos.y+40), new Image(Constants.filePath + "Buttons/FactionChooserLeft.png"));
+    private NextPrevButton next = new NextPrevButton(new Vector2(pos.x+352, pos.y+40),new Image(Constants.filePath + "Buttons/FactionChooserRight.png"));
 
     private int showing=0;
 

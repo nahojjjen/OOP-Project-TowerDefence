@@ -16,14 +16,14 @@ public abstract class Faction {
     //also has spells
     private List<PersistentObject> spells = new ArrayList();
     private String name;
-    private Image showImage;
+    private Image profileImage;
 
     /**
      * create a new Faction
      */
-    public Faction(String name, Image showImage){
+    public Faction(String name, Image profileImage){
         this.name=name;
-        this.showImage=showImage;
+        this.profileImage=profileImage;
     }
 
     /**
@@ -46,7 +46,7 @@ public abstract class Faction {
         return this.name;
     }
     public Image getShowImage(){
-        return this.showImage;
+        return this.profileImage;
     }
 
 }
