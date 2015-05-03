@@ -7,6 +7,12 @@ import edu.chl.proximity.Models.Utils.Image;
 /**
  * @author Linda Evaldsson
  * @date 2015-04-22
+ *
+ * Classes that implement the Holdable interface are objects that the user is about to place on the map.
+ * For example, towers and spells.
+ *
+ * 03-05-2015 Modified by Simon Gislen. Introducing: *Towers are not free*
+ *
  */
 public interface Holdable {
 
@@ -18,5 +24,7 @@ public interface Holdable {
     public void render(SpriteBatch batch);
 
     public Image getImage();
+
+    public double getRange();
 
 }

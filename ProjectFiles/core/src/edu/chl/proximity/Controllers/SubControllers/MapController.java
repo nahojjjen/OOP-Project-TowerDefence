@@ -18,6 +18,8 @@ import java.util.List;
  *
  * A class for controlling clicks on the Map.
  *
+ * 03-05-2015 Modified by Simon Gislen. Introducing: *Towers are not free*
+ *
  */
 
 //Todo: Possibly add update-method and add CreepController, ProjectileController, WaveController and TowerController to this Controller
@@ -39,18 +41,20 @@ public class MapController implements ClickHandler {
     public void touchDown(Vector2 clickedPoint, int pointer, int button) {
 
         //Checks if the click is within the map
-        if(model.containsPoint(clickedPoint)) {
+        if (model.containsPoint(clickedPoint)) {
             //Checks what item is currently picked up
             Holdable item = GameData.getInstance().getHand().getItem();
 
             if (item != null) {
-                //Places the currently picked up item on the map
-                item.placeObject(clickedPoint);
-            } else {
-
+                //Places the currently picked up item on the map if the player can afford it.
+                if (GameData.getInstance().getHand().canPlayerAffordTheHand()) {
+                    item.placeObject(clickedPoint);
+                } else {
+                    //TODO: display error?
+                }
             }
-        }
 
+        }
     }
 
 

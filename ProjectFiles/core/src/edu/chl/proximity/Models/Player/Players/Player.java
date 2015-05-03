@@ -29,7 +29,7 @@ public class Player {
      * @param faction the players faction
      */
     public Player(Faction faction){
-        resources = new Resources(0, 0, 0);
+        resources = new Resources(500, 500, 0);
         this.faction=faction;
     }
 
@@ -63,6 +63,12 @@ public class Player {
      */
     public Resources getResources() {
         return resources;
+    }
+
+    //Helper method to check if the player can afford an item
+    public boolean canPlayerAfford(Resources res) {
+        boolean result = resources.getPoints() >= res.getPoints() && resources.getLines() >= res.getLines() && resources.getPolygons() >= res.getPolygons();
+        return result;
     }
 
     //Returns XP

@@ -202,6 +202,10 @@ public class MainController implements InputProcessor{
 
         //Calculates the real coordinates from the scaled coordinates
         Vector2 clickedPoint = viewport.unproject(new Vector2(x, y));
+
+
+        //Test code to run spells. Commented out because it messed up tower placing.
+        /*
         Spell effect = new WallOfStone();
         if (counter % 4 == 0){
              effect = new WallOfStone();
@@ -216,6 +220,7 @@ public class MainController implements InputProcessor{
         }
         counter++;
         effect.placeObject(clickedPoint);
+        */
 
         //For creating paths during the developing state
         PointCalculations.createPathTool((int) clickedPoint.x, (int) clickedPoint.y);
