@@ -3,6 +3,7 @@ package edu.chl.proximity.Models.MenuModels.MapSelect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.Maps.FillerMap;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Maps.StandardMap;
 import edu.chl.proximity.Utilities.PointCalculations;
@@ -22,6 +23,7 @@ public class MapSelect extends BoardObject{
     public MapSelect(){
         super(pos, null, 0);
         maps.add(new MapSelectIcon(new StandardMap(), new Vector2(200, 200)));
+        maps.add(new MapSelectIcon(new FillerMap(), new Vector2(200,300)));
 
         //TODO: this for-loop is just for debug. remove later
         for(MapSelectIcon m:maps){
