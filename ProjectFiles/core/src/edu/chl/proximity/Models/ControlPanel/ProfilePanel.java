@@ -4,6 +4,7 @@ package edu.chl.proximity.Models.ControlPanel;
  * Created by simongislen on 28/04/15.
  */
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -31,7 +32,7 @@ public class ProfilePanel extends BoardObject {
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
 
     public ProfilePanel() {
-        super(new Vector2(0, 20), null, 0, width, height);
+        super(new Vector2(0, Gdx.graphics.getHeight() - 75), null, 0, width, height);
         levelText = createFont(30, 30, "1");
     }
 
@@ -43,7 +44,7 @@ public class ProfilePanel extends BoardObject {
     }
 
     private ProximityFont createFont(float x, float y, String s){
-        return new ProximityFont(new Vector2(getPosition().x + x, y), s);
+        return new ProximityFont(new Vector2(getPosition().x + x, getPosition().y + y), s);
         //return new ProximityFont(new Vector2(width + x, y), s);
     }
 

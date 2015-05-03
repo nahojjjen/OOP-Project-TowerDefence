@@ -43,7 +43,7 @@ public class StandardGenerator {
         //Defaults
 
         double spawnInterval = 1;
-        double cooldown = 4;
+        double cooldown = 10;
         ArrayList<Creep> creeps = new ArrayList<Creep>();
 
         //First 5 waves are standard, after this spawning follows an algorithm
@@ -84,14 +84,15 @@ public class StandardGenerator {
 
         } else {
             //Some endless algorithm
-            for (int i = 0; i < (int)(waveIndex/2); i++) {
+            double r = Math.random()*5;
+            for (int i = 0; i < Math.max(0, (int)(waveIndex/2) - r); i++) {
                 creeps.add(new Circle());
             }
             for (int i = 0; i < (int)(waveIndex/5); i++) {
                 creeps.add(new Line1(4));
             }
 
-            spawnInterval = Math.max(3 / waveIndex, 0.2);
+            spawnInterval = Math.max(3 / Math.max(1, waveIndex - 5), 0.2);
 
         }
         return new Wave(creeps, spawnInterval, cooldown);
