@@ -19,6 +19,6 @@ public class StandardMap extends Map {
      * creates the map instance
      */
     public StandardMap() {
-        super(path, new Background(new Image(Constants.filePath + "Backgrounds/test.jpg")));
+        super(path, new Background(new Image(Constants.filePath + "Backgrounds/test.jpg")), "Standard");
     }
 }

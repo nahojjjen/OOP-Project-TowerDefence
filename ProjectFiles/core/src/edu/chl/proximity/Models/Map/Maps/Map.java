@@ -30,7 +30,7 @@ import java.util.Set;
  * 25/04 Modified by Johan Swanberg, adds adding Stack
  * */
 public abstract class Map {
-
+    private String name;
     private int waveIndex;
 
     private ArrayList<Creep> creeps = new ArrayList<Creep>();
@@ -54,10 +54,10 @@ public abstract class Map {
      * @param path what path the creeps should follow on this map.
      * @param background What background image should be displayed on this map
      */
-    public Map(Path path, Background background){
+    public Map(Path path, Background background, String name){
         this.path = path;
         this.background = background;
-
+        this.name=name;
     }
 
     public Set<BoardObject> getRemoveStack() {
@@ -67,7 +67,9 @@ public abstract class Map {
         return addStack;
     }
 
-
+    public String getName(){
+        return name;
+    }
 
     /**
      * get the particleManager in the map
