@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.MenuModels.FactionChooser.FactionChooser;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
+import edu.chl.proximity.Models.MenuModels.MapSelect.MapSelect;
 import edu.chl.proximity.Models.MenuModels.StartButton;
 
 import java.util.ArrayList;
@@ -44,6 +45,8 @@ public class MainMenuController implements InputProcessor{
             mainMenu.pressedStart();
         }else if(touchedButton instanceof FactionChooser){
             mainMenu.pressedFactionChooser(new Vector2(x, y));
+        }else if(touchedButton instanceof MapSelect){
+            mainMenu.pressedMap(new Vector2(x,y));
         }
         return true;
     }
