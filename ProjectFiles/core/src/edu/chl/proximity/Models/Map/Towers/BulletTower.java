@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.Map.Towers;
 
 import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Map.Projectiles.Bullet;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
@@ -11,10 +12,18 @@ import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
  * @author Johan Swanberg and Linda Evaldsson
+ *
  * @date 2015-04-09
+ *
+ * 03-05-2015 Modified by Simon Gislen. Introducing: Towers aren't free.
  */
 public class BulletTower extends Tower implements Cloneable {
 
+    //Tower stats
+    private static Resources resources = new Resources(150, 0, 0);
+    private static double range = 150f;
+    private static TargetingMethod targetingMethod = new TargetFirst();
+    private static int reloadTime = 60;
 
     private static Image img = new Image(Constants.filePath + "Towers/Bullet/1.png");
 
@@ -23,7 +32,7 @@ public class BulletTower extends Tower implements Cloneable {
      *  double range, TargetingMethod targetingMethod, int reloadTime
      */
     public BulletTower(Vector2 pos) {
-        super(pos, img, 150, new TargetFirst(), 60, new Resources(150,0,0));
+        super(pos, img, range, targetingMethod, reloadTime, resources);
     }
 
 

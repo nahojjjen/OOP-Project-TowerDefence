@@ -12,19 +12,24 @@ import java.util.List;
 /**
  * @author Johan on 2015-04-24.
  * A spell that creates an area of lightning, the lightning will "bounce" on nearby creeps
+ *
+ * 03-05-2015 Modified by Simon Gislen. Spells have range.
  */
 public class ChainLightning extends Spell {
+
+    //Spell stats
+    private static double range = 100f;
+    private static int duration = 2;
+
     private List<Vector2> alreadyHitPositions = new ArrayList<Vector2>();
-    private double range = 100;
     private double bounceRange = 20;
     public ChainLightning() {
-        super(null, 2); //600 frames = 10 seconds @ 60 fps
+        super(null, duration); //600 frames = 10 seconds @ 60 fps
 
     }
 
     public ChainLightning(Vector2 position, List<Vector2> alreadyHitPositions) {
-        super(null, 2); //600 frames = 10 seconds @ 60 fps
-        range = 100;
+        super(null, duration); //600 frames = 10 seconds @ 60 fps
         this.alreadyHitPositions = alreadyHitPositions;
         GameData.getInstance().getMap().getParticleManager().getLightningCreepEffect().createEffect(position); //create the spark effect
     }
@@ -61,4 +66,9 @@ public class ChainLightning extends Spell {
     public void playParticleEffect() {
         GameData.getInstance().getMap().getParticleManager().getLightningOriginSpellEffect().createEffect(getPosition()); //create original lightning effect
     }
+    @Override
+    public double getRange() {
+        return range;
+    }
+
 }

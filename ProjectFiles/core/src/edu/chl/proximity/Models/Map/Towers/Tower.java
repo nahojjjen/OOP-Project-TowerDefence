@@ -18,6 +18,7 @@ import edu.chl.proximity.Utilities.PointCalculations;
  *
  * ---
  * 08/04 modified by Linda Evaldsson. Refactoring to Tower instead of AbstracTower. Removed Projectile as parameter for the constructor.
+ * 03-05-2015 Modified by Simon Gislen. Tiny spell check.
  *
  */
 public abstract class Tower extends BoardObject implements Holdable, Cloneable{
@@ -50,7 +51,11 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
     //Getter and setter for cost
     public Resources getCost(){return cost;}
     public void setCost(Resources newCost){cost=newCost;}
-    public double getRange(){return range;}
+
+    @Override
+    public double getRange(){
+        return range;
+    }
 
     private void setProjectileType(Projectile projectile) {
 
@@ -103,8 +108,6 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
         this.setCenter(position);
         GameData.getInstance().getMap().addTower(this);
         GameData.getInstance().getHand().setItem(null);
+        GameData.getInstance().getPlayer().getResources().removeResources(getCost());
     }
-
-
-
 }

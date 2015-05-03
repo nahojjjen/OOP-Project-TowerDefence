@@ -10,17 +10,24 @@ import java.util.List;
 /**
  * A spell which creates a circle where all creeps inside gets devolved 1 step, and gives the base 1 more health for each devolved creep
  * @author Johan on 2015-04-28.
+ *
+ * 03-05-2015 Modified by Simon Gislen. Spells have range.
  */
 public class BloodPool extends Spell {
+
+    //Spell stats
+    private static double range = 120f;
+    private static int duration = 1;
+
     public BloodPool() {
-        super(null, 1); //600 frames = 10 seconds @ 60 fps
+        super(null, duration);
     }
 
     @Override
     public void performEffect(int counter) {
         List<Creep> creeps = GameData.getInstance().getMap().getCreeps();
         for (Creep creep : creeps) {
-            if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getPosition()) < 120 * 120) {
+            if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getPosition()) < range * range) {
                 creep.devolve();
                 GameData.getInstance().getMap().getBase().heal(1);
                 GameData.getInstance().getMap().getParticleManager().getBloodPoolCreepEffect().createEffect(creep.getCenter());
@@ -31,5 +38,10 @@ public class BloodPool extends Spell {
     @Override
     public void playParticleEffect() {
         GameData.getInstance().getMap().getParticleManager().getBloodPoolEffect().createEffect(getPosition());
+    }
+
+    @Override
+    public double getRange() {
+        return range;
     }
 }

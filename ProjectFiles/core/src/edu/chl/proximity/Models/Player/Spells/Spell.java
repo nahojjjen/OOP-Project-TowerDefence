@@ -9,6 +9,8 @@ import edu.chl.proximity.Models.Utils.Image;
  * An abstract class for all spells, all spells are holdable objects (can be created by cursor, "hand")
  * and are persistent objects, their effect lasts during a couple of frames.
  * @author Johan on 2015-04-28.
+ *
+ * 03-05-2015 Modified by Simon Gislen. Spell has a area range, could be infinite.
  */
 public abstract class Spell extends PersistentObject implements Holdable {
     public Spell(Image icon, int counter) {
@@ -21,6 +23,8 @@ public abstract class Spell extends PersistentObject implements Holdable {
         GameData.getInstance().getMap().getAddStack().add(this);// this avoids concurrent modificaiton exception
         this.start();
         playParticleEffect(); //important that this is after setPosition
+        GameData.getInstance().getHand().setItem(null);
     }
     public abstract void playParticleEffect();
+    public abstract double getRange();
 }
