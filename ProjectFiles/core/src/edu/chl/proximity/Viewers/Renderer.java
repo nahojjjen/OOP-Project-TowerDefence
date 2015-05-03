@@ -11,6 +11,8 @@ import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.ButtonPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Player.Holdables.Hand;
+import edu.chl.proximity.Models.Player.Holdables.Holdable;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
@@ -90,8 +92,18 @@ public class Renderer {
         renderPropertiesPanel(batch);
         renderProfilePanel(batch);
 
+        //Render the hand and its range.
+        Hand hand = GameData.getInstance().getHand();
+        Holdable handItem = hand.getItem();
+        if (handItem != null) {
+            hand.render(batch);
+            batch.end();
+            shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+            renderRangeIndicator(shapeRenderer, hand.getRangeIndicatorColor(), hand.getPosition(), handItem.getRange());
+            shapeRenderer.end();
+            batch.begin();
+        }
 
-        GameData.getInstance().getHand().render(batch);
 
     }
 
@@ -160,11 +172,8 @@ public class Renderer {
      * @param shapeRenderer what shaperenderer to use to show the graphics
      */
     private void renderAllTowerRanges(ShapeRenderer shapeRenderer){
-        for (Tower tower:GameData.getInstance().getMap().getTowers()){
-            Vector2 towerCenter = tower.getCenter();
-            Gdx.gl.glEnable(GL20.GL_BLEND); //enables transparency
-            shapeRenderer.setColor(0.5f,0.5f,1f,0.2f);
-            shapeRenderer.circle(towerCenter.x,towerCenter.y,(float)tower.getRange());
+        for (Tower tower : GameData.getInstance().getMap().getTowers()) {
+            renderRangeIndicator(shapeRenderer, new Color(0.4f, 0.2f, 0.9f, 0.2f), tower.getCenter(), tower.getRange());
         }
     }
     private void renderBackground(SpriteBatch batch) {
@@ -236,8 +245,22 @@ public class Renderer {
      * render all particles that are on the map
      * @param batch what graphics batch object that should draw on the creen
      */
-    private  void renderParticles(SpriteBatch batch)   {
+    private void renderParticles(SpriteBatch batch)   {
         particleManager.renderAllParticles(batch);
+    }
+
+
+    /**
+     * Helper method to draw a circular range
+     * @param renderer shape renderer that does the rendering
+     * @param color range colour
+     * @param position position to draw
+     * @param range radius to draw
+     */
+    private void renderRangeIndicator(ShapeRenderer renderer, Color color, Vector2 position, double range) {
+        Gdx.gl.glEnable(GL20.GL_BLEND); //enables transparency
+        renderer.setColor(color);
+        renderer.circle(position.x, position.y, (float)range);
     }
 
 }
