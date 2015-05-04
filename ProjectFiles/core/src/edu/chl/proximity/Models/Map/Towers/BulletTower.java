@@ -16,8 +16,9 @@ import edu.chl.proximity.Utilities.PointCalculations;
  * @date 2015-04-09
  *
  * 03-05-2015 Modified by Simon Gislen. Introducing: Towers aren't free.
+ * 04-05-2015 Modified by Simon Gislen. Moved projectile functionality to ShootingTower
  */
-public class BulletTower extends Tower implements Cloneable {
+public class BulletTower extends ShootingTower implements Cloneable {
 
     //Tower stats
     private static Resources resources = new Resources(150, 0, 0);

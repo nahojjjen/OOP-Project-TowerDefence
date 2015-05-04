@@ -15,9 +15,9 @@ import edu.chl.proximity.Utilities.Constants;
  * @date 2015-04-08
  *
  * 03-05-2015 Modified by Simon Gislen. Introducing: Towers aren't free.
- *
+ * 04-05-2015 Modified by Simon Gislen. Moved projectile functionality to ShootingTower
  */
-public class MissileTower extends Tower {
+public class MissileTower extends ShootingTower {
 
     //Tower stats
     private static Resources resources = new Resources(300, 200, 0);

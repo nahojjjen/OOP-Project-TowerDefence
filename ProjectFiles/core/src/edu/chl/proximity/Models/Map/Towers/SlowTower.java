@@ -15,8 +15,9 @@ import edu.chl.proximity.Utilities.Constants;
  * A class representing a tower that shoots bullets that slows down the creeps
  *
  * 03-05-2015 Modified by Simon Gislen. Introducing: Towers aren't free.
+ * 04-05-2015 Modified by Simon Gislen. Moved projectile functionality to ShootingTower
  */
-public class SlowTower extends Tower {
+public class SlowTower extends ShootingTower {
 
     //Tower stats
     private static Resources resources = new Resources(100, 100, 0);

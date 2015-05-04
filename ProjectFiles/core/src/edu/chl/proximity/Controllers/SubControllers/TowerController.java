@@ -24,9 +24,7 @@ public class TowerController {
      */
     public void update() {
         for (Tower tower : towers) {
-            tower.target();
-            tower.shoot();
-            tower.reload();
+            tower.update();
         }
     }
 }
