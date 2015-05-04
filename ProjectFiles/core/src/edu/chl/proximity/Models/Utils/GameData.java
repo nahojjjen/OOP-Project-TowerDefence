@@ -1,6 +1,8 @@
 package edu.chl.proximity.Models.Utils;
 
 import com.badlogic.gdx.Gdx;
+import edu.chl.proximity.Models.Map.Maps.StandardMap;
+import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Planes;
 import edu.chl.proximity.Models.Player.Holdables.Hand;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
@@ -97,4 +99,19 @@ public class GameData {
 
     public Hand getHand() { return hand; }
 
+    /**
+     * This method creates a dummy data field with all options defaulted - dont call this method
+     * before an actual game, since it resets a lot of data, It's simply for jUnit testing.
+     * @return
+     */
+    public static GameData createTestDataEnviroment(){
+        GameData testData = new GameData();
+        testData.setGameSpeed(1);
+        testData.setGame(null);
+        testData.setMap(new StandardMap());
+        testData.setPlayer(new Player(new Planes()));
+        testData.setMainMenu(new MainMenu());
+        gameData = testData;
+        return testData;
+    }
 }
