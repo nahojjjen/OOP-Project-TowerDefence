@@ -76,10 +76,11 @@ public class ControlPanelController implements ClickHandler {
             if (cpTower != null) {
                 GameData.getInstance().getHand().setItem(cpTower.getTower());
             }
-            BoardObject touchedButton;
+        }
+        BoardObject touchedButton;
 
             //ButtonPanel
-            if (!propertiesPanel.getIfVisible()) {
+        if (!propertiesPanel.getIfVisible()) {
                 touchedButton = buttonPanel.getButtonOnPosition(clickedPoint);
                 if (touchedButton != null) {
                     GameData.getInstance().getHand().setItem(null);
@@ -93,12 +94,12 @@ public class ControlPanelController implements ClickHandler {
                 } else if (touchedButton instanceof PropertiesButton) {
                     buttonPanel.pressedPropertiesButton();
                 }
-            }
+        }
 
 
             //PropertiesPanel
 
-            if (propertiesPanel.getIfVisible()) {
+        if (propertiesPanel.getIfVisible()) {
                 touchedButton = propertiesPanel.getButtonOnPosition(clickedPoint);
                 if (touchedButton != null) {
                     GameData.getInstance().getHand().setItem(null);
@@ -113,8 +114,8 @@ public class ControlPanelController implements ClickHandler {
                     int level = ((SoundBar) touchedButton).getLevel();
                     propertiesPanel.pressedBar(level);
                 }
-            }
-
         }
+
+
     }
 }
