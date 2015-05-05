@@ -45,7 +45,7 @@ project(":desktop") {
     }
 }
 
-project(":html") {
+/*project(":html") {
     apply plugin: "gwt"
     apply plugin: "war"
 
@@ -62,7 +62,7 @@ project(":html") {
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion:sources"
         compile "com.badlogicgames.gdx:gdx-box2d-gwt:$gdxVersion:sources"
     }
-}
+}*/
 
 project(":core") {
     apply plugin: "java"

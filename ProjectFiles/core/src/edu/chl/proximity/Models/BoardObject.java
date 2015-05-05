@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Utilities.PointCalculations;
+import java.lang.CloneNotSupportedException;
 
 /**
  * @author Johan Swanberg and Linda Evaldsson
