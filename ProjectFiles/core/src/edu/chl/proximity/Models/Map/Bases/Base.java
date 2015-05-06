@@ -59,7 +59,7 @@ public abstract class Base extends BoardObject{
             damageEffect.createEffect(this.getCenter().x, this.getCenter().y);
         }
 
-        if(life < 20 && cracksEffect != null){
+        if(life < 20 && life >= 0&&cracksEffect != null  ){
             cracksEffect.createEffect(this.getCenter().x,this.getCenter().y);
         }
     }

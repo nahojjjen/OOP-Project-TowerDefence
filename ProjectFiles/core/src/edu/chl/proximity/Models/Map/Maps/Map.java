@@ -122,7 +122,6 @@ public abstract class Map {
      */
     public void addCreep(Creep creep) {
         addStack.add(creep);
-        System.out.println("In Map: addcreep used");
     }
     /**
      * Add a projectile to the map
@@ -131,7 +130,6 @@ public abstract class Map {
      */
     public void addProjectile(Projectile p) {
         addStack.add(p);
-        System.out.println("In Map: addProjectile used");
     }
 
 
@@ -142,8 +140,6 @@ public abstract class Map {
      */
     public  void addTower(Tower t) {
         addStack.add(t);
-
-        System.out.println("In Map: addTower used");
     }
 
 }

@@ -57,22 +57,9 @@ public abstract class Projectile extends BoardObject implements Cloneable{
      * Get whether the projectile point intersects another area
      *
      * @param creep what other creep position should be compared
-     * @param hitbox how big the hitbox the projectile should check for. (the hitbox of the creep)
      * @return true if the projectile intersects the given area
      */
-    public boolean collidesWith(Creep creep, int hitbox) {
-
-        //+20 because the creep image is 40x40 pixels, and we want to check for the center of the image
-        /*
-        Vector2 creeppos = creep.getCenter();
-        if (creeppos.y+20 - hitbox < getCenter().y && getCenter().y < creeppos.y+20 + hitbox) {
-            if (creeppos.x+20 - hitbox < getCenter().x && getCenter().x < creeppos.x+20 + hitbox) {
-                return true;
-            }
-        }
-        return false;
-        */
-        System.out.println(PointCalculations.distanceBetweenNoSqrt(getCenter(), creep.getCenter()));
+    public boolean collidesWith(Creep creep) {
         return (PointCalculations.distanceBetweenNoSqrt(getCenter(), creep.getCenter()) < 20*20); //radious 10
     }
 
@@ -91,7 +78,7 @@ public abstract class Projectile extends BoardObject implements Cloneable{
         List<Creep> creeps = GameData.getInstance().getMap().getCreeps();
 
         for (Creep creep : creeps){
-        if(collidesWith(creep, 20)) {
+        if(collidesWith(creep)) {
             collide(creep);
         }
     }
