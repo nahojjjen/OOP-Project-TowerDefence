@@ -15,6 +15,8 @@ import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.Player;
+import edu.chl.proximity.Models.Utils.Settings;
+import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Viewers.Renderer;
 
 /**
@@ -41,11 +43,14 @@ public class GameScreen implements Screen{
     private MainController mainController;
     private OrthographicCamera camera;
     private FitViewport viewport;
+    private Settings settings;
 
-    public GameScreen(Game g, Map map, Player player){
+    public GameScreen(Proximity g, Map map, Player player){
+        this.settings = player.getSettings();
+
 
         ControlPanel controlPanel = new ControlPanel(map);
-        PropertiesPanel propertiesPanel= new PropertiesPanel(map);
+        PropertiesPanel propertiesPanel= new PropertiesPanel(map, g);
         map.setPropertiesPanel(propertiesPanel);
         ButtonPanel buttonPanel = new ButtonPanel(map, propertiesPanel);
         ProfilePanel profilePanel = new ProfilePanel(map);
@@ -54,7 +59,7 @@ public class GameScreen implements Screen{
         this.renderer = new Renderer(map);
         fixCamera();
 
-        mainController = new MainController(map, viewport);
+        mainController = new MainController(map, viewport, g);
 
         renderer.setControlPanel(controlPanel);
         renderer.setButtonPanel(buttonPanel);
@@ -65,7 +70,6 @@ public class GameScreen implements Screen{
         mainController.setProfilePanel(profilePanel);
 
         shapeRenderer.setAutoShapeType(true);
-
         map.setBase(player.getFaction().getNewBase(map));
         Gdx.input.setInputProcessor(mainController);
 
@@ -84,7 +88,7 @@ public class GameScreen implements Screen{
         //FrostField frostField = new FrostField();
         //currentMap.addTower(new BulletTower(new Vector2(400,200)));
         //currentMap.addTower(new BulletTower(new Vector2(400,300)));
-        GameData.getInstance().setGameSpeed(1000);
+        //map.getSettings().setGameSpeed(1000);
     }
 
     /**
@@ -115,7 +119,7 @@ public class GameScreen implements Screen{
         renderer.render(batch, shapeRenderer);
 
         batch.end();
-        for (int i=0; i<GameData.getInstance().getGameSpeed(); i++){
+        for (int i=0; i<settings.getGameSpeed(); i++){
             mainController.updateAllControllers();
         }
 

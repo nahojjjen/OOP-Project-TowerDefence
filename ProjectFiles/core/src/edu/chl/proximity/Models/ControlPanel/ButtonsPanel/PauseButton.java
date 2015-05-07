@@ -30,7 +30,7 @@ public class PauseButton extends BoardObject{
      * Sets image depending on what the current game-speed is
      */
     public void setRightImage(){
-        if(GameData.getInstance().getGameSpeed()==0){
+        if(GameData.getInstance().getPlayer().getSettings().getGameSpeed()==0){
             super.setImage(downImage);
         }else{
             super.setImage(upImage);

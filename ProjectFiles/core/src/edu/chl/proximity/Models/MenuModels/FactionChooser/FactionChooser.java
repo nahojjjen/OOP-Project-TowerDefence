@@ -8,6 +8,7 @@ import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Filler;
 import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Planes;
 import edu.chl.proximity.Models.Player.Factions.Faction;
+import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Utilities.Constants;
@@ -45,6 +46,7 @@ public class FactionChooser extends BoardObject{
         next = new NextPrevButton(new Vector2(pos.x+352, pos.y+40),new Image(Constants.filePath + "Buttons/FactionChooserRight.png"));
         factions.add(new Planes());
         factions.add(new Filler());
+
         factionImage.setImage(factions.get(showing).getShowImage());
         name.setText(factions.get(showing).getName());
     }

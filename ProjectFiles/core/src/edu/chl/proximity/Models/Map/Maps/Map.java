@@ -12,6 +12,7 @@ import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Player.Spells.PersistentObject;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Map.Waves.Wave;
+import edu.chl.proximity.Models.Utils.Settings;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -44,7 +45,7 @@ public abstract class Map {
     private ArrayList<Wave> waves = new ArrayList<Wave>();
     private ArrayList<Tower> towers = new ArrayList<Tower>();
     private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
-    private ParticleManager particleManager = new ParticleManager();
+    private ParticleManager particleManager;
 
 
     private Set<BoardObject> removeStack = new HashSet<BoardObject>();
@@ -64,7 +65,10 @@ public abstract class Map {
         this.path = path;
         this.background = background;
         this.name=name;
+        particleManager = new ParticleManager();
     }
+
+
 
     public Set<BoardObject> getRemoveStack() {
         return removeStack;

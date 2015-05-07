@@ -15,6 +15,7 @@ import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.Player.Players.Player;
+import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Viewers.MenuRenderer;
 
 /**
@@ -28,7 +29,6 @@ import edu.chl.proximity.Viewers.MenuRenderer;
  */
 public class MenuScreen implements Screen {
 
-    private Game game;
     private MainMenu mainMenu;
     private SpriteBatch batch = new SpriteBatch();
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
@@ -37,31 +37,24 @@ public class MenuScreen implements Screen {
     private OrthographicCamera camera;
     private FitViewport viewport;
 
-
-
-
-    public MenuScreen(Game g, MainMenu mainMenu, Map map, Player player){
-        this.game = g;
-        this.mainMenu=mainMenu;
-
-        GameData.getInstance().setMainMenu(mainMenu);
+    public MenuScreen(Proximity g, Player player){
         GameData.getInstance().setPlayer(player);
-        //GameData.getInstance().setMap(map);
+        this.mainMenu=new MainMenu(g);
 
-        menuRenderer=new MenuRenderer();
-        fixCamera();
-
-
+        //Configurates view and controller
+        menuRenderer=new MenuRenderer(mainMenu);
         mainMenuController=new MainMenuController();
         mainMenuController.setMainMenu(mainMenu);
-
-        shapeRenderer.setAutoShapeType(true);
         Gdx.input.setInputProcessor(mainMenuController);
+
+        //Fix of camera and graphics
+        fixCamera();
+        shapeRenderer.setAutoShapeType(true);
 
     }
 
     /**
-     * Attatches a camera object that views the game-data and interprets it as visual information, and a viewport
+     * Attaches a camera object that views the game-data and interprets it as visual information, and a viewport
      * that scales this information to fit the screen. These objects are part of the LibGDX library.
      */
     private void fixCamera(){
