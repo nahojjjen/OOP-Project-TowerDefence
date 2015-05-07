@@ -13,9 +13,10 @@ import static org.junit.Assert.*;
  */
 public class BaseTest {
 
+
     @Test
     public void testGetLife() throws Exception {
-        GameData.createTestDataEnviroment();
+        //GameData.createTestDataEnviroment();
         //Base test = new BaseConcreteClass(null,null,null);
         //assertTrue(test.getLife() == 100);
     }

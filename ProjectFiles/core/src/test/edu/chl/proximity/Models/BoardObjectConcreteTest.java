@@ -12,4 +12,5 @@ public class BoardObjectConcreteTest extends BoardObject {
     public BoardObjectConcreteTest(Vector2 position, edu.chl.proximity.Models.Utils.Image img, double angle){
         super(position,img,angle);
     }
+
 }

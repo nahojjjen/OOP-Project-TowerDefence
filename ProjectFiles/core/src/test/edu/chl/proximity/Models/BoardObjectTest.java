@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
  */
 public class BoardObjectTest {
 
+
     @Test
     public void testGetPosition() throws Exception {
         BoardObjectConcreteTest test = new BoardObjectConcreteTest(new Vector2(100,100), null, 90);
