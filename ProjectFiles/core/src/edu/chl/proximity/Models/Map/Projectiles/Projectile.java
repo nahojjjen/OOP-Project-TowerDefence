@@ -108,7 +108,7 @@ public abstract class Projectile extends BoardObject implements Cloneable{
         if (sound != null){
             float xSoundPosition = getXSoundPosition();
             float rndPitch = (rndGenerator.nextFloat()/2) + 0.5f;
-            sound.play(GameData.getInstance().getPlayer().getSettings().getGameVolume(), rndPitch, xSoundPosition);
+            sound.play(GameData.VOLUME, rndPitch, xSoundPosition);
         }
     }
 

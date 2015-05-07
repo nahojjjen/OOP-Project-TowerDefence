@@ -60,10 +60,8 @@ public class MainController implements InputProcessor{
     private Viewport viewport;
     ControlPanel controlPanel;
     private int tempCounter=0;
-    private Proximity game;
 
-    public MainController(Map map, Viewport v, Proximity game) {
-        this.game = game;
+    public MainController(Map map, Viewport v) {
         this.map = map;
         creepController = new CreepController(map);
         towerController = new TowerController(map);
@@ -99,7 +97,7 @@ public class MainController implements InputProcessor{
     //public void setPropertiesPanel(PropertiesPanel propertiesPanel) {controlPanelController.setPropertiesPanel(propertiesPanel);}
 
     public void updateAllControllers() {
-        if(game.getCurrentScreen().equals(Proximity.State.GAME)) {
+        if(GameData.getInstance().getGame().getCurrentScreen().equals(Proximity.State.GAME)) {
             waveController.update();
             creepController.update();
             towerController.update();

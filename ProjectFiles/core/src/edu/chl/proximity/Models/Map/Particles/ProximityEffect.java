@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import edu.chl.proximity.Models.Utils.GameData;
-import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.Constants;
 
 import java.util.ArrayList;
@@ -128,7 +127,7 @@ public class ProximityEffect {
         for (int i = 0; i<effects.size(); i++) {
             ParticleEffectPool.PooledEffect effect = effects.get(i);
 
-            effect.draw(batch, Gdx.graphics.getDeltaTime()*GameData.getInstance().getPlayer().getSettings().getGameSpeed());
+            effect.draw(batch, Gdx.graphics.getDeltaTime()*GameData.getInstance().getGameSpeed());
 
             if(effect.getEmitters().get(0).getPercentComplete() >= 0 && !effect.getEmitters().get(0).isContinuous()){//effect.isComplete()){
                 effect.free(); //put the effect back in the pool if it is done )

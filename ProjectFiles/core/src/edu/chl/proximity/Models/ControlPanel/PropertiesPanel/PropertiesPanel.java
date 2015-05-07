@@ -8,7 +8,6 @@ import edu.chl.proximity.Models.Map.Maps.StandardMap;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
-import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
@@ -40,14 +39,12 @@ public class PropertiesPanel extends BoardObject{
 
     private int backUpLevel;
     private boolean isVisible=false;
-    private Proximity game;
 
     /**
      * Create a new properies panel
      */
-    public PropertiesPanel(Map map, Proximity game){
+    public PropertiesPanel(Map map){
         super(map, position, background, 0);
-        this.game = game;
         resumeButton = new ResumeButton(map, resumePos);
         mainMenuButton = new MainMenuButton(map, mainMenuPos);
         soundButton = new SoundButton(map, soundPos);
@@ -56,6 +53,15 @@ public class PropertiesPanel extends BoardObject{
         setSoundAt(4);
     }
 
+    //Removed static!!!!
+    public PropertiesPanel getInstance(){
+        if(propertiesPanel==null){
+            propertiesPanel=new PropertiesPanel(getMap());
+        }
+
+        return propertiesPanel;
+
+    }
 
     private void initBars(){
         Vector2 pos=new Vector2(soundPos.x+50,soundPos.y+15);
@@ -101,32 +107,32 @@ public class PropertiesPanel extends BoardObject{
      * @param level What level the sound is to be set at
      */
     public void setSoundAt(int level){
-        Settings settings = GameData.getInstance().getPlayer().getSettings();
+
         switch (level){
-            case 0: settings.setGameVolume(0f);
+            case 0: GameData.VOLUME=0f;
                     break;
-            case 1: settings.setGameVolume(0.0125f);
+            case 1: GameData.VOLUME=0.0125f;
                     backUpLevel=1;
                     break;
-            case 2: settings.setGameVolume(0.025f);
+            case 2: GameData.VOLUME=0.025f;
                     backUpLevel=2;
                     break;
-            case 3: settings.setGameVolume(0.05f);
+            case 3: GameData.VOLUME=0.05f;
                     backUpLevel=3;
                     break;
-            case 4: settings.setGameVolume(0.1f);
+            case 4: GameData.VOLUME=0.1f;
                     backUpLevel=4;
                     break;
-            case 5: settings.setGameVolume(0.2f);
+            case 5: GameData.VOLUME=0.2f;
                     backUpLevel=5;
                     break;
-            case 6: settings.setGameVolume(0.4f);
+            case 6: GameData.VOLUME=0.4f;
                     backUpLevel=6;
                     break;
-            case 7: settings.setGameVolume(0.8f);
+            case 7: GameData.VOLUME=0.8f;
                     backUpLevel=7;
                     break;
-            case 8: settings.setGameVolume(1.6f);
+            case 8: GameData.VOLUME=1.6f;
                     backUpLevel=8;
                     break;
         }
@@ -164,7 +170,7 @@ public class PropertiesPanel extends BoardObject{
      */
     public void pressedResumeButton(){
         setVisability(false);
-        GameData.getInstance().getPlayer().getSettings().setGameSpeed(1);
+        GameData.getInstance().setGameSpeed(1);
     }
 
     /**
@@ -172,14 +178,14 @@ public class PropertiesPanel extends BoardObject{
      */
     public void pressedMainMenuButton(){
         setVisability(false);
-        game.changeScreen(Proximity.State.MAIN_MENU,getMap(), GameData.getInstance().getPlayer());
+        GameData.getInstance().getGame().changeScreen(Proximity.State.MAIN_MENU,getMap(),new MainMenu(), GameData.getInstance().getPlayer());
     }
 
     /**
      * Called if Sound on/off button is pressed. Mutes/turns on sound
      */
     public void pressedSoundButton(){
-        if(GameData.getInstance().getPlayer().getSettings().getGameVolume()>0){
+        if(GameData.VOLUME>0){
             setSoundAt(0);
             setBarsAt(0);
             soundButton.setSoundOff();

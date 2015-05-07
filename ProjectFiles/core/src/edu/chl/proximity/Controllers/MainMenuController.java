@@ -17,7 +17,7 @@ import java.util.List;
  * @date 2015-05-01
  */
 public class MainMenuController implements InputProcessor{
-    private MainMenu mainMenu;
+    private MainMenu mainMenu=new MainMenu();
 
     public void setMainMenu(MainMenu mainMenu){
         this.mainMenu=mainMenu;

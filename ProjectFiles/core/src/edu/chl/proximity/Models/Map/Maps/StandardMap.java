@@ -4,7 +4,6 @@ import edu.chl.proximity.Models.Utils.Background;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Map.Paths.ConcretePaths.SecondTestPath;
 import edu.chl.proximity.Models.Map.Paths.Path;
-import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.Constants;
 
 /**

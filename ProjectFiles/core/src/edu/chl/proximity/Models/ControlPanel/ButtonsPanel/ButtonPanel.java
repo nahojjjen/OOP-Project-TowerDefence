@@ -43,7 +43,7 @@ public class ButtonPanel extends BoardObject {
      */
     public ButtonPanel(Map map, PropertiesPanel propertiesPanel) {
         super(map, position, background, 0, width, height);
-        GameData.getInstance().getPlayer().getSettings().setGameSpeed(speed);
+        GameData.getInstance().setGameSpeed(speed);
         this.propertiesPanel = propertiesPanel;
         playButton=new PlayButton(map, playPos);
         pauseButton=new PauseButton(map, pausePos);
@@ -83,18 +83,18 @@ public class ButtonPanel extends BoardObject {
     public void pressedPausePlay(){
         if(pause){
             pause=false;
-            GameData.getInstance().getPlayer().getSettings().setGameSpeed(speed);
+            GameData.getInstance().setGameSpeed(speed);
         }else{
             pause=true;
-            GameData.getInstance().getPlayer().getSettings().setGameSpeed(0);
+            GameData.getInstance().setGameSpeed(0);
 
         }
     }
     public void pressedPlay(){
-        GameData.getInstance().getPlayer().getSettings().setGameSpeed(1);
+        GameData.getInstance().setGameSpeed(1);
     }
     public void pressedPause(){
-        GameData.getInstance().getPlayer().getSettings().setGameSpeed(0);
+        GameData.getInstance().setGameSpeed(0);
         playButton.setRightImage();
         speedButton.setRightImage();
     }
@@ -105,7 +105,7 @@ public class ButtonPanel extends BoardObject {
     public void pauseGame(){
         if(!pause){
             pause=true;
-            GameData.getInstance().getPlayer().getSettings().setGameSpeed(0);
+            GameData.getInstance().setGameSpeed(0);
         }
     }
 
@@ -115,7 +115,7 @@ public class ButtonPanel extends BoardObject {
     public void startGame(){
         if(pause){
             pause=false;
-            GameData.getInstance().getPlayer().getSettings().setGameSpeed(speed);
+            GameData.getInstance().setGameSpeed(speed);
         }
     }
 
@@ -124,7 +124,7 @@ public class ButtonPanel extends BoardObject {
      * If speed is greater than 2 it is set to 1.
      */
     public void pressedSpeedButton(){
-        GameData.getInstance().getPlayer().getSettings().setGameSpeed(2);
+        GameData.getInstance().setGameSpeed(2);
     }
 
     /**

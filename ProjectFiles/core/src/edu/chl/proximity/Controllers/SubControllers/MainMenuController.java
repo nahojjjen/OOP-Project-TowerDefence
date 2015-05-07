@@ -18,13 +18,12 @@ import java.util.List;
  * @author Hanna Römer
  * @date 2015-04-25
  */
-/*
 public class MainMenuController implements ClickHandler{
     private Background model;
     //private List<BoardObject> models = new ArrayList<BoardObject>();
-    private MainMenu mainMenu;
+    private MainMenu mainMenu=GameData.getInstance().getMainMenu();
 
-    public MainMenuController(Map map, MainMenu mainMenu) {
+    public MainMenuController(Map map) {
         model=new Background(map, null);
         model.setPosition(new Vector2(0,0));
         model.setWidth(Gdx.graphics.getWidth());
@@ -36,6 +35,7 @@ public class MainMenuController implements ClickHandler{
         if(GameData.getInstance().getGame().getCurrentScreen().equals(Proximity.State.MAIN_MENU)) {
             BoardObject touchedButton = mainMenu.getButtonOnPosition(clickedPoint);
             if (touchedButton instanceof StartButton) {
+                System.out.println("PRESSED START!!!!!!!!!!!!!!!!");
                 mainMenu.pressedStart();
             }
         }
@@ -47,4 +47,3 @@ public class MainMenuController implements ClickHandler{
     }
 
 }
-*/

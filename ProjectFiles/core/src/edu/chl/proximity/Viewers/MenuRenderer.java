@@ -14,9 +14,9 @@ public class MenuRenderer {
     private MainMenu mainMenu;
     private ParticleManager particleManager ;
 
-    public MenuRenderer(MainMenu mainMenu){
+    public MenuRenderer(){
 
-        this.mainMenu = mainMenu;
+        mainMenu= GameData.getInstance().getMainMenu();
     }
 
     public void render(SpriteBatch batch, ShapeRenderer shapeRenderer){
