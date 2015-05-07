@@ -14,7 +14,7 @@ public class ControlPanelSpell extends BoardObject {
     Spell spell;
 
     public ControlPanelSpell(Vector2 position, Spell spell) {
-        super(null, position, spell.getImage(), 0);
+        super(null, position, spell.getControlPanelImage(), 0);
         this.spell = spell;
         spell.setPosition(position);
     }

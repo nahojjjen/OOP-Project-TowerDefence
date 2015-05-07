@@ -36,7 +36,7 @@ public class SpellPanel extends BoardObject {
     private void initiateSpells(Faction faction) {
 
         for(int i = 0; i < 4; i++) {
-            controlPanelSpellList.add(new ControlPanelSpell(new Vector2(position.x + 10 + 40*i, position.y + 10), faction.getSpell(i)));
+            controlPanelSpellList.add(new ControlPanelSpell(new Vector2(position.x + 2 + (64+2)*i, position.y + 2), faction.getSpell(i)));
         }
 
 

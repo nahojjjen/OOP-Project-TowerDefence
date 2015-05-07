@@ -21,7 +21,7 @@ public class BloodCarnage extends Spell {
     private static double range = 80f;
     private static int healthCost = 35;
     private static int duration = 60 * 5; //600 frames = 10 seconds @ 60 fps
-    private static Image image = new Image(Constants.FILE_PATH + "Creeps/Line3/6.png");
+    private static Image image = new Image(Constants.FILE_PATH + "Spells/bloodcarnage.png");
 
     private boolean hasDamagedPlayer = false;
 

@@ -23,7 +23,7 @@ public class ChainLightning extends Spell {
     //Spell stats
     private static double range = 100f;
     private static int duration = 2;
-    private static Image image = new Image(Constants.FILE_PATH + "Creeps/Line3/6.png");
+    private static Image image = new Image(Constants.FILE_PATH + "Spells/chainlightning.png");
 
     private List<Vector2> alreadyHitPositions = new ArrayList<Vector2>();
     private double bounceRange = 20;

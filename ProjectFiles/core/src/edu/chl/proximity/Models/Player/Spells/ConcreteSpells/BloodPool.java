@@ -21,7 +21,7 @@ public class BloodPool extends Spell {
     //Spell stats
     private static double range = 120f;
     private static int duration = 1;
-    private static Image image = new Image(Constants.FILE_PATH + "Creeps/Line3/6.png");
+    private static Image image = new Image(Constants.FILE_PATH + "Spells/bloodpool.png");
 
     public BloodPool(Map map) {
         super(map, image, duration);

@@ -21,7 +21,7 @@ public class FrostField extends Spell {
     //Spell stats
     private static double range = 60f;
     private static int duration = 600;
-    private static Image image = new Image(Constants.FILE_PATH + "Creeps/Line3/6.png");
+    private static Image image = new Image(Constants.FILE_PATH + "Spells/frostfield.png");
 
     public FrostField(Map map){
         super(map, image, duration); //600 frames = 10 seconds @ 60 fps

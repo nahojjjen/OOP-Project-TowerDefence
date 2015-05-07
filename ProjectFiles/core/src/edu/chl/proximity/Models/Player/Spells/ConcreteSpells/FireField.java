@@ -23,7 +23,7 @@ public class FireField extends Spell {
     //Spell stats
     private static double range = 60f;
     private static int duration = 120;
-    private static Image image = new Image(Constants.FILE_PATH + "Creeps/Line3/6.png");
+    private static Image image = new Image(Constants.FILE_PATH + "Spells/firefield.png");
 
     public FireField(Map map){
         super(map, image, duration); //600 frames = 10 seconds @ 60 fps
