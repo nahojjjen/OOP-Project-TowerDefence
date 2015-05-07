@@ -71,6 +71,7 @@ public class GameScreen implements Screen{
 
         shapeRenderer.setAutoShapeType(true);
         map.setBase(player.getFaction().getNewBase(map));
+        player.getFaction().configureSpells(map);
         Gdx.input.setInputProcessor(mainController);
 
         //runDebugCode();

@@ -44,7 +44,9 @@ public class Hand {
     public void render(SpriteBatch batch) {
         if(currentItem != null) {
             Image img = currentItem.getImage();
-            img.render(batch, new Vector2(position.x - img.getTexture().getWidth() / 2, position.y - img.getTexture().getHeight() / 2), 0);
+            if(img != null) {
+                img.render(batch, new Vector2(position.x - img.getTexture().getWidth() / 2, position.y - img.getTexture().getHeight() / 2), 0);
+            }
         }
     }
     public Color getRangeIndicatorColor() {

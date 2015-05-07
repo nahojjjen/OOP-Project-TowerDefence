@@ -76,7 +76,7 @@ public class Renderer {
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         renderAllTowerRanges(shapeRenderer);
-        debugRenderAllCentersAndUpperLeftCorners(shapeRenderer);
+        //debugRenderAllCentersAndUpperLeftCorners(shapeRenderer);
         shapeRenderer.end();
 
 
@@ -130,12 +130,6 @@ public class Renderer {
      * @param batch what graphics batch object that should draw on the screen
      */
     private void renderControlPanel(SpriteBatch batch) {
-        /*batch.end();
-        shapeRenderer.begin();
-        shapeRenderer.setColor(Color.RED);
-        controlPanel.render(shapeRenderer);
-        shapeRenderer.end();
-        batch.begin();*/
         controlPanel.render(batch);
     }
     private void renderButtonPanel(SpriteBatch batch){
@@ -204,8 +198,7 @@ public class Renderer {
 
            if (towers != null){
                for (Tower tower : towers) {
-                   //tower.getAnimation().draw(tower.getPoint().getX()-20, tower.getPoint().getY()-20);
-                   tower.getImage().render(batch, tower.getPosition(), tower.getAngle());
+                   tower.render(batch);
 
                }
         }
@@ -221,7 +214,7 @@ public class Renderer {
         List<Projectile> projectiles = map.getProjectiles();
         if (projectiles != null){
             for (Projectile projectile : projectiles) {
-                projectile.getImage().render(batch, projectile.getPosition(), projectile.getAngle());
+                projectile.render(batch);
             }
         }
 
@@ -236,7 +229,7 @@ public class Renderer {
         List<Creep> creeps = map.getCreeps();
         if (creeps != null){
             for (Creep creep : creeps) {
-                creep.getImage().render(batch, creep.getPosition(), creep.getAngle());
+                creep.render(batch);
             }
         }
 

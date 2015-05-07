@@ -1,5 +1,6 @@
 package edu.chl.proximity.Controllers;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -41,6 +42,7 @@ import java.util.Set;
  * 23/04 Modified by Simon Gislen Added PersistentObjectController
  * 23/04 Modified by Linda Evaldsson. Added unprojection to the mouseMoved-method.
  * 29/04 modified by Linda Evaldsson. Updated how the clicking sends signals to the controllers that handle clicks.
+ * 07/05 modofied by Linda Evaldsson. Added key handling
  */
 public class MainController implements InputProcessor{
 
@@ -197,6 +199,7 @@ public class MainController implements InputProcessor{
 
     @Override
     public boolean keyDown (int keycode) {
+        controlPanelController.keyDown(keycode);
         return false;
     }
 

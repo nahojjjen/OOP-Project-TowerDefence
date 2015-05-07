@@ -20,6 +20,7 @@ public class Planes extends Faction {
 
     public Planes(){
         super("Planes", new Image(Constants.filePath + "Bases/base1.png")); //should also specify whay spells should be added
+
     }
 
     @Override
