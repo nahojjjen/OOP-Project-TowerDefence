@@ -24,10 +24,13 @@ public abstract class Spell extends PersistentObject implements Holdable {
     }
 
 
+
     @Override
     public void placeObject(Vector2 position) {
+        resetPersistentObject();
         this.setPosition(position);
         getMap().getAddStack().add(this);// this avoids concurrent modificaiton exception
+
         this.start();
         playParticleEffect(); //important that this is after setPosition
         getMap().getHand().setItem(null);

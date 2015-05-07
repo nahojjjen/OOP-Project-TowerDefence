@@ -20,21 +20,28 @@ public abstract class PersistentObject extends BoardObject {
 
     private int counter;
     private boolean started= false;
+    private int backupCounter = 0;
 
     public PersistentObject(Map map, Vector2 position, Image icon, int counter) {
         super(map, position, icon, 0);
         this.counter = counter;
+        this.backupCounter = counter;
 
         if (position != null){
             getMap().getAddStack().add(this);// this needs to be made for concurrent modificaiton
         }
     }
 
+    public void resetPersistentObject(){
+        counter = backupCounter;
+        started = false;
+    }
     /**
      * Method is called every frame, calling the +performEffect method.
      * When the counter reaches zero, the object is destroyed.
      */
     public void tick() {
+        System.out.println("tick is at = " + counter);
     if (started){
             if (counter <= 0) {
                 getMap().getRemoveStack().add(this);
@@ -44,7 +51,6 @@ public abstract class PersistentObject extends BoardObject {
             counter--;
         }
     }
-
     public void start(){
         started = true;
     }
