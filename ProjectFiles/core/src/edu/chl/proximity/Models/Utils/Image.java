@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 
 import java.awt.*;
 import java.io.File;
+import java.util.HashMap;
 
 /**
  * @author Linda Evaldsson
@@ -15,9 +16,16 @@ import java.io.File;
 public class Image implements Cloneable {
 
     private Texture texture;
+    private static HashMap <String, Texture> cache = new HashMap<String, Texture>();
 
     public Image(String s) {
-        texture = new Texture(s);
+        if (cache.containsKey(s)) {
+            texture = cache.get(s);
+        }
+        else {
+            texture = new Texture(s);
+            cache.put(s, texture);
+        }
         texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
 
