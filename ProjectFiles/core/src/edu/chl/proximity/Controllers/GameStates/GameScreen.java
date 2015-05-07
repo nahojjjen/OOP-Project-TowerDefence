@@ -8,16 +8,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import edu.chl.proximity.Controllers.MainController;
-import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.ButtonPanel;
-import edu.chl.proximity.Models.ControlPanel.ControlPanel;
-import edu.chl.proximity.Models.ControlPanel.ProfilePanel;
-import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Viewers.Renderer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Johan Swanberg and Linda Evaldsson
@@ -32,6 +31,7 @@ import edu.chl.proximity.Viewers.Renderer;
  * 21/04 modified by Simon Gislen
  * 23/04 modified by Hanna R�mer. Added ButtonPanel and PropertiesPanel.
  * 29/04 modified by Hanna R�mer. Removed PropertiesPanel since it's singleton
+ * 07/05 modified by Linda Evaldsson. Moved handling of ControlPanels to ControlPanelController
  */
 public class GameScreen implements Screen{
 
@@ -48,26 +48,12 @@ public class GameScreen implements Screen{
     public GameScreen(Proximity g, Map map, Player player){
         this.settings = player.getSettings();
 
-
-        ControlPanel controlPanel = new ControlPanel(map);
-        PropertiesPanel propertiesPanel= new PropertiesPanel(map, g);
-        map.setPropertiesPanel(propertiesPanel);
-        ButtonPanel buttonPanel = new ButtonPanel(map, propertiesPanel);
-        ProfilePanel profilePanel = new ProfilePanel(map);
-
         GameData.getInstance().setPlayer(player);
         this.renderer = new Renderer(map);
         fixCamera();
 
         mainController = new MainController(map, viewport, g);
-
-        renderer.setControlPanel(controlPanel);
-        renderer.setButtonPanel(buttonPanel);
-        renderer.setProfilePanel(profilePanel);
-
-        mainController.setControlPanel(controlPanel);
-        mainController.setButtonPanel(buttonPanel);
-        mainController.setProfilePanel(profilePanel);
+        renderer.setControlPanels(mainController.getControlPanels());
 
         shapeRenderer.setAutoShapeType(true);
         map.setBase(player.getFaction().getNewBase(map));

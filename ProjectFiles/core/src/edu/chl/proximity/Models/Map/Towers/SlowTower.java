@@ -7,7 +7,6 @@ import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Map.Projectiles.SlowDownBullet;
 import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
-import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetFirst;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
@@ -29,7 +28,7 @@ public class SlowTower extends ShootingTower {
     private static double slowDownPercent = 50;
     private static int slowDownTime = 200;
 
-    private static Image img = new Image(Constants.filePath + "Towers/Hairbrush/1.png");
+    private static Image img = new Image(Constants.FILE_PATH + "Towers/Hairbrush/1.png");
 
     /**
      * Create a new SlowTower

@@ -21,7 +21,7 @@ import edu.chl.proximity.Utilities.Constants;
  */
 public class Triangle extends Creep {
 
-    private static Image img = new Image(Constants.filePath + "Creeps/Line3/triangle.png");
+    private static Image img = new Image(Constants.FILE_PATH + "Creeps/Line3/triangle.png");
     private static int speed = 1;
 
     public Triangle(Map map) {

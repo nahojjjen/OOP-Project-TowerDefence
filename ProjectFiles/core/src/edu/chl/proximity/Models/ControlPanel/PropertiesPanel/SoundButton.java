@@ -11,8 +11,8 @@ import edu.chl.proximity.Utilities.Constants;
  * @date 2015-04-23
  */
 public class SoundButton extends BoardObject{
-    private static Image onImage= new Image(Constants.filePath + "Buttons/SoundOnButton.png");
-    private static Image offImage= new Image(Constants.filePath + "Buttons/SoundOffButton.png");
+    private static Image onImage= new Image(Constants.FILE_PATH + "Buttons/SoundOnButton.png");
+    private static Image offImage= new Image(Constants.FILE_PATH + "Buttons/SoundOffButton.png");
     private static int height=50;
     private static int width=50;
 
@@ -20,8 +20,8 @@ public class SoundButton extends BoardObject{
      * Create a new sound button
      * @param position At what position the button is to be placed
      */
-    public SoundButton(Map map, Vector2 position){
-        super(map, position,onImage,0,width,height);
+    public SoundButton(Vector2 position){
+        super(null, position,onImage,0,width,height);
     }
 
     /**

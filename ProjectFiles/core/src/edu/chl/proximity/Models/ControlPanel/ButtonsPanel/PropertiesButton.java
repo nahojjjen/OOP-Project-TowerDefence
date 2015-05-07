@@ -12,10 +12,10 @@ import edu.chl.proximity.Utilities.Constants;
  * Represents the  visuals for a properties button
  */
 public class PropertiesButton extends BoardObject{
-    private static Image image=new Image(Constants.filePath + "Buttons/PropButton.png");
+    private static Image image=new Image(Constants.FILE_PATH + "Buttons/PropButton.png");
     private static int height=50;
     private static int width=50;
 
-    public PropertiesButton(Map map, Vector2 position){ super(map, position,image,0,width,height);}
+    public PropertiesButton(Vector2 position){ super(null, position,image,0,width,height);}
 
 }

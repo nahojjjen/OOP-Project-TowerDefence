@@ -24,9 +24,9 @@ import java.io.File;
  */
 public class Line1 extends Creep {
 
-    private static File[] imageFiles = new File(Constants.filePath + "Creeps/Line3/").listFiles();
+    private static File[] imageFiles = new File(Constants.FILE_PATH + "Creeps/Line3/").listFiles();
     private int creepLineIndex;
-    private static Image img = new Image(Constants.filePath + "Creeps/Line2/7.png"); //dummy image to get correct resolution
+    private static Image img = new Image(Constants.FILE_PATH + "Creeps/Line2/7.png"); //dummy image to get correct resolution
     private static int speed = 3;
 
     public Line1(Map map, int creepLineIndex) {
@@ -81,7 +81,7 @@ public class Line1 extends Creep {
             }
         }
         if (image == null) {
-            image = new Image(Constants.filePath + "Creeps/Line1/7.png");
+            image = new Image(Constants.FILE_PATH + "Creeps/Line1/7.png");
         }
         return image;
     }

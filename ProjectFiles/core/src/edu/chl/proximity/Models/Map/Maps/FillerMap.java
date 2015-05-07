@@ -4,7 +4,6 @@ import edu.chl.proximity.Models.Map.Paths.ConcretePaths.TestPath;
 import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Utils.Background;
 import edu.chl.proximity.Models.Utils.Image;
-import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
@@ -19,7 +18,7 @@ public class FillerMap extends Map{
      * creates the map instance
      */
     public FillerMap() {
-        super(path, new Background(null, new Image(Constants.filePath + "Backgrounds/moonBackground.png")),"FillerMap");
+        super(path, new Background(null, new Image(Constants.FILE_PATH + "Backgrounds/moonBackground.png")),"FillerMap");
     }
 
 }

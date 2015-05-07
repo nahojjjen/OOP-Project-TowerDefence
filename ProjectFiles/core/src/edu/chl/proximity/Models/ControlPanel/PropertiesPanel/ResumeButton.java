@@ -11,10 +11,10 @@ import edu.chl.proximity.Utilities.Constants;
  * @date 2015-04-23
  */
 public class ResumeButton  extends BoardObject{
-    private static Image image=new Image(Constants.filePath + "Buttons/ResumeButton.png");
+    private static Image image=new Image(Constants.FILE_PATH + "Buttons/ResumeButton.png");
 
-    public ResumeButton(Map map, Vector2 position){
-        super(map, position,image,0);
+    public ResumeButton(Vector2 position){
+        super(null, position,image,0);
     }
 
 }

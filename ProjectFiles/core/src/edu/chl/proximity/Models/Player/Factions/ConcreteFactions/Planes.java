@@ -19,7 +19,7 @@ import edu.chl.proximity.Utilities.Constants;
 public class Planes extends Faction {
 
     public Planes(){
-        super("Planes", new Image(Constants.filePath + "Bases/base1.png")); //should also specify whay spells should be added
+        super("Planes", new Image(Constants.FILE_PATH + "Bases/base1.png")); //should also specify whay spells should be added
 
     }
 

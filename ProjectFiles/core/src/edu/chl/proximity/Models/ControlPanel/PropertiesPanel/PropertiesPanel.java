@@ -4,8 +4,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Map.Maps.StandardMap;
-import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.Settings;
@@ -26,7 +24,7 @@ import java.util.ArrayList;
 public class PropertiesPanel extends BoardObject{
     private static PropertiesPanel propertiesPanel;
 
-    private static Image background = new Image(Constants.filePath + "Backgrounds/TempPropPanel.png");
+    private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/TempPropPanel.png");
     private static Vector2 position=new Vector2(300,200);
     private Vector2 resumePos=new Vector2(position.x+95,position.y+20);
     private Vector2 mainMenuPos = new Vector2(position.x+95,resumePos.y+100);
@@ -45,12 +43,12 @@ public class PropertiesPanel extends BoardObject{
     /**
      * Create a new properies panel
      */
-    public PropertiesPanel(Map map, Proximity game){
-        super(map, position, background, 0);
+    public PropertiesPanel(Proximity game){
+        super(null, position, background, 0);
         this.game = game;
-        resumeButton = new ResumeButton(map, resumePos);
-        mainMenuButton = new MainMenuButton(map, mainMenuPos);
-        soundButton = new SoundButton(map, soundPos);
+        resumeButton = new ResumeButton(resumePos);
+        mainMenuButton = new MainMenuButton(mainMenuPos);
+        soundButton = new SoundButton(soundPos);
         initBars();
         setBarsAt(4);
         setSoundAt(4);
@@ -60,7 +58,7 @@ public class PropertiesPanel extends BoardObject{
     private void initBars(){
         Vector2 pos=new Vector2(soundPos.x+50,soundPos.y+15);
         for (int n=1; n<9; n++) {
-            bars.add(new SoundBar(getMap(), new Vector2(pos.x + n * 17, pos.y), n));
+            bars.add(new SoundBar(new Vector2(pos.x + n * 17, pos.y), n));
         }
     }
 
@@ -196,13 +194,15 @@ public class PropertiesPanel extends BoardObject{
      * @param batch What batch to render
      */
     public void render(SpriteBatch batch){
-        super.render(batch);
 
-        resumeButton.render(batch);
-        mainMenuButton.render(batch);
-        soundButton.render(batch);
-        for(SoundBar bar:bars){
-            bar.render(batch);
+        if(isVisible) {
+            super.render(batch);
+            resumeButton.render(batch);
+            mainMenuButton.render(batch);
+            soundButton.render(batch);
+            for (SoundBar bar : bars) {
+                bar.render(batch);
+            }
         }
     }
 

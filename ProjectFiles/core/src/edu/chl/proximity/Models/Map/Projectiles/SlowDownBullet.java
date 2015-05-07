@@ -6,7 +6,6 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 
@@ -16,8 +15,8 @@ import edu.chl.proximity.Utilities.Constants;
  * A class representing a bullet that slows down it's target a certain percentage
  */
 public class SlowDownBullet extends Projectile{
-    private static Image img = new Image(Constants.filePath + "Projectiles/frostBolt.png");;
-    private static Sound sound = Gdx.audio.newSound(new FileHandle(Constants.filePath + "Sounds/snap.ogg"));
+    private static Image img = new Image(Constants.FILE_PATH + "Projectiles/frostBolt.png");;
+    private static Sound sound = Gdx.audio.newSound(new FileHandle(Constants.FILE_PATH + "Sounds/snap.ogg"));
     private double percent;
     private int time;
     private Creep target;

@@ -37,7 +37,9 @@ public class ControlPanel extends BoardObject{
 
     //Width and heigh of the ControlPanel when it is initiated
     private static int width = 300;
-    private static int height = Gdx.graphics.getHeight();
+    private static int height = Constants.GAME_WIDTH;
+
+    private static Vector2 position = new Vector2(Constants.GAME_WIDTH - width, 0);
 
     //The towers that are rendered on the ControlPanel
     private List<ControlPanelTower> controlPanelTowerList = new ArrayList<ControlPanelTower>();
@@ -46,13 +48,13 @@ public class ControlPanel extends BoardObject{
     private int towersPerRow = 1;
 
     //The background of the ControlPanel
-    private static Image background = new Image(Constants.filePath + "Backgrounds/temporaryControlPanelBackground.png");
+    private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/temporaryControlPanelBackground.png");
 
     /**
      * Create a new instance of the controll panel
      */
     public ControlPanel(Map map) {
-        super(map, new Vector2(Gdx.graphics.getWidth() - width, 0), background, 0, width, height);
+        super(map, position, background, 0, width, height);
 
         initiateText();
         initiateControlPanelTowers();

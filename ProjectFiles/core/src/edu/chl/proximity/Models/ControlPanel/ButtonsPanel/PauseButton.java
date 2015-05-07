@@ -13,8 +13,8 @@ import edu.chl.proximity.Utilities.Constants;
  * @date 2015-04-29
  */
 public class PauseButton extends BoardObject{
-    public static final Image upImage = new Image(Constants.filePath + "Buttons/PauseButton.png");
-    public static final Image downImage = new Image(Constants.filePath + "Buttons/DownPauseButton.png");
+    public static final Image upImage = new Image(Constants.FILE_PATH + "Buttons/PauseButton.png");
+    public static final Image downImage = new Image(Constants.FILE_PATH + "Buttons/DownPauseButton.png");
     private static int height=50;
     private static int width=50;
 
@@ -22,8 +22,8 @@ public class PauseButton extends BoardObject{
      * Create a new Pause button
      * @param position What position the button shall have
      */
-    public PauseButton(Map map, Vector2 position){
-        super(map, position,upImage,0,width,height);
+    public PauseButton(Vector2 position){
+        super(null, position,upImage,0,width,height);
     }
 
     /**

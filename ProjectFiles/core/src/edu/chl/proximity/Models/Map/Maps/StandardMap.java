@@ -4,7 +4,6 @@ import edu.chl.proximity.Models.Utils.Background;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Map.Paths.ConcretePaths.SecondTestPath;
 import edu.chl.proximity.Models.Map.Paths.Path;
-import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
@@ -20,6 +19,6 @@ public class StandardMap extends Map {
      * creates the map instance
      */
     public StandardMap() {
-        super(path, new Background(null, new Image(Constants.filePath + "Backgrounds/test.jpg")), "Standard");
+        super(path, new Background(null, new Image(Constants.FILE_PATH + "Backgrounds/test.jpg")), "Standard");
     }
 }

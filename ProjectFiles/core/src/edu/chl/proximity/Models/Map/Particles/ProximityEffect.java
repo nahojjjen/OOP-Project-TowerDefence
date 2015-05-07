@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import edu.chl.proximity.Models.Utils.GameData;
-import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.Constants;
 
 import java.util.ArrayList;
@@ -37,8 +36,8 @@ public class ProximityEffect {
      */
     public ProximityEffect(String fileName, int maxPoolAmount){
         //maps out the file handles the particle requires
-        FileHandle particleEffectsImagesFolder = new FileHandle(Constants.filePath + "Particles/ParticleImages/");
-        FileHandle effectFile = new FileHandle(Constants.filePath + "Particles/" + fileName);
+        FileHandle particleEffectsImagesFolder = new FileHandle(Constants.FILE_PATH + "Particles/ParticleImages/");
+        FileHandle effectFile = new FileHandle(Constants.FILE_PATH + "Particles/" + fileName);
 
         //Configures 1 example effect
         ParticleEffect effect = new ParticleEffect();

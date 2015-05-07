@@ -6,7 +6,6 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
@@ -23,8 +22,8 @@ import java.util.List;
  */
 public class Missile extends Projectile {
 
-    private static Image img = new Image(Constants.filePath + "Projectiles/missile.png");
-    private static Sound sound = Gdx.audio.newSound(new FileHandle(Constants.filePath + "Sounds/explosion.ogg"));
+    private static Image img = new Image(Constants.FILE_PATH + "Projectiles/missile.png");
+    private static Sound sound = Gdx.audio.newSound(new FileHandle(Constants.FILE_PATH + "Sounds/explosion.ogg"));
     private double range = 40;
     private Creep target;
 

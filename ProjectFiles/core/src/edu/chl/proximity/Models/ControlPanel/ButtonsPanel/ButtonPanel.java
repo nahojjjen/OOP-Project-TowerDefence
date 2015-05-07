@@ -41,14 +41,14 @@ public class ButtonPanel extends BoardObject {
     /**
      * Create a new instance of ButtonPanel
      */
-    public ButtonPanel(Map map, PropertiesPanel propertiesPanel) {
-        super(map, position, background, 0, width, height);
+    public ButtonPanel(PropertiesPanel propertiesPanel) {
+        super(null, position, background, 0, width, height);
         GameData.getInstance().getPlayer().getSettings().setGameSpeed(speed);
         this.propertiesPanel = propertiesPanel;
-        playButton=new PlayButton(map, playPos);
-        pauseButton=new PauseButton(map, pausePos);
-        speedButton=new SpeedButton(map, speedPos);
-        prButton=new PropertiesButton(map, propPos);
+        playButton=new PlayButton(playPos);
+        pauseButton=new PauseButton(pausePos);
+        speedButton=new SpeedButton(speedPos);
+        prButton=new PropertiesButton(propPos);
     }
 
     /**

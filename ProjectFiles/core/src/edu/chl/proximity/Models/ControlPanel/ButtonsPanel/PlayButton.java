@@ -13,8 +13,8 @@ import edu.chl.proximity.Utilities.Constants;
  * @date 2015-04-29
  */
 public class PlayButton extends BoardObject{
-    public static final Image upImage = new Image(Constants.filePath + "Buttons/PlayButton.png");
-    public static final Image downImage = new Image(Constants.filePath + "Buttons/DownPlayButton.png");
+    public static final Image upImage = new Image(Constants.FILE_PATH + "Buttons/PlayButton.png");
+    public static final Image downImage = new Image(Constants.FILE_PATH + "Buttons/DownPlayButton.png");
     private static int height=50;
     private static int width=50;
 
@@ -22,8 +22,8 @@ public class PlayButton extends BoardObject{
      * Create a new Play button
      * @param position What position the button shall have
      */
-    public PlayButton(Map map, Vector2 position){
-        super(map, position,upImage,0,width,height);
+    public PlayButton(Vector2 position){
+        super(null, position,upImage,0,width,height);
     }
 
     /**

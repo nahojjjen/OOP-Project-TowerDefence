@@ -7,7 +7,6 @@ import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Map.Projectiles.Bullet;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
-import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetFirst;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
 
@@ -26,7 +25,7 @@ public class BulletTower extends ShootingTower implements Cloneable {
     private static double range = 150f;
     private static int reloadTime = 60;
 
-    private static Image img = new Image(Constants.filePath + "Towers/Bullet/1.png");
+    private static Image img = new Image(Constants.FILE_PATH + "Towers/Bullet/1.png");
 
     /**
      * @param pos

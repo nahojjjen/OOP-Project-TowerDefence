@@ -6,7 +6,6 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 
@@ -18,8 +17,8 @@ import edu.chl.proximity.Utilities.Constants;
  */
 public class Bullet extends Projectile {
 
-    private static Image img = new Image(Constants.filePath + "Projectiles/bullet.png");
-    private static Sound sound = Gdx.audio.newSound(new FileHandle(Constants.filePath + "Sounds/poof.ogg"));
+    private static Image img = new Image(Constants.FILE_PATH + "Projectiles/bullet.png");
+    private static Sound sound = Gdx.audio.newSound(new FileHandle(Constants.FILE_PATH + "Sounds/poof.ogg"));
 
     /**
      * create a new bullet projectile

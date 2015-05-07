@@ -1,24 +1,14 @@
 package edu.chl.proximity.Controllers;
 
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Controllers.SubControllers.*;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.ButtonPanel;
-import edu.chl.proximity.Models.ControlPanel.ControlPanel;
-import edu.chl.proximity.Models.ControlPanel.ProfilePanel;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
-import edu.chl.proximity.Models.Player.Spells.ConcreteSpells.ChainLightning;
-import edu.chl.proximity.Models.Player.Spells.ConcreteSpells.FireField;
-import edu.chl.proximity.Models.Player.Spells.ConcreteSpells.FrostField;
-import edu.chl.proximity.Models.Player.Spells.ConcreteSpells.WallOfStone;
 import edu.chl.proximity.Models.Player.Spells.PersistentObject;
-import edu.chl.proximity.Models.Player.Spells.Spell;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.PointCalculations;
@@ -60,9 +50,10 @@ public class MainController implements InputProcessor{
     private Map map;
 
     private Viewport viewport;
-    ControlPanel controlPanel;
     private int tempCounter=0;
     private Proximity game;
+
+
 
     public MainController(Map map, Viewport v, Proximity game) {
         this.game = game;
@@ -70,7 +61,7 @@ public class MainController implements InputProcessor{
         creepController = new CreepController(map);
         towerController = new TowerController(map);
         projectileController = new ProjectileController(map);
-        controlPanelController = new ControlPanelController(map);
+        controlPanelController = new ControlPanelController(map, game);
         waveController = new WaveController(map);
         mapController = new MapController(map);
         handController = new HandController(map);
@@ -85,6 +76,10 @@ public class MainController implements InputProcessor{
         //clickHandlers.add(propertiesPanelController);
     }
 
+    public List<BoardObject> getControlPanels() {
+        return controlPanelController.getControlPanels();
+    }
+/*
     public void setControlPanel(ControlPanel controlPanel) {
         this.controlPanel = controlPanel;
         controlPanelController.setControlPanel(controlPanel);
@@ -96,9 +91,10 @@ public class MainController implements InputProcessor{
     public void setProfilePanel(ProfilePanel profilePanel){
         controlPanelController.setProfilePanel(profilePanel);
     }
+    public void setSpellPanel(SpellPanel spellPanel){
+        controlPanelController.setSpellPanel(spellPanel);
+    }*/
 
-
-    //public void setPropertiesPanel(PropertiesPanel propertiesPanel) {controlPanelController.setPropertiesPanel(propertiesPanel);}
 
     public void updateAllControllers() {
         if(game.getCurrentScreen().equals(Proximity.State.GAME)) {

@@ -16,7 +16,7 @@ import edu.chl.proximity.Utilities.Constants;
  */
 public class Circle extends Creep {
 
-    private static Image img = new Image(Constants.filePath + "Creeps/Line2/7.png");
+    private static Image img = new Image(Constants.FILE_PATH + "Creeps/Line2/7.png");
     private static int speed = 3;
 
     public Circle(Map map) {

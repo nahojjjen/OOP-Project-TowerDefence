@@ -16,8 +16,8 @@ import edu.chl.proximity.Utilities.Constants;
  * 29/04 modified Hanna. Button keeps track of what image it should have
  */
 public class SpeedButton extends BoardObject{
-    private static Image upImage=new Image(Constants.filePath + "Buttons/FastPlayButton.png");
-    private static Image downImage=new Image(Constants.filePath + "Buttons/DownFastPlayButton.png");
+    private static Image upImage=new Image(Constants.FILE_PATH + "Buttons/FastPlayButton.png");
+    private static Image downImage=new Image(Constants.FILE_PATH + "Buttons/DownFastPlayButton.png");
     private static int height=50;
     private static int width=50;
 
@@ -25,8 +25,8 @@ public class SpeedButton extends BoardObject{
      * Create a new speed button
      * @param position What position the button shall have
      */
-    public SpeedButton(Map map, Vector2 position){
-        super(map, position,upImage,0,width,height);
+    public SpeedButton(Vector2 position){
+        super(null, position,upImage,0,width,height);
     }
 
     /**

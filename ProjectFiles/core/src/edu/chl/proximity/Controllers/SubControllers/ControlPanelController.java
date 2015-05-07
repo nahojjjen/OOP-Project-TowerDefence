@@ -8,9 +8,11 @@ import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.*;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanelTower;
 import edu.chl.proximity.Models.ControlPanel.ProfilePanel;
+import edu.chl.proximity.Models.ControlPanel.SpellPanel;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.*;
+import edu.chl.proximity.Proximity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,33 +26,43 @@ import java.util.List;
  * 30/04 modified by Simon Gislen. Added ProfilePanel.
  * 30/04 modified by Hanna R�mer. Cannot click on anything else when propertiesPanel is open, cannot place towers when game is paused.
  * 03/05 modified by Simon Gislen. Towers are not free anymore.
- * 07/05 modofied by Linda Evaldsson. Added key bindings for spells.
+ * 07/05 modofied by Linda Evaldsson. Added key bindings for spells. Also added handling for ControlPanels.
  */
 public class ControlPanelController implements ClickHandler {
 
     private ControlPanel controlPanel;
     private ButtonPanel buttonPanel;
-    //Nedanstående ändrat!!!!
-    private PropertiesPanel propertiesPanel; //PropertiesPanel.getInstance();
+    private SpellPanel spellPanel;
+    private PropertiesPanel propertiesPanel;
     private ProfilePanel profilePanel;
     private Map map;
-    private List<BoardObject> models = new ArrayList<BoardObject>();
+    private List<BoardObject> controlPanels = new ArrayList<BoardObject>();
 
-    public ControlPanelController(Map map) {
+    public ControlPanelController(Map map, Proximity g) {
 
         this.map = map;
+
+        propertiesPanel = new PropertiesPanel(g);
         controlPanel = new ControlPanel(map);
-        buttonPanel = new ButtonPanel(map, propertiesPanel);
-        profilePanel = new ProfilePanel(map);
-        models.add(controlPanel);
-        models.add(buttonPanel);
-        models.add(propertiesPanel);
-        models.add(profilePanel);
+        map.setPropertiesPanel(propertiesPanel);
+        buttonPanel = new ButtonPanel(propertiesPanel);
+        profilePanel = new ProfilePanel();
+        spellPanel = new SpellPanel();
+
+        controlPanels.add(propertiesPanel);
+        controlPanels.add(controlPanel);
+        controlPanels.add(buttonPanel);
+        controlPanels.add(profilePanel);
+        controlPanels.add(spellPanel);
     }
 
-    public void setControlPanel(ControlPanel controlPanel) { this.controlPanel = controlPanel;}
-    public void setButtonPanel(ButtonPanel buttonPanel) { this.buttonPanel = buttonPanel;}
-    public void setProfilePanel(ProfilePanel profilePanel) { this.profilePanel = profilePanel;}
+
+    public List<BoardObject> getControlPanels() { return controlPanels;}
+    //public void setButtonPanel(ButtonPanel buttonPanel) { this.buttonPanel = buttonPanel;}
+    //public void setProfilePanel(ProfilePanel profilePanel) { this.profilePanel = profilePanel;}
+    //public void setSpellPanel(SpellPanel spellPanel){
+     //   this.spellPanel = spellPanel;
+    //}
 
     public void update() {
         controlPanel.setHealth(map.getBase().getLife());

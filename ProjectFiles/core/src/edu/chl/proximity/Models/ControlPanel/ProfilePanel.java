@@ -32,8 +32,8 @@ public class ProfilePanel extends BoardObject {
 
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
 
-    public ProfilePanel(Map map) {
-        super(map, new Vector2(0, Gdx.graphics.getHeight() - 75), null, 0, width, height);
+    public ProfilePanel() {
+        super(null, new Vector2(0, Gdx.graphics.getHeight() - 75), null, 0, width, height);
         levelText = createFont(30, 30, "1");
     }
 

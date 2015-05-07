@@ -4,11 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Filler;
 import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Planes;
 import edu.chl.proximity.Models.Player.Factions.Faction;
-import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Utilities.Constants;
@@ -28,7 +26,7 @@ public class FactionChooser extends BoardObject{
     private static Vector2 pos = new Vector2(0, Gdx.graphics.getHeight()-240);
     private Vector2 imagePos=new Vector2(pos.x+162,pos.y + 100);
 
-    private static Image image=new Image(Constants.filePath + "Backgrounds/factionChooser.png");
+    private static Image image=new Image(Constants.FILE_PATH + "Backgrounds/factionChooser.png");
 
     private List<Faction> factions= new ArrayList<Faction>();
 
@@ -42,8 +40,8 @@ public class FactionChooser extends BoardObject{
     public FactionChooser(){
         super(null, pos, image, 0);
         factionImage=new FactionImage(imagePos);
-        prev = new NextPrevButton(new Vector2(pos.x+8, pos.y+40), new Image(Constants.filePath + "Buttons/FactionChooserLeft.png"));
-        next = new NextPrevButton(new Vector2(pos.x+352, pos.y+40),new Image(Constants.filePath + "Buttons/FactionChooserRight.png"));
+        prev = new NextPrevButton(new Vector2(pos.x+8, pos.y+40), new Image(Constants.FILE_PATH + "Buttons/FactionChooserLeft.png"));
+        next = new NextPrevButton(new Vector2(pos.x+352, pos.y+40),new Image(Constants.FILE_PATH + "Buttons/FactionChooserRight.png"));
         factions.add(new Planes());
         factions.add(new Filler());
 

@@ -6,17 +6,13 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-import edu.chl.proximity.Models.ControlPanel.ProfilePanel;
+import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Bases.Base;
-import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.ButtonPanel;
-import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Player.Holdables.Hand;
 import edu.chl.proximity.Models.Player.Holdables.Holdable;
-import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
-import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 
@@ -34,15 +30,14 @@ import java.util.List;
  * Unknown date modified by Linda Evaldsson
  * 23/04 Modified by Hanna R�mer. Added ButtonPanel and PropertiesPanel + necessary methods for them
  * 24/04 Modified by Johan Swanberg - Added creep debug view and fixed path render to not be missaligned
- * 29/04 modified by Hanna R�mer. Removed PropertiesPanel instance and setter since it's a singleton. 
+ * 29/04 modified by Hanna R�mer. Removed PropertiesPanel instance and setter since it's a singleton.
+ * 07/05 modified by Linda Evaldsson. Removed all the setters and getters for ControlPanels, replaced with setControlPanel.
  */
 public class Renderer {
 
     private Map map;
     private ParticleManager particleManager ;
-    private ControlPanel controlPanel;
-    private ButtonPanel buttonPanel;
-    private ProfilePanel profilePanel;
+    List<BoardObject> controlPanels;
 
     /**
      * create a new renderer that can show everything in a game instance
@@ -51,14 +46,6 @@ public class Renderer {
         this.map = map;
         this.particleManager = map.getParticleManager();
 
-    }
-
-    public void setControlPanel(ControlPanel controlPanel) {
-        this.controlPanel = controlPanel;
-    }
-    public void setButtonPanel(ButtonPanel buttonPanel){ this.buttonPanel=buttonPanel;}
-    public void setProfilePanel(ProfilePanel profilePanel) {
-        this.profilePanel = profilePanel;
     }
 
     /**
@@ -87,10 +74,7 @@ public class Renderer {
         renderProjectiles(batch);
         renderBase(batch);
         renderParticles(batch);
-        renderControlPanel(batch);
-        renderButtonPanel(batch);
-        renderPropertiesPanel(batch);
-        renderProfilePanel(batch);
+        renderControlPanels(batch);
 
         //Render the hand and its range.
         Hand hand = map.getHand();
@@ -106,6 +90,8 @@ public class Renderer {
 
 
     }
+
+    public void setControlPanels(List<BoardObject> controlPanels) { this.controlPanels = controlPanels; }
 
 
     private void debugRenderAllCentersAndUpperLeftCorners(ShapeRenderer shapeRenderer){
@@ -129,22 +115,22 @@ public class Renderer {
      * Draws out the control panel
      * @param batch what graphics batch object that should draw on the screen
      */
-    private void renderControlPanel(SpriteBatch batch) {
+    private void renderControlPanels(SpriteBatch batch) {
+        for(BoardObject panel : controlPanels) {
+            panel.render(batch);
+        }
+        /*
         controlPanel.render(batch);
-    }
-    private void renderButtonPanel(SpriteBatch batch){
         buttonPanel.render(batch);
-    }
-
-    private void renderProfilePanel(SpriteBatch batch) {
         profilePanel.render(batch);
-    }
-    private void renderPropertiesPanel(SpriteBatch batch){
+        spellPanel.render(batch);
         if(map.getPropertiesPanel().getIfVisible()){
-
             map.getPropertiesPanel().render(batch);
         }
+        */
+
     }
+
 
     /**
      * automatically renders the lines between the waypoints of the current path
@@ -254,7 +240,7 @@ public class Renderer {
     private void renderRangeIndicator(ShapeRenderer renderer, Color color, Vector2 position, double range) {
         Gdx.gl.glEnable(GL20.GL_BLEND); //enables transparency
         renderer.setColor(color);
-        renderer.circle(position.x, position.y, (float)range);
+        renderer.circle(position.x, position.y, (float) range);
     }
 
 }

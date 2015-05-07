@@ -11,8 +11,8 @@ import edu.chl.proximity.Utilities.Constants;
  * @date 2015-04-24
  */
 public class MainMenuButton extends BoardObject{
-    private static Image image = new Image(Constants.filePath + "Buttons/ResumeButton.png");
+    private static Image image = new Image(Constants.FILE_PATH + "Buttons/ResumeButton.png");
 
-    public MainMenuButton(Map map, Vector2 position){ super(map, position,image,0);}
+    public MainMenuButton(Vector2 position){ super(null, position,image,0);}
 
 }
