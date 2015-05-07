@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Player.Factions.Faction;
 import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
 
@@ -19,11 +20,17 @@ public class SpellPanel extends BoardObject {
 
     private static int width = 500;
     private static int height = 70;
+    private String[] shorts = {"Q", "W", "E", "R"};
+
+    private static List<ProximityFont> shortCuts = new ArrayList<ProximityFont>();
+    private static ProximityFont w = new ProximityFont(new Vector2(0, 0), "Q");
+    private static ProximityFont e = new ProximityFont(new Vector2(0, 0), "Q");
+    private static ProximityFont r = new ProximityFont(new Vector2(0, 0), "Q");
 
     private static Vector2 position = new Vector2(340, Constants.GAME_HEIGHT - height);
 
     //The background of the ControlPanel
-    private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/temporaryControlPanelBackground.png");
+    private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/warmBackgroundSmall.png");
 
     private List<ControlPanelSpell> controlPanelSpellList = new ArrayList<ControlPanelSpell>();
 
@@ -34,9 +41,9 @@ public class SpellPanel extends BoardObject {
     }
 
     private void initiateSpells(Faction faction) {
-
         for(int i = 0; i < 4; i++) {
             controlPanelSpellList.add(new ControlPanelSpell(new Vector2(position.x + 2 + (64+2)*i, position.y + 2), faction.getSpell(i)));
+            shortCuts.add(new ProximityFont(new Vector2(position.x + 4 + (64+2)*i, position.y + 4), shorts[i]));
         }
 
 
@@ -46,6 +53,9 @@ public class SpellPanel extends BoardObject {
         super.render(batch);
         for(ControlPanelSpell cpSpell : controlPanelSpellList) {
             cpSpell.render(batch);
+        }
+        for(ProximityFont font : shortCuts) {
+            font.draw(batch);
         }
 
     }
