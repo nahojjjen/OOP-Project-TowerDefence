@@ -9,6 +9,7 @@ import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.ButtonPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.ControlPanel.ProfilePanel;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Player.Spells.ConcreteSpells.ChainLightning;
@@ -44,22 +45,34 @@ import java.util.Set;
 public class MainController implements InputProcessor{
 
 
-    private CreepController creepController = new CreepController();
-    private TowerController towerController = new TowerController();
-    private ProjectileController projectileController = new ProjectileController();
+    private CreepController creepController;
+    private TowerController towerController;
+    private ProjectileController projectileController;
     private BackgroundController backgroundController = new BackgroundController();
-    private ControlPanelController controlPanelController = new ControlPanelController();
-    private WaveController waveController = new WaveController();
-    private MapController mapController = new MapController();
-    private HandController handController = new HandController();
-    private PersistentObjectController persistentObjectController = new PersistentObjectController();
+    private ControlPanelController controlPanelController;
+    private WaveController waveController;
+    private MapController mapController;
+    private HandController handController;
+    private PersistentObjectController persistentObjectController;
     private List<ClickHandler> clickHandlers = new ArrayList<ClickHandler>();
+    private Map map;
 
     private Viewport viewport;
     ControlPanel controlPanel;
     private int tempCounter=0;
 
-    public MainController(Viewport v) {
+    public MainController(Map map, Viewport v) {
+        this.map = map;
+        creepController = new CreepController(map);
+        towerController = new TowerController(map);
+        projectileController = new ProjectileController(map);
+        controlPanelController = new ControlPanelController(map);
+        waveController = new WaveController(map);
+        mapController = new MapController(map);
+        handController = new HandController(map);
+        persistentObjectController = new PersistentObjectController(map);
+
+
         viewport=v;
         clickHandlers.add(controlPanelController);
         clickHandlers.add(mapController);
@@ -102,13 +115,13 @@ public class MainController implements InputProcessor{
      * Remove all objects marked for deletion this frame.
      */
     public void clearKillStacks() {
-        Set<BoardObject> killStack = GameData.getInstance().getMap().getRemoveStack();
+        Set<BoardObject> killStack = map.getRemoveStack();
         Iterator killIterator = killStack.iterator();
 
-        List<Creep> creepList = GameData.getInstance().getMap().getCreeps();
-        List<Projectile> projectileList = GameData.getInstance().getMap().getProjectiles();
-        List<Tower> towerList = GameData.getInstance().getMap().getTowers();
-        List<PersistentObject> persistentObjects = GameData.getInstance().getMap().getPersistentObjects();
+        List<Creep> creepList = map.getCreeps();
+        List<Projectile> projectileList = map.getProjectiles();
+        List<Tower> towerList = map.getTowers();
+        List<PersistentObject> persistentObjects = map.getPersistentObjects();
 
         while (killIterator.hasNext()){
             BoardObject o = (BoardObject)killIterator.next();
@@ -149,13 +162,13 @@ public class MainController implements InputProcessor{
      * Add all objects marked for adding this frame.
      */
     public void clearAddStacks() {
-        Set<BoardObject> addStack = GameData.getInstance().getMap().getAddStack();
+        Set<BoardObject> addStack = map.getAddStack();
         Iterator addIterator = addStack.iterator();
 
-        List<Creep> creepList = GameData.getInstance().getMap().getCreeps();
-        List<Projectile> projectileList = GameData.getInstance().getMap().getProjectiles();
-        List<Tower> towerList = GameData.getInstance().getMap().getTowers();
-        List<PersistentObject> persistentObjectList = GameData.getInstance().getMap().getPersistentObjects();
+        List<Creep> creepList = map.getCreeps();
+        List<Projectile> projectileList = map.getProjectiles();
+        List<Tower> towerList = map.getTowers();
+        List<PersistentObject> persistentObjectList = map.getPersistentObjects();
 
         while (addIterator.hasNext()){
             BoardObject o = (BoardObject)addIterator.next();

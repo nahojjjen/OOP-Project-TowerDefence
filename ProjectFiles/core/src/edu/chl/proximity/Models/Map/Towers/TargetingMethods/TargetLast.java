@@ -13,9 +13,13 @@ import java.util.List;
  * @date 2015-04-11
  */
 public class TargetLast extends TargetingMethod {
+    private List<Creep> creeps;
 
-    private Map map = GameData.getInstance().getMap();
-    private List<Creep> creeps = map.getCreeps();
+    public TargetLast(Map map) {
+        super(map);
+        creeps = map.getCreeps();
+    }
+
 
     /**
      * Get the creep which has traveled furthest on the path

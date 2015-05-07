@@ -24,19 +24,19 @@ public class Triangle extends Creep {
     private static Image img = new Image(Constants.filePath + "Creeps/Line3/triangle.png");
     private static int speed = 1;
 
-    public Triangle() {
-        super(img, speed);
+    public Triangle(Map map) {
+        super(map, img, speed);
     }
 
 
     @Override
     public void devolve() {
         if(isDead()){
-            Map map = GameData.getInstance().getMap();
-            displayDeathEffect();
-            map.getRemoveStack().add(this);
 
-            map.addCreep(new Circle(this));
+            displayDeathEffect();
+            getMap().getRemoveStack().add(this);
+
+            getMap().addCreep(new Circle(getMap(), this));
 
             Player p = GameData.getInstance().getPlayer();
             Resources res = p.getResources();

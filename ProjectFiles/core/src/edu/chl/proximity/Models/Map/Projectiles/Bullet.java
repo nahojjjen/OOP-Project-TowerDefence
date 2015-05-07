@@ -5,6 +5,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
@@ -27,9 +28,9 @@ public class Bullet extends Projectile {
      * @param angle    what angle the image & movement should start at
      * @param target   what creep the projectile should see it it hits etc.
      */
-    public Bullet(Vector2 position, double angle, Creep target) {
+    public Bullet(Map map, Vector2 position, double angle, Creep target) {
         //Arguments: ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, Vector2 position, double angle, Creep target
-        super(GameData.getInstance().getMap().getParticleManager().getBulletEffect(), 1, 20, sound, img, position, angle);
+        super(map, map.getParticleManager().getBulletEffect(), 1, 20, sound, img, position, angle);
     }
 
     @Override

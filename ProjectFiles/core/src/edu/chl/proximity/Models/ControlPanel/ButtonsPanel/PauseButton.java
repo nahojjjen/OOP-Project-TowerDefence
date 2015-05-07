@@ -3,6 +3,7 @@ package edu.chl.proximity.Models.ControlPanel.ButtonsPanel;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
@@ -21,8 +22,8 @@ public class PauseButton extends BoardObject{
      * Create a new Pause button
      * @param position What position the button shall have
      */
-    public PauseButton(Vector2 position){
-        super(position,upImage,0,width,height);
+    public PauseButton(Map map, Vector2 position){
+        super(map, position,upImage,0,width,height);
     }
 
     /**

@@ -2,6 +2,7 @@ package edu.chl.proximity.Models.ControlPanel.PropertiesPanel;
 
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 
@@ -19,8 +20,8 @@ public class SoundButton extends BoardObject{
      * Create a new sound button
      * @param position At what position the button is to be placed
      */
-    public SoundButton(Vector2 position){
-        super(position,onImage,0,width,height);
+    public SoundButton(Map map, Vector2 position){
+        super(map, position,onImage,0,width,height);
     }
 
     /**

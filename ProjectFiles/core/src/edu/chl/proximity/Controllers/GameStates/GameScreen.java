@@ -11,6 +11,7 @@ import edu.chl.proximity.Controllers.MainController;
 import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.ButtonPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.ControlPanel.ProfilePanel;
+import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.Player;
@@ -31,8 +32,7 @@ import edu.chl.proximity.Viewers.Renderer;
  * 29/04 modified by Hanna R�mer. Removed PropertiesPanel since it's singleton
  */
 public class GameScreen implements Screen{
-    private Game game;
-    private Map currentMap;
+
     private SpriteBatch batch = new SpriteBatch();
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
     private Renderer renderer;
@@ -44,19 +44,17 @@ public class GameScreen implements Screen{
 
     public GameScreen(Game g, Map map, Player player){
 
-        game = g;
-        currentMap = map;
-        GameData.getInstance().setMap(currentMap);
-
-        ControlPanel controlPanel = new ControlPanel(); //Must be set after map is set in GameData
-        ButtonPanel buttonPanel = new ButtonPanel();
-        ProfilePanel profilePanel = new ProfilePanel();
+        ControlPanel controlPanel = new ControlPanel(map);
+        PropertiesPanel propertiesPanel= new PropertiesPanel(map);
+        map.setPropertiesPanel(propertiesPanel);
+        ButtonPanel buttonPanel = new ButtonPanel(map, propertiesPanel);
+        ProfilePanel profilePanel = new ProfilePanel(map);
 
         GameData.getInstance().setPlayer(player);
-        this.renderer = new Renderer();
+        this.renderer = new Renderer(map);
         fixCamera();
 
-        mainController = new MainController(viewport);
+        mainController = new MainController(map, viewport);
 
         renderer.setControlPanel(controlPanel);
         renderer.setButtonPanel(buttonPanel);
@@ -68,14 +66,13 @@ public class GameScreen implements Screen{
 
         shapeRenderer.setAutoShapeType(true);
 
-        map.setBase(player.getFaction().getNewBase());
+        map.setBase(player.getFaction().getNewBase(map));
         Gdx.input.setInputProcessor(mainController);
 
-        runDebugCode();
+        //runDebugCode();
 
 
     }
-    GameData gameData;
 
     /**
      * Debug code that adds towers, sets gamespeed and sets resources and such, that should not be available to the player

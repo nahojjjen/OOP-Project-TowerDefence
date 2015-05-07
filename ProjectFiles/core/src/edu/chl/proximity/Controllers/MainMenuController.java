@@ -40,6 +40,8 @@ public class MainMenuController implements InputProcessor{
 
     @Override
     public boolean touchDown (int x, int y, int pointer, int button) {
+
+
         BoardObject touchedButton=mainMenu.getButtonOnPosition(new Vector2(x,y));
         if(touchedButton instanceof StartButton){
             mainMenu.pressedStart();

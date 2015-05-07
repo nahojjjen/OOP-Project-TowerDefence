@@ -3,6 +3,7 @@ package edu.chl.proximity.Controllers.SubControllers;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Controllers.ClickHandler;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.Background;
 import edu.chl.proximity.Models.Utils.GameData;
 
@@ -14,9 +15,13 @@ import edu.chl.proximity.Models.Utils.GameData;
  *
  */
 public class HandController implements ClickHandler {
-    private Background model = new Background(null);
+    private Background model;
+    private Map map;
 
-    public HandController() {
+    public HandController(Map map) {
+        this.map = map;
+        model = new Background(map, null);
+
         //The model is the area where this HandController should be listening for changes. In this case its the whole window.
         model.setPosition(new Vector2(0,0));
         model.setWidth(Gdx.graphics.getWidth());
@@ -33,6 +38,6 @@ public class HandController implements ClickHandler {
     public void mouseMoved(Vector2 newPosition) {
 
         //Updates the position of the hand to be the position of the mouse
-        GameData.getInstance().getHand().setPosition(newPosition);
+        map.getHand().setPosition(newPosition);
     }
 }

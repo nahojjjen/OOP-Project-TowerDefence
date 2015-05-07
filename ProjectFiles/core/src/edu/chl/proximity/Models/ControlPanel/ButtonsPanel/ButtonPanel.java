@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
@@ -31,18 +32,23 @@ public class ButtonPanel extends BoardObject {
     private boolean pause=false;
     private int speed=1;
 
-    private PlayButton playButton=new PlayButton(playPos);
-    private PauseButton pauseButton=new PauseButton(pausePos);
-    private SpeedButton speedButton=new SpeedButton(speedPos);
-    private PropertiesButton prButton=new PropertiesButton(propPos);
-
+    private PlayButton playButton;
+    private PauseButton pauseButton;
+    private SpeedButton speedButton;
+    private PropertiesButton prButton;
+    private PropertiesPanel propertiesPanel;
 
     /**
      * Create a new instance of ButtonPanel
      */
-    public ButtonPanel() {
-        super(position, background, 0, width, height);
+    public ButtonPanel(Map map, PropertiesPanel propertiesPanel) {
+        super(map, position, background, 0, width, height);
         GameData.getInstance().setGameSpeed(speed);
+        this.propertiesPanel = propertiesPanel;
+        playButton=new PlayButton(map, playPos);
+        pauseButton=new PauseButton(map, pausePos);
+        speedButton=new SpeedButton(map, speedPos);
+        prButton=new PropertiesButton(map, propPos);
     }
 
     /**
@@ -126,8 +132,9 @@ public class ButtonPanel extends BoardObject {
      * Pauses game and tells the properiespanel to be visible
      */
     public void pressedPropertiesButton(){
+
         pressedPause();
-        PropertiesPanel.getInstance().setVisability(true);
+        propertiesPanel.setVisability(true);
     }
 
 

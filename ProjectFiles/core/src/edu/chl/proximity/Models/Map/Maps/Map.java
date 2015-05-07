@@ -1,5 +1,7 @@
 package edu.chl.proximity.Models.Map.Maps;
 
+import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
+import edu.chl.proximity.Models.Player.Holdables.Hand;
 import edu.chl.proximity.Models.Utils.Background;
 import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.BoardObject;
@@ -32,6 +34,10 @@ import java.util.Set;
 public abstract class Map {
     private String name;
     private int waveIndex;
+    private Hand hand = new Hand();
+
+    private PropertiesPanel propertiesPanel;
+
 
     private ArrayList<Creep> creeps = new ArrayList<Creep>();
     private ArrayList<PersistentObject> persistentObjects = new ArrayList<PersistentObject>();
@@ -70,6 +76,8 @@ public abstract class Map {
     public String getName(){
         return name;
     }
+
+    public Hand getHand() { return hand; }
 
     /**
      * get the particleManager in the map
@@ -142,4 +150,11 @@ public abstract class Map {
         addStack.add(t);
     }
 
+    public PropertiesPanel getPropertiesPanel() {
+        return propertiesPanel;
+    }
+
+    public void setPropertiesPanel(PropertiesPanel propertiesPanel) {
+        this.propertiesPanel = propertiesPanel;
+    }
 }

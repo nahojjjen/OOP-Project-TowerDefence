@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Map.Particles.ProximityEffect;
@@ -39,8 +40,8 @@ public abstract class Projectile extends BoardObject implements Cloneable{
      * @param position where should the projectile be created
      * @param angle what angle should the image of the projectile have
      */
-    public Projectile(ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, Vector2 position, double angle){
-        super(position, image, angle);
+    public Projectile(Map map, ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, Vector2 position, double angle){
+        super(map, position, image, angle);
         this.effect=particleEffect;
         this.health=health;
         this.speed=speed;
@@ -75,7 +76,7 @@ public abstract class Projectile extends BoardObject implements Cloneable{
     }
 
     public void checkCollision() {
-        List<Creep> creeps = GameData.getInstance().getMap().getCreeps();
+        List<Creep> creeps = getMap().getCreeps();
 
         for (Creep creep : creeps){
         if(collidesWith(creep)) {
@@ -126,7 +127,7 @@ public abstract class Projectile extends BoardObject implements Cloneable{
     private void decreaseProjectileHealth(){
         health--;
         if (health <= 0){
-            GameData.getInstance().getMap().getRemoveStack().add(this);
+            getMap().getRemoveStack().add(this);
         }
     }
 

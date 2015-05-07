@@ -15,8 +15,7 @@ public class TowerController {
     private List<Tower> towers;
 
 
-    public TowerController(){
-        Map map = GameData.getInstance().getMap();
+    public TowerController(Map map){
         towers = map.getTowers();
     }
     /**

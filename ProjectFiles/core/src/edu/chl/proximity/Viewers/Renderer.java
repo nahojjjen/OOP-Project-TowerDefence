@@ -47,8 +47,8 @@ public class Renderer {
     /**
      * create a new renderer that can show everything in a game instance
      */
-    public Renderer() {
-        this.map = GameData.getInstance().getMap();
+    public Renderer(Map map) {
+        this.map = map;
         this.particleManager = map.getParticleManager();
 
     }
@@ -93,7 +93,7 @@ public class Renderer {
         renderProfilePanel(batch);
 
         //Render the hand and its range.
-        Hand hand = GameData.getInstance().getHand();
+        Hand hand = map.getHand();
         Holdable handItem = hand.getItem();
         if (handItem != null) {
             hand.render(batch);
@@ -146,8 +146,9 @@ public class Renderer {
         profilePanel.render(batch);
     }
     private void renderPropertiesPanel(SpriteBatch batch){
-        if(PropertiesPanel.getInstance().getIfVisible()){
-            PropertiesPanel.getInstance().render(batch);
+        if(map.getPropertiesPanel().getIfVisible()){
+
+            map.getPropertiesPanel().render(batch);
         }
     }
 
@@ -158,7 +159,7 @@ public class Renderer {
      * @param shapeRenderer what shaperenderer to use to draw the lines
      */
     private void renderPath( ShapeRenderer shapeRenderer){
-        List<Vector2> waypoints = GameData.getInstance().getMap().getPath().getWaypoints();
+        List<Vector2> waypoints = map.getPath().getWaypoints();
 
         shapeRenderer.setColor(new Color(0.4f, 0.6f, 0.9f, 0));
 
@@ -172,7 +173,7 @@ public class Renderer {
      * @param shapeRenderer what shaperenderer to use to show the graphics
      */
     private void renderAllTowerRanges(ShapeRenderer shapeRenderer){
-        for (Tower tower : GameData.getInstance().getMap().getTowers()) {
+        for (Tower tower : map.getTowers()) {
             renderRangeIndicator(shapeRenderer, new Color(0.4f, 0.2f, 0.9f, 0.2f), tower.getCenter(), tower.getRange());
         }
     }
@@ -185,7 +186,7 @@ public class Renderer {
      * @param batch what graphics batch object that should draw on the screen
      */
     private void renderBase(SpriteBatch batch) {
-        Base base = GameData.getInstance().getMap().getBase();
+        Base base = map.getBase();
         if (base.getImage() != null && base != null){
             base.render(batch);
         } else{

@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.Map.Towers;
 
 import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
@@ -22,7 +23,6 @@ public class SlowTower extends ShootingTower {
     //Tower stats
     private static Resources resources = new Resources(100, 100, 0);
     private static double range = 140f;
-    private static TargetingMethod targetingMethod = new TargetFirst();
     private static int reloadTime = 40;
 
     //Bullet stats
@@ -35,13 +35,13 @@ public class SlowTower extends ShootingTower {
      * Create a new SlowTower
      * @param pos Position of tower
      */
-    public SlowTower(Vector2 pos){
-        super(pos, img, range, targetingMethod, reloadTime, resources);
+    public SlowTower(Map map, Vector2 pos, TargetingMethod targetingMethod){
+        super(map, pos, img, range, targetingMethod, reloadTime, resources);
     }
 
     @Override
     public Projectile createProjectile() {
-        return new SlowDownBullet(getCenter(), getAngle(), getTarget(), slowDownPercent, slowDownTime);
+        return new SlowDownBullet(getMap(), getCenter(), getAngle(), getTarget(), slowDownPercent, slowDownTime);
     }
 
 }

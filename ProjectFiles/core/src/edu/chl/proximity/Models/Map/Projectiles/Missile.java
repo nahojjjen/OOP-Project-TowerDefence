@@ -5,6 +5,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
@@ -33,9 +34,9 @@ public class Missile extends Projectile {
      * @param angle what angle the image & movement should start at
      * @param target what creep the projectile should see it it hits etc.
      */
-    public Missile(Vector2 position, double angle, Creep target) {
+    public Missile(Map map, Vector2 position, double angle, Creep target) {
         //Arguments: ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, Vector2 position, double angle, Creep target
-        super(GameData.getInstance().getMap().getParticleManager().getExplosionEffect(), 1, 8, sound, img, position, angle);
+        super(map, map.getParticleManager().getExplosionEffect(), 1, 8, sound, img, position, angle);
         this.target = target;
     }
 
@@ -43,7 +44,7 @@ public class Missile extends Projectile {
     public void reAngle() {
             if (target != null) {
                 //Check if the target is still on the board
-                if(GameData.getInstance().getMap().getCreeps().contains((target))) {
+                if(getMap().getCreeps().contains((target))) {
                     faceTarget(target.getCenter());
                 }
                 else {
@@ -57,7 +58,7 @@ public class Missile extends Projectile {
 
     @Override
     public void attack(Creep unusedCreep) {
-        List<Creep> creepList =GameData.getInstance().getMap().getCreeps();
+        List<Creep> creepList = getMap().getCreeps();
         for(Creep creep: creepList) {
             if(PointCalculations.distanceBetweenNoSqrt(this.getCenter(), creep.getCenter()) < range*range){
                 creep.devolve();

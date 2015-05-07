@@ -15,16 +15,19 @@ import java.util.List;
  *
  */
 public class TargetClosest extends TargetingMethod{
-    public Map map = GameData.getInstance().getMap();
 
+
+    public TargetClosest(Map map) {
+        super(map);
+    }
 
     public Creep getTarget(Vector2 position, double range){
         double rangeToClosest;
         Creep closestCreep;
 
-        if(map.getCreeps().size() > 0){
+        if(getMap().getCreeps().size() > 0){
             List<Creep> inRange = new ArrayList<Creep>();
-            for(Creep c: map.getCreeps()){
+            for(Creep c: getMap().getCreeps()){
                 if(isWithinRange(c,position,range)){
                     inRange.add(c);
                 }

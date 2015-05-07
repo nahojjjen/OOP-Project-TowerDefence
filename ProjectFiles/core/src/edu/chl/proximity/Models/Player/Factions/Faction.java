@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.Player.Factions;
 
 import edu.chl.proximity.Models.Map.Bases.Base;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Spells.PersistentObject;
 import edu.chl.proximity.Models.Utils.Image;
 
@@ -30,9 +31,9 @@ public abstract class Faction {
      * get the base used by this faction
      * @return (Base) The base used by this faction
      */
-    public abstract Base getNewBase();
+    public abstract Base getNewBase(Map map);
 
-    public abstract void configureSpells();
+    public abstract void configureSpells(Map map);
 
     public void addSpell(PersistentObject input){
         spells.add(input);

@@ -3,6 +3,7 @@ package edu.chl.proximity.Models.ControlPanel.PropertiesPanel;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Maps.StandardMap;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.Utils.GameData;
@@ -30,9 +31,9 @@ public class PropertiesPanel extends BoardObject{
     private Vector2 mainMenuPos = new Vector2(position.x+95,resumePos.y+100);
     private Vector2 soundPos = new Vector2(position.x + 100, mainMenuPos.y+100);
 
-    private ResumeButton resumeButton=new ResumeButton(resumePos);
-    private MainMenuButton mainMenuButton=new MainMenuButton(mainMenuPos);
-    private SoundButton soundButton=new SoundButton(soundPos);
+    private ResumeButton resumeButton;
+    private MainMenuButton mainMenuButton;
+    private SoundButton soundButton;
 
     private ArrayList<SoundBar> bars=new ArrayList<SoundBar>();
 
@@ -42,17 +43,20 @@ public class PropertiesPanel extends BoardObject{
     /**
      * Create a new properies panel
      */
-    public PropertiesPanel(){
-        super(position, background, 0);
+    public PropertiesPanel(Map map){
+        super(map, position, background, 0);
+        resumeButton = new ResumeButton(map, resumePos);
+        mainMenuButton = new MainMenuButton(map, mainMenuPos);
+        soundButton = new SoundButton(map, soundPos);
         initBars();
         setBarsAt(4);
         setSoundAt(4);
     }
 
-
-    public static PropertiesPanel getInstance(){
+    //Removed static!!!!
+    public PropertiesPanel getInstance(){
         if(propertiesPanel==null){
-            propertiesPanel=new PropertiesPanel();
+            propertiesPanel=new PropertiesPanel(getMap());
         }
 
         return propertiesPanel;
@@ -62,7 +66,7 @@ public class PropertiesPanel extends BoardObject{
     private void initBars(){
         Vector2 pos=new Vector2(soundPos.x+50,soundPos.y+15);
         for (int n=1; n<9; n++) {
-            bars.add(new SoundBar(new Vector2(pos.x + n * 17, pos.y), n));
+            bars.add(new SoundBar(getMap(), new Vector2(pos.x + n * 17, pos.y), n));
         }
     }
 
@@ -85,6 +89,9 @@ public class PropertiesPanel extends BoardObject{
      */
     public void setVisability(boolean isVisible){
         this.isVisible=isVisible;
+
+
+
     }
 
     /**
@@ -171,7 +178,7 @@ public class PropertiesPanel extends BoardObject{
      */
     public void pressedMainMenuButton(){
         setVisability(false);
-        GameData.getInstance().getGame().changeScreen(Proximity.State.MAIN_MENU,GameData.getInstance().getMap(),new MainMenu(), GameData.getInstance().getPlayer());
+        GameData.getInstance().getGame().changeScreen(Proximity.State.MAIN_MENU,getMap(),new MainMenu(), GameData.getInstance().getPlayer());
     }
 
     /**
@@ -196,6 +203,7 @@ public class PropertiesPanel extends BoardObject{
      */
     public void render(SpriteBatch batch){
         super.render(batch);
+
         resumeButton.render(batch);
         mainMenuButton.render(batch);
         soundButton.render(batch);

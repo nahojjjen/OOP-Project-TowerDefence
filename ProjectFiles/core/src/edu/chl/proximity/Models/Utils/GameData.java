@@ -19,24 +19,19 @@ import edu.chl.proximity.Proximity;
  * 23/04 edited by Hanna R�mer. Added ButtonPanel, PropertiesPanel and sound volume of game.
  * 24/04 edited by Hanna R�mer. Added Proximity and MainMenu + their setters and getters
  * 29/04 edited by Hanna R�mer. Removed ButtonPanel and PropertiesButton.
+ * 06/04 modified by Linda Evaldsson. Removing Map fron GameData, adding it as parameter to the classes that need it instead.
  */
 public class GameData {
 
     private static GameData gameData;
     private Map map;
     private Player player;
-    private Hand hand = new Hand();
     private MainMenu mainMenu;
-
     private int gameSpeed = 1;
-
     private Proximity proximity;
-
-    public static final float VOLUME= 0.1f;
-
+    public static float VOLUME= 0.1f;
 
     private GameData() {}
-
 
     public void setGame(Proximity proximity){
         this.proximity=proximity;
@@ -78,17 +73,17 @@ public class GameData {
      * set the map of the current game
      * @param map what map to se the game to
      */
-    public void setMap(Map map) {
+    /*public void setMap(Map map) {
         this.map = map;
-    }
+    }*/
 
     /**
      * get which map is currently active
      * @return (Map) which hold the current game-field data.
      */
-    public Map getMap() {
+    /*public Map getMap() {
         return map;
-    }
+    }*/
 
     public Player getPlayer(){return player;}
     public void setPlayer(Player inputPlayer){player = inputPlayer;}
@@ -97,7 +92,7 @@ public class GameData {
     public void setMainMenu(MainMenu mainMenu){ this.mainMenu=mainMenu;}
 
 
-    public Hand getHand() { return hand; }
+    //public Hand getHand() { return hand; }
 
     /**
      * This method creates a dummy data field with all options defaulted - dont call this method
@@ -108,7 +103,7 @@ public class GameData {
         GameData testData = new GameData();
         testData.setGameSpeed(1);
         testData.setGame(null);
-        testData.setMap(new StandardMap());
+        //testData.setMap(new StandardMap());
         testData.setPlayer(new Player(new Planes()));
         testData.setMainMenu(new MainMenu());
         gameData = testData;

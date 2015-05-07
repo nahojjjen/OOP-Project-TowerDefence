@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.MenuModels.StartButton;
 import edu.chl.proximity.Models.Utils.Background;
@@ -18,11 +19,12 @@ import java.util.List;
  * @date 2015-04-25
  */
 public class MainMenuController implements ClickHandler{
-    private Background model=new Background(null);
+    private Background model;
     //private List<BoardObject> models = new ArrayList<BoardObject>();
     private MainMenu mainMenu=GameData.getInstance().getMainMenu();
 
-    public MainMenuController() {
+    public MainMenuController(Map map) {
+        model=new Background(map, null);
         model.setPosition(new Vector2(0,0));
         model.setWidth(Gdx.graphics.getWidth());
         model.setHeight(Gdx.graphics.getHeight());

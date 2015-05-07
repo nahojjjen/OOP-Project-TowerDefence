@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps;
 
 import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Player.Players.Player;
@@ -28,8 +29,8 @@ public class Line1 extends Creep {
     private static Image img = new Image(Constants.filePath + "Creeps/Line2/7.png"); //dummy image to get correct resolution
     private static int speed = 3;
 
-    public Line1(int creepLineIndex) {
-        super(img, speed);
+    public Line1(Map map, int creepLineIndex) {
+        super(map, img, speed);
         this.creepLineIndex = creepLineIndex;
         setImage(getCreepImage());
     }
@@ -38,8 +39,8 @@ public class Line1 extends Creep {
      * Constructor to create a Line1 creep with properties from another creep.
      * @param oldCreep a Creep object from which position is used.
      */
-    public Line1(Line1 oldCreep) {
-        super(img, speed, oldCreep);
+    public Line1(Map map, Line1 oldCreep) {
+        super(map, img, speed, oldCreep);
         this.creepLineIndex = oldCreep.getCreepLineIndex() - 1;
         setImage(getCreepImage());
     }
@@ -50,9 +51,8 @@ public class Line1 extends Creep {
     public void devolve() {
     if (!isDead()){
         if (creepLineIndex != 1) {
-            GameData gameData = GameData.getInstance();
             //Devolves into a new Line 1.
-            gameData.getMap().addCreep(new Line1(this));
+            getMap().addCreep(new Line1(getMap(), this));
 
         }
         Player p = GameData.getInstance().getPlayer();

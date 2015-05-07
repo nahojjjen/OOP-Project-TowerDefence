@@ -2,6 +2,7 @@ package edu.chl.proximity.Models.Map.Towers;
 
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
@@ -32,9 +33,9 @@ public abstract class ShootingTower extends Tower {
      * @param targetingMethod how the tower should decide what target to shoot
      * @param reloadTime how long it takes the tower to shoot another bullet (in frames)
      */
-    public ShootingTower(Vector2 pos, Image image, double range, TargetingMethod targetingMethod, int reloadTime, Resources cost){
+    public ShootingTower(Map map, Vector2 pos, Image image, double range, TargetingMethod targetingMethod, int reloadTime, Resources cost){
         //arguments: Position, texture, image rotation-angle
-        super(pos, image, 0);
+        super(map, pos, image, 0);
         this.range = range;
         this.targetingMethod = targetingMethod;
         this.reloadTime = reloadTime;
@@ -54,7 +55,7 @@ public abstract class ShootingTower extends Tower {
      */
     public void shoot(){
         if(currentReload < 1 && currentTarget != null){
-            GameData.getInstance().getMap().addProjectile(createProjectile());
+            getMap().addProjectile(createProjectile());
             currentReload = reloadTime;
         }
     }

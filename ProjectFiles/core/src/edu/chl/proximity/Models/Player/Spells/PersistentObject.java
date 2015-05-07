@@ -2,6 +2,7 @@ package edu.chl.proximity.Models.Player.Spells;
 
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 
@@ -20,12 +21,12 @@ public abstract class PersistentObject extends BoardObject {
     private int counter;
     private boolean started= false;
 
-    public PersistentObject(Vector2 position, Image icon, int counter) {
-        super(position, icon, 0);
+    public PersistentObject(Map map, Vector2 position, Image icon, int counter) {
+        super(map, position, icon, 0);
         this.counter = counter;
 
         if (position != null){
-            GameData.getInstance().getMap().getAddStack().add(this);// this needs to be made for concurrent modificaiton
+            getMap().getAddStack().add(this);// this needs to be made for concurrent modificaiton
         }
     }
 
@@ -36,7 +37,7 @@ public abstract class PersistentObject extends BoardObject {
     public void tick() {
     if (started){
             if (counter <= 0) {
-                GameData.getInstance().getMap().getRemoveStack().add(this);
+                getMap().getRemoveStack().add(this);
                 return;
             }
             performEffect(counter);

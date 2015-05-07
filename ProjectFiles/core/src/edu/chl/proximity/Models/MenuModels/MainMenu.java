@@ -26,15 +26,18 @@ public class MainMenu {
     private Faction faction;
     private Player player;
     private Map map;
-    private StartButton startButton=new StartButton(new Vector2((Gdx.graphics.getWidth()/2)-64,600));
-    private FactionChooser factionChooser=new FactionChooser();
-    private MapSelect mapSelect=new MapSelect();
+    private StartButton startButton;
+    private FactionChooser factionChooser;
+    private MapSelect mapSelect;
 
 
     public MainMenu(){
+        factionChooser=new FactionChooser();
+        mapSelect=new MapSelect(null);
         faction=new Planes();
         player=new Player(faction);
         map=mapSelect.getSelected();
+        startButton = new StartButton(map, new Vector2((Gdx.graphics.getWidth()/2)-64,600));
 
     }
 
@@ -55,7 +58,7 @@ public class MainMenu {
 
         GameData.getInstance().setMainMenu(this);
         GameData.getInstance().setPlayer(player);
-        GameData.getInstance().setMap(map);
+        //GameData.getInstance().setMap(map);
         GameData.getInstance().getGame().changeScreen(Proximity.State.GAME,map,this,player);
     }
 

@@ -20,7 +20,7 @@ public class MapSelectIcon extends BoardObject{
     private static Image selected= new Image(Constants.filePath + "Buttons/MapSelected.png");
 
     public MapSelectIcon(Map map, Vector2 pos){
-        super(pos,notSelectable,0);
+        super(map, pos,notSelectable,0);
         this.map=map;
         this.pos=pos;
     }

@@ -2,6 +2,7 @@ package edu.chl.proximity.Models.ControlPanel.ButtonsPanel;
 
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 
@@ -15,6 +16,6 @@ public class PropertiesButton extends BoardObject{
     private static int height=50;
     private static int width=50;
 
-    public PropertiesButton(Vector2 position){ super(position,image,0,width,height);}
+    public PropertiesButton(Map map, Vector2 position){ super(map, position,image,0,width,height);}
 
 }

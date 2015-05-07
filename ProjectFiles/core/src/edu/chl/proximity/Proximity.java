@@ -22,6 +22,8 @@ public class Proximity extends Game {
 	public enum State{GAME,MAIN_MENU}
 
 	public void changeScreen(State state, Map map,MainMenu mainMenu, Player player){
+
+		
 		switch(state){
 			case GAME:
 				this.setScreen(new GameScreen(this,map,player));

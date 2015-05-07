@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingFactory;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
@@ -49,8 +51,8 @@ public class ControlPanel extends BoardObject{
     /**
      * Create a new instance of the controll panel
      */
-    public ControlPanel() {
-        super(new Vector2(Gdx.graphics.getWidth() - width, 0), background, 0, width, height);
+    public ControlPanel(Map map) {
+        super(map, new Vector2(Gdx.graphics.getWidth() - width, 0), background, 0, width, height);
 
         initiateText();
         initiateControlPanelTowers();
@@ -73,9 +75,10 @@ public class ControlPanel extends BoardObject{
      * Initiates the towers that are rendered in this controlPanel
      */
     public void initiateControlPanelTowers() {
-        controlPanelTowerList.add(new ControlPanelTower(new Vector2(0, 0), new BulletTower(new Vector2(0, 0))));
-        controlPanelTowerList.add(new ControlPanelTower(new Vector2(0, 0), new MissileTower(new Vector2(0, 0))));
-        controlPanelTowerList.add(new ControlPanelTower(new Vector2(0, 0), new SlowTower(new Vector2(0, 0))));
+        TargetingFactory targetFactory = new TargetingFactory(getMap());
+        controlPanelTowerList.add(new ControlPanelTower(getMap(), new Vector2(0, 0), new BulletTower(getMap(), new Vector2(0, 0), targetFactory.getTargetClosest())));
+        controlPanelTowerList.add(new ControlPanelTower(getMap(), new Vector2(0, 0), new MissileTower(getMap(), new Vector2(0, 0), targetFactory.getTargetClosest())));
+        controlPanelTowerList.add(new ControlPanelTower(getMap(), new Vector2(0, 0), new SlowTower(getMap(), new Vector2(0, 0), targetFactory.getTargetClosest())));
 
         for(int i = 0; i < controlPanelTowerList.size(); i++) {
             System.out.println("In controllpanel: Towers per row: " + i % towersPerRow);

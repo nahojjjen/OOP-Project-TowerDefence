@@ -22,8 +22,8 @@ public class MapSelect extends BoardObject{
     private int selected=0;
     private ProximityFont mapName=new ProximityFont(pos,null);
 
-    public MapSelect(){
-        super(pos, null, 0);
+    public MapSelect(Map map){
+        super(map, pos, null, 0);
         maps.add(new MapSelectIcon(new StandardMap(), new Vector2(200, 200)));
         maps.add(new MapSelectIcon(new FillerMap(), new Vector2(300,200)));
 

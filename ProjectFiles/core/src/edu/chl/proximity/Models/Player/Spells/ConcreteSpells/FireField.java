@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.Player.Spells.ConcreteSpells;
 
 import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Player.Spells.Spell;
 import edu.chl.proximity.Utilities.PointCalculations;
@@ -21,17 +22,17 @@ public class FireField extends Spell {
     private static double range = 60f;
     private static int duration = 120;
 
-    public FireField(){
-        super(null, duration); //600 frames = 10 seconds @ 60 fps
+    public FireField(Map map){
+        super(map, null, duration); //600 frames = 10 seconds @ 60 fps
 
     }
 
     @Override
     public void performEffect(int counter) {
-        List<Creep> creeps = GameData.getInstance().getMap().getCreeps();
+        List<Creep> creeps = getMap().getCreeps();
         for (Creep creep:creeps){
             if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getPosition()) < range * range) {
-                GameData.getInstance().getMap().getParticleManager().getFireCreepEffect().createEffect(creep.getCenter());
+                getMap().getParticleManager().getFireCreepEffect().createEffect(creep.getCenter());
                 //creep.slowDown(-20, 1); //speeds up creeps
                 if(counter % 20 ==0)
 
@@ -43,7 +44,7 @@ public class FireField extends Spell {
 
     @Override
     public void playParticleEffect() {
-        GameData.getInstance().getMap().getParticleManager().getFireFieldEffect().createEffect(getPosition());
+        getMap().getParticleManager().getFireFieldEffect().createEffect(getPosition());
     }
     @Override
     public double getRange() {

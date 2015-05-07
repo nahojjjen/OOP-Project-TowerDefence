@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.Player.Spells.ConcreteSpells;
 
 import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Player.Spells.Spell;
 import edu.chl.proximity.Utilities.PointCalculations;
@@ -19,24 +20,24 @@ public class WallOfStone extends Spell {
     private static double range = 60f;
     private static int duration = 120;
 
-    public WallOfStone() {
-        super(null, duration); //600 frames = 10 seconds @ 60 fps
+    public WallOfStone(Map map) {
+        super(map, null, duration); //600 frames = 10 seconds @ 60 fps
     }
 
     @Override
     public void performEffect(int counter) {
-        List<Creep> creeps = GameData.getInstance().getMap().getCreeps();
+        List<Creep> creeps = getMap().getCreeps();
         for (Creep creep : creeps) {
             if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getPosition()) < range * range) {
                 creep.slowDown(100, 1);
-                GameData.getInstance().getMap().getParticleManager().getDirtSmokeEffect().createEffect(creep.getCenter());
+                getMap().getParticleManager().getDirtSmokeEffect().createEffect(creep.getCenter());
             }
         }
     }
 
     @Override
     public void playParticleEffect() {
-        GameData.getInstance().getMap().getParticleManager().getWallOfStone().createEffect(getPosition());
+        getMap().getParticleManager().getWallOfStone().createEffect(getPosition());
     }
     @Override
     public double getRange() {
