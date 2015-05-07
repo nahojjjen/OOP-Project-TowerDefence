@@ -30,7 +30,7 @@ public class PlayButton extends BoardObject{
      * Sets image depending on what the current game-speed is
      */
     public void setRightImage(){
-        if(GameData.getInstance().getGameSpeed()==1){
+        if(GameData.getInstance().getPlayer().getSettings().getGameSpeed()==1){
             super.setImage(downImage);
         }else{
             super.setImage(upImage);
