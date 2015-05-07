@@ -18,12 +18,6 @@ import static org.mockito.Mockito.mock;
 @RunWith(GdxTestRunner.class)
 public class MapTest extends TestCase {
 
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
-        Gdx.gl = mock(GL20.class);
-    }
-
     @Test
     public void testAddCreep() throws Exception {
 

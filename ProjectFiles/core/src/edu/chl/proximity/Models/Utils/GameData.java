@@ -32,7 +32,7 @@ public class GameData {
 
     private Proximity proximity;
 
-    public static float VOLUME= 0.1f;
+    public static final float VOLUME= 0.1f;
 
 
     private GameData() {}

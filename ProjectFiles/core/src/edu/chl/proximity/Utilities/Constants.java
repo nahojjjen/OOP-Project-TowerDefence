@@ -6,5 +6,5 @@ package edu.chl.proximity.Utilities;
  */
 public class Constants {
 
-    public static String filePath = "core/assets/";
+    public static final String filePath = "core/assets/";
 }

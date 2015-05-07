@@ -87,7 +87,7 @@ public class GameScreen implements Screen{
         //FrostField frostField = new FrostField();
         //currentMap.addTower(new BulletTower(new Vector2(400,200)));
         //currentMap.addTower(new BulletTower(new Vector2(400,300)));
-        GameData.getInstance().setGameSpeed(1);
+        GameData.getInstance().setGameSpeed(1000);
     }
 
     /**
