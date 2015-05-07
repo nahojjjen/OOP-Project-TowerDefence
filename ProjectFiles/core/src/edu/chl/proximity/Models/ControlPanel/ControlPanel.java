@@ -2,6 +2,8 @@ package edu.chl.proximity.Models.ControlPanel;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -53,7 +55,7 @@ public class ControlPanel extends BoardObject{
     private int towersPerRow = 1;
 
     //The background of the ControlPanel
-    private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/temporaryControlPanelBackground.png");
+    private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/tweed.png");
 
     /**
      * Create a new instance of the controll panel
@@ -140,7 +142,10 @@ public class ControlPanel extends BoardObject{
      * @param batch what batch to render the controlpanel
      */
     public void render(SpriteBatch batch) {
-        super.render(batch);
+
+        background.getTexture().setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
+        batch.draw(background.getTexture(), position.x, position.y, background.getTexture().getWidth(), background.getTexture().getHeight(), width, height);
+
         healthText.draw(batch);
         lineText.draw(batch);
         pointText.draw(batch);

@@ -1,5 +1,6 @@
 package edu.chl.proximity.Models.ControlPanel;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
@@ -18,8 +19,8 @@ import java.util.List;
  */
 public class SpellPanel extends BoardObject {
 
-    private static int width = 266;
-    private static int height = 76;
+    private static int width = 306;
+    private static int height = 90;
 
     private static List<ProximityFont> shortCuts = new ArrayList<ProximityFont>();
     private static ProximityFont w = new ProximityFont(new Vector2(0, 0), "Q");
@@ -29,7 +30,7 @@ public class SpellPanel extends BoardObject {
     private static Vector2 position = new Vector2(340, Constants.GAME_HEIGHT - height);
 
     //The background of the ControlPanel
-    private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/warmBackgroundSmall.png");
+    private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/tweed.png");
 
     private List<ControlPanelSpell> controlPanelSpellList = new ArrayList<ControlPanelSpell>();
 
@@ -41,15 +42,19 @@ public class SpellPanel extends BoardObject {
 
     private void initiateSpells(Faction faction) {
         for(int i = 0; i < 4; i++) {
-            controlPanelSpellList.add(new ControlPanelSpell(new Vector2(position.x + 2 + (64+2)*i, position.y + 2), faction.getSpell(i)));
-            shortCuts.add(new ProximityFont(new Vector2(position.x + 4 + (64+2)*i, position.y + 4), Constants.SPELL_SHORTS[i]));
+            controlPanelSpellList.add(new ControlPanelSpell(new Vector2(position.x + 10 + (64+10)*i, position.y + 10), faction.getSpell(i)));
+            shortCuts.add(new ProximityFont(new Vector2(position.x + 14 + (64+10)*i, position.y + 14), Constants.SPELL_SHORTS[i]));
         }
 
 
     }
 
     public void render(SpriteBatch batch) {
-        super.render(batch);
+
+
+        background.getTexture().setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
+        batch.draw(background.getTexture(), position.x, position.y, background.getTexture().getWidth(), background.getTexture().getHeight(), width, height);
+
         for(ControlPanelSpell cpSpell : controlPanelSpellList) {
             cpSpell.render(batch);
         }
