@@ -18,9 +18,8 @@ import java.util.List;
  */
 public class SpellPanel extends BoardObject {
 
-    private static int width = 500;
-    private static int height = 70;
-    private String[] shorts = {"Q", "W", "E", "R"};
+    private static int width = 266;
+    private static int height = 76;
 
     private static List<ProximityFont> shortCuts = new ArrayList<ProximityFont>();
     private static ProximityFont w = new ProximityFont(new Vector2(0, 0), "Q");
@@ -43,7 +42,7 @@ public class SpellPanel extends BoardObject {
     private void initiateSpells(Faction faction) {
         for(int i = 0; i < 4; i++) {
             controlPanelSpellList.add(new ControlPanelSpell(new Vector2(position.x + 2 + (64+2)*i, position.y + 2), faction.getSpell(i)));
-            shortCuts.add(new ProximityFont(new Vector2(position.x + 4 + (64+2)*i, position.y + 4), shorts[i]));
+            shortCuts.add(new ProximityFont(new Vector2(position.x + 4 + (64+2)*i, position.y + 4), Constants.SPELL_SHORTS[i]));
         }
 
 

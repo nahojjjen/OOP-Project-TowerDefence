@@ -1,7 +1,9 @@
 package edu.chl.proximity.Models.ControlPanel;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -13,6 +15,7 @@ import edu.chl.proximity.Models.Map.Towers.BulletTower;
 import edu.chl.proximity.Models.Map.Towers.MissileTower;
 import edu.chl.proximity.Models.Map.Towers.SlowTower;
 import edu.chl.proximity.Utilities.Constants;
+import edu.chl.proximity.Utilities.PercentBar;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.ArrayList;
@@ -34,6 +37,8 @@ public class ControlPanel extends BoardObject{
     private ProximityFont lineText;
     private ProximityFont polygonText;
     private ProximityFont pointText;
+
+    private PercentBar percentBar;
 
     //Width and heigh of the ControlPanel when it is initiated
     private static int width = 300;
@@ -67,10 +72,12 @@ public class ControlPanel extends BoardObject{
      * Initiates all the texts of this ControlPanel
      */
     public void initiateText() {
-        healthText = createFont(30, 30, "null");
-        lineText = createFont(30, 60, "null");
-        polygonText = createFont(30, 80, "null");
-        pointText = createFont(30, 100, "null");
+        percentBar = new PercentBar(new Vector2(position.x + 30, position.y + 30), width - 60, 32, Color.WHITE, Color.BLACK, Color.RED);
+
+        healthText = createFont(30, 10, "null");
+        lineText = createFont(30, 80, "null");
+        polygonText = createFont(30, 100, "null");
+        pointText = createFont(30, 120, "null");
     }
 
     /**
@@ -91,7 +98,8 @@ public class ControlPanel extends BoardObject{
 
 
     public void setHealth(int percent){
-        healthText.setText("Liv: " + percent + "%");
+        percentBar.setPercent(percent);
+        healthText.setText("Life: ");
     }
 
     public void setResources(Resources resources){
@@ -140,6 +148,10 @@ public class ControlPanel extends BoardObject{
         for(ControlPanelTower cpTower : controlPanelTowerList) {
             cpTower.render(batch);
         }
+    }
+
+    public void renderShapes(ShapeRenderer renderer) {
+        percentBar.render(renderer);
     }
 
 

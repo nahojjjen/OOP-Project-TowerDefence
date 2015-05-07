@@ -13,4 +13,5 @@ public class Constants {
     public static final String FILE_PATH = "core/assets/";
     public static final int GAME_HEIGHT = Gdx.graphics.getHeight();
     public static final int GAME_WIDTH = Gdx.graphics.getWidth();
+    public static final String[] SPELL_SHORTS = {"Q", "W", "E", "R"};
 }

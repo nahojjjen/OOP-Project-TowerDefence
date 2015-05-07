@@ -2,6 +2,7 @@ package edu.chl.proximity.Models;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Utilities.PointCalculations;
@@ -99,6 +100,10 @@ public abstract class BoardObject implements Cloneable {
         if(image != null) {
             image.render(batch, position, angle);
         }
+    }
+
+    public void renderShapes(ShapeRenderer shapeRenderer) {
+
     }
 
     public int getWidth() {
