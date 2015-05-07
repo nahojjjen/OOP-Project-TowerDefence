@@ -14,8 +14,9 @@ import edu.chl.proximity.Models.Utils.Image;
  * 03-05-2015 Modified by Simon Gislen. Spell has a area range, could be infinite.
  */
 public abstract class Spell extends PersistentObject implements Holdable {
+
     public Spell(Map map, Image icon, int counter) {
-        super(map, null,icon, counter);
+        super(map, null, icon, counter);
     }
 
     @Override

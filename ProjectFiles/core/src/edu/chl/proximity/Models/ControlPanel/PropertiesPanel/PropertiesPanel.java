@@ -189,6 +189,10 @@ public class PropertiesPanel extends BoardObject{
 
     }
 
+    public boolean containsPoint(Vector2 point) {
+        return isVisible && super.containsPoint(point);
+    }
+
     /**
      * Render the panel
      * @param batch What batch to render

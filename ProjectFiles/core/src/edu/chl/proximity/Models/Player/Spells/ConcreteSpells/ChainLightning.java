@@ -5,6 +5,8 @@ import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Player.Spells.Spell;
+import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.ArrayList;
@@ -21,16 +23,17 @@ public class ChainLightning extends Spell {
     //Spell stats
     private static double range = 100f;
     private static int duration = 2;
+    private static Image image = new Image(Constants.FILE_PATH + "Creeps/Line3/6.png");
 
     private List<Vector2> alreadyHitPositions = new ArrayList<Vector2>();
     private double bounceRange = 20;
     public ChainLightning(Map map) {
-        super(map, null, duration); //600 frames = 10 seconds @ 60 fps
+        super(map, image, duration); //600 frames = 10 seconds @ 60 fps
 
     }
 
     public ChainLightning(Map map, Vector2 position, List<Vector2> alreadyHitPositions) {
-        super(map, null, duration); //600 frames = 10 seconds @ 60 fps
+        super(map, image, duration); //600 frames = 10 seconds @ 60 fps
         this.alreadyHitPositions = alreadyHitPositions;
         getMap().getParticleManager().getLightningCreepEffect().createEffect(position); //create the spark effect
     }

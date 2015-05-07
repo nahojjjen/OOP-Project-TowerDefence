@@ -67,34 +67,14 @@ public class MainController implements InputProcessor{
         handController = new HandController(map);
         persistentObjectController = new PersistentObjectController(map);
 
-
         viewport=v;
         clickHandlers.add(controlPanelController);
-        clickHandlers.add(mapController);
-        //clickHandlers.add(buttonPanelController);
         clickHandlers.add(handController);
-        //clickHandlers.add(propertiesPanelController);
     }
 
     public List<BoardObject> getControlPanels() {
         return controlPanelController.getControlPanels();
     }
-/*
-    public void setControlPanel(ControlPanel controlPanel) {
-        this.controlPanel = controlPanel;
-        controlPanelController.setControlPanel(controlPanel);
-    }
-
-    public void setButtonPanel(ButtonPanel buttonPanel){
-        controlPanelController.setButtonPanel(buttonPanel);
-    }
-    public void setProfilePanel(ProfilePanel profilePanel){
-        controlPanelController.setProfilePanel(profilePanel);
-    }
-    public void setSpellPanel(SpellPanel spellPanel){
-        controlPanelController.setSpellPanel(spellPanel);
-    }*/
-
 
     public void updateAllControllers() {
         if(game.getCurrentScreen().equals(Proximity.State.GAME)) {
@@ -217,25 +197,6 @@ public class MainController implements InputProcessor{
         //Calculates the real coordinates from the scaled coordinates
         Vector2 clickedPoint = viewport.unproject(new Vector2(x, y));
 
-
-        //Test code to run spells. Commented out because it messed up tower placing.
-        /*
-        Spell effect = new WallOfStone();
-        if (counter % 4 == 0){
-             effect = new WallOfStone();
-
-        }else if(counter % 4 == 1){
-             effect = new ChainLightning();
-            System.out.println("In MainController: Cycling through spells to create, lightning not working correctly.");
-        }else if(counter % 4 == 2){
-             effect = new FireField();
-        }else if(counter % 4 == 3){
-             effect = new FrostField();
-        }
-        counter++;
-        effect.placeObject(clickedPoint);
-        */
-
         //For creating paths during the developing state
         PointCalculations.createPathTool((int) clickedPoint.x, (int) clickedPoint.y);
 
@@ -244,6 +205,9 @@ public class MainController implements InputProcessor{
 
             controller.touchDown(clickedPoint, pointer, button);
 
+        }
+        if(!controlPanelController.modelsClicked(clickedPoint)) {
+            mapController.touchDown(clickedPoint, pointer, button);
         }
 
 

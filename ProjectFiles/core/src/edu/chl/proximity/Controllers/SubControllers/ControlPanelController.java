@@ -4,11 +4,8 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.ControlPanel.*;
 import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.*;
-import edu.chl.proximity.Models.ControlPanel.ControlPanel;
-import edu.chl.proximity.Models.ControlPanel.ControlPanelTower;
-import edu.chl.proximity.Models.ControlPanel.ProfilePanel;
-import edu.chl.proximity.Models.ControlPanel.SpellPanel;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.*;
@@ -47,13 +44,22 @@ public class ControlPanelController implements ClickHandler {
         map.setPropertiesPanel(propertiesPanel);
         buttonPanel = new ButtonPanel(propertiesPanel);
         profilePanel = new ProfilePanel();
-        spellPanel = new SpellPanel();
+        spellPanel = new SpellPanel(GameData.getInstance().getPlayer().getFaction());
 
         controlPanels.add(propertiesPanel);
         controlPanels.add(controlPanel);
         controlPanels.add(buttonPanel);
         controlPanels.add(profilePanel);
         controlPanels.add(spellPanel);
+    }
+
+    public boolean modelsClicked(Vector2 clickedPoint) {
+        for(BoardObject cp : controlPanels) {
+            if(cp.containsPoint(clickedPoint)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -95,29 +101,26 @@ public class ControlPanelController implements ClickHandler {
 
 
     public void touchDown (Vector2 clickedPoint, int pointer, int button) {
-        if (GameData.getInstance().getPlayer().getSettings().getGameSpeed() != 0) {
 
+        if (GameData.getInstance().getPlayer().getSettings().getGameSpeed() != 0 && modelsClicked(clickedPoint)) {
+
+            if(map.getHand().getItem() != null)
+                map.getHand().setItem(null);
 
             ControlPanelTower cpTower = controlPanel.getTowerOnPosition(clickedPoint);
             if (cpTower != null) {
                 map.getHand().setItem(cpTower.getTower());
             }
-
-            //TODO: Cancel a spell or an item if already in hand.
-            /*if (GameData.getInstance().getHand().getItem() != null) {
-                GameData.getInstance().getHand().setItem(null);
-                return;
+            ControlPanelSpell cpSpell = spellPanel.getSpellOnPosition(clickedPoint);
+            if (cpSpell != null) {
+                map.getHand().setItem(cpSpell.getSpell());
             }
-            */
 
-            if (cpTower != null) {
-                map.getHand().setItem(cpTower.getTower());
-            }
         }
         BoardObject touchedButton;
 
             //ButtonPanel
-        if (!map.getPropertiesPanel().getIfVisible()) {
+        if (!map.getPropertiesPanel().getIfVisible() ) {
                 touchedButton = buttonPanel.getButtonOnPosition(clickedPoint);
                 if (touchedButton != null) {
                     map.getHand().setItem(null);

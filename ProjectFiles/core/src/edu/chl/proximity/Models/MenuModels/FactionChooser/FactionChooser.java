@@ -87,6 +87,7 @@ public class FactionChooser extends BoardObject{
     public void setFactionData(){
         name.setText(factions.get(showing).getName());
         factionImage.setImage(factions.get(showing).getShowImage());
+
     }
 
     public Faction getCurrentlyShown(){

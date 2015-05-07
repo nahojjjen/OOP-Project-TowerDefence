@@ -60,8 +60,10 @@ public class MainMenu {
     public void pressedStart(){
         player.setFacton(factionChooser.getCurrentlyShown());
         map=mapSelect.getSelected();
+        player.getFaction().configureSpells(map);
 
         GameData.getInstance().setPlayer(player);
+
         game.changeScreen(Proximity.State.GAME, map, player);
     }
 
