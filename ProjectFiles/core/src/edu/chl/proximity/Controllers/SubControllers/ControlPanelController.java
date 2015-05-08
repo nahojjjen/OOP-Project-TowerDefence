@@ -142,9 +142,7 @@ public class ControlPanelController implements ClickHandler {
             }
             //TowerPanel
             touchedButton=towerPanel.getButtonOnPosition(clickedPoint);
-            if(touchedButton instanceof CheckBox){
 
-            }
 
         }
 

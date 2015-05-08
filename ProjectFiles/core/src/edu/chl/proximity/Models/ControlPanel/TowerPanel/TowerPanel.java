@@ -7,7 +7,6 @@ import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Towers.ShootingTower;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.*;
-import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Utilities.Constants;
