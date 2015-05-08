@@ -21,15 +21,21 @@ import edu.chl.proximity.Utilities.PointCalculations;
  * 08/04 modified by Linda Evaldsson. Refactoring to Tower instead of AbstracTower. Removed Projectile as parameter for the constructor.
  * 03-05-2015 Modified by Simon Gislen. Tiny spell check.
  * 04-05-2015 Modified by Simon Gislen. Moved projectile functionality to ShootingTower
- *
+ * 08/05 modified by Hanna Römer. Added name.
  */
 public abstract class Tower extends BoardObject implements Holdable, Cloneable{
 
     protected Resources cost;
     protected double range;
+    private String name;
 
-    public Tower(Map map, Vector2 pos, Image image, int angle) {
+    public Tower(Map map, Vector2 pos, Image image, int angle, String name) {
         super(map, pos, image, angle);
+        this.name=name;
+    }
+
+    public String getName(){
+        return name;
     }
 
     public abstract void update();

@@ -35,7 +35,7 @@ public class SlowTower extends ShootingTower {
      * @param pos Position of tower
      */
     public SlowTower(Map map, Vector2 pos, TargetingMethod targetingMethod){
-        super(map, pos, img, range, targetingMethod, reloadTime, resources);
+        super(map, pos, img, range, targetingMethod, reloadTime, resources, "Freeze Tower");
     }
 
     @Override

@@ -30,7 +30,7 @@ public class MissileTower extends ShootingTower {
      *  double range, TargetingMethod targetingMethod, int reloadTime
      */
     public MissileTower(Map map, Vector2 pos, TargetingMethod targetingMethod) {
-        super(map, pos, img, range, targetingMethod, reloadTime, resources);
+        super(map, pos, img, range, targetingMethod, reloadTime, resources, "Missile Tower");
     }
 
     public Projectile createProjectile() {

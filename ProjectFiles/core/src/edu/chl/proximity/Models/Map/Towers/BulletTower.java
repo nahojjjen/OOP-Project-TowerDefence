@@ -32,7 +32,7 @@ public class BulletTower extends ShootingTower implements Cloneable {
      *  double range, TargetingMethod targetingMethod, int reloadTime
      */
     public BulletTower(Map map, Vector2 pos, TargetingMethod targetingMethod) {
-        super(map, pos, img, range, targetingMethod, reloadTime, resources);
+        super(map, pos, img, range, targetingMethod, reloadTime, resources, "Bullet Tower");
     }
 
 

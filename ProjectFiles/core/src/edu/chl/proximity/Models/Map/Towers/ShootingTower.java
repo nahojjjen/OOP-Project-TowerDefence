@@ -15,6 +15,8 @@ import edu.chl.proximity.Utilities.PointCalculations;
  * @date 04/05/15.
  *
  * Abstract tower class that handles shooting of projectiles
+ *
+ * 08/05 modified by Hanna Römer. Added setter and getter for targetingMethod.
  */
 public abstract class ShootingTower extends Tower {
 
@@ -33,9 +35,9 @@ public abstract class ShootingTower extends Tower {
      * @param targetingMethod how the tower should decide what target to shoot
      * @param reloadTime how long it takes the tower to shoot another bullet (in frames)
      */
-    public ShootingTower(Map map, Vector2 pos, Image image, double range, TargetingMethod targetingMethod, int reloadTime, Resources cost){
+    public ShootingTower(Map map, Vector2 pos, Image image, double range, TargetingMethod targetingMethod, int reloadTime, Resources cost, String name){
         //arguments: Position, texture, image rotation-angle
-        super(map, pos, image, 0);
+        super(map, pos, image, 0, name);
         this.range = range;
         this.targetingMethod = targetingMethod;
         this.reloadTime = reloadTime;
@@ -90,4 +92,7 @@ public abstract class ShootingTower extends Tower {
             currentReload --;
         }
     }
+
+    public void setTargetingMethod(TargetingMethod targetingMethod){ this.targetingMethod=targetingMethod;}
+    public TargetingMethod getTargetingMethod() {return this.targetingMethod;}
 }

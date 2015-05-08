@@ -6,6 +6,8 @@ import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.ControlPanel.*;
 import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.*;
+import edu.chl.proximity.Models.ControlPanel.TowerPanel.CheckBox;
+import edu.chl.proximity.Models.ControlPanel.TowerPanel.TowerPanel;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.*;
@@ -24,6 +26,7 @@ import java.util.List;
  * 30/04 modified by Hanna R�mer. Cannot click on anything else when propertiesPanel is open, cannot place towers when game is paused.
  * 03/05 modified by Simon Gislen. Towers are not free anymore.
  * 07/05 modofied by Linda Evaldsson. Added key bindings for spells. Also added handling for ControlPanels.
+ * 08/05 modified by Hanna Römer. Added tower panel.
  */
 public class ControlPanelController implements ClickHandler {
 
@@ -32,6 +35,7 @@ public class ControlPanelController implements ClickHandler {
     private SpellPanel spellPanel;
     private PropertiesPanel propertiesPanel;
     private ProfilePanel profilePanel;
+    private TowerPanel towerPanel;
     private Map map;
     private List<BoardObject> controlPanels = new ArrayList<BoardObject>();
 
@@ -41,6 +45,7 @@ public class ControlPanelController implements ClickHandler {
 
         propertiesPanel = new PropertiesPanel(g);
         controlPanel = new ControlPanel(map);
+        towerPanel=new TowerPanel(map);
         map.setPropertiesPanel(propertiesPanel);
         buttonPanel = new ButtonPanel(propertiesPanel);
         profilePanel = new ProfilePanel();
@@ -51,6 +56,7 @@ public class ControlPanelController implements ClickHandler {
         controlPanels.add(buttonPanel);
         controlPanels.add(profilePanel);
         controlPanels.add(spellPanel);
+        controlPanels.add(towerPanel);
     }
 
     public boolean modelsClicked(Vector2 clickedPoint) {
@@ -119,21 +125,27 @@ public class ControlPanelController implements ClickHandler {
         }
         BoardObject touchedButton;
 
-            //ButtonPanel
         if (!map.getPropertiesPanel().getIfVisible() ) {
-                touchedButton = buttonPanel.getButtonOnPosition(clickedPoint);
-                if (touchedButton != null) {
-                    map.getHand().setItem(null);
-                }
-                if (touchedButton instanceof PlayButton) {
-                    buttonPanel.pressedPlay();
-                } else if (touchedButton instanceof PauseButton) {
-                    buttonPanel.pressedPause();
-                } else if (touchedButton instanceof SpeedButton) {
-                    buttonPanel.pressedSpeedButton();
-                } else if (touchedButton instanceof PropertiesButton) {
-                    buttonPanel.pressedPropertiesButton();
-                }
+            //ButtonPanel
+            touchedButton = buttonPanel.getButtonOnPosition(clickedPoint);
+            if (touchedButton != null) {
+                map.getHand().setItem(null);
+            }
+            if (touchedButton instanceof PlayButton) {
+                buttonPanel.pressedPlay();
+            } else if (touchedButton instanceof PauseButton) {
+                buttonPanel.pressedPause();
+            } else if (touchedButton instanceof SpeedButton) {
+                buttonPanel.pressedSpeedButton();
+            } else if (touchedButton instanceof PropertiesButton) {
+                buttonPanel.pressedPropertiesButton();
+            }
+            //TowerPanel
+            touchedButton=towerPanel.getButtonOnPosition(clickedPoint);
+            if(touchedButton instanceof CheckBox){
+
+            }
+
         }
 
 
