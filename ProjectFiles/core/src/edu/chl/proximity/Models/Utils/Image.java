@@ -12,7 +12,9 @@ import java.util.HashMap;
  * @author Linda Evaldsson
  * @date 2015-04-02
  *
+ * A service for handling images in Proximity
  *
+ * 08/05 modified by Linda Evaldsson. Added renderRepatedly-method.
  */
 public class Image implements Cloneable {
 
@@ -42,11 +44,16 @@ public class Image implements Cloneable {
     }
 
     public void render(SpriteBatch batch, Vector2 p, double angle) {
-        batch.draw(texture, (int)p.x, (int)p.y, texture.getWidth()/2,
-                texture.getHeight()/2, texture.getWidth(), texture.getHeight(),
-                1, 1, (int)angle, 0, 0, texture.getWidth(), texture.getHeight(), false, false);
+        batch.draw(texture, (int) p.x, (int) p.y, texture.getWidth() / 2,
+                texture.getHeight() / 2, texture.getWidth(), texture.getHeight(),
+                1, 1, (int) angle, 0, 0, texture.getWidth(), texture.getHeight(), false, false);
     }
 
+
+    public void renderRepeatedly(SpriteBatch batch, Vector2 p,int width, int height) {
+        texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
+        batch.draw(texture, p.x, p.y, texture.getWidth(), texture.getHeight(), width, height);
+    }
     public Texture getTexture(){ return texture; }
 
     public Object clone() throws CloneNotSupportedException {

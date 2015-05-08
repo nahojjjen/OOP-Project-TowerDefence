@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Vector2;
  * A class defining text in the game, is has a font, position and a string
  *
  * Unknown date modified by Johan Swanberg
+ * 08/05 modified by Linda Evaldsson. Added scale method.
  */
 public class ProximityFont {
 
@@ -29,6 +30,11 @@ public class ProximityFont {
         this.position = position;
         font = new BitmapFont(true);
 
+    }
+
+    public void scale(float scale) {
+
+        font.scale(scale);
     }
 
     /**

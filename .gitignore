@@ -1,0 +1,11 @@
+*.py
+*.pyc
+gitinspector/html/flot.zip
+gitinspector/html/gitinspector_piclet.png
+*.footer
+gitinspector/html/html.header
+gitinspector/html/jquery.tablesorter.min.js.zip
+gitinspector/statistics.html
+gitinspector/translations/messages.pot
+*.po
+*.mo

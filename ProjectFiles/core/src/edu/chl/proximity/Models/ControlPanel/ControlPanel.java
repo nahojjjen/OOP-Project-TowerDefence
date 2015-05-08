@@ -31,11 +31,11 @@ import java.util.List;
  * The class managing the information to the right of the screen
  *
  * Unknown date modified by Johan Swanberg
+ * 08/05 modified by Linda Evaldsson. Changed percentBar to use textures (images). Moved some rendering to Image class.
  */
 public class ControlPanel extends BoardObject{
 
     //The texts that are displayed
-    private ProximityFont healthText;
     private ProximityFont lineText;
     private ProximityFont polygonText;
     private ProximityFont pointText;
@@ -45,6 +45,11 @@ public class ControlPanel extends BoardObject{
     //Width and heigh of the ControlPanel when it is initiated
     private static int width = 300;
     private static int height = Constants.GAME_WIDTH;
+
+
+    private static Image HPforeground = new Image(Constants.FILE_PATH + "Backgrounds/health.png");
+    private static Image HPbackground = new Image(Constants.FILE_PATH + "Backgrounds/square.png");
+    private static String HPtext = "HP";
 
     private static Vector2 position = new Vector2(Constants.GAME_WIDTH - width, 0);
 
@@ -74,9 +79,9 @@ public class ControlPanel extends BoardObject{
      * Initiates all the texts of this ControlPanel
      */
     public void initiateText() {
-        percentBar = new PercentBar(new Vector2(position.x + 30, position.y + 30), width - 60, 32, Color.WHITE, Color.BLACK, Color.RED);
+        percentBar = new PercentBar(new Vector2(position.x + 30, position.y + 30), width - 60, 32, HPforeground, HPbackground);
+        percentBar.setText(HPtext);
 
-        healthText = createFont(30, 10, "null");
         lineText = createFont(30, 80, "null");
         polygonText = createFont(30, 100, "null");
         pointText = createFont(30, 120, "null");
@@ -101,7 +106,7 @@ public class ControlPanel extends BoardObject{
 
     public void setHealth(int percent){
         percentBar.setPercent(percent);
-        healthText.setText("Life: ");
+        percentBar.setText(percent + "%");
     }
 
     public void setResources(Resources resources){
@@ -134,7 +139,6 @@ public class ControlPanel extends BoardObject{
      */
     private ProximityFont createFont(float x, float y, String s){
         return new ProximityFont(new Vector2(getPosition().x + x, y), s);
-        //return new ProximityFont(new Vector2(width + x, y), s);
     }
 
     /**
@@ -143,20 +147,14 @@ public class ControlPanel extends BoardObject{
      */
     public void render(SpriteBatch batch) {
 
-        background.getTexture().setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
-        batch.draw(background.getTexture(), position.x, position.y, background.getTexture().getWidth(), background.getTexture().getHeight(), width, height);
-
-        healthText.draw(batch);
+        background.renderRepeatedly(batch, this.getPosition(), width, height);
         lineText.draw(batch);
         pointText.draw(batch);
         polygonText.draw(batch);
         for(ControlPanelTower cpTower : controlPanelTowerList) {
             cpTower.render(batch);
         }
-    }
-
-    public void renderShapes(ShapeRenderer renderer) {
-        percentBar.render(renderer);
+        percentBar.render(batch);
     }
 
 

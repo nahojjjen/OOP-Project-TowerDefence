@@ -76,7 +76,7 @@ public class Renderer {
         renderProjectiles(batch);
         renderBase(batch);
         renderParticles(batch);
-        renderControlPanels(batch, shapeRenderer);
+        renderControlPanels(batch);
 
         //Render the hand and its range.
         Hand hand = map.getHand();
@@ -117,22 +117,10 @@ public class Renderer {
      * Draws out the control panel
      * @param batch what graphics batch object that should draw on the screen
      */
-    private void renderControlPanels(SpriteBatch batch, ShapeRenderer shapeRenderer) {
+    private void renderControlPanels(SpriteBatch batch) {
         for(BoardObject panel : controlPanels) {
             panel.render(batch);
-            batch.end();
-            panel.renderShapes(shapeRenderer);
-            batch.begin();
         }
-        /*
-        controlPanel.render(batch);
-        buttonPanel.render(batch);
-        profilePanel.render(batch);
-        spellPanel.render(batch);
-        if(map.getPropertiesPanel().getIfVisible()){
-            map.getPropertiesPanel().render(batch);
-        }
-        */
 
     }
 
