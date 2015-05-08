@@ -140,6 +140,16 @@ public abstract class Map {
         for (PersistentObject persistentObject : persistentObjects) {
             persistentObject.tick();
         }
+
+        for (Projectile projectile:projectiles){
+            projectile.reAngle();
+            projectile.move();
+            projectile.checkCollision();
+            if (projectile.isOutsideView()){
+                remove(projectile);
+            }
+        }
+
     }
 
     public Path getPath(){return path;}
