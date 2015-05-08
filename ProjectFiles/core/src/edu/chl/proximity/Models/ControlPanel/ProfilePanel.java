@@ -39,7 +39,7 @@ public class ProfilePanel extends BoardObject {
     public void updateExperience() {
         Player player = GameData.getInstance().getPlayer();
         int level = (int)player.getLevel();
-        levelText.setText("" + player.getExperience() + ", " + player.getLevel());
+        levelText.setText("" + player.getExperience() + ", " + level);
 
     }
 
