@@ -31,7 +31,7 @@ public class MissileTower extends ShootingTower {
      */
     public MissileTower(Map map, Vector2 pos, TargetingMethod targetingMethod) {
         super(map, pos, img, range, targetingMethod, reloadTime, resources, "Missile Tower");
-        //this.upgrade=new MissileTower(map,pos,targetingMethod);
+        this.upgrade=this;
     }
 
     public Projectile createProjectile() {
