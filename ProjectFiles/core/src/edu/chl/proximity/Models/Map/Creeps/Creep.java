@@ -3,12 +3,12 @@ package edu.chl.proximity.Models.Map.Creeps;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
 import edu.chl.proximity.Utilities.PointCalculations;
+import edu.chl.proximity.Utilities.ProximityRandom;
 
 /**
  * @author Linda Evaldsson
@@ -76,7 +76,7 @@ public abstract class Creep extends BoardObject {
         this.backUpSpeed = speed;
 
         path = getMap().getPath();
-        randomRotation = (Math.random()*15) - 7.5;
+        randomRotation = (ProximityRandom.getRandomDouble()*15) - 7.5;
     }
 
     /**

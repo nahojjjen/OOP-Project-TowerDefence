@@ -7,6 +7,7 @@ import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Waves.Wave;
+import edu.chl.proximity.Utilities.ProximityRandom;
 
 import java.util.ArrayList;
 
@@ -84,7 +85,7 @@ public class StandardGenerator {
 
         } else {
             //Some endless algorithm
-            double r = Math.random()*5;
+            double r = ProximityRandom.getRandomDouble()*5;
             for (int i = 0; i < Math.max(0, (int)(waveIndex/2) - r); i++) {
                 creeps.add(new Circle(map));
             }

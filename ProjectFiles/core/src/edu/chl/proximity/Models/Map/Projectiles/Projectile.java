@@ -1,7 +1,6 @@
 package edu.chl.proximity.Models.Map.Projectiles;
 
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.math.RandomXS128;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
@@ -10,6 +9,7 @@ import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Map.Particles.ProximityEffect;
 import edu.chl.proximity.Utilities.PointCalculations;
+import edu.chl.proximity.Utilities.ProximityRandom;
 
 import java.util.List;
 
@@ -29,7 +29,6 @@ public abstract class Projectile extends BoardObject implements Cloneable{
     private int health;
     private int speed;
     private Sound sound;
-    private RandomXS128 rndGenerator = new RandomXS128();
     /**
      * Create a new projectile type
      * @param particleEffect what effect should be played when the bullet hits
@@ -107,7 +106,7 @@ public abstract class Projectile extends BoardObject implements Cloneable{
     public void playSound(){
         if (sound != null){
             float xSoundPosition = getXSoundPosition();
-            float rndPitch = (rndGenerator.nextFloat()/2) + 0.5f;
+            float rndPitch = (ProximityRandom.getRandomFloat()/2) + 0.5f; //renturns number between 0.75 and 1.25
             sound.play(GameData.getInstance().getPlayer().getSettings().getGameVolume(), rndPitch, xSoundPosition);
         }
     }
