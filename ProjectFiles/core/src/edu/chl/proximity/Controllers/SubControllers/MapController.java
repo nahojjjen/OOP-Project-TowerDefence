@@ -68,6 +68,8 @@ public class MapController implements ClickHandler {
                 }
             }
 
+        }else{
+            map.getHand().setItem(null);
         }
     }
 
