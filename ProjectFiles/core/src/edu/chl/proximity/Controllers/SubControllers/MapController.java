@@ -4,10 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Utils.Background;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Player.Holdables.Holdable;
+import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,16 +45,24 @@ public class MapController implements ClickHandler {
 
     @Override
     public void touchDown(Vector2 clickedPoint, int pointer, int button) {
-
         //Checks if the click is within the map
         if (model.containsPoint(clickedPoint)) {
             //Checks what item is currently picked up
             Holdable item = map.getHand().getItem();
 
+            for(Tower tower: map.getTowers()){
+                if(PointCalculations.isPointInObject(clickedPoint,tower)){
+                    map.setChoosenTower(tower);
+                }
+            }
+
             if (item != null) {
                 //Places the currently picked up item on the map if the player can afford it.
                 if (map.getHand().canPlayerAffordTheHand()) {
                     item.placeObject(clickedPoint);
+                    if(item instanceof Tower){
+                        map.setChoosenTower((Tower) item);
+                    }
                 } else {
                     //TODO: display error?
                 }

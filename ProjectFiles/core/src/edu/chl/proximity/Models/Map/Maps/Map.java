@@ -36,6 +36,7 @@ public abstract class Map {
     private String name;
     private int waveIndex;
     private Hand hand = new Hand();
+    private Tower choosenTower;
 
     private PropertiesPanel propertiesPanel;
 
@@ -128,6 +129,8 @@ public abstract class Map {
     public void setPersistentObjects(ArrayList<PersistentObject> persistentObjects) {
         this.persistentObjects = persistentObjects;
     }
+    public void setChoosenTower(Tower tower){ choosenTower=tower;}
+    public Tower getChoosenTower(){ return choosenTower;}
 
     /**
      * Add a creep to the map.

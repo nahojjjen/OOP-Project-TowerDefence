@@ -32,6 +32,7 @@ import java.util.List;
  * 24/04 Modified by Johan Swanberg - Added creep debug view and fixed path render to not be missaligned
  * 29/04 modified by Hanna R�mer. Removed PropertiesPanel instance and setter since it's a singleton.
  * 07/05 modified by Linda Evaldsson. Removed all the setters and getters for ControlPanels, replaced with setControlPanel.
+ * 08/05 modified by Hanna Römer. Added renderChoosenTowerRange
  */
 public class Renderer {
 
@@ -62,7 +63,8 @@ public class Renderer {
         shapeRenderer.end();
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        renderAllTowerRanges(shapeRenderer);
+        renderChosenTowerRange(shapeRenderer);
+        //renderAllTowerRanges(shapeRenderer);
         //debugRenderAllCentersAndUpperLeftCorners(shapeRenderer);
         shapeRenderer.end();
 
@@ -148,6 +150,16 @@ public class Renderer {
 
         for (int i = 1; i<waypoints.size(); i++){
             shapeRenderer.line(waypoints.get(i-1).x  ,waypoints.get(i-1).y, waypoints.get(i).x,waypoints.get(i).y);
+        }
+    }
+
+    /**
+     * Renders a circle around chosen tower to show it's range
+     * @param shapeRenderer what shaperenderer to use to show the graphics
+     */
+    private void renderChosenTowerRange(ShapeRenderer shapeRenderer){
+        if(map.getChoosenTower()!= null){
+            renderRangeIndicator(shapeRenderer,new Color(0.4f, 0.2f, 0.9f, 0.2f),map.getChoosenTower().getCenter(), map.getChoosenTower().getRange());
         }
     }
 
