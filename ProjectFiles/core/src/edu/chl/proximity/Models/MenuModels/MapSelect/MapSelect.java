@@ -15,12 +15,13 @@ import java.util.List;
 /**
  * @author Hanna Römer
  * @date 2015-05-03
+ *
+ * 08/05 modified by Hanna Römer. Removed mapName.
  */
 public class MapSelect extends BoardObject{
     private static Vector2 pos=new Vector2(0,0);
     private List<MapSelectIcon> maps = new ArrayList<MapSelectIcon>();
     private int selected=0;
-    private ProximityFont mapName=new ProximityFont(pos,null);
 
     public MapSelect(Map map){
         super(map, pos, null, 0);
@@ -56,7 +57,5 @@ public class MapSelect extends BoardObject{
         for(MapSelectIcon map:maps){
             map.render(batch);
         }
-        mapName.setText(maps.get(selected).getMap().getName());
-        mapName.draw(batch);
     }
 }
