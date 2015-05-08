@@ -62,7 +62,7 @@ public class GameScreen implements Screen{
         viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         */
 
-        mainController = new MainController(map, viewport, g);
+        mainController = new MainController(map, this.viewport, g);
         renderer.setControlPanels(mainController.getControlPanels());
 
         shapeRenderer.setAutoShapeType(true);
