@@ -36,6 +36,7 @@ public class SlowTower extends ShootingTower {
      */
     public SlowTower(Map map, Vector2 pos, TargetingMethod targetingMethod){
         super(map, pos, img, range, targetingMethod, reloadTime, resources, "Freeze Tower");
+        this.upgrade=new MissileTower(map,pos,targetingMethod);
     }
 
     @Override

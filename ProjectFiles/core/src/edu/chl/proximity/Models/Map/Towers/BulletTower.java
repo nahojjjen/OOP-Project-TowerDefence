@@ -33,6 +33,7 @@ public class BulletTower extends ShootingTower implements Cloneable {
      */
     public BulletTower(Map map, Vector2 pos, TargetingMethod targetingMethod) {
         super(map, pos, img, range, targetingMethod, reloadTime, resources, "Bullet Tower");
+        this.upgrade=new MissileTower(map,pos,targetingMethod);
     }
 
 

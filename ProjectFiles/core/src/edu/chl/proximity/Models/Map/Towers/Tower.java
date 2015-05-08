@@ -24,9 +24,9 @@ import edu.chl.proximity.Utilities.PointCalculations;
  * 08/05 modified by Hanna Römer. Added name.
  */
 public abstract class Tower extends BoardObject implements Holdable, Cloneable{
-
     protected Resources cost;
     protected double range;
+    protected Tower upgrade;
     private String name;
 
     public Tower(Map map, Vector2 pos, Image image, int angle, String name) {
@@ -56,4 +56,6 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
     public Resources getCost() {
         return cost;
     }
+
+    public Tower getUpgrade(){return upgrade;}
 }
