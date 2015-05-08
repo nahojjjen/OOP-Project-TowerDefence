@@ -4,6 +4,8 @@ package edu.chl.proximity.Models.Player.ResourceSystem;
  * @author Hanna Römer
  * @date 2015-04-15.
  * Class containing the different resources in the game; points, lines and polygons
+ *
+ * 08/05 modified by Hanna Römer. Added a way to set resources as geven amounts.
  */
 public class Resources {
     private int points;
@@ -20,6 +22,18 @@ public class Resources {
         points=startPoints;
         lines=startLines;
         polygons=startPolygons;
+    }
+
+    /**
+     * Set resources, used when starting new map
+     * @param points Set this as points
+     * @param lines Set this as lines
+     * @param polygons Set this ad polygons
+     */
+    public void setResources(int points, int lines, int polygons){
+        this.points=points;
+        this.lines=lines;
+        this.polygons=polygons;
     }
 
     /**

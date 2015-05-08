@@ -63,6 +63,7 @@ public class MainMenu {
         player.getFaction().configureSpells(map);
 
         GameData.getInstance().setPlayer(player);
+        player.getResources().setResources(500,500,0);
 
         game.changeScreen(Proximity.State.GAME, map, player);
     }
