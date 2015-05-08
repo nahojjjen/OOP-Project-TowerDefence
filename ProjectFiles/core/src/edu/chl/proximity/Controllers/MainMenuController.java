@@ -2,6 +2,7 @@ package edu.chl.proximity.Controllers;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.MenuModels.FactionChooser.FactionChooser;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
@@ -18,6 +19,11 @@ import java.util.List;
  */
 public class MainMenuController implements InputProcessor{
     private MainMenu mainMenu;
+    private Viewport viewport;
+
+    public MainMenuController(Viewport viewport){
+        this.viewport=viewport;
+    }
 
     public void setMainMenu(MainMenu mainMenu){
         this.mainMenu=mainMenu;
@@ -40,15 +46,14 @@ public class MainMenuController implements InputProcessor{
 
     @Override
     public boolean touchDown (int x, int y, int pointer, int button) {
-
-
-        BoardObject touchedButton=mainMenu.getButtonOnPosition(new Vector2(x,y));
+        Vector2 pos = viewport.unproject(new Vector2(x,y));
+        BoardObject touchedButton=mainMenu.getButtonOnPosition(pos);
         if(touchedButton instanceof StartButton){
             mainMenu.pressedStart();
         }else if(touchedButton instanceof FactionChooser){
-            mainMenu.pressedFactionChooser(new Vector2(x, y));
+            mainMenu.pressedFactionChooser(pos);
         }else if(touchedButton instanceof MapSelect){
-            mainMenu.pressedMap(new Vector2(x,y));
+            mainMenu.pressedMap(pos);
         }
         return true;
     }

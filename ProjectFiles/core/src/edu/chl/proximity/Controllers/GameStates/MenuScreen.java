@@ -43,13 +43,13 @@ public class MenuScreen implements Screen {
 
         //Configurates view and controller
         menuRenderer=new MenuRenderer(mainMenu);
-        mainMenuController=new MainMenuController();
-        mainMenuController.setMainMenu(mainMenu);
-        Gdx.input.setInputProcessor(mainMenuController);
 
         //Fix of camera and graphics
         fixCamera();
         shapeRenderer.setAutoShapeType(true);
+        mainMenuController=new MainMenuController(viewport);
+        mainMenuController.setMainMenu(mainMenu);
+        Gdx.input.setInputProcessor(mainMenuController);
 
     }
 
