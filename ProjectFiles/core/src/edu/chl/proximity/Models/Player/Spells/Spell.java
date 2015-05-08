@@ -2,7 +2,6 @@ package edu.chl.proximity.Models.Player.Spells;
 
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Player.Holdables.Holdable;
 import edu.chl.proximity.Models.Utils.Image;
 
@@ -29,8 +28,7 @@ public abstract class Spell extends PersistentObject implements Holdable {
     public void placeObject(Vector2 position) {
         resetPersistentObject();
         this.setPosition(position);
-        getMap().getAddStack().add(this);// this avoids concurrent modificaiton exception
-
+        getMap().add(this);
         this.start();
         playParticleEffect(); //important that this is after setPosition
         getMap().getHand().setItem(null);

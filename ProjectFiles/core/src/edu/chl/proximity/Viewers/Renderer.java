@@ -1,8 +1,6 @@
 package edu.chl.proximity.Viewers;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -14,7 +12,6 @@ import edu.chl.proximity.Models.Player.Holdables.Holdable;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
-import edu.chl.proximity.Models.Map.Towers.Tower;
 
 import java.util.List;
 
@@ -72,11 +69,10 @@ public class Renderer {
         batch.begin();
         renderBase(batch);
         renderTowers(batch);
-        renderCreeps(batch);
-        renderProjectiles(batch);
         renderBase(batch);
         renderParticles(batch);
         renderControlPanels(batch);
+        map.render(batch, shapeRenderer);
 
         //Render the hand and its range.
         Hand hand = map.getHand();
@@ -85,7 +81,8 @@ public class Renderer {
             hand.render(batch);
             batch.end();
             shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-            renderRangeIndicator(shapeRenderer, hand.getRangeIndicatorColor(), hand.getPosition(), handItem.getRange());
+            hand.render(shapeRenderer);
+            //renderRangeIndicator(shapeRenderer, hand.getRangeIndicatorColor(), hand.getPosition(), handItem.getRange());
             shapeRenderer.end();
             batch.begin();
         }
@@ -100,7 +97,7 @@ public class Renderer {
         Color red = new Color(1,0,0,0.8f);
         Color blue = new Color(0, 0, 1, 0.8f);
 
-        for (Creep creep:map.getCreeps()){
+        /*for (Creep creep:map.getCreeps()){
 
             shapeRenderer.setColor(blue); //hitbox
             shapeRenderer.circle(creep.getCenter().x, creep.getCenter().y, 20, 20);
@@ -109,7 +106,7 @@ public class Renderer {
             shapeRenderer.circle(creep.getCenter().x, creep.getCenter().y, 4);
 
 
-        }
+        }*/
     }
 
 
@@ -147,7 +144,7 @@ public class Renderer {
      */
     private void renderChosenTowerRange(ShapeRenderer shapeRenderer){
         if(map.getChoosenTower()!= null){
-            renderRangeIndicator(shapeRenderer,new Color(0.4f, 0.2f, 0.9f, 0.2f),map.getChoosenTower().getCenter(), map.getChoosenTower().getRange());
+            //renderRangeIndicator(shapeRenderer,new Color(0.4f, 0.2f, 0.9f, 0.2f),map.getChoosenTower().getCenter(), map.getChoosenTower().getRange());
         }
     }
 
@@ -156,9 +153,8 @@ public class Renderer {
      * @param shapeRenderer what shaperenderer to use to show the graphics
      */
     private void renderAllTowerRanges(ShapeRenderer shapeRenderer){
-        for (Tower tower : map.getTowers()) {
-            renderRangeIndicator(shapeRenderer, new Color(0.4f, 0.2f, 0.9f, 0.2f), tower.getCenter(), tower.getRange());
-        }
+        map.renderRanges(shapeRenderer);
+
     }
     private void renderBackground(SpriteBatch batch) {
         map.getBackground().render(batch);
@@ -183,46 +179,11 @@ public class Renderer {
      * @param batch what graphics batch object that should draw on the creen
      */
     private void renderTowers(SpriteBatch batch)  {
-        List<Tower> towers = map.getTowers();
 
-           if (towers != null){
-               for (Tower tower : towers) {
-                   tower.render(batch);
 
-               }
-        }
 
     }
 
-    /**
-     * render all projectiles that are on the map
-     * @param batch what graphics batch object that should draw on the creen
-     */
-    private void renderProjectiles(SpriteBatch batch)  {
-
-        List<Projectile> projectiles = map.getProjectiles();
-        if (projectiles != null){
-            for (Projectile projectile : projectiles) {
-                projectile.render(batch);
-            }
-        }
-
-    }
-
-    /**
-     * render all creeps that are on the map
-     * @param batch what graphics batch object that should draw on the creen
-     */
-    private void renderCreeps(SpriteBatch batch)   {
-
-        List<Creep> creeps = map.getCreeps();
-        if (creeps != null){
-            for (Creep creep : creeps) {
-                creep.render(batch);
-            }
-        }
-
-    }
 
     /**
      * render all particles that are on the map
@@ -233,17 +194,6 @@ public class Renderer {
     }
 
 
-    /**
-     * Helper method to draw a circular range
-     * @param renderer shape renderer that does the rendering
-     * @param color range colour
-     * @param position position to draw
-     * @param range radius to draw
-     */
-    private void renderRangeIndicator(ShapeRenderer renderer, Color color, Vector2 position, double range) {
-        Gdx.gl.glEnable(GL20.GL_BLEND); //enables transparency
-        renderer.setColor(color);
-        renderer.circle(position.x, position.y, (float) range);
-    }
+
 
 }

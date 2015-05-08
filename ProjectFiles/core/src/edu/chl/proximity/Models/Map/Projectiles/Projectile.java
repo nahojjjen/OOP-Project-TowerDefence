@@ -75,13 +75,17 @@ public abstract class Projectile extends BoardObject implements Cloneable{
     }
 
     public void checkCollision() {
+        BoardObject o = getMap().getObjectOnPosition(getPosition());
+        if(o instanceof Creep)
+            collide((Creep)o);
+                    /*
         List<Creep> creeps = getMap().getCreeps();
 
         for (Creep creep : creeps){
         if(collidesWith(creep)) {
             collide(creep);
         }
-    }
+    }*/
 
     }
 
@@ -125,8 +129,8 @@ public abstract class Projectile extends BoardObject implements Cloneable{
      */
     private void decreaseProjectileHealth(){
         health--;
-        if (health <= 0){
-            getMap().getRemoveStack().add(this);
+        if (health <= 0) {
+            getMap().remove(this);
         }
     }
 

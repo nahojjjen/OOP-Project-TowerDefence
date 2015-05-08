@@ -2,15 +2,11 @@ package edu.chl.proximity.Models.Map.Towers;
 
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Player.Holdables.Holdable;
 import edu.chl.proximity.Models.Utils.Image;
-import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
-import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
-import edu.chl.proximity.Utilities.PointCalculations;
 
 
 /**
@@ -43,7 +39,7 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
     @Override
     public void placeObject(Vector2 position) {
         this.setCenter(position);
-        getMap().getAddStack().add(this);
+        getMap().add(this);
         getMap().getHand().setItem(null);
         GameData.getInstance().getPlayer().getResources().removeResources(getCost());
     }

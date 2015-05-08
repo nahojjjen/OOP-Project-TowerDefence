@@ -1,5 +1,6 @@
 package edu.chl.proximity.Models.Player.Spells.ConcreteSpells;
 
+import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
@@ -29,13 +30,21 @@ public class WallOfStone extends Spell {
 
     @Override
     public void performEffect(int counter) {
+        BoardObject o = getMap().getObjectWithinDistance(getPosition(), range);
+        if(o instanceof Creep) {
+            Creep c = (Creep)o;
+            c.slowDown(100, 1);
+            getMap().getParticleManager().getDirtSmokeEffect().createEffect(c.getCenter());
+        }
+
+        /*
         List<Creep> creeps = getMap().getCreeps();
         for (Creep creep : creeps) {
             if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getPosition()) < range * range) {
                 creep.slowDown(100, 1);
                 getMap().getParticleManager().getDirtSmokeEffect().createEffect(creep.getCenter());
             }
-        }
+        }*/
     }
 
     @Override

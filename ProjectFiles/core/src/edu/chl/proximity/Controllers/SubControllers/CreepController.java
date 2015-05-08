@@ -10,19 +10,15 @@ import java.util.List;
  * Created by Johan on 2015-04-11. Group work with Linda
  */
 public class CreepController {
-    private List<Creep> creeps;
     private Map map;
 
     public CreepController(Map map){
-        creeps = map.getCreeps();
+        this.map = map;
     }
 
 
     public void update() {
-        for (Creep creep : creeps) {
-            creep.rotate();
-            creep.move();
-        }
+        map.update();
     }
 
 }

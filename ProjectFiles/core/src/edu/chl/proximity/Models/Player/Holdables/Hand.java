@@ -1,8 +1,11 @@
 package edu.chl.proximity.Models.Player.Holdables;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Player.Spells.Spell;
@@ -72,5 +75,15 @@ public class Hand {
             //TODO: check energy costs
         }
         return true;
+    }
+
+    public void render(ShapeRenderer shapeRenderer) {
+        renderRangeIndicator(shapeRenderer, getRangeIndicatorColor(), getPosition(), getItem().getRange());
+    }
+
+    private void renderRangeIndicator(ShapeRenderer renderer, Color color, Vector2 position, double range) {
+        Gdx.gl.glEnable(GL20.GL_BLEND); //enables transparency
+        renderer.setColor(color);
+        renderer.circle(position.x, position.y, (float) range);
     }
 }

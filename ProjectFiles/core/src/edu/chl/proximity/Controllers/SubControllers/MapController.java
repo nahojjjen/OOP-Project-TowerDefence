@@ -50,11 +50,10 @@ public class MapController implements ClickHandler {
             //Checks what item is currently picked up
             Holdable item = map.getHand().getItem();
 
-            for(Tower tower: map.getTowers()){
-                if(PointCalculations.isPointInObject(clickedPoint,tower)){
-                    map.setChoosenTower(tower);
-                }
-            }
+            BoardObject object = map.getObjectOnPosition(clickedPoint);
+            if(object instanceof Tower)
+                map.setChoosenTower((Tower)object);
+
 
             if (item != null) {
                 //Places the currently picked up item on the map if the player can afford it.

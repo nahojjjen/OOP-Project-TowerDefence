@@ -52,7 +52,7 @@ public class Line1 extends Creep {
     if (!isDead()){
         if (creepLineIndex != 1) {
             //Devolves into a new Line 1.
-            getMap().addCreep(new Line1(getMap(), this));
+            getMap().add(new Line1(getMap(), this));
 
         }
         Player p = GameData.getInstance().getPlayer();

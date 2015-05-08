@@ -57,7 +57,7 @@ public abstract class ShootingTower extends Tower {
      */
     public void shoot(){
         if(currentReload < 1 && currentTarget != null){
-            getMap().addProjectile(createProjectile());
+            getMap().add(createProjectile());
             currentReload = reloadTime;
         }
     }

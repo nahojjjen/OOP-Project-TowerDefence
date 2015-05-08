@@ -16,15 +16,13 @@ import java.util.ArrayList;
  */
 public class PersistentObjectController {
 
-    private ArrayList<PersistentObject> persistentObjects;
+    private Map map;
 
     public PersistentObjectController(Map map) {
-        persistentObjects = map.getPersistentObjects();
+        this.map = map;
     }
 
     public void update() {
-        for (PersistentObject persistentObject : persistentObjects) {
-            persistentObject.tick();
-        }
+        map.update();
     }
 }

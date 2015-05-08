@@ -79,99 +79,19 @@ public class MainController implements InputProcessor{
     public void updateAllControllers() {
         if(game.getCurrentScreen().equals(Proximity.State.GAME)) {
             waveController.update();
-            creepController.update();
-            towerController.update();
+            //creepController.update();
+            //towerController.update();
             projectileController.update();
             persistentObjectController.update();
             backgroundController.update();
             controlPanelController.update();
-            clearKillStacks();
-            clearAddStacks();
+            map.clearRemoveStack();
+            map.clearAddStack();
         }
 
     }
 
-    /**
-     * Remove all objects marked for deletion this frame.
-     */
-    public void clearKillStacks() {
-        Set<BoardObject> killStack = map.getRemoveStack();
-        Iterator killIterator = killStack.iterator();
 
-        List<Creep> creepList = map.getCreeps();
-        List<Projectile> projectileList = map.getProjectiles();
-        List<Tower> towerList = map.getTowers();
-        List<PersistentObject> persistentObjects = map.getPersistentObjects();
-
-        while (killIterator.hasNext()){
-            BoardObject o = (BoardObject)killIterator.next();
-            if(o instanceof Creep) {
-                Creep creep = (Creep)o;
-                if (creep != null) {
-                    killIterator.remove();
-                    creepList.remove(creep);
-                }
-            }
-
-            if(o instanceof Projectile) {
-                Projectile projectile = (Projectile)o;
-                if (projectile != null) {
-                    killIterator.remove();
-                    projectileList.remove(projectile);
-                }
-            }
-            if(o instanceof Tower) {
-                Tower tower = (Tower)o;
-                if (tower != null) {
-                    killIterator.remove();
-                    towerList.remove(tower);
-                }
-            }
-            if(o instanceof PersistentObject) {
-                PersistentObject persistentObject = (PersistentObject)o;
-                if (persistentObject != null) {
-                    killIterator.remove();
-                    persistentObjects.remove(persistentObject);
-                }
-            }
-        }
-
-    }
-
-    /**
-     * Add all objects marked for adding this frame.
-     */
-    public void clearAddStacks() {
-        Set<BoardObject> addStack = map.getAddStack();
-        Iterator addIterator = addStack.iterator();
-
-        List<Creep> creepList = map.getCreeps();
-        List<Projectile> projectileList = map.getProjectiles();
-        List<Tower> towerList = map.getTowers();
-        List<PersistentObject> persistentObjectList = map.getPersistentObjects();
-
-        while (addIterator.hasNext()){
-            BoardObject o = (BoardObject)addIterator.next();
-            if(o instanceof Creep) {
-                Creep creep = (Creep)o;
-                creepList.add(creep);
-            }
-            if(o instanceof Projectile) {
-                Projectile projectile = (Projectile)o;
-                projectileList.add(projectile);
-            }
-            if(o instanceof Tower) {
-                Tower tower = (Tower)o;
-                towerList.add(tower);
-            }
-            if(o instanceof PersistentObject) {
-                PersistentObject persistentObject = (PersistentObject)o;
-                persistentObjectList.add(persistentObject);
-            }
-            addIterator.remove();
-        }
-
-    }
 
     @Override
     public boolean keyDown (int keycode) {

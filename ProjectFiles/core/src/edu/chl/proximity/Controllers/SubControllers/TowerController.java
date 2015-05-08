@@ -12,18 +12,16 @@ import java.util.List;
 public class TowerController {
 
 
-    private List<Tower> towers;
+    private Map map;
 
 
     public TowerController(Map map){
-        towers = map.getTowers();
+        this.map = map;
     }
     /**
      * Target the closest creep and attempt to fire
      */
     public void update() {
-        for (Tower tower : towers) {
-            tower.update();
-        }
+        map.update();
     }
 }

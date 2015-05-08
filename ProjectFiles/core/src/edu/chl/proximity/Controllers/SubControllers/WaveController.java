@@ -44,7 +44,7 @@ public class WaveController {
             }
             spawnIntervalCounter = 0;
             Creep creep = creeps.get(creepIndex);
-            map.addCreep(creep);
+            map.add(creep);
             creepIndex++;
         }
         else {

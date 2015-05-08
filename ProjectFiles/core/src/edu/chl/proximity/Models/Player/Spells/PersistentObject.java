@@ -3,7 +3,6 @@ package edu.chl.proximity.Models.Player.Spells;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 
 /**
@@ -28,7 +27,7 @@ public abstract class PersistentObject extends BoardObject {
         this.backupCounter = counter;
 
         if (position != null){
-            getMap().getAddStack().add(this);// this needs to be made for concurrent modificaiton
+            getMap().add(this);// this needs to be made for concurrent modificaiton
         }
     }
 
@@ -44,7 +43,7 @@ public abstract class PersistentObject extends BoardObject {
         System.out.println("tick is at = " + counter);
     if (started){
             if (counter <= 0) {
-                getMap().getRemoveStack().add(this);
+                getMap().remove(this);
                 return;
             }
             performEffect(counter);
