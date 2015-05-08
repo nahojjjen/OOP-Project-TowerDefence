@@ -1,8 +1,11 @@
 package edu.chl.proximity.Models.Player.Spells.ConcreteSpells;
 
 import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Player.Spells.Spell;
+import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.List;
@@ -18,26 +21,27 @@ public class BloodPool extends Spell {
     //Spell stats
     private static double range = 120f;
     private static int duration = 1;
+    private static Image image = new Image(Constants.FILE_PATH + "Spells/bloodpool.png");
 
-    public BloodPool() {
-        super(null, duration);
+    public BloodPool(Map map) {
+        super(map, image, duration);
     }
 
     @Override
     public void performEffect(int counter) {
-        List<Creep> creeps = GameData.getInstance().getMap().getCreeps();
+        List<Creep> creeps = getMap().getCreeps();
         for (Creep creep : creeps) {
             if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getPosition()) < range * range) {
                 creep.devolve();
-                GameData.getInstance().getMap().getBase().heal(1);
-                GameData.getInstance().getMap().getParticleManager().getBloodPoolCreepEffect().createEffect(creep.getCenter());
+                getMap().getBase().heal(1);
+                getMap().getParticleManager().getBloodPoolCreepEffect().createEffect(creep.getCenter());
             }
         }
     }
 
     @Override
     public void playParticleEffect() {
-        GameData.getInstance().getMap().getParticleManager().getBloodPoolEffect().createEffect(getPosition());
+        getMap().getParticleManager().getBloodPoolEffect().createEffect(getPosition());
     }
 
     @Override

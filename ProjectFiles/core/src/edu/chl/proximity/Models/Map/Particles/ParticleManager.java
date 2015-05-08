@@ -2,6 +2,8 @@ package edu.chl.proximity.Models.Map.Particles;
 
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.sun.xml.internal.ws.api.config.management.policy.ManagementAssertion;
+import edu.chl.proximity.Models.Utils.Settings;
 
 import java.util.ArrayList;
 import java.util.List;

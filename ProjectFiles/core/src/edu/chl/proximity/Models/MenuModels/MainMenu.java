@@ -1,5 +1,6 @@
 package edu.chl.proximity.Models.MenuModels;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -12,6 +13,7 @@ import edu.chl.proximity.Models.Player.Factions.Faction;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Map.Maps.StandardMap;
 import edu.chl.proximity.Models.Player.Players.Player;
+import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.PointCalculations;
 
@@ -26,15 +28,21 @@ public class MainMenu {
     private Faction faction;
     private Player player;
     private Map map;
-    private StartButton startButton=new StartButton(new Vector2((Gdx.graphics.getWidth()/2)-64,600));
-    private FactionChooser factionChooser=new FactionChooser();
-    private MapSelect mapSelect=new MapSelect();
+    private StartButton startButton;
+    private FactionChooser factionChooser;
+    private MapSelect mapSelect;
+    private Proximity game;
 
 
-    public MainMenu(){
-        faction=new Planes();
-        player=new Player(faction);
+    public MainMenu(Proximity game){
+        this.game = game;
+        player = GameData.getInstance().getPlayer();
+
+
+        factionChooser=new FactionChooser();
+        mapSelect=new MapSelect(null);
         map=mapSelect.getSelected();
+        startButton = new StartButton(map, new Vector2((Gdx.graphics.getWidth()/2)-64,600));
 
     }
 
@@ -52,11 +60,11 @@ public class MainMenu {
     public void pressedStart(){
         player.setFacton(factionChooser.getCurrentlyShown());
         map=mapSelect.getSelected();
+        player.getFaction().configureSpells(map);
 
-        GameData.getInstance().setMainMenu(this);
         GameData.getInstance().setPlayer(player);
-        GameData.getInstance().setMap(map);
-        GameData.getInstance().getGame().changeScreen(Proximity.State.GAME,map,this,player);
+
+        game.changeScreen(Proximity.State.GAME, map, player);
     }
 
 

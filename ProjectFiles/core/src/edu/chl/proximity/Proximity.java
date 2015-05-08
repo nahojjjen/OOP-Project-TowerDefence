@@ -11,6 +11,8 @@ import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Maps.StandardMap;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.Player.Players.Player;
+import edu.chl.proximity.Models.Utils.Settings;
+
 /**
  *
  * 08/04 Modified by Johan Swanberg. Switch to Screen from GameState.
@@ -21,15 +23,15 @@ import edu.chl.proximity.Models.Player.Players.Player;
 public class Proximity extends Game {
 	public enum State{GAME,MAIN_MENU}
 
-	public void changeScreen(State state, Map map,MainMenu mainMenu, Player player){
+	public void changeScreen(State state, Map map, Player player){
+
 		switch(state){
 			case GAME:
 				this.setScreen(new GameScreen(this,map,player));
 				break;
 			case MAIN_MENU:
 
-				this.setScreen(new MenuScreen(this, new MainMenu(),map, player));
-				GameData.getInstance().setGame(this);
+				this.setScreen(new MenuScreen(this, player));
 		}
 	}
 	public State getCurrentScreen(){
@@ -42,9 +44,11 @@ public class Proximity extends Game {
 
 	@Override
 	public void create () {
-		//this.setScreen(new GameScreen(this, new StandardMap(), new Player(new Planes())));
-		this.setScreen(new MenuScreen(this,new MainMenu(),new StandardMap(), new Player(new Planes())));
-		GameData.getInstance().setGame(this);
+		//A new player is created with no faction
+		Player player = new Player(null);
+
+		//The application switchs to the start screen menu screen
+		this.setScreen(new MenuScreen(this, player));
 	}
 
 

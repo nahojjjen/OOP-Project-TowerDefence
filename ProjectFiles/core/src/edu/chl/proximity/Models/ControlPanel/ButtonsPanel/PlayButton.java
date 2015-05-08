@@ -3,6 +3,7 @@ package edu.chl.proximity.Models.ControlPanel.ButtonsPanel;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
@@ -12,8 +13,8 @@ import edu.chl.proximity.Utilities.Constants;
  * @date 2015-04-29
  */
 public class PlayButton extends BoardObject{
-    public static final Image upImage = new Image(Constants.filePath + "Buttons/PlayButton.png");
-    public static final Image downImage = new Image(Constants.filePath + "Buttons/DownPlayButton.png");
+    public static final Image upImage = new Image(Constants.FILE_PATH + "Buttons/PlayButton.png");
+    public static final Image downImage = new Image(Constants.FILE_PATH + "Buttons/DownPlayButton.png");
     private static int height=50;
     private static int width=50;
 
@@ -22,14 +23,14 @@ public class PlayButton extends BoardObject{
      * @param position What position the button shall have
      */
     public PlayButton(Vector2 position){
-        super(position,upImage,0,width,height);
+        super(null, position,upImage,0,width,height);
     }
 
     /**
      * Sets image depending on what the current game-speed is
      */
     public void setRightImage(){
-        if(GameData.getInstance().getGameSpeed()==1){
+        if(GameData.getInstance().getPlayer().getSettings().getGameSpeed()==1){
             super.setImage(downImage);
         }else{
             super.setImage(upImage);

@@ -50,8 +50,8 @@ public abstract class Creep extends BoardObject {
      * @param image what image the creep should have (it will rotate a random amount automatically)
      * @param speed what speed the creep will have
      */
-    public Creep(Image image, double speed) {
-        super(null, image, 0);
+    public Creep(Map map, Image image, double speed) {
+        super(map, null, image, 0);
         setupCreep(speed);
         initiateMovement();
     }
@@ -61,8 +61,8 @@ public abstract class Creep extends BoardObject {
      * @param speed what speed the creep will have
      * @param oldCreep The old creep from which the location on the screen is taken.
      */
-    public Creep(Image image, int speed, Creep oldCreep) {
-        super(oldCreep.getPosition(), image, 0);
+    public Creep(Map map, Image image, int speed, Creep oldCreep) {
+        super(map, oldCreep.getPosition(), image, 0);
         setupCreep(speed);
         nextWayPointID = oldCreep.nextWayPointID;
         distanceToNextWayPoint = oldCreep.distanceToNextWayPoint;
@@ -75,8 +75,7 @@ public abstract class Creep extends BoardObject {
         this.speed = speed;
         this.backUpSpeed = speed;
 
-        Map map = GameData.getInstance().getMap();
-        path = map.getPath();
+        path = getMap().getPath();
         randomRotation = (Math.random()*15) - 7.5;
     }
 
@@ -115,17 +114,15 @@ public abstract class Creep extends BoardObject {
      * show the "poof" particleEffect that creeps do when they die
      */
     public void displayDeathEffect(){
-        Map map = GameData.getInstance().getMap();
-        map.getParticleManager().getCreepDiesEffect().createEffect(this.getCenter());
+        getMap().getParticleManager().getCreepDiesEffect().createEffect(this.getCenter());
     }
 
     /**
      * destroys the creep
      */
     public void destroy() {
-        Map map = GameData.getInstance().getMap();
         displayDeathEffect();
-        map.getRemoveStack().add(this);
+        getMap().getRemoveStack().add(this);
     }
     /**
      * rotate the creeps image a random amount (a creep is assigned a random rotation amount on creation)
@@ -217,7 +214,7 @@ public abstract class Creep extends BoardObject {
         nextWayPointID++;
         if(nextWayPointID >= path.getWaypoints().size()) {
             destroy();
-            GameData.getInstance().getMap().getBase().damage();
+            getMap().getBase().damage();
 
         }
         else {

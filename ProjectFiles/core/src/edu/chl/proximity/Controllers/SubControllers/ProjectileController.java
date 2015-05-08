@@ -16,8 +16,8 @@ public class ProjectileController {
     private List<Creep> creeps;
     private Map map;
 
-    public ProjectileController(){
-        map = GameData.getInstance().getMap();
+    public ProjectileController(Map map){
+        this.map = map;
         projectiles = map.getProjectiles();
         creeps = map.getCreeps();
     }

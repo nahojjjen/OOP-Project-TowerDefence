@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps;
 
 import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Player.Players.Player;
@@ -15,19 +16,19 @@ import edu.chl.proximity.Utilities.Constants;
  */
 public class Circle extends Creep {
 
-    private static Image img = new Image(Constants.filePath + "Creeps/Line2/7.png");
+    private static Image img = new Image(Constants.FILE_PATH + "Creeps/Line2/7.png");
     private static int speed = 3;
 
-    public Circle() {
-        super(img, speed);
+    public Circle(Map map) {
+        super(map, img, speed);
     }
 
     /**
      * Constructor to create a Circle with properties from another creep.
      * @param oldCreep a Creep object from which position is used.
      */
-    public Circle(Creep oldCreep) {
-        super(img, speed, oldCreep);
+    public Circle(Map map, Creep oldCreep) {
+        super(map, img, speed, oldCreep);
     }
 
     @Override

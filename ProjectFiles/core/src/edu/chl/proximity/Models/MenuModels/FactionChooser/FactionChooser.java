@@ -26,21 +26,25 @@ public class FactionChooser extends BoardObject{
     private static Vector2 pos = new Vector2(0, Gdx.graphics.getHeight()-240);
     private Vector2 imagePos=new Vector2(pos.x+162,pos.y + 100);
 
-    private static Image image=new Image(Constants.filePath + "Backgrounds/factionChooser.png");
+    private static Image image=new Image(Constants.FILE_PATH + "Backgrounds/factionChooser.png");
 
     private List<Faction> factions= new ArrayList<Faction>();
 
     private ProximityFont name=new ProximityFont(new Vector2(pos.x+180,pos.y+10),null);
-    private FactionImage factionImage=new FactionImage(imagePos);
-    private NextPrevButton prev = new NextPrevButton(new Vector2(pos.x+8, pos.y+40), new Image(Constants.filePath + "Buttons/FactionChooserLeft.png"));
-    private NextPrevButton next = new NextPrevButton(new Vector2(pos.x+352, pos.y+40),new Image(Constants.filePath + "Buttons/FactionChooserRight.png"));
+    private FactionImage factionImage;
+    private NextPrevButton prev;
+    private NextPrevButton next;
 
     private int showing=0;
 
     public FactionChooser(){
-        super(pos, image, 0);
+        super(null, pos, image, 0);
+        factionImage=new FactionImage(imagePos);
+        prev = new NextPrevButton(new Vector2(pos.x+8, pos.y+40), new Image(Constants.FILE_PATH + "Buttons/FactionChooserLeft.png"));
+        next = new NextPrevButton(new Vector2(pos.x+352, pos.y+40),new Image(Constants.FILE_PATH + "Buttons/FactionChooserRight.png"));
         factions.add(new Planes());
         factions.add(new Filler());
+
         factionImage.setImage(factions.get(showing).getShowImage());
         name.setText(factions.get(showing).getName());
     }
@@ -83,6 +87,7 @@ public class FactionChooser extends BoardObject{
     public void setFactionData(){
         name.setText(factions.get(showing).getName());
         factionImage.setImage(factions.get(showing).getShowImage());
+
     }
 
     public Faction getCurrentlyShown(){

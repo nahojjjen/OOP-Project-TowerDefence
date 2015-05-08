@@ -2,6 +2,8 @@ package edu.chl.proximity.Models.Map.Towers.TargetingMethods;
 
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
@@ -9,9 +11,18 @@ import edu.chl.proximity.Utilities.PointCalculations;
  */
 public abstract class TargetingMethod {
 
+    private Map map;
+
+    public TargetingMethod(Map map) {
+        this.map = map;
+    }
     public abstract Creep getTarget(Vector2 position, double range);
 
     public boolean isWithinRange(Creep creep, Vector2 towerPosition, double range){
         return PointCalculations.distanceBetweenNoSqrt(towerPosition, creep.getPosition()) < range*range;
         }
+
+    public Map getMap() {
+        return map;
+    }
 }

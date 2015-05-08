@@ -2,6 +2,7 @@ package edu.chl.proximity.Models.ControlPanel.PropertiesPanel;
 
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 
@@ -10,8 +11,8 @@ import edu.chl.proximity.Utilities.Constants;
  * @date 2015-04-23
  */
 public class SoundButton extends BoardObject{
-    private static Image onImage= new Image(Constants.filePath + "Buttons/SoundOnButton.png");
-    private static Image offImage= new Image(Constants.filePath + "Buttons/SoundOffButton.png");
+    private static Image onImage= new Image(Constants.FILE_PATH + "Buttons/SoundOnButton.png");
+    private static Image offImage= new Image(Constants.FILE_PATH + "Buttons/SoundOffButton.png");
     private static int height=50;
     private static int width=50;
 
@@ -20,7 +21,7 @@ public class SoundButton extends BoardObject{
      * @param position At what position the button is to be placed
      */
     public SoundButton(Vector2 position){
-        super(position,onImage,0,width,height);
+        super(null, position,onImage,0,width,height);
     }
 
     /**

@@ -6,17 +6,13 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-import edu.chl.proximity.Models.ControlPanel.ProfilePanel;
+import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Bases.Base;
-import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.ButtonPanel;
-import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Player.Holdables.Hand;
 import edu.chl.proximity.Models.Player.Holdables.Holdable;
-import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
-import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 
@@ -34,31 +30,22 @@ import java.util.List;
  * Unknown date modified by Linda Evaldsson
  * 23/04 Modified by Hanna R�mer. Added ButtonPanel and PropertiesPanel + necessary methods for them
  * 24/04 Modified by Johan Swanberg - Added creep debug view and fixed path render to not be missaligned
- * 29/04 modified by Hanna R�mer. Removed PropertiesPanel instance and setter since it's a singleton. 
+ * 29/04 modified by Hanna R�mer. Removed PropertiesPanel instance and setter since it's a singleton.
+ * 07/05 modified by Linda Evaldsson. Removed all the setters and getters for ControlPanels, replaced with setControlPanel.
  */
 public class Renderer {
 
     private Map map;
     private ParticleManager particleManager ;
-    private ControlPanel controlPanel;
-    private ButtonPanel buttonPanel;
-    private ProfilePanel profilePanel;
+    List<BoardObject> controlPanels;
 
     /**
      * create a new renderer that can show everything in a game instance
      */
-    public Renderer() {
-        this.map = GameData.getInstance().getMap();
+    public Renderer(Map map) {
+        this.map = map;
         this.particleManager = map.getParticleManager();
 
-    }
-
-    public void setControlPanel(ControlPanel controlPanel) {
-        this.controlPanel = controlPanel;
-    }
-    public void setButtonPanel(ButtonPanel buttonPanel){ this.buttonPanel=buttonPanel;}
-    public void setProfilePanel(ProfilePanel profilePanel) {
-        this.profilePanel = profilePanel;
     }
 
     /**
@@ -76,7 +63,7 @@ public class Renderer {
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         renderAllTowerRanges(shapeRenderer);
-        debugRenderAllCentersAndUpperLeftCorners(shapeRenderer);
+        //debugRenderAllCentersAndUpperLeftCorners(shapeRenderer);
         shapeRenderer.end();
 
 
@@ -87,13 +74,10 @@ public class Renderer {
         renderProjectiles(batch);
         renderBase(batch);
         renderParticles(batch);
-        renderControlPanel(batch);
-        renderButtonPanel(batch);
-        renderPropertiesPanel(batch);
-        renderProfilePanel(batch);
+        renderControlPanels(batch, shapeRenderer);
 
         //Render the hand and its range.
-        Hand hand = GameData.getInstance().getHand();
+        Hand hand = map.getHand();
         Holdable handItem = hand.getItem();
         if (handItem != null) {
             hand.render(batch);
@@ -106,6 +90,8 @@ public class Renderer {
 
 
     }
+
+    public void setControlPanels(List<BoardObject> controlPanels) { this.controlPanels = controlPanels; }
 
 
     private void debugRenderAllCentersAndUpperLeftCorners(ShapeRenderer shapeRenderer){
@@ -129,27 +115,25 @@ public class Renderer {
      * Draws out the control panel
      * @param batch what graphics batch object that should draw on the screen
      */
-    private void renderControlPanel(SpriteBatch batch) {
-        /*batch.end();
-        shapeRenderer.begin();
-        shapeRenderer.setColor(Color.RED);
-        controlPanel.render(shapeRenderer);
-        shapeRenderer.end();
-        batch.begin();*/
+    private void renderControlPanels(SpriteBatch batch, ShapeRenderer shapeRenderer) {
+        for(BoardObject panel : controlPanels) {
+            panel.render(batch);
+            batch.end();
+            panel.renderShapes(shapeRenderer);
+            batch.begin();
+        }
+        /*
         controlPanel.render(batch);
-    }
-    private void renderButtonPanel(SpriteBatch batch){
         buttonPanel.render(batch);
+        profilePanel.render(batch);
+        spellPanel.render(batch);
+        if(map.getPropertiesPanel().getIfVisible()){
+            map.getPropertiesPanel().render(batch);
+        }
+        */
+
     }
 
-    private void renderProfilePanel(SpriteBatch batch) {
-        profilePanel.render(batch);
-    }
-    private void renderPropertiesPanel(SpriteBatch batch){
-        if(PropertiesPanel.getInstance().getIfVisible()){
-            PropertiesPanel.getInstance().render(batch);
-        }
-    }
 
     /**
      * automatically renders the lines between the waypoints of the current path
@@ -158,7 +142,7 @@ public class Renderer {
      * @param shapeRenderer what shaperenderer to use to draw the lines
      */
     private void renderPath( ShapeRenderer shapeRenderer){
-        List<Vector2> waypoints = GameData.getInstance().getMap().getPath().getWaypoints();
+        List<Vector2> waypoints = map.getPath().getWaypoints();
 
         shapeRenderer.setColor(new Color(0.4f, 0.6f, 0.9f, 0));
 
@@ -172,7 +156,7 @@ public class Renderer {
      * @param shapeRenderer what shaperenderer to use to show the graphics
      */
     private void renderAllTowerRanges(ShapeRenderer shapeRenderer){
-        for (Tower tower : GameData.getInstance().getMap().getTowers()) {
+        for (Tower tower : map.getTowers()) {
             renderRangeIndicator(shapeRenderer, new Color(0.4f, 0.2f, 0.9f, 0.2f), tower.getCenter(), tower.getRange());
         }
     }
@@ -185,7 +169,7 @@ public class Renderer {
      * @param batch what graphics batch object that should draw on the screen
      */
     private void renderBase(SpriteBatch batch) {
-        Base base = GameData.getInstance().getMap().getBase();
+        Base base = map.getBase();
         if (base.getImage() != null && base != null){
             base.render(batch);
         } else{
@@ -203,8 +187,7 @@ public class Renderer {
 
            if (towers != null){
                for (Tower tower : towers) {
-                   //tower.getAnimation().draw(tower.getPoint().getX()-20, tower.getPoint().getY()-20);
-                   tower.getImage().render(batch, tower.getPosition(), tower.getAngle());
+                   tower.render(batch);
 
                }
         }
@@ -220,7 +203,7 @@ public class Renderer {
         List<Projectile> projectiles = map.getProjectiles();
         if (projectiles != null){
             for (Projectile projectile : projectiles) {
-                projectile.getImage().render(batch, projectile.getPosition(), projectile.getAngle());
+                projectile.render(batch);
             }
         }
 
@@ -235,7 +218,7 @@ public class Renderer {
         List<Creep> creeps = map.getCreeps();
         if (creeps != null){
             for (Creep creep : creeps) {
-                creep.getImage().render(batch, creep.getPosition(), creep.getAngle());
+                creep.render(batch);
             }
         }
 
@@ -260,7 +243,7 @@ public class Renderer {
     private void renderRangeIndicator(ShapeRenderer renderer, Color color, Vector2 position, double range) {
         Gdx.gl.glEnable(GL20.GL_BLEND); //enables transparency
         renderer.setColor(color);
-        renderer.circle(position.x, position.y, (float)range);
+        renderer.circle(position.x, position.y, (float) range);
     }
 
 }

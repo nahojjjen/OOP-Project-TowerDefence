@@ -1,9 +1,15 @@
 package edu.chl.proximity.Models.ControlPanel;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingFactory;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
@@ -11,6 +17,7 @@ import edu.chl.proximity.Models.Map.Towers.BulletTower;
 import edu.chl.proximity.Models.Map.Towers.MissileTower;
 import edu.chl.proximity.Models.Map.Towers.SlowTower;
 import edu.chl.proximity.Utilities.Constants;
+import edu.chl.proximity.Utilities.PercentBar;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.ArrayList;
@@ -33,9 +40,13 @@ public class ControlPanel extends BoardObject{
     private ProximityFont polygonText;
     private ProximityFont pointText;
 
+    private PercentBar percentBar;
+
     //Width and heigh of the ControlPanel when it is initiated
     private static int width = 300;
-    private static int height = Gdx.graphics.getHeight();
+    private static int height = Constants.GAME_WIDTH;
+
+    private static Vector2 position = new Vector2(Constants.GAME_WIDTH - width, 0);
 
     //The towers that are rendered on the ControlPanel
     private List<ControlPanelTower> controlPanelTowerList = new ArrayList<ControlPanelTower>();
@@ -44,13 +55,13 @@ public class ControlPanel extends BoardObject{
     private int towersPerRow = 1;
 
     //The background of the ControlPanel
-    private static Image background = new Image(Constants.filePath + "Backgrounds/temporaryControlPanelBackground.png");
+    private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/tweed.png");
 
     /**
      * Create a new instance of the controll panel
      */
-    public ControlPanel() {
-        super(new Vector2(Gdx.graphics.getWidth() - width, 0), background, 0, width, height);
+    public ControlPanel(Map map) {
+        super(map, position, background, 0, width, height);
 
         initiateText();
         initiateControlPanelTowers();
@@ -63,19 +74,22 @@ public class ControlPanel extends BoardObject{
      * Initiates all the texts of this ControlPanel
      */
     public void initiateText() {
-        healthText = createFont(30, 30, "null");
-        lineText = createFont(30, 60, "null");
-        polygonText = createFont(30, 80, "null");
-        pointText = createFont(30, 100, "null");
+        percentBar = new PercentBar(new Vector2(position.x + 30, position.y + 30), width - 60, 32, Color.WHITE, Color.BLACK, Color.RED);
+
+        healthText = createFont(30, 10, "null");
+        lineText = createFont(30, 80, "null");
+        polygonText = createFont(30, 100, "null");
+        pointText = createFont(30, 120, "null");
     }
 
     /**
      * Initiates the towers that are rendered in this controlPanel
      */
     public void initiateControlPanelTowers() {
-        controlPanelTowerList.add(new ControlPanelTower(new Vector2(0, 0), new BulletTower(new Vector2(0, 0))));
-        controlPanelTowerList.add(new ControlPanelTower(new Vector2(0, 0), new MissileTower(new Vector2(0, 0))));
-        controlPanelTowerList.add(new ControlPanelTower(new Vector2(0, 0), new SlowTower(new Vector2(0, 0))));
+        TargetingFactory targetFactory = new TargetingFactory(getMap());
+        controlPanelTowerList.add(new ControlPanelTower(getMap(), new Vector2(0, 0), new BulletTower(getMap(), new Vector2(0, 0), targetFactory.getTargetClosest())));
+        controlPanelTowerList.add(new ControlPanelTower(getMap(), new Vector2(0, 0), new MissileTower(getMap(), new Vector2(0, 0), targetFactory.getTargetClosest())));
+        controlPanelTowerList.add(new ControlPanelTower(getMap(), new Vector2(0, 0), new SlowTower(getMap(), new Vector2(0, 0), targetFactory.getTargetClosest())));
 
         for(int i = 0; i < controlPanelTowerList.size(); i++) {
             System.out.println("In controllpanel: Towers per row: " + i % towersPerRow);
@@ -86,7 +100,8 @@ public class ControlPanel extends BoardObject{
 
 
     public void setHealth(int percent){
-        healthText.setText("Liv: " + percent + "%");
+        percentBar.setPercent(percent);
+        healthText.setText("Life: ");
     }
 
     public void setResources(Resources resources){
@@ -127,7 +142,10 @@ public class ControlPanel extends BoardObject{
      * @param batch what batch to render the controlpanel
      */
     public void render(SpriteBatch batch) {
-        super.render(batch);
+
+        background.getTexture().setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
+        batch.draw(background.getTexture(), position.x, position.y, background.getTexture().getWidth(), background.getTexture().getHeight(), width, height);
+
         healthText.draw(batch);
         lineText.draw(batch);
         pointText.draw(batch);
@@ -135,6 +153,10 @@ public class ControlPanel extends BoardObject{
         for(ControlPanelTower cpTower : controlPanelTowerList) {
             cpTower.render(batch);
         }
+    }
+
+    public void renderShapes(ShapeRenderer renderer) {
+        percentBar.render(renderer);
     }
 
 

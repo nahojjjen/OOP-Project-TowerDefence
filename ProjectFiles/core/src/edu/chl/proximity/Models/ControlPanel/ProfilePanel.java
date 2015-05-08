@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.Utils.ProximityFont;
@@ -32,7 +33,7 @@ public class ProfilePanel extends BoardObject {
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
 
     public ProfilePanel() {
-        super(new Vector2(0, Gdx.graphics.getHeight() - 75), null, 0, width, height);
+        super(null, new Vector2(0, Gdx.graphics.getHeight() - 75), null, 0, width, height);
         levelText = createFont(30, 30, "1");
     }
 

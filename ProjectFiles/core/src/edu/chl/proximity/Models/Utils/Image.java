@@ -12,6 +12,7 @@ import java.util.HashMap;
  * @author Linda Evaldsson
  * @date 2015-04-02
  *
+ *
  */
 public class Image implements Cloneable {
 
@@ -26,6 +27,7 @@ public class Image implements Cloneable {
             texture = new Texture(s);
             cache.put(s, texture);
         }
+
         texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
 

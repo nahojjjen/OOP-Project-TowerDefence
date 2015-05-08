@@ -1,5 +1,6 @@
 package edu.chl.proximity.Controllers.SubControllers;
 
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Player.Spells.PersistentObject;
 
@@ -17,8 +18,8 @@ public class PersistentObjectController {
 
     private ArrayList<PersistentObject> persistentObjects;
 
-    public PersistentObjectController() {
-        persistentObjects = GameData.getInstance().getMap().getPersistentObjects();
+    public PersistentObjectController(Map map) {
+        persistentObjects = map.getPersistentObjects();
     }
 
     public void update() {

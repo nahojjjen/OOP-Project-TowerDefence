@@ -2,6 +2,7 @@ package edu.chl.proximity.Models.Player.Players;
 
 import edu.chl.proximity.Models.Player.Factions.Faction;
 import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
+import edu.chl.proximity.Models.Utils.Settings;
 
 /**
 <<<<<<< HEAD
@@ -22,6 +23,7 @@ public class Player {
     private Faction faction;
     private int experiencePoints;
     private double level;
+    private Settings settings;
 
     /**
      * Create a new player with starting resources of 300 points,
@@ -31,6 +33,8 @@ public class Player {
     public Player(Faction faction){
         resources = new Resources(500, 500, 0);
         this.faction=faction;
+        //Standard settings are set
+        this.settings = new Settings();
     }
 
     /**
@@ -77,5 +81,13 @@ public class Player {
     }
     public double getLevel() {
         return level;
+    }
+
+    public Settings getSettings() {
+        return settings;
+    }
+
+    public void setSettings(Settings settings) {
+        this.settings = settings;
     }
 }

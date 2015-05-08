@@ -2,6 +2,7 @@ package edu.chl.proximity.Models.ControlPanel;
 
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 
 /**
@@ -14,8 +15,8 @@ public class ControlPanelTower extends BoardObject{
 
     Tower tower;
 
-    public ControlPanelTower(Vector2 position, Tower tower) {
-        super(position, tower.getImage(), 0);
+    public ControlPanelTower(Map map, Vector2 position, Tower tower) {
+        super(map, position, tower.getImage(), 0);
         this.tower = tower;
     }
 

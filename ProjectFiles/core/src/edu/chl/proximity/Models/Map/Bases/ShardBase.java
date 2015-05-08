@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.Map.Bases;
 
-import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 
@@ -11,8 +11,8 @@ import edu.chl.proximity.Utilities.Constants;
  * The base of the Planes Faction
  */
 public class ShardBase extends Base {
-    public ShardBase(){
-        super(new Image(Constants.filePath + "Bases/base1.png"),GameData.getInstance().getMap().getParticleManager().getBaseDamageEffect(), GameData.getInstance().getMap().getParticleManager().getBaseCracksEffect());
+    public ShardBase(Map map){
+        super(map, new Image(Constants.FILE_PATH + "Bases/base1.png"),map.getParticleManager().getBaseDamageEffect(), map.getParticleManager().getBaseCracksEffect());
 
     }
 

@@ -2,7 +2,9 @@ package edu.chl.proximity.Models;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Utilities.PointCalculations;
 import java.lang.CloneNotSupportedException;
 
@@ -30,6 +32,8 @@ public abstract class BoardObject implements Cloneable {
      * Rotation property
      */
     private double angle;
+    //The map that the board object is placed on
+    private Map map;
 
     private int width = 0;
     private int height = 0;
@@ -41,9 +45,10 @@ public abstract class BoardObject implements Cloneable {
      * @param img the image of the object
      * @param angle the rotation of the object (in degrees)
      */
-    public BoardObject(Vector2 position, edu.chl.proximity.Models.Utils.Image img, double angle){
+    public BoardObject(Map map, Vector2 position, edu.chl.proximity.Models.Utils.Image img, double angle){
         this.position = position;
         this.image = img;
+        this.map = map;
         this.angle = angle;
         if(img != null) {
             width = img.getTexture().getWidth();
@@ -54,12 +59,14 @@ public abstract class BoardObject implements Cloneable {
         //Empty constructor for subclasses
     }
 
-    public BoardObject(Vector2 position, edu.chl.proximity.Models.Utils.Image img, double angle, int width, int height) {
-        this(position, img, angle);
+    public BoardObject(Map map, Vector2 position, edu.chl.proximity.Models.Utils.Image img, double angle, int width, int height) {
+        this(map, position, img, angle);
         this.width = width;
         this.height = height;
     }
 
+    public Map getMap() { return map; }
+    public void setMap(Map map) {this.map = map;}
 
     //Getters and Setters
     public Vector2 getPosition() {
@@ -93,6 +100,10 @@ public abstract class BoardObject implements Cloneable {
         if(image != null) {
             image.render(batch, position, angle);
         }
+    }
+
+    public void renderShapes(ShapeRenderer shapeRenderer) {
+
     }
 
     public int getWidth() {

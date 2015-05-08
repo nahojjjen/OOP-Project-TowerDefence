@@ -2,6 +2,7 @@ package test.edu.chl.proximity.Models;
 
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.Maps.Map;
 
 /**
  * @author Johan on 2015-05-02.
@@ -9,8 +10,8 @@ import edu.chl.proximity.Models.BoardObject;
  * this class should never be created in non-testing scenarios.
  */
 public class BoardObjectConcreteTest extends BoardObject {
-    public BoardObjectConcreteTest(Vector2 position, edu.chl.proximity.Models.Utils.Image img, double angle){
-        super(position,img,angle);
+    public BoardObjectConcreteTest(Map map, Vector2 position, edu.chl.proximity.Models.Utils.Image img, double angle){
+        super(map, position,img,angle);
     }
 
 }

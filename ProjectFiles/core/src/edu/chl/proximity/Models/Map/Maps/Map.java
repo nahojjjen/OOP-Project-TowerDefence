@@ -1,5 +1,7 @@
 package edu.chl.proximity.Models.Map.Maps;
 
+import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
+import edu.chl.proximity.Models.Player.Holdables.Hand;
 import edu.chl.proximity.Models.Utils.Background;
 import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.BoardObject;
@@ -10,6 +12,7 @@ import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Player.Spells.PersistentObject;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Map.Waves.Wave;
+import edu.chl.proximity.Models.Utils.Settings;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -32,13 +35,17 @@ import java.util.Set;
 public abstract class Map {
     private String name;
     private int waveIndex;
+    private Hand hand = new Hand();
+
+    private PropertiesPanel propertiesPanel;
+
 
     private ArrayList<Creep> creeps = new ArrayList<Creep>();
     private ArrayList<PersistentObject> persistentObjects = new ArrayList<PersistentObject>();
     private ArrayList<Wave> waves = new ArrayList<Wave>();
     private ArrayList<Tower> towers = new ArrayList<Tower>();
     private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
-    private ParticleManager particleManager = new ParticleManager();
+    private ParticleManager particleManager;
 
 
     private Set<BoardObject> removeStack = new HashSet<BoardObject>();
@@ -58,7 +65,10 @@ public abstract class Map {
         this.path = path;
         this.background = background;
         this.name=name;
+        particleManager = new ParticleManager();
     }
+
+
 
     public Set<BoardObject> getRemoveStack() {
         return removeStack;
@@ -70,6 +80,8 @@ public abstract class Map {
     public String getName(){
         return name;
     }
+
+    public Hand getHand() { return hand; }
 
     /**
      * get the particleManager in the map
@@ -142,4 +154,11 @@ public abstract class Map {
         addStack.add(t);
     }
 
+    public PropertiesPanel getPropertiesPanel() {
+        return propertiesPanel;
+    }
+
+    public void setPropertiesPanel(PropertiesPanel propertiesPanel) {
+        this.propertiesPanel = propertiesPanel;
+    }
 }

@@ -17,7 +17,7 @@ import java.util.List;
  * @date 2015-05-01
  */
 public class MainMenuController implements InputProcessor{
-    private MainMenu mainMenu=new MainMenu();
+    private MainMenu mainMenu;
 
     public void setMainMenu(MainMenu mainMenu){
         this.mainMenu=mainMenu;
@@ -40,6 +40,8 @@ public class MainMenuController implements InputProcessor{
 
     @Override
     public boolean touchDown (int x, int y, int pointer, int button) {
+
+
         BoardObject touchedButton=mainMenu.getButtonOnPosition(new Vector2(x,y));
         if(touchedButton instanceof StartButton){
             mainMenu.pressedStart();

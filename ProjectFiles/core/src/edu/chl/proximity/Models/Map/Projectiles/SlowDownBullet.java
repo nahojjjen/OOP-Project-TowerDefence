@@ -5,7 +5,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
-import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 
@@ -15,8 +15,8 @@ import edu.chl.proximity.Utilities.Constants;
  * A class representing a bullet that slows down it's target a certain percentage
  */
 public class SlowDownBullet extends Projectile{
-    private static Image img = new Image(Constants.filePath + "Projectiles/frostBolt.png");;
-    private static Sound sound = Gdx.audio.newSound(new FileHandle(Constants.filePath + "Sounds/snap.ogg"));
+    private static Image img = new Image(Constants.FILE_PATH + "Projectiles/frostBolt.png");;
+    private static Sound sound = Gdx.audio.newSound(new FileHandle(Constants.FILE_PATH + "Sounds/snap.ogg"));
     private double percent;
     private int time;
     private Creep target;
@@ -29,8 +29,8 @@ public class SlowDownBullet extends Projectile{
      * @param slowDownPercent Percentage of speed the target creep will loose
      * @param slowDownTime Amount of time the target creep will be slowed down
      */
-    public SlowDownBullet(Vector2 position, double angle, Creep target, double slowDownPercent, int slowDownTime){
-        super(GameData.getInstance().getMap().getParticleManager().getFrostBlastEffect(), 1, 10, sound, img, position, angle);
+    public SlowDownBullet(Map map, Vector2 position, double angle, Creep target, double slowDownPercent, int slowDownTime){
+        super(map, map.getParticleManager().getFrostBlastEffect(), 1, 10, sound, img, position, angle);
         this.target=target;
         this.percent=slowDownPercent;
         this.time=slowDownTime;
@@ -40,7 +40,7 @@ public class SlowDownBullet extends Projectile{
     public void reAngle() {
         if (target != null) {
             //Check if the target is still on the board
-            if(GameData.getInstance().getMap().getCreeps().contains((target))) {
+            if(getMap().getCreeps().contains((target))) {
                 faceTarget(target.getCenter());
             }
             else {

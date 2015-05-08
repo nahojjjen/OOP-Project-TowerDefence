@@ -8,13 +8,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import edu.chl.proximity.Controllers.MainController;
-import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.ButtonPanel;
-import edu.chl.proximity.Models.ControlPanel.ControlPanel;
-import edu.chl.proximity.Models.ControlPanel.ProfilePanel;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.Player;
+import edu.chl.proximity.Models.Utils.Settings;
+import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Viewers.Renderer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Johan Swanberg and Linda Evaldsson
@@ -29,10 +31,10 @@ import edu.chl.proximity.Viewers.Renderer;
  * 21/04 modified by Simon Gislen
  * 23/04 modified by Hanna R�mer. Added ButtonPanel and PropertiesPanel.
  * 29/04 modified by Hanna R�mer. Removed PropertiesPanel since it's singleton
+ * 07/05 modified by Linda Evaldsson. Moved handling of ControlPanels to ControlPanelController
  */
 public class GameScreen implements Screen{
-    private Game game;
-    private Map currentMap;
+
     private SpriteBatch batch = new SpriteBatch();
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
     private Renderer renderer;
@@ -41,41 +43,27 @@ public class GameScreen implements Screen{
     private MainController mainController;
     private OrthographicCamera camera;
     private FitViewport viewport;
+    private Settings settings;
 
-    public GameScreen(Game g, Map map, Player player){
-
-        game = g;
-        currentMap = map;
-        GameData.getInstance().setMap(currentMap);
-
-        ControlPanel controlPanel = new ControlPanel(); //Must be set after map is set in GameData
-        ButtonPanel buttonPanel = new ButtonPanel();
-        ProfilePanel profilePanel = new ProfilePanel();
+    public GameScreen(Proximity g, Map map, Player player){
+        this.settings = player.getSettings();
 
         GameData.getInstance().setPlayer(player);
-        this.renderer = new Renderer();
+        this.renderer = new Renderer(map);
         fixCamera();
 
-        mainController = new MainController(viewport);
-
-        renderer.setControlPanel(controlPanel);
-        renderer.setButtonPanel(buttonPanel);
-        renderer.setProfilePanel(profilePanel);
-
-        mainController.setControlPanel(controlPanel);
-        mainController.setButtonPanel(buttonPanel);
-        mainController.setProfilePanel(profilePanel);
+        mainController = new MainController(map, viewport, g);
+        renderer.setControlPanels(mainController.getControlPanels());
 
         shapeRenderer.setAutoShapeType(true);
-
-        map.setBase(player.getFaction().getNewBase());
+        map.setBase(player.getFaction().getNewBase(map));
+        player.getFaction().configureSpells(map);
         Gdx.input.setInputProcessor(mainController);
 
-        runDebugCode();
+        //runDebugCode();
 
 
     }
-    GameData gameData;
 
     /**
      * Debug code that adds towers, sets gamespeed and sets resources and such, that should not be available to the player
@@ -87,7 +75,8 @@ public class GameScreen implements Screen{
         //FrostField frostField = new FrostField();
         //currentMap.addTower(new BulletTower(new Vector2(400,200)));
         //currentMap.addTower(new BulletTower(new Vector2(400,300)));
-        GameData.getInstance().setGameSpeed(1);
+
+        //map.getSettings().setGameSpeed(1000);
     }
 
     /**
@@ -118,7 +107,7 @@ public class GameScreen implements Screen{
         renderer.render(batch, shapeRenderer);
 
         batch.end();
-        for (int i=0; i<GameData.getInstance().getGameSpeed(); i++){
+        for (int i=0; i<settings.getGameSpeed(); i++){
             mainController.updateAllControllers();
         }
 

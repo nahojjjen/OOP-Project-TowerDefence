@@ -2,8 +2,11 @@ package edu.chl.proximity.Models.Player.Spells.ConcreteSpells;
 
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Player.Spells.Spell;
+import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.ArrayList;
@@ -20,28 +23,29 @@ public class ChainLightning extends Spell {
     //Spell stats
     private static double range = 100f;
     private static int duration = 2;
+    private static Image image = new Image(Constants.FILE_PATH + "Spells/chainlightning.png");
 
     private List<Vector2> alreadyHitPositions = new ArrayList<Vector2>();
     private double bounceRange = 20;
-    public ChainLightning() {
-        super(null, duration); //600 frames = 10 seconds @ 60 fps
+    public ChainLightning(Map map) {
+        super(map, image, duration); //600 frames = 10 seconds @ 60 fps
 
     }
 
-    public ChainLightning(Vector2 position, List<Vector2> alreadyHitPositions) {
-        super(null, duration); //600 frames = 10 seconds @ 60 fps
+    public ChainLightning(Map map, Vector2 position, List<Vector2> alreadyHitPositions) {
+        super(map, image, duration); //600 frames = 10 seconds @ 60 fps
         this.alreadyHitPositions = alreadyHitPositions;
-        GameData.getInstance().getMap().getParticleManager().getLightningCreepEffect().createEffect(position); //create the spark effect
+        getMap().getParticleManager().getLightningCreepEffect().createEffect(position); //create the spark effect
     }
 
     @Override
     public void performEffect(int counter) {
-        List<Creep> creeps = GameData.getInstance().getMap().getCreeps();
+        List<Creep> creeps = getMap().getCreeps();
         for (Creep creep : creeps) {
             if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getPosition()) < range * range) {
                 creep.devolve();//devolve all creeps in range
                 if (!alreadyHit(creep.getCenter())) { //Create a new spark from the hit creep, if the area has not already bounced
-                    ChainLightning newSpark = new ChainLightning(creep.getCenter(), alreadyHitPositions);
+                    ChainLightning newSpark = new ChainLightning(getMap(), creep.getCenter(), alreadyHitPositions);
                     alreadyHitPositions.add(creep.getCenter());
                 }
             }
@@ -64,7 +68,7 @@ public class ChainLightning extends Spell {
 
     @Override
     public void playParticleEffect() {
-        GameData.getInstance().getMap().getParticleManager().getLightningOriginSpellEffect().createEffect(getPosition()); //create original lightning effect
+        getMap().getParticleManager().getLightningOriginSpellEffect().createEffect(getPosition()); //create original lightning effect
     }
     @Override
     public double getRange() {

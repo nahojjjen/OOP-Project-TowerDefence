@@ -36,8 +36,8 @@ public class ProximityEffect {
      */
     public ProximityEffect(String fileName, int maxPoolAmount){
         //maps out the file handles the particle requires
-        FileHandle particleEffectsImagesFolder = new FileHandle(Constants.filePath + "Particles/ParticleImages/");
-        FileHandle effectFile = new FileHandle(Constants.filePath + "Particles/" + fileName);
+        FileHandle particleEffectsImagesFolder = new FileHandle(Constants.FILE_PATH + "Particles/ParticleImages/");
+        FileHandle effectFile = new FileHandle(Constants.FILE_PATH + "Particles/" + fileName);
 
         //Configures 1 example effect
         ParticleEffect effect = new ParticleEffect();
@@ -127,7 +127,7 @@ public class ProximityEffect {
         for (int i = 0; i<effects.size(); i++) {
             ParticleEffectPool.PooledEffect effect = effects.get(i);
 
-            effect.draw(batch, Gdx.graphics.getDeltaTime()*GameData.getInstance().getGameSpeed());
+            effect.draw(batch, Gdx.graphics.getDeltaTime()*GameData.getInstance().getPlayer().getSettings().getGameSpeed());
 
             if(effect.getEmitters().get(0).getPercentComplete() >= 0 && !effect.getEmitters().get(0).isContinuous()){//effect.isComplete()){
                 effect.free(); //put the effect back in the pool if it is done )

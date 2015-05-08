@@ -1,8 +1,11 @@
 package edu.chl.proximity.Models.Player.Spells.ConcreteSpells;
 
 import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Player.Spells.Spell;
+import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.List;
@@ -18,31 +21,32 @@ public class BloodCarnage extends Spell {
     private static double range = 80f;
     private static int healthCost = 35;
     private static int duration = 60 * 5; //600 frames = 10 seconds @ 60 fps
+    private static Image image = new Image(Constants.FILE_PATH + "Spells/bloodcarnage.png");
 
     private boolean hasDamagedPlayer = false;
 
-    public BloodCarnage() {
-        super(null, duration);
+    public BloodCarnage(Map map) {
+        super(map, image, duration);
     }
 
     @Override
     public void performEffect(int counter) {
         if (!hasDamagedPlayer){
-            GameData.getInstance().getMap().getBase().damage(healthCost);
+            getMap().getBase().damage(healthCost);
             hasDamagedPlayer = true;
         }
-        List<Creep> creeps = GameData.getInstance().getMap().getCreeps();
+        List<Creep> creeps = getMap().getCreeps();
         for (Creep creep : creeps) {
             if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getPosition()) < range * range) {
                 creep.devolve();
-                GameData.getInstance().getMap().getParticleManager().getBloodCarnageCreepEffect().createEffect(creep.getCenter());
+               getMap().getParticleManager().getBloodCarnageCreepEffect().createEffect(creep.getCenter());
             }
         }
     }
 
     @Override
     public void playParticleEffect() {
-        GameData.getInstance().getMap().getParticleManager().getBloodCarnageEffect().createEffect(getPosition());
+        getMap().getParticleManager().getBloodCarnageEffect().createEffect(getPosition());
     }
 
     @Override

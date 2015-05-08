@@ -1,7 +1,8 @@
 package edu.chl.proximity.Models.Player.Factions;
 
 import edu.chl.proximity.Models.Map.Bases.Base;
-import edu.chl.proximity.Models.Player.Spells.PersistentObject;
+import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Player.Spells.Spell;
 import edu.chl.proximity.Models.Utils.Image;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public abstract class Faction {
     //also has spells
-    private List<PersistentObject> spells = new ArrayList();
+    private List<Spell> spells = new ArrayList();
     private String name;
     private Image profileImage;
 
@@ -30,14 +31,14 @@ public abstract class Faction {
      * get the base used by this faction
      * @return (Base) The base used by this faction
      */
-    public abstract Base getNewBase();
+    public abstract Base getNewBase(Map map);
 
-    public abstract void configureSpells();
+    public abstract void configureSpells(Map map);
 
-    public void addSpell(PersistentObject input){
+    public void addSpell(Spell input){
         spells.add(input);
     }
-    public PersistentObject getSpell(int i){
+    public Spell getSpell(int i){
         return spells.get(i);
 
     }

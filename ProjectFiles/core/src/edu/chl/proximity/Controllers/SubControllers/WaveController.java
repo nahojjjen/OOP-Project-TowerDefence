@@ -24,9 +24,10 @@ public class WaveController {
     private int cooldownCounter;
 
 
-    public WaveController() {
-        this.waveGenerator = new StandardGenerator();
-        this.map = GameData.getInstance().getMap();
+    public WaveController(Map map) {
+        this.waveGenerator = new StandardGenerator(map);
+
+        this.map = map;
     }
 
     public void update() {

@@ -17,6 +17,9 @@ public class BaseTest {
     @Test
     public void testGetLife() throws Exception {
         //GameData.createTestDataEnviroment();
+
+        assertTrue(true);
+
         //Base test = new BaseConcreteClass(null,null,null);
         //assertTrue(test.getLife() == 100);
     }

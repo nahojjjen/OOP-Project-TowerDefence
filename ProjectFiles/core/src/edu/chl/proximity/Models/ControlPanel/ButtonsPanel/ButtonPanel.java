@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
@@ -31,18 +32,23 @@ public class ButtonPanel extends BoardObject {
     private boolean pause=false;
     private int speed=1;
 
-    private PlayButton playButton=new PlayButton(playPos);
-    private PauseButton pauseButton=new PauseButton(pausePos);
-    private SpeedButton speedButton=new SpeedButton(speedPos);
-    private PropertiesButton prButton=new PropertiesButton(propPos);
-
+    private PlayButton playButton;
+    private PauseButton pauseButton;
+    private SpeedButton speedButton;
+    private PropertiesButton prButton;
+    private PropertiesPanel propertiesPanel;
 
     /**
      * Create a new instance of ButtonPanel
      */
-    public ButtonPanel() {
-        super(position, background, 0, width, height);
-        GameData.getInstance().setGameSpeed(speed);
+    public ButtonPanel(PropertiesPanel propertiesPanel) {
+        super(null, position, background, 0, width, height);
+        GameData.getInstance().getPlayer().getSettings().setGameSpeed(speed);
+        this.propertiesPanel = propertiesPanel;
+        playButton=new PlayButton(playPos);
+        pauseButton=new PauseButton(pausePos);
+        speedButton=new SpeedButton(speedPos);
+        prButton=new PropertiesButton(propPos);
     }
 
     /**
@@ -77,18 +83,18 @@ public class ButtonPanel extends BoardObject {
     public void pressedPausePlay(){
         if(pause){
             pause=false;
-            GameData.getInstance().setGameSpeed(speed);
+            GameData.getInstance().getPlayer().getSettings().setGameSpeed(speed);
         }else{
             pause=true;
-            GameData.getInstance().setGameSpeed(0);
+            GameData.getInstance().getPlayer().getSettings().setGameSpeed(0);
 
         }
     }
     public void pressedPlay(){
-        GameData.getInstance().setGameSpeed(1);
+        GameData.getInstance().getPlayer().getSettings().setGameSpeed(1);
     }
     public void pressedPause(){
-        GameData.getInstance().setGameSpeed(0);
+        GameData.getInstance().getPlayer().getSettings().setGameSpeed(0);
         playButton.setRightImage();
         speedButton.setRightImage();
     }
@@ -99,7 +105,7 @@ public class ButtonPanel extends BoardObject {
     public void pauseGame(){
         if(!pause){
             pause=true;
-            GameData.getInstance().setGameSpeed(0);
+            GameData.getInstance().getPlayer().getSettings().setGameSpeed(0);
         }
     }
 
@@ -109,7 +115,7 @@ public class ButtonPanel extends BoardObject {
     public void startGame(){
         if(pause){
             pause=false;
-            GameData.getInstance().setGameSpeed(speed);
+            GameData.getInstance().getPlayer().getSettings().setGameSpeed(speed);
         }
     }
 
@@ -118,7 +124,7 @@ public class ButtonPanel extends BoardObject {
      * If speed is greater than 2 it is set to 1.
      */
     public void pressedSpeedButton(){
-        GameData.getInstance().setGameSpeed(2);
+        GameData.getInstance().getPlayer().getSettings().setGameSpeed(2);
     }
 
     /**
@@ -126,8 +132,9 @@ public class ButtonPanel extends BoardObject {
      * Pauses game and tells the properiespanel to be visible
      */
     public void pressedPropertiesButton(){
+
         pressedPause();
-        PropertiesPanel.getInstance().setVisability(true);
+        propertiesPanel.setVisability(true);
     }
 
 
