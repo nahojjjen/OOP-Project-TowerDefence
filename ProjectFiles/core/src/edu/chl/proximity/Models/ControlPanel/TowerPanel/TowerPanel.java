@@ -28,10 +28,12 @@ public class TowerPanel extends BoardObject{
     private static int height=300;
     private TargetingFactory targetingFactory;
     private ProximityFont towerName=new ProximityFont(new Vector2(pos.x+115,pos.y+5),null);
+
     private CheckBox first;
     private CheckBox closest;
     private CheckBox last;
     private UpgradeButton upgrade;
+
     private ProximityFont cost=new ProximityFont(new Vector2(pos.x+5, pos.y+75),"Upgrade");
     private ProximityFont points=new ProximityFont(new Vector2(pos.x+60, pos.y+95),"Points:");
     private ProximityFont lines=new ProximityFont(new Vector2(pos.x+60, pos.y+110),"Lines:");
@@ -99,8 +101,8 @@ public class TowerPanel extends BoardObject{
             if(upgrade instanceof ShootingTower && map.getChoosenTower() instanceof ShootingTower){
                 ((ShootingTower) upgrade).setTargetingMethod(((ShootingTower) map.getChoosenTower()).getTargetingMethod());
             }
-            map.getTowers().remove(map.getChoosenTower());
-            map.addTower(upgrade);
+            map.getRemoveStack().add(map.getChoosenTower());
+            map.getAddStack().add(upgrade);
             map.setChoosenTower(upgrade);
         }
     }
