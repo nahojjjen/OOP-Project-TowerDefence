@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sun.prism.image.ViewPort;
 import edu.chl.proximity.Controllers.MainController;
 import edu.chl.proximity.Controllers.MainMenuController;
@@ -35,9 +36,9 @@ public class MenuScreen implements Screen {
     private MenuRenderer menuRenderer;
     private MainMenuController mainMenuController;
     private OrthographicCamera camera;
-    private FitViewport viewport;
+    private Viewport viewport;
 
-    public MenuScreen(Proximity g, Player player){
+    public MenuScreen(Proximity g, Player player, Viewport viewport){
         GameData.getInstance().setPlayer(player);
         this.mainMenu=new MainMenu(g);
 
@@ -46,8 +47,19 @@ public class MenuScreen implements Screen {
 
         //Fix of camera and graphics
         fixCamera();
+        //TODO fix this viewport scaling issue
+        /*
+        if(viewport==null) {
+            fixCamera();
+        }else{
+            this.viewport=viewport;
+            this.camera=(OrthographicCamera) viewport.getCamera();
+            viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+            //viewport.apply();
+        }
+        */
         shapeRenderer.setAutoShapeType(true);
-        mainMenuController=new MainMenuController(viewport);
+        mainMenuController=new MainMenuController(this.viewport);
         mainMenuController.setMainMenu(mainMenu);
         Gdx.input.setInputProcessor(mainMenuController);
 

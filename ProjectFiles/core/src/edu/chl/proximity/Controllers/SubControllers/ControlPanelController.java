@@ -2,6 +2,7 @@ package edu.chl.proximity.Controllers.SubControllers;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.ControlPanel.*;
@@ -37,13 +38,14 @@ public class ControlPanelController implements ClickHandler {
     private ProfilePanel profilePanel;
     private TowerPanel towerPanel;
     private Map map;
+    private Viewport viewport;
     private List<BoardObject> controlPanels = new ArrayList<BoardObject>();
 
-    public ControlPanelController(Map map, Proximity g) {
-
+    public ControlPanelController(Map map, Proximity g, Viewport viewport) {
+        this.viewport=viewport;
         this.map = map;
 
-        propertiesPanel = new PropertiesPanel(g);
+        propertiesPanel = new PropertiesPanel(g,viewport);
         controlPanel = new ControlPanel(map);
         towerPanel=new TowerPanel(map);
         map.setPropertiesPanel(propertiesPanel);

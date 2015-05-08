@@ -2,6 +2,7 @@ package edu.chl.proximity.Models.ControlPanel.PropertiesPanel;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
@@ -39,13 +40,15 @@ public class PropertiesPanel extends BoardObject{
     private int backUpLevel;
     private boolean isVisible=false;
     private Proximity game;
+    private Viewport viewport;
 
     /**
      * Create a new properies panel
      */
-    public PropertiesPanel(Proximity game){
+    public PropertiesPanel(Proximity game, Viewport viewport){
         super(null, position, background, 0);
         this.game = game;
+        this.viewport=viewport;
         resumeButton = new ResumeButton(resumePos);
         mainMenuButton = new MainMenuButton(mainMenuPos);
         soundButton = new SoundButton(soundPos);
@@ -170,7 +173,8 @@ public class PropertiesPanel extends BoardObject{
      */
     public void pressedMainMenuButton(){
         setVisability(false);
-        game.changeScreen(Proximity.State.MAIN_MENU,getMap(), GameData.getInstance().getPlayer());
+
+        game.changeScreen(Proximity.State.MAIN_MENU,getMap(), GameData.getInstance().getPlayer(),viewport);
     }
 
     /**

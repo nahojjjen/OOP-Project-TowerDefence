@@ -3,6 +3,7 @@ package edu.chl.proximity;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Controllers.GameStates.GameScreen;
 import edu.chl.proximity.Controllers.GameStates.MenuScreen;
 import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Planes;
@@ -23,15 +24,15 @@ import edu.chl.proximity.Models.Utils.Settings;
 public class Proximity extends Game {
 	public enum State{GAME,MAIN_MENU}
 
-	public void changeScreen(State state, Map map, Player player){
+	public void changeScreen(State state, Map map, Player player, Viewport viewport){
 
 		switch(state){
 			case GAME:
-				this.setScreen(new GameScreen(this,map,player));
+				this.setScreen(new GameScreen(this,map,player, viewport));
 				break;
 			case MAIN_MENU:
 
-				this.setScreen(new MenuScreen(this, player));
+				this.setScreen(new MenuScreen(this, player, viewport));
 		}
 	}
 	public State getCurrentScreen(){
@@ -48,7 +49,7 @@ public class Proximity extends Game {
 		Player player = new Player(null);
 
 		//The application switchs to the start screen menu screen
-		this.setScreen(new MenuScreen(this, player));
+		this.setScreen(new MenuScreen(this, player,null));
 	}
 
 

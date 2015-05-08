@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Controllers.MainController;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -42,15 +43,24 @@ public class GameScreen implements Screen{
 
     private MainController mainController;
     private OrthographicCamera camera;
-    private FitViewport viewport;
+    private Viewport viewport;
     private Settings settings;
 
-    public GameScreen(Proximity g, Map map, Player player){
+    public GameScreen(Proximity g, Map map, Player player, Viewport viewport){
         this.settings = player.getSettings();
 
         GameData.getInstance().setPlayer(player);
         this.renderer = new Renderer(map);
+
         fixCamera();
+        //TODO fix this viewport scaling issue
+        /*
+        this.viewport=viewport;
+        camera=(OrthographicCamera)viewport.getCamera();
+        camera.setToOrtho(true);
+        viewport.apply();
+        viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        */
 
         mainController = new MainController(map, viewport, g);
         renderer.setControlPanels(mainController.getControlPanels());

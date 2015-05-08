@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.MenuModels.FactionChooser.FactionChooser;
@@ -57,7 +58,7 @@ public class MainMenu {
         return mapSelect;
     }
 
-    public void pressedStart(){
+    public void pressedStart(Viewport viewport){
         player.setFacton(factionChooser.getCurrentlyShown());
         map=mapSelect.getSelected();
         player.getFaction().configureSpells(map);
@@ -65,7 +66,7 @@ public class MainMenu {
         GameData.getInstance().setPlayer(player);
         player.getResources().setResources(500,500,0);
 
-        game.changeScreen(Proximity.State.GAME, map, player);
+        game.changeScreen(Proximity.State.GAME, map, player,viewport);
     }
 
 

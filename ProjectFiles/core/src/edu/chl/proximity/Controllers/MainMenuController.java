@@ -49,7 +49,7 @@ public class MainMenuController implements InputProcessor{
         Vector2 pos = viewport.unproject(new Vector2(x,y));
         BoardObject touchedButton=mainMenu.getButtonOnPosition(pos);
         if(touchedButton instanceof StartButton){
-            mainMenu.pressedStart();
+            mainMenu.pressedStart(viewport);
         }else if(touchedButton instanceof FactionChooser){
             mainMenu.pressedFactionChooser(pos);
         }else if(touchedButton instanceof MapSelect){

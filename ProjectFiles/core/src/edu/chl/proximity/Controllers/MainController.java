@@ -61,7 +61,7 @@ public class MainController implements InputProcessor{
         creepController = new CreepController(map);
         towerController = new TowerController(map);
         projectileController = new ProjectileController(map);
-        controlPanelController = new ControlPanelController(map, game);
+        controlPanelController = new ControlPanelController(map, game,viewport);
         waveController = new WaveController(map);
         mapController = new MapController(map);
         handController = new HandController(map);
