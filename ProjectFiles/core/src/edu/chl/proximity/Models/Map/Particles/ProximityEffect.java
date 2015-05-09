@@ -27,6 +27,8 @@ import java.util.List;
  */
 public class ProximityEffect {
     private ParticleEffectPool effectPool; //effects that can be created
+    private ParticleEffect effectTemplate;
+    private FileHandle effectFile;
     List<ParticleEffectPool.PooledEffect> effects = new ArrayList(); //effects currently on the map
 
     /**
@@ -37,15 +39,15 @@ public class ProximityEffect {
     public ProximityEffect(String fileName, int maxPoolAmount){
         //maps out the file handles the particle requires
         FileHandle particleEffectsImagesFolder = new FileHandle(Constants.FILE_PATH + "Particles/ParticleImages/");
-        FileHandle effectFile = new FileHandle(Constants.FILE_PATH + "Particles/" + fileName);
+        effectFile = new FileHandle(Constants.FILE_PATH + "Particles/" + fileName);
 
         //Configures 1 example effect
-        ParticleEffect effect = new ParticleEffect();
-        effect.load(effectFile, particleEffectsImagesFolder);
-        flipAllEmitterY(effect.getEmitters());
+        effectTemplate = new ParticleEffect();
+        effectTemplate.load(effectFile, particleEffectsImagesFolder);
+        flipAllEmitterY(effectTemplate.getEmitters());
 
         //loads the example effect into the pool, so the pool knows what kind of effect to populate itself with (see pool-design pattern)
-         effectPool = new ParticleEffectPool(effect, 1, maxPoolAmount );
+         effectPool = new ParticleEffectPool(effectTemplate, 1, maxPoolAmount );
     }
 
 
@@ -101,11 +103,18 @@ public class ProximityEffect {
      */
     public ParticleEffect createEffect(float x, float y) {
         if (effectPool != null){
-            ParticleEffectPool.PooledEffect effect = effectPool.obtain();
-            effect.setPosition(x, y);
-            effects.add(effect);
-            effect.start();
-            return effect;
+            if (effectPool.peak < effectPool.max){
+                ParticleEffectPool.PooledEffect effect = effectPool.obtain();
+                effect.setPosition(x, y);
+                effects.add(effect);
+                effect.start();
+                return effect;
+            }
+            else{
+                System.out.println("Could not create effect, pool empty! Skipping. Effect that could not be created: " + effectFile);
+            }
+
+
         }
         return null;
     }

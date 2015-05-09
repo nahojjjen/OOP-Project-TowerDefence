@@ -22,23 +22,22 @@ public class ParticleManager {
      * create all the particle pools (currently only explosion)
      */
     public ParticleManager() {
-        allEffects.add(new ProximityEffect("explosion3", 100));
-        allEffects.add(new ProximityEffect("creepdies", 1000));
-        allEffects.add(new ProximityEffect("bulleteffect", 100));
-        allEffects.add(new ProximityEffect("baseDamage", 15));
-        allEffects.add(new ProximityEffect("baseGlitter", 20));
-        allEffects.add(new ProximityEffect("frostBlast", 10));
-        allEffects.add(new ProximityEffect("frostField", 1));
-        allEffects.add(new ProximityEffect("lightningCreepEffect", 100));
-        allEffects.add(new ProximityEffect("lightningOriginSpellEffect", 1));
-        allEffects.add(new ProximityEffect("fireField", 1));
-        allEffects.add(new ProximityEffect("fireCreepEffect", 100));
-        allEffects.add(new ProximityEffect("dirtSmokeEffect", 100));
-        allEffects.add(new ProximityEffect("wallOfStoneSpell2", 1));
-        allEffects.add(new ProximityEffect("BloodPool", 1));
-        allEffects.add(new ProximityEffect("BloodPoolCreepEffect", 1));
-        allEffects.add(new ProximityEffect("BloodCarnage", 1));
-        allEffects.add(new ProximityEffect("BloodCarnageCreepEffect", 1));
+        allEffects.add(new ProximityEffect("explosion3", 700));
+        allEffects.add(new ProximityEffect("creepdies", 3000));
+        allEffects.add(new ProximityEffect("bulleteffect", 500));
+        allEffects.add(new ProximityEffect("baseDamage", 300));
+        allEffects.add(new ProximityEffect("baseGlitter", 50));
+        allEffects.add(new ProximityEffect("frostField", 10));
+        allEffects.add(new ProximityEffect("lightningCreepEffect", 900));
+        allEffects.add(new ProximityEffect("lightningOriginSpellEffect", 40));
+        allEffects.add(new ProximityEffect("fireField", 50));
+        allEffects.add(new ProximityEffect("fireCreepEffect", 1200));
+        allEffects.add(new ProximityEffect("dirtSmokeEffect", 1200));
+        allEffects.add(new ProximityEffect("wallOfStoneSpell2", 15));
+        allEffects.add(new ProximityEffect("BloodPool", 10));
+        allEffects.add(new ProximityEffect("BloodPoolCreepEffect", 100));
+        allEffects.add(new ProximityEffect("BloodCarnage", 10));
+        allEffects.add(new ProximityEffect("BloodCarnageCreepEffect", 300));
     }
 
     /**
