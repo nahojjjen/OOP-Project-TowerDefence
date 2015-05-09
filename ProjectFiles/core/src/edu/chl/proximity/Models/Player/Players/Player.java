@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.Player.Players;
 
 import edu.chl.proximity.Models.Player.Factions.Faction;
+import edu.chl.proximity.Models.Player.PersistentSave.SaveManager;
 import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.Settings;
 
@@ -24,7 +25,7 @@ public class Player {
     private int experiencePoints;
     private double level;
     private Settings settings;
-
+    private SaveManager saveManager;
     /**
      * Create a new player with starting resources of 300 points,
      * 300 lines and 0 polygons
@@ -35,7 +36,11 @@ public class Player {
         this.faction=faction;
         //Standard settings are set
         this.settings = new Settings();
+        this.saveManager = new SaveManager(this);
+        this.experiencePoints = saveManager.getExp();
     }
+
+
 
     /**
      * Change the players faction
