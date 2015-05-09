@@ -87,14 +87,17 @@ public abstract class Path {
     /**
      * get the waypoint in the path
      *
-     * @param i what point to get
+     * @param waypointNumber what point to get
      * @return a point corresponding to the number input
      */
-    public Vector2 getWaypoint(int i) {
-        if(waypoint != null) {
-            return waypoint.get(i);
+    public Vector2 getWaypoint(int waypointNumber) {
+        if(waypoint != null && waypoint.size() > waypointNumber) {
+            return waypoint.get(waypointNumber);
         }
-        return waypoint.get(i-1);
+        return waypoint.get(waypoint.size()-1); //test-wise we only get to this line of code
+        //if we run the program at around x10000 speed, and then the creeps sometimes accidentally skip
+        //the last waypoint and attempt to get a waypoint after the last one, so now it error corrects by simply returning
+        //the last one by default if out of bounds.
     }
 
 
