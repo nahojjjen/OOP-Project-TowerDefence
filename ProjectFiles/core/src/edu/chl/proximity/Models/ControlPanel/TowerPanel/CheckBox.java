@@ -1,7 +1,7 @@
 package edu.chl.proximity.Models.ControlPanel.TowerPanel;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.Image;
@@ -18,9 +18,9 @@ public class CheckBox extends BoardObject{
     private static Image unChecked=new Image(Constants.FILE_PATH + "Buttons/MapSelectable.png");
     private ProximityFont text;
 
-    public CheckBox(Vector2 pos, Map map, String text){
+    public CheckBox(ProximityVector pos, Map map, String text){
         super(map,pos, unChecked,0);
-        this.text=new ProximityFont(new Vector2(pos.x + 40, pos.y), text);
+        this.text=new ProximityFont(new ProximityVector(pos.x + 40, pos.y), text);
     }
 
     public void setAsChecked(){

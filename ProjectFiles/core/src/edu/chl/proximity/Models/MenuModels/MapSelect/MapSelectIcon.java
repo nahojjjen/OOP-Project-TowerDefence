@@ -1,7 +1,7 @@
 package edu.chl.proximity.Models.MenuModels.MapSelect;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.Image;
@@ -16,17 +16,17 @@ import edu.chl.proximity.Utilities.Constants;
  */
 public class MapSelectIcon extends BoardObject{
     private Map map;
-    private Vector2 pos;
+    private ProximityVector pos;
     private static Image selectable = new Image(Constants.FILE_PATH + "Buttons/MapSelectable.png");
     private static Image notSelectable = new Image(Constants.FILE_PATH + "Buttons/MapNotSelectable.png");
     private static Image selected= new Image(Constants.FILE_PATH + "Buttons/MapSelected.png");
     private ProximityFont name;
 
-    public MapSelectIcon(Map map, Vector2 pos){
+    public MapSelectIcon(Map map, ProximityVector pos){
         super(map, pos,notSelectable,0);
         this.map=map;
         this.pos=pos;
-        name= new ProximityFont(new Vector2(pos.x, pos.y-20), map.getName());
+        name= new ProximityFont(new ProximityVector(pos.x, pos.y-20), map.getName());
     }
 
     public Map getMap(){

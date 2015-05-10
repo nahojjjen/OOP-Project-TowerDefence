@@ -2,7 +2,7 @@ package edu.chl.proximity.Models.ControlPanel.ButtonsPanel;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
@@ -23,11 +23,11 @@ public class ButtonPanel extends BoardObject {
     private static int width=300;
     private static int height=70;
 
-    private static Vector2 position= new Vector2(Gdx.graphics.getWidth()-width, Gdx.graphics.getHeight()-height);
-    private static Vector2 pausePos=new Vector2(position.x+20, position.y);
-    private static Vector2 playPos=new Vector2(pausePos.x+60, position.y);
-    private static Vector2 speedPos=new Vector2(playPos.x+60, position.y);
-    private static Vector2 propPos=new Vector2(speedPos.x+60, position.y);
+    private static ProximityVector position= new ProximityVector(Gdx.graphics.getWidth()-width, Gdx.graphics.getHeight()-height);
+    private static ProximityVector pausePos=new ProximityVector(position.x+20, position.y);
+    private static ProximityVector playPos=new ProximityVector(pausePos.x+60, position.y);
+    private static ProximityVector speedPos=new ProximityVector(playPos.x+60, position.y);
+    private static ProximityVector propPos=new ProximityVector(speedPos.x+60, position.y);
 
     private boolean pause=false;
     private int speed=1;
@@ -64,7 +64,7 @@ public class ButtonPanel extends BoardObject {
      * @param position position to be checked for buttons
      * @return button on specified position. If there is no button there, null is returned
      */
-    public BoardObject getButtonOnPosition(Vector2 position){
+    public BoardObject getButtonOnPosition(ProximityVector position){
         if(PointCalculations.isPointInObject(position, playButton)) {
             return playButton;
         }else if(PointCalculations.isPointInObject(position,pauseButton)){

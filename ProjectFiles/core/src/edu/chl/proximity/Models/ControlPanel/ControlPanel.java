@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingFactory;
@@ -51,7 +51,7 @@ public class ControlPanel extends BoardObject{
     private static Image HPbackground = new Image(Constants.FILE_PATH + "Backgrounds/square.png");
     private static String HPtext = "HP";
 
-    private static Vector2 position = new Vector2(Constants.GAME_WIDTH - width, 0);
+    private static ProximityVector position = new ProximityVector(Constants.GAME_WIDTH - width, 0);
 
     //The towers that are rendered on the ControlPanel
     private List<ControlPanelTower> controlPanelTowerList = new ArrayList<ControlPanelTower>();
@@ -79,7 +79,7 @@ public class ControlPanel extends BoardObject{
      * Initiates all the texts of this ControlPanel
      */
     public void initiateText() {
-        percentBar = new PercentBar(new Vector2(position.x + 30, position.y + 30), width - 60, 32, HPforeground, HPbackground);
+        percentBar = new PercentBar(new ProximityVector(position.x + 30, position.y + 30), width - 60, 32, HPforeground, HPbackground);
         percentBar.setText(HPtext);
 
         lineText = createFont(30, 80, "null");
@@ -92,14 +92,14 @@ public class ControlPanel extends BoardObject{
      */
     public void initiateControlPanelTowers() {
         TargetingFactory targetFactory = new TargetingFactory(getMap());
-        controlPanelTowerList.add(new ControlPanelTower(getMap(), new Vector2(0, 0), new BulletTower(getMap(), new Vector2(0, 0), targetFactory.getTargetClosest())));
-        controlPanelTowerList.add(new ControlPanelTower(getMap(), new Vector2(0, 0), new MissileTower(getMap(), new Vector2(0, 0), targetFactory.getTargetClosest())));
-        controlPanelTowerList.add(new ControlPanelTower(getMap(), new Vector2(0, 0), new SlowTower(getMap(), new Vector2(0, 0), targetFactory.getTargetClosest())));
+        controlPanelTowerList.add(new ControlPanelTower(getMap(), new ProximityVector(0, 0), new BulletTower(getMap(), new ProximityVector(0, 0), targetFactory.getTargetClosest())));
+        controlPanelTowerList.add(new ControlPanelTower(getMap(), new ProximityVector(0, 0), new MissileTower(getMap(), new ProximityVector(0, 0), targetFactory.getTargetClosest())));
+        controlPanelTowerList.add(new ControlPanelTower(getMap(), new ProximityVector(0, 0), new SlowTower(getMap(), new ProximityVector(0, 0), targetFactory.getTargetClosest())));
 
         for(int i = 0; i < controlPanelTowerList.size(); i++) {
             System.out.println("In controllpanel: Towers per row: " + i % towersPerRow);
             System.out.println("In controlpanel: i/towers per row "+ i/towersPerRow);
-            controlPanelTowerList.get(i).setPosition(new Vector2(getPosition().x + 30 + 50 * (i % towersPerRow), 150 + 50 * (i/towersPerRow)));
+            controlPanelTowerList.get(i).setPosition(new ProximityVector(getPosition().x + 30 + 50 * (i % towersPerRow), 150 + 50 * (i/towersPerRow)));
         }
     }
 
@@ -117,11 +117,11 @@ public class ControlPanel extends BoardObject{
     }
 
     /**
-     * Returns the ControlPanelTower in the Vector2-position taken as parameter. If none returns null
+     * Returns the ControlPanelTower in the ProximityVector-position taken as parameter. If none returns null
      * @param position The position to check for objects on
      * @return The ControlPanelTower in the position taken as parameter. Null if there is none.
      */
-    public ControlPanelTower getTowerOnPosition(Vector2 position) {
+    public ControlPanelTower getTowerOnPosition(ProximityVector position) {
         for(ControlPanelTower cpTower : controlPanelTowerList) {
             if(PointCalculations.isPointInObject(position, cpTower))
                 return cpTower;
@@ -138,7 +138,7 @@ public class ControlPanel extends BoardObject{
      * @return a ProximityFont object corresponding to this information
      */
     private ProximityFont createFont(float x, float y, String s){
-        return new ProximityFont(new Vector2(getPosition().x + x, y), s);
+        return new ProximityFont(new ProximityVector(getPosition().x + x, y), s);
     }
 
     /**

@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Player.Spells.Spell;
 import edu.chl.proximity.Models.Utils.GameData;
@@ -23,7 +23,7 @@ import edu.chl.proximity.Models.Utils.Image;
 public class Hand {
 
 
-    private Vector2 position;
+    private ProximityVector position;
     private Holdable currentItem;
 
     public Hand(){
@@ -37,18 +37,18 @@ public class Hand {
     public Holdable getItem() {
         return currentItem;
     }
-    public Vector2 getPosition() {
+    public ProximityVector getPosition() {
         return position;
     }
 
-    public void setPosition(Vector2 position) {
+    public void setPosition(ProximityVector position) {
         this.position = position;
     }
     public void render(SpriteBatch batch) {
         if(currentItem != null) {
             Image img = currentItem.getImage();
             if(img != null) {
-                img.render(batch, new Vector2(position.x - img.getTexture().getWidth() / 2, position.y - img.getTexture().getHeight() / 2), 0);
+                img.render(batch, new ProximityVector(position.x - img.getTexture().getWidth() / 2, position.y - img.getTexture().getHeight() / 2), 0);
             }
         }
     }
@@ -81,7 +81,7 @@ public class Hand {
         renderRangeIndicator(shapeRenderer, getRangeIndicatorColor(), getPosition(), getItem().getRange());
     }
 
-    private void renderRangeIndicator(ShapeRenderer renderer, Color color, Vector2 position, double range) {
+    private void renderRangeIndicator(ShapeRenderer renderer, Color color, ProximityVector position, double range) {
         Gdx.gl.glEnable(GL20.GL_BLEND); //enables transparency
         renderer.setColor(color);
         renderer.circle(position.x, position.y, (float) range);

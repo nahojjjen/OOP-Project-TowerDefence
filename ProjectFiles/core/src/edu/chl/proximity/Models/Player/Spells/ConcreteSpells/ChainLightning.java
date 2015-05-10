@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.Player.Spells.ConcreteSpells;
 
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;

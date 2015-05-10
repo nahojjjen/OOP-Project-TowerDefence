@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.Map.Towers.TargetingMethods;
 
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -21,7 +21,7 @@ public class TargetClosest extends TargetingMethod{
         super(map);
     }
 
-    public Creep getTarget(Vector2 position, double range){
+    public Creep getTarget(ProximityVector position, double range){
         double rangeToClosest;
         Creep closestCreep;
 

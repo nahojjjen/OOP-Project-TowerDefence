@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 
 /**
@@ -18,7 +18,7 @@ import edu.chl.proximity.Models.BoardObject;
  */
 public abstract class Path {
 
-    protected List<Vector2> waypoint = new ArrayList();
+    protected List<ProximityVector> waypoint = new ArrayList();
     protected List<Rectangle> pathHitbox =  new ArrayList();
 
     /**
@@ -35,7 +35,7 @@ public abstract class Path {
      * get a list of all waypoints in this path
      * @return a list of points, in order- the points are waypoints on the path.
      */
-    public List<Vector2> getWaypoints() {
+    public List<ProximityVector> getWaypoints() {
         return waypoint;
     }
 
@@ -90,7 +90,7 @@ public abstract class Path {
      * @param waypointNumber what point to get
      * @return a point corresponding to the number input
      */
-    public Vector2 getWaypoint(int waypointNumber) {
+    public ProximityVector getWaypoint(int waypointNumber) {
         if(waypoint != null && waypoint.size() > waypointNumber) {
             return waypoint.get(waypointNumber);
         }

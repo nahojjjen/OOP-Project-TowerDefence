@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.Map.Towers;
 
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
@@ -25,7 +25,7 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
     protected Tower upgrade;
     private String name;
 
-    public Tower(Map map, Vector2 pos, Image image, int angle, String name) {
+    public Tower(Map map, ProximityVector pos, Image image, int angle, String name) {
         super(map, pos, image, angle);
         this.name=name;
     }
@@ -37,7 +37,7 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
     public abstract void update();
 
     @Override
-    public void placeObject(Vector2 position) {
+    public void placeObject(ProximityVector position) {
         this.setCenter(position);
         getMap().add(this);
         getMap().getHand().setItem(null);

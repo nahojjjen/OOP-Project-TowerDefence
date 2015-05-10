@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import com.badlogic.gdx.utils.Array;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Utilities.Constants;
@@ -125,7 +125,7 @@ public class ProximityEffect {
      *
      * @param vector The vector point where this effect should be created
      */
-    public ParticleEffect createEffect(Vector2 vector) {
+    public ParticleEffect createEffect(ProximityVector vector) {
         return createEffect(vector.x, vector.y);
     }
 

@@ -1,7 +1,7 @@
 package edu.chl.proximity.Models.Map.Creeps;
 
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -26,7 +26,7 @@ import edu.chl.proximity.Utilities.ProximityRandom;
  */
 public abstract class Creep extends BoardObject {
 
-    //private Vector2 nextWayPoint;
+    //private ProximityVector nextWayPoint;
     private int nextWayPointID;
     private double distanceToNextWayPoint;
     private Path path;
@@ -35,7 +35,7 @@ public abstract class Creep extends BoardObject {
     private double backUpSpeed;
     private double moveAngle;
     private double randomRotation;
-    private Vector2 velocity;
+    private ProximityVector velocity;
     private int slowDownTime;
     private boolean isDead = false;
 
@@ -103,7 +103,7 @@ public abstract class Creep extends BoardObject {
      * Give the creep the first angle & direction to the first waypoint
      */
     private void initiateMovement() {
-        this.setCenter(new Vector2(path.getWaypoint(0)));
+        this.setCenter(new ProximityVector(path.getWaypoint(0)));
         nextWayPointID = 0;
         aimTowardsNextWaypoint();
         distanceToNextWayPoint = Double.MAX_VALUE;
@@ -189,7 +189,7 @@ public abstract class Creep extends BoardObject {
      * move() method.
      */
     private void repositionCreep(){
-        Vector2 newPosition;
+        ProximityVector newPosition;
         //do not remove below comments, useful for misc debugging:
         //System.out.println("real x movement:" + (Math.cos(Math.toRadians(moveAngle)) * speed));
         //System.out.println("real y movement:" + (Math.sin(Math.toRadians(moveAngle)) * speed));
@@ -199,10 +199,10 @@ public abstract class Creep extends BoardObject {
 
         float xLength = (float)(Math.cos(Math.toRadians(moveAngle)) * speed); //+0.5 to round to correct int aka 0.9 is 1
         float yLength = (float)(Math.sin(Math.toRadians(moveAngle)) * speed);
-        velocity = new Vector2(xLength, yLength);
+        velocity = new ProximityVector(xLength, yLength);
 
         //System.out.println(velocity);
-        this.setPosition(new Vector2(getPosition().x + velocity.x, getPosition().y + velocity.y));
+        this.setPosition(new ProximityVector(getPosition().x + velocity.x, getPosition().y + velocity.y));
 
     }
 
@@ -228,7 +228,7 @@ public abstract class Creep extends BoardObject {
      * @param waypoint what waypoint to check for
      * @return true if within distance of waypoint
      */
-    private boolean reachedWaypoint(Vector2 waypoint){
+    private boolean reachedWaypoint(ProximityVector waypoint){
 
         double olddistanceToNextWayPoint = distanceToNextWayPoint;
         distanceToNextWayPoint = PointCalculations.distanceBetweenNoSqrt(getCenter(), waypoint);

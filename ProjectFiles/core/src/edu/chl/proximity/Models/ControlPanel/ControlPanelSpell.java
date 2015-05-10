@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.ControlPanel;
 
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Player.Spells.Spell;
 
@@ -13,7 +13,7 @@ public class ControlPanelSpell extends BoardObject {
 
     Spell spell;
 
-    public ControlPanelSpell(Vector2 position, Spell spell) {
+    public ControlPanelSpell(ProximityVector position, Spell spell) {
         super(null, position, spell.getControlPanelImage(), 0);
         this.spell = spell;
         spell.setPosition(position);

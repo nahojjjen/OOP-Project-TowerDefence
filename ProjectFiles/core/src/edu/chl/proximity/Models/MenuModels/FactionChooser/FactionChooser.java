@@ -2,7 +2,7 @@ package edu.chl.proximity.Models.MenuModels.FactionChooser;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Filler;
 import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Planes;
@@ -23,14 +23,14 @@ import java.util.List;
  *01/05 modified by Hanna Römer. Added factionList, name, factionImage, Prev + Next buttons and that you can click buttons.
  */
 public class FactionChooser extends BoardObject{
-    private static Vector2 pos = new Vector2(0, Gdx.graphics.getHeight()-240);
-    private Vector2 imagePos=new Vector2(pos.x+162,pos.y + 100);
+    private static ProximityVector pos = new ProximityVector(0, Gdx.graphics.getHeight()-240);
+    private ProximityVector imagePos=new ProximityVector(pos.x+162,pos.y + 100);
 
     private static Image image=new Image(Constants.FILE_PATH + "Backgrounds/factionChooser.png");
 
     private List<Faction> factions= new ArrayList<Faction>();
 
-    private ProximityFont name=new ProximityFont(new Vector2(pos.x+180,pos.y+10),null);
+    private ProximityFont name=new ProximityFont(new ProximityVector(pos.x+180,pos.y+10),null);
     private FactionImage factionImage;
     private NextPrevButton prev;
     private NextPrevButton next;
@@ -40,8 +40,8 @@ public class FactionChooser extends BoardObject{
     public FactionChooser(){
         super(null, pos, image, 0);
         factionImage=new FactionImage(imagePos);
-        prev = new NextPrevButton(new Vector2(pos.x+8, pos.y+40), new Image(Constants.FILE_PATH + "Buttons/FactionChooserLeft.png"));
-        next = new NextPrevButton(new Vector2(pos.x+352, pos.y+40),new Image(Constants.FILE_PATH + "Buttons/FactionChooserRight.png"));
+        prev = new NextPrevButton(new ProximityVector(pos.x+8, pos.y+40), new Image(Constants.FILE_PATH + "Buttons/FactionChooserLeft.png"));
+        next = new NextPrevButton(new ProximityVector(pos.x+352, pos.y+40),new Image(Constants.FILE_PATH + "Buttons/FactionChooserRight.png"));
         factions.add(new Planes());
         factions.add(new Filler());
 
@@ -73,7 +73,7 @@ public class FactionChooser extends BoardObject{
         setFactionData();
     }
 
-    public void pressed(Vector2 pos){
+    public void pressed(ProximityVector pos){
         if(PointCalculations.isPointInObject(pos,next)){
             pressedNext();
         }else if(PointCalculations.isPointInObject(pos,prev)){

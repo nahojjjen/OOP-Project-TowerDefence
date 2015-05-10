@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.Map.Towers;
 
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Models.Utils.Image;
@@ -34,7 +34,7 @@ public class SlowTower extends ShootingTower {
      * Create a new SlowTower
      * @param pos Position of tower
      */
-    public SlowTower(Map map, Vector2 pos, TargetingMethod targetingMethod){
+    public SlowTower(Map map, ProximityVector pos, TargetingMethod targetingMethod){
         super(map, pos, img, range, targetingMethod, reloadTime, resources, "Freeze Tower");
         this.upgrade=new BulletTower(map,pos,targetingMethod);
     }

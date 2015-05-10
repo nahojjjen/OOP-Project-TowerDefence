@@ -1,7 +1,6 @@
 package edu.chl.proximity.Utilities;
 
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 
 import java.awt.*;
@@ -21,7 +20,7 @@ public class PointCalculations {
      * @param secondPoint the second point of the vector
      * @return The angle in degrees between two points
      */
-    public static double getVectorAngle(Vector2 firstPoint, Vector2 secondPoint) {
+    public static double getVectorAngle(ProximityVector firstPoint, ProximityVector secondPoint) {
         if (firstPoint != null && secondPoint != null) { //make sure there is a real vector
             return utils.radiansToDegrees*(utils.atan2(secondPoint.y-firstPoint.y,secondPoint.x-firstPoint.x));
         }
@@ -34,7 +33,7 @@ public class PointCalculations {
      * @param y Y position for a point on the path
      */
     public static void createPathTool(int x, int y) {
-        System.out.println("waypoint.add(new Vector2(" + x + ", " + y + "));");
+        System.out.println("waypoint.add(new ProximityVector(" + x + ", " + y + "));");
     }
 
     /**
@@ -49,9 +48,9 @@ public class PointCalculations {
      * @param p2 second point
      * @return length between these points
      */
-    public static double distanceBetweenNoSqrt(Vector2 p1, Vector2 p2) {
+    public static double distanceBetweenNoSqrt(ProximityVector p1, ProximityVector p2) {
         if (p1 != null && p2 != null) { //make sure there are 2 real poiints to measure from
-            Vector2 distanceVector = new Vector2(p2.x - p1.x, p2.y - p1.y);
+            ProximityVector distanceVector = new ProximityVector(p2.x - p1.x, p2.y - p1.y);
             double length = distanceVector.x * distanceVector.x + distanceVector.y * distanceVector.y; //C^2 = (a^2+b^2)
             return length;
         }
@@ -64,7 +63,7 @@ public class PointCalculations {
      * @param object The object that should be controlled
      * @return True of the point is within the object entered, false otherwise
      */
-    public static boolean isPointInObject(Vector2 point, BoardObject object) {
+    public static boolean isPointInObject(ProximityVector point, BoardObject object) {
         boolean isWithinHorizontally = object.getPosition().x <= point.x && object.getPosition().x + object.getWidth() >= point.x;
         boolean isWithinVertically = object.getPosition().y <= point.y && object.getPosition().y + object.getHeight() >= point.y;
         if(isWithinHorizontally && isWithinVertically) {

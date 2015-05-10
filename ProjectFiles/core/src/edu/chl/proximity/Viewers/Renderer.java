@@ -12,6 +12,7 @@ import edu.chl.proximity.Models.Player.Holdables.Holdable;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.List;
 
@@ -129,7 +130,7 @@ public class Renderer {
      * @param shapeRenderer what shaperenderer to use to draw the lines
      */
     private void renderPath( ShapeRenderer shapeRenderer){
-        List<Vector2> waypoints = map.getPath().getWaypoints();
+        List<ProximityVector> waypoints = map.getPath().getWaypoints();
 
         shapeRenderer.setColor(new Color(0.4f, 0.6f, 0.9f, 0));
 

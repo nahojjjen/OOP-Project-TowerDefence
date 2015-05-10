@@ -1,7 +1,7 @@
 package edu.chl.proximity.Models.Map.Projectiles;
 
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -39,7 +39,7 @@ public abstract class Projectile extends BoardObject implements Cloneable{
      * @param position where should the projectile be created
      * @param angle what angle should the image of the projectile have
      */
-    public Projectile(Map map, ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, Vector2 position, double angle){
+    public Projectile(Map map, ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, ProximityVector position, double angle){
         super(map, position, image, angle);
         this.effect=particleEffect;
         this.health=health;
@@ -138,13 +138,13 @@ public abstract class Projectile extends BoardObject implements Cloneable{
      * Moves the projectile a step forward based on the current angle and speed
      */
     public void move() {
-        Vector2 newPosition;
+        ProximityVector newPosition;
         //System.out.println("real x movement:" + (Math.cos(Math.toRadians(angle)) * speed));
         //System.out.println("real y movement:" + (Math.sin(Math.toRadians(angle)) * speed));
         float xLenght = (float) ((Math.cos(Math.toRadians(getAngle())) * speed));
         float yLenght = (float) ((Math.sin(Math.toRadians(getAngle())) * speed));
         //System.out.println("x movement= " + xLenght + " y-momement:" + yLenght);
-        newPosition = new Vector2(getPosition().x + xLenght, getPosition().y + yLenght);
+        newPosition = new ProximityVector(getPosition().x + xLenght, getPosition().y + yLenght);
         setPosition(newPosition);
 
     }

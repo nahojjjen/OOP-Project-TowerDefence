@@ -10,6 +10,7 @@ import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Player.Holdables.Holdable;
 import edu.chl.proximity.Utilities.PointCalculations;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ public class MapController implements ClickHandler {
     public MapController(Map map) {
         this.map = map;
         model = new Background(map, null);
-        model.setPosition(new Vector2(0,0));
+        model.setPosition(new ProximityVector(0,0));
         model.setWidth(Gdx.graphics.getWidth() - 300);
         model.setHeight(Gdx.graphics.getHeight());
         models.add(model);
@@ -44,7 +45,7 @@ public class MapController implements ClickHandler {
 
 
     @Override
-    public void touchDown(Vector2 clickedPoint, int pointer, int button) {
+    public void touchDown(ProximityVector clickedPoint, int pointer, int button) {
         //Checks if the click is within the map
         if (model.containsPoint(clickedPoint)) {
             //Checks what item is currently picked up
@@ -74,7 +75,7 @@ public class MapController implements ClickHandler {
 
 
     @Override
-    public void mouseMoved(Vector2 newPosition) {
+    public void mouseMoved(ProximityVector newPosition) {
 
     }
 }

@@ -2,6 +2,7 @@ package edu.chl.proximity.Controllers;
 
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.List;
 
@@ -19,12 +20,12 @@ public interface ClickHandler {
      * @param pointer the pointer for the event
      * @param button the button that was clicked
      */
-    public void touchDown (Vector2 clickedPoint, int pointer, int button);
+    public void touchDown (ProximityVector clickedPoint, int pointer, int button);
 
     /**
      * Method called when the mouse is moved
      * @param newPosition The position the mouse was moved to
      */
-    public void mouseMoved (Vector2 newPosition);
+    public void mouseMoved (ProximityVector newPosition);
 
 }

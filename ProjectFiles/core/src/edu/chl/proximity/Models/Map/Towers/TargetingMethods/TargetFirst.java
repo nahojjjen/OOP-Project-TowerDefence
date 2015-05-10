@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.Map.Towers.TargetingMethods;
 
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -30,7 +30,7 @@ public class TargetFirst extends TargetingMethod{
      * @return
      */
     @Override
-    public Creep getTarget(Vector2 towerPosition, double towerRange) {
+    public Creep getTarget(ProximityVector towerPosition, double towerRange) {
         if (creeps.size() > 0){ //can only get a target if there are enemies
             List<Creep> inRange = new ArrayList<Creep>();
             for(Creep c: creeps){

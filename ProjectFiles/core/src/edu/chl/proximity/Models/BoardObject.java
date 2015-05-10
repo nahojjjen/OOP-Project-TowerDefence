@@ -3,7 +3,7 @@ package edu.chl.proximity.Models;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Utilities.PointCalculations;
 import java.lang.CloneNotSupportedException;
@@ -23,7 +23,7 @@ public abstract class BoardObject implements Cloneable {
     /**
      * Position on the gameboard
      */
-    private Vector2 position;
+    private ProximityVector position;
     /**
      * Image that is to be rendered
      */
@@ -45,7 +45,7 @@ public abstract class BoardObject implements Cloneable {
      * @param img the image of the object
      * @param angle the rotation of the object (in degrees)
      */
-    public BoardObject(Map map, Vector2 position, edu.chl.proximity.Models.Utils.Image img, double angle){
+    public BoardObject(Map map, ProximityVector position, edu.chl.proximity.Models.Utils.Image img, double angle){
         this.position = position;
         this.image = img;
         this.map = map;
@@ -59,7 +59,7 @@ public abstract class BoardObject implements Cloneable {
         //Empty constructor for subclasses
     }
 
-    public BoardObject(Map map, Vector2 position, edu.chl.proximity.Models.Utils.Image img, double angle, int width, int height) {
+    public BoardObject(Map map, ProximityVector position, edu.chl.proximity.Models.Utils.Image img, double angle, int width, int height) {
         this(map, position, img, angle);
         this.width = width;
         this.height = height;
@@ -69,11 +69,11 @@ public abstract class BoardObject implements Cloneable {
     public void setMap(Map map) {this.map = map;}
 
     //Getters and Setters
-    public Vector2 getPosition() {
+    public ProximityVector getPosition() {
         return position;
     }
 
-    public void setPosition(Vector2 position) {
+    public void setPosition(ProximityVector position) {
         this.position = position;
     }
 
@@ -143,7 +143,7 @@ public abstract class BoardObject implements Cloneable {
      *
      * @param v what point the projectile should travel towards
      */
-    public void faceTarget(Vector2 v) {
+    public void faceTarget(ProximityVector v) {
         if (v != null) {
             angle = (PointCalculations.getVectorAngle(getCenter(), v));
             //angle remains unchanged, if there's no new point to look at.
@@ -154,22 +154,22 @@ public abstract class BoardObject implements Cloneable {
      * Gets the center of this object
      * @return the vector in center of this BoardObject
      */
-    public Vector2 getCenter() {
-        return new Vector2(this.getPosition().x+(this.getWidth()/2), this.getPosition().y + (this.getHeight()/2));
+    public ProximityVector getCenter() {
+        return new ProximityVector(this.getPosition().x+(this.getWidth()/2), this.getPosition().y + (this.getHeight()/2));
     }
 
-    public void setCenter(Vector2 pos) {
-        setPosition(new Vector2(pos.x - this.getWidth()/2, pos.y - this.getHeight()/2));
+    public void setCenter(ProximityVector pos) {
+        setPosition(new ProximityVector(pos.x - this.getWidth()/2, pos.y - this.getHeight()/2));
     }
 
-    public boolean containsPoint(Vector2 point) {
+    public boolean containsPoint(ProximityVector point) {
         return PointCalculations.isPointInObject(point, this);
     }
 
     @Override
     public Object clone() throws CloneNotSupportedException{
         BoardObject clone = (BoardObject)super.clone();
-        clone.setPosition(new Vector2(position.x, position.y));
+        clone.setPosition(new ProximityVector(position.x, position.y));
         if (image != null){
             clone.setImage((edu.chl.proximity.Models.Utils.Image)image.clone());
         }

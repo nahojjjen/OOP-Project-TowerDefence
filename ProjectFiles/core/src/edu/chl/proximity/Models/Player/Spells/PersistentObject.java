@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.Player.Spells;
 
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.Image;
@@ -21,7 +21,7 @@ public abstract class PersistentObject extends BoardObject {
     private boolean started= false;
     private int backupCounter = 0;
 
-    public PersistentObject(Map map, Vector2 position, Image icon, int counter) {
+    public PersistentObject(Map map, ProximityVector position, Image icon, int counter) {
         super(map, position, icon, 0);
         this.counter = counter;
         this.backupCounter = counter;

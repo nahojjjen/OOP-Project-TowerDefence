@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.Map.Towers;
 
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Models.Utils.Image;
@@ -29,7 +29,7 @@ public class MissileTower extends ShootingTower {
      * @param pos
      *  double range, TargetingMethod targetingMethod, int reloadTime
      */
-    public MissileTower(Map map, Vector2 pos, TargetingMethod targetingMethod) {
+    public MissileTower(Map map, ProximityVector pos, TargetingMethod targetingMethod) {
         super(map, pos, img, range, targetingMethod, reloadTime, resources, "Missile Tower");
         this.upgrade=this;
     }

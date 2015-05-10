@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.Map.Towers;
 
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
@@ -35,7 +35,7 @@ public abstract class ShootingTower extends Tower {
      * @param targetingMethod how the tower should decide what target to shoot
      * @param reloadTime how long it takes the tower to shoot another bullet (in frames)
      */
-    public ShootingTower(Map map, Vector2 pos, Image image, double range, TargetingMethod targetingMethod, int reloadTime, Resources cost, String name){
+    public ShootingTower(Map map, ProximityVector pos, Image image, double range, TargetingMethod targetingMethod, int reloadTime, Resources cost, String name){
         //arguments: Position, texture, image rotation-angle
         super(map, pos, image, 0, name);
         this.range = range;

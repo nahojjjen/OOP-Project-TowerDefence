@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.Map.Bases;
 
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
@@ -27,7 +27,7 @@ public abstract class Base extends BoardObject{
 
         this.damageEffect = damageEffect;
         Path path = getMap().getPath();
-        Vector2 basePosition = new Vector2(path.getWaypoint(path.getWaypoints().size()-1));
+        ProximityVector basePosition = new ProximityVector(path.getWaypoint(path.getWaypoints().size()-1));
         basePosition.add(-1*getWidth()/2, -1* getHeight()/2); //position the base centered at last waypoint
         setPosition(basePosition);
     }

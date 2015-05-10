@@ -3,7 +3,7 @@ package edu.chl.proximity.Models.Map.Projectiles;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.Image;
@@ -29,7 +29,7 @@ public class SlowDownBullet extends Projectile{
      * @param slowDownPercent Percentage of speed the target creep will loose
      * @param slowDownTime Amount of time the target creep will be slowed down
      */
-    public SlowDownBullet(Map map, Vector2 position, double angle, Creep target, double slowDownPercent, int slowDownTime){
+    public SlowDownBullet(Map map, ProximityVector position, double angle, Creep target, double slowDownPercent, int slowDownTime){
         super(map, map.getParticleManager().getFrostBlastEffect(), 1, 10, sound, img, position, angle);
         this.target=target;
         this.percent=slowDownPercent;

@@ -2,7 +2,7 @@ package edu.chl.proximity.Models.ControlPanel.TowerPanel;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Towers.ShootingTower;
@@ -23,35 +23,35 @@ public class TowerPanel extends BoardObject{
     private Map map;
     private static Image background=new Image(Constants.FILE_PATH + "Backgrounds/tweed.png");
     private Image towerImage;
-    private static Vector2 pos=new Vector2(651,550);
+    private static ProximityVector pos=new ProximityVector(651,550);
     private static int width=324;
     private static int height=300;
     private TargetingFactory targetingFactory;
-    private ProximityFont towerName=new ProximityFont(new Vector2(pos.x+115,pos.y+5),null);
+    private ProximityFont towerName=new ProximityFont(new ProximityVector(pos.x+115,pos.y+5),null);
 
     private CheckBox first;
     private CheckBox closest;
     private CheckBox last;
     private UpgradeButton upgrade;
 
-    private ProximityFont cost=new ProximityFont(new Vector2(pos.x+5, pos.y+75),"Upgrade");
-    private ProximityFont points=new ProximityFont(new Vector2(pos.x+60, pos.y+95),"Points:");
-    private ProximityFont lines=new ProximityFont(new Vector2(pos.x+60, pos.y+110),"Lines:");
-    private ProximityFont polygons=new ProximityFont(new Vector2(pos.x+60, pos.y+125),"Polygons:");
+    private ProximityFont cost=new ProximityFont(new ProximityVector(pos.x+5, pos.y+75),"Upgrade");
+    private ProximityFont points=new ProximityFont(new ProximityVector(pos.x+60, pos.y+95),"Points:");
+    private ProximityFont lines=new ProximityFont(new ProximityVector(pos.x+60, pos.y+110),"Lines:");
+    private ProximityFont polygons=new ProximityFont(new ProximityVector(pos.x+60, pos.y+125),"Polygons:");
 
     private boolean afford;
 
     public TowerPanel(Map map){
         super(map, pos,background,0,width,height);
         this.map=map;
-        first=new CheckBox(new Vector2(pos.x+160,pos.y+30), map, "Target first");
-        closest=new CheckBox(new Vector2(pos.x+160,pos.y+70), map, "Target closest");
-        last=new CheckBox(new Vector2(pos.x+160,pos.y+110), map, "Target last");
-        upgrade=new UpgradeButton(new Vector2(pos.x+5, pos.y+95),map);
+        first=new CheckBox(new ProximityVector(pos.x+160,pos.y+30), map, "Target first");
+        closest=new CheckBox(new ProximityVector(pos.x+160,pos.y+70), map, "Target closest");
+        last=new CheckBox(new ProximityVector(pos.x+160,pos.y+110), map, "Target last");
+        upgrade=new UpgradeButton(new ProximityVector(pos.x+5, pos.y+95),map);
         targetingFactory=new TargetingFactory(map);
         setInfo();
     }
-    public BoardObject getButtonOnPosition(Vector2 pos){
+    public BoardObject getButtonOnPosition(ProximityVector pos){
         if(PointCalculations.isPointInObject(pos,first)){
             pressedFirst();
             return first;
@@ -148,7 +148,7 @@ public class TowerPanel extends BoardObject{
             closest.render(batch);
             last.render(batch);
             towerName.draw(batch);
-            towerImage.render(batch, new Vector2(pos.x + 5, pos.y + 5), 0);
+            towerImage.render(batch, new ProximityVector(pos.x + 5, pos.y + 5), 0);
             upgrade.render(batch);
             cost.draw(batch);
             points.draw(batch);

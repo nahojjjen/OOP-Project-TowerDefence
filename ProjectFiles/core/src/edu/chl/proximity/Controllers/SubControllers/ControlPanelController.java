@@ -1,7 +1,6 @@
 package edu.chl.proximity.Controllers.SubControllers;
 
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Models.BoardObject;
@@ -13,6 +12,7 @@ import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.*;
 import edu.chl.proximity.Proximity;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +61,7 @@ public class ControlPanelController implements ClickHandler {
         controlPanels.add(towerPanel);
     }
 
-    public boolean modelsClicked(Vector2 clickedPoint) {
+    public boolean modelsClicked(ProximityVector clickedPoint) {
         for(BoardObject cp : controlPanels) {
             if(cp.containsPoint(clickedPoint)) {
                 return true;
@@ -86,7 +86,7 @@ public class ControlPanelController implements ClickHandler {
 
 
     @Override
-    public void mouseMoved(Vector2 newPosition) {
+    public void mouseMoved(ProximityVector newPosition) {
 
     }
 
@@ -108,7 +108,7 @@ public class ControlPanelController implements ClickHandler {
     }
 
 
-    public void touchDown (Vector2 clickedPoint, int pointer, int button) {
+    public void touchDown (ProximityVector clickedPoint, int pointer, int button) {
 
         if (GameData.getInstance().getPlayer().getSettings().getGameSpeed() != 0 && modelsClicked(clickedPoint)) {
 

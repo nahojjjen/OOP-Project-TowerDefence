@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.Map.Towers;
 
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Models.Utils.Image;
@@ -31,7 +31,7 @@ public class BulletTower extends ShootingTower implements Cloneable {
      * @param pos
      *  double range, TargetingMethod targetingMethod, int reloadTime
      */
-    public BulletTower(Map map, Vector2 pos, TargetingMethod targetingMethod) {
+    public BulletTower(Map map, ProximityVector pos, TargetingMethod targetingMethod) {
         super(map, pos, img, range, targetingMethod, reloadTime, resources, "Bullet Tower");
         this.upgrade=new MissileTower(map,pos,targetingMethod);
     }

@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.Map.Paths.ConcretePaths;
 
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Paths.Path;
 
 /**
@@ -20,18 +20,18 @@ public class SecondTestPath extends Path{
     public void initiatePoints() {
         if (waypoint != null) {
             if (waypoint.isEmpty()) {
-                waypoint.add(new Vector2(3, 101));
-                waypoint.add(new Vector2(549, 78));
-                waypoint.add(new Vector2(550, 144));
-                waypoint.add(new Vector2(474, 144));
-                waypoint.add(new Vector2(473, 207));
-                waypoint.add(new Vector2(561, 206));
-                waypoint.add(new Vector2(557, 271));
-                waypoint.add(new Vector2(354, 279));
-                waypoint.add(new Vector2(358, 189));
-                waypoint.add(new Vector2(97, 202));
-                waypoint.add(new Vector2(117, 405));
-                waypoint.add(new Vector2(490, 406));
+                waypoint.add(new ProximityVector(3, 101));
+                waypoint.add(new ProximityVector(549, 78));
+                waypoint.add(new ProximityVector(550, 144));
+                waypoint.add(new ProximityVector(474, 144));
+                waypoint.add(new ProximityVector(473, 207));
+                waypoint.add(new ProximityVector(561, 206));
+                waypoint.add(new ProximityVector(557, 271));
+                waypoint.add(new ProximityVector(354, 279));
+                waypoint.add(new ProximityVector(358, 189));
+                waypoint.add(new ProximityVector(97, 202));
+                waypoint.add(new ProximityVector(117, 405));
+                waypoint.add(new ProximityVector(490, 406));
             }
 
         }

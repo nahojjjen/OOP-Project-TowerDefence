@@ -8,6 +8,7 @@ import edu.chl.proximity.Models.MenuModels.FactionChooser.FactionChooser;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.MenuModels.MapSelect.MapSelect;
 import edu.chl.proximity.Models.MenuModels.StartButton;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,13 +48,14 @@ public class MainMenuController implements InputProcessor{
     @Override
     public boolean touchDown (int x, int y, int pointer, int button) {
         Vector2 pos = viewport.unproject(new Vector2(x,y));
-        BoardObject touchedButton=mainMenu.getButtonOnPosition(pos);
+        ProximityVector translatedPosition = new ProximityVector(pos.x,pos.y);
+        BoardObject touchedButton=mainMenu.getButtonOnPosition(translatedPosition);
         if(touchedButton instanceof StartButton){
             mainMenu.pressedStart(viewport);
         }else if(touchedButton instanceof FactionChooser){
-            mainMenu.pressedFactionChooser(pos);
+            mainMenu.pressedFactionChooser(translatedPosition);
         }else if(touchedButton instanceof MapSelect){
-            mainMenu.pressedMap(pos);
+            mainMenu.pressedMap(translatedPosition);
         }
         return true;
     }

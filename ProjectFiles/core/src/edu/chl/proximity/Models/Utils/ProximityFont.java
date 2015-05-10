@@ -3,7 +3,7 @@ package edu.chl.proximity.Models.Utils;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
  * @author Linda Evaldsson
@@ -18,14 +18,14 @@ public class ProximityFont {
 
     private BitmapFont font;
     private String str;
-    private Vector2 position;
+    private ProximityVector position;
 
     /**
      * create a new text on the given position, and the given message
      * @param position where the top left corner of the text should start
      * @param s what the text should say
      */
-    public ProximityFont(Vector2 position, String s) {
+    public ProximityFont(ProximityVector position, String s) {
         str = s;
         this.position = position;
         font = new BitmapFont(true);

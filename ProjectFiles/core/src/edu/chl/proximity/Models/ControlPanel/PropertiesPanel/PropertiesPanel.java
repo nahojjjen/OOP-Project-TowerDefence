@@ -1,7 +1,7 @@
 package edu.chl.proximity.Models.ControlPanel.PropertiesPanel;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -26,10 +26,10 @@ public class PropertiesPanel extends BoardObject{
     private static PropertiesPanel propertiesPanel;
 
     private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/TempPropPanel.png");
-    private static Vector2 position=new Vector2(300,200);
-    private Vector2 resumePos=new Vector2(position.x+95,position.y+20);
-    private Vector2 mainMenuPos = new Vector2(position.x+95,resumePos.y+100);
-    private Vector2 soundPos = new Vector2(position.x + 100, mainMenuPos.y+100);
+    private static ProximityVector position=new ProximityVector(300,200);
+    private ProximityVector resumePos=new ProximityVector(position.x+95,position.y+20);
+    private ProximityVector mainMenuPos = new ProximityVector(position.x+95,resumePos.y+100);
+    private ProximityVector soundPos = new ProximityVector(position.x + 100, mainMenuPos.y+100);
 
     private ResumeButton resumeButton;
     private MainMenuButton mainMenuButton;
@@ -59,9 +59,9 @@ public class PropertiesPanel extends BoardObject{
 
 
     private void initBars(){
-        Vector2 pos=new Vector2(soundPos.x+50,soundPos.y+15);
+        ProximityVector pos=new ProximityVector(soundPos.x+50,soundPos.y+15);
         for (int n=1; n<9; n++) {
-            bars.add(new SoundBar(new Vector2(pos.x + n * 17, pos.y), n));
+            bars.add(new SoundBar(new ProximityVector(pos.x + n * 17, pos.y), n));
         }
     }
 
@@ -139,7 +139,7 @@ public class PropertiesPanel extends BoardObject{
      * @param position position to be checked for button
      * @return Button on given position, null if none are
      */
-    public BoardObject getButtonOnPosition(Vector2 position){
+    public BoardObject getButtonOnPosition(ProximityVector position){
         for(SoundBar bar:bars){
             if(PointCalculations.isPointInObject(position,bar)){
                 return bar;
@@ -193,7 +193,7 @@ public class PropertiesPanel extends BoardObject{
 
     }
 
-    public boolean containsPoint(Vector2 point) {
+    public boolean containsPoint(ProximityVector point) {
         return isVisible && super.containsPoint(point);
     }
 

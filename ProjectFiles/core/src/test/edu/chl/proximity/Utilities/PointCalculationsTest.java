@@ -1,7 +1,7 @@
 package test.edu.chl.proximity.Utilities;
 
-import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Utilities.PointCalculations;
+import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,10 +13,10 @@ public class PointCalculationsTest {
 
     @Test
     public void testGetVectorAngle() throws Exception {
-        Vector2 v1 = new Vector2(0,0);
-        Vector2 v2 = new Vector2(0,10);
-        Vector2 v3 = new Vector2(123,-1123);
-        Vector2 v4 = new Vector2(6123,1561);
+        ProximityVector v1 = new ProximityVector(0,0);
+        ProximityVector v2 = new ProximityVector(0,10);
+        ProximityVector v3 = new ProximityVector(123,-1123);
+        ProximityVector v4 = new ProximityVector(6123,1561);
         assertTrue(PointCalculations.getVectorAngle(v1,v1) == 0); //two points inside eachother should default to 0 degrees     (undefined case)
         assertTrue(PointCalculations.getVectorAngle(v2, null) == 0); //a point with null should default to 0 degrees            (null case)
         assertTrue(PointCalculations.getVectorAngle(v1, v2) == 90); //straight up, aka 90 degrees                               (normal case)
@@ -28,9 +28,9 @@ public class PointCalculationsTest {
 
     @Test
     public void testDistanceBetweenNoSqrt() throws Exception {
-        Vector2 v1 = new Vector2(0,0);
-        Vector2 v2 = new Vector2(0,10);
-        Vector2 v3 = new Vector2(0,-10);
+        ProximityVector v1 = new ProximityVector(0,0);
+        ProximityVector v2 = new ProximityVector(0,10);
+        ProximityVector v3 = new ProximityVector(0,-10);
 
         assertTrue(PointCalculations.distanceBetweenNoSqrt(v1, v1) == 0); //  (one point case)
         assertTrue(PointCalculations.distanceBetweenNoSqrt(v1,v2) == 100);  //  (normal case)

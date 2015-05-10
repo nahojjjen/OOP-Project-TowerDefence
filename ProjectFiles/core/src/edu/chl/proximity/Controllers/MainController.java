@@ -12,6 +12,7 @@ import edu.chl.proximity.Models.Player.Spells.PersistentObject;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.PointCalculations;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -115,7 +116,8 @@ public class MainController implements InputProcessor{
 
 
         //Calculates the real coordinates from the scaled coordinates
-        Vector2 clickedPoint = viewport.unproject(new Vector2(x, y));
+        Vector2 clickedPointVector2 = viewport.unproject(new Vector2(x, y));
+        ProximityVector clickedPoint = new ProximityVector(clickedPointVector2.x, clickedPointVector2.y);
 
         //For creating paths during the developing state
         PointCalculations.createPathTool((int) clickedPoint.x, (int) clickedPoint.y);
@@ -147,7 +149,8 @@ public class MainController implements InputProcessor{
 
     @Override
     public boolean mouseMoved (int x, int y) {
-        Vector2 clickedPoint = viewport.unproject(new Vector2(x, y));
+        Vector2 clickedPoint2 = viewport.unproject(new Vector2(x, y));
+        ProximityVector clickedPoint = new ProximityVector(clickedPoint2.x, clickedPoint2.y);
         for(ClickHandler controller : clickHandlers) {
             controller.mouseMoved(clickedPoint);
         }

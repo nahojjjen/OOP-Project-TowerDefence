@@ -7,7 +7,7 @@ package edu.chl.proximity.Models.ControlPanel;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
@@ -33,7 +33,7 @@ public class ProfilePanel extends BoardObject {
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
 
     public ProfilePanel() {
-        super(null, new Vector2(0, Gdx.graphics.getHeight() - 75), null, 0, width, height);
+        super(null, new ProximityVector(0, Gdx.graphics.getHeight() - 75), null, 0, width, height);
         levelText = createFont(30, 30, "1");
     }
 
@@ -45,8 +45,8 @@ public class ProfilePanel extends BoardObject {
     }
 
     private ProximityFont createFont(float x, float y, String s){
-        return new ProximityFont(new Vector2(getPosition().x + x, getPosition().y + y), s);
-        //return new ProximityFont(new Vector2(width + x, y), s);
+        return new ProximityFont(new ProximityVector(getPosition().x + x, getPosition().y + y), s);
+        //return new ProximityFont(new ProximityVector(width + x, y), s);
     }
 
 

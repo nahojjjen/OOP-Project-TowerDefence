@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Player.Holdables.Hand;
 import edu.chl.proximity.Models.Utils.Background;
@@ -116,7 +116,7 @@ public abstract class Map {
     public ArrayList<Creep> getCreeps() {
         return creeps;
     }
-    public BoardObject getObjectOnPosition(Vector2 position) {
+    public BoardObject getObjectOnPosition(ProximityVector position) {
         for(Tower t : towers) {
             if(t.containsPoint(position))
                 return t;
@@ -134,7 +134,7 @@ public abstract class Map {
      * @param range What range (radius) to search around
      * @return A list of creeps within the range specified
      */
-    public List<Creep> getCreepsWithinDistance(Vector2 position, double range) {
+    public List<Creep> getCreepsWithinDistance(ProximityVector position, double range) {
         List<Creep> creepsWithinRange = new ArrayList<>();
         if (range <= 0 || position == null){return creepsWithinRange;}
         for (Creep creep : creeps) {
@@ -286,7 +286,7 @@ public abstract class Map {
      * @param position position to draw
      * @param range radius to draw
      */
-    private void renderRangeIndicator(ShapeRenderer renderer, Color color, Vector2 position, double range) {
+    private void renderRangeIndicator(ShapeRenderer renderer, Color color, ProximityVector position, double range) {
         Gdx.gl.glEnable(GL20.GL_BLEND); //enables transparency
         renderer.setColor(color);
         renderer.circle(position.x, position.y, (float) range);

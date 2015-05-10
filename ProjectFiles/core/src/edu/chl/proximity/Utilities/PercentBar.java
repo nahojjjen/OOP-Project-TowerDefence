@@ -15,7 +15,7 @@ import edu.chl.proximity.Models.Utils.ProximityFont;
  */
 public class PercentBar {
 
-    private Vector2 position;
+    private ProximityVector position;
     int width;
     int height;
     private int border = 1;
@@ -24,13 +24,13 @@ public class PercentBar {
     private Image background;
     private ProximityFont text;
 
-    public PercentBar(Vector2 position, int width, int height, Image foreground, Image background) {
+    public PercentBar(ProximityVector position, int width, int height, Image foreground, Image background) {
         this.position = position;
         this.width = width;
         this.height = height;
         this.background = background;
         this.foreground = foreground;
-        text = new ProximityFont(new Vector2(position.x + (width/2) - 8, position.y + 8), "");
+        text = new ProximityFont(new ProximityVector(position.x + (width/2) - 8, position.y + 8), "");
         text.scale(0.1f);
 
     }
@@ -51,7 +51,7 @@ public class PercentBar {
         background.renderRepeatedly(batch, position, width, height);
 
         int foregroundWidth = (int) ((width / 100.0) * percent);
-        foreground.renderRepeatedly(batch, new Vector2(position.x+border, position.y+border),foregroundWidth - border*2, height - border*2);
+        foreground.renderRepeatedly(batch, new ProximityVector(position.x+border, position.y+border),foregroundWidth - border*2, height - border*2);
 
         text.draw(batch);
     }

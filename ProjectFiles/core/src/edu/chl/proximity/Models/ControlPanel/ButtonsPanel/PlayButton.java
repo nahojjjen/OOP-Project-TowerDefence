@@ -1,7 +1,7 @@
 package edu.chl.proximity.Models.ControlPanel.ButtonsPanel;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
@@ -22,7 +22,7 @@ public class PlayButton extends BoardObject{
      * Create a new Play button
      * @param position What position the button shall have
      */
-    public PlayButton(Vector2 position){
+    public PlayButton(ProximityVector position){
         super(null, position,upImage,0,width,height);
     }
 

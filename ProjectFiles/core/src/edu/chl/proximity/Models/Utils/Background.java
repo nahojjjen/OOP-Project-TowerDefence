@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.Utils;
 
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
 
@@ -18,7 +18,7 @@ public class Background extends BoardObject {
      * @param img      the image of the object
      */
     public Background(Map map, Image img) {
-        super(map, new Vector2(0,0), img, 0);
+        super(map, new ProximityVector(0,0), img, 0);
     }
 
     /**

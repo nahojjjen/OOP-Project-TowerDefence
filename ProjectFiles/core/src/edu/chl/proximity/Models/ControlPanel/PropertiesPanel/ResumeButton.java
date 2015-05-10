@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.ControlPanel.PropertiesPanel;
 
-import com.badlogic.gdx.math.Vector2;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.Image;
@@ -13,7 +13,7 @@ import edu.chl.proximity.Utilities.Constants;
 public class ResumeButton  extends BoardObject{
     private static Image image=new Image(Constants.FILE_PATH + "Buttons/ResumeButton.png");
 
-    public ResumeButton(Vector2 position){
+    public ResumeButton(ProximityVector position){
         super(null, position,image,0);
     }
 
