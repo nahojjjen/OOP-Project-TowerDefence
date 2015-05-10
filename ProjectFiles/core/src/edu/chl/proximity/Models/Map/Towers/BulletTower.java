@@ -17,6 +17,7 @@ import edu.chl.proximity.Utilities.PointCalculations;
  *
  * 03-05-2015 Modified by Simon Gislen. Introducing: Towers aren't free.
  * 04-05-2015 Modified by Simon Gislen. Moved projectile functionality to ShootingTower
+ * 10/05 modified by Hanna Römer. Added method getUpgrade
  */
 public class BulletTower extends ShootingTower implements Cloneable {
 
@@ -33,7 +34,6 @@ public class BulletTower extends ShootingTower implements Cloneable {
      */
     public BulletTower(Map map, ProximityVector pos, TargetingMethod targetingMethod) {
         super(map, pos, img, range, targetingMethod, reloadTime, resources, "Bullet Tower");
-        this.upgrade=new MissileTower(map,pos,targetingMethod);
     }
 
 
@@ -45,5 +45,8 @@ public class BulletTower extends ShootingTower implements Cloneable {
     @Override
     public Object clone() throws CloneNotSupportedException{
         return super.clone();
+    }
+    public Tower getUpgrade(){
+        return new MissileTower(this.getMap(), this.getPosition(), this.getTargetingMethod());
     }
 }

@@ -15,6 +15,7 @@ import edu.chl.proximity.Utilities.Constants;
  *
  * 03-05-2015 Modified by Simon Gislen. Introducing: Towers aren't free.
  * 04-05-2015 Modified by Simon Gislen. Moved projectile functionality to ShootingTower
+ * 10/05 modified by Hanna Römer. Added method getUpgrade
  */
 public class MissileTower extends ShootingTower {
 
@@ -31,12 +32,15 @@ public class MissileTower extends ShootingTower {
      */
     public MissileTower(Map map, ProximityVector pos, TargetingMethod targetingMethod) {
         super(map, pos, img, range, targetingMethod, reloadTime, resources, "Missile Tower");
-        this.upgrade=this;
     }
 
     public Projectile createProjectile() {
 
         return new Missile(getMap(), getCenter(), getAngle(), getTarget());
 
+    }
+
+    public Tower getUpgrade(){
+        return new MissileTower(this.getMap(), this.getPosition(), this.getTargetingMethod());
     }
 }

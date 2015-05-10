@@ -135,7 +135,7 @@ public abstract class Map {
      * @return A list of creeps within the range specified
      */
     public List<Creep> getCreepsWithinDistance(ProximityVector position, double range) {
-        List<Creep> creepsWithinRange = new ArrayList<>();
+        List<Creep> creepsWithinRange = new ArrayList<Creep>();
         if (range <= 0 || position == null){return creepsWithinRange;}
         for (Creep creep : creeps) {
             if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), position) < range * range) {

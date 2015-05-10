@@ -16,6 +16,7 @@ import edu.chl.proximity.Utilities.Constants;
  *
  * 03-05-2015 Modified by Simon Gislen. Introducing: Towers aren't free.
  * 04-05-2015 Modified by Simon Gislen. Moved projectile functionality to ShootingTower
+ * 10/05 modified by Hanna Römer. Added method getUpgrade
  */
 public class SlowTower extends ShootingTower {
 
@@ -36,12 +37,15 @@ public class SlowTower extends ShootingTower {
      */
     public SlowTower(Map map, ProximityVector pos, TargetingMethod targetingMethod){
         super(map, pos, img, range, targetingMethod, reloadTime, resources, "Freeze Tower");
-        this.upgrade=new BulletTower(map,pos,targetingMethod);
     }
 
     @Override
     public Projectile createProjectile() {
         return new SlowDownBullet(getMap(), getCenter(), getAngle(), getTarget(), slowDownPercent, slowDownTime);
+    }
+
+    public Tower getUpgrade(){
+        return new BulletTower(this.getMap(), this.getPosition(),this.getTargetingMethod());
     }
 
 }
