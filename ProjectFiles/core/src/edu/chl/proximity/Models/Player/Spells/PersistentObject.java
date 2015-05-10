@@ -40,7 +40,6 @@ public abstract class PersistentObject extends BoardObject {
      * When the counter reaches zero, the object is destroyed.
      */
     public void tick() {
-        System.out.println("tick is at = " + counter);
     if (started){
             if (counter <= 0) {
                 getMap().remove(this);

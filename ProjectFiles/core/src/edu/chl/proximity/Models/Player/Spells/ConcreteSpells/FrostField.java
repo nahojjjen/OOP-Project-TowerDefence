@@ -15,6 +15,7 @@ import java.util.List;
  * @author by Johan on 2015-04-24.
  *
  * 03-05-2015 Modified by Simon Gislen. Spells have range.
+ * 10-05-2015 Modified by Johan swanberg. Spell now uses new more efficient getCreepsWithinDistance method
  */
 public class FrostField extends Spell {
 
@@ -30,14 +31,12 @@ public class FrostField extends Spell {
 
     @Override
     public void performEffect(int counter) {
-        List<Creep> creeps = getMap().getCreeps();
+        List<Creep> creeps = getMap().getCreepsWithinDistance(getPosition(), range);
         for (Creep creep:creeps){
-            if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getPosition()) < range * range) {
-                creep.slowDown(60,1);
-                if(counter % 10 ==0)
+            creep.slowDown(60,1);
+            if(counter % 10 ==0){ //only create the visual effect every 10th frame for visual purpose
                 getMap().getParticleManager().getFrostBlastEffect().createEffect(creep.getCenter());
             }
-
         }
     }
 

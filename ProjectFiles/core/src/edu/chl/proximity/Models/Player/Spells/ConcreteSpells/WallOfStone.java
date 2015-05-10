@@ -3,11 +3,9 @@ package edu.chl.proximity.Models.Player.Spells.ConcreteSpells;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Player.Spells.Spell;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
-import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.List;
 
@@ -16,6 +14,7 @@ import java.util.List;
  * @author Johan on 2015-04-25.
  *
  * 03-05-2015 Modified by Simon Gislen. Spells have range.
+ * 10-05-2015 Modified by Johan swanberg. Makes spell work again, was broken by change in Map interface
  */
 public class WallOfStone extends Spell {
 
@@ -30,22 +29,22 @@ public class WallOfStone extends Spell {
 
     @Override
     public void performEffect(int counter) {
-        BoardObject o = getMap().getObjectWithinDistance(getPosition(), range);
+        List<Creep> creepsWithinRange = getMap().getCreepsWithinDistance(getPosition(),range);
+
+        for (Creep creep : creepsWithinRange) {
+            creep.slowDown(100, 1);
+            getMap().getParticleManager().getDirtSmokeEffect().createEffect(creep.getCenter());
+        }
+    }
+        /*
+        BoardObject o = getMap().getCreepsWithinDistance(getPosition(), range);
         if(o instanceof Creep) {
             Creep c = (Creep)o;
             c.slowDown(100, 1);
             getMap().getParticleManager().getDirtSmokeEffect().createEffect(c.getCenter());
         }
+        */
 
-        /*
-        List<Creep> creeps = getMap().getCreeps();
-        for (Creep creep : creeps) {
-            if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getPosition()) < range * range) {
-                creep.slowDown(100, 1);
-                getMap().getParticleManager().getDirtSmokeEffect().createEffect(creep.getCenter());
-            }
-        }*/
-    }
 
     @Override
     public void playParticleEffect() {

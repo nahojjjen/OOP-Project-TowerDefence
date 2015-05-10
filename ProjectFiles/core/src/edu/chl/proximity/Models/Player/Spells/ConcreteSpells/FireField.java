@@ -17,11 +17,12 @@ import java.util.List;
  * @author by Johan on 2015-04-24.
  *
  * 03-05-2015 Modified by Simon Gislen. Spells have range.
+ * 10-05-2015 Modified by Johan swanberg. Spell now uses new more efficient getCreepsWithinRange method
  */
 public class FireField extends Spell {
 
     //Spell stats
-    private static double range = 60f;
+    private static double range = 70f;
     private static int duration = 120;
     private static Image image = new Image(Constants.FILE_PATH + "Spells/firefield.png");
 
@@ -32,16 +33,11 @@ public class FireField extends Spell {
 
     @Override
     public void performEffect(int counter) {
-        List<Creep> creeps = getMap().getCreeps();
+        List<Creep> creeps = getMap().getCreepsWithinDistance(getPosition(), range);
         for (Creep creep:creeps){
-            if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getPosition()) < range * range) {
                 getMap().getParticleManager().getFireCreepEffect().createEffect(creep.getCenter());
-                //creep.slowDown(-20, 1); //speeds up creeps
-                if(counter % 20 ==0)
-
+                if(counter % 15 ==0)
                     creep.devolve();
-            }
-
         }
     }
 

@@ -14,9 +14,10 @@ import java.util.List;
 
 /**
  * @author Johan on 2015-04-24.
- * A spell that creates an area of lightning, the lightning will "bounce" on nearby creeps
+ * A spell that creates an area of lightning, the lightning will "bounce" on the closest creep
  *
  * 03-05-2015 Modified by Simon Gislen. Spells have range.
+ * 10-05-2015 modified by Johan Swanberg. Lightning effect not works again - was broken by structural change in program related to hand object
  */
 public class ChainLightning extends Spell {
 
@@ -25,45 +26,19 @@ public class ChainLightning extends Spell {
     private static int duration = 2;
     private static Image image = new Image(Constants.FILE_PATH + "Spells/chainlightning.png");
 
-    private List<Vector2> alreadyHitPositions = new ArrayList<Vector2>();
-    private double bounceRange = 20;
     public ChainLightning(Map map) {
         super(map, image, duration); //600 frames = 10 seconds @ 60 fps
 
     }
 
-    public ChainLightning(Map map, Vector2 position, List<Vector2> alreadyHitPositions) {
-        super(map, image, duration); //600 frames = 10 seconds @ 60 fps
-        this.alreadyHitPositions = alreadyHitPositions;
-        getMap().getParticleManager().getLightningCreepEffect().createEffect(position); //create the spark effect
-    }
 
     @Override
     public void performEffect(int counter) {
-        List<Creep> creeps = getMap().getCreeps();
-        for (Creep creep : creeps) {
-            if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getPosition()) < range * range) {
-                creep.devolve();//devolve all creeps in range
-                if (!alreadyHit(creep.getCenter())) { //Create a new spark from the hit creep, if the area has not already bounced
-                    ChainLightning newSpark = new ChainLightning(getMap(), creep.getCenter(), alreadyHitPositions);
-                    alreadyHitPositions.add(creep.getCenter());
-                }
-            }
+        List<Creep> creepsWithinRange = getMap().getCreepsWithinDistance(getPosition(), range);
+        for (Creep creep : creepsWithinRange) {
+            creep.devolve();//devolve all creeps in range
+            this.placeObject(creep.getCenter());
         }
-    }
-
-    /**
-     * cyckle through all the already hit positions, and see if the new position is within range of an already hit position
-     * @param position
-     * @return
-     */
-    private boolean alreadyHit(Vector2 position){
-        for (Vector2 hitPosition:alreadyHitPositions){
-            if (PointCalculations.distanceBetweenNoSqrt(position, hitPosition) < bounceRange*bounceRange){ //bounceRange is the range where the lightning wont go again
-                return true;
-            }
-        }
-        return false;
     }
 
     @Override

@@ -30,7 +30,7 @@ public class ParticleManager {
         allEffects.add(new ProximityEffect("frostBlast", 1500));
         allEffects.add(new ProximityEffect("frostField", 10));
         allEffects.add(new ProximityEffect("lightningCreepEffect", 900));
-        allEffects.add(new ProximityEffect("lightningOriginSpellEffect", 40));
+        allEffects.add(new ProximityEffect("lightningOriginSpellEffect", 500));
         allEffects.add(new ProximityEffect("fireField", 50));
         allEffects.add(new ProximityEffect("fireCreepEffect", 1200));
         allEffects.add(new ProximityEffect("dirtSmokeEffect", 1200));

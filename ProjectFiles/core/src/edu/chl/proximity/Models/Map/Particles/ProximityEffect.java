@@ -22,7 +22,8 @@ import java.util.List;
  * in ParticleManager.  One "proximityEffect" keeps track of all effects of its given type.
  * To create an effect, call  GameData.getInstance().getMap().getParticleManager().getEFFECTNAME().createEffect(Position);
  *
- * 04-24 Modified by Johan, adds working rotation & angle modification and createeffect returns the created effect
+ * 04/24 Modified by Johan, adds working rotation & angle modification and createeffect returns the created effect
+ * 05/10 Modified by Johan, fixes memory leak and limits particle creation to pool size
  *
  */
 public class ProximityEffect {
@@ -103,7 +104,7 @@ public class ProximityEffect {
      */
     public ParticleEffect createEffect(float x, float y) {
         if (effectPool != null){
-            if (effectPool.peak < effectPool.max){
+            if (effectPool.getFree() > 0 || effectPool.max >= effectPool.peak){
                 ParticleEffectPool.PooledEffect effect = effectPool.obtain();
                 effect.setPosition(x, y);
                 effects.add(effect);
@@ -111,6 +112,7 @@ public class ProximityEffect {
                 return effect;
             }
             else{
+                System.out.println(effectPool.getFree() + "<- amount of free particles");
                 System.out.println("Could not create effect, pool empty! Skipping. Effect that could not be created: " + effectFile);
             }
 

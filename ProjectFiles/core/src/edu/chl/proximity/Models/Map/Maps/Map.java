@@ -35,6 +35,7 @@ import java.util.*;
  * 23/04 Modified by Simon Gislen, added Persistant Object management
  * 25/04 Modified by Johan Swanberg, adds adding Stack
  * 08/05 modified by Linda Evaldsson. Moved functionality to this class; rendering of towers, updating and stack-functionality (clear stacks)
+ * 10/5 modified by Johan Swanberg, fixed creepwithinrange method and added somee comments
  * */
 public abstract class Map {
 
@@ -73,19 +74,34 @@ public abstract class Map {
         particleManager = new ParticleManager();
     }
 
+    /**
+     * Marks an object for deletion, the object will be removed for next frame
+     * @param object What boardObject to remove
+     */
     public void remove(BoardObject object) {
         removeStack.add(object);
     }
 
+    /**
+     * Mark an object for adding to the map, the object will be added for next frame
+     * @param object what object to add for next frame
+     */
     public void add(BoardObject object) {
         addStack.add(object);
     }
 
-
+    /**
+     * get the name of the map, example "practiceMap" or "The Snow hill"
+     * @return A string of the name of the map
+     */
     public String getName(){
         return name;
     }
 
+    /**
+     * get what the player is currently holding in his "hand" (cursor)
+     * @return
+     */
     public Hand getHand() { return hand; }
 
     /**
@@ -112,15 +128,28 @@ public abstract class Map {
         return null;
     }
 
-    public BoardObject getObjectWithinDistance(Vector2 position, double range) {
+    /**
+     * Get a list of all creeps within range (radius) of the position
+     * @param position What position to search around
+     * @param range What range (radius) to search around
+     * @return A list of creeps within the range specified
+     */
+    public List<Creep> getCreepsWithinDistance(Vector2 position, double range) {
+        List<Creep> creepsWithinRange = new ArrayList<>();
+        if (range <= 0 || position == null){return creepsWithinRange;}
         for (Creep creep : creeps) {
             if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), position) < range * range) {
-                return creep;
-
+                creepsWithinRange.add(creep);
             }
         }
-        return null;
+        return creepsWithinRange;
     }
+
+    /**
+     * Check if a creep is somewhere on the map this frame
+     * @param target what creep to look for
+     * @return true if creep is on the map
+     */
     public boolean containsCreep(Creep target) {
         return creeps.contains(target);
     }
@@ -170,8 +199,10 @@ public abstract class Map {
         this.propertiesPanel = propertiesPanel;
     }
 
+    /**
+     * Remove all objects that have been marked for deletion from this map
+     */
     public void clearRemoveStack() {
-
         Iterator killIterator = removeStack.iterator();
 
         while (killIterator.hasNext()){
@@ -208,6 +239,10 @@ public abstract class Map {
         }
 
     }
+
+    /**
+     * Add all objects that have been marked for addition this frame to the map
+     */
     public void clearAddStack() {
 
         Iterator addIterator = addStack.iterator();
@@ -235,6 +270,10 @@ public abstract class Map {
 
     }
 
+    /**
+     * render all the tower ranged with a semi transparant circle
+     * @param shapeRenderer what shaperenderer should draw the circles on the screen
+     */
     public void renderRanges(ShapeRenderer shapeRenderer) {
         for (Tower tower : towers) {
             renderRangeIndicator(shapeRenderer, new Color(0.4f, 0.2f, 0.9f, 0.2f), tower.getCenter(), tower.getRange());
@@ -253,6 +292,12 @@ public abstract class Map {
         renderer.circle(position.x, position.y, (float) range);
     }
 
+    /**
+     * Render all projectiles, creeps and towers on the map.
+     * Notice that the particles are handeled seperately
+     * @param batch What batch should be used to draw the images corresponding to the items on the map
+     * @param shapeRenderer What instanc will render the geometrical shapes on the map.
+     */
     public void render(SpriteBatch batch, ShapeRenderer shapeRenderer) {
 
         if (towers != null){
