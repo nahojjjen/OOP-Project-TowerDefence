@@ -39,6 +39,7 @@ public class ParticleManager {
         allEffects.add(new ProximityEffect("BloodPoolCreepEffect", 100));
         allEffects.add(new ProximityEffect("BloodCarnage", 10));
         allEffects.add(new ProximityEffect("BloodCarnageCreepEffect", 300));
+        allEffects.add(new ProximityEffect("Chomp", 10));
     }
 
     /**
@@ -68,6 +69,7 @@ public class ParticleManager {
     public ProximityEffect getBloodPoolCreepEffect() {return allEffects.get(14);}
     public ProximityEffect getBloodCarnageEffect() {return allEffects.get(15);}
     public ProximityEffect getBloodCarnageCreepEffect() {return allEffects.get(16);}
+    public ProximityEffect getSacrificeEffect(){return allEffects.get(17);}
 
 }
 

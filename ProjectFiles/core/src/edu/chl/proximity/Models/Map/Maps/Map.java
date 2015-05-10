@@ -36,6 +36,7 @@ import java.util.*;
  * 25/04 Modified by Johan Swanberg, adds adding Stack
  * 08/05 modified by Linda Evaldsson. Moved functionality to this class; rendering of towers, updating and stack-functionality (clear stacks)
  * 10/5 modified by Johan Swanberg, fixed creepwithinrange method and added somee comments
+ * 10/05 modified by Hanna Römer. Added method towersWithinRange that is exactly like creepsWithinRange.
  * */
 public abstract class Map {
 
@@ -143,6 +144,23 @@ public abstract class Map {
             }
         }
         return creepsWithinRange;
+    }
+
+    /**
+     * Get a list of all towers within range(radius) of the position
+     * @param pos What position to search around
+     * @param range What range (radius) to search around
+     * @return A list of towers within the range specified
+     */
+    public List<Tower> getTowersWithinDistance(ProximityVector pos, double range){
+        List<Tower> towersInRange = new ArrayList<Tower>();
+        if(range <=0 || pos==null){return towersInRange;}
+        for(Tower tower: towers){
+            if(PointCalculations.distanceBetweenNoSqrt(tower.getCenter(),pos) < range*range){
+                towersInRange.add(tower);
+            }
+        }
+        return towersInRange;
     }
 
     /**

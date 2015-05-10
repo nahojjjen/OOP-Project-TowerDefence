@@ -27,6 +27,6 @@ public class Filler extends Faction {
         addSpell(new BloodCarnage(map));
         addSpell(new BloodPool(map));
         addSpell(new FireField(map));
-        addSpell(new ChainLightning(map));
+        addSpell(new Sacrifice(map));
     }
 }
