@@ -95,11 +95,7 @@ public class SaveManager {
     public int getExp(){
         for (String row: saveFileRows){
             if (row.contains("Exp:")){
-                String expString= row.substring(4);
-                System.out.println("expString = " + expString);
-                int exp = Integer.valueOf(expString);
-                System.out.println("exp " + exp);
-                return exp;
+                return Integer.parseInt(row.substring(4));
             }
         }
         System.out.println("Exp not found in savefile, resetting to 0");

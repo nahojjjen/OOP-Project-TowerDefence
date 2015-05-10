@@ -28,7 +28,6 @@ import java.util.*;
  * @date 2015-04-02
  *
  * The map holds all information related to an instance of the game except for the player details
- * The games current map is accessible from GameData.
  *
  * ---
  * 08/04 Modified by Johan Swanberg. Switch to Screen from GameState.
@@ -127,6 +126,9 @@ public abstract class Map {
     }
 
 
+    /**
+     * Updates all towers, creeps, spells and projectile logic on this map.
+     */
     public void update() {
 
         for (Tower tower : towers) {
