@@ -6,100 +6,148 @@ import edu.chl.proximity.Models.Player.Players.Player;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
 /**
  * @author Johan
  * @date 2015-05-09.
+ * A class which can load and save a hashmap to disk
+ * This is used for saving the player game data to the harddrive
+ *
+ * For instance, "exp" with "123": saveManager.save)("exp",123);
+ * One can then call saveManager.get("exp") to get 123
+ *
+ * You need to specify which savefile to load and save from.
  */
 public class SaveManager {
-    private Player player;
-    private static final String saveFileName = "ProximitySave.txt";
-    private List<String> saveFileRows = new ArrayList();
-    public SaveManager(Player player){
-        this.player = player;
-        createShutdownHook();
-        ensureFileExists();
-        loadSaveFile();
+    private HashMap<String, Float> saveMap = new HashMap<>();
 
 
-    }
-
-    private void loadSaveFile() {
-        File saveFile = new File(saveFileName);
-        try{
-            Scanner scanner = new Scanner(saveFile);
-            while(scanner.hasNextLine()){
-                saveFileRows.add(scanner.nextLine());
+    /**
+     * Place a value in the saveMap !!Does not actually save value to disk until you call save(x)!!
+     * @param input What string to connect the value to
+     * @param value What value  the word should be connected to
+     */
+    public void write(String input, Float value){
+        if (input != null && value != null){
+            //remove already existing value
+            if (saveMap.containsKey(input)){
+                saveMap.remove(input);
             }
-
-        }catch(FileNotFoundException e){
-            System.out.println("File not found!");
+            //put the value
+            saveMap.put(input, value);
         }
-
-
 
     }
 
     /**
-     * if the saveFile does not exist, create it.
+     * get a saved value
+     *
+     * If the saved value does not exist, creates an input with the value 0.
+     * @param input What do you want to get? example: get exp
+     * @return An Float corresponding to a previous save value.
      */
-    private void ensureFileExists() {
-        File saveFile = new File(saveFileName);
-        if (!saveFile.exists()){
-            save(); //if the file doesnt exist, create an empty save file
+    public Float get(String input){
+        if(saveMap.containsKey(input)){
+            return saveMap.get(input);
         }
+        else{
+
+            saveMap.put(input, 0f);
+            return saveMap.get(input);
+            //throw new IllegalArgumentException("Attempted to load a save value from a string which has no value!");
+        }
+
+
     }
+
 
     /**
-     * ensure the save method will run when the program shuts down
+     * Check if a savefile exists with the corresponding number
      */
-    private void createShutdownHook() {
-        Thread shutdownHook = new Thread( "Proximity-Shutdown-Save-Logic" )
-        {public void run()
-            {save(); } };
-        Runtime.getRuntime().addShutdownHook( shutdownHook );
+    public boolean doesSaveExist(int number) {
+        File saveFile = new File("ProximitySave"+number +".data");
+        return(saveFile.exists());
     }
+
+
 
     /**
-     * writes out the experience to a file
+     * Writes the object to the harddrive
+     * @param saveNumber what number the file should be called
      */
-    private void save(){
-        try{
-            PrintWriter writer = null;
-            try{
-                System.out.println("Starting save to savefile!");
-                writer = new PrintWriter(saveFileName, "UTF-8");
-                //all save data goes here
-                writer.println("Exp:" +player.getExperience());
-                System.out.println("Save complete!");
+    public void save(int saveNumber){
+        ObjectOutputStream obj_out = null;
+        try {
+            // Enable writing data to the harddrive
+            FileOutputStream fileOutputStream = new FileOutputStream("ProximitySave"+saveNumber +".data");
 
-            }catch (FileNotFoundException e){
-                System.out.println("File not found in saveManager!!");
-            }finally{
-                if (writer != null){
-                    writer.close();
-                }
+            // Enable writing an object to the harddrive, using the data connection
 
-            }
-        }catch(UnsupportedEncodingException e){
-            System.out.println("Unsupported encoding in save file!");
+            obj_out = new ObjectOutputStream(fileOutputStream);
+
+            // Write out the saveMap to the harddrive
+            obj_out.writeObject ( saveMap);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
         }
     }
 
-    /***
-     * get the experience written down in the file
-     * @return int of experiance recorded in the file
+
+    /**
+     * load a previous savefile from disk & loads it as current save hashMap
+     * @param number what number the savefile you load should have (loads the file with the number name)
      */
-    public int getExp(){
-        for (String row: saveFileRows){
-            if (row.contains("Exp:")){
-                return Integer.parseInt(row.substring(4));
-            }
+    public void loadSave(int number){
+        // Enable loading data from the harddrive
+        FileInputStream fileInputStream = null;
+
+        if (!doesSaveExist(1)){
+           save(number); //create an empty save-file
+            System.out.println("creating file for first time");
         }
-        System.out.println("Exp not found in savefile, resetting to 0");
-        return 0;
+
+
+        try {
+            fileInputStream = new FileInputStream("ProximitySave" + number + ".data");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        //Enable loading objects from the harddrive
+        ObjectInputStream objectInputStream = null;
+        try {
+            objectInputStream = new ObjectInputStream(fileInputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Load the object
+        Object readObject = null;
+        try {
+            readObject = objectInputStream.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        //Make the object a hashmap && load it as current saveFile
+        if (readObject instanceof HashMap){
+            HashMap<String, Float> loadedSave = (HashMap)readObject;
+            saveMap = loadedSave;
+        }
+
+        try {
+            objectInputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
