@@ -19,6 +19,19 @@ public class ProximityVector {
         this.x = x;
         this.y = y;
     }
+    @Override
+    public boolean equals(Object o){
+
+        if (o != null){
+            if (o instanceof ProximityVector){
+                ProximityVector test = (ProximityVector)o;
+                if (test.x == this.x && test.y == this.y){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     /**
      * create a new vector which is identical to the supplied vector
