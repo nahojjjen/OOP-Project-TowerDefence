@@ -25,6 +25,7 @@ public class Sacrifice extends Spell {
         List<Tower> towers= getMap().getTowersWithinDistance(this.getPosition(),range);
         for(Tower t: towers){
             getMap().remove(t);
+            getMap().setChoosenTower(null);
             if(getMap().getBase().getLife()>80){
                 getMap().getBase().setLife(100);
             }else {
