@@ -23,7 +23,6 @@ import java.util.List;
  *
  */
 
-//Todo: Possibly add update-method and add CreepController, ProjectileController, WaveController and TowerController to this Controller
 public class MapController implements ClickHandler {
 
     private Background model;
@@ -40,6 +39,10 @@ public class MapController implements ClickHandler {
         models.add(model);
     }
 
+
+    public void update() {
+        map.update();
+    }
 
     @Override
     public void touchDown(ProximityVector clickedPoint, int pointer, int button) {

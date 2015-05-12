@@ -38,15 +38,11 @@ import java.util.Set;
 public class MainController implements InputProcessor{
 
 
-    private CreepController creepController;
-    private TowerController towerController;
-    private ProjectileController projectileController;
     private BackgroundController backgroundController = new BackgroundController();
     private ControlPanelController controlPanelController;
     private WaveController waveController;
     private MapController mapController;
     private HandController handController;
-    private PersistentObjectController persistentObjectController;
     private List<ClickHandler> clickHandlers = new ArrayList<ClickHandler>();
     private Map map;
 
@@ -59,14 +55,10 @@ public class MainController implements InputProcessor{
     public MainController(Map map, Viewport v, Proximity game) {
         this.game = game;
         this.map = map;
-        creepController = new CreepController(map);
-        towerController = new TowerController(map);
-        projectileController = new ProjectileController(map);
         controlPanelController = new ControlPanelController(map, game,viewport);
         waveController = new WaveController(map);
         mapController = new MapController(map);
         handController = new HandController(map);
-        persistentObjectController = new PersistentObjectController(map);
 
         viewport=v;
         clickHandlers.add(controlPanelController);
@@ -80,10 +72,7 @@ public class MainController implements InputProcessor{
     public void updateAllControllers() {
         if(game.getCurrentScreen().equals(Proximity.State.GAME)) {
             waveController.update();
-            //creepController.update();
-            //towerController.update();
-            projectileController.update();
-            persistentObjectController.update();
+            mapController.update();
             backgroundController.update();
             controlPanelController.update();
             map.clearRemoveStack();

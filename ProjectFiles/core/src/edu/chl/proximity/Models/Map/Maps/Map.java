@@ -190,6 +190,19 @@ public abstract class Map {
             for (Creep creep : creeps) {
                 if (projectile.collidesWith(creep)) {
                     projectile.collide(creep);
+
+                    double range = projectile.getRange();
+                    if(range <= 0) {
+                        projectile.attack(creep);
+                    }
+                    else {
+                        for(Creep listCreep: creeps) {
+                            if(PointCalculations.distanceBetweenNoSqrt(projectile.getCenter(), listCreep.getCenter()) < range*range){
+                                projectile.attack(listCreep);
+                            }
+                        }
+                    }
+
                 }
             }
             if (projectile.isOutsideView()){

@@ -44,15 +44,12 @@ public class SlowDownBullet extends Projectile{
 
     public void reAngle() {
         if (target != null) {
-            //Check if the target is still on the board
-            //Todo: Fix so map informs the bullet that the target is gone
-            /*
-            if(getMap().containsCreep((target))) {
+            if(!target.isRemoved()) {
                 faceTarget(target.getCenter());
             }
             else {
-                // Keep angle
-            }*/
+                //Keep angle
+            }
         } else {
             throw new IllegalStateException("SlowDownBullet: Trying to reangle but target is null");
         }

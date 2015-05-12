@@ -29,6 +29,7 @@ public abstract class Projectile extends BoardObject implements Cloneable{
     private int health;
     private int speed;
     private Sound sound;
+    private double range = 0;
     /**
      * Create a new projectile type
      * @param particleEffect what effect should be played when the bullet hits
@@ -45,6 +46,14 @@ public abstract class Projectile extends BoardObject implements Cloneable{
         this.health=health;
         this.speed=speed;
         this.sound=sound;
+    }
+
+    public void setRange(double newRange) {
+        range = newRange;
+    }
+
+    public double getRange() {
+        return range;
     }
 
 
@@ -71,30 +80,12 @@ public abstract class Projectile extends BoardObject implements Cloneable{
         playSound();
         reAngle();
         decreaseProjectileHealth();
-        attack(creep);
-    }
-
-    public void checkCollision() {
-        //Todo: Fix so this is checked by Map instead.
-        //BoardObject o = getMap().getObjectOnPosition(getPosition());
-        //if(o instanceof Creep)
-        //    collide((Creep)o);
-                    /*
-        List<Creep> creeps = getMap().getCreeps();
-
-        for (Creep creep : creeps){
-        if(collidesWith(creep)) {
-            collide(creep);
-        }
-    }*/
-
     }
 
     /**
      * the logic that happens that is specific to this projectile, most often creep.devolve
      */
     public abstract void attack(Creep creep);
-
     /**
      * play the effect connected to this projectile (example, the explosion effect of the missile, smoke & circles))
      */

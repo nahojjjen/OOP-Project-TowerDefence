@@ -24,7 +24,7 @@ public class Missile extends Projectile {
 
     private static Image img = new Image(Constants.FILE_PATH + "Projectiles/missile.png");
     private static Sound sound = Gdx.audio.newSound(new FileHandle(Constants.FILE_PATH + "Sounds/explosion.ogg"));
-    private double range = 40;
+    private static double range = 60;
     private Creep target;
 
     /**
@@ -37,21 +37,19 @@ public class Missile extends Projectile {
         //Arguments: ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, ProximityVector position, double angle, Creep target
         super(particleManager.getExplosionEffect(), 1, 8, sound, img, position, angle);
         this.target = target;
+        setRange(range);
     }
 
     @Override
     public void reAngle() {
             if (target != null) {
 
-                //Todo: Fix so map informs the missile that the target is gone
-                /*
-                //Check if the target is still on the board
-                if(getMap().getCreeps().contains((target))) {
+                if(!target.isRemoved()) {
                     faceTarget(target.getCenter());
                 }
                 else {
-                    // Keep angle
-                }*/
+                    //Keep angle
+                }
 
             } else {
                 throw new IllegalStateException("Missile: Trying to reangle but target is null");
@@ -59,15 +57,10 @@ public class Missile extends Projectile {
     }
 
     @Override
-    public void attack(Creep unusedCreep) {
-        //Todo: Fix so map calculates this instead
-        /*List<Creep> creepList = getMap().getCreeps();
-        for(Creep creep: creepList) {
-            if(PointCalculations.distanceBetweenNoSqrt(this.getCenter(), creep.getCenter()) < range*range){
-                creep.devolve();
-            }
-        }*/
-
-
+    public void attack(Creep creep) {
+        creep.devolve();
     }
+
+
+
 }
