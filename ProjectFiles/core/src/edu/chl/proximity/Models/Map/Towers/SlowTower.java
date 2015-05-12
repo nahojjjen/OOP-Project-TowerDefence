@@ -22,7 +22,6 @@ public class SlowTower extends ShootingTower {
 
     //Tower stats
     private static Resources resources = new Resources(100, 100, 0);
-    private static Resources upgradeResources = new Resources(10, 10, 0);
     private static double range = 140f;
     private static int reloadTime = 40;
 
@@ -37,7 +36,7 @@ public class SlowTower extends ShootingTower {
      * @param pos Position of tower
      */
     public SlowTower(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager){
-        super(pos, img, range, targetingMethod, reloadTime, resources, upgradeResources, "Freeze Tower");
+        super(pos, img, range, targetingMethod, reloadTime, resources, "Freeze Tower");
         setParticleManager(particleManager);
     }
 

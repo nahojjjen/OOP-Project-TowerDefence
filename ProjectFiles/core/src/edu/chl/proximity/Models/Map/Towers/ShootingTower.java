@@ -33,14 +33,13 @@ public abstract class ShootingTower extends Tower {
      * @param targetingMethod how the tower should decide what target to shoot
      * @param reloadTime how long it takes the tower to shoot another bullet (in frames)
      */
-    public ShootingTower(ProximityVector pos, Image image, double range, TargetingMethod targetingMethod, int reloadTime, Resources cost, Resources upgradeCost, String name){
+    public ShootingTower(ProximityVector pos, Image image, double range, TargetingMethod targetingMethod, int reloadTime, Resources cost, String name){
         //arguments: Position, texture, image rotation-angle
         super(pos, image, 0, name);
         this.range = range;
         this.targetingMethod = targetingMethod;
         this.reloadTime = reloadTime;
         this.cost = cost;
-        this.upgradeCost = upgradeCost;
 
 
     }

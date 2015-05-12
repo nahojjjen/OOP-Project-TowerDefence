@@ -21,7 +21,6 @@ public class MissileTower extends ShootingTower {
 
     //Tower stats
     private static Resources resources = new Resources(300, 200, 0);
-    private static Resources upgradeResources = new Resources(10, 10, 0);
     private static double range = 200f;
     private static int reloadTime = 100;
 
@@ -32,7 +31,7 @@ public class MissileTower extends ShootingTower {
      *  double range, TargetingMethod targetingMethod, int reloadTime
      */
     public MissileTower(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager) {
-        super(pos, img, range, targetingMethod, reloadTime, resources, upgradeResources, "Missile Tower");
+        super(pos, img, range, targetingMethod, reloadTime, resources, "Missile Tower");
         setParticleManager(particleManager);
 
     }

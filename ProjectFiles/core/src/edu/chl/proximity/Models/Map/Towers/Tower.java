@@ -22,11 +22,11 @@ import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
  */
 public abstract class Tower extends BoardObject implements Holdable, Cloneable{
     protected Resources cost;
-    protected Resources upgradeCost;
     protected double range;
     private String name;
     private Tower upgrade;
     private ParticleManager particleManager;
+    private boolean isPlaced=false;
 
     public Tower(ProximityVector pos, Image image, int angle, String name) {
         super(pos, image, angle);
@@ -41,13 +41,14 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
 
 
     public Resources getUpgradeCost() {
-        return upgradeCost;
+        return getUpgrade().getCost();
     }
 
     @Override
     public void preparePlacing(ProximityVector position) {
         this.setCenter(position);
         GameData.getInstance().getPlayer().getResources().removeResources(getCost());
+        isPlaced=true;
     }
 
     @Override
@@ -66,13 +67,13 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
     public abstract Tower getNewUpgrade();
 
     public Tower getUpgrade(){
-
         if(upgrade == null) {
             upgrade = getNewUpgrade();
         }
         return upgrade;
-
-
+    }
+    public boolean getIfPlaced(){
+        return isPlaced;
     }
 
     public ParticleManager getParticleManager() {

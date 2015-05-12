@@ -25,7 +25,6 @@ public class BulletTower extends ShootingTower implements Cloneable {
     private static Resources resources = new Resources(150, 0, 0);
     private static double range = 150f;
     private static int reloadTime = 60;
-    private static Resources upgradeResources = new Resources(10, 10, 0);
 
     private static Image img = new Image(Constants.FILE_PATH + "Towers/Bullet/1.png");
 
@@ -34,7 +33,7 @@ public class BulletTower extends ShootingTower implements Cloneable {
      *  double range, TargetingMethod targetingMethod, int reloadTime
      */
     public BulletTower(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager) {
-        super(pos, img, range, targetingMethod, reloadTime, resources, upgradeResources, "Bullet Tower");
+        super(pos, img, range, targetingMethod, reloadTime, resources, "Bullet Tower");
         setParticleManager(particleManager);
     }
 
