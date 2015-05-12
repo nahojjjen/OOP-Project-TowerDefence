@@ -22,6 +22,12 @@ public class Image implements Cloneable {
     private static HashMap <String, Texture> cache = new HashMap<String, Texture>();
 
     public Image(String s) {
+
+        //We cannot create images under unit tests
+        if (isJUnitTest()) {
+            return;
+        }
+
         if (cache.containsKey(s)) {
             texture = cache.get(s);
         }
@@ -58,5 +64,15 @@ public class Image implements Cloneable {
 
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
+    }
+
+    public static boolean isJUnitTest() {
+        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+        for (StackTraceElement element : stackTrace) {
+            if (element.getClassName().startsWith("org.junit.")) {
+                return true;
+            }
+        }
+        return false;
     }
 }
