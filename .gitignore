@@ -9,3 +9,4 @@ gitinspector/statistics.html
 gitinspector/translations/messages.pot
 *.po
 *.mo
+ProjectFiles/core/ProximitySave.txt
