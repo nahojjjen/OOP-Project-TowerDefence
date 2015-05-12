@@ -8,7 +8,7 @@ import edu.chl.proximity.Models.Utils.Settings;
 /**
  * @author Hanna R�mer
  * @date 2015-04-15
- * A class epresenting the player.
+ * A class representing the player.
  *
  * 23/04 Modified by Simon. Adding depth to leveling up
  * 28/04 Modified by Simon. Adding level
@@ -34,48 +34,46 @@ public class Player {
 
         this.saveManager = new SaveManager();
 
-        loadSaveData();
-
-        createSaveHook();
+        loadSaveData(1);
+        createSaveHook(1);
     }
 
-    private void loadSaveData(){
-        saveManager.loadSave(1);
-
-        this.experiencePoints = Math.round(saveManager.get("exp"));
-        System.out.println("exp loaded: " + this.experiencePoints);
-
-        this.settings.setGameVolume(saveManager.get("vol"));
-        System.out.println("Game volume loaded: " + saveManager.get("vol") + "(It doesnt work because sound is re-loaded instantly when a new map is loaded or something, i dont know Hanna made that feature : i just wanna demonstrate that you can save misc stuff.)");
-
-        this.level = saveManager.get("lvl");
-        System.out.println("Player level loaded: "+ level);
-
-
+    /**
+     * What should be loaded on start
+     */
+    private void loadSaveData(int saveFile){
+        saveManager.loadSave(saveFile);
+        if(saveManager.get("exp") != null)  this.experiencePoints = Math.round(saveManager.get("exp"));
+        if(saveManager.get("lvl") != null)  this.level = saveManager.get("lvl");
     }
+
+    /**
+     * Specify what you want to save on shutdown
+     */
+    private void saveAllSpecifiedVariables(){
+        saveManager.write("exp", (float) experiencePoints);
+        saveManager.write("lvl", (float) level);
+    }
+
     /**
      * create a new thread which will run on program shutdown, which saves the current player details to the disk
+     * Do not edit this method if you simply want to save data, instead add a line to the methodd
+     * "saveAllSpecifiedVariables()"
+     *
+     * @param saveFileNumber What savefile should be written to on shutdown
      */
-    private void createSaveHook(){
+    private void createSaveHook(int saveFileNumber){
 
         Thread shutdownHook = new Thread("Proximity-Shutdown-Save-Logic" ) {
             public void run() {
                 System.out.println("Starting save...");
-                saveManager.write("exp", (float) experiencePoints);
-                System.out.println("Saved exp: " + experiencePoints);
+                saveAllSpecifiedVariables();
 
-                saveManager.write("lvl", (float) level);
-                System.out.println("Saved level: " + level);
-
-                saveManager.write("vol", settings.getGameVolume());
-                System.out.println("Saved game volume: " + settings.getGameVolume() + "(It doesnt work because sound is re-loaded instantly when a new map is loaded or something, i dont know Hanna made that feature : i just wanna demonstrate that you can save misc stuff.)");
-
-                saveManager.save(1);
+                saveManager.save(saveFileNumber);
                 System.out.println("Save Complete!");
             }
         };
         Runtime.getRuntime().addShutdownHook( shutdownHook );
-
     }
 
     /**

@@ -47,17 +47,15 @@ public class SaveManager {
      *
      * If the saved value does not exist, creates an input with the value 0.
      * @param input What do you want to get? example: get exp
-     * @return An Float corresponding to a previous save value.
+     * @return An Float corresponding to a previous save value, null if no value exists
      */
     public Float get(String input){
         if(saveMap.containsKey(input)){
             return saveMap.get(input);
         }
         else{
-
-            saveMap.put(input, 0f);
-            return saveMap.get(input);
-            //throw new IllegalArgumentException("Attempted to load a save value from a string which has no value!");
+            System.out.println("Loaded no value from " + "\"" + input + "\"" + ", no value on savefile" );
+            return null;
         }
 
 
