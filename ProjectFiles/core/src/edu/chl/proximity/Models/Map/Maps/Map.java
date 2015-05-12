@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.sun.corba.se.impl.encoding.WrapperInputStream;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Player.Holdables.Hand;
@@ -82,7 +83,8 @@ public abstract class Map {
             creeps.add((Creep) object);
         if(object instanceof Tower)
             towers.add((Tower) object);
-        //addStack.add(object);
+        if(object instanceof PersistentObject)
+            persistentObjects.add((PersistentObject) object);
     }
 
     /**

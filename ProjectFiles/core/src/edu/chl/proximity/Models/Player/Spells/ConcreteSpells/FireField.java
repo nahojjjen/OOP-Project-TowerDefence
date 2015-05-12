@@ -33,6 +33,7 @@ public class FireField extends Spell {
 
     @Override
     public void performEffect(int counter) {
+
         List<Creep> creeps = getMap().getCreepsWithinDistance(getPosition(), range);
         for (Creep creep:creeps){
                 getMap().getParticleManager().getFireCreepEffect().createEffect(creep.getCenter());

@@ -31,6 +31,7 @@ public class BloodCarnage extends Spell {
 
     @Override
     public void performEffect(int counter) {
+
         if (!hasDamagedPlayer){
             getMap().getBase().damage(healthCost);
             hasDamagedPlayer = true;

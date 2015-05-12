@@ -35,12 +35,9 @@ public abstract class Spell extends PersistentObject implements Holdable {
     public void preparePlacing(ProximityVector position) {
         resetPersistentObject();
         this.setPosition(position);
-        add(this);
         this.start();
         playParticleEffect(); //important that this is after setPosition
 
-        //Todo:remove Map from here
-        getMap().getHand().setItem(null);
     }
     public abstract void playParticleEffect();
     public abstract double getRange();
