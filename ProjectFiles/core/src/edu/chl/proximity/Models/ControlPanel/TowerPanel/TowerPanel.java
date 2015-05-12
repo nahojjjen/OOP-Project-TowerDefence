@@ -101,7 +101,7 @@ public class TowerPanel extends BoardObject{
             if(upgrade instanceof ShootingTower && map.getChoosenTower() instanceof ShootingTower){
                 ((ShootingTower) upgrade).setTargetingMethod(((ShootingTower) map.getChoosenTower()).getTargetingMethod());
             }
-            map.remove(map.getChoosenTower());
+            map.getChoosenTower().remove();
             map.add(upgrade);
             map.setChoosenTower(upgrade);
         }

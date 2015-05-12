@@ -60,9 +60,6 @@ public abstract class Map {
 
     private ParticleManager particleManager;
 
-    private Set<BoardObject> removeStack = new HashSet<BoardObject>();
-    private Set<BoardObject> addStack = new HashSet<BoardObject>();
-
     /**
      * Create a map with the specified path and image background
      * @param path what path the creeps should follow on this map.
@@ -75,20 +72,17 @@ public abstract class Map {
         particleManager = new ParticleManager();
     }
 
-    /**
-     * Marks an object for deletion, the object will be removed for next frame
-     * @param object What boardObject to remove
-     */
-    public void remove(BoardObject object) {
-        removeStack.add(object);
-    }
 
     /**
      * Mark an object for adding to the map, the object will be added for next frame
      * @param object what object to add for next frame
      */
     public void add(BoardObject object) {
-        addStack.add(object);
+        if(object instanceof Creep)
+            creeps.add((Creep) object);
+        if(object instanceof Tower)
+            towers.add((Tower) object);
+        //addStack.add(object);
     }
 
     /**
@@ -195,7 +189,7 @@ public abstract class Map {
             projectile.move();
             projectile.checkCollision();
             if (projectile.isOutsideView()){
-                remove(projectile);
+                projectile.remove();
             }
         }
 
@@ -221,41 +215,61 @@ public abstract class Map {
      * Remove all objects that have been marked for deletion from this map
      */
     public void clearRemoveStack() {
-        Iterator killIterator = removeStack.iterator();
 
-        while (killIterator.hasNext()){
-            BoardObject o = (BoardObject)killIterator.next();
-            if(o instanceof Creep) {
-                Creep creep = (Creep)o;
-                if (creep != null) {
-                    killIterator.remove();
-                    creeps.remove(creep);
-                }
-            }
+        removeFromMapFromList(creeps);
+        removeFromMapFromList(towers);
+        removeFromMapFromList(projectiles);
+        removeFromMapFromList(persistentObjects);
 
-            if(o instanceof Projectile) {
-                Projectile projectile = (Projectile)o;
-                if (projectile != null) {
-                    killIterator.remove();
-                    projectiles.remove(projectile);
+    }
+    public void removeFromMapFromList(List<? extends BoardObject> list) {
+        Iterator mapIterator = list.iterator();
+        while(mapIterator.hasNext()) {
+            BoardObject object = (BoardObject)mapIterator.next();
+
+            if(object.isRemoved()) {
+                if(object instanceof Creep) {
+                    mapIterator.remove();
+                    creeps.remove(object);
                 }
-            }
-            if(o instanceof Tower) {
-                Tower tower = (Tower)o;
-                if (tower != null) {
-                    killIterator.remove();
-                    towers.remove(tower);
+                if(object instanceof Tower) {
+                    mapIterator.remove();
+                    towers.remove(object);
                 }
-            }
-            if(o instanceof PersistentObject) {
-                PersistentObject persistentObject = (PersistentObject)o;
-                if (persistentObject != null) {
-                    killIterator.remove();
-                    persistentObjects.remove(persistentObject);
+                if(object instanceof Projectile) {
+                    mapIterator.remove();
+                    projectiles.remove(object);
                 }
+                if(object instanceof PersistentObject) {
+                    mapIterator.remove();
+                    persistentObjects.remove(object);
+                }
+
             }
         }
+    }
 
+    public void addToMapFromList(List<? extends BoardObject> list) {
+        Iterator mapIterator = list.iterator();
+        while(mapIterator.hasNext()) {
+            BoardObject object = (BoardObject)mapIterator.next();
+            List<BoardObject> addList = object.getAddList();
+            if(list != null) {
+                Iterator addIterator = addList.iterator();
+                while(addIterator.hasNext()) {
+                    BoardObject o = (BoardObject)addIterator.next();
+                    if(o instanceof Creep)
+                        creeps.add((Creep)o);
+                    if(o instanceof Tower)
+                        towers.add((Tower)o);
+                    if(o instanceof Projectile)
+                        projectiles.add((Projectile)o);
+                    if(o instanceof PersistentObject)
+                        persistentObjects.add((PersistentObject)o);
+                }
+            }
+            object.clearAddList();
+        }
     }
 
     /**
@@ -263,28 +277,8 @@ public abstract class Map {
      */
     public void clearAddStack() {
 
-        Iterator addIterator = addStack.iterator();
-
-        while (addIterator.hasNext()){
-            BoardObject o = (BoardObject)addIterator.next();
-            if(o instanceof Creep) {
-                Creep creep = (Creep)o;
-                creeps.add(creep);
-            }
-            if(o instanceof Projectile) {
-                Projectile projectile = (Projectile)o;
-                projectiles.add(projectile);
-            }
-            if(o instanceof Tower) {
-                Tower tower = (Tower)o;
-                towers.add(tower);
-            }
-            if(o instanceof PersistentObject) {
-                PersistentObject persistentObject = (PersistentObject)o;
-                persistentObjects.add(persistentObject);
-            }
-            addIterator.remove();
-        }
+        addToMapFromList(creeps);
+        addToMapFromList(towers);
 
     }
 

@@ -24,7 +24,7 @@ public class Sacrifice extends Spell {
     public void performEffect(int counter){
         List<Tower> towers= getMap().getTowersWithinDistance(this.getPosition(),range);
         for(Tower t: towers){
-            getMap().remove(t);
+            t.remove();
             getMap().setChoosenTower(null);
             if(getMap().getBase().getLife()>80){
                 getMap().getBase().setLife(100);

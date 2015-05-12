@@ -51,13 +51,17 @@ public abstract class BoardObject implements Cloneable {
         //Empty constructor for subclasses
     }
 
+    public boolean isRemoved() {
+        return isRemoved;
+    }
+
     public BoardObject(ProximityVector position, edu.chl.proximity.Models.Utils.Image img, double angle, int width, int height) {
         this(position, img, angle);
         this.width = width;
         this.height = height;
     }
 
-    protected void remove() {
+    public void remove() {
         isRemoved = true;
     }
 
@@ -71,6 +75,9 @@ public abstract class BoardObject implements Cloneable {
 
     public List<BoardObject> getAddList() {
         return addList;
+    }
+    public void clearAddList() {
+        addList.clear();
     }
 
     //Getters and Setters
