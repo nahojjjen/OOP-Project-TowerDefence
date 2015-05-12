@@ -35,6 +35,7 @@ public class Sacrifice extends Spell {
     }
 
     public void playParticleEffect(){
+        getMap().getParticleManager().getBloodCarnageCreepEffect().createEffect(getPosition());
         getMap().getParticleManager().getSacrificeEffect().createEffect(getPosition());
     }
     public double getRange(){
