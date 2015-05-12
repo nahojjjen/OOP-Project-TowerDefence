@@ -46,12 +46,22 @@ public class Hand {
     }
     public void render(SpriteBatch batch) {
         if(currentItem != null) {
-            Image img = currentItem.getImage();
-            if(img != null) {
-                img.render(batch, new ProximityVector(position.x - img.getTexture().getWidth() / 2, position.y - img.getTexture().getHeight() / 2), 0);
+            if(currentItem instanceof Tower){
+                if(!((Tower) currentItem).getIfPlaced()){
+                    batchRendering(batch);
+                }
+            }else{
+                batchRendering(batch);
             }
         }
     }
+    private void batchRendering(SpriteBatch batch){
+        Image img = currentItem.getImage();
+        if(img != null) {
+            img.render(batch, new ProximityVector(position.x - img.getTexture().getWidth() / 2, position.y - img.getTexture().getHeight() / 2), 0);
+        }
+    }
+
     public Color getRangeIndicatorColor() {
         if (currentItem instanceof Tower) {
             if (canPlayerAffordTheHand()) {
@@ -78,7 +88,13 @@ public class Hand {
     }
 
     public void render(ShapeRenderer shapeRenderer) {
-        renderRangeIndicator(shapeRenderer, getRangeIndicatorColor(), getPosition(), getItem().getRange());
+        if(currentItem instanceof Tower){
+            if(!((Tower) currentItem).getIfPlaced()){
+                renderRangeIndicator(shapeRenderer, getRangeIndicatorColor(), getPosition(), getItem().getRange());
+            }
+        }else {
+            renderRangeIndicator(shapeRenderer, getRangeIndicatorColor(), getPosition(), getItem().getRange());
+        }
     }
 
     private void renderRangeIndicator(ShapeRenderer renderer, Color color, ProximityVector position, double range) {

@@ -75,6 +75,9 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
     public boolean getIfPlaced(){
         return isPlaced;
     }
+    public void setAsPlaced(boolean b){
+        isPlaced=b;
+    }
 
     public ParticleManager getParticleManager() {
         return particleManager;

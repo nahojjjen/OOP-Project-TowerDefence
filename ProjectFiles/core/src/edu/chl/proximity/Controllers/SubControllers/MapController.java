@@ -48,30 +48,40 @@ public class MapController implements ClickHandler {
     public void touchDown(ProximityVector clickedPoint, int pointer, int button) {
         //Checks if the click is within the map
         if (model.containsPoint(clickedPoint)) {
+
             //Checks what item is currently picked up
             Holdable item = map.getHand().getItem();
 
             BoardObject object = map.getObjectOnPosition(clickedPoint);
-            if(object instanceof Tower)
-                map.setChoosenTower((Tower)object);
-
-
-            if (item != null) {
-                //Places the currently picked up item on the map if the player can afford it.
-                if (map.getHand().canPlayerAffordTheHand()) {
-                    item.preparePlacing(clickedPoint);
-                    map.add((BoardObject)item);
-                    map.getHand().setItem(null);
-                    if(item instanceof Tower){
-                        map.setChoosenTower((Tower) item);
-                    }
-                } else {
-                    //TODO: display error?
-                }
+            if(object instanceof Tower) {
+                //map.getHand().setItem((Tower) object);
+                map.setChoosenTower((Tower) object);
             }
 
-        }else{
+            if (item != null) {
+                if(item instanceof Tower) {
+                    if (!((Tower) item).getIfPlaced()) {
+                        placeHandObject(item, clickedPoint);
+                    }
+                }else {
+                    placeHandObject(item, clickedPoint);
+                }
+            }
+        }
+    }
+
+    private void placeHandObject(Holdable item, ProximityVector clickedPoint){
+        if (map.getHand().canPlayerAffordTheHand()) {
+            item.preparePlacing(clickedPoint);
+            map.add((BoardObject)item);
             map.getHand().setItem(null);
+            if(item instanceof Tower){
+                ((Tower) item).setAsPlaced(true);
+                map.setChoosenTower((Tower) item);
+
+            }
+        } else {
+            //TODO: display error?
         }
     }
 

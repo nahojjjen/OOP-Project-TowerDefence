@@ -95,10 +95,11 @@ public class TowerPanel extends BoardObject{
     }
 
     public void pressedUpgrade(){
+        System.out.println(map.getChoosenTower());
         if(map.getChoosenTower() != null && afford) {
-
             Tower upgrade=map.getChoosenTower().getUpgrade();
             upgrade.setPosition(map.getChoosenTower().getPosition());
+            upgrade.setAsPlaced(true);
             if(upgrade instanceof ShootingTower && map.getChoosenTower() instanceof ShootingTower){
                 ((ShootingTower) upgrade).setTargetingMethod(((ShootingTower) map.getChoosenTower()).getTargetingMethod());
             }

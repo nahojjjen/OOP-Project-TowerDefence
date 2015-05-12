@@ -112,8 +112,12 @@ public class ControlPanelController implements ClickHandler {
 
         if (GameData.getInstance().getPlayer().getSettings().getGameSpeed() != 0 && modelsClicked(clickedPoint)) {
 
-            if(map.getHand().getItem() != null)
-                map.getHand().setItem(null);
+
+            if(map.getHand().getItem() != null) {
+                if(map.getChoosenTower()==null) {
+                    map.getHand().setItem(null);
+                }
+            }
 
             ControlPanelTower cpTower = controlPanel.getTowerOnPosition(clickedPoint);
             if (cpTower != null) {

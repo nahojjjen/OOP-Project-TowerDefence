@@ -45,7 +45,7 @@ public abstract class Map {
 
     private int waveIndex;
     private Hand hand = new Hand();
-    private Tower choosenTower;
+    //private Tower choosenTower;
 
     private PropertiesPanel propertiesPanel;
 
@@ -219,8 +219,19 @@ public abstract class Map {
     public Background getBackground(){ return  background;}
     public Base getBase(){return base;}
     public void setBase(Base base){ this.base = base;}
-    public void setChoosenTower(Tower tower){ choosenTower=tower;}
-    public Tower getChoosenTower(){ return choosenTower;}
+
+    public void setChoosenTower(Tower tower){
+        getHand().setItem(tower);
+    }
+
+    public Tower getChoosenTower(){
+        if(getHand().getItem() instanceof Tower){
+            if(((Tower) getHand().getItem()).getIfPlaced()){
+                return (Tower) getHand().getItem();
+            }
+        }
+        return null;
+    }
 
     public PropertiesPanel getPropertiesPanel() {
         return propertiesPanel;
