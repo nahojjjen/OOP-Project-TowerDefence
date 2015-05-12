@@ -18,7 +18,7 @@ public class FillerMap extends Map{
      * creates the map instance
      */
     public FillerMap() {
-        super(path, new Background(null, new Image(Constants.FILE_PATH + "Backgrounds/moonBackground.png")),"FillerMap");
+        super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/moonBackground.png")),"FillerMap");
     }
 
 }

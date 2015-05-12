@@ -4,7 +4,6 @@ import com.badlogic.gdx.audio.Sound;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Map.Particles.ProximityEffect;
@@ -21,6 +20,7 @@ import java.util.List;
  * Unknown date modified by Linda Evaldsson
  * Unknown date modified by Johan Swanberg
  * 04-24 modified by Johan Swanberg, fixed projectile hitbox origin to center
+ * 12/05 modified by Linda Evaldsson. Removed Map from constructor.
  *
  * An abstract class for projectiles. All projectiles extend this class.
  */
@@ -39,8 +39,8 @@ public abstract class Projectile extends BoardObject implements Cloneable{
      * @param position where should the projectile be created
      * @param angle what angle should the image of the projectile have
      */
-    public Projectile(Map map, ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, ProximityVector position, double angle){
-        super(map, position, image, angle);
+    public Projectile(ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, ProximityVector position, double angle){
+        super(position, image, angle);
         this.effect=particleEffect;
         this.health=health;
         this.speed=speed;
@@ -75,9 +75,10 @@ public abstract class Projectile extends BoardObject implements Cloneable{
     }
 
     public void checkCollision() {
-        BoardObject o = getMap().getObjectOnPosition(getPosition());
-        if(o instanceof Creep)
-            collide((Creep)o);
+        //Todo: Fix so this is checked by Map instead.
+        //BoardObject o = getMap().getObjectOnPosition(getPosition());
+        //if(o instanceof Creep)
+        //    collide((Creep)o);
                     /*
         List<Creep> creeps = getMap().getCreeps();
 
@@ -130,7 +131,7 @@ public abstract class Projectile extends BoardObject implements Cloneable{
     private void decreaseProjectileHealth(){
         health--;
         if (health <= 0) {
-            getMap().remove(this);
+            this.remove();
         }
     }
 

@@ -1,10 +1,8 @@
 package edu.chl.proximity.Models;
 
-import com.badlogic.gdx.Gdx;
+
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import edu.chl.proximity.Utilities.ProximityVector;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Utilities.PointCalculations;
 import java.lang.CloneNotSupportedException;
 import java.util.ArrayList;
@@ -20,13 +18,13 @@ import java.util.List;
  * 02/04 modified by Simon Gislén. Added properties.
  * 08/04 modified by Linda Evaldsson. Getters for width and height created.
  * 23/04 modified Simon Gislén. Added empty constructor.
+ * 12/05 modified by Linda Evaldsson. Removed Map, added remove/add-methods instead.
 >*/
 public abstract class BoardObject implements Cloneable {
 
     private ProximityVector position;
     private edu.chl.proximity.Models.Utils.Image image;
     private double angle;
-    private Map map;
     private int width = 0;
     private int height = 0;
 
@@ -40,10 +38,9 @@ public abstract class BoardObject implements Cloneable {
      * @param img the image of the object
      * @param angle the rotation of the object (in degrees)
      */
-    public BoardObject(Map map, ProximityVector position, edu.chl.proximity.Models.Utils.Image img, double angle){
+    public BoardObject(ProximityVector position, edu.chl.proximity.Models.Utils.Image img, double angle){
         this.position = position;
         this.image = img;
-        this.map = map;
         this.angle = angle;
         if(img != null) {
             width = img.getTexture().getWidth();
@@ -54,14 +51,11 @@ public abstract class BoardObject implements Cloneable {
         //Empty constructor for subclasses
     }
 
-    public BoardObject(Map map, ProximityVector position, edu.chl.proximity.Models.Utils.Image img, double angle, int width, int height) {
-        this(map, position, img, angle);
+    public BoardObject(ProximityVector position, edu.chl.proximity.Models.Utils.Image img, double angle, int width, int height) {
+        this(position, img, angle);
         this.width = width;
         this.height = height;
     }
-
-    public Map getMap() { return map; }
-    public void setMap(Map map) {this.map = map;}
 
     protected void remove() {
         isRemoved = true;

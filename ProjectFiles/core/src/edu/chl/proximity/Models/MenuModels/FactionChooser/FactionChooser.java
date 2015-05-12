@@ -38,7 +38,7 @@ public class FactionChooser extends BoardObject{
     private int showing=0;
 
     public FactionChooser(){
-        super(null, pos, image, 0);
+        super(pos, image, 0);
         factionImage=new FactionImage(imagePos);
         prev = new NextPrevButton(new ProximityVector(pos.x+8, pos.y+40), new Image(Constants.FILE_PATH + "Buttons/FactionChooserLeft.png"));
         next = new NextPrevButton(new ProximityVector(pos.x+352, pos.y+40),new Image(Constants.FILE_PATH + "Buttons/FactionChooserRight.png"));

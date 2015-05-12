@@ -17,8 +17,8 @@ public class Background extends BoardObject {
      *
      * @param img      the image of the object
      */
-    public Background(Map map, Image img) {
-        super(map, new ProximityVector(0,0), img, 0);
+    public Background(Image img) {
+        super(new ProximityVector(0,0), img, 0);
     }
 
     /**

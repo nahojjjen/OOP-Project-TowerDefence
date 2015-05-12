@@ -21,13 +21,13 @@ public abstract class PersistentObject extends BoardObject {
     private boolean started= false;
     private int backupCounter = 0;
 
-    public PersistentObject(Map map, ProximityVector position, Image icon, int counter) {
-        super(map, position, icon, 0);
+    public PersistentObject(ProximityVector position, Image icon, int counter) {
+        super(position, icon, 0);
         this.counter = counter;
         this.backupCounter = counter;
 
         if (position != null){
-            getMap().add(this);// this needs to be made for concurrent modificaiton
+            add(this);
         }
     }
 
@@ -42,7 +42,7 @@ public abstract class PersistentObject extends BoardObject {
     public void tick() {
     if (started){
             if (counter <= 0) {
-                getMap().remove(this);
+                this.remove();
                 return;
             }
             performEffect(counter);

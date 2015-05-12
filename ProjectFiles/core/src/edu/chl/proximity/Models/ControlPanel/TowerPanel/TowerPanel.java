@@ -42,12 +42,12 @@ public class TowerPanel extends BoardObject{
     private boolean afford;
 
     public TowerPanel(Map map){
-        super(map, pos,background,0,width,height);
+        super(pos,background,0,width,height);
         this.map=map;
         first=new CheckBox(new ProximityVector(pos.x+160,pos.y+30), map, "Target first");
         closest=new CheckBox(new ProximityVector(pos.x+160,pos.y+70), map, "Target closest");
         last=new CheckBox(new ProximityVector(pos.x+160,pos.y+110), map, "Target last");
-        upgrade=new UpgradeButton(new ProximityVector(pos.x+5, pos.y+95),map);
+        upgrade=new UpgradeButton(new ProximityVector(pos.x+5, pos.y+95));
         targetingFactory=new TargetingFactory(map);
         setInfo();
     }

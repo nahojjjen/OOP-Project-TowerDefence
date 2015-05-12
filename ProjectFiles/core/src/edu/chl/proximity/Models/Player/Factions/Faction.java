@@ -2,6 +2,8 @@ package edu.chl.proximity.Models.Player.Factions;
 
 import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
+import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Player.Spells.Spell;
 import edu.chl.proximity.Models.Utils.Image;
 
@@ -31,7 +33,7 @@ public abstract class Faction {
      * get the base used by this faction
      * @return (Base) The base used by this faction
      */
-    public abstract Base getNewBase(Map map);
+    public abstract Base getNewBase(Path path, ParticleManager particleManager);
 
     public abstract void configureSpells(Map map);
 

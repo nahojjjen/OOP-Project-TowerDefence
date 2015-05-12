@@ -14,6 +14,6 @@ public class StartButton extends BoardObject{
     private static Image image=new Image(Constants.FILE_PATH + "Buttons/ResumeButton.png");
 
     public StartButton(Map map, ProximityVector pos){
-        super(map, pos,image,0);
+        super(pos,image,0);
     }
 }

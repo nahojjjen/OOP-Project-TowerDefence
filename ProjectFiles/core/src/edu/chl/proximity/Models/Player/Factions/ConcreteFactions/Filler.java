@@ -3,6 +3,8 @@ package edu.chl.proximity.Models.Player.Factions.ConcreteFactions;
 import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.Map.Bases.FillerBase;
 import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
+import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Player.Factions.Faction;
 import edu.chl.proximity.Models.Player.Spells.ConcreteSpells.*;
 import edu.chl.proximity.Models.Utils.Image;
@@ -18,8 +20,8 @@ public class Filler extends Faction {
     }
 
     @Override
-    public Base getNewBase(Map map) {
-        return new FillerBase(map);
+    public Base getNewBase(Path path, ParticleManager particleManager) {
+        return new FillerBase(path, particleManager);
     }
 
     @Override

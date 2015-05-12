@@ -17,9 +17,16 @@ public abstract class Spell extends PersistentObject implements Holdable {
 
     private Image controlPanelImage;
 
+    private Map map;
+
     public Spell(Map map, Image icon, int counter) {
-        super(map, null, null, counter);
+        super(null, null, counter);
         controlPanelImage = icon;
+        this.map = map;
+    }
+
+    public Map getMap() {
+        return map;
     }
 
 
@@ -28,9 +35,11 @@ public abstract class Spell extends PersistentObject implements Holdable {
     public void placeObject(ProximityVector position) {
         resetPersistentObject();
         this.setPosition(position);
-        getMap().add(this);
+        add(this);
         this.start();
         playParticleEffect(); //important that this is after setPosition
+
+        //Todo:remove Map from here
         getMap().getHand().setItem(null);
     }
     public abstract void playParticleEffect();

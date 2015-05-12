@@ -33,7 +33,7 @@ public class ProfilePanel extends BoardObject {
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
 
     public ProfilePanel() {
-        super(null, new ProximityVector(0, Gdx.graphics.getHeight() - 75), null, 0, width, height);
+        super(new ProximityVector(0, Gdx.graphics.getHeight() - 75), null, 0, width, height);
         levelText = createFont(30, 30, "1");
     }
 

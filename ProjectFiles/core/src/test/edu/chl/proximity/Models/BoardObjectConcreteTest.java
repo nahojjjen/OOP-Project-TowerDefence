@@ -12,7 +12,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
  */
 public class BoardObjectConcreteTest extends BoardObject {
     public BoardObjectConcreteTest(Map map, ProximityVector position, edu.chl.proximity.Models.Utils.Image img, double angle){
-        super(map, position,img,angle);
+        //super(map, position,img,angle);
     }
 
 }

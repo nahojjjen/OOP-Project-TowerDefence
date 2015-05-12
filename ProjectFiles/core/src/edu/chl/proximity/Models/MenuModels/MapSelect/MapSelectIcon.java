@@ -23,7 +23,7 @@ public class MapSelectIcon extends BoardObject{
     private ProximityFont name;
 
     public MapSelectIcon(Map map, ProximityVector pos){
-        super(map, pos,notSelectable,0);
+        super(pos,notSelectable,0);
         this.map=map;
         this.pos=pos;
         name= new ProximityFont(new ProximityVector(pos.x, pos.y-20), map.getName());

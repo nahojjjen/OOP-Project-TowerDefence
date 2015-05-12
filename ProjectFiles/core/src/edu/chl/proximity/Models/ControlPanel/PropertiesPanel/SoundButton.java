@@ -21,7 +21,7 @@ public class SoundButton extends BoardObject{
      * @param position At what position the button is to be placed
      */
     public SoundButton(ProximityVector position){
-        super(null, position,onImage,0,width,height);
+        super(position,onImage,0,width,height);
     }
 
     /**

@@ -36,7 +36,7 @@ public class MapController implements ClickHandler {
 
     public MapController(Map map) {
         this.map = map;
-        model = new Background(map, null);
+        model = new Background(null);
         model.setPosition(new ProximityVector(0,0));
         model.setWidth(Gdx.graphics.getWidth() - 300);
         model.setHeight(Gdx.graphics.getHeight());

@@ -41,7 +41,8 @@ public class SlowTower extends ShootingTower {
 
     @Override
     public Projectile createProjectile() {
-        return new SlowDownBullet(getMap(), getCenter(), getAngle(), getTarget(), slowDownPercent, slowDownTime);
+        //Todo: Remove Map from here
+        return new SlowDownBullet(getCenter(), getAngle(), getTarget(), slowDownPercent, slowDownTime, getMap().getParticleManager());
     }
 
     public Tower getUpgrade(){

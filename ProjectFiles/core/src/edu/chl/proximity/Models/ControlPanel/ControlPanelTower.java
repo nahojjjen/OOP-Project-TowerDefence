@@ -15,8 +15,8 @@ public class ControlPanelTower extends BoardObject{
 
     Tower tower;
 
-    public ControlPanelTower(Map map, ProximityVector position, Tower tower) {
-        super(map, position, tower.getImage(), 0);
+    public ControlPanelTower(ProximityVector position, Tower tower) {
+        super(position, tower.getImage(), 0);
         this.tower = tower;
     }
 

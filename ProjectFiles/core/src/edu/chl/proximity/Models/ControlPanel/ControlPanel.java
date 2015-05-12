@@ -62,18 +62,22 @@ public class ControlPanel extends BoardObject{
     //The background of the ControlPanel
     private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/tweed.png");
 
+    private Map map;
+
     /**
      * Create a new instance of the controll panel
      */
     public ControlPanel(Map map) {
-        super(map, position, background, 0, width, height);
+        super(position, background, 0, width, height);
 
+        this.map = map;
         initiateText();
         initiateControlPanelTowers();
-
     }
 
-
+    public Map getMap() {
+        return map;
+    }
 
     /**
      * Initiates all the texts of this ControlPanel
@@ -91,10 +95,11 @@ public class ControlPanel extends BoardObject{
      * Initiates the towers that are rendered in this controlPanel
      */
     public void initiateControlPanelTowers() {
+
         TargetingFactory targetFactory = new TargetingFactory(getMap());
-        controlPanelTowerList.add(new ControlPanelTower(getMap(), new ProximityVector(0, 0), new BulletTower(getMap(), new ProximityVector(0, 0), targetFactory.getTargetClosest())));
-        controlPanelTowerList.add(new ControlPanelTower(getMap(), new ProximityVector(0, 0), new MissileTower(getMap(), new ProximityVector(0, 0), targetFactory.getTargetClosest())));
-        controlPanelTowerList.add(new ControlPanelTower(getMap(), new ProximityVector(0, 0), new SlowTower(getMap(), new ProximityVector(0, 0), targetFactory.getTargetClosest())));
+        controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new BulletTower(getMap(), new ProximityVector(0, 0), targetFactory.getTargetClosest())));
+        controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new MissileTower(getMap(), new ProximityVector(0, 0), targetFactory.getTargetClosest())));
+        controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new SlowTower(getMap(), new ProximityVector(0, 0), targetFactory.getTargetClosest())));
 
         for(int i = 0; i < controlPanelTowerList.size(); i++) {
             System.out.println("In controllpanel: Towers per row: " + i % towersPerRow);

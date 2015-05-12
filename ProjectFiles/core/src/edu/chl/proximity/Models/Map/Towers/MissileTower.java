@@ -36,7 +36,7 @@ public class MissileTower extends ShootingTower {
 
     public Projectile createProjectile() {
 
-        return new Missile(getMap(), getCenter(), getAngle(), getTarget());
+        return new Missile(getCenter(), getAngle(), getTarget(), getMap().getParticleManager());
 
     }
 

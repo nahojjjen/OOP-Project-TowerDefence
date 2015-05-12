@@ -3,15 +3,17 @@ package edu.chl.proximity.Models.Map.Projectiles;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
  * @author Linda Evaldsson and Johan Swanberg
  * @date 2015-04-13
+ *
+ * 12/05 modified by Linda Evaldsson. Removed map from constructor.
  *
  * A bullet is a simple bullet that has a static angle and kills one creep.
  */
@@ -27,9 +29,9 @@ public class Bullet extends Projectile {
      * @param angle    what angle the image & movement should start at
      * @param target   what creep the projectile should see it it hits etc.
      */
-    public Bullet(Map map, ProximityVector position, double angle, Creep target) {
+    public Bullet(ProximityVector position, double angle, Creep target, ParticleManager particleManager) {
         //Arguments: ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, ProximityVector position, double angle, Creep target
-        super(map, map.getParticleManager().getBulletEffect(), 1, 20, sound, img, position, angle);
+        super(particleManager.getBulletEffect(), 1, 20, sound, img, position, angle);
     }
 
     @Override

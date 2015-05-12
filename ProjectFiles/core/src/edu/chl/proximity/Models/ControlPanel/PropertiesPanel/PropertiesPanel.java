@@ -46,7 +46,7 @@ public class PropertiesPanel extends BoardObject{
      * Create a new properies panel
      */
     public PropertiesPanel(Proximity game, Viewport viewport){
-        super(null, position, background, 0);
+        super(position, background, 0);
         this.game = game;
         this.viewport=viewport;
         resumeButton = new ResumeButton(resumePos);
@@ -174,7 +174,7 @@ public class PropertiesPanel extends BoardObject{
     public void pressedMainMenuButton(){
         setVisability(false);
 
-        game.changeScreen(Proximity.State.MAIN_MENU,getMap(), GameData.getInstance().getPlayer(),viewport);
+        game.changeScreen(Proximity.State.MAIN_MENU,null, GameData.getInstance().getPlayer(),viewport);
     }
 
     /**

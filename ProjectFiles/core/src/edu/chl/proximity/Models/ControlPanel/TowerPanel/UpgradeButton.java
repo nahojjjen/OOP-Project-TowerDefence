@@ -13,8 +13,8 @@ import edu.chl.proximity.Utilities.Constants;
  */
 public class UpgradeButton extends BoardObject{
     private static Image image=new Image(Constants.FILE_PATH + "Towers/Missile/1.png");
-    public UpgradeButton(ProximityVector pos, Map map){
-        super(map, pos, image,0);
+    public UpgradeButton(ProximityVector pos){
+        super(pos, image,0);
     }
     public void render(SpriteBatch batch){
         super.render(batch);

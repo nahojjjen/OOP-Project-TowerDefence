@@ -26,7 +26,7 @@ public class SpeedButton extends BoardObject{
      * @param position What position the button shall have
      */
     public SpeedButton(ProximityVector position){
-        super(null, position,upImage,0,width,height);
+        super(position,upImage,0,width,height);
     }
 
     /**

@@ -3,6 +3,8 @@ package edu.chl.proximity.Models.Player.Factions.ConcreteFactions;
 import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.Map.Bases.ShardBase;
 import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
+import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Player.Factions.Faction;
 import edu.chl.proximity.Models.Player.Spells.ConcreteSpells.ChainLightning;
 import edu.chl.proximity.Models.Player.Spells.ConcreteSpells.FireField;
@@ -24,8 +26,8 @@ public class Planes extends Faction {
     }
 
     @Override
-    public Base getNewBase(Map map) {
-        return new ShardBase(map);
+    public Base getNewBase(Path path, ParticleManager particleManager) {
+        return new ShardBase(path, particleManager);
     }
 
     @Override

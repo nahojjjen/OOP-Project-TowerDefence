@@ -1,10 +1,10 @@
 package edu.chl.proximity.Models.Map.Creeps;
 
 import com.badlogic.gdx.audio.Sound;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Utils.Image;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
 import edu.chl.proximity.Utilities.PointCalculations;
@@ -21,6 +21,7 @@ import edu.chl.proximity.Utilities.ProximityRandom;
  * 16/04 modified by Simon Gislén. Added support for creep devolution.
  * 23/04 Modified by Simon. Adding resources and XP when killing creeps
  * 24/04 modified by Johan, creeps now use their center when calculating movement instead of upper left corner
+ * 12/05 modified by Linda Evaldsson. Removed Map. Added Path and ParticleManager instead.
  * 
  * An abstract class for creeps. Concrete creeps extends this class.
  */
@@ -29,7 +30,6 @@ public abstract class Creep extends BoardObject {
     //private ProximityVector nextWayPoint;
     private int nextWayPointID;
     private double distanceToNextWayPoint;
-    private Path path;
     private Sound devolveSound;
     private double speed;
     private double backUpSpeed;
@@ -38,6 +38,8 @@ public abstract class Creep extends BoardObject {
     private ProximityVector velocity;
     private int slowDownTime;
     private boolean isDead = false;
+    private ParticleManager particleManager;
+    private Path path;
 
     public void markAsDead(){
         isDead = true;
@@ -50,8 +52,10 @@ public abstract class Creep extends BoardObject {
      * @param image what image the creep should have (it will rotate a random amount automatically)
      * @param speed what speed the creep will have
      */
-    public Creep(Map map, Image image, double speed) {
-        super(map, null, image, 0);
+    public Creep(ProximityVector position, Image image, double speed, ParticleManager particleManager, Path path) {
+        super(position, image, 0);
+        this.particleManager = particleManager;
+        this.path = path;
         setupCreep(speed);
         initiateMovement();
     }
@@ -61,12 +65,10 @@ public abstract class Creep extends BoardObject {
      * @param speed what speed the creep will have
      * @param oldCreep The old creep from which the location on the screen is taken.
      */
-    public Creep(Map map, Image image, int speed, Creep oldCreep) {
-        super(map, oldCreep.getPosition(), image, 0);
-        setupCreep(speed);
+    public Creep(Image image, int speed, Creep oldCreep) {
+        this(oldCreep.getPosition(), image, speed, oldCreep.getParticleManager(), oldCreep.getPath());
         nextWayPointID = oldCreep.nextWayPointID;
         distanceToNextWayPoint = oldCreep.distanceToNextWayPoint;
-
         moveAngle = getAngleToNextPoint();
     }
 
@@ -74,8 +76,6 @@ public abstract class Creep extends BoardObject {
     public void setupCreep(double speed) {
         this.speed = speed;
         this.backUpSpeed = speed;
-
-        path = getMap().getPath();
         randomRotation = (ProximityRandom.getRandomDouble()*15) - 7.5;
     }
 
@@ -114,7 +114,7 @@ public abstract class Creep extends BoardObject {
      * show the "poof" particleEffect that creeps do when they die
      */
     public void displayDeathEffect(){
-        getMap().getParticleManager().getCreepDiesEffect().createEffect(this.getCenter());
+        particleManager.getCreepDiesEffect().createEffect(this.getCenter());
     }
 
     /**
@@ -122,7 +122,7 @@ public abstract class Creep extends BoardObject {
      */
     public void destroy() {
         displayDeathEffect();
-        getMap().remove(this);
+        this.remove();
     }
     /**
      * rotate the creeps image a random amount (a creep is assigned a random rotation amount on creation)
@@ -214,7 +214,9 @@ public abstract class Creep extends BoardObject {
         nextWayPointID++;
         if(nextWayPointID >= path.getWaypoints().size()) {
             destroy();
-            getMap().getBase().damage();
+            //Todo: Make creep do damage when removed
+            this.remove();
+            //getMap().getBase().damage();
 
         }
         else {
@@ -261,5 +263,13 @@ public abstract class Creep extends BoardObject {
             speed = backUpSpeed;
             slowDownTime = -1;
         }
+    }
+
+    public ParticleManager getParticleManager() {
+        return particleManager;
+    }
+
+    public Path getPath() {
+        return path;
     }
 }

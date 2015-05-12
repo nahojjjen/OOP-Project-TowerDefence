@@ -24,7 +24,7 @@ public class MapSelect extends BoardObject{
     private int selected=0;
 
     public MapSelect(Map map){
-        super(map, pos, null, 0);
+        super(pos, null, 0);
         maps.add(new MapSelectIcon(new StandardMap(), new ProximityVector(200, 200)));
         maps.add(new MapSelectIcon(new FillerMap(), new ProximityVector(300,200)));
 

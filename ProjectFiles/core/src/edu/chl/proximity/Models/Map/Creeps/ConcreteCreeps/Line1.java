@@ -2,6 +2,8 @@ package edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps;
 
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
+import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Player.Players.Player;
@@ -21,6 +23,7 @@ import java.io.File;
  * 23/04 Modified by Simon. Adding resources and XP when killing creeps
  * 24/4 Modified by Johan Swanberg - Makes creeps correctly follow path by making getCenter work correctly- fixing images
  * 27-4 Modified by Johan Swanberg - Crashfix for when a creep gets hit by several projectiles the same frame
+ * 12/05 modified by Linda Evaldsson. Removed Map from constructor, added ParticleManager and Path
  */
 public class Line1 extends Creep {
 
@@ -29,8 +32,8 @@ public class Line1 extends Creep {
     private static Image img = new Image(Constants.FILE_PATH + "Creeps/Line2/7.png"); //dummy image to get correct resolution
     private static int speed = 3;
 
-    public Line1(Map map, int creepLineIndex) {
-        super(map, img, speed);
+    public Line1(int creepLineIndex, ParticleManager particleManager, Path path) {
+        super(null, img, speed, particleManager, path);
         this.creepLineIndex = creepLineIndex;
         setImage(getCreepImage());
     }
@@ -39,8 +42,8 @@ public class Line1 extends Creep {
      * Constructor to create a Line1 creep with properties from another creep.
      * @param oldCreep a Creep object from which position is used.
      */
-    public Line1(Map map, Line1 oldCreep) {
-        super(map, img, speed, oldCreep);
+    public Line1(Line1 oldCreep) {
+        super(img, speed, oldCreep);
         this.creepLineIndex = oldCreep.getCreepLineIndex() - 1;
         setImage(getCreepImage());
     }
@@ -52,7 +55,7 @@ public class Line1 extends Creep {
     if (!isDead()){
         if (creepLineIndex != 1) {
             //Devolves into a new Line 1.
-            getMap().add(new Line1(getMap(), this));
+            add(new Line1(this));
 
         }
         Player p = GameData.getInstance().getPlayer();

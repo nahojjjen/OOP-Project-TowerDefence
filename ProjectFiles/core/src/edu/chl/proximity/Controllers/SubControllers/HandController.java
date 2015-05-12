@@ -21,7 +21,7 @@ public class HandController implements ClickHandler {
 
     public HandController(Map map) {
         this.map = map;
-        model = new Background(map, null);
+        model = new Background(null);
 
         //The model is the area where this HandController should be listening for changes. In this case its the whole window.
         model.setPosition(new ProximityVector(0,0));

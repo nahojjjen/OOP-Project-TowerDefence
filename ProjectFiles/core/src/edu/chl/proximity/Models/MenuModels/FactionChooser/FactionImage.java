@@ -13,7 +13,7 @@ public class FactionImage extends BoardObject{
     private static Image image= null;
 
     public FactionImage(ProximityVector position){
-        super(null, position,image,180);
+        super(position,image,180);
     }
 
 }

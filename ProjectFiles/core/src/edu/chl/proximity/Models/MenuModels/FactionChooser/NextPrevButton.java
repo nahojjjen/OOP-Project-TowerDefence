@@ -11,6 +11,6 @@ import edu.chl.proximity.Models.Utils.Image;
  */
 public class NextPrevButton extends BoardObject{
     public NextPrevButton(ProximityVector pos, Image image){
-        super(null, pos,image,0);
+        super(pos,image,0);
     }
 }

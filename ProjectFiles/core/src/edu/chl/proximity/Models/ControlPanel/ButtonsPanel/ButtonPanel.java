@@ -42,7 +42,7 @@ public class ButtonPanel extends BoardObject {
      * Create a new instance of ButtonPanel
      */
     public ButtonPanel(PropertiesPanel propertiesPanel) {
-        super(null, position, background, 0, width, height);
+        super(position, background, 0, width, height);
         GameData.getInstance().getPlayer().getSettings().setGameSpeed(speed);
         this.propertiesPanel = propertiesPanel;
         playButton=new PlayButton(playPos);

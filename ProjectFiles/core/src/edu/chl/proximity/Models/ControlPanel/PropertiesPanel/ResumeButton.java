@@ -14,7 +14,7 @@ public class ResumeButton  extends BoardObject{
     private static Image image=new Image(Constants.FILE_PATH + "Buttons/ResumeButton.png");
 
     public ResumeButton(ProximityVector position){
-        super(null, position,image,0);
+        super(position,image,0);
     }
 
 }

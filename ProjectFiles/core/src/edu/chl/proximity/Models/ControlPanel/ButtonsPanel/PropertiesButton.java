@@ -16,6 +16,6 @@ public class PropertiesButton extends BoardObject{
     private static int height=50;
     private static int width=50;
 
-    public PropertiesButton(ProximityVector position){ super(null, position,image,0,width,height);}
+    public PropertiesButton(ProximityVector position){ super(position,image,0,width,height);}
 
 }

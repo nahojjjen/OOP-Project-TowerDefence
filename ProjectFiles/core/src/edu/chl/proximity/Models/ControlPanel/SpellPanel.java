@@ -36,7 +36,7 @@ public class SpellPanel extends BoardObject {
 
 
     public SpellPanel(Faction faction) {
-        super(null, position, background, 0, width, height);
+        super(position, background, 0, width, height);
         initiateSpells(faction);
     }
 

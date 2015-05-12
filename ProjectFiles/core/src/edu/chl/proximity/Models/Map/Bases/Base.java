@@ -20,13 +20,12 @@ public abstract class Base extends BoardObject{
     private ProximityEffect damageEffect; //effect to show when base takes damage
     private ProximityEffect cracksEffect; //The effect to show passivly that intensifies when base is damaged
 
-    public Base(Map map, Image image, ProximityEffect damageEffect, ProximityEffect cracksEffect){
-        super(map, null, image, 180);
+    public Base(Path path, Image image, ProximityEffect damageEffect, ProximityEffect cracksEffect){
+        super(null, image, 180);
 
         this.cracksEffect = cracksEffect;
 
         this.damageEffect = damageEffect;
-        Path path = getMap().getPath();
         ProximityVector basePosition = new ProximityVector(path.getWaypoint(path.getWaypoints().size()-1));
         basePosition.add(-1*getWidth()/2, -1* getHeight()/2); //position the base centered at last waypoint
         setPosition(basePosition);

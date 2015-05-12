@@ -24,9 +24,11 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
     protected Resources cost;
     protected double range;
     private String name;
+    private Map map;
 
     public Tower(Map map, ProximityVector pos, Image image, int angle, String name) {
-        super(map, pos, image, angle);
+        super(pos, image, angle);
+        this.map = map;
         this.name=name;
     }
 
@@ -36,11 +38,16 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
 
     public abstract void update();
 
+    public Map getMap() {
+        return map;
+    }
+
     @Override
     public void placeObject(ProximityVector position) {
         this.setCenter(position);
-        getMap().add(this);
-        getMap().getHand().setItem(null);
+        add(this);
+        //Todo: remove this map reference
+        map.getHand().setItem(null);
         GameData.getInstance().getPlayer().getResources().removeResources(getCost());
     }
 

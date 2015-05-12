@@ -23,7 +23,7 @@ public class PauseButton extends BoardObject{
      * @param position What position the button shall have
      */
     public PauseButton(ProximityVector position){
-        super(null, position,upImage,0,width,height);
+        super(position,upImage,0,width,height);
     }
 
     /**

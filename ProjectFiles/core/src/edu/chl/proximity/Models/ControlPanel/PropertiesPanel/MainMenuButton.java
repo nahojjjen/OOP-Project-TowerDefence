@@ -13,6 +13,6 @@ import edu.chl.proximity.Utilities.Constants;
 public class MainMenuButton extends BoardObject{
     private static Image image = new Image(Constants.FILE_PATH + "Buttons/ResumeButton.png");
 
-    public MainMenuButton(ProximityVector position){ super(null, position,image,0);}
+    public MainMenuButton(ProximityVector position){ super(position,image,0);}
 
 }

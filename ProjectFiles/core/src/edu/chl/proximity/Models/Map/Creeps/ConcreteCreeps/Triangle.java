@@ -1,6 +1,8 @@
 package edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps;
 
 import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
+import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -18,14 +20,15 @@ import edu.chl.proximity.Utilities.Constants;
  *
  * 23/04 Modified by Simon. Adding resources XP when killing creeps
  * 27-4 Modified by Johan Swanberg - Crashfix for when a creep gets hit by several projectiles the same frame
+ * 12/05 modified by Linda Evaldsson. Removed map from constructor. Added ParticleManager and Path.
  */
 public class Triangle extends Creep {
 
     private static Image img = new Image(Constants.FILE_PATH + "Creeps/Line3/triangle.png");
     private static int speed = 1;
 
-    public Triangle(Map map) {
-        super(map, img, speed);
+    public Triangle(ParticleManager particleManager, Path path) {
+        super(null, img, speed, particleManager, path);
     }
 
 
@@ -34,9 +37,8 @@ public class Triangle extends Creep {
         if(isDead()){
 
             displayDeathEffect();
-            getMap().add(this);
-
-            getMap().add(new Circle(getMap(), this));
+            add(this);
+            add(new Circle(this));
 
             Player p = GameData.getInstance().getPlayer();
             Resources res = p.getResources();
