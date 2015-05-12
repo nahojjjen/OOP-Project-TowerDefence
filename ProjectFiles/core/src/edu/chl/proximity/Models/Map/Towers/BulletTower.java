@@ -1,7 +1,7 @@
 package edu.chl.proximity.Models.Map.Towers;
 
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Utilities.ProximityVector;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Map.Projectiles.Bullet;
@@ -25,6 +25,7 @@ public class BulletTower extends ShootingTower implements Cloneable {
     private static Resources resources = new Resources(150, 0, 0);
     private static double range = 150f;
     private static int reloadTime = 60;
+    private static Resources upgradeResources = new Resources(10, 10, 0);
 
     private static Image img = new Image(Constants.FILE_PATH + "Towers/Bullet/1.png");
 
@@ -32,21 +33,24 @@ public class BulletTower extends ShootingTower implements Cloneable {
      * @param pos
      *  double range, TargetingMethod targetingMethod, int reloadTime
      */
-    public BulletTower(Map map, ProximityVector pos, TargetingMethod targetingMethod) {
-        super(map, pos, img, range, targetingMethod, reloadTime, resources, "Bullet Tower");
+    public BulletTower(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager) {
+        super(pos, img, range, targetingMethod, reloadTime, resources, upgradeResources, "Bullet Tower");
+        setParticleManager(particleManager);
     }
 
 
     @Override
     public Projectile createProjectile() {
-        return new Bullet(getCenter(), PointCalculations.getVectorAngle(getPosition(),getTarget().getPosition()), getTarget(), getMap().getParticleManager());
+        return new Bullet(getCenter(), PointCalculations.getVectorAngle(getPosition(),getTarget().getPosition()), getTarget(), getParticleManager());
     }
 
     @Override
     public Object clone() throws CloneNotSupportedException{
         return super.clone();
     }
-    public Tower getUpgrade(){
-        return new MissileTower(this.getMap(), this.getPosition(), this.getTargetingMethod());
+    public Tower getNewUpgrade() {
+        return new MissileTower(this.getPosition(), this.getTargetingMethod(), getParticleManager());
     }
+
+
 }

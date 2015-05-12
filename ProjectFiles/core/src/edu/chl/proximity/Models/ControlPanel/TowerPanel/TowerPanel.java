@@ -96,6 +96,7 @@ public class TowerPanel extends BoardObject{
 
     public void pressedUpgrade(){
         if(map.getChoosenTower() != null && afford) {
+
             Tower upgrade=map.getChoosenTower().getUpgrade();
             upgrade.setPosition(map.getChoosenTower().getPosition());
             if(upgrade instanceof ShootingTower && map.getChoosenTower() instanceof ShootingTower){
@@ -108,12 +109,12 @@ public class TowerPanel extends BoardObject{
     }
     public void setInfo(){
         if(map.getChoosenTower() != null){
-
-            towerName.setText(map.getChoosenTower().getName());
-            towerImage=map.getChoosenTower().getImage();
+            Tower chosenTower = map.getChoosenTower();
+            towerName.setText(chosenTower.getName());
+            towerImage=chosenTower.getImage();
             upgrade.setImage(map.getChoosenTower().getUpgrade().getImage());
+            Resources r=chosenTower.getUpgradeCost();
 
-            Resources r=map.getChoosenTower().getUpgrade().getCost();
             Resources p= GameData.getInstance().getPlayer().getResources();
             if(r.getPolygons()>p.getPolygons() || r.getLines()>p.getLines() || r.getPoints()>p.getPoints()){
                 afford=false;

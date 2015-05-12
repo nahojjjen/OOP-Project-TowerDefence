@@ -19,7 +19,7 @@ public interface Holdable {
     /**
      * Puts the object down on the map
      */
-    public void placeObject(ProximityVector position);
+    public void preparePlacing(ProximityVector position);
 
     public void render(SpriteBatch batch);
 

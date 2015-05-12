@@ -206,18 +206,19 @@ public abstract class Creep extends BoardObject {
 
     }
 
+    public boolean reachedLastWayPoint() {
+        return nextWayPointID >= path.getWaypoints().size();
+    }
+
     /**
      * Sets the moveAngle of the creep to face the next waypoint
      */
     private void aimTowardsNextWaypoint(){
 
         nextWayPointID++;
-        if(nextWayPointID >= path.getWaypoints().size()) {
+        if(reachedLastWayPoint()) {
             destroy();
-            //Todo: Make creep do damage when removed
             this.remove();
-            //getMap().getBase().damage();
-
         }
         else {
             moveAngle = getAngleToNextPoint();

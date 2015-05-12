@@ -1,15 +1,12 @@
 package edu.chl.proximity.Controllers.SubControllers;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Utils.Background;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Player.Holdables.Holdable;
-import edu.chl.proximity.Utilities.PointCalculations;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.ArrayList;
@@ -59,7 +56,9 @@ public class MapController implements ClickHandler {
             if (item != null) {
                 //Places the currently picked up item on the map if the player can afford it.
                 if (map.getHand().canPlayerAffordTheHand()) {
-                    item.placeObject(clickedPoint);
+                    item.preparePlacing(clickedPoint);
+                    map.add((BoardObject)item);
+                    map.getHand().setItem(null);
                     if(item instanceof Tower){
                         map.setChoosenTower((Tower) item);
                     }

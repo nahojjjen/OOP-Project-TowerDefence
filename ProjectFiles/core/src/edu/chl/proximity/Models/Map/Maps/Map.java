@@ -187,7 +187,11 @@ public abstract class Map {
         for (Projectile projectile:projectiles){
             projectile.reAngle();
             projectile.move();
-            projectile.checkCollision();
+            for (Creep creep : creeps) {
+                if (projectile.collidesWith(creep)) {
+                    projectile.collide(creep);
+                }
+            }
             if (projectile.isOutsideView()){
                 projectile.remove();
             }
@@ -230,6 +234,8 @@ public abstract class Map {
             if(object.isRemoved()) {
                 if(object instanceof Creep) {
                     mapIterator.remove();
+                    if (((Creep)object).reachedLastWayPoint())
+                        getBase().damage();
                     creeps.remove(object);
                 }
                 if(object instanceof Tower) {
@@ -250,6 +256,7 @@ public abstract class Map {
     }
 
     public void addToMapFromList(List<? extends BoardObject> list) {
+
         Iterator mapIterator = list.iterator();
         while(mapIterator.hasNext()) {
             BoardObject object = (BoardObject)mapIterator.next();
@@ -260,8 +267,9 @@ public abstract class Map {
                     BoardObject o = (BoardObject)addIterator.next();
                     if(o instanceof Creep)
                         creeps.add((Creep)o);
-                    if(o instanceof Tower)
-                        towers.add((Tower)o);
+                    if(o instanceof Tower) {
+                        towers.add((Tower) o);
+                    }
                     if(o instanceof Projectile)
                         projectiles.add((Projectile)o);
                     if(o instanceof PersistentObject)

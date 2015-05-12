@@ -1,7 +1,6 @@
 package edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps;
 
 import edu.chl.proximity.Models.Map.Creeps.Creep;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Utils.GameData;

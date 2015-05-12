@@ -1,7 +1,7 @@
 package edu.chl.proximity.Models.Map.Towers;
 
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Utilities.ProximityVector;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
@@ -22,6 +22,7 @@ public class SlowTower extends ShootingTower {
 
     //Tower stats
     private static Resources resources = new Resources(100, 100, 0);
+    private static Resources upgradeResources = new Resources(10, 10, 0);
     private static double range = 140f;
     private static int reloadTime = 40;
 
@@ -35,18 +36,19 @@ public class SlowTower extends ShootingTower {
      * Create a new SlowTower
      * @param pos Position of tower
      */
-    public SlowTower(Map map, ProximityVector pos, TargetingMethod targetingMethod){
-        super(map, pos, img, range, targetingMethod, reloadTime, resources, "Freeze Tower");
+    public SlowTower(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager){
+        super(pos, img, range, targetingMethod, reloadTime, resources, upgradeResources, "Freeze Tower");
+        setParticleManager(particleManager);
     }
 
     @Override
     public Projectile createProjectile() {
-        //Todo: Remove Map from here
-        return new SlowDownBullet(getCenter(), getAngle(), getTarget(), slowDownPercent, slowDownTime, getMap().getParticleManager());
+
+        return new SlowDownBullet(getCenter(), getAngle(), getTarget(), slowDownPercent, slowDownTime, getParticleManager());
     }
 
-    public Tower getUpgrade(){
-        return new BulletTower(this.getMap(), this.getPosition(),this.getTargetingMethod());
+    public Tower getNewUpgrade(){
+        return new BulletTower(this.getPosition(),this.getTargetingMethod(), getParticleManager());
     }
 
 }

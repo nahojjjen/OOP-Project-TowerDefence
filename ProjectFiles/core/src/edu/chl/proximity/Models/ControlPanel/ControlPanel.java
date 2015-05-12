@@ -97,9 +97,9 @@ public class ControlPanel extends BoardObject{
     public void initiateControlPanelTowers() {
 
         TargetingFactory targetFactory = new TargetingFactory(getMap());
-        controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new BulletTower(getMap(), new ProximityVector(0, 0), targetFactory.getTargetClosest())));
-        controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new MissileTower(getMap(), new ProximityVector(0, 0), targetFactory.getTargetClosest())));
-        controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new SlowTower(getMap(), new ProximityVector(0, 0), targetFactory.getTargetClosest())));
+        controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new BulletTower(new ProximityVector(0, 0), targetFactory.getTargetClosest(), map.getParticleManager())));
+        controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new MissileTower(new ProximityVector(0, 0), targetFactory.getTargetClosest(), map.getParticleManager())));
+        controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new SlowTower(new ProximityVector(0, 0), targetFactory.getTargetClosest(), map.getParticleManager())));
 
         for(int i = 0; i < controlPanelTowerList.size(); i++) {
             System.out.println("In controllpanel: Towers per row: " + i % towersPerRow);

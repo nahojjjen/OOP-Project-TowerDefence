@@ -32,7 +32,7 @@ public abstract class Spell extends PersistentObject implements Holdable {
 
 
     @Override
-    public void placeObject(ProximityVector position) {
+    public void preparePlacing(ProximityVector position) {
         resetPersistentObject();
         this.setPosition(position);
         add(this);

@@ -1,8 +1,8 @@
 package edu.chl.proximity.Models.Map.Towers;
 
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Player.Holdables.Holdable;
 import edu.chl.proximity.Models.Utils.Image;
@@ -22,13 +22,14 @@ import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
  */
 public abstract class Tower extends BoardObject implements Holdable, Cloneable{
     protected Resources cost;
+    protected Resources upgradeCost;
     protected double range;
     private String name;
-    private Map map;
+    private Tower upgrade;
+    private ParticleManager particleManager;
 
-    public Tower(Map map, ProximityVector pos, Image image, int angle, String name) {
+    public Tower(ProximityVector pos, Image image, int angle, String name) {
         super(pos, image, angle);
-        this.map = map;
         this.name=name;
     }
 
@@ -38,16 +39,14 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
 
     public abstract void update();
 
-    public Map getMap() {
-        return map;
+
+    public Resources getUpgradeCost() {
+        return upgradeCost;
     }
 
     @Override
-    public void placeObject(ProximityVector position) {
+    public void preparePlacing(ProximityVector position) {
         this.setCenter(position);
-        add(this);
-        //Todo: remove this map reference
-        map.getHand().setItem(null);
         GameData.getInstance().getPlayer().getResources().removeResources(getCost());
     }
 
@@ -64,5 +63,23 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
      * The tower this tower will upgrade into
      * @return the upgraded version of this
      */
-    public abstract Tower getUpgrade();
+    public abstract Tower getNewUpgrade();
+
+    public Tower getUpgrade(){
+
+        if(upgrade == null) {
+            upgrade = getNewUpgrade();
+        }
+        return upgrade;
+
+
+    }
+
+    public ParticleManager getParticleManager() {
+        return particleManager;
+    }
+
+    public void setParticleManager(ParticleManager particleManager) {
+        this.particleManager = particleManager;
+    }
 }

@@ -2,11 +2,9 @@ package edu.chl.proximity.Models.Map.Towers;
 
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
-import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.PointCalculations;
 
@@ -35,13 +33,16 @@ public abstract class ShootingTower extends Tower {
      * @param targetingMethod how the tower should decide what target to shoot
      * @param reloadTime how long it takes the tower to shoot another bullet (in frames)
      */
-    public ShootingTower(Map map, ProximityVector pos, Image image, double range, TargetingMethod targetingMethod, int reloadTime, Resources cost, String name){
+    public ShootingTower(ProximityVector pos, Image image, double range, TargetingMethod targetingMethod, int reloadTime, Resources cost, Resources upgradeCost, String name){
         //arguments: Position, texture, image rotation-angle
-        super(map, pos, image, 0, name);
+        super(pos, image, 0, name);
         this.range = range;
         this.targetingMethod = targetingMethod;
         this.reloadTime = reloadTime;
         this.cost = cost;
+        this.upgradeCost = upgradeCost;
+
+
     }
 
     @Override
@@ -57,7 +58,7 @@ public abstract class ShootingTower extends Tower {
      */
     public void shoot(){
         if(currentReload < 1 && currentTarget != null){
-            getMap().add(createProjectile());
+            add(createProjectile());
             currentReload = reloadTime;
         }
     }

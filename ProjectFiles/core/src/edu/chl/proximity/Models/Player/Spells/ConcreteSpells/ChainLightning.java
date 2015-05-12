@@ -1,15 +1,11 @@
 package edu.chl.proximity.Models.Player.Spells.ConcreteSpells;
 
-import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Player.Spells.Spell;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
-import edu.chl.proximity.Utilities.PointCalculations;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,7 +33,7 @@ public class ChainLightning extends Spell {
         List<Creep> creepsWithinRange = getMap().getCreepsWithinDistance(getPosition(), range);
         for (Creep creep : creepsWithinRange) {
             creep.devolve();//devolve all creeps in range
-            this.placeObject(creep.getCenter());
+            this.preparePlacing(creep.getCenter());
         }
     }
 
