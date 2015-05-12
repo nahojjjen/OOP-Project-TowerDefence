@@ -95,7 +95,6 @@ public class TowerPanel extends BoardObject{
     }
 
     public void pressedUpgrade(){
-        System.out.println(map.getChoosenTower());
         if(map.getChoosenTower() != null && afford) {
             Tower upgrade=map.getChoosenTower().getUpgrade();
             upgrade.setPosition(map.getChoosenTower().getPosition());

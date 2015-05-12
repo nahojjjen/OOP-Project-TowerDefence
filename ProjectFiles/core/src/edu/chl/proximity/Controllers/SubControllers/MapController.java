@@ -54,7 +54,6 @@ public class MapController implements ClickHandler {
 
             BoardObject object = map.getObjectOnPosition(clickedPoint);
             if(object instanceof Tower) {
-                //map.getHand().setItem((Tower) object);
                 map.setChoosenTower((Tower) object);
             }
 
