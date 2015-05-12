@@ -7,6 +7,8 @@ import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Utilities.PointCalculations;
 import java.lang.CloneNotSupportedException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Johan Swanberg and Linda Evaldsson
@@ -20,23 +22,16 @@ import java.lang.CloneNotSupportedException;
  * 23/04 modified Simon Gislén. Added empty constructor.
 >*/
 public abstract class BoardObject implements Cloneable {
-    /**
-     * Position on the gameboard
-     */
-    private ProximityVector position;
-    /**
-     * Image that is to be rendered
-     */
-    private edu.chl.proximity.Models.Utils.Image image;
-    /**
-     * Rotation property
-     */
-    private double angle;
-    //The map that the board object is placed on
-    private Map map;
 
+    private ProximityVector position;
+    private edu.chl.proximity.Models.Utils.Image image;
+    private double angle;
+    private Map map;
     private int width = 0;
     private int height = 0;
+
+    private boolean isRemoved = false;
+    private List<BoardObject> addList = new ArrayList();
 
 
     /**
@@ -67,6 +62,22 @@ public abstract class BoardObject implements Cloneable {
 
     public Map getMap() { return map; }
     public void setMap(Map map) {this.map = map;}
+
+    protected void remove() {
+        isRemoved = true;
+    }
+
+    protected void add(BoardObject o) {
+        addList.add(o);
+    }
+
+    protected void add(List<BoardObject> oList) {
+        addList.addAll(oList);
+    }
+
+    public List<BoardObject> getAddList() {
+        return addList;
+    }
 
     //Getters and Setters
     public ProximityVector getPosition() {
@@ -102,9 +113,6 @@ public abstract class BoardObject implements Cloneable {
         }
     }
 
-    public void renderShapes(ShapeRenderer shapeRenderer) {
-
-    }
 
     public int getWidth() {
         return width;
