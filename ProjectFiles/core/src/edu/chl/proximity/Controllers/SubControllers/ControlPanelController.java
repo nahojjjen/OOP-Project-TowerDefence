@@ -82,6 +82,9 @@ public class ControlPanelController implements ClickHandler {
     public void update() {
         controlPanel.setHealth(map.getBase().getLife());
         controlPanel.setResources(GameData.getInstance().getPlayer().getResources());
+
+        spellPanel.updateCooldowns();
+
         profilePanel.updateExperience(map);
     }
 

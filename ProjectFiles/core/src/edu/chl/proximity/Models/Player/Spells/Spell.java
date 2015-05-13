@@ -39,6 +39,10 @@ public abstract class Spell extends PersistentObject implements Holdable {
         playParticleEffect(); //important that this is after setPosition
 
     }
+
+    public double getCooldownPercent() {
+        return 50.0;
+    }
     public abstract void playParticleEffect();
     public abstract double getRange();
 
