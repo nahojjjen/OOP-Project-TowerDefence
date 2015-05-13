@@ -42,16 +42,12 @@ import java.util.*;
 public abstract class Map {
 
     private String name;
-
-    private int waveIndex;
     private Hand hand = new Hand();
-    //private Tower choosenTower;
 
     private PropertiesPanel propertiesPanel;
 
     private ArrayList<Creep> creeps = new ArrayList<Creep>();
     private ArrayList<PersistentObject> persistentObjects = new ArrayList<PersistentObject>();
-    private ArrayList<Wave> waves = new ArrayList<Wave>();
     private ArrayList<Tower> towers = new ArrayList<Tower>();
     private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 
@@ -258,23 +254,20 @@ public abstract class Map {
             BoardObject object = (BoardObject)mapIterator.next();
 
             if(object.isRemoved()) {
+
                 if(object instanceof Creep) {
                     mapIterator.remove();
                     if (((Creep)object).reachedLastWayPoint())
                         getBase().damage();
-                    creeps.remove(object);
                 }
                 if(object instanceof Tower) {
                     mapIterator.remove();
-                    towers.remove(object);
                 }
                 if(object instanceof Projectile) {
                     mapIterator.remove();
-                    projectiles.remove(object);
                 }
                 if(object instanceof PersistentObject) {
                     mapIterator.remove();
-                    persistentObjects.remove(object);
                 }
 
             }
@@ -283,26 +276,34 @@ public abstract class Map {
 
     public void addToMapFromList(List<? extends BoardObject> list) {
 
+        Set<BoardObject> addSet = new HashSet<BoardObject>();
         Iterator mapIterator = list.iterator();
+
         while(mapIterator.hasNext()) {
+
             BoardObject object = (BoardObject)mapIterator.next();
             List<BoardObject> addList = object.getAddList();
-            if(list != null) {
+            if(object.getAddList().size() > 0) {
                 Iterator addIterator = addList.iterator();
                 while(addIterator.hasNext()) {
                     BoardObject o = (BoardObject)addIterator.next();
-                    if(o instanceof Creep)
-                        creeps.add((Creep)o);
-                    if(o instanceof Tower) {
-                        towers.add((Tower) o);
-                    }
-                    if(o instanceof Projectile)
-                        projectiles.add((Projectile)o);
-                    if(o instanceof PersistentObject)
-                        persistentObjects.add((PersistentObject)o);
+                    addSet.add(o);
                 }
             }
+
             object.clearAddList();
+        }
+        for(BoardObject o : addSet) {
+            if(o instanceof Creep)
+                creeps.add((Creep)o);
+            if(o instanceof Tower) {
+                towers.add((Tower) o);
+            }
+            if(o instanceof Projectile)
+                projectiles.add((Projectile)o);
+            if(o instanceof PersistentObject)
+                persistentObjects.add((PersistentObject)o);
+
         }
     }
 
