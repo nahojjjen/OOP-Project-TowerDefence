@@ -69,6 +69,10 @@ public abstract class BoardObject implements Cloneable {
         isRemoved = true;
     }
 
+    public void unRemove(){
+        isRemoved = false;
+    }
+
     protected void add(BoardObject o) {
         addList.add(o);
     }
