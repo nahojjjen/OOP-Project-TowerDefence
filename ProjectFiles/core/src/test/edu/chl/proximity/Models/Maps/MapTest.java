@@ -15,14 +15,11 @@ import static org.mockito.Mockito.mock;
  * Test class for map
  *
  */
-@RunWith(GdxTestRunner.class)
 public class MapTest extends TestCase {
 
     @Test
     public void testAddCreep() throws Exception {
 
-        Texture t = new Texture("core/assets/Backgrounds/test.jpg");
-        System.out.print(t);
     }
 
     public void testAddProjectile() throws Exception {

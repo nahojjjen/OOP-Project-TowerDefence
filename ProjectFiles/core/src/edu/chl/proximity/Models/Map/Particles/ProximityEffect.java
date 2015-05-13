@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.ProximityVector;
 import com.badlogic.gdx.utils.Array;
 import edu.chl.proximity.Models.Utils.GameData;
@@ -24,6 +25,7 @@ import java.util.List;
  *
  * 04/24 Modified by Johan, adds working rotation & angle modification and createeffect returns the created effect
  * 05/10 Modified by Johan, fixes memory leak and limits particle creation to pool size
+ * 13/05 Modified by Simon Gislen. Crash fixes that occur under tests.
  *
  */
 public class ProximityEffect {
@@ -44,7 +46,9 @@ public class ProximityEffect {
 
         //Configures 1 example effect
         effectTemplate = new ParticleEffect();
-        effectTemplate.load(effectFile, particleEffectsImagesFolder);
+        if (!Image.isJUnitTest()) {
+            effectTemplate.load(effectFile, particleEffectsImagesFolder);
+        }
         flipAllEmitterY(effectTemplate.getEmitters());
 
         //loads the example effect into the pool, so the pool knows what kind of effect to populate itself with (see pool-design pattern)

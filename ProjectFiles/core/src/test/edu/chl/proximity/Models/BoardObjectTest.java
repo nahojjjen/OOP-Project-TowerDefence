@@ -10,20 +10,22 @@ import static org.junit.Assert.*;
 /**
  * @author Johan on 2015-05-02.
  * A testing class for boardObject
+ *
+ * 13/05 Modified by Simon Gislen to update BoardObject constructor
  */
 public class BoardObjectTest {
 
 
     @Test
     public void testGetPosition() throws Exception {
-        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new StandardMap(), new ProximityVector(100,100), null, 90);
+        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new ProximityVector(100,100), null, 90, 50, 50);
         assertTrue(test.getPosition().equals(new ProximityVector(100,100)));
     }
 
     @Test
     public void testSetPosition() throws Exception {
 
-        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new StandardMap(), new ProximityVector(100,100), null, 90);
+        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new ProximityVector(100,100), null, 90, 50, 50);
         test.setPosition(new ProximityVector(123,123));
         assertTrue(test.getPosition().equals(new ProximityVector(123,123))); //normal case
 
@@ -36,7 +38,7 @@ public class BoardObjectTest {
 
     @Test
     public void testGetImage() throws Exception {
-        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new StandardMap(), new ProximityVector(100,100), null, 90);
+        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new ProximityVector(100,100), null, 90, 50, 50);
         assertTrue(test.getImage() == null);
     }
 
@@ -44,19 +46,19 @@ public class BoardObjectTest {
 
     @Test
     public void testGetAngle() throws Exception {
-        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new StandardMap(), new ProximityVector(100,100), null, 90);
+        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new ProximityVector(100,100), null, 90, 50, 50);
         assertTrue(test.getAngle() == 90);
-        BoardObjectConcreteTest test2 = new BoardObjectConcreteTest(new StandardMap(), new ProximityVector(100,100), null, -90);
+        BoardObjectConcreteTest test2 = new BoardObjectConcreteTest(new ProximityVector(100,100), null, -90, 50, 50);
         assertTrue(test2.getAngle() == -90);
-        BoardObjectConcreteTest test3 = new BoardObjectConcreteTest(new StandardMap(), new ProximityVector(100,100), null, 0);
+        BoardObjectConcreteTest test3 = new BoardObjectConcreteTest(new ProximityVector(100,100), null, 0, 50, 50);
         assertTrue(test3.getAngle() == 0);
-        BoardObjectConcreteTest test4 = new BoardObjectConcreteTest(new StandardMap(), new ProximityVector(100,100), null, 360);
+        BoardObjectConcreteTest test4 = new BoardObjectConcreteTest(new ProximityVector(100,100), null, 360, 50, 50);
         assertTrue(test4.getAngle() == 360);
     }
 
     @Test
     public void testSetAngle() throws Exception {
-        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new StandardMap(), new ProximityVector(100,100), null, 90);
+        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new ProximityVector(100,100), null, 90, 50, 50);
         test.setAngle(0);
         assertTrue(test.getAngle() == 0);
         test.setAngle(999);
@@ -65,7 +67,7 @@ public class BoardObjectTest {
 
     @Test
     public void testRotate() throws Exception {
-        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new StandardMap(), new ProximityVector(100,100), null, 90);
+        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new ProximityVector(100,100), null, 90, 50, 50);
         test.rotate(90);
         assertTrue(test.getAngle() == 180);
         test.rotate(-90);
@@ -78,7 +80,7 @@ public class BoardObjectTest {
 
     @Test
     public void testGetAndSetWidth() throws Exception {
-        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new StandardMap(), new ProximityVector(100,100), null, 90);
+        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new ProximityVector(100,100), null, 90, 0, 0);
         assertTrue(test.getWidth() == 0);
         test.setWidth(100);
         assertTrue(test.getWidth() == 100);
@@ -90,7 +92,7 @@ public class BoardObjectTest {
 
     @Test
     public void testGetAndSetHeight() throws Exception {
-        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new StandardMap(), new ProximityVector(100,100), null, 90);
+        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new ProximityVector(100,100), null, 90, 0, 0);
         assertTrue(test.getHeight() == 0);
         test.setHeight(100);
         assertTrue(test.getHeight() == 100);
@@ -100,7 +102,7 @@ public class BoardObjectTest {
 
     @Test
     public void testIsOutsideView() throws Exception {
-        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new StandardMap(), new ProximityVector(100,100), null, 90);
+        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new ProximityVector(100,100), null, 90, 0, 0);
         assertFalse(test.isOutsideView()); //normal case
         test.setPosition(new ProximityVector(0, 0));
         assertFalse(test.isOutsideView());  //edge of display upper left corner
@@ -113,7 +115,7 @@ public class BoardObjectTest {
 
     @Test
     public void testFaceTarget() throws Exception {
-        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new StandardMap(), new ProximityVector(100,100), null, 90);
+        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new ProximityVector(100,100), null, 90, 0, 0);
         test.faceTarget(test.getPosition());
         assertTrue(test.getAngle() == 0);        //trying to face itself test, undefined mathematically
         test.faceTarget(new ProximityVector(100, 200));
@@ -125,7 +127,7 @@ public class BoardObjectTest {
 
     @Test
     public void testGetandSetCenter() throws Exception {
-        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new StandardMap(), new ProximityVector(100,100), null, 90);
+        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new ProximityVector(100,100), null, 90, 0, 0);
         assertTrue(test.getCenter().equals(new ProximityVector(100,100)));
         test.setCenter(new ProximityVector(0, 0));
         assertTrue(test.getCenter().equals(new ProximityVector(0,0)));
@@ -135,7 +137,7 @@ public class BoardObjectTest {
 
     @Test
     public void testContainsPoint() throws Exception {
-        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new StandardMap(), new ProximityVector(100,100), null, 90);
+        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new ProximityVector(100,100), null, 90, 0, 0);
         test.setWidth(100);
         test.setHeight(100);
         assertFalse(test.containsPoint(new ProximityVector(-100, -100))); //outside screen test
@@ -147,7 +149,7 @@ public class BoardObjectTest {
     @Test
     public void testClone() throws Exception {
 
-        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new StandardMap(), new ProximityVector(100,100), null, 90);
+        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new ProximityVector(100,100), null, 90, 0, 0);
         Object testCloneObject = test.clone();
         BoardObjectConcreteTest testClone = (BoardObjectConcreteTest) testCloneObject;
         assertTrue(test.getAngle() == testClone.getAngle());

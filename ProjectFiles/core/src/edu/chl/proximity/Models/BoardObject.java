@@ -19,6 +19,7 @@ import java.util.List;
  * 08/04 modified by Linda Evaldsson. Getters for width and height created.
  * 23/04 modified Simon Gislén. Added empty constructor.
  * 12/05 modified by Linda Evaldsson. Removed Map, added remove/add-methods instead.
+ * 13/05 Modified by Simon Gislen. Crash fixes that occur under tests.
 >*/
 public abstract class BoardObject implements Cloneable {
 
@@ -42,9 +43,12 @@ public abstract class BoardObject implements Cloneable {
         this.position = position;
         this.image = img;
         this.angle = angle;
-        if(img != null) {
+        if(img != null && img.getTexture() != null) {
             width = img.getTexture().getWidth();
             height = img.getTexture().getHeight();
+        }
+        else {
+            width = 50; height = 50;
         }
     }
     public BoardObject() {
