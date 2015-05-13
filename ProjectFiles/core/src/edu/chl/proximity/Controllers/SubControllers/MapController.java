@@ -51,10 +51,12 @@ public class MapController implements ClickHandler {
 
             //Checks what item is currently picked up
             Holdable item = map.getHand().getItem();
-
+            //Checks if anything was clicked on the board (Ex towers)
             BoardObject object = map.getObjectOnPosition(clickedPoint);
             if(object instanceof Tower) {
                 map.setChoosenTower((Tower) object);
+            }else if(object==null && map.getChoosenTower() != null){
+                map.getHand().setItem(null);
             }
 
             if (item != null) {
