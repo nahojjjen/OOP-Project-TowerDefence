@@ -33,6 +33,7 @@ public abstract class PersistentObject extends BoardObject {
 
     public void resetPersistentObject(){
         counter = backupCounter;
+        this.unRemove();
         started = false;
     }
     /**
