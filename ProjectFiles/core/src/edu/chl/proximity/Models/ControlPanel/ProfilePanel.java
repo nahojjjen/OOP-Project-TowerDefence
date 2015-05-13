@@ -5,8 +5,11 @@ package edu.chl.proximity.Models.ControlPanel;
  */
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -19,6 +22,8 @@ import edu.chl.proximity.Models.Utils.ProximityFont;
  * @date 2015-04-28
  *
  * The class displaying the profile image, level and experience
+ *
+ * 12/05 Modified by Simon Gislen. Added a more visual profile view
  *
  */
 
@@ -34,13 +39,14 @@ public class ProfilePanel extends BoardObject {
 
     public ProfilePanel() {
         super(new ProximityVector(0, Gdx.graphics.getHeight() - 75), null, 0, width, height);
-        levelText = createFont(30, 30, "1");
+        levelText = createFont(10, 52, "1");
     }
 
-    public void updateExperience() {
+    public void updateExperience(Map map) {
         Player player = GameData.getInstance().getPlayer();
         int level = (int)player.getLevel();
-        levelText.setText("" + player.getExperience() + ", " + level);
+        levelText.setText("" + level);
+
 
     }
 
@@ -49,29 +55,45 @@ public class ProfilePanel extends BoardObject {
         //return new ProximityFont(new ProximityVector(width + x, y), s);
     }
 
-
     public void render(SpriteBatch batch) {
         super.render(batch);
 
-        /*Gdx.gl.glEnable(GL20.GL_BLEND);
-        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setColor(new Color(0, 0, 1, 0.5f));
-        shapeRenderer.circle(40, 40, 50);
-        shapeRenderer.end();
+        levelText.draw(batch);
+        batch.end();
+        Player player = GameData.getInstance().getPlayer();
+        double temp = player.getLevel();
+        double anglePercentage = temp-(int)(temp);
+        double angle = 360 * anglePercentage;
+        Gdx.gl.glEnable(GL20.GL_BLEND);
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(new Color(0, 1, 1, 0.5f));
-        shapeRenderer.circle(40, 40, 50);
+        shapeRenderer.setAutoShapeType(true);
+        shapeRenderer.set(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(new Color(0.05f, 0.05f, 0.05f, 0.95f));
+        shapeRenderer.rect(0, 0, 100, 100);
+
+        shapeRenderer.set(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(new Color(0.2f, 0.3f, 0.50f, 0.9f));
+        shapeRenderer.arc(50, 50, 45, 0, (float) angle);
+
+        shapeRenderer.set(ShapeRenderer.ShapeType.Line);
+        shapeRenderer.setColor(new Color(0.95f, 0.95f, 0.95f, 0.95f));
+        shapeRenderer.arc(50, 50, 46, 0, (float) angle);
         shapeRenderer.end();
+        batch.begin();
+        Image image = player.getFaction().getShowImage();
+        image.render(batch, new ProximityVector(10, Gdx.graphics.getHeight() - 100), 180);
+        batch.end();
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(new Color(0, 0, 1, 0.5f));
-        shapeRenderer.circle(45, 45, 40);
+        shapeRenderer.setColor(new Color(0.05f, 0.05f, 0.05f, 0.95f));
+        shapeRenderer.rect(0, 0, 30, 30);
+
         shapeRenderer.end();
-        Gdx.gl.glDisable(GL20.GL_BLEND);
-        */
+
+        batch.begin();
 
         levelText.draw(batch);
+
     }
 }

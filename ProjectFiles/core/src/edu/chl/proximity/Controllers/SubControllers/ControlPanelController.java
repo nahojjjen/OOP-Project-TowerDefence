@@ -28,6 +28,7 @@ import java.util.List;
  * 03/05 modified by Simon Gislen. Towers are not free anymore.
  * 07/05 modofied by Linda Evaldsson. Added key bindings for spells. Also added handling for ControlPanels.
  * 08/05 modified by Hanna Römer. Added tower panel.
+ * 13/05 Modified by Simon Gislen. Passes map to profile panel
  */
 public class ControlPanelController implements ClickHandler {
 
@@ -81,7 +82,7 @@ public class ControlPanelController implements ClickHandler {
     public void update() {
         controlPanel.setHealth(map.getBase().getLife());
         controlPanel.setResources(GameData.getInstance().getPlayer().getResources());
-        profilePanel.updateExperience();
+        profilePanel.updateExperience(map);
     }
 
 

@@ -62,7 +62,7 @@ public class Player {
      *
      * @param saveFileNumber What savefile should be written to on shutdown
      */
-    private void createSaveHook(int saveFileNumber){
+    private void createSaveHook(final int saveFileNumber){
 
         Thread shutdownHook = new Thread("Proximity-Shutdown-Save-Logic" ) {
             public void run() {
