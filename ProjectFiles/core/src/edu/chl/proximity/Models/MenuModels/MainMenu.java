@@ -3,6 +3,8 @@ package edu.chl.proximity.Models.MenuModels;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Models.BoardObject;
@@ -19,11 +21,11 @@ import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
- * @author Hanna Römer
+ * @author Hanna Rï¿½mer
  * @date 2105-04-25
  *
- * 01/05 modified by Hanna Römer. Added FactionChooser.
- * 03/05 modified by Hanna Römer. Added MapSelect.
+ * 01/05 modified by Hanna Rï¿½mer. Added FactionChooser.
+ * 03/05 modified by Hanna Rï¿½mer. Added MapSelect.
  */
 public class MainMenu {
     private Faction faction;
@@ -33,17 +35,18 @@ public class MainMenu {
     private FactionChooser factionChooser;
     private MapSelect mapSelect;
     private Proximity game;
+    private Image background;
 
 
     public MainMenu(Proximity game){
         this.game = game;
         player = GameData.getInstance().getPlayer();
 
-
+        background = new Image(Constants.FILE_PATH + "Backgrounds/MainMenuBackground.png");
         factionChooser=new FactionChooser();
         mapSelect=new MapSelect(null);
         map=mapSelect.getSelected();
-        startButton = new StartButton(map, new ProximityVector((Gdx.graphics.getWidth()/2)-64,600));
+        startButton = new StartButton(map, new ProximityVector((Constants.GAME_WIDTH/2-150),440));
 
     }
 
@@ -77,6 +80,8 @@ public class MainMenu {
     public void pressedMap(ProximityVector pos){mapSelect.pressed(pos);}
 
     public void render(SpriteBatch batch){
+
+        background.render(batch, new ProximityVector(0,0), 0);
         startButton.render(batch);
         factionChooser.render(batch);
         mapSelect.render(batch);
