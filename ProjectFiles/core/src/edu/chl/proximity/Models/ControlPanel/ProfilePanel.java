@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Matrix4;
+import com.badlogic.gdx.math.Vector3;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
@@ -39,7 +41,7 @@ public class ProfilePanel extends BoardObject {
 
     public ProfilePanel() {
         super(new ProximityVector(0, Gdx.graphics.getHeight() - 75), null, 0, width, height);
-        levelText = createFont(10, 52, "1");
+        levelText = createFont(10, 54, "1");
     }
 
     public void updateExperience(Map map) {
@@ -62,32 +64,30 @@ public class ProfilePanel extends BoardObject {
         batch.end();
         Player player = GameData.getInstance().getPlayer();
         double temp = player.getLevel();
-        double anglePercentage = temp-(int)(temp);
-        double angle = 360 * anglePercentage;
+        double anglePercentage = (temp-(int)(temp)) * 100;
+        double angle = (anglePercentage)/10 * 9;
         Gdx.gl.glEnable(GL20.GL_BLEND);
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setAutoShapeType(true);
-        shapeRenderer.set(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(new Color(0.05f, 0.05f, 0.05f, 0.95f));
-        shapeRenderer.rect(0, 0, 100, 100);
 
         shapeRenderer.set(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(new Color(0.2f, 0.3f, 0.50f, 0.9f));
-        shapeRenderer.arc(50, 50, 45, 0, (float) angle);
+        shapeRenderer.setColor(new Color(0.95f, 0.95f, 0.95f, 1f));
+        shapeRenderer.arc(0, 0, 145, 0, (float) angle);
+        shapeRenderer.set(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(new Color(0.2f, 0.3f, 0.50f, 1f));
+        shapeRenderer.arc(0, 0, 140, 0, 90);
 
-        shapeRenderer.set(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setColor(new Color(0.95f, 0.95f, 0.95f, 0.95f));
-        shapeRenderer.arc(50, 50, 46, 0, (float) angle);
+
         shapeRenderer.end();
         batch.begin();
         Image image = player.getFaction().getShowImage();
-        image.render(batch, new ProximityVector(10, Gdx.graphics.getHeight() - 100), 180);
+        image.render(batch, new ProximityVector(10, Gdx.graphics.getHeight() - 105), 180);
         batch.end();
 
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(new Color(0.05f, 0.05f, 0.05f, 0.95f));
-        shapeRenderer.rect(0, 0, 30, 30);
+//        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+//        shapeRenderer.setColor(new Color(0.05f, 0.05f, 0.05f, 0.95f));
+//        shapeRenderer.rect(0, 0, 30, 30);
 
         shapeRenderer.end();
 
