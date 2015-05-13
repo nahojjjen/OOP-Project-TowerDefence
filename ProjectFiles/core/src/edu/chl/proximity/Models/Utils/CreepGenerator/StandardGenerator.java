@@ -2,6 +2,7 @@ package edu.chl.proximity.Models.Utils.CreepGenerator;
 
 import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Circle;
 import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line1;
+import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line2;
 import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Triangle;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Utils.GameData;
@@ -44,11 +45,11 @@ public class StandardGenerator {
         //Defaults
 
         double spawnInterval = 1;
-        double cooldown = 10;
+        double cooldown = 8;
         ArrayList<Creep> creeps = new ArrayList<Creep>();
 
-        //First 5 waves are standard, after this spawning follows an algorithm
-        if (waveIndex <= 5) {
+        //First 10 waves are standard, after this spawning follows an algorithm
+        if (waveIndex <= 10) {
 
             for (int i = 0; i < 5; i++) {
                 creeps.add(new Line1(1, map.getParticleManager(), map.getPath()));
@@ -75,11 +76,36 @@ public class StandardGenerator {
                 break;
                 case 5: {
                     for (int i = 0; i < 10; i++) {
-                        creeps.add(new Triangle(map.getParticleManager(), map.getPath()));
+                        creeps.add(new Line2(3, map.getParticleManager(), map.getPath()));
                     }
                     spawnInterval = 1;
                 }
                 break;
+                case 6: {
+                    for (int i = 0; i < 12; i++) {
+                        creeps.add(new Line2(5, map.getParticleManager(), map.getPath()));
+                        creeps.add(new Line1(5, map.getParticleManager(), map.getPath()));
+                    }
+                    spawnInterval = 2;
+                }
+                break;
+                case 7: {
+                    for (int i = 0; i < 15; i++) {
+                        creeps.add(new Line2(7, map.getParticleManager(), map.getPath()));
+                    }
+                    spawnInterval = 1.5;
+                }
+                break;
+                case 8: {
+                    for (int i = 0; i < 15; i++) {
+                        creeps.add(new Line2(7, map.getParticleManager(), map.getPath()));
+                        creeps.add(new Triangle(map.getParticleManager(), map.getPath()));
+                        creeps.add(new Circle(map.getParticleManager(), map.getPath()));
+                    }
+                    spawnInterval = 1.5;
+                }
+                break;
+
 
             }
 
@@ -90,7 +116,10 @@ public class StandardGenerator {
                 creeps.add(new Circle(map.getParticleManager(), map.getPath()));
             }
             for (int i = 0; i < (int)(waveIndex/5); i++) {
-                creeps.add(new Line1(4, map.getParticleManager(), map.getPath()));
+                creeps.add(new Line1(6, map.getParticleManager(), map.getPath()));
+            }
+            for (int i = 0; i < (int)(waveIndex/5); i++) {
+                creeps.add(new Line2(7, map.getParticleManager(), map.getPath()));
             }
 
             spawnInterval = Math.max(3 / Math.max(1, waveIndex - 5), 0.2);

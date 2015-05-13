@@ -16,7 +16,7 @@ import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
- * @author Hanna Römer
+ * @author Hanna Rï¿½mer
  * @date 2015-05-08
  */
 public class TowerPanel extends BoardObject{

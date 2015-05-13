@@ -14,7 +14,7 @@ import edu.chl.proximity.Utilities.PointCalculations;
  *
  * Abstract tower class that handles shooting of projectiles
  *
- * 08/05 modified by Hanna Römer. Added setter and getter for targetingMethod.
+ * 08/05 modified by Hanna Rï¿½mer. Added setter and getter for targetingMethod.
  */
 public abstract class ShootingTower extends Tower {
 
@@ -22,7 +22,6 @@ public abstract class ShootingTower extends Tower {
     private int currentReload = 0;
 
     private TargetingMethod targetingMethod;
-
     private Creep currentTarget;
 
     /**

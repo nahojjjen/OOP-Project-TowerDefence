@@ -5,6 +5,7 @@ package edu.chl.proximity.Utilities;
  * @date 2015-05-10.
  *
  * A class which describes a position
+ * 13/05 Modified by Simon. More flexibility when adding and subracting.
  */
 public class ProximityVector {
     public float x;
@@ -70,6 +71,29 @@ public class ProximityVector {
     public void sub(ProximityVector subVector){
         this.x -= subVector.x;
         this.y -= subVector.y;
+    }
+
+    /**
+     * add coordinaates to this vector and return a new vector
+     * @param x what x coordinate to add
+     * @param y what y coordinate to add
+     */
+    public ProximityVector addTo(float x, float y){
+        this.x += x;
+        this.y += y;
+        return new ProximityVector(this.x, this.y);
+    }
+
+
+    /**
+     * Subtract a vector from this vector and return a new vector
+     * @param x what x coordinate to add
+     * @param y what y coordinate to add
+     */
+    public ProximityVector subtractTo(float x, float y){
+        this.x += x;
+        this.y += y;
+        return new ProximityVector(this.x, this.y);
     }
 
     /**
