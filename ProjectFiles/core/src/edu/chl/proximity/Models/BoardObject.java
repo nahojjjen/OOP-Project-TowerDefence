@@ -186,7 +186,9 @@ public abstract class BoardObject implements Cloneable {
     @Override
     public Object clone() throws CloneNotSupportedException{
         BoardObject clone = (BoardObject)super.clone();
-        clone.setPosition(new ProximityVector(position.x, position.y));
+        if (position != null){
+            clone.setPosition(new ProximityVector(position.x, position.y));
+        }
         if (image != null){
             clone.setImage((edu.chl.proximity.Models.Utils.Image)image.clone());
         }

@@ -5,7 +5,7 @@ package edu.chl.proximity.Controllers.SubControllers;
  */
 public class BackgroundController {
 
-    /** TODO: fix this method to rotate the background image, attatch background image as instance variable in map?
+    /**
      *
      */
     public void update() {

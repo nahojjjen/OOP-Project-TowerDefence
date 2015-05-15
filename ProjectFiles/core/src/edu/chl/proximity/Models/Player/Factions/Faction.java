@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * @author Johan
  *
- * 01/05 modified by Hanna Römer. Added string name and ShowImage
+ * 01/05 modified by Hanna Rï¿½mer. Added string name and ShowImage
  */
 public abstract class Faction {
     //also has spells
@@ -41,8 +41,12 @@ public abstract class Faction {
         spells.add(input);
     }
     public Spell getSpell(int i){
-        return spells.get(i);
-
+        try {
+            return (Spell)spells.get(i).clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return  spells.get(i);
     }
 
     public String getName(){
