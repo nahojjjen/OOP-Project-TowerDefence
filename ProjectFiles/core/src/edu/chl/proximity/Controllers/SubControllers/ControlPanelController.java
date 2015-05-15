@@ -98,16 +98,16 @@ public class ControlPanelController implements ClickHandler {
 
         Input.Keys keys = new Input.Keys();
         if(keycode == keys.Q) {
-            map.getHand().setItem(GameData.getInstance().getPlayer().getFaction().getSpell(0));
+            map.getHand().setItem(spellPanel.getSpellBoundTo("q"));//GameData.getInstance().getPlayer().getFaction().getSpell(0));
         }
         if(keycode == keys.W) {
-            map.getHand().setItem(GameData.getInstance().getPlayer().getFaction().getSpell(1));
+            map.getHand().setItem(spellPanel.getSpellBoundTo("w"));//(GameData.getInstance().getPlayer().getFaction().getSpell(1));
         }
         if(keycode == keys.E) {
-            map.getHand().setItem(GameData.getInstance().getPlayer().getFaction().getSpell(2));
+            map.getHand().setItem(spellPanel.getSpellBoundTo("e"));//(GameData.getInstance().getPlayer().getFaction().getSpell(2));
         }
         if(keycode == keys.R) {
-            map.getHand().setItem(GameData.getInstance().getPlayer().getFaction().getSpell(3));
+            map.getHand().setItem(spellPanel.getSpellBoundTo("r"));//(GameData.getInstance().getPlayer().getFaction().getSpell(3));
         }
     }
 

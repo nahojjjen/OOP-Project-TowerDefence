@@ -2,6 +2,7 @@ package edu.chl.proximity.Models.ControlPanel;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chl.proximity.Models.Player.Spells.Spell;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Utilities.PercentBar;
 import edu.chl.proximity.Utilities.ProximityVector;
@@ -106,6 +107,21 @@ public class SpellPanel extends BoardObject {
         for(ControlPanelSpell cpSpell : controlPanelSpellList) {
             if(PointCalculations.isPointInObject(position, cpSpell))
                 return cpSpell;
+        }
+        return null;
+    }
+
+    /**
+     * get the spell connceted to a keybinding
+     * @param input what spell input should be checked
+     * @return a spell bound to that key, if a spell exists
+     * */
+    public Spell getSpellBoundTo(String input){
+        switch (input){
+            case "q": return controlPanelSpellList.get(0).getSpell();
+            case "w": return controlPanelSpellList.get(1).getSpell();
+            case "e": return controlPanelSpellList.get(2).getSpell();
+            case "r": return controlPanelSpellList.get(3).getSpell();
         }
         return null;
     }
