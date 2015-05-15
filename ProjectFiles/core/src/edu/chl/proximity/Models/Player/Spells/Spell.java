@@ -12,17 +12,18 @@ import edu.chl.proximity.Models.Utils.Image;
  *
  * 03-05-2015 Modified by Simon Gislen. Spell has a area range, could be infinite.
  * 07/05 modified by Linda Evaldsson. Spell has a control panel Image.
+ * 15/5 modified by johan, spells now have a cooldown pattern
  */
 public abstract class Spell extends PersistentObject implements Holdable {
 
     private Image controlPanelImage;
-
     private Map map;
 
     public Spell(Map map, Image icon, int counter) {
         super(null, null, counter);
         controlPanelImage = icon;
         this.map = map;
+
     }
 
     public Map getMap() {
@@ -33,16 +34,21 @@ public abstract class Spell extends PersistentObject implements Holdable {
 
     @Override
     public void preparePlacing(ProximityVector position) {
-        resetPersistentObject();
-        this.setPosition(position);
-        this.start();
-        playParticleEffect(); //important that this is after setPosition
+        if (isReadyToCast()){
+            startCooldown();
+            this.setPosition(position);
+            this.start();
+            playParticleEffect(); //important that this is after setPosition
+        }
+        System.out.println("In Spell: Spell is still on cooldown! Cooldown percent: " + getCooldownPercent());
+
 
     }
-
-    public double getCooldownPercent() {
-        return 50.0;
-    }
+public abstract void resetCooldown();
+public abstract void updateCooldown();
+    public abstract int getCooldownPercent();
+    public abstract boolean isReadyToCast();
+    public abstract void startCooldown();
     public abstract void playParticleEffect();
     public abstract double getRange();
 

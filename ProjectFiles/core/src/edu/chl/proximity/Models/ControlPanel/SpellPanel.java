@@ -74,8 +74,25 @@ public class SpellPanel extends BoardObject {
      * Reads the current spell cooldowns and updates the cooldown representers model accordingly
      */
     public void updateCooldowns() {
+       updateCooldownIndicators();
+        updateSpellCooldowns();
+    }
+
+    /**
+     * update the spell cooldown indicator models
+     */
+    private void updateCooldownIndicators(){
         for(ControlPanelSpell cpSpell : controlPanelSpellList) {
-            spellCooldownBars.get(cpSpell).setPercent((int) cpSpell.getCooldownPercent());
+            spellCooldownBars.get(cpSpell).setPercent((int) cpSpell.getSpell().getCooldownPercent());
+        }
+    }
+
+    /**
+     * updates the model spell cooldowns
+     */
+    private void updateSpellCooldowns(){
+        for(ControlPanelSpell cpSpell : controlPanelSpellList) {
+            cpSpell.getSpell().updateCooldown();
         }
     }
 

@@ -15,6 +15,7 @@ import java.util.List;
  *
  * 03-05-2015 Modified by Simon Gislen. Spells have range.
  * 10-05-2015 Modified by Johan swanberg. Makes spell work again, was broken by change in Map interface
+ * 15/5 modified by johan, spells now have a cooldown pattern
  */
 public class WallOfStone extends Spell {
 
@@ -22,6 +23,8 @@ public class WallOfStone extends Spell {
     private static double range = 60f;
     private static int duration = 120;
     private static Image image = new Image(Constants.FILE_PATH + "Spells/wallofstone.png");
+    private static final int maxCooldown = 60*10;
+    private static int currentCooldown = 0;
 
     public WallOfStone(Map map) {
         super(map, image, duration); //600 frames = 10 seconds @ 60 fps
@@ -44,8 +47,30 @@ public class WallOfStone extends Spell {
             getMap().getParticleManager().getDirtSmokeEffect().createEffect(c.getCenter());
         }
         */
+        @Override
+        public void updateCooldown() {
+            if (currentCooldown>0)currentCooldown--;
+        }
 
+    @Override
+    public int getCooldownPercent() {
+        return 100-((currentCooldown*100) / maxCooldown);
+    }
 
+    @Override
+    public void startCooldown() {
+        currentCooldown = maxCooldown;
+    }
+
+    @Override
+    public boolean isReadyToCast() {
+        return (currentCooldown<= 0);
+    }
+
+    @Override
+    public void resetCooldown() {
+        currentCooldown =0;
+    }
     @Override
     public void playParticleEffect() {
         getMap().getParticleManager().getWallOfStone().createEffect(getPosition());

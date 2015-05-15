@@ -14,6 +14,7 @@ import java.util.List;
  * A spell which creates a field where all normal creeps completely devolve, at the cost of base hp.
  * @author Johan on 2015-04-28.
  * 03-05-2015 Modified by Simon Gislen. Spells have range.
+ * 15/5 modified by johan, spells now have a cooldown pattern
  */
 public class BloodCarnage extends Spell {
 
@@ -22,6 +23,8 @@ public class BloodCarnage extends Spell {
     private static int healthCost = 35;
     private static int duration = 60 * 5; //600 frames = 10 seconds @ 60 fps
     private static Image image = new Image(Constants.FILE_PATH + "Spells/bloodcarnage.png");
+    private static final int maxCooldown = 30;
+    private static int currentCooldown = 0;
 
     private boolean hasDamagedPlayer = false;
 
@@ -43,6 +46,30 @@ public class BloodCarnage extends Spell {
                getMap().getParticleManager().getBloodCarnageCreepEffect().createEffect(creep.getCenter());
             }
         }
+    }
+
+    @Override
+    public void updateCooldown() {
+        if (currentCooldown>0)currentCooldown--;
+    }
+
+    @Override
+    public int getCooldownPercent() {
+        return 100-((currentCooldown*100) / maxCooldown);
+    }
+
+    @Override
+    public void startCooldown() {
+        currentCooldown = maxCooldown;
+    }
+
+    @Override
+    public boolean isReadyToCast() {
+        return (currentCooldown<= 0);
+    }
+    @Override
+    public void resetCooldown() {
+        currentCooldown =0;
     }
 
     @Override

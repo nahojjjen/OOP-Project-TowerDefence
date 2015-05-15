@@ -19,23 +19,17 @@ public abstract class PersistentObject extends BoardObject {
 
     private int counter;
     private boolean started= false;
-    private int backupCounter = 0;
 
     public PersistentObject(ProximityVector position, Image icon, int counter) {
         super(position, icon, 0);
         this.counter = counter;
-        this.backupCounter = counter;
 
         if (position != null){
             add(this);
         }
     }
 
-    public void resetPersistentObject(){
-        counter = backupCounter;
-        this.unRemove();
-        started = false;
-    }
+
     /**
      * Method is called every frame, calling the +performEffect method.
      * When the counter reaches zero, the object is destroyed.
