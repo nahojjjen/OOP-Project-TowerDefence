@@ -45,9 +45,7 @@ public class MainController implements InputProcessor{
     private HandController handController;
     private List<ClickHandler> clickHandlers = new ArrayList<ClickHandler>();
     private Map map;
-
-    private Viewport viewport;
-    private int tempCounter=0;
+    private Viewport viewport; //used for translating scaled click-position to model click position
     private Proximity game;
 
 
@@ -78,32 +76,22 @@ public class MainController implements InputProcessor{
             map.clearRemoveStack();
             map.clearAddStack();
         }
-
     }
-
-
-
     @Override
     public boolean keyDown (int keycode) {
         controlPanelController.keyDown(keycode);
         return false;
     }
-
-    @Override
-    public boolean keyUp (int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyTyped (char character) {
-        return false;
-    }
-
-    private int counter = 0;
+    /**
+     * Handles a click event in the game
+     * @param x where the window was clicked in x coordinate
+     * @param y where the window was clicked in y coordinate
+     * @param pointer
+     * @param button Which button was pressed
+     * @return true, unless program crashes
+     */
     @Override
     public boolean touchDown (int x, int y, int pointer, int button) {
-
-
         //Calculates the real coordinates from the scaled coordinates
         Vector2 clickedPointVector2 = viewport.unproject(new Vector2(x, y));
         ProximityVector clickedPoint = new ProximityVector(clickedPointVector2.x, clickedPointVector2.y);
@@ -113,41 +101,54 @@ public class MainController implements InputProcessor{
 
         //Runs through the clickable controllers and informs them if their models is clicked
         for(ClickHandler controller : clickHandlers) {
-
             controller.touchDown(clickedPoint, pointer, button);
-
         }
         if(!controlPanelController.modelsClicked(clickedPoint)) {
             mapController.touchDown(clickedPoint, pointer, button);
         }
-
-
-
         return true;
     }
 
-    @Override
-    public boolean touchUp (int x, int y, int pointer, int button) {
-        return false;
-    }
 
-    @Override
-    public boolean touchDragged (int x, int y, int pointer) {
-        return false;
-    }
-
+    /**
+     * Tells all the controllers that the mouse has moved, the controllers that handle mouse movement update accordingly
+     * @param x where the window was hovered in x coordinate
+     * @param y where the window was hovered in y coordinate
+     * @return true
+     */
     @Override
     public boolean mouseMoved (int x, int y) {
         Vector2 clickedPoint2 = viewport.unproject(new Vector2(x, y));
-        ProximityVector clickedPoint = new ProximityVector(clickedPoint2.x, clickedPoint2.y);
+        ProximityVector draggedPoint = new ProximityVector(clickedPoint2.x, clickedPoint2.y);
         for(ClickHandler controller : clickHandlers) {
-            controller.mouseMoved(clickedPoint);
+            controller.mouseMoved(draggedPoint);
         }
         return true;
     }
 
+
+    ///////////////////////////////////////////
+    ////////   Unused controller input   //////
+    ///////////////////////////////////////////
+
     @Override
     public boolean scrolled (int amount) {
+        return false;
+    }
+    @Override
+    public boolean touchUp (int x, int y, int pointer, int button) {
+        return false;
+    }
+    @Override
+    public boolean touchDragged (int x, int y, int pointer) {
+        return false;
+    }
+    @Override
+    public boolean keyUp (int keycode) {
+        return false;
+    }
+    @Override
+    public boolean keyTyped (char character) {
         return false;
     }
 
