@@ -31,4 +31,8 @@ public class ControlPanelSpell extends BoardObject {
         }
         return null;
     }
+
+    public int getCooldownPercent(){
+        return 5;
+    }
 }

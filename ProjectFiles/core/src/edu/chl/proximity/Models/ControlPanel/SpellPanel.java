@@ -2,6 +2,7 @@ package edu.chl.proximity.Models.ControlPanel;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Utilities.PercentBar;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
@@ -47,10 +48,10 @@ public class SpellPanel extends BoardObject {
 
     public SpellPanel(Faction faction) {
         super(position, background, 0, width, height);
-        initiateSpells(faction);
+        addSpellsToControlPanel(faction);
     }
 
-    private void initiateSpells(Faction faction) {
+    private void addSpellsToControlPanel(Faction faction) {
         for(int i = 0; i < 4; i++) {
             ControlPanelSpell tmpSpell = new ControlPanelSpell(new ProximityVector(position.x + 10 + (64+10)*i, position.y + 10), faction.getSpell(i));
             controlPanelSpellList.add(tmpSpell);
@@ -64,7 +65,7 @@ public class SpellPanel extends BoardObject {
 
     public void updateCooldowns() {
         for(ControlPanelSpell cpSpell : controlPanelSpellList) {
-            spellCooldownBars.get(cpSpell).setPercent((int) cpSpell.getSpell().getCooldownPercent());
+            spellCooldownBars.get(cpSpell).setPercent((int) cpSpell.getCooldownPercent());
         }
     }
 
