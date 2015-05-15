@@ -6,6 +6,7 @@ import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.Background;
 import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
@@ -25,8 +26,8 @@ public class HandController implements ClickHandler {
 
         //The model is the area where this HandController should be listening for changes. In this case its the whole window.
         model.setPosition(new ProximityVector(0,0));
-        model.setWidth(Gdx.graphics.getWidth());
-        model.setHeight(Gdx.graphics.getHeight());
+        model.setWidth(Constants.GAME_WIDTH);
+        model.setHeight(Constants.GAME_HEIGHT);
     }
 
 

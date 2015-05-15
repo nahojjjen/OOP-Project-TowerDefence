@@ -7,6 +7,7 @@ import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Utils.Background;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Player.Holdables.Holdable;
+import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.ArrayList;
@@ -34,8 +35,8 @@ public class MapController implements ClickHandler {
         this.map = map;
         model = new Background(null);
         model.setPosition(new ProximityVector(0,0));
-        model.setWidth(Gdx.graphics.getWidth() - 300);
-        model.setHeight(Gdx.graphics.getHeight());
+        model.setWidth(Constants.GAME_WIDTH - 300);
+        model.setHeight(Constants.GAME_HEIGHT);
         models.add(model);
     }
 
