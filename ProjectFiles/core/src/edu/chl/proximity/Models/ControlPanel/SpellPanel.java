@@ -22,6 +22,7 @@ import java.util.Map;
  * @date 2015-05-07
  *
  * 13/05 Added spell cooldown indicator
+ * 15/5 modified by johan, added javadoc
  */
 public class SpellPanel extends BoardObject {
 
@@ -45,33 +46,43 @@ public class SpellPanel extends BoardObject {
     private Map<ControlPanelSpell, PercentBar> spellCooldownBars = new HashMap<ControlPanelSpell, PercentBar>();
 
 
-
+    /**
+     * creates an instance of the spellPanel
+     * @param faction
+     */
     public SpellPanel(Faction faction) {
         super(position, background, 0, width, height);
         addSpellsToControlPanel(faction);
     }
 
+
+    /**
+     * Reads the current factions spells, and creates representing images for them
+     * @param faction
+     */
     private void addSpellsToControlPanel(Faction faction) {
         for(int i = 0; i < 4; i++) {
             ControlPanelSpell tmpSpell = new ControlPanelSpell(new ProximityVector(position.x + 10 + (64+10)*i, position.y + 10), faction.getSpell(i));
             controlPanelSpellList.add(tmpSpell);
             shortCuts.add(new ProximityFont(new ProximityVector(position.x + 14 + (64+10)*i, position.y + 14), Constants.SPELL_SHORTS[i]));
             spellCooldownBars.put(tmpSpell, new PercentBar(new ProximityVector(tmpSpell.getPosition().x, tmpSpell.getPosition().y + 64), 64, 10, spellCooldownForeground, spellCooldownBackground));
-
         }
-
-
     }
 
+    /**
+     * Reads the current spell cooldowns and updates the cooldown representers model accordingly
+     */
     public void updateCooldowns() {
         for(ControlPanelSpell cpSpell : controlPanelSpellList) {
             spellCooldownBars.get(cpSpell).setPercent((int) cpSpell.getCooldownPercent());
         }
     }
 
+    /**
+     * Draws out the spell-panel background, spell images and shortcut text
+     * @param batch
+     */
     public void render(SpriteBatch batch) {
-
-
         background.getTexture().setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
         batch.draw(background.getTexture(), position.x, position.y, background.getTexture().getWidth(), background.getTexture().getHeight(), width, height);
 
@@ -86,6 +97,11 @@ public class SpellPanel extends BoardObject {
 
     }
 
+    /**
+     * Get which spell Icon is on the given position
+     * @param position what position to search for
+     * @return A controlpanelSpell, if one was clicked.
+     */
     public ControlPanelSpell getSpellOnPosition(ProximityVector position) {
         for(ControlPanelSpell cpSpell : controlPanelSpellList) {
             if(PointCalculations.isPointInObject(position, cpSpell))
