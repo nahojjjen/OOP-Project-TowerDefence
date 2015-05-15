@@ -50,7 +50,6 @@ public class FrostField extends Spell {
 
     @Override
     public int getCooldownPercent() {
-        System.out.println((currentCooldown*100) / maxCooldown);
         return 100-((currentCooldown*100) / maxCooldown);
     }
 

@@ -40,9 +40,6 @@ public abstract class Spell extends PersistentObject implements Holdable {
             this.start();
             playParticleEffect(); //important that this is after setPosition
         }
-        System.out.println("In Spell: Spell is still on cooldown! Cooldown percent: " + getCooldownPercent());
-
-
     }
 public abstract void resetCooldown();
 public abstract void updateCooldown();
