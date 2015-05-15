@@ -29,6 +29,7 @@ public class BloodPool extends Spell {
     private static Image image = new Image(Constants.FILE_PATH + "Spells/bloodpool.png");
     private static  int maxCooldown = 30;
     private static int currentCooldown = 0;
+    private static final int baseCooldown = 30;
 
     public BloodPool(Map map) {
         super(map, image, duration);
@@ -38,17 +39,23 @@ public class BloodPool extends Spell {
     public void performEffect(int counter) {
 
         List<Creep> creeps = getMap().getCreeps();
+        int hitCreeps = 0;
         for (Creep creep : creeps) {
             if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getPosition()) < range * range) {
-                currentCooldown += 30;
-                maxCooldown = currentCooldown;
+                hitCreeps++;
                 creep.devolve();
                 getMap().getBase().heal(1);
                 getMap().getParticleManager().getBloodPoolCreepEffect().createEffect(creep.getCenter());
             }
+
+            fixCustomCooldownLogic(hitCreeps);
         }
     }
 
+    private void fixCustomCooldownLogic(int hitCreeps){
+        currentCooldown += 30*hitCreeps; //plus base cooldown because that method gets called
+        maxCooldown = currentCooldown;
+    }
     @Override
     public void updateCooldown() {
         if (currentCooldown>0)currentCooldown--;
@@ -61,7 +68,7 @@ public class BloodPool extends Spell {
 
     @Override
     public void startCooldown() {
-        currentCooldown = maxCooldown;
+        currentCooldown = baseCooldown;
     }
 
     @Override
