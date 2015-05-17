@@ -53,6 +53,7 @@ public class PropertiesPanel extends BoardObject{
         mainMenuButton = new MainMenuButton(mainMenuPos);
         soundButton = new SoundButton(soundPos);
         initBars();
+        //TODO this should be set as the saved volume, not 4.
         setBarsAt(4);
         setSoundAt(4);
     }

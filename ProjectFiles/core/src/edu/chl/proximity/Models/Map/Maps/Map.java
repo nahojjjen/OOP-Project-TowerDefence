@@ -38,6 +38,7 @@ import java.util.*;
  * 08/05 modified by Linda Evaldsson. Moved functionality to this class; rendering of towers, updating and stack-functionality (clear stacks)
  * 10/5 modified by Johan Swanberg, fixed creepwithinrange method and added somee comments
  * 10/05 modified by Hanna Römer. Added method towersWithinRange that is exactly like creepsWithinRange.
+ * 17/05 modified by Hanna Römer. Added method getNew.
  * */
 public abstract class Map {
 
@@ -374,6 +375,8 @@ public abstract class Map {
 
 
     }
+
+    public abstract Map getNew();
 
 
 

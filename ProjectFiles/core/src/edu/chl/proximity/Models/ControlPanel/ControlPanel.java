@@ -6,6 +6,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.viewport.Viewport;
+import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -63,14 +66,18 @@ public class ControlPanel extends BoardObject{
     private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/tweed.png");
 
     private Map map;
+    private Proximity game;
+    private Viewport viewport;
 
     /**
      * Create a new instance of the controll panel
      */
-    public ControlPanel(Map map) {
+    public ControlPanel(Map map, Proximity game, Viewport viewport) {
         super(position, background, 0, width, height);
 
         this.map = map;
+        this.game=game;
+        this.viewport=viewport;
         initiateText();
         initiateControlPanelTowers();
     }
@@ -112,6 +119,9 @@ public class ControlPanel extends BoardObject{
     public void setHealth(int percent){
         percentBar.setPercent(percent);
         percentBar.setText(percent + "%");
+        if(percent<=0){
+            game.changeScreen(Proximity.State.GAME_OVER,map, GameData.getInstance().getPlayer(),viewport);
+        }
     }
 
     public void setResources(Resources resources){

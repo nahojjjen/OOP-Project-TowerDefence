@@ -15,7 +15,6 @@ public class MenuRenderer {
     private ParticleManager particleManager ;
 
     public MenuRenderer(MainMenu mainMenu){
-
         this.mainMenu = mainMenu;
     }
 

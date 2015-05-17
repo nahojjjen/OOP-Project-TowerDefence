@@ -21,4 +21,8 @@ public class StandardMap extends Map {
     public StandardMap() {
         super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/warmBackground.png")), "Standard");
     }
+
+    public Map getNew(){
+        return new StandardMap();
+    }
 }

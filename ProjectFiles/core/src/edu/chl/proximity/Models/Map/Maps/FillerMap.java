@@ -21,4 +21,8 @@ public class FillerMap extends Map{
         super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/moonBackground.png")),"FillerMap");
     }
 
+    public Map getNew(){
+        return new FillerMap();
+    }
+
 }

@@ -47,7 +47,7 @@ public class ControlPanelController implements ClickHandler {
         this.map = map;
 
         propertiesPanel = new PropertiesPanel(g,viewport);
-        controlPanel = new ControlPanel(map);
+        controlPanel = new ControlPanel(map,g,viewport);
         towerPanel=new TowerPanel(map);
         map.setPropertiesPanel(propertiesPanel);
         buttonPanel = new ButtonPanel(propertiesPanel);

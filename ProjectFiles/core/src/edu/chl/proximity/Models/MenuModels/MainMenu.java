@@ -70,6 +70,7 @@ public class MainMenu {
         player.getResources().setResources(500,500,0);
 
         game.changeScreen(Proximity.State.GAME, map, player,viewport);
+        //game.changeScreen(Proximity.State.GAME_OVER,map,player,viewport);
     }
 
 

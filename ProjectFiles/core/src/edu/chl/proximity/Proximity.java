@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import edu.chl.proximity.Controllers.GameStates.GameOverScreen;
 import edu.chl.proximity.Controllers.GameStates.GameScreen;
 import edu.chl.proximity.Controllers.GameStates.MenuScreen;
 import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Planes;
@@ -22,7 +23,7 @@ import edu.chl.proximity.Models.Utils.Settings;
  */
 
 public class Proximity extends Game {
-	public enum State{GAME,MAIN_MENU}
+	public enum State{GAME,MAIN_MENU,GAME_OVER}
 
 	public void changeScreen(State state, Map map, Player player, Viewport viewport){
 
@@ -31,8 +32,10 @@ public class Proximity extends Game {
 				this.setScreen(new GameScreen(this,map,player, viewport));
 				break;
 			case MAIN_MENU:
-
 				this.setScreen(new MenuScreen(this, player, viewport));
+				break;
+			case GAME_OVER:
+				this.setScreen(new GameOverScreen(this,map,player));
 		}
 	}
 	public State getCurrentScreen(){
