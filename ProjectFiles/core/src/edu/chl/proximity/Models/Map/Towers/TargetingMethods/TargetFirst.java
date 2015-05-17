@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Johan on 2015-04-11.
+ * @author Johan
+ * @date 2015-04-11.
  */
 
 
@@ -47,7 +48,7 @@ public class TargetFirst extends TargetingMethod{
 
             //cycle through all creeps, get what waypoint they're on, remember the one with the highest waypoint & shortest distance to waypoint
             for (Creep creep:inRange){
-                    if (creep.getDistanceToNextWayPoint() < distanceToWaypoint && creep.getNextWayPointID() >= waypointNumberOfFirstCreep){
+                    if ((creep.getDistanceToNextWayPoint() < distanceToWaypoint && creep.getNextWayPointID() == waypointNumberOfFirstCreep)|| creep.getNextWayPointID() >= waypointNumberOfFirstCreep){
                         target = creep;
                         distanceToWaypoint = creep.getDistanceToNextWayPoint();
                         waypointNumberOfFirstCreep = creep.getNextWayPointID();
