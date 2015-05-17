@@ -1,9 +1,8 @@
 package edu.chl.proximity.Models.Map.Projectiles;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.files.FileHandle;
+
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
+import edu.chl.proximity.Models.Utils.ProximitySound;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Utils.Image;
@@ -20,7 +19,7 @@ import edu.chl.proximity.Utilities.Constants;
 public class Bullet extends Projectile {
 
     private static Image img = new Image(Constants.FILE_PATH + "Projectiles/bullet.png");
-    private static Sound sound = Gdx.audio.newSound(new FileHandle(Constants.FILE_PATH + "Sounds/poof.ogg"));
+    private static ProximitySound sound = new ProximitySound(Constants.FILE_PATH + "Sounds/poof.ogg");
 
     /**
      * create a new bullet projectile

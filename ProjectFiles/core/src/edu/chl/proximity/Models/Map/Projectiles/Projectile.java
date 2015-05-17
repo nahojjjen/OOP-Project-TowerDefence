@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.Map.Projectiles;
 
-import com.badlogic.gdx.audio.Sound;
+import edu.chl.proximity.Models.Utils.ProximitySound;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
@@ -28,7 +28,7 @@ public abstract class Projectile extends BoardObject implements Cloneable{
     private ProximityEffect effect;
     private int health;
     private int speed;
-    private Sound sound;
+    private ProximitySound sound;
     private double range = 0;
     /**
      * Create a new projectile type
@@ -40,7 +40,7 @@ public abstract class Projectile extends BoardObject implements Cloneable{
      * @param position where should the projectile be created
      * @param angle what angle should the image of the projectile have
      */
-    public Projectile(ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, ProximityVector position, double angle){
+    public Projectile(ProximityEffect particleEffect, int health, int speed, ProximitySound sound, Image image, ProximityVector position, double angle){
         super(position, image, angle);
         this.effect=particleEffect;
         this.health=health;
