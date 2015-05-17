@@ -2,7 +2,6 @@ package edu.chl.proximity.Models.Map.Towers.TargetingMethods;
 
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
-import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Map.Maps.Map;
 
 import java.util.ArrayList;
@@ -48,7 +47,7 @@ public class TargetLast extends TargetingMethod {
 
             //cycle through all creeps, check if they're within range, get what waypoint they're on, remember the one with the highest waypoint & shortest distance to waypoint
             for (Creep creep : inRange) {
-                if (creep.getDistanceToNextWayPoint() > distanceToWaypoint && creep.getNextWayPointID() <= waypointNumber) {
+                if ((creep.getDistanceToNextWayPoint() > distanceToWaypoint && creep.getNextWayPointID() == waypointNumber) || creep.getNextWayPointID() < waypointNumber) {
                     target = creep;
                     distanceToWaypoint = creep.getDistanceToNextWayPoint();
                     waypointNumber = creep.getNextWayPointID();
