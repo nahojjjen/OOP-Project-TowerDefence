@@ -49,8 +49,10 @@ public class ProximityVector {
      * @param addVector What vector should be added to this vector
      */
     public void add(ProximityVector addVector){
-        this.x += addVector.x;
-        this.y += addVector.y;
+        if(addVector != null){
+            this.x += addVector.x;
+            this.y += addVector.y;
+        }
     }
 
     /**
@@ -69,32 +71,13 @@ public class ProximityVector {
      * @param subVector What vector should be used to subtract from this vector
      */
     public void sub(ProximityVector subVector){
-        this.x -= subVector.x;
-        this.y -= subVector.y;
+        if (subVector !=null){
+            this.x -= subVector.x;
+            this.y -= subVector.y;
+        }
+
     }
 
-    /**
-     * add coordinaates to this vector and return a new vector
-     * @param x what x coordinate to add
-     * @param y what y coordinate to add
-     */
-    public ProximityVector addTo(float x, float y){
-        this.x += x;
-        this.y += y;
-        return new ProximityVector(this.x, this.y);
-    }
-
-
-    /**
-     * Subtract a vector from this vector and return a new vector
-     * @param x what x coordinate to add
-     * @param y what y coordinate to add
-     */
-    public ProximityVector subtractTo(float x, float y){
-        this.x += x;
-        this.y += y;
-        return new ProximityVector(this.x, this.y);
-    }
 
     /**
      * inverts a vector, making it point in the opposite direction of before the method was run

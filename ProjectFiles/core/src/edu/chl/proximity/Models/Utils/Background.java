@@ -21,11 +21,5 @@ public class Background extends BoardObject {
         super(new ProximityVector(0,0), img, 0);
     }
 
-    /**
-     * make the map rotate slowly
-     */
-    public void rotate(){
-        rotate(1);
-    }
 
 }
