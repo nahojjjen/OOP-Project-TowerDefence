@@ -1,14 +1,7 @@
 package edu.chl.proximity.Models.Player.PersistentSave;
 
-import com.sun.media.jfxmediaimpl.MediaUtils;
-import com.sun.org.apache.xpath.internal.SourceTree;
-import edu.chl.proximity.Models.Player.Players.Player;
-
 import java.io.*;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
 
 /**
  * @author Johan
@@ -22,7 +15,7 @@ import java.util.Scanner;
  * You need to specify which savefile to load and save from.
  */
 public class SaveManager {
-    private HashMap<String, Float> saveMap = new HashMap<>();
+    private HashMap<String, Float> saveMap = new HashMap<String, Float>();
 
 
     /**

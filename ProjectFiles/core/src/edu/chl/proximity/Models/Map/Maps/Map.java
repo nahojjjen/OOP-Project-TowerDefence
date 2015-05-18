@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.sun.corba.se.impl.encoding.WrapperInputStream;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Player.Holdables.Hand;
@@ -18,7 +17,6 @@ import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Player.Spells.PersistentObject;
 import edu.chl.proximity.Models.Map.Towers.Tower;
-import edu.chl.proximity.Models.Map.Waves.Wave;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.*;

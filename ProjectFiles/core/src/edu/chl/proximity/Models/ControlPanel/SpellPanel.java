@@ -65,7 +65,7 @@ public class SpellPanel extends BoardObject {
         for(int i = 0; i < 4; i++) {
             ControlPanelSpell tmpSpell = new ControlPanelSpell(new ProximityVector(position.x + 10 + (64+10)*i, position.y + 10), faction.getSpell(i));
             controlPanelSpellList.add(tmpSpell);
-            shortCuts.add(new ProximityFont(new ProximityVector(position.x + 14 + (64+10)*i, position.y + 14), Constants.SPELL_SHORTS[i]));
+            shortCuts.add(new ProximityFont(new ProximityVector(position.x + 14 + (64+10)*i, position.y + 14), Constants.SPELL_SHORTS.get(i)));
             spellCooldownBars.put(tmpSpell, new PercentBar(new ProximityVector(tmpSpell.getPosition().x, tmpSpell.getPosition().y + 64), 64, 10, spellCooldownForeground, spellCooldownBackground));
         }
     }
