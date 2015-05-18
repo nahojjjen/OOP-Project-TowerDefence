@@ -23,6 +23,8 @@ import java.util.ArrayList;
  * ---
  * 16/04 modified by Simon Gislén. Modified purpose of class to handle creep spawning logic.
  * 21/04 modified by Simon Gislén.
+ *
+ * A class that generates creep waves.
  */
 public class StandardGenerator {
     private Map map;
@@ -45,7 +47,7 @@ public class StandardGenerator {
         //Defaults
 
         double spawnInterval = 1;
-        double cooldown = 8;
+        double cooldown = 4;
         ArrayList<Creep> creeps = new ArrayList<Creep>();
 
         //First 10 waves are standard, after this spawning follows an algorithm

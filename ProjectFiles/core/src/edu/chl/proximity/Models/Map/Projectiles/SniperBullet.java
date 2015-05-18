@@ -17,7 +17,7 @@ public class SniperBullet extends Projectile {
     private static Image img = new Image(Constants.FILE_PATH + "Projectiles/bullet.png");
     private static ProximitySound sound = new ProximitySound(Constants.FILE_PATH + "Sounds/poof.ogg");
     private static int health = 99;
-    private static int speed = 90;
+    private static int speed = 30;
     /**
      * create a new bullet projectile
      *

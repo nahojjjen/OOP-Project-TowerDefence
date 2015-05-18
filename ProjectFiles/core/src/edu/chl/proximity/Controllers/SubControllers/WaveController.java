@@ -9,7 +9,10 @@ import edu.chl.proximity.Models.Map.Waves.Wave;
 import java.util.List;
 
 /**
- * Created by simongislen on 16/04/15.
+ * @author simongislen
+ * @date 16/04/15.
+ *
+ * A controller class that handles creep spawning in waves.
  */
 public class WaveController {
     private StandardGenerator waveGenerator;
@@ -21,7 +24,7 @@ public class WaveController {
     private int creepIndex;
 
     private int spawnIntervalCounter = 0;
-    private int cooldownCounter;
+    private int cooldownCounter = 0;
 
 
     public WaveController(Map map) {
@@ -54,6 +57,7 @@ public class WaveController {
             else {
                 waveIndex++;
                 currentWave = null;
+                cooldownCounter = 0;
             }
         }
 

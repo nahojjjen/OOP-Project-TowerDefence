@@ -22,7 +22,7 @@ public class SniperTower extends ShootingTower {
     //Tower stats
     private static Resources resources = new Resources(0, 150, 0);
     private static double range = 9999f;
-    private static int reloadTime = 300;
+    private static int reloadTime = 50;
 
     private static Image img = new Image(Constants.FILE_PATH + "Towers/Sniper/1.png");
 
