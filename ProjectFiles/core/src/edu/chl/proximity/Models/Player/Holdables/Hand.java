@@ -93,7 +93,7 @@ public class Hand {
             if(!((Tower) currentItem).getIfPlaced()){
                 renderRangeIndicator(shapeRenderer, getRangeIndicatorColor(), getPosition(), getItem().getRange());
             }else{
-                renderRangeIndicator(shapeRenderer,getRangeIndicatorColor(),((Tower) currentItem).getCenter(),getItem().getRange());
+                renderRangeIndicator(shapeRenderer,new Color(0.4f, 0.2f, 0.9f, 0.2f),((Tower) currentItem).getCenter(),getItem().getRange());
             }
         }else {
             renderRangeIndicator(shapeRenderer, getRangeIndicatorColor(), getPosition(), getItem().getRange());
