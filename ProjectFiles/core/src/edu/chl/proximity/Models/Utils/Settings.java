@@ -8,6 +8,7 @@ package edu.chl.proximity.Models.Utils;
  */
 public class Settings {
 
+    private int storedGameSpeed;
     private int gameSpeed;
     private float gameVolume;
 
@@ -36,6 +37,15 @@ public class Settings {
 
     public void setGameVolume(float gameVolume) {
         this.gameVolume = gameVolume;
+    }
+
+    public void togglePause() {
+        if(gameSpeed > 0) {
+            storedGameSpeed = gameSpeed;
+            setGameSpeed(0);
+        } else {
+            setGameSpeed(storedGameSpeed);
+        }
     }
 
     public void cloneSettings(Settings settings) {

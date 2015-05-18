@@ -97,6 +97,8 @@ public class ControlPanelController implements ClickHandler {
     public void keyDown(int keycode) {
 
         Input.Keys keys = new Input.Keys();
+
+        //Spell shortcuts
         if(keycode == keys.Q) {
             map.getHand().setItem(spellPanel.getSpellBoundTo("q"));//GameData.getInstance().getPlayer().getFaction().getSpell(0));
         }
@@ -108,6 +110,38 @@ public class ControlPanelController implements ClickHandler {
         }
         if(keycode == keys.R) {
             map.getHand().setItem(spellPanel.getSpellBoundTo("r"));//(GameData.getInstance().getPlayer().getFaction().getSpell(3));
+        }
+
+        //Tower shortcuts
+        if(keycode == keys.NUM_1) {
+            map.getHand().setItem(controlPanel.getTowerBoundTo(1));
+
+        }
+        if(keycode == keys.NUM_2) {
+            map.getHand().setItem(controlPanel.getTowerBoundTo(2));
+        }
+        if(keycode == keys.NUM_3) {
+            map.getHand().setItem(controlPanel.getTowerBoundTo(3));
+        }
+        if(keycode == keys.NUM_4) {
+            map.getHand().setItem(controlPanel.getTowerBoundTo(4));
+        }
+        if(keycode == keys.NUM_5) {
+            map.getHand().setItem(controlPanel.getTowerBoundTo(5));
+        }
+        if(keycode == keys.NUM_6) {
+            map.getHand().setItem(controlPanel.getTowerBoundTo(6));
+        }
+        if(keycode == keys.NUM_7) {
+            map.getHand().setItem(controlPanel.getTowerBoundTo(7));
+        }
+
+        //Other shortcuts
+        if(keycode == keys.ESCAPE) {
+            map.getHand().setItem(null);
+        }
+        if(keycode == keys.SPACE) {
+            GameData.getInstance().getPlayer().getSettings().togglePause();
         }
     }
 

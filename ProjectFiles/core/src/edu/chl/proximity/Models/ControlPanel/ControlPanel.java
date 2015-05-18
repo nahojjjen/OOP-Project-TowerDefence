@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import edu.chl.proximity.Models.Map.Towers.SniperTower;
+import edu.chl.proximity.Models.Map.Towers.*;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.ProximityVector;
@@ -17,9 +17,6 @@ import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingFactory;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
-import edu.chl.proximity.Models.Map.Towers.BulletTower;
-import edu.chl.proximity.Models.Map.Towers.MissileTower;
-import edu.chl.proximity.Models.Map.Towers.SlowTower;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PercentBar;
 import edu.chl.proximity.Utilities.PointCalculations;
@@ -173,6 +170,13 @@ public class ControlPanel extends BoardObject{
             cpTower.render(batch);
         }
         percentBar.render(batch);
+    }
+
+    public Tower getTowerBoundTo(int i) {
+        if(i <= controlPanelTowerList.size()) {
+            return controlPanelTowerList.get(i - 1).getTower();
+        }
+        return null;
     }
 
 
