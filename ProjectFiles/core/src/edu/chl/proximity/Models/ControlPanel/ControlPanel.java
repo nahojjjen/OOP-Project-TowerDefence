@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import edu.chl.proximity.Models.Map.Towers.SniperTower;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.ProximityVector;
@@ -35,6 +36,7 @@ import java.util.List;
  *
  * Unknown date modified by Johan Swanberg
  * 08/05 modified by Linda Evaldsson. Changed percentBar to use textures (images). Moved some rendering to Image class.
+ * 18/05 modified by Simon to add a sniper tower
  */
 public class ControlPanel extends BoardObject{
 
@@ -107,6 +109,7 @@ public class ControlPanel extends BoardObject{
         controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new BulletTower(new ProximityVector(0, 0), targetFactory.getTargetClosest(), map.getParticleManager())));
         controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new MissileTower(new ProximityVector(0, 0), targetFactory.getTargetClosest(), map.getParticleManager())));
         controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new SlowTower(new ProximityVector(0, 0), targetFactory.getTargetClosest(), map.getParticleManager())));
+        controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new SniperTower(new ProximityVector(0, 0), targetFactory.getTargetClosest(), map.getParticleManager())));
 
         for(int i = 0; i < controlPanelTowerList.size(); i++) {
             System.out.println("In controllpanel: Towers per row: " + i % towersPerRow);
