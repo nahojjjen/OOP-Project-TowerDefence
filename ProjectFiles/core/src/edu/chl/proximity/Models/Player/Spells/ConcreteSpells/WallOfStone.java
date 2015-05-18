@@ -1,8 +1,7 @@
 package edu.chl.proximity.Models.Player.Spells.ConcreteSpells;
 
-import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
-import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Player.Spells.Spell;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
@@ -16,6 +15,7 @@ import java.util.List;
  * 03-05-2015 Modified by Simon Gislen. Spells have range.
  * 10-05-2015 Modified by Johan swanberg. Makes spell work again, was broken by change in Map interface
  * 15/5 modified by johan, spells now have a cooldown pattern
+ * 18/05 modified by Linda Evaldsson. Removed Map.
  */
 public class WallOfStone extends Spell {
 
@@ -26,17 +26,17 @@ public class WallOfStone extends Spell {
     private static final int maxCooldown = 60*10;
     private static int currentCooldown = 0;
 
-    public WallOfStone(Map map) {
-        super(map, image, duration); //600 frames = 10 seconds @ 60 fps
+    public WallOfStone(ParticleManager particleManager) {
+        super(image, duration, particleManager); //600 frames = 10 seconds @ 60 fps
     }
 
     @Override
     public void performEffect(int counter) {
-        List<Creep> creepsWithinRange = getMap().getCreepsWithinDistance(getPosition(),range);
+        List<Creep> creepsWithinRange = getCreepsWithinDistance(getPosition(),range);
 
         for (Creep creep : creepsWithinRange) {
             creep.slowDown(100, 1);
-            getMap().getParticleManager().getDirtSmokeEffect().createEffect(creep.getCenter());
+            getParticleManager().getDirtSmokeEffect().createEffect(creep.getCenter());
         }
     }
         /*
@@ -73,7 +73,7 @@ public class WallOfStone extends Spell {
     }
     @Override
     public void playParticleEffect() {
-        getMap().getParticleManager().getWallOfStone().createEffect(getPosition());
+        getParticleManager().getWallOfStone().createEffect(getPosition());
     }
     @Override
     public double getRange() {

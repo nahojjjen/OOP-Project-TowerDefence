@@ -1,7 +1,6 @@
 package edu.chl.proximity.Models.Player.Factions;
 
 import edu.chl.proximity.Models.Map.Bases.Base;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Player.Spells.Spell;
@@ -41,7 +40,7 @@ public abstract class Faction {
             spell.resetCooldown();
         }
     }
-    public abstract void configureSpells(Map map);
+    public abstract void configureSpells(ParticleManager particleManager);
 
     public void addSpell(Spell input){
         spells.add(input);

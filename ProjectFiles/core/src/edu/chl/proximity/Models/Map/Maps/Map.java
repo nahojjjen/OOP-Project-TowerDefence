@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import edu.chl.proximity.Models.Player.Spells.Spell;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Player.Holdables.Hand;
@@ -15,7 +16,6 @@ import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
-import edu.chl.proximity.Models.Player.Spells.PersistentObject;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Utilities.PointCalculations;
 
@@ -46,7 +46,7 @@ public abstract class Map {
     private PropertiesPanel propertiesPanel;
 
     private ArrayList<Creep> creeps = new ArrayList<Creep>();
-    private ArrayList<PersistentObject> persistentObjects = new ArrayList<PersistentObject>();
+    private ArrayList<Spell> spells = new ArrayList<Spell>();
     private ArrayList<Tower> towers = new ArrayList<Tower>();
     private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 
@@ -78,8 +78,8 @@ public abstract class Map {
             creeps.add((Creep) object);
         if(object instanceof Tower)
             towers.add((Tower) object);
-        if(object instanceof PersistentObject)
-            persistentObjects.add((PersistentObject) object);
+        if(object instanceof Spell)
+            spells.add((Spell) object);
     }
 
     /**
@@ -137,22 +137,6 @@ public abstract class Map {
         return creepsWithinRange;
     }
 
-    /**
-     * Get a list of all towers within range(radius) of the position
-     * @param pos What position to search around
-     * @param range What range (radius) to search around
-     * @return A list of towers within the range specified
-     */
-    public List<Tower> getTowersWithinDistance(ProximityVector pos, double range){
-        List<Tower> towersInRange = new ArrayList<Tower>();
-        if(range <=0 || pos==null){return towersInRange;}
-        for(Tower tower: towers){
-            if(PointCalculations.distanceBetweenNoSqrt(tower.getCenter(),pos) < range*range){
-                towersInRange.add(tower);
-            }
-        }
-        return towersInRange;
-    }
 
     /**
      * Check if a creep is somewhere on the map this frame
@@ -177,8 +161,12 @@ public abstract class Map {
             creep.move();
         }
 
-        for (PersistentObject persistentObject : persistentObjects) {
-            persistentObject.tick();
+        for (Spell spell : spells) {
+            base.setLife(base.getLife() + spell.getHealthChange());
+            spell.setCreeps(creeps);
+            spell.setTowers(towers);
+            spell.tick();
+
         }
 
         for (Projectile projectile:projectiles){
@@ -244,7 +232,7 @@ public abstract class Map {
         removeFromMapFromList(creeps);
         removeFromMapFromList(towers);
         removeFromMapFromList(projectiles);
-        removeFromMapFromList(persistentObjects);
+        removeFromMapFromList(spells);
 
     }
     public void removeFromMapFromList(List<? extends BoardObject> list) {
@@ -265,7 +253,7 @@ public abstract class Map {
                 if(object instanceof Projectile) {
                     mapIterator.remove();
                 }
-                if(object instanceof PersistentObject) {
+                if(object instanceof Spell) {
                     mapIterator.remove();
                 }
 
@@ -300,8 +288,8 @@ public abstract class Map {
             }
             if(o instanceof Projectile)
                 projectiles.add((Projectile)o);
-            if(o instanceof PersistentObject)
-                persistentObjects.add((PersistentObject)o);
+            if(o instanceof Spell)
+                spells.add((Spell)o);
 
         }
     }

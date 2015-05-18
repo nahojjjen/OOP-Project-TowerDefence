@@ -25,10 +25,10 @@ public class Filler extends Faction {
     }
 
     @Override
-    public void configureSpells(Map map) {
-        addSpell(new BloodCarnage(map));
-        addSpell(new BloodPool(map));
-        addSpell(new FireField(map));
-        addSpell(new Sacrifice(map));
+    public void configureSpells(ParticleManager particleManager) {
+        addSpell(new BloodCarnage(particleManager));
+        addSpell(new BloodPool(particleManager));
+        addSpell(new FireField(particleManager));
+        addSpell(new Sacrifice(particleManager));
     }
 }

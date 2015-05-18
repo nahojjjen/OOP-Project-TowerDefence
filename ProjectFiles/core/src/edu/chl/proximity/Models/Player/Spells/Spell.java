@@ -1,9 +1,15 @@
 package edu.chl.proximity.Models.Player.Spells;
 
+import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
+import edu.chl.proximity.Models.Map.Towers.Tower;
+import edu.chl.proximity.Utilities.PointCalculations;
 import edu.chl.proximity.Utilities.ProximityVector;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Holdables.Holdable;
 import edu.chl.proximity.Models.Utils.Image;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * An abstract class for all spells, all spells are holdable objects (can be created by cursor, "hand")
@@ -13,24 +19,29 @@ import edu.chl.proximity.Models.Utils.Image;
  * 03-05-2015 Modified by Simon Gislen. Spell has a area range, could be infinite.
  * 07/05 modified by Linda Evaldsson. Spell has a control panel Image.
  * 15/5 modified by johan, spells now have a cooldown pattern
+ * 18/05 modified by Linda Evaldsson. Removed Map and added towers and creep-lists instead.
  */
 public abstract class Spell extends PersistentObject implements Holdable {
 
     private Image controlPanelImage;
-    private Map map;
+    private List<Creep> creeps;
+    private List<Tower> towers;
+    private ParticleManager particleManager;
+    private int healthChange = 0;
 
-    public Spell(Map map, Image icon, int counter) {
+    public Spell(Image icon, int counter, ParticleManager particleManager) {
         super(null, null, counter);
         controlPanelImage = icon;
-        this.map = map;
+        this.particleManager = particleManager;
 
     }
 
-    public Map getMap() {
-        return map;
+    public void setHealthChange(int newHealthChange) {
+        healthChange = newHealthChange;
     }
-
-
+    public int getHealthChange() {
+        return healthChange;
+    }
 
     @Override
     public void preparePlacing(ProximityVector position) {
@@ -41,6 +52,36 @@ public abstract class Spell extends PersistentObject implements Holdable {
             playParticleEffect(); //important that this is after setPosition
         }
     }
+
+    public List<Creep> getCreepsWithinDistance(ProximityVector position, double range) {
+        List<Creep> creepsWithinRange = new ArrayList<Creep>();
+        if (range <= 0 || position == null){return creepsWithinRange;}
+        for (Creep creep : creeps) {
+            if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), position) < range * range) {
+                creepsWithinRange.add(creep);
+            }
+        }
+        return creepsWithinRange;
+    }
+
+
+    /**
+     * Get a list of all towers within range(radius) of the position
+     * @param pos What position to search around
+     * @param range What range (radius) to search around
+     * @return A list of towers within the range specified
+     */
+    public List<Tower> getTowersWithinDistance(ProximityVector pos, double range){
+        List<Tower> towersInRange = new ArrayList<Tower>();
+        if(range <=0 || pos==null){return towersInRange;}
+        for(Tower tower: towers){
+            if(PointCalculations.distanceBetweenNoSqrt(tower.getCenter(),pos) < range*range){
+                towersInRange.add(tower);
+            }
+        }
+        return towersInRange;
+    }
+
 public abstract void resetCooldown();
 public abstract void updateCooldown();
     public abstract int getCooldownPercent();
@@ -53,4 +94,23 @@ public abstract void updateCooldown();
         return controlPanelImage;
     }
 
+    public List<Creep> getCreeps() {
+        return creeps;
+    }
+
+    public void setCreeps(List<Creep> creeps) {
+        this.creeps = creeps;
+    }
+
+    public ParticleManager getParticleManager() {
+        return particleManager;
+    }
+
+    public List<Tower> getTowers() {
+        return towers;
+    }
+
+    public void setTowers(List<Tower> towers) {
+        this.towers = towers;
+    }
 }

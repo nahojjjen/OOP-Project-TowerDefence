@@ -1,8 +1,7 @@
 package edu.chl.proximity.Models.Player.Spells.ConcreteSpells;
 
 import edu.chl.proximity.Models.Map.Creeps.Creep;
-import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Player.Spells.Spell;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
@@ -15,6 +14,7 @@ import java.util.List;
  * @author Johan on 2015-04-28.
  * 03-05-2015 Modified by Simon Gislen. Spells have range.
  * 15/5 modified by johan, spells now have a cooldown pattern
+ * 18/05 modified by Linda Evaldsson. Removed Map.
  */
 public class BloodCarnage extends Spell {
 
@@ -28,22 +28,22 @@ public class BloodCarnage extends Spell {
 
     private boolean hasDamagedPlayer = false;
 
-    public BloodCarnage(Map map) {
-        super(map, image, duration);
+    public BloodCarnage(ParticleManager particleManager) {
+        super(image, duration, particleManager);
     }
 
     @Override
     public void performEffect(int counter) {
 
         if (!hasDamagedPlayer){
-            getMap().getBase().damage(healthCost);
+            setHealthChange(-healthCost);
             hasDamagedPlayer = true;
         }
-        List<Creep> creeps = getMap().getCreeps();
+        List<Creep> creeps = getCreeps();
         for (Creep creep : creeps) {
             if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getPosition()) < range * range) {
                 creep.devolve();
-               getMap().getParticleManager().getBloodCarnageCreepEffect().createEffect(creep.getCenter());
+               getParticleManager().getBloodCarnageCreepEffect().createEffect(creep.getCenter());
             }
         }
     }
@@ -74,7 +74,7 @@ public class BloodCarnage extends Spell {
 
     @Override
     public void playParticleEffect() {
-        getMap().getParticleManager().getBloodCarnageEffect().createEffect(getPosition());
+        getParticleManager().getBloodCarnageEffect().createEffect(getPosition());
     }
 
     @Override

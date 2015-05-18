@@ -1,8 +1,7 @@
 package edu.chl.proximity.Models.Player.Spells.ConcreteSpells;
 
 import edu.chl.proximity.Models.Map.Creeps.Creep;
-import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Player.Spells.Spell;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
@@ -20,6 +19,7 @@ import java.util.List;
  *
  * 03-05-2015 Modified by Simon Gislen. Spells have range.
  * 15/5 modified by johan, spells now have a cooldown pattern
+ * 18/05 modified by Linda Evaldsson. Removed Map.
  */
 public class BloodPool extends Spell {
 
@@ -31,21 +31,20 @@ public class BloodPool extends Spell {
     private static int currentCooldown = 0;
     private static final int baseCooldown = 30;
 
-    public BloodPool(Map map) {
-        super(map, image, duration);
+    public BloodPool(ParticleManager particleManager) {
+        super(image, duration, particleManager);
     }
 
     @Override
     public void performEffect(int counter) {
 
-        List<Creep> creeps = getMap().getCreeps();
         int hitCreeps = 0;
-        for (Creep creep : creeps) {
+        for (Creep creep : getCreeps()) {
             if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getPosition()) < range * range) {
                 hitCreeps++;
                 creep.devolve();
-                getMap().getBase().heal(1);
-                getMap().getParticleManager().getBloodPoolCreepEffect().createEffect(creep.getCenter());
+                setHealthChange(1);
+                getParticleManager().getBloodPoolCreepEffect().createEffect(creep.getCenter());
             }
 
             fixCustomCooldownLogic(hitCreeps);
@@ -82,7 +81,7 @@ public class BloodPool extends Spell {
     }
     @Override
     public void playParticleEffect() {
-        getMap().getParticleManager().getBloodPoolEffect().createEffect(getPosition());
+        getParticleManager().getBloodPoolEffect().createEffect(getPosition());
     }
 
     @Override

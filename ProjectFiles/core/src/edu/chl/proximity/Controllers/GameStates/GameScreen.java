@@ -67,7 +67,7 @@ public class GameScreen implements Screen{
 
         shapeRenderer.setAutoShapeType(true);
         map.setBase(player.getFaction().getNewBase(map.getPath(), map.getParticleManager()));
-        player.getFaction().configureSpells(map);
+        player.getFaction().configureSpells(map.getParticleManager());
         player.getFaction().resetSpellCooldowns();
         Gdx.input.setInputProcessor(mainController);
 

@@ -1,7 +1,5 @@
 package edu.chl.proximity.Models.MenuModels;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
@@ -11,12 +9,9 @@ import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.MenuModels.FactionChooser.FactionChooser;
 import edu.chl.proximity.Models.MenuModels.MapSelect.MapSelect;
-import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Planes;
 import edu.chl.proximity.Models.Player.Factions.Faction;
 import edu.chl.proximity.Models.Utils.GameData;
-import edu.chl.proximity.Models.Map.Maps.StandardMap;
 import edu.chl.proximity.Models.Player.Players.Player;
-import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.PointCalculations;
 
@@ -64,7 +59,7 @@ public class MainMenu {
     public void pressedStart(Viewport viewport){
         player.setFacton(factionChooser.getCurrentlyShown());
         map=mapSelect.getSelected();
-        player.getFaction().configureSpells(map);
+        player.getFaction().configureSpells(map.getParticleManager());
 
         GameData.getInstance().setPlayer(player);
         player.getResources().setResources(500,500,0);

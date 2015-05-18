@@ -1,5 +1,6 @@
 package edu.chl.proximity.Models.Player.Factions.ConcreteFactions;
 
+import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.Map.Bases.ShardBase;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -31,10 +32,10 @@ public class Planes extends Faction {
     }
 
     @Override
-    public void configureSpells(Map map) {
-        addSpell(new FrostField(map));
-        addSpell(new WallOfStone(map));
-        addSpell(new FireField(map));
-        addSpell(new ChainLightning(map));
+    public void configureSpells(ParticleManager particleManager) {
+        addSpell(new FrostField(particleManager));
+        addSpell(new WallOfStone(particleManager));
+        addSpell(new FireField(particleManager));
+        addSpell(new ChainLightning(particleManager));
     }
 }
