@@ -46,7 +46,6 @@ public abstract class Creep extends BoardObject {
     }
 
     public boolean isDead(){return isDead;}
-
     /**
      * create a new creep with an image and a speed
      * @param image what image the creep should have (it will rotate a random amount automatically)

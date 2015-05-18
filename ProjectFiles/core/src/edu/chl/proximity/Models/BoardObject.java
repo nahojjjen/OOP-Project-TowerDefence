@@ -191,4 +191,8 @@ public abstract class BoardObject implements Cloneable {
 
         return clone;
     }
+
+    public boolean isRemoved() {
+        return isRemoved;
+    }
 }
