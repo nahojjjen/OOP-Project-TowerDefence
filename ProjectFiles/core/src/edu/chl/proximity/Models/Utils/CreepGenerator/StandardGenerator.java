@@ -44,8 +44,13 @@ public class StandardGenerator {
      */
     public Wave generateWaveForWaveIndex(int waveIndex) {
 
+        if (waveIndex < 1) {
+            return null;
+        }
+        else if (waveIndex > 1000) {
+            return null;
+        }
         //Defaults
-
         double spawnInterval = 1;
         double cooldown = 4;
         ArrayList<Creep> creeps = new ArrayList<Creep>();

@@ -39,14 +39,8 @@ public class Image implements Cloneable {
         texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
 
-    public Image(Texture t) {
-        texture = t;
-
-        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Nearest);
-    }
     public Image(File f) {
-        texture = new Texture(f.getPath());
-        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        this(f.getPath());
     }
 
     public void render(SpriteBatch batch, ProximityVector p, double angle) {

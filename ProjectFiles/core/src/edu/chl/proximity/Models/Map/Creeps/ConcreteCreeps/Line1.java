@@ -10,6 +10,7 @@ import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
 import edu.chl.proximity.Utilities.Constants;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * @author Simon Gislén
@@ -34,6 +35,7 @@ public class Line1 extends Creep {
     public Line1(int creepLineIndex, ParticleManager particleManager, Path path) {
         super(null, img, speed, particleManager, path);
         this.creepLineIndex = creepLineIndex;
+        String current = null;
         setImage(getCreepImage());
     }
 
@@ -81,9 +83,6 @@ public class Line1 extends Creep {
                 image = new Image(imageFile);
                 break;
             }
-        }
-        if (image == null) {
-            image = new Image(Constants.FILE_PATH + "Creeps/Line1/7.png");
         }
         return image;
     }
