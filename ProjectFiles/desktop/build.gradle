@@ -7,17 +7,17 @@ sourceCompatibility = 1.6
 sourceSets.main.java.srcDirs = [ "src/" ]
 
 project.ext.mainClassName = "edu.chl.proximity.desktop.DesktopLauncher"
-project.ext.assetsDir = new File("../core/assets");
+project.ext.assetsDir = new File("../");
 
 
 
-/*task run(dependsOn: classes, type: JavaExec) {
+task run(dependsOn: classes, type: JavaExec, overwrite: true) {
     main = project.mainClassName
     classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in
     workingDir = project.assetsDir
     ignoreExitValue = true
-}*/
+}
 
 task dist(type: Jar) {
     from files(sourceSets.main.output.classesDir)
