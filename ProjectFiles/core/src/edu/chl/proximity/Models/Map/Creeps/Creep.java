@@ -66,7 +66,10 @@ public abstract class Creep extends BoardObject {
      * @param oldCreep The old creep from which the location on the screen is taken.
      */
     public Creep(Image image, int speed, Creep oldCreep) {
-        this(oldCreep.getPosition(), image, speed, oldCreep.getParticleManager(), oldCreep.getPath());
+
+        this(null, image, speed, oldCreep.getParticleManager(), oldCreep.getPath());
+        
+        this.setPosition(new ProximityVector(oldCreep.getPosition().x, oldCreep.getPosition().y));
         nextWayPointID = oldCreep.nextWayPointID;
         distanceToNextWayPoint = oldCreep.distanceToNextWayPoint;
         moveAngle = getAngleToNextPoint();

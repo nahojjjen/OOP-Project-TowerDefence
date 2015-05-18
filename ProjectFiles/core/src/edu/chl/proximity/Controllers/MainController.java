@@ -73,8 +73,9 @@ public class MainController implements InputProcessor{
             mapController.update();
             backgroundController.update();
             controlPanelController.update();
-            map.clearRemoveStack();
+
             map.clearAddStack();
+            map.clearRemoveStack();
         }
     }
     @Override

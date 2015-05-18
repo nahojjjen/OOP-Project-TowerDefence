@@ -36,7 +36,6 @@ public class Triangle extends Creep {
         if(isDead()){
 
             displayDeathEffect();
-            add(this);
             add(new Circle(this));
 
             Player p = GameData.getInstance().getPlayer();
