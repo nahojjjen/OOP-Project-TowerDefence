@@ -13,10 +13,19 @@ import com.badlogic.gdx.math.RandomXS128;
 public class ProximityRandom {
     private static RandomXS128 rndGenerator = new RandomXS128();
 
+    /**
+     * get a double between 0 and 1
+     * @return a double between 0 and 1, choosen in a seemingly random way
+     */
     public static double getRandomDouble(){
         return rndGenerator.nextDouble();
     }
 
+
+    /**
+     * get a float between 0 and 1
+     * @return a float between 0 and 1, choosen in a seemingly random way
+     */
     public static float getRandomFloat(){
         return rndGenerator.nextFloat();
     }
