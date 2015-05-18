@@ -34,7 +34,7 @@ public class BulletTower2 extends Tower implements Cloneable {
     private static Image img = new Image(Constants.FILE_PATH + "Towers/Bullet/level2.png");
 
     public BulletTower2(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager) {
-        super(pos, img, 0, "Bullet Tower 2");
+        super(pos, img, 0, "Rapid Fire Tower");
         setParticleManager(particleManager);
         this.cost = resources;
         this.targetingMethod = targetingMethod;
@@ -87,7 +87,8 @@ public class BulletTower2 extends Tower implements Cloneable {
 
     @Override
     public Tower getNewUpgrade() {
-        return new BulletTower2(this.getPosition(), targetingMethod, getParticleManager());
+        return null;
+        //return new BulletTower2(this.getPosition(), targetingMethod, getParticleManager());
     }
 
     @Override

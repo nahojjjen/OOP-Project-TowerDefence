@@ -43,7 +43,8 @@ public class MissileTower extends ShootingTower {
     }
 
     public Tower getNewUpgrade() {
-        return new MissileTower(this.getPosition(), this.getTargetingMethod(), getParticleManager());
+        return null;
+        //return new MissileTower(this.getPosition(), this.getTargetingMethod(), getParticleManager());
     }
 
 

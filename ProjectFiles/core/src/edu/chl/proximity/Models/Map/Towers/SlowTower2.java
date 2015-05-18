@@ -30,17 +30,17 @@ public class SlowTower2 extends ShootingTower {
      * @param pos Position of tower
      */
     public SlowTower2(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager){
-        super(pos, img, range, targetingMethod, reloadTime, resources, "Freeze Tower 2");
+        super(pos, img, range, targetingMethod, reloadTime, resources, "Permafrost Tower");
         setParticleManager(particleManager);
     }
 
     @Override
     public Projectile createProjectile() {
-
         return new SlowDownBullet(getCenter(), getAngle(), getTarget(), slowDownPercent, slowDownTime, getParticleManager());
     }
 
     public Tower getNewUpgrade(){
-        return new SlowTower2(this.getPosition(),this.getTargetingMethod(), getParticleManager());
+        return null;
+        //return new SlowTower2(this.getPosition(),this.getTargetingMethod(), getParticleManager());
     }
 }

@@ -14,13 +14,13 @@ import edu.chl.proximity.Viewers.Renderer;
  * @date 2015-05-08
  */
 public class CheckBox extends BoardObject{
-    private static Image checked= new Image(Constants.FILE_PATH + "Buttons/MapSelected.png");
-    private static Image unChecked=new Image(Constants.FILE_PATH + "Buttons/MapSelectable.png");
+    private static Image checked= new Image(Constants.FILE_PATH + "Buttons/RadioBoxS.png");
+    private static Image unChecked=new Image(Constants.FILE_PATH + "Buttons/RadioBoxNS.png");
     private ProximityFont text;
 
     public CheckBox(ProximityVector pos, Map map, String text){
         super(pos, unChecked,0);
-        this.text=new ProximityFont(new ProximityVector(pos.x + 40, pos.y), text);
+        this.text=new ProximityFont(new ProximityVector(pos.x + 20, pos.y), text);
     }
 
     public void setAsChecked(){

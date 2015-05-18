@@ -44,9 +44,9 @@ public class TowerPanel extends BoardObject{
     public TowerPanel(Map map){
         super(pos,background,0,width,height);
         this.map=map;
-        first=new CheckBox(new ProximityVector(pos.x+160,pos.y+30), map, "Target first");
-        closest=new CheckBox(new ProximityVector(pos.x+160,pos.y+70), map, "Target closest");
-        last=new CheckBox(new ProximityVector(pos.x+160,pos.y+110), map, "Target last");
+        first=new CheckBox(new ProximityVector(pos.x+180,pos.y+30), map, "Target first");
+        closest=new CheckBox(new ProximityVector(pos.x+180,pos.y+60), map, "Target closest");
+        last=new CheckBox(new ProximityVector(pos.x+180,pos.y+90), map, "Target last");
         upgrade=new UpgradeButton(new ProximityVector(pos.x+5, pos.y+95));
         targetingFactory=new TargetingFactory(map);
         setInfo();
@@ -112,21 +112,23 @@ public class TowerPanel extends BoardObject{
             Tower chosenTower = map.getChoosenTower();
             towerName.setText(chosenTower.getName());
             towerImage=chosenTower.getImage();
-            upgrade.setImage(map.getChoosenTower().getUpgrade().getImage());
-            Resources r=chosenTower.getUpgradeCost();
+            if(map.getChoosenTower().getUpgrade() != null) {
+                upgrade.setImage(map.getChoosenTower().getUpgrade().getImage());
+                Resources r = chosenTower.getUpgradeCost();
 
-            Resources p= GameData.getInstance().getPlayer().getResources();
-            if(r.getPolygons()>p.getPolygons() || r.getLines()>p.getLines() || r.getPoints()>p.getPoints()){
-                afford=false;
-                cost.setText("Upgrade (Can't afford)");
-            }else{
-                afford=true;
-                cost.setText("Upgrade");
+                Resources p = GameData.getInstance().getPlayer().getResources();
+                if (r.getPolygons() > p.getPolygons() || r.getLines() > p.getLines() || r.getPoints() > p.getPoints()) {
+                    afford = false;
+                    cost.setText("Upgrade (Can't afford)");
+                } else {
+                    afford = true;
+                    cost.setText("Upgrade");
+                }
+                points.setText("Points: " + r.getPoints());
+                lines.setText("Lines: " + r.getLines());
+                polygons.setText("Polygons: " + r.getPolygons());
+
             }
-            points.setText("Points: " + r.getPoints());
-            lines.setText("Lines: " + r.getLines());
-            polygons.setText("Polygons: " + r.getPolygons());
-
             if(map.getChoosenTower() instanceof ShootingTower){
                 if(((ShootingTower) map.getChoosenTower()).getTargetingMethod() instanceof TargetFirst){
                     pressedFirst();
@@ -150,11 +152,13 @@ public class TowerPanel extends BoardObject{
             last.render(batch);
             towerName.draw(batch);
             towerImage.render(batch, new ProximityVector(pos.x + 5, pos.y + 5), 0);
-            upgrade.render(batch);
-            cost.draw(batch);
-            points.draw(batch);
-            lines.draw(batch);
-            polygons.draw(batch);
+            if(map.getChoosenTower().getUpgrade() != null) {
+                upgrade.render(batch);
+                cost.draw(batch);
+                points.draw(batch);
+                lines.draw(batch);
+                polygons.draw(batch);
+            }
         }
     }
 }
