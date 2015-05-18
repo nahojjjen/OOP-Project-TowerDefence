@@ -170,7 +170,7 @@ public abstract class Map {
     public void update() {
 
         for (Tower tower : towers) {
-            tower.update();
+            tower.update(creeps);
         }
         for (Creep creep : creeps) {
             creep.rotate();

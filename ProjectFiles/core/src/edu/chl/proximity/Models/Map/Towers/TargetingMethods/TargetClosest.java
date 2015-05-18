@@ -2,8 +2,6 @@ package edu.chl.proximity.Models.Map.Towers.TargetingMethods;
 
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
-import edu.chl.proximity.Models.Utils.GameData;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.ArrayList;
@@ -13,21 +11,22 @@ import java.util.List;
  * @author Johan Swanberg and Linda Evaldsson (group work)
  * @date 2015-04-11
  *
+ * 18/05 modified by Linda Evaldsson. Removed Map.
+ *
  */
 public class TargetClosest extends TargetingMethod{
 
 
-    public TargetClosest(Map map) {
-        super(map);
+    public TargetClosest() {
     }
 
-    public Creep getTarget(ProximityVector position, double range){
+    public Creep getTarget(List<Creep> creeps, ProximityVector position, double range){
         double rangeToClosest;
         Creep closestCreep;
 
-        if(getMap().getCreeps().size() > 0){
+        if(creeps.size() > 0){
             List<Creep> inRange = new ArrayList<Creep>();
-            for(Creep c: getMap().getCreeps()){
+            for(Creep c: creeps){
                 if(isWithinRange(c,position,range)){
                     inRange.add(c);
                 }

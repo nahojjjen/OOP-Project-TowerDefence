@@ -2,7 +2,6 @@ package edu.chl.proximity.Models.Map.Towers.TargetingMethods;
 
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
-import edu.chl.proximity.Models.Map.Maps.Map;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,13 +9,12 @@ import java.util.List;
 /**
  * @author Johan Swanberg
  * @date 2015-04-11
+ *
+ * 18/05 modified by Linda Evaldsson. Removed Map.
  */
 public class TargetLast extends TargetingMethod {
-    private List<Creep> creeps;
+    public TargetLast() {
 
-    public TargetLast(Map map) {
-        super(map);
-        creeps = map.getCreeps();
     }
 
 
@@ -28,7 +26,7 @@ public class TargetLast extends TargetingMethod {
      * @return
      */
     @Override
-    public Creep getTarget(ProximityVector towerPosition, double towerRange) {
+    public Creep getTarget(List<Creep> creeps, ProximityVector towerPosition, double towerRange) {
         if (creeps.size() > 0) { //can only get a target if there are enemies
             List<Creep> inRange = new ArrayList<Creep>();
             for(Creep c: creeps){

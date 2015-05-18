@@ -1,10 +1,11 @@
 package edu.chl.proximity.Models.Map.Towers.TargetingMethods;
 
-import edu.chl.proximity.Models.Map.Maps.Map;
 
 /**
  * @author Linda Evaldsson
  * @date 2015-05-06
+ *
+ * 18/05 modified by Linda Evaldsson. Removed Map.
  */
 public class TargetingFactory {
 
@@ -13,10 +14,10 @@ public class TargetingFactory {
     private TargetClosest targetClosest;
 
 
-    public TargetingFactory(Map map) {
-        targetFirst = new TargetFirst(map);
-        targetLast = new TargetLast(map);
-        targetClosest = new TargetClosest(map);
+    public TargetingFactory() {
+        targetFirst = new TargetFirst();
+        targetLast = new TargetLast();
+        targetClosest = new TargetClosest();
     }
 
     public TargetingMethod getTargetFirst() {

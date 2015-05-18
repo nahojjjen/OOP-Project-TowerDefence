@@ -1,12 +1,16 @@
 package edu.chl.proximity.Models.Map.Towers;
 
+import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
+import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Player.Holdables.Holdable;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
+
+import java.util.List;
 
 
 /**
@@ -37,7 +41,7 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
         return name;
     }
 
-    public abstract void update();
+    public abstract void update(List<Creep> creeps);
 
 
     public Resources getUpgradeCost() {
@@ -86,4 +90,5 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
     public void setParticleManager(ParticleManager particleManager) {
         this.particleManager = particleManager;
     }
+
 }

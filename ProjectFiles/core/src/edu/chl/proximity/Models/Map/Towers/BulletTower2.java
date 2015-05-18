@@ -11,6 +11,8 @@ import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
 import edu.chl.proximity.Utilities.ProximityVector;
 
+import java.util.List;
+
 /**
  * Created by simongislen on 13/05/15.
  */
@@ -47,15 +49,15 @@ public class BulletTower2 extends Tower implements Cloneable {
     /**
      * Targets the closest creep, if one is in range.
      */
-    public void target(){
-        currentTarget = targetingMethod.getTarget(getPosition(), range);
+    public void target(List<Creep> creeps){
+        currentTarget = targetingMethod.getTarget(creeps, getPosition(), range);
         if (currentTarget != null) {
             this.setAngle(PointCalculations.getVectorAngle(this.getPosition(), currentTarget.getPosition()));
         }
     }
 
-    public void shoot(){
-        target();
+    public void shoot(List<Creep> creeps){
+        target(creeps);
 
         if (ammoCounter <= ammo) {
             if (currentReload < 1 && currentTarget != null) {
@@ -81,8 +83,8 @@ public class BulletTower2 extends Tower implements Cloneable {
     }
 
     @Override
-    public void update() {
-        shoot();
+    public void update(List<Creep> creeps) {
+        shoot(creeps);
     }
 
     @Override

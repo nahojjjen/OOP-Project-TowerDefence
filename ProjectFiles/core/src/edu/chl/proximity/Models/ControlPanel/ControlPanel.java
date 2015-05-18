@@ -102,7 +102,7 @@ public class ControlPanel extends BoardObject{
      */
     public void initiateControlPanelTowers() {
 
-        TargetingFactory targetFactory = new TargetingFactory(getMap());
+        TargetingFactory targetFactory = new TargetingFactory();
         controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new BulletTower(new ProximityVector(0, 0), targetFactory.getTargetClosest(), map.getParticleManager())));
         controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new MissileTower(new ProximityVector(0, 0), targetFactory.getTargetClosest(), map.getParticleManager())));
         controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new SlowTower(new ProximityVector(0, 0), targetFactory.getTargetClosest(), map.getParticleManager())));

@@ -8,6 +8,8 @@ import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.PointCalculations;
 
+import java.util.List;
+
 /**
  * @author simongislen
  * @date 04/05/15.
@@ -44,8 +46,8 @@ public abstract class ShootingTower extends Tower {
     }
 
     @Override
-    public void update() {
-        target();
+    public void update(List<Creep> creeps) {
+        target(creeps);
         shoot();
         reload();
     }
@@ -64,8 +66,8 @@ public abstract class ShootingTower extends Tower {
     /**
      * Targets the closest creep, if one is in range.
      */
-    public void target(){
-        currentTarget = targetingMethod.getTarget(getPosition(), range);
+    public void target(List<Creep> creeps){
+        currentTarget = targetingMethod.getTarget(creeps, getPosition(), range);
         if (currentTarget != null) {
             this.setAngle(PointCalculations.getVectorAngle(this.getPosition(), currentTarget.getPosition()));
         }

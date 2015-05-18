@@ -134,11 +134,11 @@ public class SpellPanel extends BoardObject {
      * @return a spell bound to that key, if a spell exists
      * */
     public Spell getSpellBoundTo(String input){
-        switch (input){
-            case "q": return controlPanelSpellList.get(0).getSpell();
-            case "w": return controlPanelSpellList.get(1).getSpell();
-            case "e": return controlPanelSpellList.get(2).getSpell();
-            case "r": return controlPanelSpellList.get(3).getSpell();
+        switch (input.charAt(0)){
+            case 'q': return controlPanelSpellList.get(0).getSpell();
+            case 'w': return controlPanelSpellList.get(1).getSpell();
+            case 'e': return controlPanelSpellList.get(2).getSpell();
+            case 'r': return controlPanelSpellList.get(3).getSpell();
         }
         return null;
     }

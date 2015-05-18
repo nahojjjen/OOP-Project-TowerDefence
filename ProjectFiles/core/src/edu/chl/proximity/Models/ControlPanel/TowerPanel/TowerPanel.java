@@ -51,7 +51,7 @@ public class TowerPanel extends BoardObject{
         last=new CheckBox(new ProximityVector(pos.x+180,pos.y+90), map, "Target last");
         upgrade=new UpgradeButton(new ProximityVector(pos.x+5, pos.y+95));
         sell=new SellButton(new ProximityVector(pos.x+150,pos.y+115),map);
-        targetingFactory=new TargetingFactory(map);
+        targetingFactory=new TargetingFactory();
         setInfo();
     }
     public BoardObject getButtonOnPosition(ProximityVector pos){

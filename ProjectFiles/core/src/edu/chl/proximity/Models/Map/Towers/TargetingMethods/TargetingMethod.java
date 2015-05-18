@@ -2,27 +2,23 @@ package edu.chl.proximity.Models.Map.Towers.TargetingMethods;
 
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
-import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Utilities.PointCalculations;
+
+import java.util.List;
 
 /**
  * Created by Johan on 2015-04-11. Group work with Linda
+ *
+ * 18/05 modified by Linda Evaldsson. Removed Map.
  */
 public abstract class TargetingMethod {
 
-    private Map map;
-
-    public TargetingMethod(Map map) {
-        this.map = map;
+    public TargetingMethod() {
     }
-    public abstract Creep getTarget(ProximityVector position, double range);
+    public abstract Creep getTarget(List<Creep> creeps, ProximityVector position, double range);
 
     public boolean isWithinRange(Creep creep, ProximityVector towerPosition, double range){
         return PointCalculations.distanceBetweenNoSqrt(towerPosition, creep.getPosition()) < range*range;
         }
 
-    public Map getMap() {
-        return map;
-    }
 }
