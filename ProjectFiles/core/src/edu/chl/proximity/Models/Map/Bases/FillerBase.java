@@ -7,7 +7,8 @@ import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
- * Created by Hanna on 2015-05-01.
+ * @author Hanna
+ * @date 2015-05-01.
  */
 public class FillerBase extends Base{
     public FillerBase(Path path, ParticleManager particleManager){

@@ -33,7 +33,7 @@ public class Triangle extends Creep {
 
     @Override
     public void devolve() {
-        if(isDead()){
+        if(!isDead()){
 
             displayDeathEffect();
             add(new Circle(this));
