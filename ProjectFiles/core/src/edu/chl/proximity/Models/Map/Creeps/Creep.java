@@ -276,4 +276,8 @@ public abstract class Creep extends BoardObject {
     public Path getPath() {
         return path;
     }
+
+    public double getSpeed() {
+        return speed;
+    }
 }
