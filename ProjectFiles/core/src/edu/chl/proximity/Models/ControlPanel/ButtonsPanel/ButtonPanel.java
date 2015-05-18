@@ -27,7 +27,7 @@ public class ButtonPanel extends BoardObject {
     private static ProximityVector pausePos=new ProximityVector(position.x+20, position.y);
     private static ProximityVector playPos=new ProximityVector(pausePos.x+60, position.y);
     private static ProximityVector speedPos=new ProximityVector(playPos.x+60, position.y);
-    private static ProximityVector propPos=new ProximityVector(speedPos.x+60, position.y);
+    private static ProximityVector propPos=new ProximityVector(speedPos.x+70, position.y);
 
     private boolean pause=false;
     private int speed=1;

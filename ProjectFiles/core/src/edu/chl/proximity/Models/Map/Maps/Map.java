@@ -364,11 +364,12 @@ public abstract class Map {
         }
 
         batch.end();
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        /*shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+
 
         if(getChoosenTower() != null)
             renderRangeIndicator(shapeRenderer, new Color(0.4f, 0.2f, 0.9f, 0.2f), getChoosenTower().getCenter(), getChoosenTower().getRange());
-        shapeRenderer.end();
+        shapeRenderer.end();*/
         batch.begin();
 
 

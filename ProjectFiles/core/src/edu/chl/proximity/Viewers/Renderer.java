@@ -61,7 +61,7 @@ public class Renderer {
         shapeRenderer.end();
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        renderChosenTowerRange(shapeRenderer);
+        //renderChosenTowerRange(shapeRenderer);
         //renderAllTowerRanges(shapeRenderer);
         //debugRenderAllCentersAndUpperLeftCorners(shapeRenderer);
         shapeRenderer.end();

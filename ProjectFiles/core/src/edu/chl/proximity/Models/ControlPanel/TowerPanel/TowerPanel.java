@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.ControlPanel.TowerPanel;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
@@ -33,6 +34,7 @@ public class TowerPanel extends BoardObject{
     private CheckBox closest;
     private CheckBox last;
     private UpgradeButton upgrade;
+    private SellButton sell;
 
     private ProximityFont cost=new ProximityFont(new ProximityVector(pos.x+5, pos.y+75),"Upgrade");
     private ProximityFont points=new ProximityFont(new ProximityVector(pos.x+60, pos.y+95),"Points:");
@@ -48,6 +50,7 @@ public class TowerPanel extends BoardObject{
         closest=new CheckBox(new ProximityVector(pos.x+180,pos.y+60), map, "Target closest");
         last=new CheckBox(new ProximityVector(pos.x+180,pos.y+90), map, "Target last");
         upgrade=new UpgradeButton(new ProximityVector(pos.x+5, pos.y+95));
+        sell=new SellButton(new ProximityVector(pos.x+150,pos.y+115),map);
         targetingFactory=new TargetingFactory(map);
         setInfo();
     }
@@ -63,6 +66,8 @@ public class TowerPanel extends BoardObject{
             return last;
         }else if(PointCalculations.isPointInObject(pos, upgrade)){
             pressedUpgrade();
+        }else if(PointCalculations.isPointInObject(pos,sell)){
+            pressedSell();
         }
         return null;
     }
@@ -107,6 +112,16 @@ public class TowerPanel extends BoardObject{
             map.setChoosenTower(upgrade);
         }
     }
+
+    public void pressedSell(){
+        Double p=new Double(map.getChoosenTower().getCost().getPoints()/2);
+        Double l=new Double(map.getChoosenTower().getCost().getLines()/2);
+        Double poly=new Double(map.getChoosenTower().getCost().getPolygons()/2);
+        GameData.getInstance().getPlayer().getResources().addResources(new Resources(p.intValue(),l.intValue(),poly.intValue()));
+        map.getChoosenTower().remove();
+        map.setChoosenTower(null);
+    }
+
     public void setInfo(){
         if(map.getChoosenTower() != null){
             Tower chosenTower = map.getChoosenTower();
@@ -152,6 +167,7 @@ public class TowerPanel extends BoardObject{
             last.render(batch);
             towerName.draw(batch);
             towerImage.render(batch, new ProximityVector(pos.x + 5, pos.y + 5), 0);
+            sell.render(batch);
             if(map.getChoosenTower().getUpgrade() != null) {
                 upgrade.render(batch);
                 cost.draw(batch);

@@ -88,9 +88,12 @@ public class Hand {
     }
 
     public void render(ShapeRenderer shapeRenderer) {
+
         if(currentItem instanceof Tower){
             if(!((Tower) currentItem).getIfPlaced()){
                 renderRangeIndicator(shapeRenderer, getRangeIndicatorColor(), getPosition(), getItem().getRange());
+            }else{
+                renderRangeIndicator(shapeRenderer,getRangeIndicatorColor(),((Tower) currentItem).getCenter(),getItem().getRange());
             }
         }else {
             renderRangeIndicator(shapeRenderer, getRangeIndicatorColor(), getPosition(), getItem().getRange());
@@ -98,8 +101,10 @@ public class Hand {
     }
 
     private void renderRangeIndicator(ShapeRenderer renderer, Color color, ProximityVector position, double range) {
-        Gdx.gl.glEnable(GL20.GL_BLEND); //enables transparency
-        renderer.setColor(color);
-        renderer.circle(position.x, position.y, (float) range);
+        if(range<1500) {
+            Gdx.gl.glEnable(GL20.GL_BLEND); //enables transparency
+            renderer.setColor(color);
+            renderer.circle(position.x, position.y, (float) range);
+        }
     }
 }
