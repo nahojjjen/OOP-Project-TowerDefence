@@ -35,7 +35,7 @@ public class TowerTest {
     assertTrue(tower.getName().equals("Bullet Tower"));
     }
 
-    @Test(expected=java.lang.NoClassDefFoundError.class) // will attempt to create a projectile, but will fail
+    @Test//(expected=java.lang.NoClassDefFoundError.class) // will attempt to create a projectile, but will fail
     public void testUpdate() throws Exception {
         //update will do target, shoot, reload
 
@@ -48,13 +48,12 @@ public class TowerTest {
         tower.update(testCreepList); // should not fire, no creeps nearby
         tower.setPosition(new FirstPath().getWaypoint(0)); // place the test tower on top of where the creep will spawn
         testCreepList.add(new Line1(1, new ParticleManager(), new FirstPath()));
-
-            tower.update(testCreepList); // should fire a projectile and start the cooldown
-
-
+        tower.update(testCreepList); // should fire a projectile and start the cooldown
+        assertTrue(tower.getAddList().size() == 1); //make sure that the prjectiile has been marked for adding
 
         testCreepList.add(new Line1(1, new ParticleManager(), new FirstPath()));
         tower.update(testCreepList);
+        tower.preparePlacing(new ProximityVector(100,100));
         assertTrue(tower.getIfPlaced());
         assertTrue(tower.getRange() > 0);
 

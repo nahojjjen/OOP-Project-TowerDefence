@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
  */
 public class SlowTowerTest {
 
-    @Test (expected = java.lang.ExceptionInInitializerError.class)
+    @Test// (expected = java.lang.ExceptionInInitializerError.class)
     public void testCreateProjectile() throws Exception {
         SlowTower test = new SlowTower( new ProximityVector(0,0), new TargetClosest(), new ParticleManager());
         Projectile projectile = test.createProjectile();

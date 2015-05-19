@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 /**
  * @Johan
  * @date 2015-05-18.
- * Tests fillerBase and
+ * Tests all base classes
  */
 public class AllBaseTest {
     @Test

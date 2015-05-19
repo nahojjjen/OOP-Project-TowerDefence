@@ -1,12 +1,18 @@
 package test.edu.chl.proximity.Models.Map.Towers;
 
+import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line1;
+import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
+import edu.chl.proximity.Models.Map.Paths.ConcretePaths.FirstPath;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Map.Towers.SniperTower;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetClosest;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -15,9 +21,12 @@ import static org.junit.Assert.*;
  */
 public class SniperTowerTest {
 
-    @Test (expected = java.lang.ExceptionInInitializerError.class)
+    @Test //(expected = java.lang.ExceptionInInitializerError.class)
     public void testCreateProjectile() throws Exception {
         SniperTower tower = new SniperTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager());
+        List<Creep> list = new ArrayList<>();
+        list.add(new Line1(4, new ParticleManager(), new FirstPath()));
+        tower.update(list);
         Projectile projectile = tower.createProjectile();
         assertTrue(projectile != null);
     }

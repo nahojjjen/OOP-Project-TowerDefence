@@ -15,16 +15,17 @@ import static org.junit.Assert.*;
  */
 public class MissileTest {
 
-    @Test (expected = ExceptionInInitializerError.class)
+    @Test (expected = IllegalStateException.class)
     public void testReAngle() throws Exception {
         Creep creep = new Line1(1,new ParticleManager(),new FirstPath());
+        creep.setPosition(new ProximityVector(200,200));
         Missile missile = new Missile(new ProximityVector(100,100), 0 , creep,new ParticleManager());
         assertTrue(missile.getAngle() == 0);
         missile.reAngle();
         assertTrue(missile.getAngle() ==45); //the missile should have re-angled to face its target
 
         Missile missile2 = new Missile(new ProximityVector(100,100), 0 , null,new ParticleManager());
-        missile.reAngle();
+        missile2.reAngle(); // tests re-angling to a null position
     }
 
     @Test

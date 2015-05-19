@@ -39,7 +39,7 @@ public class BulletTower2Test {
 
     }
 
-    @Test(expected=java.lang.ExceptionInInitializerError.class)
+    @Test//(expected=java.lang.ExceptionInInitializerError.class)
     public void testShoot() throws Exception {
         BulletTower2 test = new BulletTower2(new ProximityVector(0,0), new TargetClosest(), new ParticleManager());
         test.shoot(null); //make sure it can handle a null argument
@@ -52,7 +52,7 @@ public class BulletTower2Test {
         test.setCenter(new ProximityVector(999, 999));
         test.shoot(list);
 
-        test.setCenter(new ProximityVector(100,100));
+        test.setCenter(new ProximityVector(1,1));
         for (int i = 0; i<1000; i++){
             test.shoot(list);
         }
