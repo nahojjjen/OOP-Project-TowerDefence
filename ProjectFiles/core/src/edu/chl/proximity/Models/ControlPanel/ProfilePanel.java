@@ -7,11 +7,9 @@ package edu.chl.proximity.Models.ControlPanel;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Matrix4;
-import com.badlogic.gdx.math.Vector3;
 import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -57,7 +55,7 @@ public class ProfilePanel extends BoardObject {
         //return new ProximityFont(new ProximityVector(width + x, y), s);
     }
 
-    public void render(SpriteBatch batch) {
+    public void render(ProximityBatch batch) {
         super.render(batch);
 
         levelText.draw(batch);
@@ -82,7 +80,7 @@ public class ProfilePanel extends BoardObject {
         shapeRenderer.end();
         batch.begin();
         Image image = player.getFaction().getShowImage();
-        image.render(batch, new ProximityVector(10, Gdx.graphics.getHeight() - 105), 180);
+        batch.render(image, new ProximityVector(10, Gdx.graphics.getHeight() - 105), 180);
         batch.end();
 
 //        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);

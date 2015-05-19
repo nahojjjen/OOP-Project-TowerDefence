@@ -3,9 +3,9 @@ package edu.chl.proximity.Models.Map.Maps;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import edu.chl.proximity.Models.Player.Spells.Spell;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Player.Holdables.Hand;
@@ -163,6 +163,7 @@ public abstract class Map {
 
         for (Spell spell : spells) {
             base.setLife(base.getLife() + spell.getHealthChange());
+            spell.setHealthChange(0);
             spell.setCreeps(creeps);
             spell.setTowers(towers);
             spell.tick();
@@ -332,7 +333,7 @@ public abstract class Map {
      * @param batch What batch should be used to draw the images corresponding to the items on the map
      * @param shapeRenderer What instanc will render the geometrical shapes on the map.
      */
-    public void render(SpriteBatch batch, ShapeRenderer shapeRenderer) {
+    public void render(ProximityBatch batch, ShapeRenderer shapeRenderer) {
 
         if (towers != null){
             for (Tower tower : towers) {

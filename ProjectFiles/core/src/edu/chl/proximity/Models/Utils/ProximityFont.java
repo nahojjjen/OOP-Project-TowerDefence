@@ -1,8 +1,7 @@
 package edu.chl.proximity.Models.Utils;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
@@ -37,12 +36,13 @@ public class ProximityFont {
         font.scale(scale);
     }
 
+
     /**
      * draw out the text on the screen
      * @param batch what batch to use when drawing the text
      */
-    public void draw(SpriteBatch batch) {
-        font.draw(batch, str, position.x, position.y);
+    public void draw(ProximityBatch batch) {
+        batch.render(font, str, position);
     }
 
     /**

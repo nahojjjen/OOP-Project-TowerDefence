@@ -1,9 +1,5 @@
 package edu.chl.proximity.Utilities;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityFont;
 
@@ -47,11 +43,11 @@ public class PercentBar {
         }
     }
 
-    public void render(SpriteBatch batch) {
-        background.renderRepeatedly(batch, position, width, height);
+    public void render(ProximityBatch batch) {
+        batch.renderRepeatedly(background, position, width, height);
 
         int foregroundWidth = (int) ((width / 100.0) * percent);
-        foreground.renderRepeatedly(batch, new ProximityVector(position.x+border, position.y+border),foregroundWidth - border*2, height - border*2);
+        batch.renderRepeatedly(foreground, new ProximityVector(position.x+border, position.y+border),foregroundWidth - border*2, height - border*2);
 
         text.draw(batch);
     }

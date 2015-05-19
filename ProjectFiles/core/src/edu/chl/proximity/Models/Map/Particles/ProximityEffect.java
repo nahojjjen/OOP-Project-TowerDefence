@@ -5,8 +5,8 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import com.badlogic.gdx.utils.Array;
 import edu.chl.proximity.Models.Utils.GameData;
@@ -137,12 +137,12 @@ public class ProximityEffect {
      * cycle through all active effects and render them using the supplied batch
      * @param batch what rendering batch to use
      */
-    public  void renderAllActiveEffects(SpriteBatch batch) {
+    public  void renderAllActiveEffects(ProximityBatch batch) {
 
         for (int i = 0; i<effects.size(); i++) {
             ParticleEffectPool.PooledEffect effect = effects.get(i);
 
-            effect.draw(batch, Gdx.graphics.getDeltaTime()*GameData.getInstance().getPlayer().getSettings().getGameSpeed());
+            batch.render(effect, Gdx.graphics.getDeltaTime() * GameData.getInstance().getPlayer().getSettings().getGameSpeed());
 
             if(effect.getEmitters().get(0).getPercentComplete() >= 0 && !effect.getEmitters().get(0).isContinuous()){//effect.isComplete()){
                 effect.free(); //put the effect back in the pool if it is done )

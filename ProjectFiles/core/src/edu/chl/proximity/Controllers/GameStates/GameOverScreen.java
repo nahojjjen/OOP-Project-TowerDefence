@@ -3,7 +3,6 @@ package edu.chl.proximity.Controllers.GameStates;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -13,6 +12,7 @@ import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.WonLostModels.GameOver;
 import edu.chl.proximity.Proximity;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Viewers.GameOverRenderer;
 
 
@@ -21,7 +21,7 @@ import edu.chl.proximity.Viewers.GameOverRenderer;
  * @date 2015-05-15
  */
 public class GameOverScreen implements Screen {
-    private SpriteBatch batch = new SpriteBatch();
+    private ProximityBatch batch = new ProximityBatch();
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
     private GameOverRenderer gameOverRenderer;
 

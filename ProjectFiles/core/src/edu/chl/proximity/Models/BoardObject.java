@@ -1,7 +1,7 @@
 package edu.chl.proximity.Models;
 
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Utilities.PointCalculations;
 import java.lang.CloneNotSupportedException;
@@ -112,9 +112,9 @@ public abstract class BoardObject implements Cloneable {
     public void rotate(double a) {
         angle += a;
     }
-    public void render(SpriteBatch batch) {
+    public void render(ProximityBatch batch) {
         if(image != null) {
-            image.render(batch, position, angle);
+            batch.render(this);
         }
     }
 

@@ -1,17 +1,12 @@
 package edu.chl.proximity.Models.ControlPanel;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import edu.chl.proximity.Models.Player.Spells.Spell;
-import edu.chl.proximity.Models.Utils.GameData;
-import edu.chl.proximity.Utilities.PercentBar;
-import edu.chl.proximity.Utilities.ProximityVector;
+import edu.chl.proximity.Utilities.*;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Player.Factions.Faction;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityFont;
-import edu.chl.proximity.Utilities.Constants;
-import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -100,10 +95,9 @@ public class SpellPanel extends BoardObject {
      * Draws out the spell-panel background, spell images and shortcut text
      * @param batch
      */
-    public void render(SpriteBatch batch) {
+    public void render(ProximityBatch batch) {
         background.getTexture().setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
-        batch.draw(background.getTexture(), position.x, position.y, background.getTexture().getWidth(), background.getTexture().getHeight(), width, height);
-
+        batch.renderRepeatedly(background, position, width, height);
         for(ControlPanelSpell cpSpell : controlPanelSpellList) {
 
             cpSpell.render(batch);

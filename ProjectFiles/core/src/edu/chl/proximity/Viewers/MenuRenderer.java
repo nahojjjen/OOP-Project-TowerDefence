@@ -1,13 +1,12 @@
 package edu.chl.proximity.Viewers;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
+import edu.chl.proximity.Utilities.ProximityBatch;
 
 /**
- * @author Hanna R�mer
+ * @author Hanna Romer
  * @date 2015-04-25
  */
 public class MenuRenderer {
@@ -18,7 +17,7 @@ public class MenuRenderer {
         this.mainMenu = mainMenu;
     }
 
-    public void render(SpriteBatch batch, ShapeRenderer shapeRenderer){
+    public void render(ProximityBatch batch, ShapeRenderer shapeRenderer){
         mainMenu.render(batch);
     }
 

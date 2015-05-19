@@ -1,12 +1,11 @@
 package edu.chl.proximity.Models.MenuModels.MapSelect;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.FillerMap;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Maps.StandardMap;
-import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.ArrayList;
@@ -53,7 +52,7 @@ public class MapSelect extends BoardObject{
         selected=index;
     }
 
-    public void render(SpriteBatch batch){
+    public void render(ProximityBatch batch){
         for(MapSelectIcon map:maps){
             map.render(batch);
         }

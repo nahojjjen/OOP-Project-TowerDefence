@@ -1,25 +1,16 @@
 package edu.chl.proximity.Models.ControlPanel;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Models.Map.Towers.*;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Proximity;
-import edu.chl.proximity.Utilities.ProximityVector;
+import edu.chl.proximity.Utilities.*;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingFactory;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
-import edu.chl.proximity.Utilities.Constants;
-import edu.chl.proximity.Utilities.PercentBar;
-import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -160,9 +151,10 @@ public class ControlPanel extends BoardObject{
      * Render the Controlpanel
      * @param batch what batch to render the controlpanel
      */
-    public void render(SpriteBatch batch) {
+    public void render(ProximityBatch batch) {
 
-        background.renderRepeatedly(batch, this.getPosition(), width, height);
+        batch.renderRepeatedly(background, this.getPosition(), width, height);
+
         lineText.draw(batch);
         pointText.draw(batch);
         polygonText.draw(batch);

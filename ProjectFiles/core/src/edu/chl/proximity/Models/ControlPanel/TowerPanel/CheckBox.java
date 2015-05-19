@@ -1,13 +1,12 @@
 package edu.chl.proximity.Models.ControlPanel.TowerPanel;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Utilities.Constants;
-import edu.chl.proximity.Viewers.Renderer;
 
 /**
  * @author Hanna Römer
@@ -29,7 +28,7 @@ public class CheckBox extends BoardObject{
     public void setAsUnchecked(){
         super.setImage(unChecked);
     }
-    public void render(SpriteBatch batch){
+    public void render(ProximityBatch batch){
         super.render(batch);
         text.draw(batch);
     }

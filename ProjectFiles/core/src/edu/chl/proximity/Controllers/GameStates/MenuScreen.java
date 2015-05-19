@@ -1,22 +1,17 @@
 package edu.chl.proximity.Controllers.GameStates;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.sun.prism.image.ViewPort;
-import edu.chl.proximity.Controllers.MainController;
 import edu.chl.proximity.Controllers.MainMenuController;
 import edu.chl.proximity.Models.Utils.GameData;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Proximity;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Viewers.MenuRenderer;
 
 /**
@@ -31,7 +26,7 @@ import edu.chl.proximity.Viewers.MenuRenderer;
 public class MenuScreen implements Screen {
 
     private MainMenu mainMenu;
-    private SpriteBatch batch = new SpriteBatch();
+    private ProximityBatch batch = new ProximityBatch();
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
     private MenuRenderer menuRenderer;
     private MainMenuController mainMenuController;

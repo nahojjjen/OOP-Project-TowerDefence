@@ -1,10 +1,8 @@
 package edu.chl.proximity.Controllers.GameStates;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -14,6 +12,7 @@ import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Proximity;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Viewers.Renderer;
 
 import java.util.ArrayList;
@@ -30,13 +29,13 @@ import java.util.List;
  * 08/04 modified by Linda Evaldsson. Added som spawning logic for testing.
  * 16/04 modified by Simon Gislen
  * 21/04 modified by Simon Gislen
- * 23/04 modified by Hanna R�mer. Added ButtonPanel and PropertiesPanel.
- * 29/04 modified by Hanna R�mer. Removed PropertiesPanel since it's singleton
+ * 23/04 modified by Hanna Romer. Added ButtonPanel and PropertiesPanel.
+ * 29/04 modified by Hanna Romer. Removed PropertiesPanel since it's singleton
  * 07/05 modified by Linda Evaldsson. Moved handling of ControlPanels to ControlPanelController
  */
 public class GameScreen implements Screen{
 
-    private SpriteBatch batch = new SpriteBatch();
+    private ProximityBatch batch = new ProximityBatch();
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
     private Renderer renderer;
 

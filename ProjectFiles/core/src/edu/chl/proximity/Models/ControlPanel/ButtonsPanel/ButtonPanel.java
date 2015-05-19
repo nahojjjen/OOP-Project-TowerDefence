@@ -1,10 +1,9 @@
 package edu.chl.proximity.Models.ControlPanel.ButtonsPanel;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
@@ -142,7 +141,7 @@ public class ButtonPanel extends BoardObject {
      * Render the buttonPanel
      * @param batch What batch to render the buttonPanel
      */
-    public void render(SpriteBatch batch){
+    public void render(ProximityBatch batch){
         super.render(batch);
         playButton.render(batch);
         pauseButton.render(batch);

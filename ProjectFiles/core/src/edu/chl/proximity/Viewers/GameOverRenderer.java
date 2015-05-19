@@ -1,7 +1,7 @@
 package edu.chl.proximity.Viewers;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import edu.chl.proximity.Models.WonLostModels.GameOver;
+import edu.chl.proximity.Utilities.ProximityBatch;
 
 /**
  * @author Hanna Römer
@@ -14,7 +14,7 @@ public class GameOverRenderer {
         this.gameOver=gameOver;
     }
 
-    public void render(SpriteBatch batch){
+    public void render(ProximityBatch batch){
         gameOver.render(batch);
     }
 }

@@ -1,17 +1,14 @@
 package edu.chl.proximity.Viewers;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Bases.Base;
-import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Player.Holdables.Hand;
 import edu.chl.proximity.Models.Player.Holdables.Holdable;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
-import edu.chl.proximity.Models.Map.Projectiles.Projectile;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.List;
@@ -51,7 +48,7 @@ public class Renderer {
      * render everything in the current game
      * @param batch what object should draw on the screen
      */
-    public void render(SpriteBatch batch, ShapeRenderer shapeRenderer) {
+    public void render(ProximityBatch batch, ShapeRenderer shapeRenderer) {
 
         renderBackground(batch);
 
@@ -69,7 +66,6 @@ public class Renderer {
 
         batch.begin();
         renderBase(batch);
-        renderTowers(batch);
         renderBase(batch);
         renderParticles(batch);
         renderControlPanels(batch);
@@ -115,7 +111,7 @@ public class Renderer {
      * Draws out the control panel
      * @param batch what graphics batch object that should draw on the screen
      */
-    private void renderControlPanels(SpriteBatch batch) {
+    private void renderControlPanels(ProximityBatch batch) {
         for(BoardObject panel : controlPanels) {
             panel.render(batch);
         }
@@ -157,7 +153,7 @@ public class Renderer {
         map.renderRanges(shapeRenderer);
 
     }
-    private void renderBackground(SpriteBatch batch) {
+    private void renderBackground(ProximityBatch batch) {
         map.getBackground().render(batch);
     }
 
@@ -165,7 +161,7 @@ public class Renderer {
      * render the current base
      * @param batch what graphics batch object that should draw on the screen
      */
-    private void renderBase(SpriteBatch batch) {
+    private void renderBase(ProximityBatch batch) {
         Base base = map.getBase();
         if (base.getImage() != null && base != null){
             base.render(batch);
@@ -175,22 +171,12 @@ public class Renderer {
 
     }
 
-    /**
-     * render out all towers on the map
-     * @param batch what graphics batch object that should draw on the creen
-     */
-    private void renderTowers(SpriteBatch batch)  {
-
-
-
-    }
-
 
     /**
      * render all particles that are on the map
      * @param batch what graphics batch object that should draw on the creen
      */
-    private void renderParticles(SpriteBatch batch)   {
+    private void renderParticles(ProximityBatch batch)   {
         particleManager.renderAllParticles(batch);
     }
 

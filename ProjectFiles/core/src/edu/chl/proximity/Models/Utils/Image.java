@@ -3,8 +3,6 @@ package edu.chl.proximity.Models.Utils;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
-
-import java.awt.*;
 import java.io.File;
 import java.util.HashMap;
 
@@ -50,7 +48,7 @@ public class Image implements Cloneable {
     }
 
 
-    public void renderRepeatedly(SpriteBatch batch, ProximityVector p,int width, int height) {
+    public void renderRepeatedly(SpriteBatch batch, ProximityVector p, int width, int height) {
         texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
         batch.draw(texture, p.x, p.y, texture.getWidth(), texture.getHeight(), width, height);
     }

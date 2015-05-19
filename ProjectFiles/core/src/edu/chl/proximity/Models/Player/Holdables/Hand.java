@@ -1,11 +1,10 @@
 package edu.chl.proximity.Models.Player.Holdables;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Player.Spells.Spell;
@@ -44,7 +43,7 @@ public class Hand {
     public void setPosition(ProximityVector position) {
         this.position = position;
     }
-    public void render(SpriteBatch batch) {
+    public void render(ProximityBatch batch) {
         if(currentItem != null) {
             if(currentItem instanceof Tower){
                 if(!((Tower) currentItem).getIfPlaced()){
@@ -55,10 +54,10 @@ public class Hand {
             }
         }
     }
-    private void batchRendering(SpriteBatch batch){
+    private void batchRendering(ProximityBatch batch){
         Image img = currentItem.getImage();
         if(img != null) {
-            img.render(batch, new ProximityVector(position.x - img.getTexture().getWidth() / 2, position.y - img.getTexture().getHeight() / 2), 0);
+            batch.render(img, new ProximityVector(position.x - img.getTexture().getWidth() / 2, position.y - img.getTexture().getHeight() / 2), 0);
         }
     }
 

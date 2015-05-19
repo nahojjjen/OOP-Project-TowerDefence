@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.Player.Holdables;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Utils.Image;
 
@@ -21,7 +21,7 @@ public interface Holdable {
      */
     public void preparePlacing(ProximityVector position);
 
-    public void render(SpriteBatch batch);
+    public void render(ProximityBatch batch);
 
     public Image getImage();
 

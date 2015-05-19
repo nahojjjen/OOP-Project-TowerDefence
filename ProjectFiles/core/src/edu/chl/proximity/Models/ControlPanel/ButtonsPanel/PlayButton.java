@@ -1,9 +1,8 @@
 package edu.chl.proximity.Models.ControlPanel.ButtonsPanel;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
@@ -41,7 +40,7 @@ public class PlayButton extends BoardObject{
      * Renders the button with what image it should currently have
      * @param batch what batch to render the PauseButton
      */
-    public void render(SpriteBatch batch){
+    public void render(ProximityBatch batch){
         setRightImage();
         super.render(batch);
     }

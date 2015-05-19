@@ -1,10 +1,9 @@
 package edu.chl.proximity.Models.ControlPanel.PropertiesPanel;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.Settings;
@@ -202,7 +201,7 @@ public class PropertiesPanel extends BoardObject{
      * Render the panel
      * @param batch What batch to render
      */
-    public void render(SpriteBatch batch){
+    public void render(ProximityBatch batch){
 
         if(isVisible) {
             super.render(batch);

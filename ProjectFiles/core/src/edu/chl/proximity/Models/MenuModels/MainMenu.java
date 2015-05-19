@@ -1,8 +1,8 @@
 package edu.chl.proximity.Models.MenuModels;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Models.BoardObject;
@@ -75,9 +75,9 @@ public class MainMenu {
 
     public void pressedMap(ProximityVector pos){mapSelect.pressed(pos);}
 
-    public void render(SpriteBatch batch){
+    public void render(ProximityBatch batch){
 
-        background.render(batch, new ProximityVector(0,0), 0);
+        batch.render(background, new ProximityVector(0,0), 0);
         startButton.render(batch);
         factionChooser.render(batch);
         mapSelect.render(batch);

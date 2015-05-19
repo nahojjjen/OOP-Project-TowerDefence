@@ -1,8 +1,6 @@
 package edu.chl.proximity.Models.ControlPanel.TowerPanel;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -156,17 +154,16 @@ public class TowerPanel extends BoardObject{
         }
     }
 
-    public void render(SpriteBatch batch){
+    public void render(ProximityBatch batch){
         if(map.getChoosenTower() != null) {
             setInfo();
-            background.getTexture().setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
-            batch.draw(background.getTexture(), pos.x, pos.y, background.getTexture().getWidth(), background.getTexture().getHeight(), width, height);
+            batch.renderRepeatedly(background, pos, width, height);
             super.render(batch);
             first.render(batch);
             closest.render(batch);
             last.render(batch);
             towerName.draw(batch);
-            towerImage.render(batch, new ProximityVector(pos.x + 5, pos.y + 5), 0);
+            batch.render(towerImage, new ProximityVector(pos.x + 5, pos.y + 5), 0);
             sell.render(batch);
             if(map.getChoosenTower().getUpgrade() != null) {
                 upgrade.render(batch);

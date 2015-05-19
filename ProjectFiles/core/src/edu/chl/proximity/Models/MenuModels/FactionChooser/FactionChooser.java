@@ -1,7 +1,7 @@
 package edu.chl.proximity.Models.MenuModels.FactionChooser;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Filler;
@@ -94,7 +94,7 @@ public class FactionChooser extends BoardObject{
         return factions.get(showing);
     }
 
-    public void render(SpriteBatch batch){
+    public void render(ProximityBatch batch){
         super.render(batch);
         factionImage.render(batch);
         next.render(batch);

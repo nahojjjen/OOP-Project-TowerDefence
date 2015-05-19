@@ -1,7 +1,6 @@
 package edu.chl.proximity.Models.Map.Particles;
 
-
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +42,7 @@ public class ParticleManager {
      * render all active effects that the particleManager keeps track of
      * @param batch what batch should be used to render the effects
      */
-    public void renderAllParticles(SpriteBatch batch){
+    public void renderAllParticles(ProximityBatch batch){
         for(ProximityEffect effect:allEffects){
             effect.renderAllActiveEffects(batch);
         }

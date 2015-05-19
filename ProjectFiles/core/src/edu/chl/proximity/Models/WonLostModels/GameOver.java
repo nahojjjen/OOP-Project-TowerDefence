@@ -1,6 +1,5 @@
 package edu.chl.proximity.Models.WonLostModels;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.Player;
@@ -8,6 +7,7 @@ import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
@@ -55,7 +55,7 @@ public class GameOver {
         game.changeScreen(Proximity.State.MAIN_MENU, map, player, viewport);
     }
 
-    public void render(SpriteBatch batch){
+    public void render(ProximityBatch batch){
         mainMenu.render(batch);
         resume.render(batch);
     }

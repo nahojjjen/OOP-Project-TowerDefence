@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.MenuModels.MapSelect;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -43,7 +43,7 @@ public class MapSelectIcon extends BoardObject{
         setImage(selected);
     }
 
-    public void render(SpriteBatch batch){
+    public void render(ProximityBatch batch){
         super.render(batch);
         name.draw(batch);
     }
