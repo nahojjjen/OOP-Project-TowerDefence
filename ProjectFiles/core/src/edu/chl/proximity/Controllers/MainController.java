@@ -29,7 +29,7 @@ import java.util.Set;
  *
  * 07/04 Modified by Johan Swanberg. Updated so it doesn't crash the program on run.
  * 21/04 Modified by Simon Gislén. Addded WaveController
- * 21/04 Modified by Hanna Römer.
+ * 21/04 Modified by Hanna Romer.
  * 23/04 Modified by Simon Gislen Added PersistentObjectController
  * 23/04 Modified by Linda Evaldsson. Added unprojection to the mouseMoved-method.
  * 29/04 modified by Linda Evaldsson. Updated how the clicking sends signals to the controllers that handle clicks.

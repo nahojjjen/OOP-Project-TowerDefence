@@ -3,7 +3,6 @@ package edu.chl.proximity.Controllers.GameStates;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Controllers.GameOverController;
@@ -13,16 +12,17 @@ import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.WonLostModels.GameOver;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Viewers.GameOverRenderer;
 
 
 /**
- * @author Hanna Römer
+ * @author Hanna Romer
  * @date 2015-05-15
  */
 public class GameOverScreen implements Screen {
     private ProximityBatch batch = new ProximityBatch();
-    private ShapeRenderer shapeRenderer = new ShapeRenderer();
+    private ProximityShapeRenderer shapeRenderer = new ProximityShapeRenderer();
     private GameOverRenderer gameOverRenderer;
 
     private GameOverController gameOverController;
@@ -37,7 +37,6 @@ public class GameOverScreen implements Screen {
         gameOver=new GameOver(map,player,viewport, g);
         gameOverRenderer=new GameOverRenderer(gameOver);
         gameOverController=new GameOverController(viewport,gameOver);
-        shapeRenderer.setAutoShapeType(true);
         Gdx.input.setInputProcessor(gameOverController);
     }
 

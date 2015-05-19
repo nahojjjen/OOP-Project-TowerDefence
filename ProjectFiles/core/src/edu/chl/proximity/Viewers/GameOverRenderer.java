@@ -4,7 +4,7 @@ import edu.chl.proximity.Models.WonLostModels.GameOver;
 import edu.chl.proximity.Utilities.ProximityBatch;
 
 /**
- * @author Hanna Römer
+ * @author Hanna Romer
  * @date 2015-05-15
  */
 public class GameOverRenderer {

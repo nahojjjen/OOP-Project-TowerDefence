@@ -5,7 +5,7 @@ import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
- * @author Hanna Römer
+ * @author Hanna Romer
  * @date 2015-05-17
  */
 public class Button extends BoardObject{

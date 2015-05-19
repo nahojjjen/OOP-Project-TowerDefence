@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * @author Johan
  *
- * 01/05 modified by Hanna R�mer. Added string name and ShowImage
+ * 01/05 modified by Hanna Romer. Added string name and ShowImage
  * 15/5 modified by johan, spells now have a cooldown pattern, cooldowns are reset on game start
  */
 public abstract class Faction {

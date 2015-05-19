@@ -6,7 +6,7 @@ import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.Settings;
 
 /**
- * @author Hanna R�mer
+ * @author Hanna Romer
  * @date 2015-04-15
  * A class representing the player.
  *

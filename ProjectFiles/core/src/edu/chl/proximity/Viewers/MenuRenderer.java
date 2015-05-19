@@ -1,9 +1,9 @@
 package edu.chl.proximity.Viewers;
 
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 
 /**
  * @author Hanna Romer
@@ -17,7 +17,7 @@ public class MenuRenderer {
         this.mainMenu = mainMenu;
     }
 
-    public void render(ProximityBatch batch, ShapeRenderer shapeRenderer){
+    public void render(ProximityBatch batch, ProximityShapeRenderer shapeRenderer){
         mainMenu.render(batch);
     }
 

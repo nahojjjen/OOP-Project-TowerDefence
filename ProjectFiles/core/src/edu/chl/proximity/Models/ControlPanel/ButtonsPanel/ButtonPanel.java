@@ -10,12 +10,12 @@ import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
- * @author Hanna R�mer
+ * @author Hanna Romer
  * @date 2015-04-22
  *
  * Class used for managing the buttons to the far bottom right. Keeps track of the game's speed
  *
- * 29/04 modified by Hanna Römer. Buttons themselves now keeps track if what image they should have. Replaced PLayPauseButton with a play and a pause button.
+ * 29/04 modified by Hanna Romer. Buttons themselves now keeps track if what image they should have. Replaced PLayPauseButton with a play and a pause button.
  */
 public class ButtonPanel extends BoardObject {
     private static Image background = null;

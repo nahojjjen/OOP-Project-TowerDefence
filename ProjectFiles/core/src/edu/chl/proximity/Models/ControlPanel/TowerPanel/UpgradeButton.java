@@ -7,7 +7,7 @@ import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
- * @author Hanna Römer
+ * @author Hanna Romer
  * @date 2015-05-08
  */
 public class UpgradeButton extends BoardObject{

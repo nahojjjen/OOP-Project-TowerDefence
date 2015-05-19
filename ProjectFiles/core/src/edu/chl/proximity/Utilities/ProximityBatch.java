@@ -11,6 +11,8 @@ import edu.chl.proximity.Models.Utils.Image;
 /**
  * @author Linda Evaldsson
  * @date 2015-05-19
+ *
+ * A service for drawing images and fonts.
  */
 public class ProximityBatch {
 

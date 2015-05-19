@@ -14,12 +14,12 @@ import edu.chl.proximity.Utilities.PointCalculations;
 import java.util.ArrayList;
 
 /**
- * @author Hanna R�mer
+ * @author Hanna Romer
  * @date 2015-04-23
  *
- * 24/04 modified by Hanna R�mer. Added SoundButton, MainMenuButton and Sound-bars
- * 29/04 modified by Hanna R�mer. Made into singleton.
- * 01/05 modified by Hanna Römer. MainMenuButton now takes you to the mainMenu
+ * 24/04 modified by Hanna Romer. Added SoundButton, MainMenuButton and Sound-bars
+ * 29/04 modified by Hanna Romer. Made into singleton.
+ * 01/05 modified by Hanna Romer. MainMenuButton now takes you to the mainMenu
  */
 public class PropertiesPanel extends BoardObject{
     private static PropertiesPanel propertiesPanel;

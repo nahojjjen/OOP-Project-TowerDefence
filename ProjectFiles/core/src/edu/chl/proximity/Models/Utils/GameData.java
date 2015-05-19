@@ -15,9 +15,9 @@ import edu.chl.proximity.Proximity;
  *
  * This class keeps track of the player.
  *
- * 23/04 edited by Hanna R�mer. Added ButtonPanel, PropertiesPanel and sound volume of game.
- * 24/04 edited by Hanna R�mer. Added Proximity and MainMenu + their setters and getters
- * 29/04 edited by Hanna R�mer. Removed ButtonPanel and PropertiesButton.
+ * 23/04 edited by Hanna Romer. Added ButtonPanel, PropertiesPanel and sound volume of game.
+ * 24/04 edited by Hanna Romer. Added Proximity and MainMenu + their setters and getters
+ * 29/04 edited by Hanna Romer. Removed ButtonPanel and PropertiesButton.
  * 06/04 modified by Linda Evaldsson. Removing Map fron GameData, adding it as parameter to the classes that need it instead.
  * 07/04 modified by Linda Evaldsson. Removed other info from GameData as well. Volume and Gamespeed moved to class Settings.
  * MainMenu and Proximity also moved to other classes to prevent them from being accessible from everywhere in the program.

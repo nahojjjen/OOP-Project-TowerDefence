@@ -8,11 +8,11 @@ import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
- * @author Hanna R�mer
+ * @author Hanna Romer
  * @date 2015-04-23
  * Represents the visuals for a speed button
  *
- * 29/04 modified Hanna. Button keeps track of what image it should have
+ * 29/04 modified Hanna Romer. Button keeps track of what image it should have
  */
 public class SpeedButton extends BoardObject{
     private static Image upImage=new Image(Constants.FILE_PATH + "Buttons/FastPlayButton.png");

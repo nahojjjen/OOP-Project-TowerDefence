@@ -6,7 +6,7 @@ import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.Image;
 
 /**
- * @author Hanna Römer
+ * @author Hanna Romer
  * @date 2015-05-01
  */
 public class FactionImage extends BoardObject{

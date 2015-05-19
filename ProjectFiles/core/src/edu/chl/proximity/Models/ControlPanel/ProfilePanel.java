@@ -1,15 +1,19 @@
 package edu.chl.proximity.Models.ControlPanel;
 
 /**
- * Created by simongislen on 28/04/15.
+ * @author Simon Gislen
+ * @date 2015-04-28
+ *
+ * A panel that shows the players profile in the bottom left corner
+ *
  */
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -35,7 +39,7 @@ public class ProfilePanel extends BoardObject {
     private static int width = 200;
     private static int height = 200;
 
-    private ShapeRenderer shapeRenderer = new ShapeRenderer();
+    private ProximityShapeRenderer shapeRenderer = new ProximityShapeRenderer();
 
     public ProfilePanel() {
         super(new ProximityVector(0, Gdx.graphics.getHeight() - 75), null, 0, width, height);
@@ -66,15 +70,11 @@ public class ProfilePanel extends BoardObject {
         double angle = (anglePercentage)/10 * 9;
         Gdx.gl.glEnable(GL20.GL_BLEND);
 
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setAutoShapeType(true);
-
-        shapeRenderer.set(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.begin(ProximityShapeRenderer.Shape.Filled);
         shapeRenderer.setColor(new Color(0.95f, 0.95f, 0.95f, 1f));
-        shapeRenderer.arc(0, 0, 145, 0, (float) angle);
-        shapeRenderer.set(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.renderArc(0, 0, 145, 0, (float) angle);
         shapeRenderer.setColor(new Color(0.2f, 0.3f, 0.50f, 1f));
-        shapeRenderer.arc(0, 0, 140, 0, 90);
+        shapeRenderer.renderArc(0, 0, 140, 0, 90);
 
 
         shapeRenderer.end();

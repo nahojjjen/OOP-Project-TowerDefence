@@ -3,7 +3,6 @@ package edu.chl.proximity.Controllers.GameStates;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Controllers.MainMenuController;
@@ -12,6 +11,7 @@ import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Viewers.MenuRenderer;
 
 /**
@@ -21,13 +21,13 @@ import edu.chl.proximity.Viewers.MenuRenderer;
  * A class for handling the MenuScreen, the screen for the menu
  *
  * 08/04 Modified by Johan Swanberg. Switch to Screen from GameState.
- * 25/04 modified by Hanna R�mer. Added Game,MainMenu, SpriteBatch, ShapeRenderer,MenuRenderer,MainController, OrthographicCamera and FitViewport
+ * 25/04 modified by Hanna Romer. Added Game,MainMenu, SpriteBatch, ShapeRenderer,MenuRenderer,MainController, OrthographicCamera and FitViewport
  */
 public class MenuScreen implements Screen {
 
     private MainMenu mainMenu;
     private ProximityBatch batch = new ProximityBatch();
-    private ShapeRenderer shapeRenderer = new ShapeRenderer();
+    private ProximityShapeRenderer shapeRenderer = new ProximityShapeRenderer();
     private MenuRenderer menuRenderer;
     private MainMenuController mainMenuController;
     private OrthographicCamera camera;
@@ -53,7 +53,6 @@ public class MenuScreen implements Screen {
             //viewport.apply();
         }
         */
-        shapeRenderer.setAutoShapeType(true);
         mainMenuController=new MainMenuController(this.viewport);
         mainMenuController.setMainMenu(mainMenu);
         Gdx.input.setInputProcessor(mainMenuController);

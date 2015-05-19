@@ -15,7 +15,7 @@ import java.util.List;
 
 
 /**
- * @author Hanna Römer
+ * @author Hanna Romer
  * @date 2015-05-01
  */
 public class MainMenuController implements InputProcessor{

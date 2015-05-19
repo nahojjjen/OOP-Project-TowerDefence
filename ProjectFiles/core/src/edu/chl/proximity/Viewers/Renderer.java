@@ -1,7 +1,6 @@
 package edu.chl.proximity.Viewers;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.Player.Holdables.Hand;
@@ -9,6 +8,7 @@ import edu.chl.proximity.Models.Player.Holdables.Holdable;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.List;
@@ -23,11 +23,11 @@ import java.util.List;
  * 08/04 Modified by Johan Swanberg. Switch to Screen from GameState.
  * 08/04 modified by Linda Evaldsson. Made methods non-static.
  * Unknown date modified by Linda Evaldsson
- * 23/04 Modified by Hanna R�mer. Added ButtonPanel and PropertiesPanel + necessary methods for them
+ * 23/04 Modified by Hanna Romer. Added ButtonPanel and PropertiesPanel + necessary methods for them
  * 24/04 Modified by Johan Swanberg - Added creep debug view and fixed path render to not be missaligned
- * 29/04 modified by Hanna R�mer. Removed PropertiesPanel instance and setter since it's a singleton.
+ * 29/04 modified by Hanna Romer. Removed PropertiesPanel instance and setter since it's a singleton.
  * 07/05 modified by Linda Evaldsson. Removed all the setters and getters for ControlPanels, replaced with setControlPanel.
- * 08/05 modified by Hanna Römer. Added renderChoosenTowerRange
+ * 08/05 modified by Hanna Romer. Added renderChoosenTowerRange
  */
 public class Renderer {
 
@@ -48,7 +48,7 @@ public class Renderer {
      * render everything in the current game
      * @param batch what object should draw on the screen
      */
-    public void render(ProximityBatch batch, ShapeRenderer shapeRenderer) {
+    public void render(ProximityBatch batch, ProximityShapeRenderer shapeRenderer) {
 
         renderBackground(batch);
 
@@ -57,7 +57,7 @@ public class Renderer {
         renderPath(shapeRenderer);
         shapeRenderer.end();
 
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.begin(ProximityShapeRenderer.Shape.Filled);
         //renderChosenTowerRange(shapeRenderer);
         //renderAllTowerRanges(shapeRenderer);
         //debugRenderAllCentersAndUpperLeftCorners(shapeRenderer);
@@ -69,7 +69,7 @@ public class Renderer {
         renderBase(batch);
         renderParticles(batch);
         renderControlPanels(batch);
-        map.render(batch, shapeRenderer);
+        map.render(batch);
 
         //Render the hand and its range.
         Hand hand = map.getHand();
@@ -77,7 +77,7 @@ public class Renderer {
         if (handItem != null) {
             hand.render(batch);
             batch.end();
-            shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+            shapeRenderer.begin(ProximityShapeRenderer.Shape.Filled);
             hand.render(shapeRenderer);
             //renderRangeIndicator(shapeRenderer, hand.getRangeIndicatorColor(), hand.getPosition(), handItem.getRange());
             shapeRenderer.end();
@@ -88,24 +88,6 @@ public class Renderer {
     }
 
     public void setControlPanels(List<BoardObject> controlPanels) { this.controlPanels = controlPanels; }
-
-
-    private void debugRenderAllCentersAndUpperLeftCorners(ShapeRenderer shapeRenderer){
-        Color red = new Color(1,0,0,0.8f);
-        Color blue = new Color(0, 0, 1, 0.8f);
-
-        /*for (Creep creep:map.getCreeps()){
-
-            shapeRenderer.setColor(blue); //hitbox
-            shapeRenderer.circle(creep.getCenter().x, creep.getCenter().y, 20, 20);
-
-            shapeRenderer.setColor(red); //center
-            shapeRenderer.circle(creep.getCenter().x, creep.getCenter().y, 4);
-
-
-        }*/
-    }
-
 
     /**
      * Draws out the control panel
@@ -125,34 +107,16 @@ public class Renderer {
      * or you get a completely white blank screen.
      * @param shapeRenderer what shaperenderer to use to draw the lines
      */
-    private void renderPath( ShapeRenderer shapeRenderer){
+    private void renderPath(ProximityShapeRenderer shapeRenderer){
         List<ProximityVector> waypoints = map.getPath().getWaypoints();
 
         shapeRenderer.setColor(new Color(0.4f, 0.6f, 0.9f, 0));
 
         for (int i = 1; i<waypoints.size(); i++){
-            shapeRenderer.line(waypoints.get(i-1).x  ,waypoints.get(i-1).y, waypoints.get(i).x,waypoints.get(i).y);
+            shapeRenderer.renderLine(waypoints.get(i-1).x  ,waypoints.get(i-1).y, waypoints.get(i).x,waypoints.get(i).y);
         }
     }
 
-    /**
-     * Renders a circle around chosen tower to show it's range
-     * @param shapeRenderer what shaperenderer to use to show the graphics
-     */
-    private void renderChosenTowerRange(ShapeRenderer shapeRenderer){
-        if(map.getChoosenTower()!= null){
-            //renderRangeIndicator(shapeRenderer,new Color(0.4f, 0.2f, 0.9f, 0.2f),map.getChoosenTower().getCenter(), map.getChoosenTower().getRange());
-        }
-    }
-
-    /**
-     * render a circle around all towers that show their range
-     * @param shapeRenderer what shaperenderer to use to show the graphics
-     */
-    private void renderAllTowerRanges(ShapeRenderer shapeRenderer){
-        map.renderRanges(shapeRenderer);
-
-    }
     private void renderBackground(ProximityBatch batch) {
         map.getBackground().render(batch);
     }

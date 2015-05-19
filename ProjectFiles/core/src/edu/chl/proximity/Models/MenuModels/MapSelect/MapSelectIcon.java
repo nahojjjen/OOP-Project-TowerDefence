@@ -9,10 +9,10 @@ import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
- * @author Hanna Römer
+ * @author Hanna Romer
  * @date 2015-05-03
  *
- * 08/05 modified by Hanna Römer. Added proximityFont name.
+ * 08/05 modified by Hanna Romer. Added proximityFont name.
  */
 public class MapSelectIcon extends BoardObject{
     private Map map;

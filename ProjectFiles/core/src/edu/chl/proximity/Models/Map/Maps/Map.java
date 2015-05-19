@@ -1,9 +1,5 @@
 package edu.chl.proximity.Models.Map.Maps;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import edu.chl.proximity.Models.Player.Spells.Spell;
 import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
@@ -35,8 +31,8 @@ import java.util.*;
  * 25/04 Modified by Johan Swanberg, adds adding Stack
  * 08/05 modified by Linda Evaldsson. Moved functionality to this class; rendering of towers, updating and stack-functionality (clear stacks)
  * 10/5 modified by Johan Swanberg, fixed creepwithinrange method and added somee comments
- * 10/05 modified by Hanna Römer. Added method towersWithinRange that is exactly like creepsWithinRange.
- * 17/05 modified by Hanna Römer. Added method getNew.
+ * 10/05 modified by Hanna Romer. Added method towersWithinRange that is exactly like creepsWithinRange.
+ * 17/05 modified by Hanna Romer. Added method getNew.
  * */
 public abstract class Map {
 
@@ -305,35 +301,15 @@ public abstract class Map {
 
     }
 
-    /**
-     * render all the tower ranged with a semi transparant circle
-     * @param shapeRenderer what shaperenderer should draw the circles on the screen
-     */
-    public void renderRanges(ShapeRenderer shapeRenderer) {
-        for (Tower tower : towers) {
-            renderRangeIndicator(shapeRenderer, new Color(0.4f, 0.2f, 0.9f, 0.2f), tower.getCenter(), tower.getRange());
-        }
-    }
-    /**
-     * Helper method to draw a circular range
-     * @param renderer shape renderer that does the rendering
-     * @param color range colour
-     * @param position position to draw
-     * @param range radius to draw
-     */
-    private void renderRangeIndicator(ShapeRenderer renderer, Color color, ProximityVector position, double range) {
-        Gdx.gl.glEnable(GL20.GL_BLEND); //enables transparency
-        renderer.setColor(color);
-        renderer.circle(position.x, position.y, (float) range);
-    }
+
+
 
     /**
      * Render all projectiles, creeps and towers on the map.
      * Notice that the particles are handeled seperately
      * @param batch What batch should be used to draw the images corresponding to the items on the map
-     * @param shapeRenderer What instanc will render the geometrical shapes on the map.
      */
-    public void render(ProximityBatch batch, ShapeRenderer shapeRenderer) {
+    public void render(ProximityBatch batch) {
 
         if (towers != null){
             for (Tower tower : towers) {
@@ -351,15 +327,6 @@ public abstract class Map {
                 creep.render(batch);
             }
         }
-
-        batch.end();
-        /*shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-
-
-        if(getChoosenTower() != null)
-            renderRangeIndicator(shapeRenderer, new Color(0.4f, 0.2f, 0.9f, 0.2f), getChoosenTower().getCenter(), getChoosenTower().getRange());
-        shapeRenderer.end();*/
-        batch.begin();
 
 
     }

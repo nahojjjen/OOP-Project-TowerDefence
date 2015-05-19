@@ -21,10 +21,10 @@ import java.util.List;
  * @author Linda Evaldsson
  * @date 2015-04-17
  *
- * 29/04 modified by Linda Evaldsson. Merged this class with PropertiesPanelController (created by Hanna R�mer 2015-04-23) and ButtonPanelController (created by Hanna R�mer 2015-04-23).
- * 29/04 modified by Hanna R�mer. Added Play and Pause Buttons to possible clicked buttons on ButtonsPanel. Removed PausePlayButton option.
+ * 29/04 modified by Linda Evaldsson. Merged this class with PropertiesPanelController (created by Hanna Romer 2015-04-23) and ButtonPanelController (created by Hanna Romer 2015-04-23).
+ * 29/04 modified by Hanna Romer. Added Play and Pause Buttons to possible clicked buttons on ButtonsPanel. Removed PausePlayButton option.
  * 30/04 modified by Simon Gislen. Added ProfilePanel.
- * 30/04 modified by Hanna R�mer. Cannot click on anything else when propertiesPanel is open, cannot place towers when game is paused.
+ * 30/04 modified by Hanna Romer. Cannot click on anything else when propertiesPanel is open, cannot place towers when game is paused.
  * 03/05 modified by Simon Gislen. Towers are not free anymore.
  * 07/05 modofied by Linda Evaldsson. Added key bindings for spells. Also added handling for ControlPanels.
  * 08/05 modified by Hanna Römer. Added tower panel.

@@ -3,8 +3,8 @@ package edu.chl.proximity.Models.Player.Holdables;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Player.Spells.Spell;
@@ -86,24 +86,17 @@ public class Hand {
         return true;
     }
 
-    public void render(ShapeRenderer shapeRenderer) {
+    public void render(ProximityShapeRenderer shapeRenderer) {
+
 
         if(currentItem instanceof Tower){
             if(!((Tower) currentItem).getIfPlaced()){
-                renderRangeIndicator(shapeRenderer, getRangeIndicatorColor(), getPosition(), getItem().getRange());
+                shapeRenderer.renderRangeIndicator(getPosition(), getItem().getRange(), getRangeIndicatorColor());
             }else{
-                renderRangeIndicator(shapeRenderer,new Color(0.4f, 0.2f, 0.9f, 0.2f),((Tower) currentItem).getCenter(),getItem().getRange());
+                shapeRenderer.renderRangeIndicator(((Tower) currentItem).getCenter(), getItem().getRange(), new Color(0.4f, 0.2f, 0.9f, 0.2f));
             }
         }else {
-            renderRangeIndicator(shapeRenderer, getRangeIndicatorColor(), getPosition(), getItem().getRange());
-        }
-    }
-
-    private void renderRangeIndicator(ShapeRenderer renderer, Color color, ProximityVector position, double range) {
-        if(range<1500) {
-            Gdx.gl.glEnable(GL20.GL_BLEND); //enables transparency
-            renderer.setColor(color);
-            renderer.circle(position.x, position.y, (float) range);
+            shapeRenderer.renderRangeIndicator(getPosition(), getItem().getRange(), getRangeIndicatorColor());
         }
     }
 }

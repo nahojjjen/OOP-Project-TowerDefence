@@ -16,11 +16,11 @@ import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
- * @author Hanna R�mer
+ * @author Hanna Romer
  * @date 2105-04-25
  *
- * 01/05 modified by Hanna R�mer. Added FactionChooser.
- * 03/05 modified by Hanna R�mer. Added MapSelect.
+ * 01/05 modified by Hanna Romer. Added FactionChooser.
+ * 03/05 modified by Hanna Romer. Added MapSelect.
  */
 public class MainMenu {
     private Faction faction;

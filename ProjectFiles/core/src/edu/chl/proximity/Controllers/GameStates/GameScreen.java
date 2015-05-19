@@ -3,7 +3,6 @@ package edu.chl.proximity.Controllers.GameStates;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Controllers.MainController;
@@ -13,6 +12,7 @@ import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Viewers.Renderer;
 
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ import java.util.List;
 public class GameScreen implements Screen{
 
     private ProximityBatch batch = new ProximityBatch();
-    private ShapeRenderer shapeRenderer = new ShapeRenderer();
+    private ProximityShapeRenderer shapeRenderer = new ProximityShapeRenderer();
     private Renderer renderer;
 
 
@@ -63,8 +63,6 @@ public class GameScreen implements Screen{
 
         mainController = new MainController(map, this.viewport, g);
         renderer.setControlPanels(mainController.getControlPanels());
-
-        shapeRenderer.setAutoShapeType(true);
         map.setBase(player.getFaction().getNewBase(map.getPath(), map.getParticleManager()));
         player.getFaction().configureSpells(map.getParticleManager());
         player.getFaction().resetSpellCooldowns();

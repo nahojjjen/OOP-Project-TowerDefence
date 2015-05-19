@@ -13,7 +13,7 @@ import edu.chl.proximity.Utilities.ProximityRandom;
 import java.util.List;
 
 /**
- * @author Hanna Römer
+ * @author Hanna Romer
  * @date 2015-04-02
  *
  * 08/04 modified by Linda Evaldsson. Refactoring to Projectile instead of AbstractProjectile.

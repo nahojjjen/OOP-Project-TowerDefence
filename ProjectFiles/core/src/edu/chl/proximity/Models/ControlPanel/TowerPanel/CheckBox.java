@@ -9,7 +9,7 @@ import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
- * @author Hanna Römer
+ * @author Hanna Romer
  * @date 2015-05-08
  */
 public class CheckBox extends BoardObject{

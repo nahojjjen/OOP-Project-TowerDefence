@@ -16,11 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Hanna Römer
+ * @author Hanna Romer
  * @date 2015-04-30
  * Respresents the panel for selecting faction
  *
- *01/05 modified by Hanna Römer. Added factionList, name, factionImage, Prev + Next buttons and that you can click buttons.
+ *01/05 modified by Hanna Romer. Added factionList, name, factionImage, Prev + Next buttons and that you can click buttons.
  */
 public class FactionChooser extends BoardObject{
     private static ProximityVector pos = new ProximityVector(0, Gdx.graphics.getHeight()-240);

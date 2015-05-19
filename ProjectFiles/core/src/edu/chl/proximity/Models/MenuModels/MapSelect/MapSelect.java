@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Hanna Römer
+ * @author Hanna Romer
  * @date 2015-05-03
  *
- * 08/05 modified by Hanna Römer. Removed mapName.
+ * 08/05 modified by Hanna Romer. Removed mapName.
  */
 public class MapSelect extends BoardObject{
     private static ProximityVector pos=new ProximityVector(0,0);
