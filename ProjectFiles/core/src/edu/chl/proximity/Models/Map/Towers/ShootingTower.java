@@ -67,10 +67,13 @@ public abstract class ShootingTower extends Tower {
      * Targets the closest creep, if one is in range.
      */
     public void target(List<Creep> creeps){
-        currentTarget = targetingMethod.getTarget(creeps, getPosition(), range);
-        if (currentTarget != null) {
-            this.setAngle(PointCalculations.getVectorAngle(this.getPosition(), currentTarget.getPosition()));
+        if (creeps != null){
+            currentTarget = targetingMethod.getTarget(creeps, getPosition(), range);
+            if (currentTarget != null) {
+                this.setAngle(PointCalculations.getVectorAngle(this.getPosition(), currentTarget.getPosition()));
+            }
         }
+
     }
 
     public Creep getTarget(){
