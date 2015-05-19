@@ -51,9 +51,7 @@ public abstract class BoardObject implements Cloneable {
             width = 50; height = 50;
         }
     }
-    public BoardObject() {
-        //Empty constructor for subclasses
-    }
+
 
     public BoardObject(ProximityVector position, edu.chl.proximity.Models.Utils.Image img, double angle, int width, int height) {
         this(position, img, angle);

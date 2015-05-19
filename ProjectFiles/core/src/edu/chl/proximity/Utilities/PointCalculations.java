@@ -32,8 +32,9 @@ public class PointCalculations {
      * @param x X position for a point on the path
      * @param y Y position for a point on the path
      */
-    public static void createPathTool(int x, int y) {
+    public static String createPathTool(int x, int y) {
         System.out.println("waypoint.add(new ProximityVector(" + x + ", " + y + "));");
+        return new String("waypoint.add(new ProximityVector(" + x + ", " + y + "));");
     }
 
     /**
@@ -64,6 +65,7 @@ public class PointCalculations {
      * @return True of the point is within the object entered, false otherwise
      */
     public static boolean isPointInObject(ProximityVector point, BoardObject object) {
+        if (point == null || object == null) return false;
         boolean isWithinHorizontally = object.getPosition().x <= point.x && object.getPosition().x + object.getWidth() >= point.x;
         boolean isWithinVertically = object.getPosition().y <= point.y && object.getPosition().y + object.getHeight() >= point.y;
         if(isWithinHorizontally && isWithinVertically) {

@@ -44,40 +44,6 @@ public abstract class Path {
      */
     public abstract void initiatePathHitbox();
 
-    /**
-     * get the hitbox of the path
-     * @return a list of rectangles covering the hitbox of the path
-     */
-    public List<Rectangle> getHitbox(){
-        return pathHitbox;
-    }
-
-
-    /**
-     * check if a rectangle intersects the path
-     * @param p the rectangle to check if it intersects (example, the base of a tower)
-     * @return true if the rectangle touches / is inside the path
-     */
-    public boolean intersects(Rectangle p) {
-
-        //Rectangle inputPoint = new Rectangle(p.getX(), p.getY(), 1, 1);
-        for (Rectangle hitbox : pathHitbox) {
-            if (hitbox.contains(p) || hitbox.overlaps(p)) {
-                return true;
-            }
-        }
-        return false; //if we loop through all of the path and nothing intersects
-
-    }
-
-    /**
-     *
-     * @param o the boardObject to check if it intersects
-     * @return
-     */
-    public boolean intersects(BoardObject o) {
-        return intersects(new Rectangle((int)o.getPosition().x, (int)o.getPosition().y, o.getWidth(), o.getHeight()));
-    }
 
     /**
      * add all the waypoints in the path

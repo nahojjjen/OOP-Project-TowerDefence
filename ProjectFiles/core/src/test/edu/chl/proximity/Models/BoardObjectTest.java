@@ -110,9 +110,19 @@ public class BoardObjectTest {
         assertFalse(test.isOutsideView()); //edge of display lower right corner
         test.setPosition(null);
         assertTrue(test.isOutsideView()); // null case
+        test.setPosition(new ProximityVector(1281, 123));
+        assertTrue(test.isOutsideView()); // null case
 
     }
 
+    @Test public void testRemove(){
+        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new ProximityVector(12,12), null, 1,1,1);
+       assertFalse(test.isRemoved());
+        test.remove();
+        assertTrue(test.isRemoved());
+        test.unRemove();
+        assertFalse(test.isRemoved());
+    }
     @Test
     public void testFaceTarget() throws Exception {
         BoardObjectConcreteTest test = new BoardObjectConcreteTest(new ProximityVector(100,100), null, 90, 0, 0);
@@ -125,6 +135,14 @@ public class BoardObjectTest {
         assertTrue(test.getAngle() == 172);       //testing null case, null should not have changed the angle
     }
 
+    @Test
+    public void testAddList(){
+        BoardObjectConcreteTest test = new BoardObjectConcreteTest(new ProximityVector(12,12), null, 1,1,1);
+        test.getAddList().add(test);
+        assertTrue(test.getAddList().size() == 1);
+        test.clearAddList();
+        assertTrue(test.getAddList().size() == 0);
+    }
     @Test
     public void testGetandSetCenter() throws Exception {
         BoardObjectConcreteTest test = new BoardObjectConcreteTest(new ProximityVector(100,100), null, 90, 0, 0);
