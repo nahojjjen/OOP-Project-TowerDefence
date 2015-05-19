@@ -6,7 +6,6 @@ import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.ControlPanel.*;
 import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.*;
-import edu.chl.proximity.Models.ControlPanel.TowerPanel.CheckBox;
 import edu.chl.proximity.Models.ControlPanel.TowerPanel.TowerPanel;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.GameData;
@@ -49,7 +48,7 @@ public class ControlPanelController implements ClickHandler {
         propertiesPanel = new PropertiesPanel(g,viewport);
         controlPanel = new ControlPanel(map,g,viewport);
         towerPanel=new TowerPanel(map);
-        map.setPropertiesPanel(propertiesPanel);
+        //map.setPropertiesPanel(propertiesPanel);
         buttonPanel = new ButtonPanel(propertiesPanel);
         profilePanel = new ProfilePanel();
         spellPanel = new SpellPanel(GameData.getInstance().getPlayer().getFaction());
@@ -152,7 +151,7 @@ public class ControlPanelController implements ClickHandler {
 
 
             if(map.getHand().getItem() != null) {
-                if(map.getChoosenTower()==null) {
+                if(map.getChosenTower()==null) {
                     map.getHand().setItem(null);
                 }
             }
@@ -169,7 +168,7 @@ public class ControlPanelController implements ClickHandler {
         }
         BoardObject touchedButton;
 
-        if (!map.getPropertiesPanel().getIfVisible() ) {
+        if (!propertiesPanel.getIfVisible() ) {
             //ButtonPanel
             touchedButton = buttonPanel.getButtonOnPosition(clickedPoint);
             if (touchedButton != null) {
@@ -193,20 +192,20 @@ public class ControlPanelController implements ClickHandler {
 
             //PropertiesPanel
 
-        if (map.getPropertiesPanel().getIfVisible()) {
-                touchedButton = map.getPropertiesPanel().getButtonOnPosition(clickedPoint);
+        if (propertiesPanel.getIfVisible()) {
+                touchedButton = propertiesPanel.getButtonOnPosition(clickedPoint);
                 if (touchedButton != null) {
                     map.getHand().setItem(null);
                 }
                 if (touchedButton instanceof ResumeButton) {
-                    map.getPropertiesPanel().pressedResumeButton();
+                    propertiesPanel.pressedResumeButton();
                 } else if (touchedButton instanceof MainMenuButton) {
-                    map.getPropertiesPanel().pressedMainMenuButton();
+                    propertiesPanel.pressedMainMenuButton();
                 } else if (touchedButton instanceof SoundButton) {
-                    map.getPropertiesPanel().pressedSoundButton();
+                    propertiesPanel.pressedSoundButton();
                 } else if (touchedButton instanceof SoundBar) {
                     int level = ((SoundBar) touchedButton).getLevel();
-                    map.getPropertiesPanel().pressedBar(level);
+                    propertiesPanel.pressedBar(level);
                 }
         }
 

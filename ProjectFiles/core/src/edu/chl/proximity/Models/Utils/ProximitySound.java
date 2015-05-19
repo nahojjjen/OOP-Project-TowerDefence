@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import edu.chl.proximity.Utilities.Constants;
+import edu.chl.proximity.Utilities.TestChecker;
 
 /**
  * @author Johan
@@ -19,6 +20,8 @@ public class ProximitySound {
      * @param filePath
      */
     public ProximitySound(String filePath){
+        if(TestChecker.isJUnitTest())
+            return;
         sound = Gdx.audio.newSound(new FileHandle(filePath));
     }
 

@@ -71,8 +71,8 @@ public class TowerPanel extends BoardObject{
     }
 
     public void pressedFirst(){
-        if(map.getChoosenTower() instanceof ShootingTower){
-            ((ShootingTower) map.getChoosenTower()).setTargetingMethod(targetingFactory.getTargetFirst());
+        if(map.getChosenTower() instanceof ShootingTower){
+            ((ShootingTower) map.getChosenTower()).setTargetingMethod(targetingFactory.getTargetFirst());
             first.setAsChecked();
             closest.setAsUnchecked();
             last.setAsUnchecked();
@@ -80,8 +80,8 @@ public class TowerPanel extends BoardObject{
     }
 
     public void pressedClosest(){
-        if(map.getChoosenTower() instanceof ShootingTower){
-            ((ShootingTower) map.getChoosenTower()).setTargetingMethod(targetingFactory.getTargetClosest());
+        if(map.getChosenTower() instanceof ShootingTower){
+            ((ShootingTower) map.getChosenTower()).setTargetingMethod(targetingFactory.getTargetClosest());
             first.setAsUnchecked();
             closest.setAsChecked();
             last.setAsUnchecked();
@@ -89,8 +89,8 @@ public class TowerPanel extends BoardObject{
     }
 
     public void pressedLast(){
-        if(map.getChoosenTower() instanceof ShootingTower){
-            ((ShootingTower) map.getChoosenTower()).setTargetingMethod(targetingFactory.getTargetLast());
+        if(map.getChosenTower() instanceof ShootingTower){
+            ((ShootingTower) map.getChosenTower()).setTargetingMethod(targetingFactory.getTargetLast());
             first.setAsUnchecked();
             closest.setAsUnchecked();
             last.setAsChecked();
@@ -98,35 +98,35 @@ public class TowerPanel extends BoardObject{
     }
 
     public void pressedUpgrade(){
-        if(map.getChoosenTower() != null && afford) {
-            Tower upgrade=map.getChoosenTower().getUpgrade();
-            upgrade.setPosition(map.getChoosenTower().getPosition());
+        if(map.getChosenTower() != null && afford) {
+            Tower upgrade=map.getChosenTower().getUpgrade();
+            upgrade.setPosition(map.getChosenTower().getPosition());
             upgrade.setAsPlaced(true);
-            if(upgrade instanceof ShootingTower && map.getChoosenTower() instanceof ShootingTower){
-                ((ShootingTower) upgrade).setTargetingMethod(((ShootingTower) map.getChoosenTower()).getTargetingMethod());
+            if(upgrade instanceof ShootingTower && map.getChosenTower() instanceof ShootingTower){
+                ((ShootingTower) upgrade).setTargetingMethod(((ShootingTower) map.getChosenTower()).getTargetingMethod());
             }
-            map.getChoosenTower().remove();
+            map.getChosenTower().remove();
             map.add(upgrade);
-            map.setChoosenTower(upgrade);
+            map.setChosenTower(upgrade);
         }
     }
 
     public void pressedSell(){
-        Double p=new Double(map.getChoosenTower().getCost().getPoints()/2);
-        Double l=new Double(map.getChoosenTower().getCost().getLines()/2);
-        Double poly=new Double(map.getChoosenTower().getCost().getPolygons()/2);
+        Double p=new Double(map.getChosenTower().getCost().getPoints()/2);
+        Double l=new Double(map.getChosenTower().getCost().getLines()/2);
+        Double poly=new Double(map.getChosenTower().getCost().getPolygons()/2);
         GameData.getInstance().getPlayer().getResources().addResources(new Resources(p.intValue(),l.intValue(),poly.intValue()));
-        map.getChoosenTower().remove();
-        map.setChoosenTower(null);
+        map.getChosenTower().remove();
+        map.setChosenTower(null);
     }
 
     public void setInfo(){
-        if(map.getChoosenTower() != null){
-            Tower chosenTower = map.getChoosenTower();
+        if(map.getChosenTower() != null){
+            Tower chosenTower = map.getChosenTower();
             towerName.setText(chosenTower.getName());
             towerImage=chosenTower.getImage();
-            if(map.getChoosenTower().getUpgrade() != null) {
-                upgrade.setImage(map.getChoosenTower().getUpgrade().getImage());
+            if(map.getChosenTower().getUpgrade() != null) {
+                upgrade.setImage(map.getChosenTower().getUpgrade().getImage());
                 Resources r = chosenTower.getUpgradeCost();
 
                 Resources p = GameData.getInstance().getPlayer().getResources();
@@ -142,12 +142,12 @@ public class TowerPanel extends BoardObject{
                 polygons.setText("Polygons: " + r.getPolygons());
 
             }
-            if(map.getChoosenTower() instanceof ShootingTower){
-                if(((ShootingTower) map.getChoosenTower()).getTargetingMethod() instanceof TargetFirst){
+            if(map.getChosenTower() instanceof ShootingTower){
+                if(((ShootingTower) map.getChosenTower()).getTargetingMethod() instanceof TargetFirst){
                     pressedFirst();
-                }else if(((ShootingTower) map.getChoosenTower()).getTargetingMethod() instanceof TargetClosest){
+                }else if(((ShootingTower) map.getChosenTower()).getTargetingMethod() instanceof TargetClosest){
                     pressedClosest();
-                }else if(((ShootingTower) map.getChoosenTower()).getTargetingMethod() instanceof TargetLast){
+                }else if(((ShootingTower) map.getChosenTower()).getTargetingMethod() instanceof TargetLast){
                     pressedLast();
                 }
             }
@@ -155,7 +155,7 @@ public class TowerPanel extends BoardObject{
     }
 
     public void render(ProximityBatch batch){
-        if(map.getChoosenTower() != null) {
+        if(map.getChosenTower() != null) {
             setInfo();
             batch.renderRepeatedly(background, pos, width, height);
             super.render(batch);
@@ -165,7 +165,7 @@ public class TowerPanel extends BoardObject{
             towerName.draw(batch);
             batch.render(towerImage, new ProximityVector(pos.x + 5, pos.y + 5), 0);
             sell.render(batch);
-            if(map.getChoosenTower().getUpgrade() != null) {
+            if(map.getChosenTower().getUpgrade() != null) {
                 upgrade.render(batch);
                 cost.draw(batch);
                 points.draw(batch);

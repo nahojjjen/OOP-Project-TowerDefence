@@ -76,6 +76,12 @@ public abstract class Map {
             towers.add((Tower) object);
         if(object instanceof Spell)
             spells.add((Spell) object);
+        if(object instanceof Projectile)
+            projectiles.add((Projectile) object);
+    }
+
+    public int getNumberOfObjectsOnMap() {
+        return creeps.size() + towers.size() + spells.size() + projectiles.size();
     }
 
     /**
@@ -110,8 +116,9 @@ public abstract class Map {
                 return t;
         }
         for(Creep c : creeps) {
-            if(c.containsPoint(position))
+            if(c.containsPoint(position)) {
                 return c;
+            }
         }
         return null;
     }
@@ -127,22 +134,12 @@ public abstract class Map {
         if (range <= 0 || position == null){return creepsWithinRange;}
         for (Creep creep : creeps) {
             if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), position) < range * range) {
+
                 creepsWithinRange.add(creep);
             }
         }
         return creepsWithinRange;
     }
-
-
-    /**
-     * Check if a creep is somewhere on the map this frame
-     * @param target what creep to look for
-     * @return true if creep is on the map
-     */
-    public boolean containsCreep(Creep target) {
-        return creeps.contains(target);
-    }
-
 
     /**
      * Updates all towers, creeps, spells and projectile logic on this map.
@@ -195,31 +192,34 @@ public abstract class Map {
     }
 
     public Path getPath(){return path;}
-    public void setPath(Path newPath){ path = newPath;}
+    public void setPath(Path newPath){
+        if(newPath == null) {
+            throw new IllegalArgumentException();
+        }
+        path = newPath;}
     public Background getBackground(){ return  background;}
     public Base getBase(){return base;}
     public void setBase(Base base){ this.base = base;}
 
-    public void setChoosenTower(Tower tower){
-        getHand().setItem(tower);
+    public void setChosenTower(Tower tower){
+        System.out.println(towers.contains(tower));
+        if(towers.contains(tower)) {
+            getHand().setItem(tower);
+        }
+        else {
+            getHand().setItem(null);
+        }
     }
 
-    public Tower getChoosenTower(){
+    public Tower getChosenTower(){
         if(getHand().getItem() instanceof Tower){
-            if(((Tower) getHand().getItem()).getIfPlaced()){
+            if(towers.contains(((Tower) getHand().getItem()))) {
                 return (Tower) getHand().getItem();
             }
         }
         return null;
     }
 
-    public PropertiesPanel getPropertiesPanel() {
-        return propertiesPanel;
-    }
-
-    public void setPropertiesPanel(PropertiesPanel propertiesPanel) {
-        this.propertiesPanel = propertiesPanel;
-    }
 
     /**
      * Remove all objects that have been marked for deletion from this map

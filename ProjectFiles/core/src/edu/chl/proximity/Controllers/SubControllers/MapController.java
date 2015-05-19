@@ -1,6 +1,5 @@
 package edu.chl.proximity.Controllers.SubControllers;
 
-import com.badlogic.gdx.Gdx;
 import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Towers.Tower;
@@ -55,8 +54,8 @@ public class MapController implements ClickHandler {
             //Checks if anything was clicked on the board (Ex towers)
             BoardObject object = map.getObjectOnPosition(clickedPoint);
             if(object instanceof Tower) {
-                map.setChoosenTower((Tower) object);
-            }else if(object==null && map.getChoosenTower() != null){
+                map.setChosenTower((Tower) object);
+            }else if(object==null && map.getChosenTower() != null){
                 map.getHand().setItem(null);
             }
 
@@ -79,7 +78,7 @@ public class MapController implements ClickHandler {
             map.getHand().setItem(null);
             if(item instanceof Tower){
                 ((Tower) item).setAsPlaced(true);
-                map.setChoosenTower((Tower) item);
+                map.setChosenTower((Tower) item);
 
             }
         } else {

@@ -33,8 +33,8 @@ public class SellButton extends BoardObject{
     }
 
     public void setInfo(){
-        if(map.getChoosenTower()!=null){
-            Resources cost=map.getChoosenTower().getCost();
+        if(map.getChosenTower()!=null){
+            Resources cost=map.getChosenTower().getCost();
             Double p= new Double(cost.getPoints()/2);
             Double l=new Double(cost.getLines()/2);
             Double poly=new Double(cost.getPolygons()/2);
@@ -46,7 +46,7 @@ public class SellButton extends BoardObject{
 
     public void render(ProximityBatch batch){
         setInfo();
-        if(map.getChoosenTower()!=null){
+        if(map.getChosenTower()!=null){
             super.render(batch);
             points.draw(batch);
             lines.draw(batch);

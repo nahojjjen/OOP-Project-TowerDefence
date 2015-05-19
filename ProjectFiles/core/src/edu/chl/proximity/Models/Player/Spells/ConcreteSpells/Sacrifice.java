@@ -31,7 +31,7 @@ public class Sacrifice extends Spell {
             t.remove();
 
             //Todo: Set chosen tower to null some other way
-            //getMap().setChoosenTower(null);
+            //getMap().setChosenTower(null);
 
             setHealthChange(20);
 
