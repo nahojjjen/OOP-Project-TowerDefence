@@ -1,4 +1,4 @@
-package test.edu.chl.proximity.Models.Player.ResouceSystem;
+package test.edu.chl.proximity.Models.Player.ResourceSystem;
 
 import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
 import edu.chl.proximity.Utilities.ProximityVector;
