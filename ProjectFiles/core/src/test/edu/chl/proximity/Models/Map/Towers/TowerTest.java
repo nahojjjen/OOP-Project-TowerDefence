@@ -27,20 +27,19 @@ import static org.junit.Assert.*;
  */
 public class TowerTest {
 
-    Tower tower;
-    @Before public void initialize(){
-        tower = new BulletTower(new ProximityVector(0,0), new TargetClosest(), new ParticleManager());
-    }
+
 
     @Test
     public void testGetName() throws Exception {
+     Tower  tower = new BulletTower(new ProximityVector(0,0), new TargetClosest(), new ParticleManager());
     assertTrue(tower.getName().equals("Bullet Tower"));
     }
 
-    @Test(expected=java.lang.ExceptionInInitializerError.class) // will attempt to create a projectile, but will fail
+    @Test(expected=java.lang.NoClassDefFoundError.class) // will attempt to create a projectile, but will fail
     public void testUpdate() throws Exception {
         //update will do target, shoot, reload
 
+        Tower  tower = new BulletTower(new ProximityVector(0,0), new TargetClosest(), new ParticleManager());
         GameData.getInstance();
         GameData.getInstance().setPlayer(new Player(new Filler()));
 
@@ -49,8 +48,11 @@ public class TowerTest {
         tower.update(testCreepList); // should not fire, no creeps nearby
         tower.setPosition(new FirstPath().getWaypoint(0)); // place the test tower on top of where the creep will spawn
         testCreepList.add(new Line1(1, new ParticleManager(), new FirstPath()));
-        tower.update(testCreepList); // should fire a projectile and start the cooldown
-        tower.setAsPlaced(true);
+
+            tower.update(testCreepList); // should fire a projectile and start the cooldown
+
+
+
         testCreepList.add(new Line1(1, new ParticleManager(), new FirstPath()));
         tower.update(testCreepList);
         assertTrue(tower.getIfPlaced());
@@ -60,11 +62,13 @@ public class TowerTest {
 
     @Test
     public void testGetUpgradeCost() throws Exception {
+        Tower  tower = new BulletTower(new ProximityVector(0,0), new TargetClosest(), new ParticleManager());
         assertTrue(tower.getUpgradeCost().getLines() + tower.getUpgradeCost().getPoints() > 0);
     }
 
     @Test (expected = IllegalArgumentException.class)
     public void testPreparePlacing() throws Exception {
+        Tower  tower = new BulletTower(new ProximityVector(0,0), new TargetClosest(), new ParticleManager());
         //preparing placing should mark the tower as placed and place the center where the curos was
         tower = new MissileTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager());
         tower.preparePlacing(new ProximityVector(100, 100));
@@ -76,16 +80,19 @@ public class TowerTest {
 
     @Test
     public void testGetRange() throws Exception {
+        Tower  tower = new BulletTower(new ProximityVector(0,0), new TargetClosest(), new ParticleManager());
         assertTrue(tower.getRange() > 0);
     }
 
     @Test
     public void testGetCost() throws Exception {
+        Tower  tower = new BulletTower(new ProximityVector(0,0), new TargetClosest(), new ParticleManager());
        assertTrue(tower.getCost().getLines() + tower.getCost().getPoints() > 0);
     }
 
     @Test
     public void testGetNewUpgrade() throws Exception {
+        Tower  tower = new BulletTower(new ProximityVector(0,0), new TargetClosest(), new ParticleManager());
         tower = new MissileTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager());
         assertTrue(tower.getUpgrade() == null);
         tower = new BulletTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager());
@@ -95,28 +102,4 @@ public class TowerTest {
 
     }
 
-    @Test
-    public void testGetUpgrade() throws Exception {
-
-    }
-
-    @Test
-    public void testGetIfPlaced() throws Exception {
-
-    }
-
-    @Test
-    public void testSetAsPlaced() throws Exception {
-
-    }
-
-    @Test
-    public void testGetParticleManager() throws Exception {
-
-    }
-
-    @Test
-    public void testSetParticleManager() throws Exception {
-
-    }
 }

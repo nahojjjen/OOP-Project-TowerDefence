@@ -14,7 +14,9 @@ import edu.chl.proximity.Utilities.ProximityVector;
 import java.util.List;
 
 /**
- * Created by simongislen on 13/05/15.
+ * @author simon gislen
+ *
+ * @date 13/05/15.
  */
 public class BulletTower2 extends Tower implements Cloneable {
 
@@ -50,28 +52,35 @@ public class BulletTower2 extends Tower implements Cloneable {
      * Targets the closest creep, if one is in range.
      */
     public void target(List<Creep> creeps){
-        currentTarget = targetingMethod.getTarget(creeps, getPosition(), range);
-        if (currentTarget != null) {
-            this.setAngle(PointCalculations.getVectorAngle(this.getPosition(), currentTarget.getPosition()));
+        if (creeps != null){
+            currentTarget = targetingMethod.getTarget(creeps, getPosition(), range);
+            if (currentTarget != null) {
+                this.setAngle(PointCalculations.getVectorAngle(this.getPosition(), currentTarget.getPosition()));
+            }
         }
+
     }
 
     public void shoot(List<Creep> creeps){
+
         target(creeps);
 
-        if (ammoCounter <= ammo) {
-            if (currentReload < 1 && currentTarget != null) {
-                add(createProjectile(getCenter()));
-                currentReload = reloadTime;
-                ammoCounter++;
-            } else {
-                currentReload--;
+        if (creeps != null){
+            if (ammoCounter <= ammo) {
+                if (currentReload < 1 && currentTarget != null) {
+                    add(createProjectile(getCenter()));
+                    currentReload = reloadTime;
+                    ammoCounter++;
+                } else {
+                    currentReload--;
+                }
+            }
+            else {
+                currentReload = overHeatTime;
+                ammoCounter = 0;
             }
         }
-        else {
-            currentReload = overHeatTime;
-            ammoCounter = 0;
-        }
+
     }
 
     public Creep getTarget(){
