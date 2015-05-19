@@ -104,9 +104,9 @@ public class Resources {
      * @param r Resources that are to be removed
      */
     public void removeResources(Resources r){
-        points-=r.getPoints();
-        lines-=r.getLines();
-        polygons=r.getPolygons();
+        points = points -r.getPoints();
+        lines = lines - r.getLines();
+        polygons = polygons - r.getPolygons();
     }
 
     /**
