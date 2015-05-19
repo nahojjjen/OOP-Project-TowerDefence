@@ -26,8 +26,8 @@ public class PercentBar {
         this.height = height;
         this.background = background;
         this.foreground = foreground;
-        text = new ProximityFont(new ProximityVector(position.x + (width/2) - 8, position.y + 8), "");
-        text.scale(0.1f);
+        text = new ProximityFont(new ProximityVector(position.x + (width/2) - 13, position.y + 10), "");
+        text.setSize(height/2);
 
     }
 
