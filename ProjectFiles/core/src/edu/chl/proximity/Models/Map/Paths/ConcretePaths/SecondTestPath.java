@@ -11,12 +11,6 @@ public class SecondTestPath extends Path{
 
 
     @Override
-    public void initiatePathHitbox() {
-
-
-    }
-
-    @Override
     public void initiatePoints() {
         if (waypoint != null) {
             if (waypoint.isEmpty()) {

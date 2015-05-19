@@ -25,7 +25,6 @@ public abstract class Path {
      * get an instance of this path
      */
     public Path() {
-        initiatePathHitbox();
         initiatePoints();
     }
 
@@ -38,11 +37,6 @@ public abstract class Path {
     public List<ProximityVector> getWaypoints() {
         return waypoint;
     }
-
-    /**
-     * add rectangles covering the surface of the path
-     */
-    public abstract void initiatePathHitbox();
 
 
     /**

@@ -11,38 +11,7 @@ import edu.chl.proximity.Models.Map.Paths.Path;
 public class FirstPath extends Path {
 
 
-    public FirstPath() {
 
-    }
-
-    /**
-     * add rectangles covering the surface of the path
-     */
-    public void initiatePathHitbox(){
-        if(pathHitbox != null) {
-            if (pathHitbox.size() < 1) {
-
-
-                pathHitbox.add(new Rectangle(0, 700, 1050, 30));
-                pathHitbox.add(new Rectangle(1025, 530, 30, 180));
-                pathHitbox.add(new Rectangle(940, 530, 100, 30));
-                pathHitbox.add(new Rectangle(940, 530, 30, 120));
-                pathHitbox.add(new Rectangle(440, 620, 500, 30));
-                pathHitbox.add(new Rectangle(450, 450, 30, 200));
-                pathHitbox.add(new Rectangle(90, 450, 370, 30));
-                pathHitbox.add(new Rectangle(90, 85, 30, 380));
-                pathHitbox.add(new Rectangle(90, 85, 230, 30));
-                pathHitbox.add(new Rectangle(300, 85, 30, 300));
-                pathHitbox.add(new Rectangle(300, 360, 750, 30));
-                pathHitbox.add(new Rectangle(1025, 100, 30, 270));
-                pathHitbox.add(new Rectangle(835, 100, 200, 30));
-                pathHitbox.add(new Rectangle(835, 100, 30, 150));
-                pathHitbox.add(new Rectangle(650, 250, 200, 30));
-
-
-            }
-        }
-    }
 
     public void initiatePoints(){
         if(waypoint != null) {
