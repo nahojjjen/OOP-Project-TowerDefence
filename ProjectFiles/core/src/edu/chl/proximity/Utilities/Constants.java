@@ -15,7 +15,7 @@ import java.util.List;
 public class Constants {
 
     public static final String FILE_PATH = "assets/";
-    public static final int GAME_HEIGHT = Gdx.graphics.getHeight();
-    public static final int GAME_WIDTH = Gdx.graphics.getWidth();
+    public static final int GAME_HEIGHT = 720; //Gdx.graphics.getHeight()
+    public static final int GAME_WIDTH = 1280; //Gdx.graphics.getWidth();
     public static final List<String> SPELL_SHORTS = Collections.unmodifiableList(Arrays.asList("Q", "W", "E", "R"));
 }

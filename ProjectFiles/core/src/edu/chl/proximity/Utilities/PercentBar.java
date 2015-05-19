@@ -43,6 +43,10 @@ public class PercentBar {
         }
     }
 
+    public int getPercent() {
+        return percent;
+    }
+
     public void render(ProximityBatch batch) {
         batch.renderRepeatedly(background, position, width, height);
 

@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.ControlPanel;
 
 import com.badlogic.gdx.utils.viewport.Viewport;
+import edu.chl.proximity.Models.Map.Maps.StandardMap;
 import edu.chl.proximity.Models.Map.Towers.*;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Proximity;
@@ -31,6 +32,23 @@ public class ControlPanel extends BoardObject{
     //The texts that are displayed
     private ProximityFont lineText;
     private ProximityFont polygonText;
+
+    public ProximityFont getLineText() {
+        return lineText;
+    }
+
+    public ProximityFont getPolygonText() {
+        return polygonText;
+    }
+
+    public ProximityFont getPointText() {
+        return pointText;
+    }
+
+    public PercentBar getPercentBar() {
+        return percentBar;
+    }
+
     private ProximityFont pointText;
 
     private PercentBar percentBar;
@@ -65,6 +83,9 @@ public class ControlPanel extends BoardObject{
     public ControlPanel(Map map, Proximity game, Viewport viewport) {
         super(position, background, 0, width, height);
 
+        if(map == null) {
+            throw new IllegalArgumentException("ControlPanel: Map can't be null");
+        }
         this.map = map;
         this.game=game;
         this.viewport=viewport;
@@ -88,6 +109,10 @@ public class ControlPanel extends BoardObject{
         pointText = createFont(30, 120, "null");
     }
 
+    public int getControlPanelTowerListSize() {
+        return controlPanelTowerList.size();
+    }
+
     /**
      * Initiates the towers that are rendered in this controlPanel
      */
@@ -100,25 +125,35 @@ public class ControlPanel extends BoardObject{
         controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new SniperTower(new ProximityVector(0, 0), targetFactory.getTargetClosest(), map.getParticleManager())));
 
         for(int i = 0; i < controlPanelTowerList.size(); i++) {
-            System.out.println("In controllpanel: Towers per row: " + i % towersPerRow);
-            System.out.println("In controlpanel: i/towers per row "+ i/towersPerRow);
             controlPanelTowerList.get(i).setPosition(new ProximityVector(getPosition().x + 30 + 50 * (i % towersPerRow), 150 + 50 * (i/towersPerRow)));
         }
     }
 
 
     public void setHealth(int percent){
+        if(percent >= 100)
+            percent = 100;
+        if(percent <= 0)
+            percent = 0;
         percentBar.setPercent(percent);
         percentBar.setText(percent + "%");
+        /*
         if(percent<=0){
             game.changeScreen(Proximity.State.GAME_OVER,map, GameData.getInstance().getPlayer(),viewport);
         }
+        */
+    }
+
+    public int getHealthPercent() {
+        return percentBar.getPercent();
     }
 
     public void setResources(Resources resources){
-        lineText.setText("Lines: " + resources.getLines());
-        polygonText.setText("Polygons: " + resources.getPolygons());
-        pointText.setText("Points: " + resources.getPoints());
+        if(resources != null) {
+            lineText.setText("Lines: " + resources.getLines());
+            polygonText.setText("Polygons: " + resources.getPolygons());
+            pointText.setText("Points: " + resources.getPoints());
+        }
 
     }
 
@@ -165,7 +200,7 @@ public class ControlPanel extends BoardObject{
     }
 
     public Tower getTowerBoundTo(int i) {
-        if(i <= controlPanelTowerList.size()) {
+        if(i <= controlPanelTowerList.size() && i > 0) {
             return controlPanelTowerList.get(i - 1).getTower();
         }
         return null;

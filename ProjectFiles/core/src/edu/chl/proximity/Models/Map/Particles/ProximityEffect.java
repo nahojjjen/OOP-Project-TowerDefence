@@ -11,6 +11,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
 import com.badlogic.gdx.utils.Array;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Utilities.Constants;
+import edu.chl.proximity.Utilities.TestChecker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +47,7 @@ public class ProximityEffect {
 
         //Configures 1 example effect
         effectTemplate = new ParticleEffect();
-        if (!Image.isJUnitTest()) {
+        if (!TestChecker.isJUnitTest()) {
             effectTemplate.load(effectFile, particleEffectsImagesFolder);
         }
         flipAllEmitterY(effectTemplate.getEmitters());

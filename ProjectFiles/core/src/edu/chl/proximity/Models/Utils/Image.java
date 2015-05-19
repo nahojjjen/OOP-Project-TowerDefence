@@ -3,6 +3,8 @@ package edu.chl.proximity.Models.Utils;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
+import edu.chl.proximity.Utilities.TestChecker;
+
 import java.io.File;
 import java.util.HashMap;
 
@@ -22,7 +24,7 @@ public class Image implements Cloneable {
     public Image(String s) {
 
         //We cannot create images under unit tests
-        if (isJUnitTest()) {
+        if (TestChecker.isJUnitTest()) {
             return;
         }
 
@@ -58,13 +60,4 @@ public class Image implements Cloneable {
         return super.clone();
     }
 
-    public static boolean isJUnitTest() {
-        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        for (StackTraceElement element : stackTrace) {
-            if (element.getClassName().startsWith("org.junit.")) {
-                return true;
-            }
-        }
-        return false;
-    }
 }

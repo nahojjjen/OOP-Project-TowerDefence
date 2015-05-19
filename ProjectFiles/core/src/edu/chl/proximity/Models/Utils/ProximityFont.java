@@ -3,6 +3,7 @@ package edu.chl.proximity.Models.Utils;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
+import edu.chl.proximity.Utilities.TestChecker;
 
 /**
  * @author Linda Evaldsson
@@ -27,13 +28,20 @@ public class ProximityFont {
     public ProximityFont(ProximityVector position, String s) {
         str = s;
         this.position = position;
-        font = new BitmapFont(true);
+        if (!TestChecker.isJUnitTest()) {
+            font = new BitmapFont(true);
+        }
 
     }
 
     public void scale(float scale) {
+        if(font != null) {
+            font.scale(scale);
+        }
+    }
 
-        font.scale(scale);
+    public String getText() {
+        return str;
     }
 
 
