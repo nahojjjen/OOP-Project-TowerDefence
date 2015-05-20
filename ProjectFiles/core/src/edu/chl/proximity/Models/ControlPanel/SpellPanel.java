@@ -1,7 +1,7 @@
 package edu.chl.proximity.Models.ControlPanel;
 
 import com.badlogic.gdx.graphics.Texture;
-import edu.chl.proximity.Models.Player.Spells.Spell;
+import edu.chl.proximity.Models.Map.Spells.Spell;
 import edu.chl.proximity.Models.Utils.PercentBar;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.*;

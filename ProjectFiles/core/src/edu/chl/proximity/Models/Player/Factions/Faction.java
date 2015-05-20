@@ -3,7 +3,7 @@ package edu.chl.proximity.Models.Player.Factions;
 import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.Path;
-import edu.chl.proximity.Models.Player.Spells.Spell;
+import edu.chl.proximity.Models.Map.Spells.Spell;
 import edu.chl.proximity.Models.Utils.Image;
 
 import java.util.ArrayList;

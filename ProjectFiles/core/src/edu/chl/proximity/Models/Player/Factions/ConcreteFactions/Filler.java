@@ -2,11 +2,10 @@ package edu.chl.proximity.Models.Player.Factions.ConcreteFactions;
 
 import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.Map.Bases.FillerBase;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Player.Factions.Faction;
-import edu.chl.proximity.Models.Player.Spells.ConcreteSpells.*;
+import edu.chl.proximity.Models.Map.Spells.ConcreteSpells.*;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 

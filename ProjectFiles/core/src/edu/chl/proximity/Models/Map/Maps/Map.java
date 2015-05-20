@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.Map.Maps;
 
-import edu.chl.proximity.Models.Player.Spells.Spell;
+import edu.chl.proximity.Models.Map.Spells.Spell;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;

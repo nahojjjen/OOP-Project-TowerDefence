@@ -2,7 +2,7 @@ package edu.chl.proximity.Models.ControlPanel;
 
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Player.Spells.Spell;
+import edu.chl.proximity.Models.Map.Spells.Spell;
 
 /**
  * @author Linda Evaldsson

@@ -5,19 +5,13 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Controllers.SubControllers.*;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Map.Projectiles.Projectile;
-import edu.chl.proximity.Models.Player.Spells.PersistentObject;
-import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.PointCalculations;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author Johan Swanberg and Linda Evaldsson
