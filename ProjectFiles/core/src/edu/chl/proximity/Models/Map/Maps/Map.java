@@ -1,10 +1,11 @@
 package edu.chl.proximity.Models.Map.Maps;
 
+import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Player.Spells.Spell;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Player.Holdables.Hand;
-import edu.chl.proximity.Models.Utils.Background;
+import edu.chl.proximity.Models.Map.Background;
 import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
@@ -237,9 +238,15 @@ public abstract class Map {
             if(object.isRemoved()) {
 
                 if(object instanceof Creep) {
+                    Creep creep = (Creep) object;
                     mapIterator.remove();
-                    if (((Creep)object).reachedLastWayPoint())
+                    if (creep.reachedLastWayPoint()) {
                         getBase().damage();
+                    }
+                    else {
+                        GameData.getInstance().getPlayer().addResources(creep.getCreepResource());
+                        GameData.getInstance().getPlayer().addExperiencePoints(creep.getCreepExperiencePoints());
+                    }
                 }
                 if(object instanceof Tower) {
                     mapIterator.remove();

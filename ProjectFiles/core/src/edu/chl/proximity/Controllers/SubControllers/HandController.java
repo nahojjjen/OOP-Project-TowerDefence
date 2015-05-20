@@ -2,7 +2,7 @@ package edu.chl.proximity.Controllers.SubControllers;
 
 import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Utils.Background;
+import edu.chl.proximity.Models.Map.Background;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 

@@ -3,9 +3,7 @@ package edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.Path;
-import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
-import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 
@@ -40,20 +38,14 @@ public class Line2 extends Creep {
     //Logic for devolving line1 creeps
     @Override
     public void devolve() {
-        if (!isDead()){
+        if (!isRemoved()){
             if (creepLineIndex != 1) {
                 //Devolves into a new Line 1.
                 add(new Line2(this));
 
             }
-            Player p = GameData.getInstance().getPlayer();
-            Resources res = p.getResources();
-            res.addResources(getCreepResource());
-            p.addExperiencePoints(getCreepExperiencePoints());
-
             destroy();
         }
-        markAsDead(); //make sure that the creep cannot be killed by several projectiles in the same frame
     }
 
     //Getters

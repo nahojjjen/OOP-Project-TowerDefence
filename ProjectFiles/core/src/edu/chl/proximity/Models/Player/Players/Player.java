@@ -108,6 +108,9 @@ public class Player {
         return resources;
     }
 
+    public void addResources(Resources added) {
+        resources.addResources(added);
+    }
     //Helper method to check if the player can afford an item
     public boolean canPlayerAfford(Resources res) {
         boolean result = resources.getPoints() >= res.getPoints() && resources.getLines() >= res.getLines() && resources.getPolygons() >= res.getPolygons();

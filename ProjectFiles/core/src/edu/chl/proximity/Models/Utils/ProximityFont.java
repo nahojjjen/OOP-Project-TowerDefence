@@ -23,8 +23,8 @@ public class ProximityFont {
     private BitmapFont font;
     private String str;
     private ProximityVector position;
-    private FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal(Constants.FILE_PATH + "Fonts/Roboto-Regular.ttf"));
-    private FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+    private FreeTypeFontGenerator generator;
+    private FreeTypeFontGenerator.FreeTypeFontParameter parameter;
 
     private Color color = Color.WHITE;
     private int size = 14;
@@ -37,9 +37,11 @@ public class ProximityFont {
     public ProximityFont(ProximityVector position, String s) {
         str = s;
         this.position = position;
-        parameter.flip = true;
 
         if (!TestChecker.isJUnitTest()) {
+            generator = new FreeTypeFontGenerator(Gdx.files.internal(Constants.FILE_PATH + "Fonts/Roboto-Regular.ttf"));
+            parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+            parameter.flip = true;
             generateFont();
         }
     }
@@ -52,7 +54,8 @@ public class ProximityFont {
 
     public void setSize(int size) {
         this.size = size;
-        generateFont();
+        if(!TestChecker.isJUnitTest())
+            generateFont();
     }
 
     public void setColor(Color color) {

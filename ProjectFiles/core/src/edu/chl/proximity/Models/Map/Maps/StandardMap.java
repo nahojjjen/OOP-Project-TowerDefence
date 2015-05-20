@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.Map.Maps;
 
-import edu.chl.proximity.Models.Utils.Background;
+import edu.chl.proximity.Models.Map.Background;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Map.Paths.ConcretePaths.SecondTestPath;
 import edu.chl.proximity.Models.Map.Paths.Path;

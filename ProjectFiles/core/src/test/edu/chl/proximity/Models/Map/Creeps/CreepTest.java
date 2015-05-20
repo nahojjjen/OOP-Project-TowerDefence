@@ -37,18 +37,6 @@ public class CreepTest extends TestCase {
         path = new FirstPath();
     }
 
-    public void testMarkAsDead() throws Exception {
-        Creep creep = new Line1(1, null, path);
-        creep.markAsDead();
-        assertTrue(creep.isDead());
-    }
-
-    public void testIsDead() throws Exception {
-        Creep creep = new Line1(1, null, path);
-        creep.markAsDead();
-        assertTrue(creep.isDead());
-    }
-
     public void testSetupCreep() throws Exception {
 
         Creep creep = new Line1(1, null, path);
@@ -97,24 +85,28 @@ public class CreepTest extends TestCase {
         int currentExp = GameData.getInstance().getPlayer().getExperience(); //will load exp from disk
         Creep creep = new Circle(new ParticleManager(), new FirstPath());
         creep.devolve();
+        player.addExperiencePoints(creep.getCreepExperiencePoints());
         assertTrue(GameData.getInstance().getPlayer().getExperience() > currentExp);
 
 
         Creep creep2 = new Line1(5,new ParticleManager(), new FirstPath());
         int resourceSum1 = player.getResources().getLines() + player.getResources().getPoints();
         creep2.devolve();
+        player.addResources(creep2.getCreepResource());
         int resourceSum2 = player.getResources().getLines() + player.getResources().getPoints();
         assertTrue(resourceSum1 < resourceSum2);
 
         Creep creep4 = new Triangle(new ParticleManager(), new FirstPath());
         int resourceSum5 = player.getResources().getLines() + player.getResources().getPoints();
         creep4.devolve();
+        player.addResources(creep4.getCreepResource());
         int resourceSum6 = player.getResources().getLines() + player.getResources().getPoints();
         assertTrue(resourceSum5 < resourceSum6);
 
         Creep creep3 = new Line2(5,new ParticleManager(), new FirstPath());
         int resourceSum3 = player.getResources().getLines() + player.getResources().getPoints();
         creep3.devolve();
+        player.addResources(creep3.getCreepResource());
         int resourceSum4 = player.getResources().getLines() + player.getResources().getPoints();
         assertTrue(resourceSum3 < resourceSum4);
 

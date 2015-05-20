@@ -1,6 +1,5 @@
 package edu.chl.proximity.Models.Map.Creeps;
 
-import com.badlogic.gdx.audio.Sound;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
@@ -27,25 +26,17 @@ import edu.chl.proximity.Utilities.ProximityRandom;
  */
 public abstract class Creep extends BoardObject {
 
-    //private ProximityVector nextWayPoint;
     private int nextWayPointID;
     private double distanceToNextWayPoint;
-    private Sound devolveSound;
     private double speed;
     private double backUpSpeed;
     private double moveAngle;
     private double randomRotation;
     private ProximityVector velocity;
     private int slowDownTime;
-    private boolean isDead = false;
     private ParticleManager particleManager;
     private Path path;
 
-    public void markAsDead(){
-        isDead = true;
-    }
-
-    public boolean isDead(){return isDead;}
     /**
      * create a new creep with an image and a speed
      * @param image what image the creep should have (it will rotate a random amount automatically)

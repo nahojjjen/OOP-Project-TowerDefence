@@ -3,9 +3,7 @@ package edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.Path;
-import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Utils.Image;
-import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
 import edu.chl.proximity.Utilities.Constants;
 
@@ -33,20 +31,10 @@ public class Triangle extends Creep {
 
     @Override
     public void devolve() {
-        if(!isDead()){
-
-            displayDeathEffect();
+        if(!isRemoved()){
             add(new Circle(this));
-
-            Player p = GameData.getInstance().getPlayer();
-            Resources res = p.getResources();
-            res.addResources(getCreepResource());
-            p.addExperiencePoints(getCreepExperiencePoints());
-
             destroy();
         }
-        markAsDead();
-
     }
 
     //Logic to obtain creep resource

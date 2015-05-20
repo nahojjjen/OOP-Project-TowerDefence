@@ -1,5 +1,6 @@
-package edu.chl.proximity.Models.Utils;
+package edu.chl.proximity.Models.Map;
 
+import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
