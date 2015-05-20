@@ -20,8 +20,8 @@ import java.util.List;
  * 08/04 modified by Linda Evaldsson. Refactoring to Tower instead of AbstracTower. Removed Projectile as parameter for the constructor.
  * 03-05-2015 Modified by Simon Gislen. Tiny spell check.
  * 04-05-2015 Modified by Simon Gislen. Moved projectile functionality to ShootingTower
- * 08/05 modified by Hanna Römer. Added name and Tower Upgrade
- * 10/05 modified by Hanna Römer. Removed class variable upgrade, made getUpgrade abstract.
+ * 08/05 modified by Hanna Romer. Added name and Tower Upgrade
+ * 10/05 modified by Hanna Romer. Removed class variable upgrade, made getUpgrade abstract.
  */
 public abstract class Tower extends BoardObject implements Holdable, Cloneable{
     protected Resources cost;
