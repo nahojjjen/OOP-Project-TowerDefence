@@ -28,7 +28,7 @@ public class WaveTest extends TestCase {
         super.setUp();
 
         path = new FirstPath();
-        creeps = new ArrayList<>();
+        creeps = new ArrayList<Creep>();
         creeps.add(new Line1(1, null, path));
 
         spawnInterval = 4f;

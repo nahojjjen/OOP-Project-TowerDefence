@@ -113,7 +113,7 @@ public abstract class BoardObject implements Cloneable {
     }
     public void render(ProximityBatch batch) {
         if(image != null) {
-            batch.render(this);
+            batch.render(getImage(), getPosition(), getAngle());
         }
     }
 

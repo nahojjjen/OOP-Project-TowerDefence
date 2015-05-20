@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Matrix4;
-import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.ProximityVector;
 
@@ -54,10 +53,6 @@ public class ProximityBatch {
     public void renderRepeatedly(Image image, ProximityVector p, int width, int height) {
         image.getTexture().setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
         batch.draw(image.getTexture(), p.x, p.y, image.getTexture().getWidth(), image.getTexture().getHeight(), width, height);
-    }
-
-    public void render(BoardObject object) {
-        render(object.getImage(), object.getPosition(), object.getAngle());
     }
 
     public void render(BitmapFont font, String str, ProximityVector position) {

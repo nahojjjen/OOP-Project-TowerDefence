@@ -1,7 +1,5 @@
 package test.edu.chl.proximity.Models;
 
-import edu.chl.proximity.Models.Map.Maps.StandardMap;
-import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
 
