@@ -1,7 +1,7 @@
 package edu.chl.proximity.Viewers;
 
 import edu.chl.proximity.Models.WonLostModels.GameOver;
-import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 
 /**
  * @author Hanna Romer

@@ -1,7 +1,7 @@
 package edu.chl.proximity.Models;
 
 
-import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Utilities.PointCalculations;
 import java.lang.CloneNotSupportedException;
@@ -20,6 +20,7 @@ import java.util.List;
  * 23/04 modified Simon Gislén. Added empty constructor.
  * 12/05 modified by Linda Evaldsson. Removed Map, added remove/add-methods instead.
  * 13/05 Modified by Simon Gislen. Crash fixes that occur under tests.
+ * 20/05 modified by Linda Evaldsson. Removed isPointInObject from containsObject-method and added the actual code instead.
 >*/
 public abstract class BoardObject implements Cloneable {
 
@@ -174,7 +175,14 @@ public abstract class BoardObject implements Cloneable {
     }
 
     public boolean containsPoint(ProximityVector point) {
-        return PointCalculations.isPointInObject(point, this);
+
+        if (point == null) return false;
+        boolean isWithinHorizontally = getPosition().x <= point.x && getPosition().x + getWidth() >= point.x;
+        boolean isWithinVertically = getPosition().y <= point.y && getPosition().y + getHeight() >= point.y;
+        if(isWithinHorizontally && isWithinVertically) {
+            return true;
+        }
+        return false;
     }
 
     @Override

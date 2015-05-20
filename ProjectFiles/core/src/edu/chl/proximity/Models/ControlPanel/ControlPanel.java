@@ -1,9 +1,9 @@
 package edu.chl.proximity.Models.ControlPanel;
 
 import com.badlogic.gdx.utils.viewport.Viewport;
-import edu.chl.proximity.Models.Map.Maps.StandardMap;
 import edu.chl.proximity.Models.Map.Towers.*;
-import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Utils.PercentBar;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.*;
 import edu.chl.proximity.Models.BoardObject;
@@ -164,7 +164,7 @@ public class ControlPanel extends BoardObject{
      */
     public ControlPanelTower getTowerOnPosition(ProximityVector position) {
         for(ControlPanelTower cpTower : controlPanelTowerList) {
-            if(PointCalculations.isPointInObject(position, cpTower))
+            if(cpTower.containsPoint(position))
                 return cpTower;
         }
         return null;

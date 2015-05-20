@@ -1,7 +1,7 @@
 package edu.chl.proximity.Models.MenuModels.FactionChooser;
 
 import com.badlogic.gdx.Gdx;
-import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Filler;
@@ -74,9 +74,9 @@ public class FactionChooser extends BoardObject{
     }
 
     public void pressed(ProximityVector pos){
-        if(PointCalculations.isPointInObject(pos,next)){
+        if(next.containsPoint(pos)){
             pressedNext();
-        }else if(PointCalculations.isPointInObject(pos,prev)){
+        }else if(prev.containsPoint(pos)){
             pressedPrevious();
         }
     }

@@ -1,4 +1,4 @@
-package edu.chl.proximity.Utilities;
+package edu.chl.proximity.Models.Utils;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Matrix4;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
  * @author Linda Evaldsson

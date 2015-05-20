@@ -1,7 +1,7 @@
 package edu.chl.proximity.Models.Player.Holdables;
 
 import com.badlogic.gdx.graphics.Color;
-import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Towers.Tower;

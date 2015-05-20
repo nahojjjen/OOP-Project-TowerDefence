@@ -1,15 +1,13 @@
 package edu.chl.proximity.Utilities;
 
 import com.badlogic.gdx.math.MathUtils;
-import edu.chl.proximity.Models.BoardObject;
-
-import java.awt.*;
 
 /**
  * @author Johan Swanberg
  * @author Linda Evaldsson (revised)
  * @date 2015-04-02
  * 25/04 modified by Johan Swanberg, made distance calculation use vector 2 in all steps
+ * 20/05 modified by Linda Evaldsson. Removed isPointInObject-method, it is instead in BoardObject
  */
 public class PointCalculations {
     private static MathUtils utils = new MathUtils();
@@ -56,21 +54,5 @@ public class PointCalculations {
             return length;
         }
         return 0;
-    }
-
-    /**
-     * Checks if a point is within a BoardObject
-     * @param point The Point that should be controlled
-     * @param object The object that should be controlled
-     * @return True of the point is within the object entered, false otherwise
-     */
-    public static boolean isPointInObject(ProximityVector point, BoardObject object) {
-        if (point == null || object == null) return false;
-        boolean isWithinHorizontally = object.getPosition().x <= point.x && object.getPosition().x + object.getWidth() >= point.x;
-        boolean isWithinVertically = object.getPosition().y <= point.y && object.getPosition().y + object.getHeight() >= point.y;
-        if(isWithinHorizontally && isWithinVertically) {
-            return true;
-        }
-        return false;
     }
 }

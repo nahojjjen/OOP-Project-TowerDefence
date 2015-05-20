@@ -43,6 +43,7 @@ public class PointCalculationsTest {
         assertTrue(PointCalculations.distanceBetweenNoSqrt(null,null) == 0);  //  (null case 2)
     }
 
+    /*
     @Test
     public void testIsPointInObject() throws Exception {
         BoardObject test = new Line1(1,new ParticleManager(), new FirstPath());
@@ -57,7 +58,7 @@ public class PointCalculationsTest {
         assertFalse(PointCalculations.isPointInObject(new ProximityVector(61, 61), test));
         assertFalse(PointCalculations.isPointInObject(null, test));
 
-    }
+    }*/
 
     @Test
     public void testCreatePathTool() {

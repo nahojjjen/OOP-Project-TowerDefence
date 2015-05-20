@@ -1,9 +1,8 @@
 package edu.chl.proximity.Models.Map.Maps;
 
 import edu.chl.proximity.Models.Player.Spells.Spell;
-import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
-import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Player.Holdables.Hand;
 import edu.chl.proximity.Models.Utils.Background;
 import edu.chl.proximity.Models.Map.Bases.Base;

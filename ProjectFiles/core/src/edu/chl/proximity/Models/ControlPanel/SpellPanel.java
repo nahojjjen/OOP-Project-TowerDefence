@@ -2,6 +2,8 @@ package edu.chl.proximity.Models.ControlPanel;
 
 import com.badlogic.gdx.graphics.Texture;
 import edu.chl.proximity.Models.Player.Spells.Spell;
+import edu.chl.proximity.Models.Utils.PercentBar;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.*;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Player.Factions.Faction;
@@ -116,7 +118,7 @@ public class SpellPanel extends BoardObject {
      */
     public ControlPanelSpell getSpellOnPosition(ProximityVector position) {
         for(ControlPanelSpell cpSpell : controlPanelSpellList) {
-            if(PointCalculations.isPointInObject(position, cpSpell))
+            if(cpSpell.containsPoint(position))
                 return cpSpell;
         }
         return null;

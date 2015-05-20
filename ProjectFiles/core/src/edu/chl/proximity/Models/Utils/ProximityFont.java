@@ -4,8 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.Constants;
-import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Utilities.TestChecker;
 

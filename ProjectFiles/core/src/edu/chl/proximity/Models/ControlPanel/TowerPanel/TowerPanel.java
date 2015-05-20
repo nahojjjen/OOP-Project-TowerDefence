@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.ControlPanel.TowerPanel;
 
-import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -53,18 +53,18 @@ public class TowerPanel extends BoardObject{
         setInfo();
     }
     public BoardObject getButtonOnPosition(ProximityVector pos){
-        if(PointCalculations.isPointInObject(pos,first)){
+        if(first.containsPoint(pos)){
             pressedFirst();
             return first;
-        }else if(PointCalculations.isPointInObject(pos, closest)){
+        }else if(closest.containsPoint(pos)){
             pressedClosest();
             return closest;
-        }else if(PointCalculations.isPointInObject(pos, last)){
+        }else if(last.containsPoint(pos)){
             pressedLast();
             return last;
-        }else if(PointCalculations.isPointInObject(pos, upgrade)){
+        }else if(upgrade.containsPoint(pos)){
             pressedUpgrade();
-        }else if(PointCalculations.isPointInObject(pos,sell)){
+        }else if(sell.containsPoint(pos)){
             pressedSell();
         }
         return null;

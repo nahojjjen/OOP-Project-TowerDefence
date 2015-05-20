@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.MenuModels.MapSelect;
 
-import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.FillerMap;
@@ -40,7 +40,7 @@ public class MapSelect extends BoardObject{
 
     public void pressed(ProximityVector pos){
         for(int i=0;i<maps.size();i++){
-            if(PointCalculations.isPointInObject(pos,maps.get(i))){
+            if(maps.get(i).containsPoint(pos)){
                 mapClicked(maps.get(i),i);
             }
         }

@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.ControlPanel.ButtonsPanel;
 
-import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Utils.GameData;

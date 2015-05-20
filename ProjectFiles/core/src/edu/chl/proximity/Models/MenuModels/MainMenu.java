@@ -2,7 +2,7 @@ package edu.chl.proximity.Models.MenuModels;
 
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
-import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Models.BoardObject;
@@ -48,9 +48,9 @@ public class MainMenu {
 
 
     public BoardObject getButtonOnPosition(ProximityVector position){
-        if(PointCalculations.isPointInObject(position, startButton)) {
+        if(startButton.containsPoint(position)) {
             return startButton;
-        }else if(PointCalculations.isPointInObject(position,factionChooser)){
+        }else if(factionChooser.containsPoint(position)){
             return factionChooser;
         }
         return mapSelect;

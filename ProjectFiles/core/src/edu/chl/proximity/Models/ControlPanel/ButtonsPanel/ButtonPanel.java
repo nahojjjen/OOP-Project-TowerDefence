@@ -1,7 +1,7 @@
 package edu.chl.proximity.Models.ControlPanel.ButtonsPanel;
 
 import com.badlogic.gdx.Gdx;
-import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Utils.GameData;
@@ -64,13 +64,13 @@ public class ButtonPanel extends BoardObject {
      * @return button on specified position. If there is no button there, null is returned
      */
     public BoardObject getButtonOnPosition(ProximityVector position){
-        if(PointCalculations.isPointInObject(position, playButton)) {
+        if(playButton.containsPoint(position)) {
             return playButton;
-        }else if(PointCalculations.isPointInObject(position,pauseButton)){
+        }else if(pauseButton.containsPoint(position)){
             return pauseButton;
-        }else if(PointCalculations.isPointInObject(position, speedButton)){
+        }else if(speedButton.containsPoint(position)){
             return speedButton;
-        }else if(PointCalculations.isPointInObject(position, prButton)){
+        }else if(prButton.containsPoint(position)){
             return prButton;
         }
         return null;

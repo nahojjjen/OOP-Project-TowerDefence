@@ -7,7 +7,7 @@ import edu.chl.proximity.Models.Player.Holdables.Hand;
 import edu.chl.proximity.Models.Player.Holdables.Holdable;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
-import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Utilities.ProximityVector;
 

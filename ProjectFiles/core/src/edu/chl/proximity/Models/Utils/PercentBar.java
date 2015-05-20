@@ -1,11 +1,12 @@
-package edu.chl.proximity.Utilities;
+package edu.chl.proximity.Models.Utils;
 
-import edu.chl.proximity.Models.Utils.Image;
-import edu.chl.proximity.Models.Utils.ProximityFont;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
  * @author Linda Evaldsson
  * @date 2015-05-07
+ *
+ * A class for drawing a partly filled bar, for example a health bar
  *
  * 08/05 modified by Linda Evaldsson. Changed percentBar to use textures (images).
  */

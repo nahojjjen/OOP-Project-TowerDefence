@@ -2,7 +2,6 @@ package test.edu.chl.proximity.Models.Map.Particles;
 
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Particles.ProximityEffect;
-import edu.chl.proximity.Utilities.ProximityBatch;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

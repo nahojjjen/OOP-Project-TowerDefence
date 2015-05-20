@@ -24,7 +24,7 @@ public class SniperTowerTest {
     @Test //(expected = java.lang.ExceptionInInitializerError.class)
     public void testCreateProjectile() throws Exception {
         SniperTower tower = new SniperTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager());
-        List<Creep> list = new ArrayList<>();
+        List<Creep> list = new ArrayList<Creep>();
         list.add(new Line1(4, new ParticleManager(), new FirstPath()));
         tower.update(list);
         Projectile projectile = tower.createProjectile();

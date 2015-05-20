@@ -7,7 +7,7 @@ import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
-import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
@@ -40,9 +40,9 @@ public class GameOver {
     }
 
     public void pressedButtonOnPosition(ProximityVector position) {
-        if (PointCalculations.isPointInObject(position, resume)) {
+        if (resume.containsPoint(position)) {
             pressedResume();
-        } else if (PointCalculations.isPointInObject(position, mainMenu)) {
+        } else if (mainMenu.containsPoint(position)) {
             pressedMainMenu();
         }
     }

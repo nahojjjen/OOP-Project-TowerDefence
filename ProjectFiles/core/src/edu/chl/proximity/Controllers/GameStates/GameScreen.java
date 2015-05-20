@@ -11,12 +11,9 @@ import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Proximity;
-import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Viewers.Renderer;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Johan Swanberg and Linda Evaldsson

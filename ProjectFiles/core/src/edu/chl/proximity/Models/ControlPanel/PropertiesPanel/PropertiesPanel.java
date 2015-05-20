@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.ControlPanel.PropertiesPanel;
 
-import edu.chl.proximity.Utilities.ProximityBatch;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Models.BoardObject;
@@ -141,15 +141,15 @@ public class PropertiesPanel extends BoardObject{
      */
     public BoardObject getButtonOnPosition(ProximityVector position){
         for(SoundBar bar:bars){
-            if(PointCalculations.isPointInObject(position,bar)){
+            if(bar.containsPoint(position)){
                 return bar;
             }
         }
-        if(PointCalculations.isPointInObject(position, resumeButton)) {
+        if(resumeButton.containsPoint(position)) {
             return resumeButton;
-        }else if(PointCalculations.isPointInObject(position,mainMenuButton)){
+        }else if(mainMenuButton.containsPoint(position)){
             return mainMenuButton;
-        }else if(PointCalculations.isPointInObject(position,soundButton)){
+        }else if(soundButton.containsPoint(position)){
             return soundButton;
         }
         return null;
