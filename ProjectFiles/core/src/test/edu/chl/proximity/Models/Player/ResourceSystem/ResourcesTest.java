@@ -1,9 +1,6 @@
 package test.edu.chl.proximity.Models.Player.ResourceSystem;
 
-import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
-import edu.chl.proximity.Utilities.ProximityVector;
-import junit.framework.TestCase;
-import junit.framework.TestResult;
+import edu.chl.proximity.Models.ResourceSystem.Resources;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

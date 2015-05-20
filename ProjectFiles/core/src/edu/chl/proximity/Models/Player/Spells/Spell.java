@@ -3,10 +3,10 @@ package edu.chl.proximity.Models.Player.Spells;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Towers.Tower;
-import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
+import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Utilities.PointCalculations;
 import edu.chl.proximity.Utilities.ProximityVector;
-import edu.chl.proximity.Models.Player.Holdables.Holdable;
+import edu.chl.proximity.Models.Map.Holdables.Holdable;
 import edu.chl.proximity.Models.Utils.Image;
 
 import java.util.ArrayList;

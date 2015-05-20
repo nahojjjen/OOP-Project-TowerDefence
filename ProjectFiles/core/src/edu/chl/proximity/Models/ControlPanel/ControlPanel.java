@@ -11,7 +11,7 @@ import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingFactory;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityFont;
-import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
+import edu.chl.proximity.Models.ResourceSystem.Resources;
 
 import java.util.ArrayList;
 import java.util.List;

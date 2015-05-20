@@ -1,4 +1,4 @@
-package edu.chl.proximity.Models.Player.ResourceSystem;
+package edu.chl.proximity.Models.ResourceSystem;
 
 /**
  * @author Hanna Romer

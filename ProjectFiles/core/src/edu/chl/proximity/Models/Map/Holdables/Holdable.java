@@ -1,6 +1,6 @@
-package edu.chl.proximity.Models.Player.Holdables;
+package edu.chl.proximity.Models.Map.Holdables;
 
-import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
+import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Utils.Image;

@@ -6,7 +6,7 @@ import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Map.Projectiles.SlowDownBullet;
-import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
+import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Utilities.Constants;
 
 /**

@@ -1,4 +1,4 @@
-package edu.chl.proximity.Models.Player.Holdables;
+package edu.chl.proximity.Models.Map.Holdables;
 
 import com.badlogic.gdx.graphics.Color;
 import edu.chl.proximity.Models.Utils.ProximityBatch;

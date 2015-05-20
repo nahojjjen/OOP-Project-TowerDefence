@@ -5,9 +5,9 @@ import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Player.Players.GameData;
-import edu.chl.proximity.Models.Player.Holdables.Holdable;
+import edu.chl.proximity.Models.Map.Holdables.Holdable;
 import edu.chl.proximity.Models.Utils.Image;
-import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
+import edu.chl.proximity.Models.ResourceSystem.Resources;
 
 import java.util.List;
 

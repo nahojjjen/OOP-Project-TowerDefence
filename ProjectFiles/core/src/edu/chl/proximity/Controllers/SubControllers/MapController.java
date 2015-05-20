@@ -5,7 +5,7 @@ import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Map.Background;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Player.Holdables.Holdable;
+import edu.chl.proximity.Models.Map.Holdables.Holdable;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 

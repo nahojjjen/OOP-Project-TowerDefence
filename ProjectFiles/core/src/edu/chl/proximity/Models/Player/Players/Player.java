@@ -2,7 +2,7 @@ package edu.chl.proximity.Models.Player.Players;
 
 import edu.chl.proximity.Models.Player.Factions.Faction;
 import edu.chl.proximity.Models.Player.PersistentSave.SaveManager;
-import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
+import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.Settings;
 
 /**

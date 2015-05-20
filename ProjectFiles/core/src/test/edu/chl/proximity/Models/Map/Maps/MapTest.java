@@ -15,7 +15,7 @@ import edu.chl.proximity.Models.Map.Towers.BulletTower;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetClosest;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Models.Map.Towers.Tower;
-import edu.chl.proximity.Models.Player.Holdables.Hand;
+import edu.chl.proximity.Models.Map.Holdables.Hand;
 import edu.chl.proximity.Models.Player.Spells.ConcreteSpells.WallOfStone;
 import edu.chl.proximity.Models.Player.Spells.Spell;
 import edu.chl.proximity.Models.Map.Background;

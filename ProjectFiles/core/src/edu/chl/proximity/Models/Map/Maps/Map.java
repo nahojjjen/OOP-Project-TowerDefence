@@ -4,7 +4,7 @@ import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Player.Spells.Spell;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
-import edu.chl.proximity.Models.Player.Holdables.Hand;
+import edu.chl.proximity.Models.Map.Holdables.Hand;
 import edu.chl.proximity.Models.Map.Background;
 import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.BoardObject;
