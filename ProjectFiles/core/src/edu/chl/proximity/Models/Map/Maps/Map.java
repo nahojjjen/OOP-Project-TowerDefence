@@ -2,6 +2,7 @@ package edu.chl.proximity.Models.Map.Maps;
 
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Player.Spells.Spell;
+import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Holdables.Hand;
@@ -44,6 +45,9 @@ public abstract class Map {
     private ArrayList<Tower> towers = new ArrayList<Tower>();
     private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 
+    private Resources collectedResources = new Resources(0, 0, 0);
+    private int collectedExperience = 0;
+
     private Path path;
     private Background background;
     private Base base;
@@ -59,7 +63,7 @@ public abstract class Map {
         this.path = path;
         this.background = background;
         this.name=name;
-        particleManager = new ParticleManager();
+        particleManager = new ParticleManager(GameData.getInstance().getPlayer().getSettings());
     }
 
 
@@ -95,6 +99,20 @@ public abstract class Map {
      * @return
      */
     public Hand getHand() { return hand; }
+
+    public Resources getCollectedResources() {
+        return collectedResources;
+    }
+    public void clearCollectedResources() {
+        collectedResources.setResources(0, 0, 0);
+    }
+
+    public int getCollectedExperience() {
+        return collectedExperience;
+    }
+    public void clearCollectedExperience() {
+        collectedExperience = 0;
+    }
 
     /**
      * get the particleManager in the map
@@ -244,8 +262,8 @@ public abstract class Map {
                         getBase().damage();
                     }
                     else {
-                        GameData.getInstance().getPlayer().addResources(creep.getCreepResource());
-                        GameData.getInstance().getPlayer().addExperiencePoints(creep.getCreepExperiencePoints());
+                        collectedResources.addResources(creep.getCreepResource());
+                        collectedExperience += creep.getCreepExperiencePoints();
                     }
                 }
                 if(object instanceof Tower) {

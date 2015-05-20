@@ -14,6 +14,7 @@ import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Filler;
 import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Player.Players.GameData;
+import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.ProximityVector;
 import junit.framework.TestCase;
 
@@ -55,14 +56,14 @@ public class CreepTest extends TestCase {
 
 
     public void testDestroy() throws Exception {
-        Creep creep = new Circle(new ParticleManager(), new FirstPath());
+        Creep creep = new Circle(new ParticleManager(new Settings()), new FirstPath());
         creep.destroy();
         assertTrue(creep.isRemoved());
 
     }
 
     public void testRotate() throws Exception {
-        Creep creep = new Triangle(new ParticleManager(), new FirstPath());
+        Creep creep = new Triangle(new ParticleManager(new Settings()), new FirstPath());
         creep.rotate(5);
 
     }
@@ -72,7 +73,7 @@ public class CreepTest extends TestCase {
     public void testGetCreepResource() throws Exception {
         GameData.getInstance();
         GameData.getInstance().setPlayer(new Player(new Filler()));
-        Creep creep = new Circle(new ParticleManager(), new FirstPath());
+        Creep creep = new Circle(new ParticleManager(new Settings()), new FirstPath());
         Resources gotten = creep.getCreepResource();
         assertTrue(gotten.getLines() + gotten.getPolygons() + gotten.getPoints() > 0);
     }
@@ -83,27 +84,27 @@ public class CreepTest extends TestCase {
         GameData.getInstance();
         GameData.getInstance().setPlayer(player);
         int currentExp = GameData.getInstance().getPlayer().getExperience(); //will load exp from disk
-        Creep creep = new Circle(new ParticleManager(), new FirstPath());
+        Creep creep = new Circle(new ParticleManager(new Settings()), new FirstPath());
         creep.devolve();
         player.addExperiencePoints(creep.getCreepExperiencePoints());
         assertTrue(GameData.getInstance().getPlayer().getExperience() > currentExp);
 
 
-        Creep creep2 = new Line1(5,new ParticleManager(), new FirstPath());
+        Creep creep2 = new Line1(5,new ParticleManager(new Settings()), new FirstPath());
         int resourceSum1 = player.getResources().getLines() + player.getResources().getPoints();
         creep2.devolve();
         player.addResources(creep2.getCreepResource());
         int resourceSum2 = player.getResources().getLines() + player.getResources().getPoints();
         assertTrue(resourceSum1 < resourceSum2);
 
-        Creep creep4 = new Triangle(new ParticleManager(), new FirstPath());
+        Creep creep4 = new Triangle(new ParticleManager(new Settings()), new FirstPath());
         int resourceSum5 = player.getResources().getLines() + player.getResources().getPoints();
         creep4.devolve();
         player.addResources(creep4.getCreepResource());
         int resourceSum6 = player.getResources().getLines() + player.getResources().getPoints();
         assertTrue(resourceSum5 < resourceSum6);
 
-        Creep creep3 = new Line2(5,new ParticleManager(), new FirstPath());
+        Creep creep3 = new Line2(5,new ParticleManager(new Settings()), new FirstPath());
         int resourceSum3 = player.getResources().getLines() + player.getResources().getPoints();
         creep3.devolve();
         player.addResources(creep3.getCreepResource());
@@ -119,7 +120,7 @@ public class CreepTest extends TestCase {
         Player player = new Player(new Filler());
         GameData.getInstance();
         GameData.getInstance().setPlayer(player);
-        Creep creep = new Circle(new ParticleManager(), new FirstPath());
+        Creep creep = new Circle(new ParticleManager(new Settings()), new FirstPath());
         double xcoor = creep.getPosition().x;
         double ycoor = creep.getPosition().y;
         creep.move();
@@ -132,7 +133,7 @@ public class CreepTest extends TestCase {
 
     public void testGetAngleToNextPoint() throws Exception {
 
-        Creep creep = new Triangle(new ParticleManager(), new FirstPath());
+        Creep creep = new Triangle(new ParticleManager(new Settings()), new FirstPath());
         creep.setPosition(new ProximityVector(0,0));
         double firstAngle = creep.getAngleToNextPoint();
        creep.setPosition(new ProximityVector(100, 100));
@@ -144,7 +145,7 @@ public class CreepTest extends TestCase {
 
 
     public void testSlowDownAndCheckifSpeedUp() throws Exception {
-        Creep creep = new Triangle(new ParticleManager(), new FirstPath());
+        Creep creep = new Triangle(new ParticleManager(new Settings()), new FirstPath());
         double creepSpeed1 = creep.getSpeed();
         creep.slowDown(50, 100);
         assertTrue(creep.getSpeed()!= creepSpeed1); //ensure that the speed has changed
@@ -165,7 +166,7 @@ public class CreepTest extends TestCase {
         GameData.getInstance();
         GameData.getInstance().setPlayer(player);
         Path path = new FirstPath();
-        Creep creep = new Circle(new ParticleManager(),path );
+        Creep creep = new Circle(new ParticleManager(new Settings()),path );
         assertTrue(creep.getPath() == path);
     }
 }

@@ -51,7 +51,6 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
     public void preparePlacing(ProximityVector position) {
         if (position == null) throw new IllegalArgumentException();
         this.setCenter(position);
-        GameData.getInstance().getPlayer().getResources().removeResources(getCost());
         isPlaced=true;
     }
 

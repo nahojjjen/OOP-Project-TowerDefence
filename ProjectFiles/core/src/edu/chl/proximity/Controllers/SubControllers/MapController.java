@@ -6,6 +6,7 @@ import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Map.Background;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Holdables.Holdable;
+import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 
@@ -42,6 +43,10 @@ public class MapController implements ClickHandler {
 
     public void update() {
         map.update();
+        GameData.getInstance().getPlayer().addResources(map.getCollectedResources());
+        GameData.getInstance().getPlayer().addExperiencePoints(map.getCollectedExperience());
+        map.clearCollectedResources();
+        map.clearCollectedExperience();
     }
 
     @Override
@@ -73,6 +78,7 @@ public class MapController implements ClickHandler {
 
     private void placeHandObject(Holdable item, ProximityVector clickedPoint){
         if (map.getHand().canPlayerAffordTheHand()) {
+            GameData.getInstance().getPlayer().getResources().removeResources(item.getCost());
             item.preparePlacing(clickedPoint);
             map.add((BoardObject)item);
             map.getHand().setItem(null);

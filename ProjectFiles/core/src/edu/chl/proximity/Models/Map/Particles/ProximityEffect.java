@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
+import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.ProximityVector;
 import com.badlogic.gdx.utils.Array;
-import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.TestChecker;
 
@@ -32,6 +32,7 @@ public class ProximityEffect {
     private ParticleEffectPool effectPool; //effects that can be created
     private ParticleEffect effectTemplate;
     private FileHandle effectFile;
+    private Settings settings;
     List<ParticleEffectPool.PooledEffect> effects = new ArrayList(); //effects currently on the map
 
     /**
@@ -53,6 +54,10 @@ public class ProximityEffect {
 
         //loads the example effect into the pool, so the pool knows what kind of effect to populate itself with (see pool-design pattern)
          effectPool = new ParticleEffectPool(effectTemplate, 1, maxPoolAmount );
+    }
+
+    public void setSettings(Settings settings) {
+        this.settings = settings;
     }
 
 
@@ -142,7 +147,7 @@ public class ProximityEffect {
         for (int i = 0; i<effects.size(); i++) {
             ParticleEffectPool.PooledEffect effect = effects.get(i);
 
-            batch.render(effect, Gdx.graphics.getDeltaTime() * GameData.getInstance().getPlayer().getSettings().getGameSpeed());
+            batch.render(effect, Gdx.graphics.getDeltaTime() * settings.getGameSpeed());
 
             if(effect.getEmitters().get(0).getPercentComplete() >= 0 && !effect.getEmitters().get(0).isContinuous()){//effect.isComplete()){
                 effect.free(); //put the effect back in the pool if it is done )

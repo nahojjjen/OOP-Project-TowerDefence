@@ -7,6 +7,7 @@ import edu.chl.proximity.Models.Map.Paths.ConcretePaths.FirstPath;
 import edu.chl.proximity.Models.Map.Towers.BulletTower2;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetClosest;
 import edu.chl.proximity.Models.Map.Towers.Tower;
+import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
 
@@ -23,14 +24,14 @@ public class BulletTower2Test {
 
     @Test
     public void testTarget() throws Exception {
-    BulletTower2 test = new BulletTower2(new ProximityVector(0,0), new TargetClosest(), new ParticleManager());
+    BulletTower2 test = new BulletTower2(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
         double angle= test.getAngle();
         List list = new ArrayList<Creep>();
         test.target(list);
         assertTrue(test.getAngle() == angle); //targeting nothing should not have changed the angle
         test.target(null);
         assertTrue(test.getAngle() == angle); //targeting nothing should not have changed the angle
-        Creep creep = new Circle(new ParticleManager(), new FirstPath());
+        Creep creep = new Circle(new ParticleManager(new Settings()), new FirstPath());
         list.add(creep);
         creep.setPosition(new ProximityVector(100, 100));
         test.setPosition(new ProximityVector(110, 100)); // place the tower to the left of the creep
@@ -41,11 +42,11 @@ public class BulletTower2Test {
 
     @Test//(expected=java.lang.ExceptionInInitializerError.class)
     public void testShoot() throws Exception {
-        BulletTower2 test = new BulletTower2(new ProximityVector(0,0), new TargetClosest(), new ParticleManager());
+        BulletTower2 test = new BulletTower2(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
         test.shoot(null); //make sure it can handle a null argument
         List list = new ArrayList<Creep>();
         test.shoot(list);
-        Creep creep = new Circle(new ParticleManager(), new FirstPath());
+        Creep creep = new Circle(new ParticleManager(new Settings()), new FirstPath());
         creep.setPosition(new ProximityVector(100,100));
         list.add(creep);
         test.preparePlacing(new FirstPath().getWaypoint(0));
@@ -62,30 +63,30 @@ public class BulletTower2Test {
     @Test
     public void testGetTarget() throws Exception {
 
-        Tower test = new BulletTower2(new ProximityVector(0,0), new TargetClosest(), new ParticleManager());
+        Tower test = new BulletTower2(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
     }
 
     @Test
     public void testCreateProjectile() throws Exception {
 
-        Tower test = new BulletTower2(new ProximityVector(0,0), new TargetClosest(), new ParticleManager());
+        Tower test = new BulletTower2(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
     }
 
     @Test
     public void testUpdate() throws Exception {
 
-        Tower test = new BulletTower2(new ProximityVector(0,0), new TargetClosest(), new ParticleManager());
+        Tower test = new BulletTower2(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
     }
 
     @Test
     public void testGetNewUpgrade() throws Exception {
 
-        Tower test = new BulletTower2(new ProximityVector(0,0), new TargetClosest(), new ParticleManager());
+        Tower test = new BulletTower2(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
     }
 
     @Test
     public void testGetRange() throws Exception {
 
-        Tower test = new BulletTower2(new ProximityVector(0,0), new TargetClosest(), new ParticleManager());
+        Tower test = new BulletTower2(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
     }
 }

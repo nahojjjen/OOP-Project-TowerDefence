@@ -1,6 +1,8 @@
 package edu.chl.proximity.Models.Map.Particles;
 
 import edu.chl.proximity.Models.Utils.ProximityBatch;
+import edu.chl.proximity.Models.Utils.Settings;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class ParticleManager {
     /**
      * create all the particle pools (currently only explosion)
      */
-    public ParticleManager() {
+    public ParticleManager(Settings settings) {
         allEffects.add(new ProximityEffect("explosion3", 700));
         allEffects.add(new ProximityEffect("creepdies", 3000));
         allEffects.add(new ProximityEffect("bulleteffect", 500));
@@ -36,6 +38,10 @@ public class ParticleManager {
         allEffects.add(new ProximityEffect("BloodCarnage", 10));
         allEffects.add(new ProximityEffect("BloodCarnageCreepEffect", 300));
         allEffects.add(new ProximityEffect("Chomp", 10));
+
+        for(ProximityEffect effect : allEffects) {
+            effect.setSettings(settings);
+        }
     }
 
     /**

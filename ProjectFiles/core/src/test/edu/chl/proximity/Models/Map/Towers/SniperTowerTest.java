@@ -8,6 +8,7 @@ import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Map.Towers.SniperTower;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetClosest;
 import edu.chl.proximity.Models.Map.Towers.Tower;
+import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
 
@@ -23,9 +24,9 @@ public class SniperTowerTest {
 
     @Test //(expected = java.lang.ExceptionInInitializerError.class)
     public void testCreateProjectile() throws Exception {
-        SniperTower tower = new SniperTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager());
+        SniperTower tower = new SniperTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager(new Settings()));
         List<Creep> list = new ArrayList<Creep>();
-        list.add(new Line1(4, new ParticleManager(), new FirstPath()));
+        list.add(new Line1(4, new ParticleManager(new Settings()), new FirstPath()));
         tower.update(list);
         Projectile projectile = tower.createProjectile();
         assertTrue(projectile != null);
@@ -34,7 +35,7 @@ public class SniperTowerTest {
     @Test
     public void testClone() throws Exception {
 
-        SniperTower tower = new SniperTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager());
+        SniperTower tower = new SniperTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager(new Settings()));
         SniperTower towerCopy = (SniperTower)tower.clone();
         assertTrue(tower.getPosition().equals(towerCopy.getPosition()));
         tower.setPosition(new ProximityVector(1010,0100));
@@ -44,7 +45,7 @@ public class SniperTowerTest {
     @Test
     public void testGetNewUpgrade() throws Exception {
 
-        SniperTower tower = new SniperTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager());
+        SniperTower tower = new SniperTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager(new Settings()));
         Tower tower2 = tower.getNewUpgrade();
         assertTrue(tower2 == null);
     }

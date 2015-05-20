@@ -5,6 +5,7 @@ import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Map.Towers.SlowTower;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetClosest;
 import edu.chl.proximity.Models.Map.Towers.Tower;
+import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
 
@@ -20,7 +21,7 @@ public class SlowTowerTest {
 
     @Test// (expected = java.lang.ExceptionInInitializerError.class)
     public void testCreateProjectile() throws Exception {
-        SlowTower test = new SlowTower( new ProximityVector(0,0), new TargetClosest(), new ParticleManager());
+        SlowTower test = new SlowTower( new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
         Projectile projectile = test.createProjectile();
         assertTrue(projectile != null);
     }
@@ -28,7 +29,7 @@ public class SlowTowerTest {
     @Test
     public void testGetNewUpgrade() throws Exception {
 
-        SlowTower test = new SlowTower( new ProximityVector(0,0), new TargetClosest(), new ParticleManager());
+        SlowTower test = new SlowTower( new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
         Tower tower =test.getNewUpgrade();
         assertTrue(tower != null);
     }

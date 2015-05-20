@@ -2,6 +2,7 @@ package test.edu.chl.proximity.Models.Map.Particles;
 
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Particles.ProximityEffect;
+import edu.chl.proximity.Models.Utils.Settings;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -15,7 +16,7 @@ public class ParticleManagerTest {
 
     @Test
     public void testParticleManager(){
-        ParticleManager test = new ParticleManager();
+        ParticleManager test = new ParticleManager(new Settings());
 
         assertTrue(test.getBaseCracksEffect() instanceof ProximityEffect);
         assertTrue(test.getBaseDamageEffect()  instanceof ProximityEffect);
