@@ -1,5 +1,7 @@
 package edu.chl.proximity.Models.Player.Players;
 
+import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Planes;
+
 /**
  * @author Linda Evaldsson and Johan Swanberg
  * @date 2015-04-08
@@ -33,6 +35,8 @@ public class GameData {
 
 
     public Player getPlayer() {
+        if(player == null)
+            player = new Player(new Planes());
         return player;
     }
 
