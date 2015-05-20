@@ -81,4 +81,5 @@ public class MainMenu {
         factionChooser.render(batch);
         mapSelect.render(batch);
     }
+
 }

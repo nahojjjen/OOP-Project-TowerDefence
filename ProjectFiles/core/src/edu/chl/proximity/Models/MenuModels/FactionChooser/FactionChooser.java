@@ -23,7 +23,7 @@ import java.util.List;
  *01/05 modified by Hanna Romer. Added factionList, name, factionImage, Prev + Next buttons and that you can click buttons.
  */
 public class FactionChooser extends BoardObject{
-    private static ProximityVector pos = new ProximityVector(0, Gdx.graphics.getHeight()-240);
+    private static ProximityVector pos = new ProximityVector(0, Constants.GAME_HEIGHT-240);
     private ProximityVector imagePos=new ProximityVector(pos.x+162,pos.y + 100);
 
     private static Image image=new Image(Constants.FILE_PATH + "Backgrounds/factionChooser.png");
