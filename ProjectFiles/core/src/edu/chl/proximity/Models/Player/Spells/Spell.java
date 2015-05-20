@@ -3,6 +3,7 @@ package edu.chl.proximity.Models.Player.Spells;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Towers.Tower;
+import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
 import edu.chl.proximity.Utilities.PointCalculations;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Player.Holdables.Holdable;
@@ -28,6 +29,7 @@ public abstract class Spell extends PersistentObject implements Holdable {
     private List<Tower> towers;
     private ParticleManager particleManager;
     private int healthChange = 0;
+    private Resources cost = new Resources(0, 0, 0);
 
     public Spell(Image icon, int counter, ParticleManager particleManager) {
         super(null, null, counter);
@@ -112,5 +114,9 @@ public abstract void updateCooldown();
 
     public void setTowers(List<Tower> towers) {
         this.towers = towers;
+    }
+
+    public Resources getCost() {
+        return cost;
     }
 }

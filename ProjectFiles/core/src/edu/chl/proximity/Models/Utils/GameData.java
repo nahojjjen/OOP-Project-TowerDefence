@@ -27,16 +27,6 @@ public class GameData {
     private static GameData gameData;
     private Player player;
 
-    private Hand hand = new Hand();
-    private MainMenu mainMenu;
-
-    private int gameSpeed = 1;
-
-    private Proximity proximity;
-
-    public static float VOLUME= 0.1f;
-
-
     private GameData() {}
 
     /**

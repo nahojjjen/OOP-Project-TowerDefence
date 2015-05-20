@@ -1,5 +1,6 @@
 package edu.chl.proximity.Models.Player.Holdables;
 
+import edu.chl.proximity.Models.Player.ResourceSystem.Resources;
 import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Utils.Image;
@@ -26,5 +27,7 @@ public interface Holdable {
     public Image getImage();
 
     public double getRange();
+
+    public Resources getCost();
 
 }

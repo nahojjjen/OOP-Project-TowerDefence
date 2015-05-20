@@ -39,8 +39,6 @@ public abstract class Map {
     private String name;
     private Hand hand = new Hand();
 
-    private PropertiesPanel propertiesPanel;
-
     private ArrayList<Creep> creeps = new ArrayList<Creep>();
     private ArrayList<Spell> spells = new ArrayList<Spell>();
     private ArrayList<Tower> towers = new ArrayList<Tower>();

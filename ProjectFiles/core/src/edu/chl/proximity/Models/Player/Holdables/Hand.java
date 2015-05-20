@@ -1,13 +1,10 @@
 package edu.chl.proximity.Models.Player.Holdables;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import edu.chl.proximity.Utilities.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Towers.Tower;
-import edu.chl.proximity.Models.Player.Spells.Spell;
 import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 
@@ -76,14 +73,7 @@ public class Hand {
 
     //Helper to check whether the player affords what is in his hand
     public boolean canPlayerAffordTheHand() {
-        if (currentItem instanceof Tower) {
-            Tower tower = (Tower) currentItem;
-            return GameData.getInstance().getPlayer().canPlayerAfford(tower.getCost());
-        }
-        else if (currentItem instanceof Spell) {
-            //TODO: check energy costs
-        }
-        return true;
+        return GameData.getInstance().getPlayer().canPlayerAfford(currentItem.getCost());
     }
 
     public void render(ProximityShapeRenderer shapeRenderer) {
