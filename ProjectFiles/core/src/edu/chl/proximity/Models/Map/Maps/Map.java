@@ -1,11 +1,10 @@
 package edu.chl.proximity.Models.Map.Maps;
 
-import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Player.Spells.Spell;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
-import edu.chl.proximity.Models.Map.Holdables.Hand;
+import edu.chl.proximity.Models.Holdables.Hand;
 import edu.chl.proximity.Models.Map.Background;
 import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.BoardObject;
@@ -34,6 +33,7 @@ import java.util.*;
  * 10/5 modified by Johan Swanberg, fixed creepwithinrange method and added somee comments
  * 10/05 modified by Hanna Romer. Added method towersWithinRange that is exactly like creepsWithinRange.
  * 17/05 modified by Hanna Romer. Added method getNew.
+ * 20/05 modified by Linda Evaldsson. Added ParticleManager as constructor parameter.
  * */
 public abstract class Map {
 
@@ -59,11 +59,11 @@ public abstract class Map {
      * @param path what path the creeps should follow on this map.
      * @param background What background image should be displayed on this map
      */
-    public Map(Path path, Background background, String name){
+    public Map(Path path, Background background, String name, ParticleManager particleManager){
         this.path = path;
         this.background = background;
         this.name=name;
-        particleManager = new ParticleManager(GameData.getInstance().getPlayer().getSettings());
+        this.particleManager = particleManager;
     }
 
 

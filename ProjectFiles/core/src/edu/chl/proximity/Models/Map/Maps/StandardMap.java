@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.Map.Maps;
 
 import edu.chl.proximity.Models.Map.Background;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Map.Paths.ConcretePaths.SecondTestPath;
 import edu.chl.proximity.Models.Map.Paths.Path;
@@ -18,11 +19,11 @@ public class StandardMap extends Map {
     /**
      * creates the map instance
      */
-    public StandardMap() {
-        super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/warmBackground.png")), "Standard");
+    public StandardMap(ParticleManager particleManager) {
+        super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/warmBackground.png")), "Standard", particleManager);
     }
 
     public Map getNew(){
-        return new StandardMap();
+        return new StandardMap(getParticleManager());
     }
 }

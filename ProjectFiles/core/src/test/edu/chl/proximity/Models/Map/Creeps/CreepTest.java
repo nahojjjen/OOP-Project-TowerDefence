@@ -34,7 +34,7 @@ public class CreepTest extends TestCase {
     @Override
     public void setUp() throws Exception {
         super.setUp();
-        map = new StandardMap();
+        map = new StandardMap(new ParticleManager(new Settings()));
         path = new FirstPath();
     }
 

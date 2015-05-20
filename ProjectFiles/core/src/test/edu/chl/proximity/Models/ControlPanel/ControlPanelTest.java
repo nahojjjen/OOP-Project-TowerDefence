@@ -4,8 +4,10 @@ import edu.chl.proximity.Models.ControlPanel.ControlPanel;
 import edu.chl.proximity.Models.ControlPanel.ControlPanelTower;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Maps.StandardMap;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Towers.BulletTower;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
+import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.ProximityRandom;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
@@ -22,7 +24,7 @@ public class ControlPanelTest {
 
     @Test
     public void testGetMap() throws Exception {
-        Map map = new StandardMap();
+        Map map = new StandardMap(new ParticleManager(new Settings()));
         ControlPanel cp = new ControlPanel(map, null, null);
         assertEquals(map, cp.getMap());
         assertEquals(map, cp.getMap());
@@ -36,7 +38,7 @@ public class ControlPanelTest {
     }
     @Test
     public void testInitiateText() throws Exception {
-        ControlPanel cp = new ControlPanel(new StandardMap(), null, null);
+        ControlPanel cp = new ControlPanel(new StandardMap(new ParticleManager(new Settings())), null, null);
         assertNotEquals(null, cp.getLineText());
         assertNotEquals(null, cp.getPercentBar());
         assertNotEquals(null, cp.getPolygonText());
@@ -44,12 +46,12 @@ public class ControlPanelTest {
     }
     @Test
     public void testInitiateControlPanelTowers() throws Exception {
-        ControlPanel cp = new ControlPanel(new StandardMap(), null, null);
+        ControlPanel cp = new ControlPanel(new StandardMap(new ParticleManager(new Settings())), null, null);
         assertTrue(cp.getControlPanelTowerListSize() > 0);
     }
     @Test
     public void testSetHealth() throws Exception {
-        ControlPanel cp = new ControlPanel(new StandardMap(), null, null);
+        ControlPanel cp = new ControlPanel(new StandardMap(new ParticleManager(new Settings())), null, null);
         cp.setHealth(10);
         assertEquals(cp.getHealthPercent(), 10);
 
@@ -68,7 +70,7 @@ public class ControlPanelTest {
     }
     @Test
     public void testSetResources() throws Exception {
-        ControlPanel cp = new ControlPanel(new StandardMap(), null, null);
+        ControlPanel cp = new ControlPanel(new StandardMap(new ParticleManager(new Settings())), null, null);
         Resources resources = new Resources(100, 10, 50);
         cp.setResources(null);
         cp.setResources(resources);
@@ -77,7 +79,7 @@ public class ControlPanelTest {
     @Test
     public void testGetTowerOnPosition() throws Exception {
 
-        ControlPanel cp = new ControlPanel(new StandardMap(), null, null);
+        ControlPanel cp = new ControlPanel(new StandardMap(new ParticleManager(new Settings())), null, null);
         ProximityVector vector = new ProximityVector(0, 0);
         for(int i = 0; i < 1000; i++) {
             ProximityRandom random = new ProximityRandom();
@@ -89,7 +91,7 @@ public class ControlPanelTest {
 
     @Test
     public void testGetTowerBoundTo() throws Exception {
-        ControlPanel cp = new ControlPanel(new StandardMap(), null, null);
+        ControlPanel cp = new ControlPanel(new StandardMap(new ParticleManager(new Settings())), null, null);
         assertEquals(cp.getTowerBoundTo(1).getClass(), BulletTower.class);
 
         assertTrue(cp.getTowerBoundTo(0) == null);

@@ -1,12 +1,13 @@
 package edu.chl.proximity.Models.Player.Spells;
 
+import com.badlogic.gdx.graphics.Color;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Utilities.PointCalculations;
 import edu.chl.proximity.Utilities.ProximityVector;
-import edu.chl.proximity.Models.Map.Holdables.Holdable;
+import edu.chl.proximity.Models.Holdables.Holdable;
 import edu.chl.proximity.Models.Utils.Image;
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public abstract class Spell extends PersistentObject implements Holdable {
     private ParticleManager particleManager;
     private int healthChange = 0;
     private Resources cost = new Resources(0, 0, 0);
+    private boolean isPlaced = false;
 
     public Spell(Image icon, int counter, ParticleManager particleManager) {
         super(null, null, counter);
@@ -52,6 +54,7 @@ public abstract class Spell extends PersistentObject implements Holdable {
             this.setPosition(position);
             this.start();
             playParticleEffect(); //important that this is after setPosition
+            isPlaced = true;
         }
     }
 
@@ -118,5 +121,13 @@ public abstract void updateCooldown();
 
     public Resources getCost() {
         return cost;
+    }
+
+    public Color getColor() {
+        return new Color(0.2f, 0.9f, 0.2f, 0.2f);
+    }
+
+    public boolean isPlaced() {
+        return isPlaced;
     }
 }

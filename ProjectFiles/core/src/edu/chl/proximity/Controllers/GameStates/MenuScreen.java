@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Controllers.MainMenuController;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.Player.Players.Player;
@@ -35,7 +36,7 @@ public class MenuScreen implements Screen {
 
     public MenuScreen(Proximity g, Player player, Viewport viewport){
         GameData.getInstance().setPlayer(player);
-        this.mainMenu=new MainMenu(g);
+        this.mainMenu=new MainMenu(g, new ParticleManager(player.getSettings()));
 
         //Configurates view and controller
         menuRenderer=new MenuRenderer(mainMenu);

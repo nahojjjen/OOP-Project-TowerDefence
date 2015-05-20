@@ -2,8 +2,10 @@ package test.edu.chl.proximity.Models.Utils.CreepGenerator;
 
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Maps.StandardMap;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Waves.Wave;
 import edu.chl.proximity.Models.Utils.CreepGenerator.StandardGenerator;
+import edu.chl.proximity.Models.Utils.Settings;
 import junit.framework.TestCase;
 
 /**
@@ -18,7 +20,7 @@ public class StandardGeneratorTest extends TestCase {
     @Override
     public void setUp() throws Exception {
         super.setUp();
-        map = new StandardMap();
+        map = new StandardMap(new ParticleManager(new Settings()));
 
     }
 
