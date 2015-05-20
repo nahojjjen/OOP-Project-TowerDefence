@@ -1,11 +1,11 @@
 package edu.chl.proximity.Models.Map.Towers;
 
+import com.badlogic.gdx.graphics.Color;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Player.Players.GameData;
-import edu.chl.proximity.Models.Map.Holdables.Holdable;
+import edu.chl.proximity.Models.Holdables.Holdable;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 
@@ -75,7 +75,7 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
         }
         return upgrade;
     }
-    public boolean getIfPlaced(){
+    public boolean isPlaced(){
         return isPlaced;
     }
     public void setAsPlaced(boolean b){
@@ -88,6 +88,10 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
 
     public void setParticleManager(ParticleManager particleManager) {
         this.particleManager = particleManager;
+    }
+
+    public Color getColor() {
+        return new Color(0.4f, 0.2f, 0.9f, 0.2f);
     }
 
 }

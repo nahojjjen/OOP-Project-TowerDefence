@@ -1,5 +1,7 @@
 package edu.chl.proximity.Models.MenuModels.MapSelect;
 
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
+import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
@@ -22,10 +24,10 @@ public class MapSelect extends BoardObject{
     private List<MapSelectIcon> maps = new ArrayList<MapSelectIcon>();
     private int selected=0;
 
-    public MapSelect(Map map){
+    public MapSelect(ParticleManager particleManager){
         super(pos, null, 0);
-        maps.add(new MapSelectIcon(new StandardMap(), new ProximityVector(200, 200)));
-        maps.add(new MapSelectIcon(new FillerMap(), new ProximityVector(300,200)));
+        maps.add(new MapSelectIcon(new StandardMap(particleManager), new ProximityVector(200, 200)));
+        maps.add(new MapSelectIcon(new FillerMap(particleManager), new ProximityVector(300,200)));
 
         //TODO: this for-loop is just for debug. remove later
         for(MapSelectIcon m:maps){

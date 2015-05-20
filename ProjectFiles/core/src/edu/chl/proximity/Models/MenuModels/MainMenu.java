@@ -1,5 +1,6 @@
 package edu.chl.proximity.Models.MenuModels;
 
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
@@ -32,13 +33,13 @@ public class MainMenu {
     private Image background;
 
 
-    public MainMenu(Proximity game){
+    public MainMenu(Proximity game, ParticleManager particleManager){
         this.game = game;
         player = GameData.getInstance().getPlayer();
 
         background = new Image(Constants.FILE_PATH + "Backgrounds/MainMenuBackground.png");
         factionChooser=new FactionChooser();
-        mapSelect=new MapSelect(null);
+        mapSelect=new MapSelect(particleManager);
         map=mapSelect.getSelected();
         startButton = new StartButton(map, new ProximityVector((Constants.GAME_WIDTH/2-150),440));
 

@@ -54,7 +54,7 @@ public class TowerTest {
         testCreepList.add(new Line1(1, new ParticleManager(new Settings()), new FirstPath()));
         tower.update(testCreepList);
         tower.preparePlacing(new ProximityVector(100,100));
-        assertTrue(tower.getIfPlaced());
+        assertTrue(tower.isPlaced());
         assertTrue(tower.getRange() > 0);
 
     }
@@ -73,7 +73,7 @@ public class TowerTest {
         tower = new MissileTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager(new Settings()));
         tower.preparePlacing(new ProximityVector(100, 100));
         assertTrue(tower.getCenter().x == 100);
-        assertTrue(tower.getIfPlaced());
+        assertTrue(tower.isPlaced());
         tower.preparePlacing(null); //should throw illegal argument exception
 
     }

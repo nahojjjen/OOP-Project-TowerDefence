@@ -1,10 +1,9 @@
-package edu.chl.proximity.Models.Map.Holdables;
+package edu.chl.proximity.Models.Holdables;
 
 import com.badlogic.gdx.graphics.Color;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Utilities.ProximityVector;
-import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 
@@ -42,11 +41,7 @@ public class Hand {
     }
     public void render(ProximityBatch batch) {
         if(currentItem != null) {
-            if(currentItem instanceof Tower){
-                if(!((Tower) currentItem).getIfPlaced()){
-                    batchRendering(batch);
-                }
-            }else{
+            if(!currentItem.isPlaced()) {
                 batchRendering(batch);
             }
         }
@@ -59,16 +54,12 @@ public class Hand {
     }
 
     public Color getRangeIndicatorColor() {
-        if (currentItem instanceof Tower) {
-            if (canPlayerAffordTheHand()) {
-                return new Color(0.4f, 0.2f, 0.9f, 0.2f);
-            }
-            else {
-                return new Color(0.9f, 0.1f, 0.1f, 0.2f);
-            }
+        if (canPlayerAffordTheHand()) {
+            return currentItem.getColor();
         }
-
-        return new Color(0.2f, 0.9f, 0.2f, 0.2f);
+        else {
+            return new Color(0.9f, 0.1f, 0.1f, 0.2f);
+        }
     }
 
     //Helper to check whether the player affords what is in his hand
@@ -78,15 +69,10 @@ public class Hand {
 
     public void render(ProximityShapeRenderer shapeRenderer) {
 
-
-        if(currentItem instanceof Tower){
-            if(!((Tower) currentItem).getIfPlaced()){
-                shapeRenderer.renderRangeIndicator(getPosition(), getItem().getRange(), getRangeIndicatorColor());
-            }else{
-                shapeRenderer.renderRangeIndicator(((Tower) currentItem).getCenter(), getItem().getRange(), new Color(0.4f, 0.2f, 0.9f, 0.2f));
-            }
-        }else {
+        if(!(currentItem.isPlaced())) {
             shapeRenderer.renderRangeIndicator(getPosition(), getItem().getRange(), getRangeIndicatorColor());
+        } else {
+            shapeRenderer.renderRangeIndicator(currentItem.getCenter(), getItem().getRange(), new Color(0.4f, 0.2f, 0.9f, 0.2f));
         }
     }
 }

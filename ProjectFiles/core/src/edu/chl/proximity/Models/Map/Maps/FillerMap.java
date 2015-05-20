@@ -1,5 +1,6 @@
 package edu.chl.proximity.Models.Map.Maps;
 
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.ConcretePaths.TestPath;
 import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Map.Background;
@@ -17,12 +18,12 @@ public class FillerMap extends Map{
     /**
      * creates the map instance
      */
-    public FillerMap() {
-        super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/moonBackground.png")),"FillerMap");
+    public FillerMap(ParticleManager particleManager) {
+        super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/moonBackground.png")),"FillerMap", particleManager);
     }
 
     public Map getNew(){
-        return new FillerMap();
+        return new FillerMap(getParticleManager());
     }
 
 }
