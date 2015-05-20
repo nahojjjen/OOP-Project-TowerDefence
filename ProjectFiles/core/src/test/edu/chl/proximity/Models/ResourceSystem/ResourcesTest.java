@@ -1,4 +1,4 @@
-package test.edu.chl.proximity.Models.Player.ResourceSystem;
+package test.edu.chl.proximity.Models.ResourceSystem;
 
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 import org.junit.Test;
