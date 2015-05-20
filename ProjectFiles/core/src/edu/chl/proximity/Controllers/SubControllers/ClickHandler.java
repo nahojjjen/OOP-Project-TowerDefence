@@ -1,4 +1,4 @@
-package edu.chl.proximity.Controllers;
+package edu.chl.proximity.Controllers.SubControllers;
 
 import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
