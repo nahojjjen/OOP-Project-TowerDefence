@@ -47,7 +47,7 @@ public class Proximity extends Game {
 		Player player = new Player(null);
 
 		//The application switchs to the start screen menu screen
-		this.setScreen(new MenuScreen(this, player,null));
+		this.setScreen(new MenuScreen(this, player, null));
 	}
 
 

@@ -1,5 +1,6 @@
 package edu.chl.proximity.Controllers.SubControllers;
 
+import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Towers.Tower;
@@ -7,6 +8,7 @@ import edu.chl.proximity.Models.Map.Background;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Holdables.Holdable;
 import edu.chl.proximity.Models.Player.Players.GameData;
+import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 
@@ -27,12 +29,15 @@ import java.util.List;
 public class MapController implements ClickHandler {
 
     private Background model;
-    private int tempCounter = 0;
+    private Proximity proximity;
+    private Viewport viewport;
     private List<BoardObject> models = new ArrayList<BoardObject>();
     private Map map;
 
-    public MapController(Map map) {
+    public MapController(Map map, Proximity proximity, Viewport viewport) {
         this.map = map;
+        this.proximity = proximity;
+        this.viewport = viewport;
         model = new Background(null);
         model.setPosition(new ProximityVector(0,0));
         model.setWidth(Constants.GAME_WIDTH - 300);
@@ -47,6 +52,8 @@ public class MapController implements ClickHandler {
         GameData.getInstance().getPlayer().addExperiencePoints(map.getCollectedExperience());
         map.clearCollectedResources();
         map.clearCollectedExperience();
+        if(map.getBase().getLife() <= 0)
+            proximity.changeScreen(Proximity.State.GAME_OVER,map, GameData.getInstance().getPlayer(),viewport);
     }
 
     @Override

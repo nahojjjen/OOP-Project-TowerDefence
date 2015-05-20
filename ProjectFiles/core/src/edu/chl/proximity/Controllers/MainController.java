@@ -49,7 +49,7 @@ public class MainController implements InputProcessor{
         this.map = map;
         controlPanelController = new ControlPanelController(map, game,viewport);
         waveController = new WaveController(map);
-        mapController = new MapController(map);
+        mapController = new MapController(map, game, v);
         handController = new HandController(map);
 
         viewport=v;
