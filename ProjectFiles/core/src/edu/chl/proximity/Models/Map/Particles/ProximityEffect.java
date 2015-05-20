@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import com.badlogic.gdx.utils.Array;
-import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.TestChecker;
 

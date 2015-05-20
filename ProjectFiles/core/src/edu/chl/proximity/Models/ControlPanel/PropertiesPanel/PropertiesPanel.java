@@ -4,12 +4,11 @@ import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.Constants;
-import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.ArrayList;
 

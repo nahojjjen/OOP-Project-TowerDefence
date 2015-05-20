@@ -8,7 +8,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Controllers.GameOverController;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.Player;
-import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.WonLostModels.GameOver;
 import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Models.Utils.ProximityBatch;

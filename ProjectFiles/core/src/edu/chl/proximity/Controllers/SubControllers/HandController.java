@@ -1,11 +1,8 @@
 package edu.chl.proximity.Controllers.SubControllers;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Utils.Background;
-import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 

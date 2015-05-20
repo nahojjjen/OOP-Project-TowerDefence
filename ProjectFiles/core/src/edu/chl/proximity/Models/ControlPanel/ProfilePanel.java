@@ -17,7 +17,7 @@ import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.Utils.ProximityFont;
 

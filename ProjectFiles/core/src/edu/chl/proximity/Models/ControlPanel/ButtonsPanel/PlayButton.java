@@ -3,7 +3,7 @@ package edu.chl.proximity.Models.ControlPanel.ButtonsPanel;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 

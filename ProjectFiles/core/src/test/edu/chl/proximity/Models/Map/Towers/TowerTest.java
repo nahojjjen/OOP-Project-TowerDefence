@@ -11,9 +11,8 @@ import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetClosest;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Filler;
 import edu.chl.proximity.Models.Player.Players.Player;
-import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Utilities.ProximityVector;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;

@@ -2,8 +2,6 @@ package edu.chl.proximity.Models.Map.Bases;
 
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Utils.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Map.Particles.ProximityEffect;
 import edu.chl.proximity.Models.Map.Paths.Path;

@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Controllers.MainMenuController;
-import edu.chl.proximity.Models.Utils.GameData;
+import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Proximity;
