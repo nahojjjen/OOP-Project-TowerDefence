@@ -24,7 +24,7 @@ import java.util.List;
 public class SpellTest extends TestCase {
 
     private Path path = new FirstPath();
-    private ParticleManager particleManager = new ParticleManager();
+    private ParticleManager particleManager = null
 
     @Override
     public void setUp() throws Exception {
