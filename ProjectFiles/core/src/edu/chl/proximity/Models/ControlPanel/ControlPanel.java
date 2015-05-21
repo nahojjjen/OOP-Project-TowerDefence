@@ -44,6 +44,7 @@ public class ControlPanel extends BoardObject{
 
     //The information about the towers
     private List<ControlPanelTower> controlPanelTowerList = new ArrayList<ControlPanelTower>();
+    private List<ResourceDisplayerCollection> towerResourceCollections = new ArrayList<ResourceDisplayerCollection>();
 
     //The amount of towers that is shown on one row in the ControlPanel
     private int towersPerRow = 2;
@@ -91,7 +92,16 @@ public class ControlPanel extends BoardObject{
         controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new SniperTower(new ProximityVector(0, 0), targetFactory.getTargetClosest(), map.getParticleManager())));
 
         for(int i = 0; i < controlPanelTowerList.size(); i++) {
-            controlPanelTowerList.get(i).setPosition(new ProximityVector(getPosition().x + 30 + 130 * (i % towersPerRow), 150 + 70 * (i/towersPerRow)));
+            ProximityVector towerPosition = new ProximityVector(getPosition().x + 30 + 128 * (i % towersPerRow), 150 + 70 * (i/towersPerRow));
+
+            ControlPanelTower cpTower = controlPanelTowerList.get(i);
+            cpTower.setPosition(towerPosition);
+
+            ProximityVector resourcePosition = new ProximityVector(towerPosition.x + 60, towerPosition.y + 7);
+            ResourceDisplayerCollection towerResourceCollection = new ResourceDisplayerCollection(resourcePosition, 15, 12, ResourceDisplayerCollection.Face.Vertical);
+            towerResourceCollection.updateResources(cpTower.getTower().getCost());
+            towerResourceCollections.add(towerResourceCollection);
+
         }
     }
 
@@ -149,10 +159,16 @@ public class ControlPanel extends BoardObject{
 
         resourceDisplayerCollection.render(batch);
 
+
         for(ControlPanelTower cpTower : controlPanelTowerList) {
             cpTower.render(batch);
         }
         percentBar.render(batch);
+
+        for(ResourceDisplayerCollection collection : towerResourceCollections) {
+            collection.render(batch);
+        }
+
     }
 
     public Tower getTowerBoundTo(int i) {
