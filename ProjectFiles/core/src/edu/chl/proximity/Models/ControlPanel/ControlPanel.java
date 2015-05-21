@@ -68,7 +68,7 @@ public class ControlPanel extends BoardObject{
     private List<ControlPanelTower> controlPanelTowerList = new ArrayList<ControlPanelTower>();
 
     //The amount of towers that is shown on one row in the ControlPanel
-    private int towersPerRow = 1;
+    private int towersPerRow = 2;
 
     //The background of the ControlPanel
     private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/tweed.png");
@@ -123,7 +123,7 @@ public class ControlPanel extends BoardObject{
         controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new SniperTower(new ProximityVector(0, 0), targetFactory.getTargetClosest(), map.getParticleManager())));
 
         for(int i = 0; i < controlPanelTowerList.size(); i++) {
-            controlPanelTowerList.get(i).setPosition(new ProximityVector(getPosition().x + 30 + 50 * (i % towersPerRow), 150 + 50 * (i/towersPerRow)));
+            controlPanelTowerList.get(i).setPosition(new ProximityVector(getPosition().x + 30 + 130 * (i % towersPerRow), 150 + 70 * (i/towersPerRow)));
         }
     }
 
@@ -135,11 +135,6 @@ public class ControlPanel extends BoardObject{
             percent = 0;
         percentBar.setPercent(percent);
         percentBar.setText(percent + "%");
-        /*
-        if(percent<=0){
-            game.changeScreen(Proximity.State.GAME_OVER,map, GameData.getInstance().getPlayer(),viewport);
-        }
-        */
     }
 
     public int getHealthPercent() {

@@ -63,6 +63,10 @@ public class ProximityFont {
         generateFont();
     }
 
+    public void setPosition(ProximityVector newPosition) {
+        this.position = newPosition;
+    }
+
     public String getText() {
         return str;
     }

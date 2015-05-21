@@ -2,7 +2,6 @@ package edu.chl.proximity.Controllers.SubControllers;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import edu.chl.proximity.Controllers.ClickHandler;
 import edu.chl.proximity.Controllers.GameStates.GameOverScreen;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Towers.Tower;
