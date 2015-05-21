@@ -41,7 +41,8 @@ public abstract class Spell extends PersistentObject implements Holdable {
     }
 
     public void setHealthChange(int newHealthChange) {
-        healthChange = newHealthChange;
+        if (newHealthChange >= 0)
+            healthChange = newHealthChange;
     }
     public int getHealthChange() {
         return healthChange;
