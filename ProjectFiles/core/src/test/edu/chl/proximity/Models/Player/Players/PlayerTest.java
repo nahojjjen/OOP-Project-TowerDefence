@@ -46,7 +46,11 @@ public class PlayerTest {
 
         e=p.getExperience();
         p.addExperiencePoints(-535);
-        assertTrue(p.getExperience()==e-535);
+        assertTrue(p.getExperience() == e - 535);
+
+        e=p.getExperience();
+        p.addExperiencePoints(Integer.MAX_VALUE);
+        assertTrue(p.getExperience()== e + Integer.MAX_VALUE);
 
     }
 
@@ -64,17 +68,29 @@ public class PlayerTest {
         Player p= new Player(new Planes());
         p.getResources().setResources(10,10,10);
         assertTrue(p.canPlayerAfford(new Resources(2, 2, 2)));
-        assertFalse(p.canPlayerAfford(new Resources(14,0,0)));
+        assertFalse(p.canPlayerAfford(new Resources(14, 0, 0)));
+
+        p.getResources().setResources(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE);
+        assertTrue(p.canPlayerAfford(new Resources(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE)));
+
+        p.getResources().setResources(0, 0, 0);
+        assertTrue(p.canPlayerAfford(new Resources(0,0,0)));
     }
 
     @Test
     public void testGetExperience() {
-        //TODO how do I test this?
+        Player p=new Player(new Planes());
+        p.addExperiencePoints(-p.getExperience());
+        p.addExperiencePoints(10);
+        assertTrue(p.getExperience() == 10);
     }
 
     @Test
     public void testGetLevel() {
-        //TODO how do I test this?
+        Player p=new Player(new Planes());
+        p.addExperiencePoints(-p.getExperience());
+        assertTrue(p.getLevel()==1);
+
     }
 
     @Test
@@ -93,5 +109,8 @@ public class PlayerTest {
         Settings s=new Settings();
         p.setSettings(s);
         assertTrue(p.getSettings().equals(s));
+
+        p.setSettings(null);
+        assertTrue(p.getSettings()==null);
     }
 }

@@ -19,7 +19,10 @@ public class ResourcesTest {
         assertTrue(r.getPoints() == 20 && r.getLines() == 20 && r.getPolygons() == 20);
 
         r.setResources(-10, -34, -435);
-        assertTrue(r.getPoints()==-10 && r.getLines()==-34 && r.getPolygons()==-435);
+        assertTrue(r.getPoints() == -10 && r.getLines() == -34 && r.getPolygons() == -435);
+
+        r.setResources(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE);
+        assertTrue(r.getPoints()==Integer.MAX_VALUE && r.getLines()==Integer.MAX_VALUE && r.getPolygons()==Integer.MAX_VALUE);
     }
 
     @Test
@@ -43,15 +46,31 @@ public class ResourcesTest {
     @Test
     public void testAddResources(){
         Resources r = new Resources(9,4987,33);
-        r.addResources(new Resources(234,5,21));
-        assertTrue(r.getPoints()==(9+234) && r.getLines()==(4987+5) && r.getPolygons()==(33+21));
+        r.addResources(new Resources(0, 0, 0));
+        r.addResources(new Resources(234, 5, 21));
+        assertTrue(r.getPoints() == (9 + 234) && r.getLines() == (4987 + 5) && r.getPolygons() == (33 + 21));
+
+        r.setResources(1, 1, 1);
+        r.addResources(new Resources(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE));
+        assertTrue(r.getPoints()==Integer.MIN_VALUE && r.getLines()==Integer.MIN_VALUE && r.getPolygons()==Integer.MIN_VALUE);
+
+        r.setResources(2,2,2);
+        r.addResources(null);
+        assertTrue(r.getPoints()==2 && r.getLines()==2 && r.getPolygons()==2);
+
     }
 
     @Test
     public void testAddPoints(){
         Resources r = new Resources(12,48,293);
         r.addPoints(234);
-        assertTrue(r.getPoints()==(12+234));
+        assertTrue(r.getPoints() == (12 + 234));
+
+        r.setResources(0, 0, 0);
+        r.addPoints(Integer.MAX_VALUE);
+        assertTrue(r.getPoints() == Integer.MAX_VALUE);
+        r.addPoints(1);
+        assertTrue(r.getPoints()==Integer.MIN_VALUE);
     }
 
     @Test
@@ -74,6 +93,10 @@ public class ResourcesTest {
         Resources r2 = new Resources(32,21,4);
         r.removeResources(r2);
         assertTrue(r.getPoints()==(100-32) && r.getLines()==(63-21) && r.getPolygons()==(766-4));
+
+        r.setResources(2,2,2);
+        r.removeResources(null);
+        assertTrue(r.getPoints()==2 && r.getLines()==2 && r.getPolygons()==2);
     }
 
     @Test

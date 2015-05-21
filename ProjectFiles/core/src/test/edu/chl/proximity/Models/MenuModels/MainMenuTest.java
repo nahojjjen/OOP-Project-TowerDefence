@@ -1,7 +1,9 @@
 package test.edu.chl.proximity.Models.MenuModels;
 
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
+import edu.chl.proximity.Models.MenuModels.FactionChooser.FactionChooser;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
+import edu.chl.proximity.Models.MenuModels.MapSelect.MapSelect;
 import edu.chl.proximity.Models.MenuModels.StartButton;
 import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Planes;
 import edu.chl.proximity.Models.Player.Players.GameData;
@@ -21,22 +23,28 @@ import static org.junit.Assert.assertTrue;
 public class MainMenuTest {
 
     @Test
-    public void testGetButtonOnPosition(){
+    public void testGetButtonOnPositionReturnsRightButtonOnClick(){
         Proximity g = new Proximity();
         Player p=new Player(new Planes());
         GameData.getInstance().setPlayer(p);
 
         MainMenu m = new MainMenu(g, new ParticleManager(new Settings()));
 
-        Double startX=new Double(Constants.GAME_WIDTH/2-150);
-        assertTrue(m.getButtonOnPosition(new ProximityVector(startX.intValue(),440)) instanceof StartButton);
+        assertTrue(m.getButtonOnPosition(new ProximityVector(500,450)) instanceof StartButton);
+        System.out.println(Constants.GAME_HEIGHT-240);
         /*
-        for(int x=startX.intValue(); x<startX.intValue()+326;x ++){
-            for(int y=440;y<440+377; y ++){
-                assertTrue(m.getButtonOnPosition(new ProximityVector(x,y)) instanceof StartButton);
-            }
-        }*/
+        Double startX=new Double(Constants.GAME_WIDTH/2-150); //X-pos of startbutton. Y-pos is 440.
+        StartButton button=new StartButton(new ProximityVector(0,0));
+        assertTrue(m.getButtonOnPosition(new ProximityVector(startX.intValue(),440)) instanceof StartButton); //Checking upper left corner
+        assertTrue(m.getButtonOnPosition(new ProximityVector(startX.intValue()+button.getWidth(),440)) instanceof StartButton); //Upper right corner
+        assertTrue(m.getButtonOnPosition(new ProximityVector(startX.intValue(),440+button.getHeight())) instanceof StartButton);//Lower left corner
+        assertTrue(m.getButtonOnPosition(new ProximityVector(startX.intValue() + button.getWidth()440+button.getHeight())) instanceof StartButton); //Lower right corner
 
+        int fcY=Constants.GAME_HEIGHT-240; //Y-pos of FactionChooser. X-pos is 0;
+        FactionChooser fc=new FactionChooser();
+        assertTrue(m.getButtonOnPosition(new ProximityVector(0,fcY)) instanceof FactionChooser); //Checking upper left corner.
+        assertTrue();
+        */
     }
 
     @Test

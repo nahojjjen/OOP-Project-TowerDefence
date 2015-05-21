@@ -41,7 +41,7 @@ public class MainMenu {
         factionChooser=new FactionChooser();
         mapSelect=new MapSelect(particleManager);
         map=mapSelect.getSelected();
-        startButton = new StartButton(map, new ProximityVector((Constants.GAME_WIDTH/2-150),440));
+        startButton = new StartButton(new ProximityVector((Constants.GAME_WIDTH/2-150),440));
 
     }
 

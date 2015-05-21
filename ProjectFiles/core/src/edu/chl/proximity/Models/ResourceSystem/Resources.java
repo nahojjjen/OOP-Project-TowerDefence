@@ -5,7 +5,8 @@ package edu.chl.proximity.Models.ResourceSystem;
  * @date 2015-04-15.
  * Class containing the different resources in the game; points, lines and polygons
  *
- * 08/05 modified by Hanna Romer. Added a way to set resources as geven amounts.
+ * 08/05 modified by Hanna Romer. Added a way to set resources as given amounts.
+ * 21/05 modified by Hanna Romer. Added nullcheckers in addResources and removeResources.
  */
 public class Resources {
     private int points;
@@ -66,9 +67,11 @@ public class Resources {
      * @param r the instance of resources who's points, lines and polygons is to be added.
      */
     public void addResources(Resources r){
-        points+=r.getPoints();
-        lines +=r.getLines();
-        polygons +=r.getPolygons();
+        if(r!=null) {
+            points += r.getPoints();
+            lines += r.getLines();
+            polygons += r.getPolygons();
+        }
     }
 
     /**
@@ -104,9 +107,11 @@ public class Resources {
      * @param r Resources that are to be removed
      */
     public void removeResources(Resources r){
-        points = points -r.getPoints();
-        lines = lines - r.getLines();
-        polygons = polygons - r.getPolygons();
+        if(r!=null) {
+            points = points - r.getPoints();
+            lines = lines - r.getLines();
+            polygons = polygons - r.getPolygons();
+        }
     }
 
     /**
