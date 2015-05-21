@@ -67,6 +67,10 @@ public class ProximityFont {
         this.position = newPosition;
     }
 
+    public ProximityVector getPosition() {
+        return position;
+    }
+
     public String getText() {
         return str;
     }

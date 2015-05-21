@@ -25,12 +25,12 @@ public class ControlPanelTest {
     @Test
     public void testGetMap() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
-        ControlPanel cp = new ControlPanel(map, null);
+        ControlPanel cp = new ControlPanel(map);
         assertEquals(map, cp.getMap());
         assertEquals(map, cp.getMap());
 
         try {
-            ControlPanel cp2 = new ControlPanel(null, null);
+            ControlPanel cp2 = new ControlPanel(null);
             fail();
         } catch (IllegalArgumentException e) {
             assertTrue(true);
@@ -38,20 +38,19 @@ public class ControlPanelTest {
     }
     @Test
     public void testInitiateText() throws Exception {
-        ControlPanel cp = new ControlPanel(new StandardMap(new ParticleManager(new Settings())), null);
-        assertNotEquals(null, cp.getLineText());
+        ControlPanel cp = new ControlPanel(new StandardMap(new ParticleManager(new Settings())));
         assertNotEquals(null, cp.getPercentBar());
-        assertNotEquals(null, cp.getPolygonText());
-        assertNotEquals(null, cp.getPointText());
+        assertNotEquals(null, cp.getResourceDisplayerCollection());
+
     }
     @Test
     public void testInitiateControlPanelTowers() throws Exception {
-        ControlPanel cp = new ControlPanel(new StandardMap(new ParticleManager(new Settings())), null);
+        ControlPanel cp = new ControlPanel(new StandardMap(new ParticleManager(new Settings())));
         assertTrue(cp.getControlPanelTowerListSize() > 0);
     }
     @Test
     public void testSetHealth() throws Exception {
-        ControlPanel cp = new ControlPanel(new StandardMap(new ParticleManager(new Settings())), null);
+        ControlPanel cp = new ControlPanel(new StandardMap(new ParticleManager(new Settings())));
         cp.setHealth(10);
         assertEquals(cp.getHealthPercent(), 10);
 
@@ -70,16 +69,16 @@ public class ControlPanelTest {
     }
     @Test
     public void testSetResources() throws Exception {
-        ControlPanel cp = new ControlPanel(new StandardMap(new ParticleManager(new Settings())), null);
+        ControlPanel cp = new ControlPanel(new StandardMap(new ParticleManager(new Settings())));
         Resources resources = new Resources(100, 10, 50);
         cp.setResources(null);
         cp.setResources(resources);
-        cp.getLineText().getText().equals("Lines: 100");
+        assertTrue(cp.getResourceDisplayerCollection().getResources().getPoints() == 100);
     }
     @Test
     public void testGetTowerOnPosition() throws Exception {
 
-        ControlPanel cp = new ControlPanel(new StandardMap(new ParticleManager(new Settings())), null);
+        ControlPanel cp = new ControlPanel(new StandardMap(new ParticleManager(new Settings())));
         ProximityVector vector = new ProximityVector(0, 0);
         for(int i = 0; i < 1000; i++) {
             ProximityRandom random = new ProximityRandom();
@@ -91,7 +90,7 @@ public class ControlPanelTest {
 
     @Test
     public void testGetTowerBoundTo() throws Exception {
-        ControlPanel cp = new ControlPanel(new StandardMap(new ParticleManager(new Settings())), null);
+        ControlPanel cp = new ControlPanel(new StandardMap(new ParticleManager(new Settings())));
         assertEquals(cp.getTowerBoundTo(1).getClass(), BulletTower.class);
 
         assertTrue(cp.getTowerBoundTo(0) == null);

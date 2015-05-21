@@ -49,7 +49,7 @@ public class ControlPanelController implements ClickHandler {
         this.game=g;
 
         propertiesPanel = new PropertiesPanel(viewport);
-        controlPanel = new ControlPanel(map,viewport);
+        controlPanel = new ControlPanel(map);
         towerPanel=new TowerPanel(map);
         //map.setPropertiesPanel(propertiesPanel);
         buttonPanel = new ButtonPanel(propertiesPanel);
