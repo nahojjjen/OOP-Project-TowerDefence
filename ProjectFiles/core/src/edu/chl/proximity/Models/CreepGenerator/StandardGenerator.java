@@ -1,4 +1,4 @@
-package edu.chl.proximity.Models.Utils.CreepGenerator;
+package edu.chl.proximity.Models.CreepGenerator;
 
 import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Circle;
 import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line1;

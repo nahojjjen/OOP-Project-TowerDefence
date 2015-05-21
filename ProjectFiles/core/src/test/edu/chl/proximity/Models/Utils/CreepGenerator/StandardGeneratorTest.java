@@ -4,7 +4,7 @@ import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Maps.StandardMap;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Waves.Wave;
-import edu.chl.proximity.Models.Utils.CreepGenerator.StandardGenerator;
+import edu.chl.proximity.Models.CreepGenerator.StandardGenerator;
 import edu.chl.proximity.Models.Utils.Settings;
 import junit.framework.TestCase;
 
