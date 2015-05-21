@@ -79,7 +79,7 @@ public class Line1 extends Creep {
 
     //Logic to obtain creep resource
     public Resources getCreepResource() {
-        return new Resources((creepLineIndex + 1) * 2, creepLineIndex, 0);
+        return new Resources(2, 1, 0);
     }
     //Logic to obtain creep xp
     public int getCreepExperiencePoints() {

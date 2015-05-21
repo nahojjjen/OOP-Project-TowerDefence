@@ -88,27 +88,35 @@ public class StandardGenerator {
                 }
                 break;
                 case 6: {
-                    for (int i = 0; i < 12; i++) {
+                    for (int i = 0; i < 7; i++) {
                         creeps.add(new Line2(5, map.getParticleManager(), map.getPath()));
                         creeps.add(new Line1(5, map.getParticleManager(), map.getPath()));
                     }
-                    spawnInterval = 2;
+                    spawnInterval = 1.2;
                 }
                 break;
                 case 7: {
                     for (int i = 0; i < 15; i++) {
                         creeps.add(new Line2(7, map.getParticleManager(), map.getPath()));
                     }
-                    spawnInterval = 1.5;
+                    spawnInterval = 1.3;
                 }
                 break;
                 case 8: {
+                    for (int i = 0; i < 12; i++) {
+                        creeps.add(new Line2(7, map.getParticleManager(), map.getPath()));
+                        creeps.add(new Line1(6, map.getParticleManager(), map.getPath()));
+                    }
+                    spawnInterval = 1.0;
+                }
+                break;
+                case 9: {
                     for (int i = 0; i < 15; i++) {
                         creeps.add(new Line2(7, map.getParticleManager(), map.getPath()));
-                        creeps.add(new Triangle(map.getParticleManager(), map.getPath()));
-                        creeps.add(new Circle(map.getParticleManager(), map.getPath()));
+                        creeps.add(new Line1(6, map.getParticleManager(), map.getPath()));
+                        creeps.add(new Line1(4, map.getParticleManager(), map.getPath()));
                     }
-                    spawnInterval = 1.5;
+                    spawnInterval = 0.8;
                 }
                 break;
 
@@ -119,7 +127,7 @@ public class StandardGenerator {
             //Some endless algorithm
             double r = ProximityRandom.getRandomDouble()*5;
             for (int i = 0; i < Math.max(0, (int)(waveIndex/2) - r); i++) {
-                creeps.add(new Circle(map.getParticleManager(), map.getPath()));
+                creeps.add(new Line1(6, map.getParticleManager(), map.getPath()));
             }
             for (int i = 0; i < (int)(waveIndex/5); i++) {
                 creeps.add(new Line1(6, map.getParticleManager(), map.getPath()));
@@ -127,8 +135,15 @@ public class StandardGenerator {
             for (int i = 0; i < (int)(waveIndex/5); i++) {
                 creeps.add(new Line2(7, map.getParticleManager(), map.getPath()));
             }
+            for (int i = 0; i < (int)(waveIndex/5); i++) {
+                creeps.add(new Line2(6, map.getParticleManager(), map.getPath()));
+            }
+            for (int i = 0; i < (int)(waveIndex/5); i++) {
+                creeps.add(new Line1(5, map.getParticleManager(), map.getPath()));
+            }
 
-            spawnInterval = Math.max(3 / Math.max(1, waveIndex - 5), 0.2);
+            r = ProximityRandom.getRandomDouble()*0.4;
+            spawnInterval = Math.max(r, 0.08);
 
         }
         return new Wave(creeps, spawnInterval, cooldown);

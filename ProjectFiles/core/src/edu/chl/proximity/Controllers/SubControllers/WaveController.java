@@ -16,7 +16,7 @@ import java.util.List;
 public class WaveController {
     private StandardGenerator waveGenerator;
     private Map map;
-    private int waveIndex = 1;
+    private int waveIndex = 8;
 
     private Wave currentWave;
     private List<Creep> creeps;
@@ -42,6 +42,7 @@ public class WaveController {
         if (creepIndex < creeps.size()) {
             if (spawnIntervalCounter < currentWave.getSpawnInterval() * 60) {
                 spawnIntervalCounter++;
+
                 return;
             }
             spawnIntervalCounter = 0;
