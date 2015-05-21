@@ -1,7 +1,9 @@
 package edu.chl.proximity.Controllers.SubControllers;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Controllers.ClickHandler;
+import edu.chl.proximity.Controllers.GameStates.GameOverScreen;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Map.Background;
@@ -29,14 +31,14 @@ import java.util.List;
 public class MapController implements ClickHandler {
 
     private Background model;
-    private Proximity proximity;
+    private Game game;
     private Viewport viewport;
     private List<BoardObject> models = new ArrayList<BoardObject>();
     private Map map;
 
-    public MapController(Map map, Proximity proximity, Viewport viewport) {
+    public MapController(Map map, Game game, Viewport viewport) {
         this.map = map;
-        this.proximity = proximity;
+        this.game=game;
         this.viewport = viewport;
         model = new Background(null);
         model.setPosition(new ProximityVector(0,0));
@@ -53,7 +55,7 @@ public class MapController implements ClickHandler {
         map.clearCollectedResources();
         map.clearCollectedExperience();
         if(map.getBase().getLife() <= 0)
-            proximity.changeScreen(Proximity.State.GAME_OVER,map, GameData.getInstance().getPlayer(),viewport);
+            game.setScreen(new GameOverScreen(game,map,GameData.getInstance().getPlayer()));
     }
 
     @Override

@@ -1,5 +1,6 @@
 package edu.chl.proximity.Controllers.GameStates;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -34,9 +35,9 @@ public class MenuScreen implements Screen {
     private OrthographicCamera camera;
     private Viewport viewport;
 
-    public MenuScreen(Proximity g, Player player, Viewport viewport){
+    public MenuScreen(Game g, Player player, Viewport viewport){
         GameData.getInstance().setPlayer(player);
-        this.mainMenu=new MainMenu(g, new ParticleManager(player.getSettings()));
+        this.mainMenu=new MainMenu(new ParticleManager(player.getSettings()));
 
         //Configurates view and controller
         menuRenderer=new MenuRenderer(mainMenu);
@@ -54,7 +55,7 @@ public class MenuScreen implements Screen {
             //viewport.apply();
         }
         */
-        mainMenuController=new MainMenuController(this.viewport);
+        mainMenuController=new MainMenuController(g,this.viewport);
         mainMenuController.setMainMenu(mainMenu);
         Gdx.input.setInputProcessor(mainMenuController);
 

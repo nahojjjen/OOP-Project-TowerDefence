@@ -1,13 +1,17 @@
 package edu.chl.proximity.Controllers;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import edu.chl.proximity.Controllers.GameStates.GameScreen;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.MenuModels.FactionChooser.FactionChooser;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.MenuModels.MapSelect.MapSelect;
 import edu.chl.proximity.Models.MenuModels.StartButton;
+import edu.chl.proximity.Models.Player.Players.GameData;
+import edu.chl.proximity.Models.WonLostModels.GameOver;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.ArrayList;
@@ -21,8 +25,10 @@ import java.util.List;
 public class MainMenuController implements InputProcessor{
     private MainMenu mainMenu;
     private Viewport viewport;
+    private Game game;
 
-    public MainMenuController(Viewport viewport){
+    public MainMenuController(Game game,Viewport viewport){
+        this.game=game;
         this.viewport=viewport;
     }
 
@@ -51,7 +57,8 @@ public class MainMenuController implements InputProcessor{
         ProximityVector translatedPosition = new ProximityVector(pos.x,pos.y);
         BoardObject touchedButton=mainMenu.getButtonOnPosition(translatedPosition);
         if(touchedButton instanceof StartButton){
-            mainMenu.pressedStart(viewport);
+            mainMenu.pressedStart();
+            game.setScreen(new GameScreen(game,mainMenu.getMap(),GameData.getInstance().getPlayer(),viewport));
         }else if(touchedButton instanceof FactionChooser){
             mainMenu.pressedFactionChooser(translatedPosition);
         }else if(touchedButton instanceof MapSelect){

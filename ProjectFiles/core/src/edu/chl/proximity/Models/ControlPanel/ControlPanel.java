@@ -74,20 +74,18 @@ public class ControlPanel extends BoardObject{
     private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/tweed.png");
 
     private Map map;
-    private Proximity game;
     private Viewport viewport;
 
     /**
      * Create a new instance of the controll panel
      */
-    public ControlPanel(Map map, Proximity game, Viewport viewport) {
+    public ControlPanel(Map map, Viewport viewport) {
         super(position, background, 0, width, height);
 
         if(map == null) {
             throw new IllegalArgumentException("ControlPanel: Map can't be null");
         }
         this.map = map;
-        this.game=game;
         this.viewport=viewport;
         initiateText();
         initiateControlPanelTowers();

@@ -28,7 +28,7 @@ public class MainMenuTest {
         Player p=new Player(new Planes());
         GameData.getInstance().setPlayer(p);
 
-        MainMenu m = new MainMenu(g, new ParticleManager(new Settings()));
+        MainMenu m = new MainMenu(new ParticleManager(new Settings()));
 
         assertTrue(m.getButtonOnPosition(new ProximityVector(500,450)) instanceof StartButton);
         System.out.println(Constants.GAME_HEIGHT-240);

@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.WonLostModels;
 
 import com.badlogic.gdx.utils.viewport.Viewport;
+import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.Utils.Image;
@@ -29,7 +30,7 @@ public class GameOver {
     private ProximityVector mmPos=new ProximityVector(400,400);
 
 
-    public GameOver(Map map, Player player, Viewport viewport, Proximity game){
+    public GameOver(Map map, Player player, Viewport viewport){
         this.map=map;
         this.player=player;
         this.viewport=viewport;
@@ -39,21 +40,19 @@ public class GameOver {
         resume=new Button(rPos, new Image(Constants.FILE_PATH + "Buttons/ResumeButton.png"));
     }
 
-    public void pressedButtonOnPosition(ProximityVector position) {
+    public String getButtonActionOnPosition(ProximityVector position) {
         if (resume.containsPoint(position)) {
-            pressedResume();
+            return "Resume";
         } else if (mainMenu.containsPoint(position)) {
-            pressedMainMenu();
+            return "MainMenu";
         }
+        return null;
     }
 
-    public void pressedResume(){
-        game.changeScreen(Proximity.State.GAME, map.getNew(), player, viewport);
+    public Map getMap(){
+        return map;
     }
 
-    public void pressedMainMenu(){
-        game.changeScreen(Proximity.State.MAIN_MENU, map, player, viewport);
-    }
 
     public void render(ProximityBatch batch){
         mainMenu.render(batch);

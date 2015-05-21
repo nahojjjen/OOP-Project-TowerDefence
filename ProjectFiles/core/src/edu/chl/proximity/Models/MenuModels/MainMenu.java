@@ -29,12 +29,10 @@ public class MainMenu {
     private StartButton startButton;
     private FactionChooser factionChooser;
     private MapSelect mapSelect;
-    private Proximity game;
     private Image background;
 
 
-    public MainMenu(Proximity game, ParticleManager particleManager){
-        this.game = game;
+    public MainMenu(ParticleManager particleManager){
         player = GameData.getInstance().getPlayer();
 
         background = new Image(Constants.FILE_PATH + "Backgrounds/MainMenuBackground.png");
@@ -56,7 +54,7 @@ public class MainMenu {
         return mapSelect;
     }
 
-    public void pressedStart(Viewport viewport){
+    public void pressedStart(){
         player.setFacton(factionChooser.getCurrentlyShown());
         map=mapSelect.getSelected();
         player.getFaction().configureSpells(map.getParticleManager());
@@ -64,8 +62,12 @@ public class MainMenu {
         GameData.getInstance().setPlayer(player);
         player.getResources().setResources(500,500,0);
 
-        game.changeScreen(Proximity.State.GAME, map, player,viewport);
+        //game.changeScreen(Proximity.State.GAME, map, player,viewport);
         //game.changeScreen(Proximity.State.GAME_OVER,map,player,viewport);
+    }
+
+    public Map getMap(){
+        return map;
     }
 
 

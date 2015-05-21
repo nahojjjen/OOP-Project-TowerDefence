@@ -1,8 +1,10 @@
 package edu.chl.proximity.Controllers.SubControllers;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Controllers.ClickHandler;
+import edu.chl.proximity.Controllers.GameStates.MenuScreen;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.ControlPanel.*;
 import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.*;
@@ -40,13 +42,15 @@ public class ControlPanelController implements ClickHandler {
     private Map map;
     private Viewport viewport;
     private List<BoardObject> controlPanels = new ArrayList<BoardObject>();
+    private Game game;
 
-    public ControlPanelController(Map map, Proximity g, Viewport viewport) {
+    public ControlPanelController(Map map, Game g, Viewport viewport) {
         this.viewport=viewport;
         this.map = map;
+        this.game=g;
 
-        propertiesPanel = new PropertiesPanel(g,viewport);
-        controlPanel = new ControlPanel(map,g,viewport);
+        propertiesPanel = new PropertiesPanel(viewport);
+        controlPanel = new ControlPanel(map,viewport);
         towerPanel=new TowerPanel(map);
         //map.setPropertiesPanel(propertiesPanel);
         buttonPanel = new ButtonPanel(propertiesPanel);
@@ -201,6 +205,7 @@ public class ControlPanelController implements ClickHandler {
                     propertiesPanel.pressedResumeButton();
                 } else if (touchedButton instanceof MainMenuButton) {
                     propertiesPanel.pressedMainMenuButton();
+                    game.setScreen(new MenuScreen(game, GameData.getInstance().getPlayer(),viewport));
                 } else if (touchedButton instanceof SoundButton) {
                     propertiesPanel.pressedSoundButton();
                 } else if (touchedButton instanceof SoundBar) {

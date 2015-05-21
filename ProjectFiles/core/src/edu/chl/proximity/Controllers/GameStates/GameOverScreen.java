@@ -1,5 +1,6 @@
 package edu.chl.proximity.Controllers.GameStates;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -31,12 +32,12 @@ public class GameOverScreen implements Screen {
     private OrthographicCamera camera;
     private Viewport viewport;
 
-    public GameOverScreen(Proximity g, Map map, Player player){
+    public GameOverScreen(Game g, Map map, Player player){
         GameData.getInstance().setPlayer(player);
         fixCamera();
-        gameOver=new GameOver(map,player,viewport, g);
+        gameOver=new GameOver(map,player,viewport);
         gameOverRenderer=new GameOverRenderer(gameOver);
-        gameOverController=new GameOverController(viewport,gameOver);
+        gameOverController=new GameOverController(g,viewport,gameOver,player);
         Gdx.input.setInputProcessor(gameOverController);
     }
 

@@ -1,8 +1,10 @@
 package edu.chl.proximity.Controllers;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import edu.chl.proximity.Controllers.GameStates.GameScreen;
 import edu.chl.proximity.Controllers.SubControllers.*;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -40,11 +42,11 @@ public class MainController implements InputProcessor{
     private List<ClickHandler> clickHandlers = new ArrayList<ClickHandler>();
     private Map map;
     private Viewport viewport; //used for translating scaled click-position to model click position
-    private Proximity game;
+    private Game game;
 
 
 
-    public MainController(Map map, Viewport v, Proximity game) {
+    public MainController(Map map, Viewport v, Game game) {
         this.game = game;
         this.map = map;
         controlPanelController = new ControlPanelController(map, game,viewport);
@@ -62,7 +64,7 @@ public class MainController implements InputProcessor{
     }
 
     public void updateAllControllers() {
-        if(game.getCurrentScreen().equals(Proximity.State.GAME)) {
+        if(game.getScreen() instanceof GameScreen){            //game.getCurrentScreen().equals(Proximity.State.GAME)) {
             waveController.update();
             mapController.update();
             backgroundController.update();

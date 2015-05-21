@@ -37,15 +37,13 @@ public class PropertiesPanel extends BoardObject{
 
     private int backUpLevel;
     private boolean isVisible=false;
-    private Proximity game;
     private Viewport viewport;
 
     /**
      * Create a new properies panel
      */
-    public PropertiesPanel(Proximity game, Viewport viewport){
+    public PropertiesPanel(Viewport viewport){
         super(position, background, 0);
-        this.game = game;
         this.viewport=viewport;
         resumeButton = new ResumeButton(resumePos);
         mainMenuButton = new MainMenuButton(mainMenuPos);
@@ -172,8 +170,6 @@ public class PropertiesPanel extends BoardObject{
      */
     public void pressedMainMenuButton(){
         setVisability(false);
-
-        game.changeScreen(Proximity.State.MAIN_MENU,null, GameData.getInstance().getPlayer(),viewport);
     }
 
     /**

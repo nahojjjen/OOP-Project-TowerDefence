@@ -1,5 +1,6 @@
 package edu.chl.proximity.Controllers.GameStates;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -42,7 +43,7 @@ public class GameScreen implements Screen{
     private Viewport viewport;
     private Settings settings;
 
-    public GameScreen(Proximity g, Map map, Player player, Viewport viewport){
+    public GameScreen(Game g, Map map, Player player, Viewport viewport){
         this.settings = player.getSettings();
 
         GameData.getInstance().setPlayer(player);
