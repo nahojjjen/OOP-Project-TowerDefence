@@ -68,7 +68,7 @@ public class Player {
         if (saveManager.get(previousMapName) != null){
             wonNumber = saveManager.get(previousMapName);
         }
-        return (wonNumber >=3);
+        return (wonNumber >=40);
 
 
     }
