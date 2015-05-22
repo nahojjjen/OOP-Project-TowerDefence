@@ -1,13 +1,11 @@
 package edu.chl.proximity.Models.MenuModels.MapSelect;
 
+import edu.chl.proximity.Models.Map.Maps.*;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Map.Maps.FillerMap;
-import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Map.Maps.StandardMap;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.ArrayList;
@@ -27,7 +25,11 @@ public class MapSelect extends BoardObject{
     public MapSelect(ParticleManager particleManager){
         super(pos, null, 0);
         maps.add(new MapSelectIcon(new StandardMap(particleManager), new ProximityVector(200, 200)));
-        maps.add(new MapSelectIcon(new FillerMap(particleManager), new ProximityVector(300,200)));
+        maps.add(new MapSelectIcon(new FillerMap(particleManager), new ProximityVector(300,210)));
+        maps.add(new MapSelectIcon(new DifficultJuggMap(particleManager),new ProximityVector(660,150)));
+        maps.add(new MapSelectIcon(new SmallSpiralMap(particleManager),new ProximityVector(420,170)));
+        maps.add(new MapSelectIcon(new SnakeMap(particleManager),new ProximityVector(560,140)));
+        maps.add(new MapSelectIcon(new ZigZagMap(particleManager),new ProximityVector(750,200)));
 
         //TODO: this for-loop is just for debug. remove later
         for(MapSelectIcon m:maps){

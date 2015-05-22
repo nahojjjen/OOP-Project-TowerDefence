@@ -21,7 +21,7 @@ public class DifficultJuggMap extends Map{
      * creates the map instance
      */
     public DifficultJuggMap(ParticleManager particleManager) {
-        super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/moonBackground.png")), "Standard", particleManager);
+        super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/moonBackground.png")), "DifficultJugg", particleManager);
     }
 
     public Map getNew(){

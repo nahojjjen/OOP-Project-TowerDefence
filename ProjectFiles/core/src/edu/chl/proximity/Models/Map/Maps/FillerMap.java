@@ -19,7 +19,7 @@ public class FillerMap extends Map{
      * creates the map instance
      */
     public FillerMap(ParticleManager particleManager) {
-        super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/moonBackground.png")),"FillerMap", particleManager);
+        super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/moonBackground.png")),"Filler", particleManager);
     }
 
     public Map getNew(){

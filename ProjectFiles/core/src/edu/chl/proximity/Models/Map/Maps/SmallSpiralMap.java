@@ -20,7 +20,7 @@ public class SmallSpiralMap extends Map{
      * creates the map instance
      */
     public SmallSpiralMap(ParticleManager particleManager) {
-        super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/moonBackground.png")), "Standard", particleManager);
+        super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/moonBackground.png")), "SmallSpiral", particleManager);
     }
 
     public Map getNew(){

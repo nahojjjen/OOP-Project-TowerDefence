@@ -20,7 +20,7 @@ public class ZigZagMap extends Map {
      * creates the map instance
      */
     public ZigZagMap(ParticleManager particleManager) {
-        super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/smoothBackground.png")), "Standard", particleManager);
+        super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/smoothBackground.png")), "ZigZag", particleManager);
     }
 
     public Map getNew(){

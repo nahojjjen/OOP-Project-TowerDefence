@@ -20,7 +20,7 @@ public class SnakeMap extends Map{
      * creates the map instance
      */
     public SnakeMap(ParticleManager particleManager) {
-        super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/moonBackground.png")), "Standard", particleManager);
+        super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/moonBackground.png")), "Snake", particleManager);
     }
 
     public Map getNew(){
