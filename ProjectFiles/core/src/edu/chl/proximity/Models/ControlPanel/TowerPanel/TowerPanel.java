@@ -1,5 +1,6 @@
 package edu.chl.proximity.Models.ControlPanel.TowerPanel;
 
+import edu.chl.proximity.Models.ControlPanel.ResourceDisplayerCollection;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
@@ -17,17 +18,18 @@ import edu.chl.proximity.Utilities.Constants;
  * @author Hanna Romer
  * @date 2015-05-08
  *
- * 22/05 modified by Linda Evaldsson. Fixed bug that made game crash when trying to upgrade a tower with no upgrade.
+ * 22/05 modified by Linda Evaldsson. Fixed bug that made game crash. Also redesigned Panel and moved it to ControlPanel.
  */
 public class TowerPanel extends BoardObject{
     private Map map;
     private static Image background=new Image(Constants.FILE_PATH + "Backgrounds/tweed.png");
     private Image towerImage;
-    private static ProximityVector pos=new ProximityVector(651,550);
-    private static int width=324;
-    private static int height=300;
+    private static ProximityVector pos=new ProximityVector(Constants.GAME_WIDTH - 300,450); //651, 550
+    private static int width=300;
+    private static int height=150;
     private TargetingFactory targetingFactory;
-    private ProximityFont towerName=new ProximityFont(new ProximityVector(pos.x+115,pos.y+5),null);
+    private ProximityFont towerName;
+    private ProximityVector towerPosition;
 
     private CheckBox first;
     private CheckBox closest;
@@ -35,23 +37,49 @@ public class TowerPanel extends BoardObject{
     private UpgradeButton upgrade;
     private SellButton sell;
 
-    private ProximityFont cost=new ProximityFont(new ProximityVector(pos.x+5, pos.y+75),"Upgrade");
-    private ProximityFont points=new ProximityFont(new ProximityVector(pos.x+60, pos.y+95),"Points:");
-    private ProximityFont lines=new ProximityFont(new ProximityVector(pos.x+60, pos.y+110),"Lines:");
-    private ProximityFont polygons=new ProximityFont(new ProximityVector(pos.x+60, pos.y+125),"Polygons:");
+    private ProximityFont upgradeText;
+    private ProximityFont points;
+    private ProximityFont lines;
+    private ProximityFont polygons;
+    private ResourceDisplayerCollection upgradeCost;
 
     private boolean afford;
 
     public TowerPanel(Map map){
         super(pos,background,0,width,height);
         this.map=map;
-        first=new CheckBox(new ProximityVector(pos.x+180,pos.y+30), map, "Target first");
-        closest=new CheckBox(new ProximityVector(pos.x+180,pos.y+60), map, "Target closest");
-        last=new CheckBox(new ProximityVector(pos.x+180,pos.y+90), map, "Target last");
-        upgrade=new UpgradeButton(new ProximityVector(pos.x+5, pos.y+95));
-        sell=new SellButton(new ProximityVector(pos.x+150,pos.y+115),map);
+        initiateCheckButtons();
+        initiateUpgrade();
+        initiateTower();
+        initiateSell();
         targetingFactory=new TargetingFactory();
+
+
         setInfo();
+    }
+
+    private void initiateTower() {
+        towerName = new ProximityFont(new ProximityVector(pos.x + 30, pos.y + 5),null);
+        towerName.setSize(16);
+        towerPosition = new ProximityVector(pos.x + 30, pos.y + 30);
+    }
+
+    private void initiateUpgrade() {
+
+        upgrade = new UpgradeButton(new ProximityVector(pos.x + 150, pos.y + 30));
+        upgradeText = new ProximityFont(new ProximityVector(pos.x + 150, pos.y+15),"Upgrade");
+        upgradeText.setSize(12);
+
+        upgradeCost = new ResourceDisplayerCollection(new ProximityVector(pos.x + 200, pos.y + 30), 15, 12, ResourceDisplayerCollection.Face.Vertical);
+
+    }
+    private void initiateCheckButtons() {
+        first=new CheckBox(new ProximityVector(pos.x+30,pos.y + 80), map, "Target first");
+        closest=new CheckBox(new ProximityVector(pos.x+30,pos.y + 105), map, "Target closest");
+        last=new CheckBox(new ProximityVector(pos.x+30,pos.y + 130), map, "Target last");
+    }
+    private void initiateSell() {
+        sell=new SellButton(new ProximityVector(pos.x+150,pos.y+115),map);
     }
     public BoardObject getButtonOnPosition(ProximityVector pos){
         if(first.containsPoint(pos)){
@@ -125,33 +153,33 @@ public class TowerPanel extends BoardObject{
     }
 
     public void setInfo(){
-        if(map.getChosenTower() != null){
-            Tower chosenTower = map.getChosenTower();
+        Tower chosenTower = map.getChosenTower();
+        if(chosenTower != null){
             towerName.setText(chosenTower.getName());
             towerImage=chosenTower.getImage();
             if(map.getChosenTower().getUpgrade() != null) {
-                upgrade.setImage(map.getChosenTower().getUpgrade().getImage());
+                upgrade.setImage(chosenTower.getUpgrade().getImage());
                 Resources r = chosenTower.getUpgradeCost();
+
 
                 Resources p = GameData.getInstance().getPlayer().getResources();
                 if (r.getPolygons() > p.getPolygons() || r.getLines() > p.getLines() || r.getPoints() > p.getPoints()) {
                     afford = false;
-                    cost.setText("Upgrade (Can't afford)");
+                    upgradeText.setText("Upgrade (Can't afford)");
                 } else {
                     afford = true;
-                    cost.setText("Upgrade");
+                    upgradeText.setText("Upgrade");
                 }
-                points.setText("Points: " + r.getPoints());
-                lines.setText("Lines: " + r.getLines());
-                polygons.setText("Polygons: " + r.getPolygons());
+                upgradeCost.updateResources(r);
 
             }
             if(map.getChosenTower() instanceof ShootingTower){
-                if(((ShootingTower) map.getChosenTower()).getTargetingMethod() instanceof TargetFirst){
+                ShootingTower chosenShootingTower = (ShootingTower)chosenTower;
+                if(chosenShootingTower.getTargetingMethod() instanceof TargetFirst){
                     pressedFirst();
-                }else if(((ShootingTower) map.getChosenTower()).getTargetingMethod() instanceof TargetClosest){
+                }else if(chosenShootingTower.getTargetingMethod() instanceof TargetClosest){
                     pressedClosest();
-                }else if(((ShootingTower) map.getChosenTower()).getTargetingMethod() instanceof TargetLast){
+                }else if(chosenShootingTower.getTargetingMethod() instanceof TargetLast){
                     pressedLast();
                 }
             }
@@ -162,19 +190,17 @@ public class TowerPanel extends BoardObject{
         if(map.getChosenTower() != null) {
             setInfo();
             batch.renderRepeatedly(background, pos, width, height);
-            super.render(batch);
+            //super.render(batch);
             first.render(batch);
             closest.render(batch);
             last.render(batch);
             towerName.draw(batch);
-            batch.render(towerImage, new ProximityVector(pos.x + 5, pos.y + 5), 0);
+            batch.render(towerImage, towerPosition, 0);
             sell.render(batch);
             if(map.getChosenTower().getUpgrade() != null) {
                 upgrade.render(batch);
-                cost.draw(batch);
-                points.draw(batch);
-                lines.draw(batch);
-                polygons.draw(batch);
+                upgradeText.draw(batch);
+                upgradeCost.render(batch);
             }
         }
     }
