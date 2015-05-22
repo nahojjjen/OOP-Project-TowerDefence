@@ -16,6 +16,8 @@ import edu.chl.proximity.Utilities.Constants;
 /**
  * @author Hanna Romer
  * @date 2015-05-08
+ *
+ * 22/05 modified by Linda Evaldsson. Fixed bug that made game crash when trying to upgrade a tower with no upgrade.
  */
 public class TowerPanel extends BoardObject{
     private Map map;
@@ -97,16 +99,19 @@ public class TowerPanel extends BoardObject{
     }
 
     public void pressedUpgrade(){
+        System.out.println("Pressed upgrade");
         if(map.getChosenTower() != null && afford) {
             Tower upgrade=map.getChosenTower().getUpgrade();
-            upgrade.setPosition(map.getChosenTower().getPosition());
-            upgrade.setAsPlaced(true);
-            if(upgrade instanceof ShootingTower && map.getChosenTower() instanceof ShootingTower){
-                ((ShootingTower) upgrade).setTargetingMethod(((ShootingTower) map.getChosenTower()).getTargetingMethod());
+            if(upgrade != null) {
+                upgrade.setPosition(map.getChosenTower().getPosition());
+                upgrade.setAsPlaced(true);
+                if (upgrade instanceof ShootingTower && map.getChosenTower() instanceof ShootingTower) {
+                    ((ShootingTower) upgrade).setTargetingMethod(((ShootingTower) map.getChosenTower()).getTargetingMethod());
+                }
+                map.getChosenTower().remove();
+                map.add(upgrade);
+                map.setChosenTower(upgrade);
             }
-            map.getChosenTower().remove();
-            map.add(upgrade);
-            map.setChosenTower(upgrade);
         }
     }
 
