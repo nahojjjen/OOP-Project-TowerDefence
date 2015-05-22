@@ -61,11 +61,14 @@ public abstract class Spell extends PersistentObject implements Holdable {
     public List<Creep> getCreepsWithinDistance(ProximityVector position, double range) {
         List<Creep> creepsWithinRange = new ArrayList<Creep>();
         if (range <= 0 || position == null){return creepsWithinRange;}
-        for (Creep creep : creeps) {
-            if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), position) < range * range) {
-                creepsWithinRange.add(creep);
+        if (creeps != null){
+            for (Creep creep : creeps) {
+                if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), position) < range * range) {
+                    creepsWithinRange.add(creep);
+                }
             }
         }
+
         return creepsWithinRange;
     }
 

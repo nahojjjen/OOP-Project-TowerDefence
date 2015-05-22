@@ -5,6 +5,8 @@ import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Spells.Spell;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
+import edu.chl.proximity.Utilities.PointCalculations;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.List;
 
@@ -20,11 +22,12 @@ import java.util.List;
 public class ChainLightning extends Spell {
 
     //Spell stats
-    private static double range = 100f;
+    private static double range = 120f;
     private static int duration = 2;
     private static Image image = new Image(Constants.FILE_PATH + "Spells/chainlightning.png");
-    private static final int maxCooldown = 60*10;
+    private static final int maxCooldown = 60*40;
     private static int currentCooldown = 0;
+    private int charges = 10;
 
     public ChainLightning(ParticleManager particleManager) {
         super(image, duration, particleManager); //600 frames = 10 seconds @ 60 fps
@@ -35,12 +38,36 @@ public class ChainLightning extends Spell {
     @Override
     public void performEffect(int counter) {
         List<Creep> creepsWithinRange = getCreepsWithinDistance(getPosition(), range);
+        List<Creep> creeps = getCreeps();
 
-        for (Creep creep : creepsWithinRange) {
-            creep.devolve();//devolve all creeps in range
-            this.preparePlacing(creep.getCenter());
+        for (int i = 0; i<5; i++){
+            //first hit, kills creepw within distance
+            for (Creep creep : creepsWithinRange) {
+                creep.devolve();//devolve all creeps in range
+            }
+
+            for (Creep creep : creeps){
+                if (charges >= 0){
+                    creepsWithinRange = getCreepsWithinDistance(creep.getCenter(), range);
+                    getParticleManager().getLightningCreepEffect().createEffect(creep.getCenter());
+                    creep.devolve();//devolve all creeps in range
+                    charges--;
+                }
+            }
+
+
+
+
+
+
         }
+
+
+
+
+
     }
+
 
     @Override
     public void updateCooldown() {

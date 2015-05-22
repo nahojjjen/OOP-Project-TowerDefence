@@ -22,10 +22,10 @@ import java.util.List;
 public class FireField extends Spell {
 
     //Spell stats
-    private static double range = 70f;
+    private static double range = 100f;
     private static int duration = 120;
     private static Image image = new Image(Constants.FILE_PATH + "Spells/firefield.png");
-    private static final int maxCooldown = 60*10;
+    private static final int maxCooldown = 60*30;
     private static int currentCooldown = 0;
 
     public FireField(ParticleManager particleManager){
@@ -39,7 +39,7 @@ public class FireField extends Spell {
         List<Creep> creeps = getCreepsWithinDistance(getPosition(), range);
         for (Creep creep:creeps){
                 getParticleManager().getFireCreepEffect().createEffect(creep.getCenter());
-                if(counter % 15 ==0)
+                if(counter % 10 ==0)
                     creep.devolve();
         }
     }

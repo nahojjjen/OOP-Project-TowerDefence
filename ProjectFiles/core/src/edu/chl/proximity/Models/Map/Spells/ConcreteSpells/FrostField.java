@@ -22,7 +22,7 @@ public class FrostField extends Spell {
     private static double range = 60f;
     private static int duration = 600;
     private static Image image = new Image(Constants.FILE_PATH + "Spells/frostfield.png");
-    private static final int maxCooldown = 60*10;
+    private static final int maxCooldown = 60*15;
     private static int currentCooldown = 0;
 
     public FrostField(ParticleManager particleManager){
