@@ -16,20 +16,20 @@ import edu.chl.proximity.Utilities.ProximityVector;
  *
  * A class representing a tower that has long range and snipes creeps
  */
-public class SniperTower extends ShootingTower {
+public class SniperTower3 extends ShootingTower {
 
     //Tower stats
-    private static Resources resources = new Resources(0, 150, 0);
+    private static Resources resources = new Resources(100, 150, 0);
     private static double range = 9999f;
     private static int reloadTime = 150;
 
-    private static Image img = new Image(Constants.FILE_PATH + "Towers/Sniper/1.png");
+    private static Image img = new Image(Constants.FILE_PATH + "Towers/Sniper/3.png");
 
     /**
      * @param pos
      *  double range, TargetingMethod targetingMethod, int reloadTime
      */
-    public SniperTower(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager) {
+    public SniperTower3(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager) {
         super(pos, img, range, targetingMethod, reloadTime, resources, "Sniper Tower");
         setParticleManager(particleManager);
     }
@@ -37,7 +37,9 @@ public class SniperTower extends ShootingTower {
 
     @Override
     public Projectile createProjectile() {
-        return new SniperBullet(getCenter(), PointCalculations.getVectorAngle(getPosition(), getTarget().getPosition()), getTarget(), getParticleManager());
+        SniperBullet bullet= new SniperBullet(getCenter(), PointCalculations.getVectorAngle(getPosition(), getTarget().getPosition()), getTarget(), getParticleManager());
+        bullet.setToBullet3();
+        return bullet;
     }
 
     @Override
@@ -45,7 +47,7 @@ public class SniperTower extends ShootingTower {
         return super.clone();
     }
     public Tower getNewUpgrade() {
-        return new SniperTower2(this.getPosition(), this.getTargetingMethod(), getParticleManager());
+        return null;
         //return new SniperTower(this.getPosition(), this.getTargetingMethod(), getParticleManager());
     }
 }
