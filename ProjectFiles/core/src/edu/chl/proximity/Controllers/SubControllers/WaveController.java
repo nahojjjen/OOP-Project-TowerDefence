@@ -16,7 +16,7 @@ import java.util.List;
 public class WaveController {
     private StandardGenerator waveGenerator;
     private Map map;
-    private int waveIndex = 8;
+    private int waveIndex = 1;
 
     private Wave currentWave;
     private List<Creep> creeps;
