@@ -19,7 +19,8 @@ public class CheckBox extends BoardObject{
 
     public CheckBox(ProximityVector pos, Map map, String text){
         super(pos, unChecked,0);
-        this.text=new ProximityFont(new ProximityVector(pos.x + 20, pos.y), text);
+        this.text=new ProximityFont(new ProximityVector(pos.x + 20, pos.y + 2), text);
+        this.text.setSize(12);
     }
 
     public void setAsChecked(){
