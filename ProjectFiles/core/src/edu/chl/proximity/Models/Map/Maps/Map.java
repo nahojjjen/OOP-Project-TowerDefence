@@ -34,6 +34,7 @@ import java.util.*;
  * 10/05 modified by Hanna Romer. Added method towersWithinRange that is exactly like creepsWithinRange.
  * 17/05 modified by Hanna Romer. Added method getNew.
  * 20/05 modified by Linda Evaldsson. Added ParticleManager as constructor parameter.
+ * 22/05 modified by Hanna Romer. Added method isTowerOnPosition.
  * */
 public abstract class Map {
 
@@ -354,8 +355,25 @@ public abstract class Map {
 
     }
 
+    /**
+     * Get a new instance of this map
+     * @return new instance of this map
+     */
     public abstract Map getNew();
 
+    /**
+     * Get wether or not there is a tower on gicen position
+     * @param pos position to check
+     * @return if there is a tower on pos
+     */
+    public boolean isTowerOnPosition(ProximityVector pos){
+        for(Tower t:towers){
+            if(t.containsPoint(pos)){
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 }
