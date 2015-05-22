@@ -31,9 +31,14 @@ public class MapSelect extends BoardObject{
         maps.add(new MapSelectIcon(new SnakeMap(particleManager),new ProximityVector(560,140)));
         maps.add(new MapSelectIcon(new ZigZagMap(particleManager),new ProximityVector(750,200)));
 
-        //TODO: this for-loop is just for debug. remove later
+        // initiate the images to show if they are selectable
         for(MapSelectIcon m:maps){
-            m.setAsSelectable();
+            if (GameData.getInstance().getPlayer().hasPlayerWonPreviousMap(m.getMap())){
+                m.setAsSelectable();
+            }else{
+                m.setAsNotSelectable();
+            }
+
         }
 
         maps.get(selected).setAsSelected();
@@ -51,9 +56,12 @@ public class MapSelect extends BoardObject{
     }
 
     public void mapClicked(MapSelectIcon map, int index){
-        maps.get(selected).setAsSelectable();
-        maps.get(index).setAsSelected();
-        selected=index;
+        if (GameData.getInstance().getPlayer().hasPlayerWonPreviousMap(map.getMap())){
+            maps.get(selected).setAsSelectable();
+            maps.get(index).setAsSelected();
+            selected=index;
+        }
+
     }
 
     public void render(ProximityBatch batch){

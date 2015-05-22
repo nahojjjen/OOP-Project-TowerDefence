@@ -1,5 +1,6 @@
 package edu.chl.proximity.Models.Player.Players;
 
+import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Factions.Faction;
 import edu.chl.proximity.Models.Player.PersistentSave.SaveManager;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
@@ -38,6 +39,39 @@ public class Player {
         createSaveHook(1);
     }
 
+    /**
+     * writes to save file if the player has won a map, and which wave he was on
+     * @param name the name of the map
+     * @param waveIndex the wave the player reached
+     */
+    public void playWonLogic(String name, int waveIndex){
+        float previousWon = 0;
+        if (saveManager.get(name) != null){
+            previousWon = saveManager.get(name);
+        }
+        if (waveIndex > previousWon){
+            saveManager.write(name, (float)waveIndex);
+            System.out.println("Progress saved!: " + name + " wave index: " + waveIndex);
+        }
+    }
+
+
+    /**
+     * check if the player has won a map
+     * @param map which map to check
+     * @return true if the player has reached a win condition (a certain wave index)
+     */
+    public boolean hasPlayerWonPreviousMap(Map map){
+        if (map.getPreviousMapName() == null) return true;
+        String previousMapName = map.getPreviousMapName();
+        float wonNumber = 0;
+        if (saveManager.get(previousMapName) != null){
+            wonNumber = saveManager.get(previousMapName);
+        }
+        return (wonNumber >=3);
+
+
+    }
     /**
      * What should be loaded on start
      */

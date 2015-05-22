@@ -22,7 +22,10 @@ public class SnakeMap extends Map{
     public SnakeMap(ParticleManager particleManager) {
         super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/moonBackground.png")), "Snake", particleManager);
     }
-
+    @Override
+    public String getPreviousMapName() {
+        return "SmallSpiral";
+    }
     public Map getNew(){
         return new SnakeMap(getParticleManager());
     }

@@ -24,7 +24,10 @@ public class DifficultJuggMap extends Map{
     public DifficultJuggMap(ParticleManager particleManager) {
         super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/simpleLineBackground.png")), "DifficultJugg", particleManager);
     }
-
+    @Override
+    public String getPreviousMapName() {
+        return "Snake";
+    }
     public Map getNew(){
         return new DifficultJuggMap(getParticleManager());
     }

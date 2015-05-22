@@ -21,7 +21,10 @@ public class FillerMap extends Map{
     public FillerMap(ParticleManager particleManager) {
         super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/moonBackground.png")),"Filler", particleManager);
     }
-
+    @Override
+    public String getPreviousMapName() {
+        return "Standard";
+    }
     public Map getNew(){
         return new FillerMap(getParticleManager());
     }

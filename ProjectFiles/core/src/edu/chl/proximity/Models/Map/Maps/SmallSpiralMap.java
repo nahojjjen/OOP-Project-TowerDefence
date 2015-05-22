@@ -22,7 +22,10 @@ public class SmallSpiralMap extends Map{
     public SmallSpiralMap(ParticleManager particleManager) {
         super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/moonBackground.png")), "SmallSpiral", particleManager);
     }
-
+    @Override
+    public String getPreviousMapName() {
+        return "Filler";
+    }
     public Map getNew(){
         return new SmallSpiralMap(getParticleManager());
     }

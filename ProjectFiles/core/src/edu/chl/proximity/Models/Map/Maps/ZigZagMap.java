@@ -23,6 +23,11 @@ public class ZigZagMap extends Map {
         super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/smoothBackground.png")), "ZigZag", particleManager);
     }
 
+    @Override
+    public String getPreviousMapName() {
+        return "DifficultJugg";
+    }
+
     public Map getNew(){
         return new ZigZagMap(getParticleManager());
     }

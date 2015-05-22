@@ -157,6 +157,7 @@ public abstract class Map {
         return creepsWithinRange;
     }
 
+    public abstract String getPreviousMapName();
     /**
      * Updates all towers, creeps, spells and projectile logic on this map.
      */

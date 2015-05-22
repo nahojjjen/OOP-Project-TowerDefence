@@ -22,6 +22,10 @@ public class StandardMap extends Map {
     public StandardMap(ParticleManager particleManager) {
         super(path, new Background(new Image(Constants.FILE_PATH + "Backgrounds/warmBackground.png")), "Standard", particleManager);
     }
+    @Override
+         public String getPreviousMapName() {
+        return null;
+    }
 
     public Map getNew(){
         return new StandardMap(getParticleManager());

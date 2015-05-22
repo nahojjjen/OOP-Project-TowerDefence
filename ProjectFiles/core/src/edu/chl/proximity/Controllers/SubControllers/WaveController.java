@@ -4,6 +4,7 @@ import edu.chl.proximity.Models.CreepGenerator.StandardGenerator;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Waves.Wave;
+import edu.chl.proximity.Models.Player.Players.GameData;
 
 import java.util.List;
 
@@ -61,7 +62,9 @@ public class WaveController {
             }
         }
 
-
+        if (waveIndex >= 40){
+            GameData.getInstance().getPlayer().playWonLogic(map.getName(), waveIndex);
+        }
 
     }
 
