@@ -69,7 +69,7 @@ public class SaveManager {
      * Writes the object to the harddrive
      * @param saveNumber what number the file should be called
      */
-    public void save(int saveNumber){
+    public void save(int saveNumber) {
         ObjectOutputStream obj_out = null;
         try {
             // Enable writing data to the harddrive
@@ -85,6 +85,13 @@ public class SaveManager {
         } catch (IOException e) {
             e.printStackTrace();
         }finally {
+            if (obj_out != null) {
+                try {
+                    obj_out.close();
+                } catch (IOException e) {
+                    System.out.println("Failed to close stream.");
+                }
+            }
         }
     }
 
@@ -120,7 +127,9 @@ public class SaveManager {
         //Load the object
         Object readObject = null;
         try {
-            readObject = objectInputStream.readObject();
+            readObject = objectInputStream.readObject(); //findbugs false warning, ignore.
+
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -134,7 +143,9 @@ public class SaveManager {
         }
 
         try {
-            objectInputStream.close();
+            if(objectInputStream != null) {
+                objectInputStream.close();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
