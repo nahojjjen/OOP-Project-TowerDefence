@@ -91,6 +91,7 @@ public class ControlPanel extends BoardObject{
         controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new MissileTower(new ProximityVector(0, 0), targetFactory.getTargetClosest(), map.getParticleManager())));
         controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new SlowTower(new ProximityVector(0, 0), targetFactory.getTargetClosest(), map.getParticleManager())));
         controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0), new SniperTower(new ProximityVector(0, 0), targetFactory.getTargetClosest(), map.getParticleManager())));
+        controlPanelTowerList.add(new ControlPanelTower(new ProximityVector(0, 0),new MobileTower(new ProximityVector(0, 0),targetFactory.getTargetClosest(),map.getParticleManager())));
 
         for(int i = 0; i < controlPanelTowerList.size(); i++) {
             ProximityVector towerPosition = new ProximityVector(getPosition().x + 30 + 128 * (i % towersPerRow), 150 + 70 * (i/towersPerRow));

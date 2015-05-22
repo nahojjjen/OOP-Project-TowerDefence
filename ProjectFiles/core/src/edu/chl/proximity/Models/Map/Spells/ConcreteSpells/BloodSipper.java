@@ -10,7 +10,7 @@ import edu.chl.proximity.Utilities.Constants;
 import java.util.List;
 
 /**
- * @author Hanna Römer
+ * @author Hanna Romer
  * @date 2015-05-22
  */
 public class BloodSipper extends Spell {

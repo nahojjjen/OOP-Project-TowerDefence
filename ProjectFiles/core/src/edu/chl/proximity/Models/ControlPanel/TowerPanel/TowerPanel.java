@@ -90,8 +90,7 @@ public class TowerPanel extends BoardObject{
         }else if(sell.containsPoint(pos)){
             pressedSell();
         }
-        for (HashMap.Entry<CheckBox, TargetingMethod> entry : checkBoxMap.entrySet())
-        {
+        for (HashMap.Entry<CheckBox, TargetingMethod> entry : checkBoxMap.entrySet()) {
             if(entry.getKey().containsPoint(pos)) {
                 if(map.getChosenTower() instanceof TargetingTower) {
                     ((TargetingTower) map.getChosenTower()).setTargetingMethod(entry.getValue());
