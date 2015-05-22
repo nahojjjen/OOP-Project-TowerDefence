@@ -51,7 +51,6 @@ public class ControlPanelController implements ClickHandler {
         propertiesPanel = new PropertiesPanel(viewport);
         controlPanel = new ControlPanel(map);
         towerPanel=new TowerPanel(map);
-        //map.setPropertiesPanel(propertiesPanel);
         buttonPanel = new ButtonPanel(propertiesPanel);
         profilePanel = new ProfilePanel();
         spellPanel = new SpellPanel(GameData.getInstance().getPlayer().getFaction());

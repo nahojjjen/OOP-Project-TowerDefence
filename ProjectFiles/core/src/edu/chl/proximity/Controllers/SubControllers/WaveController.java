@@ -1,5 +1,7 @@
 package edu.chl.proximity.Controllers.SubControllers;
 
+import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.ControlPanel.WavePanel;
 import edu.chl.proximity.Models.CreepGenerator.StandardGenerator;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -18,6 +20,7 @@ public class WaveController {
     private StandardGenerator waveGenerator;
     private Map map;
     private int waveIndex = 1;
+    private WavePanel wavePanel;
 
     private Wave currentWave;
     private List<Creep> creeps;
@@ -29,6 +32,7 @@ public class WaveController {
 
     public WaveController(Map map) {
         this.waveGenerator = new StandardGenerator(map);
+        wavePanel = new WavePanel();
 
         this.map = map;
     }
@@ -61,11 +65,14 @@ public class WaveController {
                 cooldownCounter = 0;
             }
         }
+        wavePanel.updateWaves(waveIndex);
 
         if (waveIndex >= 40){
             GameData.getInstance().getPlayer().playWonLogic(map.getName(), waveIndex);
         }
 
     }
+
+    public BoardObject getWavePanel() { return wavePanel;}
 
 }

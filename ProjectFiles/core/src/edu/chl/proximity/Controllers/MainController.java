@@ -63,6 +63,10 @@ public class MainController implements InputProcessor{
         return controlPanelController.getControlPanels();
     }
 
+    public BoardObject getWavePanel() {
+        return waveController.getWavePanel();
+    }
+
     public void updateAllControllers() {
         if(game.getScreen() instanceof GameScreen){            //game.getCurrentScreen().equals(Proximity.State.GAME)) {
             waveController.update();

@@ -61,6 +61,7 @@ public class GameScreen implements Screen{
 
         mainController = new MainController(map, this.viewport, g);
         renderer.setControlPanels(mainController.getControlPanels());
+        renderer.addControlPanel(mainController.getWavePanel());
         map.setBase(player.getFaction().getNewBase(map.getPath(), map.getParticleManager()));
         player.getFaction().configureSpells(map.getParticleManager());
         player.getFaction().resetSpellCooldowns();

@@ -11,6 +11,7 @@ import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Utilities.ProximityVector;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,7 +34,7 @@ public class Renderer {
 
     private Map map;
     private ParticleManager particleManager ;
-    List<BoardObject> controlPanels;
+    List<BoardObject> controlPanels = new ArrayList<BoardObject>();
 
     /**
      * create a new renderer that can show everything in a game instance
@@ -87,8 +88,10 @@ public class Renderer {
 
     }
 
-    public void setControlPanels(List<BoardObject> controlPanels) { this.controlPanels = controlPanels; }
+    public void setControlPanels(List<BoardObject> controlPanels) { this.controlPanels.addAll(controlPanels); }
 
+
+    public void addControlPanel(BoardObject controlPanel) { controlPanels.add(controlPanel); }
     /**
      * Draws out the control panel
      * @param batch what graphics batch object that should draw on the screen
