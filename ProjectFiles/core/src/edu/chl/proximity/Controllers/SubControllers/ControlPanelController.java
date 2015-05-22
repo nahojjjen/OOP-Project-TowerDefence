@@ -28,6 +28,7 @@ import java.util.List;
  * 07/05 modofied by Linda Evaldsson. Added key bindings for spells. Also added handling for ControlPanels.
  * 08/05 modified by Hanna Römer. Added tower panel.
  * 13/05 Modified by Simon Gislen. Passes map to profile panel
+ * 22/05 modified by Linda Evaldsson. Restructured how the controller handles clicks to make it easier to understand.
  */
 public class ControlPanelController implements ClickHandler {
 
