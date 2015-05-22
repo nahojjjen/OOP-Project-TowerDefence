@@ -27,7 +27,7 @@ public class Filler extends Faction {
     public void configureSpells(ParticleManager particleManager) {
         addSpell(new BloodCarnage(particleManager));
         addSpell(new BloodPool(particleManager));
-        addSpell(new FireField(particleManager));
+        addSpell(new BloodSipper(particleManager));
         addSpell(new Sacrifice(particleManager));
     }
 }
