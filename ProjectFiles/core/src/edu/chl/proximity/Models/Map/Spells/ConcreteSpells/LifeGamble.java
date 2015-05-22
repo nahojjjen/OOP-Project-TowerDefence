@@ -1,36 +1,55 @@
 package edu.chl.proximity.Models.Map.Spells.ConcreteSpells;
 
-import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Spells.Spell;
 import edu.chl.proximity.Models.Map.Towers.Tower;
+import edu.chl.proximity.Models.Player.Players.GameData;
+import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
+import edu.chl.proximity.Utilities.ProximityRandom;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author Hanna Römer
  * @date 2015-05-22
  */
-public class BloodSipper extends Spell {
-    private static double range=80f;
-    private static int duration=120;
+public class LifeGamble extends Spell {
+    private static double range=5f;
+    private static int duration=1;
     private static Image image=new Image(Constants.FILE_PATH + "Spells/bloodpool.png");
-    private static final int maxCooldown = 60;
+    private static final int maxCooldown = 60*2;
     private static int currentCooldown = 0;
 
-    public BloodSipper(ParticleManager particleManager){
+    public LifeGamble(ParticleManager particleManager){
         super(image, duration, particleManager);
     }
 
     public void performEffect(int counter){
-        List<Creep> creeps=getCreepsWithinDistance(this.getPosition(), range);
-        for(Creep c: creeps){
-            if(counter%40==0){
-                c.devolve();
-            }
-            c.slowDown(10,Integer.MAX_VALUE);
+        Double diceNbr=ProximityRandom.getRandomDoubleBetween(0,6);
+        switch (diceNbr.intValue()){
+            case 0:
+                this.setHealthChange(20);
+                break;
+            case 1:
+                this.setHealthChange(10);
+                break;
+            case 2:
+                this.setHealthChange(5);
+                break;
+            case 3:
+                break;
+            case 4:
+                this.setHealthChange(-10);
+                break;
+            case 5:
+                this.setHealthChange(-20);
+                break;
+            case 6:
+                this.setHealthChange(-100);
+                break;
         }
     }
     @Override
@@ -57,11 +76,10 @@ public class BloodSipper extends Spell {
     public void resetCooldown() {
         currentCooldown =0;
     }
-    public void playParticleEffect(){
-        getParticleManager().getWallOfStone().createEffect(getPosition());
-    }
+
+    public void playParticleEffect(){}
+
     public double getRange(){
         return range;
     }
-
 }

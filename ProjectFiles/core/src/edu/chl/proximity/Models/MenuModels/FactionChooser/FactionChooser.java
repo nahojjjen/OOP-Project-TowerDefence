@@ -1,5 +1,6 @@
 package edu.chl.proximity.Models.MenuModels.FactionChooser;
 
+import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.LadyLuck;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
@@ -43,6 +44,7 @@ public class FactionChooser extends BoardObject{
         next = new NextPrevButton(new ProximityVector(pos.x+352, pos.y+40),new Image(Constants.FILE_PATH + "Buttons/FactionChooserRight.png"));
         factions.add(new Planes());
         factions.add(new Filler());
+        factions.add(new LadyLuck());
 
         factionImage.setImage(factions.get(showing).getShowImage());
         name.setText(factions.get(showing).getName());
