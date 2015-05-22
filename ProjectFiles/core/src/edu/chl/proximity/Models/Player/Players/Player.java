@@ -27,7 +27,7 @@ public class Player {
      * @param faction the players faction
      */
     public Player(Faction faction){
-        resources = new Resources(500, 500, 0);
+        resources = new Resources(150, 150, 0);
         this.faction=faction;
         //Standard settings are set
         this.settings = new Settings();

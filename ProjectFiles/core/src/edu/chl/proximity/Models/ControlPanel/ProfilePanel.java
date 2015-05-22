@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
+import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
@@ -28,6 +29,7 @@ import edu.chl.proximity.Models.Utils.ProximityFont;
  * The class displaying the profile image, level and experience
  *
  * 12/05 Modified by Simon Gislen. Added a more visual profile view
+ * 22/05 Modified by Simon Gislen. Bug fix
  *
  */
 
@@ -42,7 +44,7 @@ public class ProfilePanel extends BoardObject {
     private ProximityShapeRenderer shapeRenderer = new ProximityShapeRenderer();
 
     public ProfilePanel() {
-        super(new ProximityVector(0, Gdx.graphics.getHeight() - 75), null, 0, width, height);
+        super(new ProximityVector(0, Constants.GAME_HEIGHT - 75), null, 0, width, height);
         levelText = createFont(10, 54, "1");
     }
 
@@ -80,7 +82,7 @@ public class ProfilePanel extends BoardObject {
         shapeRenderer.end();
         batch.begin();
         Image image = player.getFaction().getShowImage();
-        batch.render(image, new ProximityVector(10, Gdx.graphics.getHeight() - 105), 180);
+        batch.render(image, new ProximityVector(10, Constants.GAME_HEIGHT - 105), 180);
         batch.end();
 
 //        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
