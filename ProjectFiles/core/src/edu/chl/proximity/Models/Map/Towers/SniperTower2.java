@@ -47,7 +47,7 @@ public class SniperTower2 extends ShootingTower {
         return super.clone();
     }
     public Tower getNewUpgrade() {
-        return null;
+        return new SniperTower3(this.getPosition(), this.getTargetingMethod(), getParticleManager());
         //return new SniperTower(this.getPosition(), this.getTargetingMethod(), getParticleManager());
     }
 }

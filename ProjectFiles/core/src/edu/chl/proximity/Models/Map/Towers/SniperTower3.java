@@ -19,7 +19,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
 public class SniperTower3 extends ShootingTower {
 
     //Tower stats
-    private static Resources resources = new Resources(100, 150, 0);
+    private static Resources resources = new Resources(300, 150, 0);
     private static double range = 9999f;
     private static int reloadTime = 150;
 
