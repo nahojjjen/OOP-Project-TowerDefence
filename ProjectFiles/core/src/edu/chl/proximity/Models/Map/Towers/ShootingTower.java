@@ -18,7 +18,7 @@ import java.util.List;
  *
  * 08/05 modified by Hanna Romer. Added setter and getter for targetingMethod.
  */
-public abstract class ShootingTower extends Tower {
+public abstract class ShootingTower extends Tower implements TargetingTower{
 
     private int reloadTime;
     private int currentReload = 0;

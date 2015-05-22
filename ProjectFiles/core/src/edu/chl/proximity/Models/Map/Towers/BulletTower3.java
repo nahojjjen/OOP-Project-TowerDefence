@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @date 13/05/15.
  */
-public class BulletTower3 extends Tower implements Cloneable {
+public class BulletTower3 extends Tower implements Cloneable, TargetingTower {
 
 
     //Tower stats
@@ -105,6 +105,13 @@ public class BulletTower3 extends Tower implements Cloneable {
     @Override
     public double getRange(){
         return range;
+    }
+
+    public void setTargetingMethod(TargetingMethod targetingMethod) {
+        this.targetingMethod = targetingMethod;
+    }
+    public TargetingMethod getTargetingMethod() {
+        return targetingMethod;
     }
 
 }

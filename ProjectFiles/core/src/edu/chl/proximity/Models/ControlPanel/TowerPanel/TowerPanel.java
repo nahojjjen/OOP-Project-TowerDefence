@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.ControlPanel.TowerPanel;
 
 import edu.chl.proximity.Models.ControlPanel.ResourceDisplayerCollection;
+import edu.chl.proximity.Models.Map.Towers.TargetingTower;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
@@ -18,7 +19,7 @@ import edu.chl.proximity.Utilities.Constants;
  * @author Hanna Romer
  * @date 2015-05-08
  *
- * 22/05 modified by Linda Evaldsson. Fixed bug that made game crash. Also redesigned Panel and moved it to ControlPanel.
+ * 22/05 modified by Linda Evaldsson. Fixed bugs. Also redesigned Panel and moved it to ControlPanel (graphically).
  */
 public class TowerPanel extends BoardObject{
     private Map map;
@@ -100,8 +101,8 @@ public class TowerPanel extends BoardObject{
     }
 
     public void pressedFirst(){
-        if(map.getChosenTower() instanceof ShootingTower){
-            ((ShootingTower) map.getChosenTower()).setTargetingMethod(targetingFactory.getTargetFirst());
+        if(map.getChosenTower() instanceof TargetingTower){
+            ((TargetingTower) map.getChosenTower()).setTargetingMethod(targetingFactory.getTargetFirst());
             first.setAsChecked();
             closest.setAsUnchecked();
             last.setAsUnchecked();
@@ -109,8 +110,8 @@ public class TowerPanel extends BoardObject{
     }
 
     public void pressedClosest(){
-        if(map.getChosenTower() instanceof ShootingTower){
-            ((ShootingTower) map.getChosenTower()).setTargetingMethod(targetingFactory.getTargetClosest());
+        if(map.getChosenTower() instanceof TargetingTower){
+            ((TargetingTower) map.getChosenTower()).setTargetingMethod(targetingFactory.getTargetClosest());
             first.setAsUnchecked();
             closest.setAsChecked();
             last.setAsUnchecked();
@@ -118,8 +119,8 @@ public class TowerPanel extends BoardObject{
     }
 
     public void pressedLast(){
-        if(map.getChosenTower() instanceof ShootingTower){
-            ((ShootingTower) map.getChosenTower()).setTargetingMethod(targetingFactory.getTargetLast());
+        if(map.getChosenTower() instanceof TargetingTower){
+            ((TargetingTower) map.getChosenTower()).setTargetingMethod(targetingFactory.getTargetLast());
             first.setAsUnchecked();
             closest.setAsUnchecked();
             last.setAsChecked();
@@ -133,8 +134,8 @@ public class TowerPanel extends BoardObject{
             if(upgrade != null) {
                 upgrade.setPosition(map.getChosenTower().getPosition());
                 upgrade.setAsPlaced(true);
-                if (upgrade instanceof ShootingTower && map.getChosenTower() instanceof ShootingTower) {
-                    ((ShootingTower) upgrade).setTargetingMethod(((ShootingTower) map.getChosenTower()).getTargetingMethod());
+                if (upgrade instanceof TargetingTower && map.getChosenTower() instanceof TargetingTower) {
+                    ((TargetingTower) upgrade).setTargetingMethod(((TargetingTower) map.getChosenTower()).getTargetingMethod());
                 }
                 map.getChosenTower().remove();
                 map.add(upgrade);
@@ -173,13 +174,13 @@ public class TowerPanel extends BoardObject{
                 upgradeCost.updateResources(r);
 
             }
-            if(map.getChosenTower() instanceof ShootingTower){
-                ShootingTower chosenShootingTower = (ShootingTower)chosenTower;
-                if(chosenShootingTower.getTargetingMethod() instanceof TargetFirst){
+            if(map.getChosenTower() instanceof TargetingTower){
+                TargetingTower chosenTargetingTower = (TargetingTower)chosenTower;
+                if(chosenTargetingTower.getTargetingMethod() instanceof TargetFirst){
                     pressedFirst();
-                }else if(chosenShootingTower.getTargetingMethod() instanceof TargetClosest){
+                }else if(chosenTargetingTower.getTargetingMethod() instanceof TargetClosest){
                     pressedClosest();
-                }else if(chosenShootingTower.getTargetingMethod() instanceof TargetLast){
+                }else if(chosenTargetingTower.getTargetingMethod() instanceof TargetLast){
                     pressedLast();
                 }
             }
@@ -190,7 +191,6 @@ public class TowerPanel extends BoardObject{
         if(map.getChosenTower() != null) {
             setInfo();
             batch.renderRepeatedly(background, pos, width, height);
-            //super.render(batch);
             first.render(batch);
             closest.render(batch);
             last.render(batch);
