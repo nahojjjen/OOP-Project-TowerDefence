@@ -18,7 +18,7 @@ public abstract class TargetingMethod {
     public abstract Creep getTarget(List<Creep> creeps, ProximityVector position, double range);
 
     public boolean isWithinRange(Creep creep, ProximityVector towerPosition, double range){
-        return PointCalculations.distanceBetweenNoSqrt(towerPosition, creep.getPosition()) < range*range;
+        return PointCalculations.distanceBetweenNoSqrt(towerPosition, creep.getCenter()) < range*range;
         }
 
 }
