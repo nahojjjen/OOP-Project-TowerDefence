@@ -33,7 +33,7 @@ public class ControlPanel extends BoardObject{
     private static int height = Constants.GAME_WIDTH;
 
     private static ProximityVector position = new ProximityVector(Constants.GAME_WIDTH - width, 0);
-    private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/tweed.png");
+    private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/square.png");
 
     //The information in the top
     private PercentBar percentBar;

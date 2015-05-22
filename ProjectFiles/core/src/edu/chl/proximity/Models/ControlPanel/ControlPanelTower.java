@@ -21,7 +21,7 @@ import edu.chl.proximity.Models.Map.Towers.Tower;
 public class ControlPanelTower extends BoardObject{
 
     Tower tower;
-    private static Image bgImage = new Image(Constants.FILE_PATH + "Towers/controlpanelbackground.png");
+    private static Image bgImage = new Image(Constants.FILE_PATH + "Towers/squareLight.png");
     private ProximityFont headline;
     private int key;
     private ProximityFont keyFont;

@@ -38,7 +38,7 @@ public class SpellPanel extends BoardObject {
     private static ProximityVector position = new ProximityVector(340, Constants.GAME_HEIGHT - height);
 
     //The background of the ControlPanel
-    private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/tweed.png");
+    private static Image background = new Image(Constants.FILE_PATH + "Towers/squareLight.png");
 
     private List<ControlPanelSpell> controlPanelSpellList = new ArrayList<ControlPanelSpell>();
     private Map<ControlPanelSpell, PercentBar> spellCooldownBars = new HashMap<ControlPanelSpell, PercentBar>();
