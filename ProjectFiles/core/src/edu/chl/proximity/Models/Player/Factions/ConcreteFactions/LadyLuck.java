@@ -26,8 +26,8 @@ public class LadyLuck extends Faction{
     @Override
     public void configureSpells(ParticleManager particleManager) {
         addSpell(new LifeGamble(particleManager));
+        addSpell(new SpeedGamble(particleManager));
+        addSpell(new CoinFlip(particleManager));
         addSpell(new PickACard(particleManager));
-        addSpell(new BloodSipper(particleManager));
-        addSpell(new Sacrifice(particleManager));
     }
 }
