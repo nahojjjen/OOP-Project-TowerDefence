@@ -17,11 +17,11 @@ public class SlowTower2 extends ShootingTower {
     //Tower stats
     protected static final Resources resources = new Resources(100, 100, 0);
     protected static final double range = 140f;
-    protected static final int reloadTime = 40;
+    protected static final int reloadTime = 35;
 
     //Bullet stats
-    protected static final double slowDownPercent = 90;
-    protected static final int slowDownTime = 220;
+    protected static final double slowDownPercent = 60;
+    protected static final int slowDownTime = 120;
 
     protected static final Image img = new Image(Constants.FILE_PATH + "Towers/Hairbrush/2.png");
 

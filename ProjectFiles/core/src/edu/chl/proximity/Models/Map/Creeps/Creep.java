@@ -210,8 +210,7 @@ public abstract class Creep extends BoardObject {
 
         nextWayPointID++;
         if(reachedLastWayPoint()) {
-            destroy();
-            this.remove();
+            devolve();
         }
         else {
             moveAngle = getAngleToNextPoint();

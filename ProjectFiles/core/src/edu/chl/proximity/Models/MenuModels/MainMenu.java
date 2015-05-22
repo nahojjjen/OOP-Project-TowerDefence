@@ -21,6 +21,7 @@ import edu.chl.proximity.Proximity;
  *
  * 01/05 modified by Hanna Romer. Added FactionChooser.
  * 03/05 modified by Hanna Romer. Added MapSelect.
+ * 22/05 modified by Simon Gislen. Changed starting price.
  */
 public class MainMenu {
     private Faction faction;
@@ -60,7 +61,7 @@ public class MainMenu {
         player.getFaction().configureSpells(map.getParticleManager());
 
         GameData.getInstance().setPlayer(player);
-        player.getResources().setResources(500,500,0);
+        player.initiateNewMap();
 
         //game.changeScreen(Proximity.State.GAME, map, player,viewport);
         //game.changeScreen(Proximity.State.GAME_OVER,map,player,viewport);

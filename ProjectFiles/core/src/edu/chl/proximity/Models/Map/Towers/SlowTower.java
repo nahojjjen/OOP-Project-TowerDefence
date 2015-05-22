@@ -21,13 +21,13 @@ import edu.chl.proximity.Utilities.Constants;
 public class SlowTower extends ShootingTower {
 
     //Tower stats
-    protected static final Resources resources = new Resources(100, 100, 0);
+    protected static final Resources resources = new Resources(0, 100, 0);
     protected static final double range = 140f;
-    protected static final int reloadTime = 40;
+    protected static final int reloadTime = 50;
 
     //Bullet stats
     protected static final double slowDownPercent = 50;
-    protected static final int slowDownTime = 200;
+    protected static final int slowDownTime = 100;
 
     protected static final Image img = new Image(Constants.FILE_PATH + "Towers/Hairbrush/1.png");
 

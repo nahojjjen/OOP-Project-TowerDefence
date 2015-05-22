@@ -18,7 +18,7 @@ public class BulletTower2 extends ShootingTower implements Cloneable {
 
     //Tower stats
     private static Resources resources = new Resources(150, 0, 0);
-    private static double range = 125f;
+    private static double range = 85f;
     private static int reloadTime = 40;
 
     private static Image img = new Image(Constants.FILE_PATH + "Towers/Bullet/level2.png");

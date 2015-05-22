@@ -13,6 +13,7 @@ import edu.chl.proximity.Models.Utils.Settings;
  * 23/04 Modified by Simon. Adding depth to leveling up
  * 28/04 Modified by Simon. Adding level
  * 11/5 Modified by Johan, enables saving information to harddrive && autosave on close
+ * 22/05 Modified by Simon. Changed starting resources
  */
 public class Player {
     private Resources resources;
@@ -27,7 +28,6 @@ public class Player {
      * @param faction the players faction
      */
     public Player(Faction faction){
-        resources = new Resources(150, 150, 0);
         this.faction=faction;
         //Standard settings are set
         this.settings = new Settings();
@@ -74,6 +74,10 @@ public class Player {
             }
         };
         Runtime.getRuntime().addShutdownHook( shutdownHook );
+    }
+
+    public void initiateNewMap() {
+        resources = new Resources(150, 150, 0);
     }
 
     /**
@@ -132,4 +136,5 @@ public class Player {
     public void setSettings(Settings settings) {
         this.settings = settings;
     }
+
 }
