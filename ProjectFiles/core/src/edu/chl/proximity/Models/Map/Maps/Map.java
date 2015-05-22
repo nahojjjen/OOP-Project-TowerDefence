@@ -220,7 +220,6 @@ public abstract class Map {
     public void setBase(Base base){ this.base = base;}
 
     public void setChosenTower(Tower tower){
-        System.out.println(towers.contains(tower));
         if(towers.contains(tower)) {
             getHand().setItem(tower);
         }

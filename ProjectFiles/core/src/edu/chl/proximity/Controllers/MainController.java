@@ -34,7 +34,6 @@ import java.util.List;
 public class MainController implements InputProcessor{
 
 
-    private BackgroundController backgroundController = new BackgroundController();
     private ControlPanelController controlPanelController;
     private WaveController waveController;
     private MapController mapController;
@@ -71,7 +70,6 @@ public class MainController implements InputProcessor{
         if(game.getScreen() instanceof GameScreen){            //game.getCurrentScreen().equals(Proximity.State.GAME)) {
             waveController.update();
             mapController.update();
-            backgroundController.update();
             controlPanelController.update();
 
             map.clearAddStack();

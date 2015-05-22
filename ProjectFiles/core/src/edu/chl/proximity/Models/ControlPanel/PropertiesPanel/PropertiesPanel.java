@@ -22,7 +22,6 @@ import java.util.ArrayList;
  * 01/05 modified by Hanna Romer. MainMenuButton now takes you to the mainMenu
  */
 public class PropertiesPanel extends BoardObject{
-    private static PropertiesPanel propertiesPanel;
 
     private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/TempPropPanel.png");
     private static ProximityVector position=new ProximityVector(300,200);
@@ -38,14 +37,12 @@ public class PropertiesPanel extends BoardObject{
 
     private int backUpLevel;
     private boolean isVisible=false;
-    private Viewport viewport;
 
     /**
      * Create a new properies panel
      */
-    public PropertiesPanel(Viewport viewport){
+    public PropertiesPanel(){
         super(position, background, 0);
-        this.viewport=viewport;
         resumeButton = new ResumeButton(resumePos);
         mainMenuButton = new MainMenuButton(mainMenuPos);
         soundButton = new SoundButton(soundPos);
@@ -91,7 +88,7 @@ public class PropertiesPanel extends BoardObject{
      * Get wether or not the panel is currently visible
      * @return true is it is visible, flase otherwise
      */
-    public boolean getIfVisible(){
+    public boolean isVisible(){
         return isVisible;
     }
 

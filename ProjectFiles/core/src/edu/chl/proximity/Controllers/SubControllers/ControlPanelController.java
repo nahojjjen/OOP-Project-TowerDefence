@@ -11,7 +11,6 @@ import edu.chl.proximity.Models.ControlPanel.TowerPanel.TowerPanel;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.*;
-import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.ArrayList;
@@ -38,6 +37,7 @@ public class ControlPanelController implements ClickHandler {
     private PropertiesPanel propertiesPanel;
     private ProfilePanel profilePanel;
     private TowerPanel towerPanel;
+
     private Map map;
     private Viewport viewport;
     private List<BoardObject> controlPanels = new ArrayList<BoardObject>();
@@ -48,7 +48,7 @@ public class ControlPanelController implements ClickHandler {
         this.map = map;
         this.game=g;
 
-        propertiesPanel = new PropertiesPanel(viewport);
+        propertiesPanel = new PropertiesPanel();
         controlPanel = new ControlPanel(map);
         towerPanel=new TowerPanel(map);
         buttonPanel = new ButtonPanel(propertiesPanel);
@@ -63,6 +63,11 @@ public class ControlPanelController implements ClickHandler {
         controlPanels.add(towerPanel);
     }
 
+    /**
+     * Returns whether the controlPanels that this controller controll has been clicked
+     * @param clickedPoint the point that has been clicked
+     * @return whether the clickedPoint is within one or more of the controlPanels
+     */
     public boolean modelsClicked(ProximityVector clickedPoint) {
         for(BoardObject cp : controlPanels) {
             if(cp.containsPoint(clickedPoint)) {
@@ -72,13 +77,11 @@ public class ControlPanelController implements ClickHandler {
         return false;
     }
 
-
+    /**
+     * Returns the controlpanels that this controller updates
+     * @return the controlpanels that this controllers updates
+     */
     public List<BoardObject> getControlPanels() { return controlPanels;}
-    //public void setButtonPanel(ButtonPanel buttonPanel) { this.buttonPanel = buttonPanel;}
-    //public void setProfilePanel(ProfilePanel profilePanel) { this.profilePanel = profilePanel;}
-    //public void setSpellPanel(SpellPanel spellPanel){
-     //   this.spellPanel = spellPanel;
-    //}
 
     public void update() {
         controlPanel.setHealth(map.getBase().getLife());
@@ -101,22 +104,21 @@ public class ControlPanelController implements ClickHandler {
 
         //Spell shortcuts
         if(keycode == keys.Q) {
-            map.getHand().setItem(spellPanel.getSpellBoundTo("q"));//GameData.getInstance().getPlayer().getFaction().getSpell(0));
+            map.getHand().setItem(spellPanel.getSpellBoundTo("q"));
         }
         if(keycode == keys.W) {
-            map.getHand().setItem(spellPanel.getSpellBoundTo("w"));//(GameData.getInstance().getPlayer().getFaction().getSpell(1));
+            map.getHand().setItem(spellPanel.getSpellBoundTo("w"));
         }
         if(keycode == keys.E) {
-            map.getHand().setItem(spellPanel.getSpellBoundTo("e"));//(GameData.getInstance().getPlayer().getFaction().getSpell(2));
+            map.getHand().setItem(spellPanel.getSpellBoundTo("e"));
         }
         if(keycode == keys.R) {
-            map.getHand().setItem(spellPanel.getSpellBoundTo("r"));//(GameData.getInstance().getPlayer().getFaction().getSpell(3));
+            map.getHand().setItem(spellPanel.getSpellBoundTo("r"));
         }
 
         //Tower shortcuts
         if(keycode == keys.NUM_1) {
             map.getHand().setItem(controlPanel.getTowerBoundTo(1));
-
         }
         if(keycode == keys.NUM_2) {
             map.getHand().setItem(controlPanel.getTowerBoundTo(2));
@@ -136,6 +138,12 @@ public class ControlPanelController implements ClickHandler {
         if(keycode == keys.NUM_7) {
             map.getHand().setItem(controlPanel.getTowerBoundTo(7));
         }
+        if(keycode == keys.NUM_8) {
+            map.getHand().setItem(controlPanel.getTowerBoundTo(8));
+        }
+        if(keycode == keys.NUM_9) {
+            map.getHand().setItem(controlPanel.getTowerBoundTo(9));
+        }
 
         //Other shortcuts
         if(keycode == keys.ESCAPE) {
@@ -146,32 +154,41 @@ public class ControlPanelController implements ClickHandler {
         }
     }
 
-
+    @Override
     public void touchDown (ProximityVector clickedPoint, int pointer, int button) {
 
-        if (GameData.getInstance().getPlayer().getSettings().getGameSpeed() != 0 && modelsClicked(clickedPoint)) {
+        //Not handling clicks if game is paused
+        if (GameData.getInstance().getPlayer().getSettings().getGameSpeed() != 0) {
 
+            if(controlPanel.containsPoint(clickedPoint)) {
+                ControlPanelTower cpTower = controlPanel.getTowerOnPosition(clickedPoint);
 
-            if(map.getHand().getItem() != null) {
-                if(map.getChosenTower()==null) {
+                if (cpTower != null) {
+                    map.getHand().setItem(cpTower.getTower());
+                } else {
                     map.getHand().setItem(null);
                 }
             }
 
-            ControlPanelTower cpTower = controlPanel.getTowerOnPosition(clickedPoint);
-            if (cpTower != null) {
-                map.getHand().setItem(cpTower.getTower());
-            }
-            ControlPanelSpell cpSpell = spellPanel.getSpellOnPosition(clickedPoint);
-            if (cpSpell != null) {
-                map.getHand().setItem(cpSpell.getSpell());
+            if(spellPanel.containsPoint(clickedPoint)) {
+                ControlPanelSpell cpSpell = spellPanel.getSpellOnPosition(clickedPoint);
+
+                if (cpSpell != null) {
+                    map.getHand().setItem(cpSpell.getSpell());
+                } else {
+                    map.getHand().setItem(null);
+                }
             }
 
-        }
-        BoardObject touchedButton;
+            if(towerPanel.containsPoint(clickedPoint)) {
+                towerPanel.getButtonOnPosition(clickedPoint);
+            }
 
-        if (!propertiesPanel.getIfVisible() ) {
-            //ButtonPanel
+        } //End checking if game is paused
+
+
+        if (buttonPanel.containsPoint(clickedPoint) && !propertiesPanel.isVisible()) {
+            BoardObject touchedButton;
             touchedButton = buttonPanel.getButtonOnPosition(clickedPoint);
             if (touchedButton != null) {
                 map.getHand().setItem(null);
@@ -185,31 +202,26 @@ public class ControlPanelController implements ClickHandler {
             } else if (touchedButton instanceof PropertiesButton) {
                 buttonPanel.pressedPropertiesButton();
             }
-            //TowerPanel
-            touchedButton=towerPanel.getButtonOnPosition(clickedPoint);
 
 
         }
-
-
-            //PropertiesPanel
-
-        if (propertiesPanel.getIfVisible()) {
-                touchedButton = propertiesPanel.getButtonOnPosition(clickedPoint);
-                if (touchedButton != null) {
-                    map.getHand().setItem(null);
-                }
-                if (touchedButton instanceof ResumeButton) {
-                    propertiesPanel.pressedResumeButton();
-                } else if (touchedButton instanceof MainMenuButton) {
-                    propertiesPanel.pressedMainMenuButton();
-                    game.setScreen(new MenuScreen(game, GameData.getInstance().getPlayer(),viewport));
-                } else if (touchedButton instanceof SoundButton) {
-                    propertiesPanel.pressedSoundButton();
-                } else if (touchedButton instanceof SoundBar) {
-                    int level = ((SoundBar) touchedButton).getLevel();
-                    propertiesPanel.pressedBar(level);
-                }
+        if (propertiesPanel.containsPoint(clickedPoint)) {
+            BoardObject touchedButton;
+            touchedButton = propertiesPanel.getButtonOnPosition(clickedPoint);
+            if (touchedButton != null) {
+                map.getHand().setItem(null);
+            }
+            if (touchedButton instanceof ResumeButton) {
+                propertiesPanel.pressedResumeButton();
+            } else if (touchedButton instanceof MainMenuButton) {
+                propertiesPanel.pressedMainMenuButton();
+                game.setScreen(new MenuScreen(game, GameData.getInstance().getPlayer(), viewport));
+            } else if (touchedButton instanceof SoundButton) {
+                propertiesPanel.pressedSoundButton();
+            } else if (touchedButton instanceof SoundBar) {
+                int level = ((SoundBar) touchedButton).getLevel();
+                propertiesPanel.pressedBar(level);
+            }
         }
 
 
