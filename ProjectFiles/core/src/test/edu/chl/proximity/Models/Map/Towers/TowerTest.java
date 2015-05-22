@@ -4,11 +4,8 @@ import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line1;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.ConcretePaths.FirstPath;
-import edu.chl.proximity.Models.Map.Towers.BulletTower;
-import edu.chl.proximity.Models.Map.Towers.BulletTower2;
-import edu.chl.proximity.Models.Map.Towers.MissileTower;
+import edu.chl.proximity.Models.Map.Towers.*;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetClosest;
-import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Filler;
 import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.Player.Players.GameData;
@@ -97,6 +94,8 @@ public class TowerTest {
         assertTrue(tower.getUpgrade() == null);
         tower = new BulletTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager(new Settings()));
         assertTrue(tower.getUpgrade() instanceof BulletTower2);
+        tower = tower.getUpgrade();
+        assertTrue(tower.getUpgrade() instanceof BulletTower3);
         tower = tower.getUpgrade();
         assertTrue(tower.getUpgrade() == null);
 

@@ -22,8 +22,8 @@ import edu.chl.proximity.Utilities.PointCalculations;
 public class BulletTower extends ShootingTower implements Cloneable {
 
     //Tower stats
-    private static Resources resources = new Resources(150, 0, 0);
-    private static double range = 150f;
+    private static Resources resources = new Resources(75, 0, 0);
+    private static double range = 75f;
     private static int reloadTime = 60;
 
     private static Image img = new Image(Constants.FILE_PATH + "Towers/Bullet/1.png");
