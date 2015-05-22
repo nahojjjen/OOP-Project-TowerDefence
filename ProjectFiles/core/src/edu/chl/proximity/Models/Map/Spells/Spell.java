@@ -30,6 +30,7 @@ public abstract class Spell extends PersistentObject implements Holdable {
     private List<Tower> towers;
     private ParticleManager particleManager;
     private int healthChange = 0;
+    private Resources resourcesChange=new Resources(0,0,0);
     private Resources cost = new Resources(0, 0, 0);
     private boolean isPlaced = false;
 
@@ -133,4 +134,8 @@ public abstract void updateCooldown();
     public boolean isPlaced() {
         return isPlaced;
     }
+
+    public void setResourcesChange(int points, int lines, int polygons){resourcesChange.setResources(points,lines,polygons);}
+
+    public Resources getResourcesChange(){return resourcesChange;}
 }

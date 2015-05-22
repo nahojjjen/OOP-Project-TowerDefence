@@ -19,7 +19,7 @@ import java.util.Random;
 public class LifeGamble extends Spell {
     private static double range=5f;
     private static int duration=1;
-    private static Image image=new Image(Constants.FILE_PATH + "Spells/bloodpool.png");
+    private static Image image=new Image(Constants.FILE_PATH + "Spells/dice.png");
     private static final int maxCooldown = 60*2;
     private static int currentCooldown = 0;
 

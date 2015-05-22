@@ -19,7 +19,7 @@ import java.util.List;
 public class PickACard extends Spell{
     private static double range=120f;
     private static int duration=240;
-    private static Image image=new Image(Constants.FILE_PATH + "Spells/bloodpool.png");
+    private static Image image=new Image(Constants.FILE_PATH + "Spells/TarotCards.png");
     private static final int maxCooldown = 60*5;
     private static int currentCooldown = 0;
     private int effect;
@@ -55,7 +55,7 @@ public class PickACard extends Spell{
     private void performSlowEffect(){
         List<Creep> creeps = this.getCreepsWithinDistance(this.getPosition(),range);
         for(Creep c:creeps){
-            c.slowDown(50, 60 * 5);
+            c.slowDown(70, 60 * 5);
         }
     }
     private void performKillEffect(int counter){
@@ -69,7 +69,7 @@ public class PickACard extends Spell{
     private void performHealthEffect(int counter){
         if(counter==230) {
             this.setHealthChange(10);
-            GameData.getInstance().getPlayer().addResources(new Resources(50, 50, 0));
+            this.setResourcesChange(50,50,0);
         }
     }
     private void performSabotageEffect(int counter){
@@ -78,7 +78,7 @@ public class PickACard extends Spell{
             t.remove();
         }
         if(counter==230){
-            GameData.getInstance().getPlayer().getResources().removeResources(new Resources(50, 50, 0));
+            this.setResourcesChange(-50,-50,0);
             this.setHealthChange(-20);
         }
 
@@ -86,7 +86,7 @@ public class PickACard extends Spell{
     private void performMiracle(int counter){
         if(counter==230){
             this.setHealthChange(100);
-            GameData.getInstance().getPlayer().addResources(new Resources(0,0,50));
+            setResourcesChange(0,0,50);
         }
     }
 

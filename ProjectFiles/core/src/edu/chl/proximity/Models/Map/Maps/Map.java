@@ -175,6 +175,8 @@ public abstract class Map {
         for (Spell spell : spells) {
             base.setLife(base.getLife() + spell.getHealthChange());
             spell.setHealthChange(0);
+            this.collectedResources.addResources(spell.getResourcesChange());
+            spell.setResourcesChange(0,0,0);
             spell.setCreeps(creeps);
             spell.setTowers(towers);
             spell.tick();
