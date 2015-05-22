@@ -24,6 +24,7 @@ import java.util.List;
  * 08/05 modified by Linda Evaldsson. Changed percentBar to use textures (images). Moved some rendering to Image class.
  * 18/05 modified by Simon to add a sniper tower
  * 21/05 modified by Linda Evaldsson. Changed how the Panel looks and how resources are displayed. They are now displayed with a ResourceDisplayerCollection.
+ * 22/05 modified by Linda Evaldsson. Moved key bindnings to ControlPanelTower
  */
 public class ControlPanel extends BoardObject{
 
@@ -96,6 +97,7 @@ public class ControlPanel extends BoardObject{
 
             ControlPanelTower cpTower = controlPanelTowerList.get(i);
             cpTower.setPosition(towerPosition);
+            cpTower.setKeyBind(i+1);
 
             ProximityVector resourcePosition = new ProximityVector(towerPosition.x + 60, towerPosition.y + 7);
             ResourceDisplayerCollection towerResourceCollection = new ResourceDisplayerCollection(resourcePosition, 15, 12, ResourceDisplayerCollection.Face.Vertical);
@@ -172,8 +174,9 @@ public class ControlPanel extends BoardObject{
     }
 
     public Tower getTowerBoundTo(int i) {
-        if(i <= controlPanelTowerList.size() && i > 0) {
-            return controlPanelTowerList.get(i - 1).getTower();
+        for(ControlPanelTower cpTower : controlPanelTowerList) {
+            if(cpTower.getKeyBind() == i)
+                return cpTower.getTower();
         }
         return null;
     }
