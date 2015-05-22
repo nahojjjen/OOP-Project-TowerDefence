@@ -53,6 +53,7 @@ public class GameOverController implements InputProcessor{
         String action= gameOver.getButtonActionOnPosition(translatedPosition);
         if(action.equals("Resume")){
             game.setScreen(new GameScreen(game,gameOver.getMap().getNew(),player,viewport));
+            player.initiateNewMap();
         }else if(action.equals("MainMenu")){
             game.setScreen(new MenuScreen(game,player,viewport));
         }
