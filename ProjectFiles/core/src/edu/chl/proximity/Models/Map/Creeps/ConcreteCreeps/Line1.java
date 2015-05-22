@@ -1,5 +1,7 @@
 package edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.Path;
@@ -21,18 +23,22 @@ import java.io.File;
  * 24/4 Modified by Johan Swanberg - Makes creeps correctly follow path by making getCenter work correctly- fixing images
  * 27-4 Modified by Johan Swanberg - Crashfix for when a creep gets hit by several projectiles the same frame
  * 12/05 modified by Linda Evaldsson. Removed Map from constructor, added ParticleManager and Path
+ * 22/05 modified by Linda Evaldsson. Changed how the images are handled.
  */
 public class Line1 extends Creep {
 
-    private static File[] imageFiles = new File(Constants.FILE_PATH + "Creeps/Line3/").listFiles();
     private int creepLineIndex;
     private static Image img = new Image(Constants.FILE_PATH + "Creeps/Line3/6.png"); //dummy image to get correct resolution
     private static int speed = 3;
 
     public Line1(int creepLineIndex, ParticleManager particleManager, Path path) {
         super(null, img, speed, particleManager, path);
+        if(creepLineIndex > 7) {
+            this.creepLineIndex = 7;
+        } else {
+            this.creepLineIndex = creepLineIndex;
+        }
         this.creepLineIndex = creepLineIndex;
-        String current = null;
         setImage(getCreepImage());
     }
 
@@ -66,15 +72,7 @@ public class Line1 extends Creep {
 
     //Helpers
     public Image getCreepImage() {
-        Image image = null;
-        for (File imageFile : imageFiles) {
-            String name = imageFile.getName();
-            if (name.equals("" + creepLineIndex + ".png")) {
-                image = new Image(imageFile);
-                break;
-            }
-        }
-        return image;
+        return new Image(Constants.FILE_PATH + "Creeps/Line3/" + creepLineIndex + ".png");
     }
 
     //Logic to obtain creep resource

@@ -1,5 +1,7 @@
 package edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.Path;
@@ -10,17 +12,26 @@ import edu.chl.proximity.Utilities.Constants;
 import java.io.File;
 
 /**
- * Created by simongislen on 13/05/15.
+ * @author Simon Gislen
+ * @date 2015-05-13
+ *
+ * A class for handling a line of creeps
+ *
+ * 22/05 modified by Linda Evaldsson. Changed how the images are handled.
  */
 public class Line2 extends Creep {
-    private static File[] imageFiles = new File(Constants.FILE_PATH + "Creeps/Line2/").listFiles();
+
     private int creepLineIndex;
     private static Image img = new Image(Constants.FILE_PATH + "Creeps/Line2/6.png"); //dummy image to get correct resolution
     private static int speed = 3;
 
     public Line2(int creepLineIndex, ParticleManager particleManager, Path path) {
         super(null, img, speed, particleManager, path);
-        this.creepLineIndex = creepLineIndex;
+        if(creepLineIndex > 6) {
+            this.creepLineIndex = 6;
+        } else {
+            this.creepLineIndex = creepLineIndex;
+        }
         setImage(getCreepImage());
     }
 
@@ -55,18 +66,7 @@ public class Line2 extends Creep {
 
     //Helpers
     public Image getCreepImage() {
-        Image image = null;
-        for (File imageFile : imageFiles) {
-            String name = imageFile.getName();
-            if (name.equals("" + creepLineIndex + ".png")) {
-                image = new Image(imageFile);
-                break;
-            }
-        }
-        if (image == null) {
-            image = new Image(Constants.FILE_PATH + "Creeps/Line1/7.png");
-        }
-        return image;
+        return new Image(Constants.FILE_PATH + "Creeps/Line3/" + creepLineIndex + ".png");
     }
 
     //Logic to obtain creep resource

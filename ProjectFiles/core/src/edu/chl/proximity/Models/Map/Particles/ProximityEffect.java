@@ -42,8 +42,8 @@ public class ProximityEffect {
      */
     public ProximityEffect(String fileName, int maxPoolAmount){
         //maps out the file handles the particle requires
-        FileHandle particleEffectsImagesFolder = new FileHandle(Constants.FILE_PATH + "Particles/ParticleImages/");
-        effectFile = new FileHandle(Constants.FILE_PATH + "Particles/" + fileName);
+        FileHandle particleEffectsImagesFolder = Gdx.files.internal(Constants.FILE_PATH + "Particles/ParticleImages/");
+        effectFile = Gdx.files.internal(Constants.FILE_PATH + "Particles/" + fileName);
 
         //Configures 1 example effect
         effectTemplate = new ParticleEffect();

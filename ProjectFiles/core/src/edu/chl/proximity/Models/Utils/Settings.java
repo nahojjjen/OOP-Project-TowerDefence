@@ -1,5 +1,9 @@
 package edu.chl.proximity.Models.Utils;
 
+import edu.chl.proximity.Utilities.ProximityPlayer;
+
+import java.util.HashMap;
+
 /**
  * @author Linda Evaldsson
  * @date 2015-05-07
@@ -10,11 +14,22 @@ public class Settings {
 
     private int storedGameSpeed;
     private int gameSpeed;
-    private float gameVolume;
+    private int gameVolume;
+    private HashMap<Integer, Float> volumeTranslator = new HashMap<Integer, Float>();
 
     public Settings() {
         gameSpeed = 1;
-        gameVolume = 0.1f;
+        gameVolume = 4;
+
+        volumeTranslator.put(0, 0f);
+        volumeTranslator.put(1, 0.0125f);
+        volumeTranslator.put(2, 0.025f);
+        volumeTranslator.put(3, 0.05f);
+        volumeTranslator.put(4, 0.1f);
+        volumeTranslator.put(5, 0.2f);
+        volumeTranslator.put(6, 0.4f);
+        volumeTranslator.put(7, 0.8f);
+        volumeTranslator.put(8, 1.6f);
     }
 
     /**
@@ -31,12 +46,15 @@ public class Settings {
         return gameSpeed;
     }
 
-    public float getGameVolume() {
+    public int getGameVolume() {
         return gameVolume;
     }
 
-    public void setGameVolume(float gameVolume) {
+    public float getTranslatedGameVolume() { return volumeTranslator.get(gameVolume); }
+
+    public void setGameVolume(int gameVolume) {
         this.gameVolume = gameVolume;
+        ProximityPlayer.setGameMusicVolume(getTranslatedGameVolume());
     }
 
     public void togglePause() {

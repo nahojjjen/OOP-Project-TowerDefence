@@ -93,45 +93,9 @@ public class PropertiesPanel extends BoardObject{
      * @param level What level the sound is to be set at
      */
     public void setSoundAt(int level){
-        switch (level){
-            case 0: settings.setGameVolume(0f);
-                ProximityPlayer.setGameMusicVolume(0f);
-                    break;
-            case 1: settings.setGameVolume(0.0125f);
-                ProximityPlayer.setGameMusicVolume(0.0125f);
-                    backUpLevel=1;
-                    break;
-            case 2: settings.setGameVolume(0.025f);
-                ProximityPlayer.setGameMusicVolume(0.025f);
-                    backUpLevel=2;
-                    break;
-            case 3: settings.setGameVolume(0.05f);
-                ProximityPlayer.setGameMusicVolume(0.05f);
-                    backUpLevel=3;
-                    break;
-            case 4: settings.setGameVolume(0.1f);
-                ProximityPlayer.setGameMusicVolume(0.1f);
-                    backUpLevel=4;
-                    break;
-            case 5: settings.setGameVolume(0.2f);
-                ProximityPlayer.setGameMusicVolume(0.2f);
-                    backUpLevel=5;
-                    break;
-            case 6: settings.setGameVolume(0.4f);
-                ProximityPlayer.setGameMusicVolume(0.4f);
-                    backUpLevel=6;
-                    break;
-            case 7: settings.setGameVolume(0.8f);
-                ProximityPlayer.setGameMusicVolume(0.8f);
-                    backUpLevel=7;
-                    break;
-            case 8: settings.setGameVolume(1.6f);
-                ProximityPlayer.setGameMusicVolume(1.6f);
-                    backUpLevel=8;
-                    break;
-        }
-
+        settings.setGameVolume(level);
     }
+
     public void pressButton(BoardObject button) {
         if(button instanceof ResumeButton) {
             pressedResumeButton();

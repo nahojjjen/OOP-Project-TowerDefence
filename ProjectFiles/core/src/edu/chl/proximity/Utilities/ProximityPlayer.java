@@ -24,16 +24,17 @@ public class ProximityPlayer {
 
     public static void playSound(ProximitySound sound, float pitch, float pan){
         Sound rawSound = sound.getSound();
-        rawSound.play(settings.getGameVolume(), pitch, pan);
+        rawSound.play(settings.getTranslatedGameVolume(), pitch, pan);
     }
 
     public static void playGameMusic(){
-
+        System.out.println("Gamemusic: " + gameMusic);
+        System.out.println("Volume:" + settings.getGameVolume());
         if (gameMusic != null){
 
             Sound rawSound = gameMusic.getSound();
             rawSound.stop();
-            soundID = rawSound.loop(settings.getGameVolume()/3);
+            soundID = rawSound.loop(settings.getTranslatedGameVolume()/3);
         }
 
     }

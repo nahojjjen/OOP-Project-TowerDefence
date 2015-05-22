@@ -23,7 +23,7 @@ public class ProximitySound {
     public ProximitySound(String filePath){
         if(TestChecker.isJUnitTest())
             return;
-        sound = Gdx.audio.newSound(new FileHandle(filePath));
+        sound = Gdx.audio.newSound(Gdx.files.internal(filePath));
     }
     public Sound getSound(){
         return sound;

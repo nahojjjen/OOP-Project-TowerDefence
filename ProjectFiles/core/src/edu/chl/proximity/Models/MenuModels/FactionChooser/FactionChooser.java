@@ -26,7 +26,7 @@ public class FactionChooser extends BoardObject{
     private static ProximityVector pos = new ProximityVector(0, Constants.GAME_HEIGHT-240);
     private ProximityVector imagePos=new ProximityVector(pos.x+162,pos.y + 100);
 
-    private static Image image=new Image(Constants.FILE_PATH + "Backgrounds/factionChooser.png");
+    private static Image image=new Image(Constants.FILE_PATH + "Backgrounds/FactionChooser.png");
 
     private List<Faction> factions= new ArrayList<Faction>();
 
