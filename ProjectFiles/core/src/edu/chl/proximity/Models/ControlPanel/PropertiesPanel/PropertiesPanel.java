@@ -3,12 +3,10 @@ package edu.chl.proximity.Models.ControlPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityPlayer;
 import edu.chl.proximity.Utilities.ProximityVector;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.Settings;
-import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.Constants;
 
 import java.util.ArrayList;
@@ -37,19 +35,20 @@ public class PropertiesPanel extends BoardObject{
 
     private int backUpLevel;
     private boolean isVisible=false;
+    private Settings settings;
 
     /**
      * Create a new properies panel
      */
-    public PropertiesPanel(){
+    public PropertiesPanel(Settings settings){
         super(position, background, 0);
+        this.settings = settings;
         resumeButton = new ResumeButton(resumePos);
         mainMenuButton = new MainMenuButton(mainMenuPos);
         soundButton = new SoundButton(soundPos);
         initBars();
-        //TODO this should be set as the saved volume, not 4.
-        setBarsAt(4);
-        setSoundAt(4);
+        setBarsAt((int)settings.getGameVolume());
+        setSoundAt((int)settings.getGameVolume());
     }
 
 
@@ -74,18 +73,15 @@ public class PropertiesPanel extends BoardObject{
     }
 
     /**
-     * Set wether or not the panel should be visible
+     * Set whether or not the panel should be visible
      * @param isVisible true if it should be visible, flase otherwise
      */
-    public void setVisability(boolean isVisible){
+    public void setVisibility(boolean isVisible){
         this.isVisible=isVisible;
-
-
-
     }
 
     /**
-     * Get wether or not the panel is currently visible
+     * Get whether or not the panel is currently visible
      * @return true is it is visible, flase otherwise
      */
     public boolean isVisible(){
@@ -97,7 +93,6 @@ public class PropertiesPanel extends BoardObject{
      * @param level What level the sound is to be set at
      */
     public void setSoundAt(int level){
-        Settings settings = GameData.getInstance().getPlayer().getSettings();
         switch (level){
             case 0: settings.setGameVolume(0f);
                 ProximityPlayer.setGameMusicVolume(0f);
@@ -137,6 +132,21 @@ public class PropertiesPanel extends BoardObject{
         }
 
     }
+    public void pressButton(BoardObject button) {
+        if(button instanceof ResumeButton) {
+            pressedResumeButton();
+        }
+        else if(button instanceof MainMenuButton) {
+            pressedMainMenuButton();
+        }
+        else if(button instanceof SoundButton) {
+            pressedSoundButton();
+        }
+        else if(button instanceof SoundBar) {
+            pressedBar(((SoundBar)button).getLevel());
+        }
+
+    }
 
     /**
      * Get which button is on given position
@@ -168,7 +178,7 @@ public class PropertiesPanel extends BoardObject{
      * Called if the Resume-button is pressed. Resumes game
      */
     public void pressedResumeButton(){
-        setVisability(false);
+        setVisibility(false);
         GameData.getInstance().getPlayer().getSettings().setGameSpeed(1);
     }
 
@@ -176,7 +186,7 @@ public class PropertiesPanel extends BoardObject{
      * Called if MainMenu-button is pressed
      */
     public void pressedMainMenuButton(){
-        setVisability(false);
+        setVisibility(false);
     }
 
     /**

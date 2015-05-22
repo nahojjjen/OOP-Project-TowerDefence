@@ -132,7 +132,7 @@ public class ButtonPanel extends BoardObject {
     public void pressedPropertiesButton(){
 
         pressedPause();
-        propertiesPanel.setVisability(true);
+        propertiesPanel.setVisibility(true);
     }
 
 

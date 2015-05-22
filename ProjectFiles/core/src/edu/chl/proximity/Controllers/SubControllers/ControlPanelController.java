@@ -48,7 +48,7 @@ public class ControlPanelController implements ClickHandler {
         this.map = map;
         this.game=g;
 
-        propertiesPanel = new PropertiesPanel();
+        propertiesPanel = new PropertiesPanel(GameData.getInstance().getPlayer().getSettings());
         controlPanel = new ControlPanel(map);
         towerPanel=new TowerPanel(map);
         buttonPanel = new ButtonPanel(propertiesPanel);
@@ -165,7 +165,8 @@ public class ControlPanelController implements ClickHandler {
 
                 if (cpTower != null) {
                     map.getHand().setItem(cpTower.getTower());
-                } else {
+                }
+                else if (!towerPanel.containsPoint(clickedPoint)){
                     map.getHand().setItem(null);
                 }
             }
@@ -208,22 +209,11 @@ public class ControlPanelController implements ClickHandler {
         if (propertiesPanel.containsPoint(clickedPoint)) {
             BoardObject touchedButton;
             touchedButton = propertiesPanel.getButtonOnPosition(clickedPoint);
-            if (touchedButton != null) {
-                map.getHand().setItem(null);
-            }
-            if (touchedButton instanceof ResumeButton) {
-                propertiesPanel.pressedResumeButton();
-            } else if (touchedButton instanceof MainMenuButton) {
-                propertiesPanel.pressedMainMenuButton();
-                game.setScreen(new MenuScreen(game, GameData.getInstance().getPlayer(), viewport));
-            } else if (touchedButton instanceof SoundButton) {
-                propertiesPanel.pressedSoundButton();
-            } else if (touchedButton instanceof SoundBar) {
-                int level = ((SoundBar) touchedButton).getLevel();
-                propertiesPanel.pressedBar(level);
-            }
-        }
+            propertiesPanel.pressButton(touchedButton);
 
+            if (touchedButton instanceof MainMenuButton)
+                game.setScreen(new MenuScreen(game, GameData.getInstance().getPlayer(), viewport));
+        }
 
     }
 }
