@@ -2,6 +2,7 @@ package edu.chl.proximity.Models.Map.Towers;
 
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Projectiles.Missile;
+import edu.chl.proximity.Models.Map.Projectiles.Missile3;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
@@ -14,20 +15,20 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @date 2015-05-22
  * The second upgrade to MissileTower
  */
-public class MissileTower2 extends ShootingTower {
+public class MissileTower3 extends ShootingTower {
 
     //Tower stats
-    private static Resources resources = new Resources(50, 200, 0);
-    private static double range = 100f;
+    private static Resources resources = new Resources(400, 400, 0);
+    private static double range = 200F;
     private static int reloadTime = 50;
 
-    private static Image img = new Image(Constants.FILE_PATH + "Towers/Missile/2.png");
+    private static Image img = new Image(Constants.FILE_PATH + "Towers/Missile/3.png");
 
     /**
      * @param pos
      *  double range, TargetingMethod targetingMethod, int reloadTime
      */
-    public MissileTower2(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager) {
+    public MissileTower3(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager) {
         super(pos, img, range, targetingMethod, reloadTime, resources, "Missile Tower");
         setParticleManager(particleManager);
 
@@ -35,12 +36,13 @@ public class MissileTower2 extends ShootingTower {
 
     public Projectile createProjectile() {
 
-        return new Missile(getCenter(), getAngle(), getTarget(), getParticleManager());
+        return new Missile3(getCenter(), getAngle(), getTarget(), getParticleManager());
 
     }
 
     public Tower getNewUpgrade() {
-        return new MissileTower3(this.getPosition(), this.getTargetingMethod(), getParticleManager());
+        return null;
+        //return new MissileTower(this.getPosition(), this.getTargetingMethod(), getParticleManager());
     }
 
 
