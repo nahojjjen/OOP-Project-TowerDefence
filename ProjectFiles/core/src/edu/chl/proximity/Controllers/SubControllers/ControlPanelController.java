@@ -90,7 +90,7 @@ public class ControlPanelController implements ClickHandler {
 
         spellPanel.updateCooldowns();
 
-        profilePanel.updateExperience(map);
+        profilePanel.updateExperience();
     }
 
 
@@ -183,7 +183,7 @@ public class ControlPanelController implements ClickHandler {
             }
 
             if(towerPanel.containsPoint(clickedPoint)) {
-                towerPanel.getButtonOnPosition(clickedPoint);
+                towerPanel.pressedPosition(clickedPoint);
             }
 
         } //End checking if game is paused

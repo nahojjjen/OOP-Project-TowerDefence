@@ -14,7 +14,9 @@ import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Utilities.Constants;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author Hanna Romer
@@ -26,9 +28,9 @@ import java.util.HashMap;
  */
 public class TowerPanel extends BoardObject{
     private Map map;
-    private static Image background=new Image(Constants.FILE_PATH + "Backgrounds/tweed.png");
+    private static Image background=new Image(Constants.FILE_PATH + "Towers/squareLight.png");
     private Image towerImage;
-    private static ProximityVector pos=new ProximityVector(Constants.GAME_WIDTH - 300,450);
+    private static ProximityVector pos=new ProximityVector(Constants.GAME_WIDTH - 300, 490);
     private static int width=300;
     private static int height=150;
     private TargetingFactory targetingFactory;
@@ -55,7 +57,6 @@ public class TowerPanel extends BoardObject{
         initiateTower();
         initiateSell();
 
-
         setInfo();
     }
 
@@ -71,7 +72,7 @@ public class TowerPanel extends BoardObject{
         upgradeText = new ProximityFont(new ProximityVector(pos.x + 150, pos.y+15),"Upgrade");
         upgradeText.setSize(12);
 
-        upgradeCost = new ResourceDisplayerCollection(new ProximityVector(pos.x + 200, pos.y + 30), 15, 12, ResourceDisplayerCollection.Face.Vertical);
+        upgradeCost = new ResourceDisplayerCollection(new ProximityVector(pos.x + 200, pos.y + 30), 15, 12, ResourceDisplayerCollection.Direction.Vertical);
 
     }
     private void initiateCheckButtons() {
@@ -80,10 +81,41 @@ public class TowerPanel extends BoardObject{
         checkBoxMap.put(new CheckBox(new ProximityVector(pos.x+30, pos.y + 130), map, "Target last"), targetingFactory.getTargetLast());
 
     }
+
+    /**
+     * Method only for testing. Returns center position of the upgrade button.
+     * @return the center position of the upgrade button
+     */
+    public ProximityVector getUpgradeCenter() {
+        return upgrade.getCenter();
+    }
+
+    /**
+     * Method only for testing. Returns the center position of the sell button.
+     * @return the center position of the sell button
+     */
+    public ProximityVector getSellCenter() {
+        return sell.getCenter();
+    }
+
+    /**
+     * Method only for testing. Returns the center positions of all the checkboxes.
+     * @return the center positions of all the checkboxes.
+     */
+    public List<ProximityVector> getCheckBoxCenters() {
+        List list = new ArrayList();
+        for (HashMap.Entry<CheckBox, TargetingMethod> entry : checkBoxMap.entrySet()) {
+            list.add(entry.getKey().getCenter());
+        }
+        return list;
+    }
+
     private void initiateSell() {
         sell=new SellButton(new ProximityVector(pos.x+150,pos.y+115),map);
     }
-    public BoardObject getButtonOnPosition(ProximityVector pos){
+
+
+    public BoardObject pressedPosition(ProximityVector pos){
 
         if(upgrade.containsPoint(pos)){
             pressedUpgrade();
@@ -109,8 +141,8 @@ public class TowerPanel extends BoardObject{
         }
     }
 
-    public void pressedUpgrade(){
-        System.out.println("Pressed upgrade");
+    private void pressedUpgrade(){
+
         if(map.getChosenTower() != null && afford) {
             Tower upgrade=map.getChosenTower().getUpgrade();
             if(upgrade != null) {
@@ -126,13 +158,17 @@ public class TowerPanel extends BoardObject{
         }
     }
 
-    public void pressedSell(){
+    private void pressedSell(){
         Double p=new Double(map.getChosenTower().getCost().getPoints()/2);
         Double l=new Double(map.getChosenTower().getCost().getLines()/2);
         Double poly=new Double(map.getChosenTower().getCost().getPolygons()/2);
         GameData.getInstance().getPlayer().getResources().addResources(new Resources(p.intValue(),l.intValue(),poly.intValue()));
         map.getChosenTower().remove();
         map.setChosenTower(null);
+    }
+
+    public String getTowerName() {
+        return towerName.getText();
     }
 
     public void setInfo(){

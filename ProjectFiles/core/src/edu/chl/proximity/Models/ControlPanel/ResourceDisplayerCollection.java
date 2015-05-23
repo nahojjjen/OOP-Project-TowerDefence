@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class ResourceDisplayerCollection {
 
-    public enum Face {
+    public enum Direction {
         Horizontal, Vertical
     }
     private ResourceDisplayer lineDisplayer;
@@ -26,9 +26,9 @@ public class ResourceDisplayerCollection {
 
     private List<ResourceDisplayer> displayerList = new ArrayList<ResourceDisplayer>();
 
-    public ResourceDisplayerCollection(ProximityVector position, float spaceBetweenNumbers, int fontSize, Face d) {
+    public ResourceDisplayerCollection(ProximityVector position, float spaceBetweenNumbers, int fontSize, Direction d) {
 
-        if(d == Face.Horizontal) {
+        if(d == Direction.Horizontal) {
             lineDisplayer = new ResourceDisplayer(new Image(Constants.FILE_PATH + "Resources/lines.png"), new ProximityVector(position.x, position.y));
             pointDisplayer = new ResourceDisplayer(new Image(Constants.FILE_PATH + "Resources/points.png"), new ProximityVector(position.x + spaceBetweenNumbers, position.y));
             polygonDisplayer = new ResourceDisplayer(new Image(Constants.FILE_PATH + "Resources/polygons.png"), new ProximityVector(position.x + spaceBetweenNumbers*2, position.y));
@@ -65,7 +65,9 @@ public class ResourceDisplayerCollection {
      * @return a new instance of Resources that represents the amount of resources currently displayed.
      */
     public Resources getResources() {
-        return new Resources(Integer.parseInt(pointDisplayer.getFont().getText()), Integer.parseInt(lineDisplayer.getFont().getText()), Integer.parseInt(polygonDisplayer.getFont().getText()));
+        if(pointDisplayer.getFont().getText().length() > 0 && lineDisplayer.getFont().getText().length() > 0 && polygonDisplayer.getFont().getText().length() > 0)
+            return new Resources(Integer.parseInt(pointDisplayer.getFont().getText()), Integer.parseInt(lineDisplayer.getFont().getText()), Integer.parseInt(polygonDisplayer.getFont().getText()));
+        return null;
     }
 
     public void render(ProximityBatch batch) {

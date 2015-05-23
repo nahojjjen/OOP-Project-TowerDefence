@@ -18,10 +18,14 @@ public class ProximityShapeRenderer {
         Filled
     }
 
-    ShapeRenderer shapeRenderer = new ShapeRenderer();
+    ShapeRenderer shapeRenderer;
 
     public ProximityShapeRenderer() {
-        shapeRenderer.setAutoShapeType(true);
+        if(!TestChecker.isJUnitTest()) {
+            shapeRenderer = new ShapeRenderer();
+            shapeRenderer.setAutoShapeType(true);
+        }
+
     }
 
 

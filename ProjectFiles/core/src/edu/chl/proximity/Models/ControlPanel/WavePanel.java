@@ -25,7 +25,17 @@ public class WavePanel extends BoardObject {
     }
 
     public void updateWaves(int wave) {
+        if (wave < 0)
+            wave = 0;
         waves.setText("Wave " + wave);
+    }
+
+    /**
+     * This method is only for testing and returns the text displayed
+     * @return the text displayed
+     */
+    public String getWaveText() {
+        return waves.getText();
     }
 
     public void render(ProximityBatch batch) {

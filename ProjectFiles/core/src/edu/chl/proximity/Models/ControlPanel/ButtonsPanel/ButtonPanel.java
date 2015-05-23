@@ -75,19 +75,6 @@ public class ButtonPanel extends BoardObject {
         return null;
     }
 
-    /**
-     * Called if the pause/play button is pressed. Toggles the button and pauses/playes the game.
-     */
-    public void pressedPausePlay(){
-        if(pause){
-            pause=false;
-            GameData.getInstance().getPlayer().getSettings().setGameSpeed(speed);
-        }else{
-            pause=true;
-            GameData.getInstance().getPlayer().getSettings().setGameSpeed(0);
-
-        }
-    }
     public void pressedPlay(){
         GameData.getInstance().getPlayer().getSettings().setGameSpeed(1);
     }
@@ -97,25 +84,6 @@ public class ButtonPanel extends BoardObject {
         speedButton.setRightImage();
     }
 
-    /**
-     * Pauses game
-     */
-    public void pauseGame(){
-        if(!pause){
-            pause=true;
-            GameData.getInstance().getPlayer().getSettings().setGameSpeed(0);
-        }
-    }
-
-    /**
-     * Starts the game again if it's paused
-     */
-    public void startGame(){
-        if(pause){
-            pause=false;
-            GameData.getInstance().getPlayer().getSettings().setGameSpeed(speed);
-        }
-    }
 
     /**
      * Called if the Speed button is pressed. Increases speed and toggles button.

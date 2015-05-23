@@ -28,10 +28,6 @@ public class SpellPanel extends BoardObject {
     private static int height = 90;
 
     private static List<ProximityFont> shortCuts = new ArrayList<ProximityFont>();
-    private static ProximityFont w = new ProximityFont(new ProximityVector(0, 0), "Q");
-    private static ProximityFont e = new ProximityFont(new ProximityVector(0, 0), "Q");
-    private static ProximityFont r = new ProximityFont(new ProximityVector(0, 0), "Q");
-
     private static Image spellCooldownForeground = new Image(Constants.FILE_PATH + "Backgrounds/health.png");
     private static Image spellCooldownBackground = new Image(Constants.FILE_PATH + "Backgrounds/square.png");
 
@@ -71,8 +67,8 @@ public class SpellPanel extends BoardObject {
      * Reads the current spell cooldowns and updates the cooldown representers model accordingly
      */
     public void updateCooldowns() {
-       updateCooldownIndicators();
         updateSpellCooldowns();
+        updateCooldownIndicators();
     }
 
     /**
@@ -131,11 +127,30 @@ public class SpellPanel extends BoardObject {
      * */
     public Spell getSpellBoundTo(String input){
         switch (input.charAt(0)){
-            case 'q': return controlPanelSpellList.get(0).getSpell();
-            case 'w': return controlPanelSpellList.get(1).getSpell();
-            case 'e': return controlPanelSpellList.get(2).getSpell();
-            case 'r': return controlPanelSpellList.get(3).getSpell();
+            case 'q': case 'Q': return controlPanelSpellList.get(0).getSpell();
+            case 'w': case 'W': return controlPanelSpellList.get(1).getSpell();
+            case 'e': case 'E': return controlPanelSpellList.get(2).getSpell();
+            case 'r': case 'R': return controlPanelSpellList.get(3).getSpell();
         }
+        return null;
+    }
+
+    /**
+     * A method only for testing that returns the PercentBar connected to the spell bound to the input
+     * @param input
+     * @return a PercentBar bound to the spell that is bound to the input letter
+     */
+    public PercentBar getCooldownBarForSpellBoundTo(String input) {
+        ControlPanelSpell spell = null;
+        switch (input.charAt(0)){
+            case 'q': case 'Q': spell = controlPanelSpellList.get(0); break;
+            case 'w': case 'W': spell = controlPanelSpellList.get(1); break;
+            case 'e': case 'E': spell = controlPanelSpellList.get(2); break;
+            case 'r': case 'R': spell = controlPanelSpellList.get(3); break;
+        }
+
+        if(spell != null)
+            return spellCooldownBars.get(spell);
         return null;
     }
 }
