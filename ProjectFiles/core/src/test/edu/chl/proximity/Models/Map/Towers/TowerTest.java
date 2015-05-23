@@ -91,7 +91,7 @@ public class TowerTest {
     public void testGetNewUpgrade() throws Exception {
         Tower  tower = new BulletTower(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
         tower = new MissileTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager(new Settings()));
-        assertTrue(tower.getUpgrade() == null);
+        assertTrue(tower.getUpgrade() instanceof  MissileTower2);
         tower = new BulletTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager(new Settings()));
         assertTrue(tower.getUpgrade() instanceof BulletTower2);
         tower = tower.getUpgrade();

@@ -59,6 +59,7 @@ public class PlayerTest {
     @Test
     public void testGetResources() {
         Player p = new Player(new Planes());
+        p.initiateNewMap();  //causes the player to get a resources instance
         p.getResources().setResources(10, 10, 10);
         assertTrue(p.getResources() instanceof Resources);
         assertTrue(p.getResources().getPoints()==10 && p.getResources().getLines()==10 && p.getResources().getPolygons()==10);
@@ -68,6 +69,7 @@ public class PlayerTest {
     @Test
     public void testCanPlayerAfford() {
         Player p= new Player(new Planes());
+        p.initiateNewMap(); //causes the player to get a resources instance
         p.getResources().setResources(10,10,10);
         assertTrue(p.canPlayerAfford(new Resources(2, 2, 2)));
         assertFalse(p.canPlayerAfford(new Resources(14, 0, 0)));

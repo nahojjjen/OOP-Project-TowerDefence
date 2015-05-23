@@ -41,9 +41,9 @@ public class TargetClosestTest {
         }
 
 
-        double angle = tower.getAngle();
         tower.target(list);
-        assertTrue(tower.getAngle() == 95.4403305053711 );
-        //if the tower targets the right creep in this situation, its angle should have changed to 95.4403305053711 degrees
+        System.out.println(tower.getAngle());
+        assertTrue(tower.getAngle() == 79.29864501953125 );
+        //if the tower targets the right creep in this situation, its angle should have changed to 79.29864501953125 degrees
     }
 }

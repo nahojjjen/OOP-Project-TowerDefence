@@ -6,6 +6,7 @@ import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.ConcretePaths.FirstPath;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Map.Towers.SniperTower;
+import edu.chl.proximity.Models.Map.Towers.SniperTower2;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetClosest;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Utils.Settings;
@@ -18,7 +19,8 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- * Created by Johan on 2015-05-19.
+ * @author Johan
+ * @date 2015-05-19.
  */
 public class SniperTowerTest {
 
@@ -47,6 +49,6 @@ public class SniperTowerTest {
 
         SniperTower tower = new SniperTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager(new Settings()));
         Tower tower2 = tower.getNewUpgrade();
-        assertTrue(tower2 == null);
+        assertTrue(tower2 instanceof SniperTower2);
     }
 }
