@@ -1,16 +1,14 @@
 package edu.chl.proximity.Controllers;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import edu.chl.proximity.Controllers.GameStates.GameScreen;
+import edu.chl.proximity.Controllers.ScreenChanger.ScreenChanger;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.MenuModels.FactionChooser.FactionChooser;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.MenuModels.MapSelect.MapSelect;
 import edu.chl.proximity.Models.MenuModels.StartButton;
-import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Utils.ProximityAudioPlayer;
 import edu.chl.proximity.Utilities.ProximityVector;
 
@@ -22,10 +20,8 @@ import edu.chl.proximity.Utilities.ProximityVector;
 public class MainMenuController implements InputProcessor{
     private MainMenu mainMenu;
     private Viewport viewport;
-    private Game game;
 
-    public MainMenuController(Game game,Viewport viewport){
-        this.game=game;
+    public MainMenuController(Viewport viewport){
         this.viewport=viewport;
     }
 
@@ -55,7 +51,7 @@ public class MainMenuController implements InputProcessor{
         BoardObject touchedButton=mainMenu.getButtonOnPosition(translatedPosition);
         if(touchedButton instanceof StartButton){
             mainMenu.pressedStart();
-            game.setScreen(new GameScreen(game,mainMenu.getMap(),GameData.getInstance().getPlayer(),viewport));
+            ScreenChanger.changeScreen(ScreenChanger.ScreenType.Play);
             ProximityAudioPlayer.playGameMusic();
         }else if(touchedButton instanceof FactionChooser){
             mainMenu.pressedFactionChooser(translatedPosition);

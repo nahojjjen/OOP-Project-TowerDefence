@@ -4,14 +4,8 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import edu.chl.proximity.Controllers.GameStates.GameScreen;
-import edu.chl.proximity.Controllers.GameStates.MenuScreen;
-import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.MenuModels.FactionChooser.FactionChooser;
-import edu.chl.proximity.Models.MenuModels.MapSelect.MapSelect;
-import edu.chl.proximity.Models.MenuModels.StartButton;
 import edu.chl.proximity.Models.Player.Players.Player;
+import edu.chl.proximity.Controllers.ScreenChanger.ScreenChanger;
 import edu.chl.proximity.Models.WonLostModels.GameOver;
 import edu.chl.proximity.Utilities.ProximityVector;
 
@@ -52,10 +46,11 @@ public class GameOverController implements InputProcessor{
         ProximityVector translatedPosition = new ProximityVector(pos.x,pos.y);
         String action= gameOver.getButtonActionOnPosition(translatedPosition);
         if(action.equals("Resume")){
-            game.setScreen(new GameScreen(game,gameOver.getMap().getNew(),player,viewport));
+            ScreenChanger.changeScreen(ScreenChanger.ScreenType.Play);
             player.initiateNewMap();
         }else if(action.equals("MainMenu")){
-            game.setScreen(new MenuScreen(game,player,viewport));
+            ScreenChanger.changeScreen(ScreenChanger.ScreenType.MainMenu);
+            System.out.println("Main menu pressed");
         }
         return true;
     }

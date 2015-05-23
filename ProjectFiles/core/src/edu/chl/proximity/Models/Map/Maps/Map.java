@@ -25,7 +25,7 @@ import java.util.*;
  * The map holds all information related to an instance of the game except for the player details
  *
  * ---
- * 08/04 Modified by Johan Swanberg. Switch to Screen from GameState.
+ * 08/04 Modified by Johan Swanberg. Switch to ScreenType from GameState.
  * 08/04 modified by Linda Evaldsson. Made Map-class abstract. It is no longer a singleton.
  * 23/04 Modified by Simon Gislen, added Persistant Object management
  * 25/04 Modified by Johan Swanberg, adds adding Stack

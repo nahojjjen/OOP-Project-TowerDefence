@@ -1,6 +1,5 @@
 package edu.chl.proximity.Models.WonLostModels;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.Player;
@@ -17,9 +16,6 @@ import edu.chl.proximity.Utilities.ProximityVector;
  */
 public class GameOver {
     private Map map;
-    private Player player;
-    private Viewport viewport;
-    private Game game;
 
     private Button resume;
     private ProximityVector rPos=new ProximityVector(200,400);
@@ -28,11 +24,8 @@ public class GameOver {
     private ProximityVector mmPos=new ProximityVector(400,400);
 
 
-    public GameOver(Map map, Player player, Viewport viewport){
+    public GameOver(Map map){
         this.map=map;
-        this.player=player;
-        this.viewport=viewport;
-        this.game=game;
 
         mainMenu=new Button(mmPos, new Image(Constants.FILE_PATH + "Buttons/ResumeButton.png"));
         resume=new Button(rPos, new Image(Constants.FILE_PATH + "Buttons/ResumeButton.png"));

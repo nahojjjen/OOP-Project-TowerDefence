@@ -10,8 +10,9 @@ import edu.chl.proximity.Controllers.GameOverController;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.Player.Players.GameData;
+import edu.chl.proximity.Controllers.ScreenChanger.ScreenChanger;
+import edu.chl.proximity.Controllers.ScreenChanger.ScreenChangerListener;
 import edu.chl.proximity.Models.WonLostModels.GameOver;
-import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Viewers.GameOverRenderer;
@@ -21,24 +22,29 @@ import edu.chl.proximity.Viewers.GameOverRenderer;
  * @author Hanna Romer
  * @date 2015-05-15
  */
-public class GameOverScreen implements Screen {
+public class GameOverScreen implements Screen, ScreenChangerListener {
     private ProximityBatch batch = new ProximityBatch();
     private ProximityShapeRenderer shapeRenderer = new ProximityShapeRenderer();
     private GameOverRenderer gameOverRenderer;
 
     private GameOverController gameOverController;
     private GameOver gameOver;
+    private Map map;
+    private Game game;
 
     private OrthographicCamera camera;
     private Viewport viewport;
 
     public GameOverScreen(Game g, Map map, Player player){
+        this.map = map;
+        this.game = g;
         GameData.getInstance().setPlayer(player);
         fixCamera();
-        gameOver=new GameOver(map,player,viewport);
+        gameOver=new GameOver(map);
         gameOverRenderer=new GameOverRenderer(gameOver);
         gameOverController=new GameOverController(g,viewport,gameOver,player);
         Gdx.input.setInputProcessor(gameOverController);
+        ScreenChanger.setListener(this);
     }
 
     private void fixCamera(){
@@ -81,5 +87,14 @@ public class GameOverScreen implements Screen {
 
         //stage.act(delta);
         //stage.draw();
+    }
+
+    @Override
+    public void screenChanged(ScreenChanger.ScreenType newScreen) {
+
+        switch(newScreen) {
+            case MainMenu: game.setScreen(new MenuScreen(game, GameData.getInstance().getPlayer(), viewport)); break;
+            case Play: game.setScreen(new GameScreen(game, map.getNew(), GameData.getInstance().getPlayer(), viewport)); break;
+        }
     }
 }

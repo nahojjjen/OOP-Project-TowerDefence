@@ -7,10 +7,12 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Controllers.MainMenuController;
+import edu.chl.proximity.Controllers.ScreenChanger.ScreenChanger;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.Player.Players.Player;
+import edu.chl.proximity.Controllers.ScreenChanger.ScreenChangerListener;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Models.Utils.ProximityAudioPlayer;
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
@@ -22,11 +24,12 @@ import edu.chl.proximity.Viewers.MenuRenderer;
  *
  * A class for handling the MenuScreen, the screen for the menu
  *
- * 08/04 Modified by Johan Swanberg. Switch to Screen from GameState.
+ * 08/04 Modified by Johan Swanberg. Switch to ScreenType from GameState.
  * 25/04 modified by Hanna Romer. Added Game,MainMenu, SpriteBatch, ShapeRenderer,MenuRenderer,MainController, OrthographicCamera and FitViewport
  */
-public class MenuScreen implements Screen {
+public class MenuScreen implements Screen, ScreenChangerListener {
 
+    Game game;
     private MainMenu mainMenu;
     private ProximityBatch batch = new ProximityBatch();
     private ProximityShapeRenderer shapeRenderer = new ProximityShapeRenderer();
@@ -36,6 +39,7 @@ public class MenuScreen implements Screen {
     private Viewport viewport;
 
     public MenuScreen(Game g, Player player, Viewport viewport){
+        game = g;
         GameData.getInstance().setPlayer(player);
         this.mainMenu=new MainMenu(new ParticleManager(player.getSettings()));
 
@@ -55,11 +59,13 @@ public class MenuScreen implements Screen {
             //viewport.apply();
         }
         */
-        mainMenuController=new MainMenuController(g,this.viewport);
+        mainMenuController=new MainMenuController(this.viewport);
         mainMenuController.setMainMenu(mainMenu);
         Gdx.input.setInputProcessor(mainMenuController);
 
         ProximityAudioPlayer.pauseGameMusic();
+        ScreenChanger.setListener(this);
+
 
     }
 
@@ -89,11 +95,20 @@ public class MenuScreen implements Screen {
 
         batch.begin();
         menuRenderer.render(batch, shapeRenderer);
+
         batch.end();
 
         //stage.act(delta);
         //stage.draw();
     }
+
+    public void screenChanged(ScreenChanger.ScreenType type) {
+        switch(type) {
+            case Play: game.setScreen(new GameScreen(game, mainMenu.getMap(), GameData.getInstance().getPlayer(), viewport)); break;
+        }
+
+    }
+
 
     @Override
     public void resize(int width, int height) {

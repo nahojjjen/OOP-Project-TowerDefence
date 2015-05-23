@@ -3,7 +3,6 @@ package edu.chl.proximity.Controllers.SubControllers;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import edu.chl.proximity.Controllers.GameStates.MenuScreen;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.ControlPanel.*;
 import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.*;
@@ -11,6 +10,7 @@ import edu.chl.proximity.Models.ControlPanel.TowerPanel.TowerPanel;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.*;
+import edu.chl.proximity.Controllers.ScreenChanger.ScreenChanger;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.ArrayList;
@@ -213,7 +213,8 @@ public class ControlPanelController implements ClickHandler {
             propertiesPanel.pressButton(touchedButton);
 
             if (touchedButton instanceof MainMenuButton)
-                game.setScreen(new MenuScreen(game, GameData.getInstance().getPlayer(), viewport));
+                ScreenChanger.changeScreen(ScreenChanger.ScreenType.MainMenu);
+
         }
 
     }

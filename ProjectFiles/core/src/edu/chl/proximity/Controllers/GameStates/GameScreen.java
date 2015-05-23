@@ -10,8 +10,9 @@ import edu.chl.proximity.Controllers.MainController;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.Player;
+import edu.chl.proximity.Controllers.ScreenChanger.ScreenChanger;
+import edu.chl.proximity.Controllers.ScreenChanger.ScreenChangerListener;
 import edu.chl.proximity.Models.Utils.Settings;
-import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Viewers.Renderer;
@@ -23,7 +24,7 @@ import edu.chl.proximity.Viewers.Renderer;
  * A class for handling the GameScreen, the screen that is showed when a game is played.
  *
  * ---
- * 08/04 Modified by Johan Swanberg. Switch to Screen from GameState.
+ * 08/04 Modified by Johan Swanberg. Switch to ScreenType from GameState.
  * 08/04 modified by Linda Evaldsson. Added som spawning logic for testing.
  * 16/04 modified by Simon Gislen
  * 21/04 modified by Simon Gislen
@@ -31,11 +32,13 @@ import edu.chl.proximity.Viewers.Renderer;
  * 29/04 modified by Hanna Romer. Removed PropertiesPanel since it's singleton
  * 07/05 modified by Linda Evaldsson. Moved handling of ControlPanels to ControlPanelController
  */
-public class GameScreen implements Screen{
+public class GameScreen implements Screen, ScreenChangerListener{
 
     private ProximityBatch batch = new ProximityBatch();
     private ProximityShapeRenderer shapeRenderer = new ProximityShapeRenderer();
     private Renderer renderer;
+    private Game game;
+    private Map map;
 
 
     private MainController mainController;
@@ -45,6 +48,8 @@ public class GameScreen implements Screen{
 
     public GameScreen(Game g, Map map, Player player, Viewport viewport){
         this.settings = player.getSettings();
+        this.game = g;
+        this.map = map;
 
         GameData.getInstance().setPlayer(player);
         this.renderer = new Renderer(map);
@@ -66,6 +71,7 @@ public class GameScreen implements Screen{
         player.getFaction().configureSpells(map.getParticleManager());
         player.getFaction().resetSpellCooldowns();
         Gdx.input.setInputProcessor(mainController);
+        ScreenChanger.setListener(this);
 
         //runDebugCode();
 
@@ -143,5 +149,13 @@ public class GameScreen implements Screen{
     @Override
     public void dispose() {
         batch.dispose();
+    }
+
+    @Override
+    public void screenChanged(ScreenChanger.ScreenType newScreen) {
+        switch(newScreen) {
+            case MainMenu: game.setScreen(new MenuScreen(game, GameData.getInstance().getPlayer(), viewport)); break;
+            case GameOver: game.setScreen(new GameOverScreen(game, map, GameData.getInstance().getPlayer())); break;
+        }
     }
 }

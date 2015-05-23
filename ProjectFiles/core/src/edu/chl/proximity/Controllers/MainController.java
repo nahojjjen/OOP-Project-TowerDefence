@@ -67,15 +67,14 @@ public class MainController implements InputProcessor{
     }
 
     public void updateAllControllers() {
-        if(game.getScreen() instanceof GameScreen){            //game.getCurrentScreen().equals(Proximity.State.GAME)) {
-            waveController.update();
-            mapController.update();
-            handController.update();
-            controlPanelController.update();
+        waveController.update();
+        mapController.update();
+        handController.update();
+        controlPanelController.update();
 
-            map.clearAddStack();
-            map.clearRemoveStack();
-        }
+        map.clearAddStack();
+        map.clearRemoveStack();
+
     }
     @Override
     public boolean keyDown (int keycode) {

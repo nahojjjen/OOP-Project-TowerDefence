@@ -21,7 +21,7 @@ import java.util.List;
  * ---
  *
  * 07/04 Modified by Johan Swanberg. Updated so it doesn't crash the program on run.
- * 08/04 Modified by Johan Swanberg. Switch to Screen from GameState.
+ * 08/04 Modified by Johan Swanberg. Switch to ScreenType from GameState.
  * 08/04 modified by Linda Evaldsson. Made methods non-static.
  * Unknown date modified by Linda Evaldsson
  * 23/04 Modified by Hanna Romer. Added ButtonPanel and PropertiesPanel + necessary methods for them

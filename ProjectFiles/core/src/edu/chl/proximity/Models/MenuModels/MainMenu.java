@@ -62,9 +62,6 @@ public class MainMenu {
 
         GameData.getInstance().setPlayer(player);
         player.initiateNewMap();
-
-        //game.changeScreen(Proximity.State.GAME, map, player,viewport);
-        //game.changeScreen(Proximity.State.GAME_OVER,map,player,viewport);
     }
 
     public Map getMap(){

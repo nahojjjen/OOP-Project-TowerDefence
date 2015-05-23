@@ -17,7 +17,6 @@ import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.Utils.ProximityFont;
@@ -35,7 +34,6 @@ import edu.chl.proximity.Models.Utils.ProximityFont;
 
 public class ProfilePanel extends BoardObject {
     private ProximityFont levelText;
-    private int levelXP;
 
     //Width and heigh of the ControlPanel when it is initiated
     private static int width = 200;
@@ -48,17 +46,29 @@ public class ProfilePanel extends BoardObject {
         levelText = createFont(10, 54, "1");
     }
 
-    public void updateExperience(Map map) {
+    public void updateExperience() {
         Player player = GameData.getInstance().getPlayer();
         int level = (int)player.getLevel();
         levelText.setText("" + level);
-
-
     }
 
+    /**
+     * For JUnit-testing. Gets the level font
+     * @return the level font
+     */
+    public ProximityFont getLevelText() {
+        return levelText;
+    }
+
+    /**
+     * Creates a font placed relative to this ProfilePanels top left corner
+     * @param x the x position on the ProfilePanel
+     * @param y the y position on the ProfilePanel
+     * @param s the String that the font should display
+     * @return The created font
+     */
     private ProximityFont createFont(float x, float y, String s){
         return new ProximityFont(new ProximityVector(getPosition().x + x, getPosition().y + y), s);
-        //return new ProximityFont(new ProximityVector(width + x, y), s);
     }
 
     public void render(ProximityBatch batch) {
@@ -84,10 +94,6 @@ public class ProfilePanel extends BoardObject {
         Image image = player.getFaction().getShowImage();
         batch.render(image, new ProximityVector(10, Constants.GAME_HEIGHT - 105), 180);
         batch.end();
-
-//        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-//        shapeRenderer.setColor(new Color(0.05f, 0.05f, 0.05f, 0.95f));
-//        shapeRenderer.rect(0, 0, 30, 30);
 
         shapeRenderer.end();
 
