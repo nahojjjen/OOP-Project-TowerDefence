@@ -2,6 +2,7 @@ package edu.chl.proximity.Controllers.SubControllers;
 
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Background;
+import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 
@@ -24,6 +25,10 @@ public class HandController implements ClickHandler {
         model.setPosition(new ProximityVector(0,0));
         model.setWidth(Constants.GAME_WIDTH);
         model.setHeight(Constants.GAME_HEIGHT);
+    }
+
+    public void update() {
+        map.getHand().setIfHandAfforded(GameData.getInstance().getPlayer().getResources());
     }
 
 

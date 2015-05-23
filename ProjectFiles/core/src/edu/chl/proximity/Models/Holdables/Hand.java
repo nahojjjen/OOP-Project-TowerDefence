@@ -1,10 +1,10 @@
 package edu.chl.proximity.Models.Holdables;
 
 import com.badlogic.gdx.graphics.Color;
+import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Utilities.ProximityVector;
-import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 
 /**
@@ -20,6 +20,7 @@ public class Hand {
 
     private ProximityVector position;
     private Holdable currentItem;
+    private boolean handAfforded = false;
 
     public Hand(){
         currentItem = null;
@@ -65,9 +66,17 @@ public class Hand {
         }
     }
 
+    public void setIfHandAfforded(Resources playerResources) {
+        if(currentItem == null)
+            return;
+
+        Resources itemCost = currentItem.getCost();
+        handAfforded = playerResources.getPoints() >= itemCost.getPoints() && playerResources.getPolygons() >= itemCost.getPolygons() && playerResources.getLines() >= itemCost.getLines();
+    }
+
     //Helper to check whether the player affords what is in his hand
     public boolean canPlayerAffordTheHand() {
-        return GameData.getInstance().getPlayer().canPlayerAfford(currentItem.getCost());
+        return handAfforded;
     }
 
     public void render(ProximityShapeRenderer shapeRenderer) {

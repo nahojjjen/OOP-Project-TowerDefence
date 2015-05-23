@@ -70,6 +70,7 @@ public class MainController implements InputProcessor{
         if(game.getScreen() instanceof GameScreen){            //game.getCurrentScreen().equals(Proximity.State.GAME)) {
             waveController.update();
             mapController.update();
+            handController.update();
             controlPanelController.update();
 
             map.clearAddStack();

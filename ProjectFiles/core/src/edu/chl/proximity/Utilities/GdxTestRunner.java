@@ -5,12 +5,10 @@ import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import edu.chl.proximity.Proximity;
 import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
-
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.headless.HeadlessApplication;
 import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
@@ -33,7 +31,7 @@ public class GdxTestRunner extends BlockJUnit4ClassRunner implements Application
         super(klass);
         final HeadlessApplicationConfiguration config = new HeadlessApplicationConfiguration();
         config.renderInterval = 1f/60; // Likely want 1f/60 for 60 fps
-        new HeadlessApplication(new Proximity(), config);
+        //new HeadlessApplication(new Proximity(), config); //Removed since this class is unused to remove reference to Proximity
         Gdx.gl = mock(GL20.class); // my improvement
     }
 
