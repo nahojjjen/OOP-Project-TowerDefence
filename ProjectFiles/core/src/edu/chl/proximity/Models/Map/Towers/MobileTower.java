@@ -23,6 +23,8 @@ public class MobileTower extends ShootingTower{
 
     private int speed=2;
     private Creep currentTarget =null;
+    private int counter=60;
+    private boolean counterTicking=false;
 
     private static final Image image=new Image(Constants.FILE_PATH + "Towers/Mobile/1.png");
 
@@ -33,6 +35,13 @@ public class MobileTower extends ShootingTower{
     }
     public void update(List<Creep> creeps){
         if(creeps!=null) {
+            if(counterTicking){
+                counter--;
+                if(counter==0){
+                    counter=60;
+                    counterTicking=false;
+                }
+            }
             target(creeps);
             move();
             checkIfCollision();
@@ -42,7 +51,7 @@ public class MobileTower extends ShootingTower{
 
     public void target(List<Creep> creeps){
         currentTarget =targetingMethod.getTarget(creeps, getPosition(),range);
-        if (currentTarget != null) {
+        if (currentTarget != null && !counterTicking) {
             this.setAngle(PointCalculations.getVectorAngle(this.getCenter(), currentTarget.getCenter()));
         }else{
             this.setAngle(PointCalculations.getVectorAngle(this.getCenter(), origPos));
@@ -50,13 +59,13 @@ public class MobileTower extends ShootingTower{
     }
 
     public void move(){
-        if(currentTarget!=null) {
+        if(currentTarget!=null && !counterTicking) {
             ProximityVector newPosition;
             float xLenght = (float) ((Math.cos(Math.toRadians(getAngle())) * speed));
             float yLenght = (float) ((Math.sin(Math.toRadians(getAngle())) * speed));
             newPosition = new ProximityVector(getPosition().x + xLenght, getPosition().y + yLenght);
             setPosition(newPosition);
-        }else if(Math.abs(this.getCenter().x-origPos.x) > 2 || Math.abs(this.getCenter().y-origPos.y) > 2){
+        }else if(Math.abs(this.getCenter().x-origPos.x) > 1 || Math.abs(this.getCenter().y-origPos.y) > 1){
             ProximityVector newPosition;
             float xLenght = (float) ((Math.cos(Math.toRadians(getAngle())) * speed));
             float yLenght = (float) ((Math.sin(Math.toRadians(getAngle())) * speed));
@@ -66,9 +75,10 @@ public class MobileTower extends ShootingTower{
     }
 
     public void checkIfCollision(){
-        if(currentTarget!=null) {
+        if(currentTarget!=null && !counterTicking) {
             if (this.containsPoint(currentTarget.getCenter())){
                 currentTarget.devolve();
+                counterTicking=true;
             }
         }
     }
