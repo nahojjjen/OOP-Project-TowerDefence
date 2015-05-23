@@ -19,6 +19,7 @@ import java.util.List;
 public class MobileTower extends ShootingTower{
     private TargetingMethod targetingMethod;
     private ParticleManager particleManager;
+    private ProximityVector origPos;
 
     private int speed=2;
     private Creep currentTarget =null;
@@ -26,10 +27,9 @@ public class MobileTower extends ShootingTower{
     private static final Image image=new Image(Constants.FILE_PATH + "Towers/Mobile/1.png");
 
     public MobileTower(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager){
-        super(pos,image,150,targetingMethod,1,new Resources(100,100,0),"Tank Tower");
+        super(pos,image,100,targetingMethod,1,new Resources(100,100,0),"Tank Tower");
         this.targetingMethod = targetingMethod;
         this.particleManager=particleManager;
-
     }
     public void update(List<Creep> creeps){
         if(creeps!=null) {
@@ -43,7 +43,9 @@ public class MobileTower extends ShootingTower{
     public void target(List<Creep> creeps){
         currentTarget =targetingMethod.getTarget(creeps, getPosition(),range);
         if (currentTarget != null) {
-            this.setAngle(PointCalculations.getVectorAngle(this.getCenter(), currentTarget.getPosition()));
+            this.setAngle(PointCalculations.getVectorAngle(this.getCenter(), currentTarget.getCenter()));
+        }else{
+            this.setAngle(PointCalculations.getVectorAngle(this.getCenter(), origPos));
         }
     }
 
@@ -54,13 +56,18 @@ public class MobileTower extends ShootingTower{
             float yLenght = (float) ((Math.sin(Math.toRadians(getAngle())) * speed));
             newPosition = new ProximityVector(getPosition().x + xLenght, getPosition().y + yLenght);
             setPosition(newPosition);
+        }else if(Math.abs(this.getCenter().x-origPos.x) > 2 || Math.abs(this.getCenter().y-origPos.y) > 2){
+            ProximityVector newPosition;
+            float xLenght = (float) ((Math.cos(Math.toRadians(getAngle())) * speed));
+            float yLenght = (float) ((Math.sin(Math.toRadians(getAngle())) * speed));
+            newPosition = new ProximityVector(getPosition().x + xLenght, getPosition().y + yLenght);
+            setPosition(newPosition);
         }
-
     }
 
     public void checkIfCollision(){
         if(currentTarget!=null) {
-            if (this.containsPoint(currentTarget.getCenter())) {
+            if (this.containsPoint(currentTarget.getCenter())){
                 currentTarget.devolve();
             }
         }
@@ -71,5 +78,13 @@ public class MobileTower extends ShootingTower{
 
     public Tower getNewUpgrade(){
         return null;
+    }
+
+    @Override
+    public void preparePlacing(ProximityVector position) {
+        if (position == null) throw new IllegalArgumentException();
+        this.setCenter(position);
+        origPos=position;
+        super.setAsPlaced(true);
     }
 }
