@@ -81,7 +81,7 @@ public class CreepTest extends TestCase {
     public void testGetCreepExperiencePointsAndDevolve() throws Exception {
 
         Player player = new Player(new Filler());
-        GameData.getInstance();
+
         GameData.getInstance().setPlayer(player);
         int currentExp = GameData.getInstance().getPlayer().getExperience(); //will load exp from disk
         Creep creep = new Circle(new ParticleManager(new Settings()), new FirstPath());

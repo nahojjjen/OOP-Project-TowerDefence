@@ -1,5 +1,6 @@
 package edu.chl.proximity.Models.ControlPanel;
 
+
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Spells.Spell;
@@ -14,7 +15,8 @@ public class ControlPanelSpell extends BoardObject {
     Spell spell;
 
     public ControlPanelSpell(ProximityVector position, Spell spell) {
-        super(position, spell.getControlPanelImage(), 0);
+        super(position, spell.getImage(), 0);
+        this.setImage(spell.getImage());
         this.spell = spell;
         spell.setPosition(position);
     }

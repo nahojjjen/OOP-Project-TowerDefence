@@ -37,6 +37,7 @@ public class Player {
         ProximityAudioPlayer.setSettings(settings);
 
         this.saveManager = new SaveManager();
+        initiateNewMap();
 
         loadSaveData(1);
         createSaveHook(1);

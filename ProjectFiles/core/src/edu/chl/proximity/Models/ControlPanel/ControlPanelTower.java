@@ -28,6 +28,9 @@ public class ControlPanelTower extends BoardObject{
 
     public ControlPanelTower(ProximityVector position, Tower tower) {
         super(position, bgImage, 0);
+        if(tower == null) {
+            throw new IllegalArgumentException("ControlPanelTower: Tower cannot be null");
+        }
         this.tower = tower;
         headline = new ProximityFont(position, tower.getName());
         headline.setSize(11);
@@ -50,6 +53,8 @@ public class ControlPanelTower extends BoardObject{
 
 
     public void setKeyBind(int key) {
+        if(key < 0 || key > 9)
+            return;
         this.key = key;
         keyFont.setText(String.valueOf(key));
     }
