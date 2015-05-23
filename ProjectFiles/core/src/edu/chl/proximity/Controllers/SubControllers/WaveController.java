@@ -67,9 +67,8 @@ public class WaveController {
         }
         wavePanel.updateWaves(waveIndex);
 
-        if (waveIndex >= 40){
-            GameData.getInstance().getPlayer().playWonLogic(map.getName(), waveIndex);
-        }
+        GameData.getInstance().getPlayer().documentPlayerProgress(map.getName(), waveIndex); //tell the player to handle having reached a new wave
+
 
     }
 

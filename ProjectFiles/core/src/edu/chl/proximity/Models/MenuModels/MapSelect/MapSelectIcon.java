@@ -21,6 +21,7 @@ public class MapSelectIcon extends BoardObject{
     private static Image notSelectable = new Image(Constants.FILE_PATH + "Buttons/MapNotSelectable.png");
     private static Image selected= new Image(Constants.FILE_PATH + "Buttons/MapSelected.png");
     private ProximityFont name;
+    private ProximityFont completion;
 
     public MapSelectIcon(Map map, ProximityVector pos){
         super(pos,notSelectable,0);
@@ -42,9 +43,11 @@ public class MapSelectIcon extends BoardObject{
     public void setAsSelected(){
         setImage(selected);
     }
+    public void setCompletionText(ProximityFont text){completion = text;}
 
     public void render(ProximityBatch batch){
         super.render(batch);
         name.draw(batch);
+        completion.draw(batch);
     }
 }

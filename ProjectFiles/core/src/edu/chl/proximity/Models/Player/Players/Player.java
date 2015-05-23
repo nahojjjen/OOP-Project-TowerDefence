@@ -24,6 +24,7 @@ public class Player {
     private double level;
     private Settings settings;
     private SaveManager saveManager;
+    public static final int winCondition = 40;
     /**
      * Create a new player with starting resources of 300 points,
      * 300 lines and 0 polygons
@@ -46,7 +47,7 @@ public class Player {
      * @param name the name of the map
      * @param waveIndex the wave the player reached
      */
-    public void playWonLogic(String name, int waveIndex){
+    public void documentPlayerProgress(String name, int waveIndex){
         float previousWon = 0;
         if (saveManager.get(name) != null){
             previousWon = saveManager.get(name);
@@ -70,9 +71,22 @@ public class Player {
         if (saveManager.get(previousMapName) != null){
             wonNumber = saveManager.get(previousMapName);
         }
-        return (wonNumber >=40);
+        return (wonNumber >=winCondition);
+    }
 
-
+    /**
+     * get how many waves a player has reached on a specific map
+     * @param map what map to check
+     * @return a double of the wave index the player has reached
+     */
+    public double howManyWavesHasPlayerReached(Map map){
+        double progress = 0;
+        if (map != null){
+            if (saveManager.get(map.getName()) != null){
+                progress = saveManager.get(map.getName());
+            }
+        }
+        return progress;
     }
     /**
      * What should be loaded on start

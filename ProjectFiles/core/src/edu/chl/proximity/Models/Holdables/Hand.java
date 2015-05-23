@@ -47,10 +47,13 @@ public class Hand {
         }
     }
     private void batchRendering(ProximityBatch batch){
-        Image img = currentItem.getImage();
-        if(img != null) {
-            batch.render(img, new ProximityVector(position.x - img.getTexture().getWidth() / 2, position.y - img.getTexture().getHeight() / 2), 0);
+        if (currentItem != null){
+            Image img = currentItem.getImage();
+            if(img != null) {
+                batch.render(img, new ProximityVector(position.x - img.getTexture().getWidth() / 2, position.y - img.getTexture().getHeight() / 2), 0);
+            }
         }
+
     }
 
     public Color getRangeIndicatorColor() {
