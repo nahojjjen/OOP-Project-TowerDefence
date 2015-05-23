@@ -39,7 +39,7 @@ public class ProximityFont {
         this.position = position;
 
         if (!TestChecker.isJUnitTest()) {
-            generator = new FreeTypeFontGenerator(Gdx.files.internal(Constants.FILE_PATH + "Fonts/Roboto-Regular.ttf"));
+            generator = new FreeTypeFontGenerator(Constants.getFile(Constants.FILE_PATH + "Fonts/Roboto-Regular.ttf"));
             parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
             parameter.flip = true;
             generateFont();

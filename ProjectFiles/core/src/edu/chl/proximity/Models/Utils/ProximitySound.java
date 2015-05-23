@@ -2,6 +2,7 @@ package edu.chl.proximity.Models.Utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.TestChecker;
 
 /**
@@ -19,7 +20,7 @@ public class ProximitySound {
     public ProximitySound(String filePath){
         if(TestChecker.isJUnitTest())
             return;
-        sound = Gdx.audio.newSound(Gdx.files.internal(filePath));
+        sound = Gdx.audio.newSound(Constants.getFile(filePath));
     }
     public Sound getSound(){
         return sound;
