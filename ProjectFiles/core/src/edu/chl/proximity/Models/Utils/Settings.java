@@ -1,7 +1,5 @@
 package edu.chl.proximity.Models.Utils;
 
-import edu.chl.proximity.Utilities.ProximityPlayer;
-
 import java.util.HashMap;
 
 /**
@@ -54,7 +52,7 @@ public class Settings {
 
     public void setGameVolume(int gameVolume) {
         this.gameVolume = gameVolume;
-        ProximityPlayer.setGameMusicVolume(getTranslatedGameVolume());
+        ProximityAudioPlayer.setGameMusicVolume(getTranslatedGameVolume());
     }
 
     public void togglePause() {

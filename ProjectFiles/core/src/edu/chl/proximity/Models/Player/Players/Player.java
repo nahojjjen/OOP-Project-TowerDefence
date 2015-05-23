@@ -5,7 +5,7 @@ import edu.chl.proximity.Models.Player.Factions.Faction;
 import edu.chl.proximity.Models.Player.PersistentSave.SaveManager;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.Settings;
-import edu.chl.proximity.Utilities.ProximityPlayer;
+import edu.chl.proximity.Models.Utils.ProximityAudioPlayer;
 
 /**
  * @author Hanna Romer
@@ -34,7 +34,7 @@ public class Player {
         this.faction=faction;
         //Standard settings are set
         this.settings = new Settings();
-        ProximityPlayer.setSettings(settings);
+        ProximityAudioPlayer.setSettings(settings);
 
         this.saveManager = new SaveManager();
 

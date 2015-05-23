@@ -2,10 +2,6 @@ package edu.chl.proximity.Models.Utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.files.FileHandle;
-import edu.chl.proximity.Models.Player.Players.GameData;
-import edu.chl.proximity.Utilities.Constants;
-import edu.chl.proximity.Utilities.ProximityPlayer;
 import edu.chl.proximity.Utilities.TestChecker;
 
 /**
@@ -30,6 +26,6 @@ public class ProximitySound {
     }
 
     public void play(float pitch, float pan){
-        ProximityPlayer.playSound(this, pitch, pan);
+        ProximityAudioPlayer.playSound(this, pitch, pan);
     }
 }

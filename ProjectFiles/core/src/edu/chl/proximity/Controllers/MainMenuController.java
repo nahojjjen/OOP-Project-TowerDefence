@@ -11,7 +11,7 @@ import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.MenuModels.MapSelect.MapSelect;
 import edu.chl.proximity.Models.MenuModels.StartButton;
 import edu.chl.proximity.Models.Player.Players.GameData;
-import edu.chl.proximity.Utilities.ProximityPlayer;
+import edu.chl.proximity.Models.Utils.ProximityAudioPlayer;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 
@@ -56,7 +56,7 @@ public class MainMenuController implements InputProcessor{
         if(touchedButton instanceof StartButton){
             mainMenu.pressedStart();
             game.setScreen(new GameScreen(game,mainMenu.getMap(),GameData.getInstance().getPlayer(),viewport));
-            ProximityPlayer.playGameMusic();
+            ProximityAudioPlayer.playGameMusic();
         }else if(touchedButton instanceof FactionChooser){
             mainMenu.pressedFactionChooser(translatedPosition);
         }else if(touchedButton instanceof MapSelect){

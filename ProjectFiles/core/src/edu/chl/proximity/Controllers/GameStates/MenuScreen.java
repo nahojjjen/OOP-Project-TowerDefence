@@ -11,9 +11,8 @@ import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.Player.Players.Player;
-import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
-import edu.chl.proximity.Utilities.ProximityPlayer;
+import edu.chl.proximity.Models.Utils.ProximityAudioPlayer;
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Viewers.MenuRenderer;
 
@@ -60,7 +59,7 @@ public class MenuScreen implements Screen {
         mainMenuController.setMainMenu(mainMenu);
         Gdx.input.setInputProcessor(mainMenuController);
 
-        ProximityPlayer.pauseGameMusic();
+        ProximityAudioPlayer.pauseGameMusic();
 
     }
 
