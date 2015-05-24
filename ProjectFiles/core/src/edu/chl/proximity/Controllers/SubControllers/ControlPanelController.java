@@ -149,6 +149,9 @@ public class ControlPanelController implements ClickHandler {
         if(keycode == keys.SPACE) {
             GameData.getInstance().getPlayer().getSettings().togglePause();
         }
+        if(keycode == keys.F) {
+            towerPanel.pressedPosition(towerPanel.getUpgradeCenter());
+        }
     }
 
     @Override
