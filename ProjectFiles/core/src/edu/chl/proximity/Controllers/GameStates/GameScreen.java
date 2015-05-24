@@ -156,6 +156,7 @@ public class GameScreen implements Screen, ScreenChangerListener{
         switch(newScreen) {
             case MainMenu: game.setScreen(new MenuScreen(game, GameData.getInstance().getPlayer(), viewport)); break;
             case GameOver: game.setScreen(new GameOverScreen(game, map, GameData.getInstance().getPlayer())); break;
+            default: break;
         }
     }
 }

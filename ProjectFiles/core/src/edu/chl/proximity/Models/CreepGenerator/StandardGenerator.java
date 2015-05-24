@@ -129,7 +129,7 @@ public class StandardGenerator {
         } else {
             //Some endless algorithm
             double r = ProximityRandom.getRandomDouble()*5;
-            for (int i = 0; i < Math.max(0, (int)(waveIndex/2) - r); i++) {
+            for (int i = 0; i < Math.max(0, waveIndex/2f - r); i++) {
                 creeps.add(new Line1(6, map.getParticleManager(), map.getPath()));
             }
             for (int i = 0; i < (int)(waveIndex/5); i++) {

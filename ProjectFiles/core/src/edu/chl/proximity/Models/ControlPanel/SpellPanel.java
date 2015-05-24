@@ -147,6 +147,7 @@ public class SpellPanel extends BoardObject {
             case 'w': case 'W': spell = controlPanelSpellList.get(1); break;
             case 'e': case 'E': spell = controlPanelSpellList.get(2); break;
             case 'r': case 'R': spell = controlPanelSpellList.get(3); break;
+            default: break;
         }
 
         if(spell != null)

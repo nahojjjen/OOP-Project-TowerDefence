@@ -23,18 +23,18 @@ import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityRandom;
 import edu.chl.proximity.Utilities.ProximityVector;
-import junit.framework.TestCase;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
 
 /**
  * @author Linda Evaldsson
  * @date 2015-05-19
  */
-public class MapTest extends TestCase {
-
+public class MapTest {
+    @Test
     public void testAdd() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
         Creep creep = new Triangle(map.getParticleManager(), map.getPath());
@@ -54,25 +54,25 @@ public class MapTest extends TestCase {
 
 
     }
-
+    @Test
     public void testGetName() throws Exception {
 
         Map map = new StandardMap(new ParticleManager(new Settings()));
         assertEquals("Standard", map.getName());
 
     }
-
+    @Test
     public void testGetHand() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
         assertTrue(map.getHand().getClass() == Hand.class);
 
     }
-
+    @Test
     public void testGetParticleManager() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
         assertTrue(map.getParticleManager().getClass() == ParticleManager.class);
     }
-
+    @Test
     public void testGetCreeps() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
         Creep creep = new Triangle(map.getParticleManager(), map.getPath());
@@ -81,7 +81,7 @@ public class MapTest extends TestCase {
         assertEquals(map.getCreeps().get(0), creep);
 
     }
-
+    @Test
     public void testGetObjectOnPosition() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
 
@@ -105,7 +105,7 @@ public class MapTest extends TestCase {
         assertTrue(null == map.getObjectOnPosition(new ProximityVector(100000, 10000)));
 
     }
-
+    @Test
     public void testGetCreepsWithinDistance() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
         Creep creep1 = new Triangle(map.getParticleManager(), map.getPath());
@@ -134,15 +134,12 @@ public class MapTest extends TestCase {
         assertFalse(creeps.contains(creep5));
     }
 
-    public void testUpdate() throws Exception {
-
-    }
-
+    @Test
     public void testGetPath() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
         assertTrue(map.getPath() instanceof Path);
     }
-
+    @Test
     public void testSetPath() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
         Path path = new TestPath();
@@ -156,14 +153,14 @@ public class MapTest extends TestCase {
         }
 
     }
-
+    @Test
     public void testGetBackground() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
         assertTrue(map.getBackground() instanceof Background);
 
     }
 
-
+    @Test
     public void testSetAndGetBase() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
 
@@ -175,7 +172,7 @@ public class MapTest extends TestCase {
         assertTrue(map.getBase() == null);
 
     }
-
+    @Test
     public void testSetAndGetChoosenTower() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
         Tower tower1 = new BulletTower(new ProximityVector(0, 0), new TargetClosest(), map.getParticleManager());
@@ -190,7 +187,7 @@ public class MapTest extends TestCase {
         assertTrue(map.getChosenTower() == null);
 
     }
-
+    @Test
     public void testClearRemoveStack() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
         Creep creep1 = new Triangle(map.getParticleManager(), map.getPath());
@@ -236,7 +233,7 @@ public class MapTest extends TestCase {
 
 
     }
-
+    @Test
     public void testClearAddStack() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
         Creep creep1 = new Triangle(map.getParticleManager(), map.getPath());
@@ -266,7 +263,7 @@ public class MapTest extends TestCase {
         map.clearAddStack();
         assertTrue(map.getNumberOfObjectsOnMap() == 8);
     }
-
+    @Test
     public void testGetNew() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
         Map anotherMap = map.getNew();

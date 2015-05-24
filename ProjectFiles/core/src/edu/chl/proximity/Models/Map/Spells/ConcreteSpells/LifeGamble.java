@@ -52,6 +52,7 @@ public class LifeGamble extends Spell {
             case 6:
                 this.setHealthChange(-100);
                 break;
+            default: break;
         }
     }
 

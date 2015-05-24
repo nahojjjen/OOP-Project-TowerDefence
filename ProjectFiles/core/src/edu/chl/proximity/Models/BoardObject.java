@@ -171,13 +171,14 @@ public abstract class BoardObject implements Cloneable {
      */
     public ProximityVector getCenter() {
         if (this.position != null){
-            return new ProximityVector(this.getPosition().x+(this.getWidth()/2), this.getPosition().y + (this.getHeight()/2));
+            return new ProximityVector(this.getPosition().x+(this.getWidth()/2f), this.getPosition().y + (this.getHeight()/2f));
         }
         return null;
+
     }
 
     public void setCenter(ProximityVector pos) {
-        setPosition(new ProximityVector(pos.x - this.getWidth()/2, pos.y - this.getHeight()/2));
+        setPosition(new ProximityVector(pos.x - this.getWidth()/2f, pos.y - this.getHeight()/2f));
     }
 
     public boolean containsPoint(ProximityVector point) {
@@ -201,7 +202,7 @@ public abstract class BoardObject implements Cloneable {
             clone.setImage((edu.chl.proximity.Models.Utils.Image)image.clone());
         }
         if (addList != null){
-            clone.setAddList(new ArrayList<>());
+            clone.setAddList(new ArrayList<BoardObject>());
         }
         return clone;
     }

@@ -51,7 +51,7 @@ public class Hand {
         if (currentItem != null){
             Image img = currentItem.getImage();
             if(img != null) {
-                batch.render(img, new ProximityVector(position.x - img.getTexture().getWidth() / 2, position.y - img.getTexture().getHeight() / 2), 0);
+                batch.render(img, new ProximityVector(position.x - img.getTexture().getWidth() / 2f, position.y - img.getTexture().getHeight() / 2f), 0);
             }
         }
 

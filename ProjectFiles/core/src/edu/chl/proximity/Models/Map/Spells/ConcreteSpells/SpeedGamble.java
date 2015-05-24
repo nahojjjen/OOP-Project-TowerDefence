@@ -53,6 +53,8 @@ public class SpeedGamble extends Spell{
                     break;
                 case 6:
                     c.slowDown(-70,60*3);
+                    break;
+                default: break;
             }
         }
     }

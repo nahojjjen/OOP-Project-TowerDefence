@@ -20,8 +20,8 @@ public class PropertiesPanelButton extends BoardObject{
 
     public PropertiesPanelButton(ProximityVector position, String s){
         super(position,image,0);
-        float x = position.x + (getWidth() - s.length()*17) / 2;
-        float y = position.y + (getHeight() - 20) / 2;
+        float x = position.x + (getWidth() - s.length()*17) / 2f;
+        float y = position.y + (getHeight() - 20) / 2f;
         font = new ProximityFont(new ProximityVector(x, y), s);
         font.setSize(30);
     }

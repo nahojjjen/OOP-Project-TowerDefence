@@ -49,6 +49,7 @@ public class PickACard extends Spell {
             case 4:
                 performMiracle(counter);
                 break;
+            default: break;
         }
     }
 
@@ -103,6 +104,7 @@ public class PickACard extends Spell {
             case 1:
                 getParticleManager().getFireFieldEffect().createEffect(getPosition());
                 break;
+            default: break;
         }
     }
 

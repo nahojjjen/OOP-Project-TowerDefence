@@ -159,9 +159,9 @@ public class TowerPanel extends BoardObject{
     }
 
     private void pressedSell(){
-        Double p=new Double(map.getChosenTower().getCost().getPoints()/2);
-        Double l=new Double(map.getChosenTower().getCost().getLines()/2);
-        Double poly=new Double(map.getChosenTower().getCost().getPolygons()/2);
+        Double p=new Double(map.getChosenTower().getCost().getPoints()/2f);
+        Double l=new Double(map.getChosenTower().getCost().getLines()/2f);
+        Double poly=new Double(map.getChosenTower().getCost().getPolygons()/2f);
         GameData.getInstance().getPlayer().getResources().addResources(new Resources(p.intValue(),l.intValue(),poly.intValue()));
         map.getChosenTower().remove();
         map.setChosenTower(null);

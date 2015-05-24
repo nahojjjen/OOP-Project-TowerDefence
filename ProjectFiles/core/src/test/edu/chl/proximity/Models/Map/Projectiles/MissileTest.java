@@ -34,11 +34,13 @@ public class MissileTest {
 
     @Test
     public void testAttack() throws Exception {
+
         Creep creep = new Line1(1,new ParticleManager(new Settings()),new FirstPath());
         Projectile projectile = new Missile(new ProximityVector(100,100), 0f, creep, new ParticleManager(new Settings()));
 
         projectile.attack(creep);
         assertTrue(creep.isRemoved());
         projectile.attack(null);
+
     }
 }

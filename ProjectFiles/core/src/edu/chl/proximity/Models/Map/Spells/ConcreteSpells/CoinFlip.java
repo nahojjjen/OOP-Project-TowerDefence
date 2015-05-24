@@ -42,6 +42,7 @@ public class CoinFlip extends Spell{
                     }
                     break;
 
+                default: break;
             }
         }
     }

@@ -25,7 +25,7 @@ public class PropertiesPanel extends BoardObject{
     private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/square.png");
     private static int width = 300;
     private static int height = 400;
-    private static ProximityVector position=new ProximityVector((Constants.GAME_WIDTH-300-width)/2, (Constants.GAME_HEIGHT-100-height)/2); //350, 200
+    private static ProximityVector position=new ProximityVector((Constants.GAME_WIDTH-300-width)/2f, (Constants.GAME_HEIGHT-100-height)/2f); //350, 200
 
     private ProximityFont headline = new ProximityFont(new ProximityVector(position.x + 45, position.y + 20), "Options");
     private ProximityVector resumePos=new ProximityVector(position.x+40,position.y + 70);

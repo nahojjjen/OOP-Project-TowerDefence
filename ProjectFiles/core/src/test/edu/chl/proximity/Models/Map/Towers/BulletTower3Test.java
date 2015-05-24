@@ -77,7 +77,7 @@ public class BulletTower3Test {
         test.setPosition(new ProximityVector(100,100));
         Creep creep = new Line1(1, new ParticleManager(new Settings()), new FirstPath());
         creep.setPosition(new ProximityVector(100,100));
-        List<Creep> list = new ArrayList<>();
+        List<Creep> list = new ArrayList<Creep>();
         list.add(creep);
         test.update(list);
         assertTrue(test.getAddList().size() == 1);

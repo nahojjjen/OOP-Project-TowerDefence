@@ -47,8 +47,8 @@ public class Image implements Cloneable {
     }
 
     public void render(SpriteBatch batch, ProximityVector p, double angle) {
-        batch.draw(texture, (int) p.x, (int) p.y, texture.getWidth() / 2,
-                texture.getHeight() / 2, texture.getWidth(), texture.getHeight(),
+        batch.draw(texture, (int) p.x, (int) p.y, texture.getWidth() / 2f,
+                texture.getHeight() / 2f, texture.getWidth(), texture.getHeight(),
                 1, 1, (int) angle, 0, 0, texture.getWidth(), texture.getHeight(), false, false);
     }
 

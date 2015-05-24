@@ -105,6 +105,7 @@ public class MenuScreen implements Screen, ScreenChangerListener {
     public void screenChanged(ScreenChanger.ScreenType type) {
         switch(type) {
             case Play: game.setScreen(new GameScreen(game, mainMenu.getMap(), GameData.getInstance().getPlayer(), viewport)); break;
+            default: break;
         }
 
     }
