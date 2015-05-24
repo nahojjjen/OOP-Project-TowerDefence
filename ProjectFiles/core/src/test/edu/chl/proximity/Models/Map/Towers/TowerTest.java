@@ -1,5 +1,6 @@
 package test.edu.chl.proximity.Models.Map.Towers;
 
+import com.badlogic.gdx.graphics.Color;
 import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line1;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
@@ -21,6 +22,8 @@ import static org.junit.Assert.*;
 /**
  * @authoor Johan
  * @date 2015-05-19.
+ *
+ * This test class is mostly redundant since it tests methods the same way the  test classes for concrete towers preform the tests
  */
 public class TowerTest {
 
@@ -37,23 +40,22 @@ public class TowerTest {
         //update will do target, shoot, reload
 
         Tower  tower = new BulletTower(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
-        GameData.getInstance();
         GameData.getInstance().setPlayer(new Player(new Filler()));
+        tower.setPosition(new ProximityVector(100, 100));
 
-        tower.update(null);
+        tower.update(null); //should do nothing, no creep list -> no action
+
         List<Creep> testCreepList = new ArrayList<Creep>();
-        tower.update(testCreepList); // should not fire, no creeps nearby
-        tower.setPosition(new FirstPath().getWaypoint(0)); // place the test tower on top of where the creep will spawn
-        testCreepList.add(new Line1(1, new ParticleManager(new Settings()), new FirstPath()));
-        tower.update(testCreepList); // should fire a projectile and start the cooldown
-        assertTrue(tower.getAddList().size() == 1); //make sure that the prjectiile has been marked for adding
+        tower.update(testCreepList); // should not fire, no creeps nearby; list empty
 
-        testCreepList.add(new Line1(1, new ParticleManager(new Settings()), new FirstPath()));
+        Creep creep = new Line1(1, new ParticleManager(new Settings()), new FirstPath());
+        creep.setPosition(new ProximityVector(100,100));
+        testCreepList.add(creep);   //adds a creep near the tower
+
+        tower.update(testCreepList); // should fire a projectile at the creep and start the cooldown
+        assertTrue(tower.getAddList().size() == 1); //make sure that the projectile has been marked for adding
         tower.update(testCreepList);
-        tower.preparePlacing(new ProximityVector(100,100));
-        assertTrue(tower.isPlaced());
-        assertTrue(tower.getRange() > 0);
-
+        assertTrue(tower.getAddList().size() == 1); //since the tower has a cooldown, the previous update should not have fired a bullet
     }
 
     @Test
@@ -65,14 +67,27 @@ public class TowerTest {
     @Test (expected = IllegalArgumentException.class)
     public void testPreparePlacing() throws Exception {
 
-        Tower  tower = new BulletTower(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
         //preparing placing should mark the tower as placed and place the center where the curos was
-        tower = new MissileTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager(new Settings()));
+        Tower tower = new MissileTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager(new Settings()));
         tower.preparePlacing(new ProximityVector(100, 100));
         assertTrue(tower.getCenter().x == 100);
         assertTrue(tower.isPlaced());
         tower.preparePlacing(null); //should throw illegal argument exception
 
+    }
+
+
+    @Test
+    public void testGetColor() throws Exception {
+        Tower  tower = new BulletTower(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
+        assertTrue(tower.getColor() instanceof Color);
+    }
+
+    @Test
+    public void testSetAsPlaced() throws Exception {
+        Tower  tower = new BulletTower(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
+        tower.setAsPlaced(true);
+        assertTrue(tower.isPlaced());
     }
 
     @Test
@@ -89,8 +104,8 @@ public class TowerTest {
 
     @Test
     public void testGetNewUpgrade() throws Exception {
-        Tower  tower = new BulletTower(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
-        tower = new MissileTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager(new Settings()));
+        //tests a couple of child classes, these tests are duplicate since they also exist in the towers test class.
+        Tower tower = new MissileTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager(new Settings()));
         assertTrue(tower.getUpgrade() instanceof  MissileTower2);
         tower = new BulletTower(new ProximityVector(0,0), new TargetClosest(),new ParticleManager(new Settings()));
         assertTrue(tower.getUpgrade() instanceof BulletTower2);

@@ -1,6 +1,7 @@
 package test.edu.chl.proximity.Models.Map.Towers;
 
 import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Circle;
+import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line1;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.ConcretePaths.FirstPath;
@@ -20,13 +21,14 @@ import static org.junit.Assert.*;
  * @author Johan
  * @date 2015-05-19.
  */
-public class BulletTower2Test {
+public class BulletTower3Test {
 
     @Test
     public void testTarget() throws Exception {
     BulletTower3 test = new BulletTower3(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
         double angle= test.getAngle();
         List list = new ArrayList<Creep>();
+        test.target(null);
         test.target(list);
         assertTrue(test.getAngle() == angle); //targeting nothing should not have changed the angle
         test.target(null);
@@ -63,30 +65,37 @@ public class BulletTower2Test {
     @Test
     public void testGetTarget() throws Exception {
 
-        Tower test = new BulletTower3(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
+        BulletTower3 test = new BulletTower3(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
+        assertTrue(test.getTarget() == null);
     }
 
     @Test
-    public void testCreateProjectile() throws Exception {
+    public void testUpdateAndTargetAndShoot() throws Exception {
 
         Tower test = new BulletTower3(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
+        assertTrue(test.getAddList().size() == 0);
+        test.setPosition(new ProximityVector(100,100));
+        Creep creep = new Line1(1, new ParticleManager(new Settings()), new FirstPath());
+        creep.setPosition(new ProximityVector(100,100));
+        List<Creep> list = new ArrayList<>();
+        list.add(creep);
+        test.update(list);
+        assertTrue(test.getAddList().size() == 1);
     }
 
-    @Test
-    public void testUpdate() throws Exception {
-
-        Tower test = new BulletTower3(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
-    }
 
     @Test
     public void testGetNewUpgrade() throws Exception {
 
         Tower test = new BulletTower3(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
+        assertTrue(test.getNewUpgrade() == null);
+
     }
 
     @Test
     public void testGetRange() throws Exception {
 
         Tower test = new BulletTower3(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
+        assertTrue(test.getRange() > 0);
     }
 }
