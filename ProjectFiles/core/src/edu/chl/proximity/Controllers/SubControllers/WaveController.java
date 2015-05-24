@@ -65,7 +65,7 @@ public class WaveController {
                 cooldownCounter = 0;
             }
         }
-        wavePanel.updateWaves(waveIndex);
+        wavePanel.updateWaves(waveIndex, GameData.getInstance().getPlayer().winCondition);
 
         GameData.getInstance().getPlayer().documentPlayerProgress(map.getName(), waveIndex); //tell the player to handle having reached a new wave
 

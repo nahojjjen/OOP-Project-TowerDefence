@@ -14,13 +14,13 @@ public class WavePanelTest {
     @Test
     public void testUpdateWaves() throws Exception {
         WavePanel wavePanel = new WavePanel();
-        wavePanel.updateWaves(30);
-        assertEquals(wavePanel.getWaveText(), "Wave 30");
+        wavePanel.updateWaves(30, 30);
+        assertEquals(wavePanel.getWaveText(), "Wave 30 - map won!");
 
-        wavePanel.updateWaves(0);
+        wavePanel.updateWaves(0, 30);
         assertEquals(wavePanel.getWaveText(), "Wave 0");
 
-        wavePanel.updateWaves(-50);
+        wavePanel.updateWaves(-50, 30);
         assertEquals(wavePanel.getWaveText(), "Wave 0");
     }
 }

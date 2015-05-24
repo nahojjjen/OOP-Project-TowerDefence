@@ -10,6 +10,8 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @date 2015-05-22
  *
  * A playing for displaying what wave is currently attacking
+ *
+ * 24/05 modified by Linda Evaldsson. Added win condition display.
  */
 public class WavePanel extends BoardObject {
 
@@ -24,10 +26,14 @@ public class WavePanel extends BoardObject {
 
     }
 
-    public void updateWaves(int wave) {
+    public void updateWaves(int wave, int winCondition) {
         if (wave < 0)
             wave = 0;
-        waves.setText("Wave " + wave);
+        if(wave < winCondition) {
+            waves.setText("Wave " + wave);
+        } else {
+            waves.setText("Wave " + wave + " - map won!");
+        }
     }
 
     /**
