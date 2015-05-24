@@ -13,18 +13,12 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * A class for updating the hand
  *
  */
-public class HandController implements ClickHandler {
-    private Background model;
+public class HandController implements ClickHandler, UpdateHandler {
+
     private Map map;
 
     public HandController(Map map) {
         this.map = map;
-        model = new Background(null);
-
-        //The model is the area where this HandController should be listening for changes. In this case its the whole window.
-        model.setPosition(new ProximityVector(0,0));
-        model.setWidth(Constants.GAME_WIDTH);
-        model.setHeight(Constants.GAME_HEIGHT);
     }
 
     public void update() {

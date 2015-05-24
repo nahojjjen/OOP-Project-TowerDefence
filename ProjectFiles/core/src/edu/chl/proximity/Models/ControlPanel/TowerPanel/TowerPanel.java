@@ -141,6 +141,15 @@ public class TowerPanel extends BoardObject{
         }
     }
 
+    /**
+     * Returns whether the TowerPanel contains the point and is visible
+     * @param point The point that is to be checked
+     * @return Whether the point is within the TowerPanel and the panel is visible
+     */
+    public boolean containsPoint(ProximityVector point) {
+        return map.getChosenTower() != null && super.containsPoint(point);
+    }
+
     private void pressedUpgrade(){
         Tower tower = map.getChosenTower();
         if(tower != null && afford) {

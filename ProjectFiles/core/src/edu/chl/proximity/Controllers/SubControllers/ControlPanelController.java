@@ -20,6 +20,8 @@ import java.util.List;
  * @author Linda Evaldsson
  * @date 2015-04-17
  *
+ * A controller that controls the ControlPanels in the game
+ *
  * 29/04 modified by Linda Evaldsson. Merged this class with PropertiesPanelController (created by Hanna Romer 2015-04-23) and ButtonPanelController (created by Hanna Romer 2015-04-23).
  * 29/04 modified by Hanna Romer. Added Play and Pause Buttons to possible clicked buttons on ButtonsPanel. Removed PausePlayButton option.
  * 30/04 modified by Simon Gislen. Added ProfilePanel.
@@ -30,7 +32,7 @@ import java.util.List;
  * 13/05 Modified by Simon Gislen. Passes map to profile panel
  * 22/05 modified by Linda Evaldsson. Restructured how the controller handles clicks to make it easier to understand.
  */
-public class ControlPanelController implements ClickHandler {
+public class ControlPanelController implements ClickHandler, UpdateHandler {
 
     private ControlPanel controlPanel;
     private ButtonPanel buttonPanel;

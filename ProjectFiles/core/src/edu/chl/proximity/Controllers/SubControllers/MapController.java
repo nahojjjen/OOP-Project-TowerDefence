@@ -20,13 +20,13 @@ import java.util.List;
  * @author Linda Evaldsson
  * @date 2015-04-22
  *
- * A class for controlling clicks on the Map.
+ * A controller that controls the map in the game
  *
  * 03-05-2015 Modified by Simon Gislen. Introducing: *Towers are not free*
  *
  */
 
-public class MapController implements ClickHandler {
+public class MapController implements ClickHandler, UpdateHandler {
 
     private Background model;
     private List<BoardObject> models = new ArrayList<BoardObject>();
@@ -50,6 +50,9 @@ public class MapController implements ClickHandler {
         map.clearCollectedExperience();
         if(map.getBase().getLife() <= 0)
             ScreenChanger.changeScreen(ScreenChanger.ScreenType.GameOver);
+
+        map.clearAddStack();
+        map.clearRemoveStack();
     }
 
     @Override
@@ -58,22 +61,21 @@ public class MapController implements ClickHandler {
         if (model.containsPoint(clickedPoint)) {
 
             //Checks what item is currently picked up
-            Holdable item = map.getHand().getItem();
+            Holdable heldItem = map.getHand().getItem();
+
             //Checks if anything was clicked on the board (Ex towers)
-            BoardObject object = map.getObjectOnPosition(clickedPoint);
-            if(object instanceof Tower) {
-                map.setChosenTower((Tower) object);
-            }else if(object==null && map.getChosenTower() != null){
-                map.getHand().setItem(null);
+            BoardObject clickedObject = map.getObjectOnPosition(clickedPoint);
+
+            if(clickedObject instanceof Tower) {
+                map.setChosenTower((Tower) clickedObject);
             }
 
-            if (item != null) {
-                if(item instanceof Tower) {
-                    if (!((Tower) item).isPlaced()) {
-                        placeHandObject(item, clickedPoint);
-                    }
-                }else {
-                    placeHandObject(item, clickedPoint);
+            //If there is something in the hand and no tower was clicked on the map
+            if (heldItem != null && !(clickedObject instanceof Tower)) {
+                if(heldItem instanceof Tower && heldItem.isPlaced()) {
+                    map.setChosenTower(null);
+                } else {
+                    placeHandObject(heldItem, clickedPoint);
                 }
             }
         }
@@ -83,7 +85,6 @@ public class MapController implements ClickHandler {
         if (map.getHand().canPlayerAffordTheHand()) {
             GameData.getInstance().getPlayer().getResources().removeResources(item.getCost());
             item.preparePlacing(clickedPoint);
-
 
             map.add((BoardObject)item);
 

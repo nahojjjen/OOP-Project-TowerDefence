@@ -11,12 +11,12 @@ import edu.chl.proximity.Models.Player.Players.GameData;
 import java.util.List;
 
 /**
- * @author simongislen
- * @date 16/04/15.
+ * @author Simon Gislen
+ * @date 2015-04-16
  *
  * A controller class that handles creep spawning in waves.
  */
-public class WaveController {
+public class WaveController implements UpdateHandler {
     private StandardGenerator waveGenerator;
     private Map map;
     private int waveIndex = 1;

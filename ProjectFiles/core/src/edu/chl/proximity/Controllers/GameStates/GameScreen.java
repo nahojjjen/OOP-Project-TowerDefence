@@ -64,7 +64,7 @@ public class GameScreen implements Screen, ScreenChangerListener{
         viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         */
 
-        mainController = new MainController(map, this.viewport, g);
+        mainController = new MainController(map, this.viewport);
         gameRenderer.setControlPanels(mainController.getControlPanels());
         gameRenderer.addControlPanel(mainController.getWavePanel());
         map.setBase(player.getFaction().getNewBase(map.getPath(), map.getParticleManager()));

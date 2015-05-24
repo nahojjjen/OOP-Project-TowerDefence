@@ -344,9 +344,6 @@ public abstract class Map {
         shapeRenderer.end();
         batch.begin();
 
-
-
-
         if (towers != null){
             for (Tower tower : towers) {
                 tower.render(batch);

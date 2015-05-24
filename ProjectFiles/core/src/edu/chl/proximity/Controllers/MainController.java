@@ -1,14 +1,11 @@
 package edu.chl.proximity.Controllers;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import edu.chl.proximity.Controllers.GameStates.GameScreen;
 import edu.chl.proximity.Controllers.SubControllers.*;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.PointCalculations;
 import edu.chl.proximity.Utilities.ProximityVector;
 
@@ -38,24 +35,31 @@ public class MainController implements InputProcessor{
     private WaveController waveController;
     private MapController mapController;
     private HandController handController;
-    private List<ClickHandler> clickHandlers = new ArrayList<ClickHandler>();
+
+    private List<ClickHandler> controlPanelClickHandlers = new ArrayList<ClickHandler>();
+    private List<UpdateHandler> updateHandlers = new ArrayList<UpdateHandler>();
+
     private Map map;
     private Viewport viewport; //used for translating scaled click-position to model click position
-    private Game game;
 
 
 
-    public MainController(Map map, Viewport v, Game game) {
-        this.game = game;
+    public MainController(Map map, Viewport v) {
         this.map = map;
+        viewport=v;
+
         controlPanelController = new ControlPanelController(map);
         waveController = new WaveController(map);
         mapController = new MapController(map);
         handController = new HandController(map);
 
-        viewport=v;
-        clickHandlers.add(controlPanelController);
-        clickHandlers.add(handController);
+        controlPanelClickHandlers.add(controlPanelController);
+        controlPanelClickHandlers.add(handController);
+
+        updateHandlers.add(waveController);
+        updateHandlers.add(handController);
+        updateHandlers.add(controlPanelController);
+        updateHandlers.add(mapController);
     }
 
     public List<BoardObject> getControlPanels() {
@@ -67,13 +71,10 @@ public class MainController implements InputProcessor{
     }
 
     public void updateAllControllers() {
-        waveController.update();
-        mapController.update();
-        handController.update();
-        controlPanelController.update();
 
-        map.clearAddStack();
-        map.clearRemoveStack();
+        for(UpdateHandler handler : updateHandlers) {
+            handler.update();
+        }
 
     }
     @Override
@@ -99,7 +100,7 @@ public class MainController implements InputProcessor{
         PointCalculations.createPathTool((int) clickedPoint.x, (int) clickedPoint.y);
 
         //Runs through the clickable controllers and informs them if their models is clicked
-        for(ClickHandler controller : clickHandlers) {
+        for(ClickHandler controller : controlPanelClickHandlers) {
             controller.touchDown(clickedPoint, pointer, button);
         }
         if(!controlPanelController.modelsClicked(clickedPoint)) {
@@ -119,7 +120,7 @@ public class MainController implements InputProcessor{
     public boolean mouseMoved (int x, int y) {
         Vector2 clickedPoint2 = viewport.unproject(new Vector2(x, y));
         ProximityVector draggedPoint = new ProximityVector(clickedPoint2.x, clickedPoint2.y);
-        for(ClickHandler controller : clickHandlers) {
+        for(ClickHandler controller : controlPanelClickHandlers) {
             controller.mouseMoved(draggedPoint);
         }
         return true;
