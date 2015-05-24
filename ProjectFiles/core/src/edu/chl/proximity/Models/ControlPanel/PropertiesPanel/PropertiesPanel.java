@@ -18,29 +18,32 @@ import java.util.ArrayList;
  * 24/04 modified by Hanna Romer. Added SoundButton, MainMenuButton and Sound-bars
  * 29/04 modified by Hanna Romer. Made into singleton.
  * 01/05 modified by Hanna Romer. MainMenuButton now takes you to the mainMenu
- * 24/05 modified by Linda Evaldsson. Fixed the design of this panel.
+ * 24/05 modified by Linda Evaldsson. Fixed the design of this panel. Also fixed toggling music issue (it wasnt working properly).
+ *
  */
 public class PropertiesPanel extends BoardObject{
 
+    //The PropertiesPanel data
     private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/square.png");
     private static int width = 300;
     private static int height = 400;
-    private static ProximityVector position=new ProximityVector((Constants.GAME_WIDTH-300-width)/2f, (Constants.GAME_HEIGHT-100-height)/2f); //350, 200
-
-    private ProximityFont headline = new ProximityFont(new ProximityVector(position.x + 45, position.y + 20), "Options");
-    private ProximityVector resumePos=new ProximityVector(position.x+40,position.y + 70);
-    private ProximityVector mainMenuPos = new ProximityVector(resumePos.x, resumePos.y+80);
-    private ProximityVector soundPos = new ProximityVector(position.x + 45, mainMenuPos.y+80);
-
-    private PropertiesPanelButton resumeButton;
-    private PropertiesPanelButton mainMenuButton;
-    private SoundButton soundButton;
-
-    private ArrayList<SoundBar> bars=new ArrayList<SoundBar>();
-
-    private int backUpLevel;
+    private static ProximityVector position=new ProximityVector((Constants.GAME_WIDTH-300-width)/2f, (Constants.GAME_HEIGHT-100-height)/2f);
     private boolean isVisible=false;
     private Settings settings;
+
+    //Headline font
+    private ProximityFont headline = new ProximityFont(new ProximityVector(position.x + 45, position.y + 20), "Options");
+
+    //Button positions
+    private ProximityVector resumePos=new ProximityVector(position.x+40,position.y + 70);
+    private ProximityVector mainMenuPos = new ProximityVector(resumePos.x, resumePos.y+80);
+    private ProximityVector soundPos = new ProximityVector(mainMenuPos.x + 5, mainMenuPos.y+80);
+
+    //Buttons
+    private PropertiesPanelButton resumeButton = new PropertiesPanelButton(resumePos, "Resume");
+    private PropertiesPanelButton mainMenuButton = new PropertiesPanelButton(mainMenuPos, "Main menu");
+    private SoundButton soundButton = new SoundButton(soundPos);
+    private ArrayList<SoundBar> bars=new ArrayList<SoundBar>();
 
     /**
      * Create a new properies panel
@@ -49,15 +52,13 @@ public class PropertiesPanel extends BoardObject{
         super(position, background, 0, width, height);
         headline.setSize(40);
         this.settings = settings;
-        resumeButton = new PropertiesPanelButton(resumePos, "Resume");
-        mainMenuButton = new PropertiesPanelButton(mainMenuPos, "Main menu");
-        soundButton = new SoundButton(soundPos);
         initBars();
-        setBarsAt((int)settings.getGameVolume());
-        setSoundAt((int)settings.getGameVolume());
+        updateSoundDisplay(settings.getGameVolume());
     }
 
-
+    /**
+     * Initiates the sound bars for selecting music volume
+     */
     private void initBars(){
         ProximityVector pos=new ProximityVector(soundPos.x+50,soundPos.y+15);
         for (int n=1; n<9; n++) {
@@ -65,13 +66,20 @@ public class PropertiesPanel extends BoardObject{
         }
     }
 
-
+    /**
+     * Visually sets the bars at the correct volume level taken as parameter
+     * @param level The new volume level
+     */
     private void setBarsAt(int level){
         setBarsEmpty();
         for(int n=0;n<level;n++){
             bars.get(n).setFilled();
         }
     }
+
+    /**
+     * Clear all bars
+     */
     private void setBarsEmpty(){
         for(SoundBar bar:bars){
             bar.setEmpty();
@@ -80,7 +88,7 @@ public class PropertiesPanel extends BoardObject{
 
     /**
      * Set whether or not the panel should be visible
-     * @param isVisible true if it should be visible, flase otherwise
+     * @param isVisible true if it should be visible, false otherwise
      */
     public void setVisibility(boolean isVisible){
         this.isVisible=isVisible;
@@ -95,8 +103,8 @@ public class PropertiesPanel extends BoardObject{
     }
 
     /**
-     * Set the sound at a specified level from 0 to 4
-     * @param level What level the sound is to be set at
+     * Set the sound at a specified level
+     * @param level What volume level the sound is to be set at
      */
     public void setSoundAt(int level){
         settings.setGameVolume(level);
@@ -144,8 +152,8 @@ public class PropertiesPanel extends BoardObject{
     }
 
     public void pressedBar(int level){
-        setBarsAt(level);
         setSoundAt(level);
+        updateSoundDisplay(level);
     }
 
     /**
@@ -153,7 +161,7 @@ public class PropertiesPanel extends BoardObject{
      */
     public void pressedResumeButton(){
         setVisibility(false);
-        GameData.getInstance().getPlayer().getSettings().setGameSpeed(1);
+        GameData.getInstance().getPlayer().getSettings().togglePause();
     }
 
     /**
@@ -167,18 +175,29 @@ public class PropertiesPanel extends BoardObject{
      * Called if Sound on/off button is pressed. Mutes/turns on sound
      */
     public void pressedSoundButton(){
-        if(GameData.getInstance().getPlayer().getSettings().getGameVolume()>0){
-            setSoundAt(0);
-            setBarsAt(0);
-            soundButton.setSoundOff();
-        }else{
-            setSoundAt(backUpLevel);
-            setBarsAt(backUpLevel);
-            soundButton.setSoundOn();
-        }
-
+        Settings settings = GameData.getInstance().getPlayer().getSettings();
+        settings.toggleSound();
+        updateSoundDisplay(settings.getGameVolume());
     }
 
+    /**
+     * Visually updates the soundbars and the SoundButton to a volume
+     * @param volume the new music volume
+     */
+    private void updateSoundDisplay(int volume) {
+        setBarsAt(volume);
+        if(volume > 0) {
+            soundButton.setSoundOn();
+        } else {
+            soundButton.setSoundOff();
+        }
+    }
+
+    /**
+     * Returns whether the PropertiesPanel contains the point and is visible
+     * @param point The point that is to be checked
+     * @return Whether the point is within the PropertiesPanel and the panel is visible
+     */
     public boolean containsPoint(ProximityVector point) {
         return isVisible && super.containsPoint(point);
     }
