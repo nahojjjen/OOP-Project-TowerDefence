@@ -21,6 +21,7 @@ import java.util.List;
  * 12/05 modified by Linda Evaldsson. Removed Map, added remove/add-methods instead.
  * 13/05 Modified by Simon Gislen. Crash fixes that occur under tests.
  * 20/05 modified by Linda Evaldsson. Removed isPointInObject from containsObject-method and added the actual code instead.
+ * 24/05 modified by Johan Swanberg. minor fixes for some nullpointer / clone errors shown by unit testing
 >*/
 public abstract class BoardObject implements Cloneable {
 
@@ -99,6 +100,8 @@ public abstract class BoardObject implements Cloneable {
     public void setImage(edu.chl.proximity.Models.Utils.Image img) {
         this.image = img;
     }
+
+    public void setAddList(List list){this.addList = list;}
 
     public double getAngle() {
         return angle;
@@ -197,7 +200,9 @@ public abstract class BoardObject implements Cloneable {
         if (image != null){
             clone.setImage((edu.chl.proximity.Models.Utils.Image)image.clone());
         }
-
+        if (addList != null){
+            clone.setAddList(new ArrayList<>());
+        }
         return clone;
     }
 

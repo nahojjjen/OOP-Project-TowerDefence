@@ -40,7 +40,10 @@ public class BulletTower extends ShootingTower implements Cloneable {
 
     @Override
     public Projectile createProjectile() {
-        return new Bullet(getCenter(), PointCalculations.getVectorAngle(getPosition(),getTarget().getPosition()), getTarget(), getParticleManager());
+        if (getTarget() != null){
+            return new Bullet(getCenter(), PointCalculations.getVectorAngle(getPosition(),getTarget().getPosition()), getTarget(), getParticleManager());
+        }
+        return null;
     }
 
     @Override

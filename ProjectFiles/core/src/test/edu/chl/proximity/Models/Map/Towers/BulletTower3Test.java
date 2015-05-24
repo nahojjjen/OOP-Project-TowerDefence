@@ -56,7 +56,7 @@ public class BulletTower3Test {
         test.shoot(list);
 
         test.setCenter(new ProximityVector(1,1));
-        for (int i = 0; i<1000; i++){
+        for (int i = 0; i<100; i++){
             test.shoot(list);
         }
 

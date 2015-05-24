@@ -9,6 +9,7 @@ import edu.chl.proximity.Models.Holdables.Holdable;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -68,6 +69,8 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
      * @return the upgraded version of this
      */
     public abstract Tower getNewUpgrade();
+
+
 
     public Tower getUpgrade(){
         if(upgrade == null) {
