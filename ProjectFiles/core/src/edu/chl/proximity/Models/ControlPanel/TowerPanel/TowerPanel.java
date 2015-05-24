@@ -142,16 +142,19 @@ public class TowerPanel extends BoardObject{
     }
 
     private void pressedUpgrade(){
-
-        if(map.getChosenTower() != null && afford) {
-            Tower upgrade=map.getChosenTower().getUpgrade();
+        Tower tower = map.getChosenTower();
+        if(tower != null && afford) {
+            Tower upgrade = tower.getUpgrade();
             if(upgrade != null) {
-                upgrade.setPosition(map.getChosenTower().getPosition());
-                upgrade.setAsPlaced(true);
-                if (upgrade instanceof TargetingTower && map.getChosenTower() instanceof TargetingTower) {
-                    ((TargetingTower) upgrade).setTargetingMethod(((TargetingTower) map.getChosenTower()).getTargetingMethod());
+                GameData.getInstance().getPlayer().getResources().removeResources(upgrade.getCost());
+                if (upgrade instanceof TargetingTower && tower instanceof TargetingTower) {
+                    ((TargetingTower) upgrade).setTargetingMethod(((TargetingTower) tower).getTargetingMethod());
                 }
-                map.getChosenTower().remove();
+
+                upgrade.setPosition(tower.getPosition());
+                upgrade.setAsPlaced(true);
+
+                tower.remove();
                 map.add(upgrade);
                 map.setChosenTower(upgrade);
             }
@@ -159,10 +162,6 @@ public class TowerPanel extends BoardObject{
     }
 
     private void pressedSell(){
-        Double p=new Double(map.getChosenTower().getCost().getPoints()/2f);
-        Double l=new Double(map.getChosenTower().getCost().getLines()/2f);
-        Double poly=new Double(map.getChosenTower().getCost().getPolygons()/2f);
-        GameData.getInstance().getPlayer().getResources().addResources(new Resources(p.intValue(),l.intValue(),poly.intValue()));
         map.getChosenTower().remove();
         map.setChosenTower(null);
     }
