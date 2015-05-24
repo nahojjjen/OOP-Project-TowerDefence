@@ -12,7 +12,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
- * @author Hanna Römer
+ * @author Hanna Romer
  * @date 2015-05-19
  */
 public class PlayerTest {
@@ -48,11 +48,10 @@ public class PlayerTest {
         p.addExperiencePoints(-535);
         assertTrue(p.getExperience() == e - 535);
 
-        /*
+
         e=p.getExperience();
         p.addExperiencePoints(Integer.MAX_VALUE);
         assertTrue(p.getExperience()== e + Integer.MAX_VALUE);
-        */
 
     }
 

@@ -24,41 +24,36 @@ public class MainMenuTest {
 
     @Test
     public void testGetButtonOnPositionReturnsRightButtonOnClick(){
-        Proximity g = new Proximity();
         Player p=new Player(new Planes());
         GameData.getInstance().setPlayer(p);
 
         MainMenu m = new MainMenu(new ParticleManager(new Settings()));
 
-        assertTrue(m.getButtonOnPosition(new ProximityVector(500,450)) instanceof StartButton);
-        System.out.println(Constants.GAME_HEIGHT-240);
-        /*
-        Double startX=new Double(Constants.GAME_WIDTH/2-150); //X-pos of startbutton. Y-pos is 440.
-        StartButton button=new StartButton(new ProximityVector(0,0));
-        assertTrue(m.pressedPosition(new ProximityVector(startX.intValue(),440)) instanceof StartButton); //Checking upper left corner
-        assertTrue(m.pressedPosition(new ProximityVector(startX.intValue()+button.getWidth(),440)) instanceof StartButton); //Upper right corner
-        assertTrue(m.pressedPosition(new ProximityVector(startX.intValue(),440+button.getHeight())) instanceof StartButton);//Lower left corner
-        assertTrue(m.pressedPosition(new ProximityVector(startX.intValue() + button.getWidth()440+button.getHeight())) instanceof StartButton); //Lower right corner
+        assertTrue(m.getButtonOnPosition(new ProximityVector(500, 450)) instanceof StartButton);
+        assertTrue(m.getButtonOnPosition(new ProximityVector(10,500)) instanceof FactionChooser);
 
-        int fcY=Constants.GAME_HEIGHT-240; //Y-pos of FactionChooser. X-pos is 0;
-        FactionChooser fc=new FactionChooser();
-        assertTrue(m.pressedPosition(new ProximityVector(0,fcY)) instanceof FactionChooser); //Checking upper left corner.
-        assertTrue();
-        */
+        for(int x=0; x<=Constants.GAME_WIDTH; x++){
+            for(int y=0; y<=Constants.GAME_WIDTH; y++){
+                ProximityVector pos=new ProximityVector(x,y);
+                if(!(m.getButtonOnPosition(pos) instanceof StartButton || m.getButtonOnPosition(pos) instanceof FactionChooser)){
+                    assertTrue(m.getButtonOnPosition(pos) instanceof MapSelect);
+                }
+            }
+        }
+
+        assertTrue(m.getButtonOnPosition(new ProximityVector(Integer.MAX_VALUE,Integer.MAX_VALUE)) instanceof MapSelect);
+        assertTrue(m.getButtonOnPosition(new ProximityVector(Integer.MIN_VALUE,Integer.MIN_VALUE)) instanceof MapSelect);
+        assertTrue(m.getButtonOnPosition(null) instanceof MapSelect);
     }
 
     @Test
-    public void testPressedStart(){
-
-    }
-
-    @Test
-    public void testPressedFactionChooser(){
-
-    }
-
-    @Test
-    public void testPressedMap(){
+    public void testPressedStartStartsGame(){
+        Player p=new Player(new Planes());
+        GameData.getInstance().setPlayer(p);
+        MainMenu m = new MainMenu(new ParticleManager(new Settings()));
+        m.pressedStart();
+        assertTrue(p.getFaction()!=null);
+        assertTrue(p.getResources()!=null);
 
     }
 

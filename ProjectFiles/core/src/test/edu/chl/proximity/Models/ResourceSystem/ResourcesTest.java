@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 
 /**
- * @author Hanna Römer
+ * @author Hanna Romer
  * @date 2015-05-19
  */
 public class ResourcesTest {

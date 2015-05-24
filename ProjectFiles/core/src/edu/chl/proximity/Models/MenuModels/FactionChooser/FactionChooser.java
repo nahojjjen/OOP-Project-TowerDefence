@@ -75,10 +75,12 @@ public class FactionChooser extends BoardObject{
     }
 
     public void pressed(ProximityVector pos){
-        if(next.containsPoint(pos)){
-            pressedNext();
-        }else if(prev.containsPoint(pos)){
-            pressedPrevious();
+        if(pos!=null) {
+            if (next.containsPoint(pos)) {
+                pressedNext();
+            } else if (prev.containsPoint(pos)) {
+                pressedPrevious();
+            }
         }
     }
 

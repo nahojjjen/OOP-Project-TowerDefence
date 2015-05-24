@@ -44,8 +44,6 @@ public class MainMenu {
 
     }
 
-
-
     public BoardObject getButtonOnPosition(ProximityVector position){
         if(startButton.containsPoint(position)) {
             return startButton;
@@ -68,7 +66,6 @@ public class MainMenu {
         return map;
     }
 
-
     public void pressedFactionChooser(ProximityVector pos){
         factionChooser.pressed(pos);
     }
@@ -76,7 +73,6 @@ public class MainMenu {
     public void pressedMap(ProximityVector pos){mapSelect.pressed(pos);}
 
     public void render(ProximityBatch batch){
-
         batch.render(background, new ProximityVector(0,0), 0);
         startButton.render(batch);
         factionChooser.render(batch);

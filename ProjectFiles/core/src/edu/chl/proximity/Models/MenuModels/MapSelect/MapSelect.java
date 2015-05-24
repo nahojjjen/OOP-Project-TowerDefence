@@ -20,6 +20,7 @@ import java.util.List;
  * A class that manages the group of MapSelectIcons on the main menu.
  *
  * 08/05 modified by Hanna Romer. Removed mapName.
+ * 24/05 modified by Hanna Romer. Added nullcheckers
  */
 public class MapSelect extends BoardObject{
     private static ProximityVector pos=new ProximityVector(0,0);
@@ -83,20 +84,24 @@ public class MapSelect extends BoardObject{
     }
 
     public void pressed(ProximityVector pos){
-        for(int i=0;i<maps.size();i++){
-            if(maps.get(i).containsPoint(pos)){
-                mapClicked(maps.get(i),i);
+        if(pos!=null) {
+            for (int i = 0; i < maps.size(); i++) {
+                if (maps.get(i).containsPoint(pos)) {
+                    mapClicked(i);
+                }
             }
         }
     }
 
-    public void mapClicked(MapSelectIcon map, int index){
-        if (GameData.getInstance().getPlayer().hasPlayerWonPreviousMap(map.getMap())){
-            maps.get(selected).setAsSelectable();
-            maps.get(index).setAsSelected();
-            selected=index;
+    public void mapClicked(int index){
+        if(index>=0 && index<maps.size()) {
+            MapSelectIcon map = maps.get(index);
+            if (GameData.getInstance().getPlayer().hasPlayerWonPreviousMap(map.getMap())) {
+                maps.get(selected).setAsSelectable();
+                maps.get(index).setAsSelected();
+                selected = index;
+            }
         }
-
     }
 
     public void render(ProximityBatch batch){
