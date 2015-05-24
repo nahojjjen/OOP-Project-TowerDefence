@@ -43,7 +43,9 @@ public class BloodCarnage extends Spell {
         for (Creep creep : creeps) {
             if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getPosition()) < range * range) {
                 creep.devolve();
-               getParticleManager().getBloodCarnageCreepEffect().createEffect(creep.getCenter());
+                if (getParticleManager() != null) {
+                    getParticleManager().getBloodCarnageCreepEffect().createEffect(creep.getCenter());
+                }
             }
         }
     }
@@ -51,7 +53,9 @@ public class BloodCarnage extends Spell {
 
     @Override
     public void playParticleEffect() {
-        getParticleManager().getBloodCarnageEffect().createEffect(getPosition());
+        if (getParticleManager() != null) {
+            getParticleManager().getBloodCarnageEffect().createEffect(getPosition());
+        }
     }
 
     @Override

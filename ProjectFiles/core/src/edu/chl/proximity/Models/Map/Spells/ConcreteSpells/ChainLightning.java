@@ -62,7 +62,8 @@ public class ChainLightning extends Spell {
 
     @Override
     public void playParticleEffect() {
-        getParticleManager().getLightningOriginSpellEffect().createEffect(getPosition()); //create original lightning effect
+        if (getParticleManager() != null)
+            getParticleManager().getLightningOriginSpellEffect().createEffect(getPosition()); //create original lightning effect
     }
     @Override
     public double getRange() {

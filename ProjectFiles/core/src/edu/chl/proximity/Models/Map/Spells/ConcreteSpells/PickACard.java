@@ -97,14 +97,17 @@ public class PickACard extends Spell {
 
 
     public void playParticleEffect() {
-        switch (effect) {
-            case 0:
-                getParticleManager().getLightningOriginSpellEffect().createEffect(getPosition());
-                break;
-            case 1:
-                getParticleManager().getFireFieldEffect().createEffect(getPosition());
-                break;
-            default: break;
+        if (getParticleManager() != null) {
+            switch (effect) {
+                case 0:
+                    getParticleManager().getLightningOriginSpellEffect().createEffect(getPosition());
+                    break;
+                case 1:
+                    getParticleManager().getFireFieldEffect().createEffect(getPosition());
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

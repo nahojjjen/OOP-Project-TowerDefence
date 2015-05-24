@@ -40,8 +40,10 @@ public class Sacrifice extends Spell {
     }
 
     public void playParticleEffect(){
-        getParticleManager().getBloodCarnageCreepEffect().createEffect(getPosition());
-        getParticleManager().getSacrificeEffect().createEffect(getPosition());
+        if (getParticleManager() != null) {
+            getParticleManager().getBloodCarnageCreepEffect().createEffect(getPosition());
+            getParticleManager().getSacrificeEffect().createEffect(getPosition());
+        }
     }
     public double getRange(){
         return range;

@@ -49,7 +49,8 @@ public class CoinFlip extends Spell{
 
 
     public void playParticleEffect() {
-        getParticleManager().getFireFieldEffect().createEffect(getPosition());
+        if (getParticleManager() != null)
+            getParticleManager().getFireFieldEffect().createEffect(getPosition());
     }
 
     public double getRange() {

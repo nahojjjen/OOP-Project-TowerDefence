@@ -47,7 +47,8 @@ public class FireField extends Spell {
 
     @Override
     public void playParticleEffect() {
-        getParticleManager().getFireFieldEffect().createEffect(getPosition());
+        if (getParticleManager() != null)
+            getParticleManager().getFireFieldEffect().createEffect(getPosition());
     }
     @Override
     public double getRange() {

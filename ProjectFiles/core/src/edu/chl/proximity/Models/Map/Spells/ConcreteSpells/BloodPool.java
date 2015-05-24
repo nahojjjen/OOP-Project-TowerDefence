@@ -57,7 +57,9 @@ public class BloodPool extends Spell {
 
     @Override
     public void playParticleEffect() {
-        getParticleManager().getBloodPoolEffect().createEffect(getPosition());
+        if (getParticleManager() != null) {
+            getParticleManager().getBloodPoolEffect().createEffect(getPosition());
+        }
     }
 
     @Override

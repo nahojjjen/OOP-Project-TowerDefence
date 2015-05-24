@@ -47,4 +47,11 @@ public abstract class PersistentObject extends BoardObject {
         started = true;
     }
     public abstract void performEffect(int counter);
+
+    public int getCounter() {
+        return counter;
+    }
+    public boolean isStarted() {
+        return started;
+    }
 }

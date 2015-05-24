@@ -51,7 +51,8 @@ public class WallOfStone extends Spell {
 
     @Override
     public void playParticleEffect() {
-        getParticleManager().getWallOfStone().createEffect(getPosition());
+        if (getParticleManager() != null)
+            getParticleManager().getWallOfStone().createEffect(getPosition());
     }
     @Override
     public double getRange() {

@@ -5,13 +5,18 @@ import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.ConcretePaths.FirstPath;
 import edu.chl.proximity.Models.Map.Paths.Path;
-import edu.chl.proximity.Models.Map.Spells.ConcreteSpells.BloodCarnage;
+import edu.chl.proximity.Models.Map.Spells.ConcreteSpells.*;
 import edu.chl.proximity.Models.Map.Spells.Spell;
+import edu.chl.proximity.Models.Map.Towers.BulletTower;
+import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Utilities.ProximityVector;
 import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author simongislen.
@@ -21,19 +26,37 @@ import java.util.List;
  * A Test class for Spell.
  * Blood Carnage is used for testing here. Not optimal since the bug could be in subclass
  */
-public class SpellTest extends TestCase {
+public class SpellTest {
 
     private Path path = new FirstPath();
     private ParticleManager particleManager = null;
 
-    @Override
-    public void setUp() throws Exception {
-        super.setUp();
+    @Test
+    public void testAllSpells() throws Exception {
+        testSpell(new BloodCarnage(null));
+        testSpell(new BloodPool(null));
+        testSpell(new BloodSipper(null));
+        testSpell(new ChainLightning(null));
+        testSpell(new CoinFlip(null));
+        testSpell(new FireField(null));
+        testSpell(new FrostField(null));
+        testSpell(new LifeGamble(null));
+        testSpell(new PickACard(null));
+        testSpell(new Sacrifice(null));
+        testSpell(new SpeedGamble(null));
+        testSpell(new WallOfStone(null));
     }
 
-    public void testSetHealthChange() throws Exception {
+    private void testSpell(Spell spell) throws Exception{
+        testSetHealthChange(spell);
+        testPreparePlacing(spell);
+        testGetCreepsWithinDistance(spell);
+        testGetTowersWithinDistance(spell);
+        testIsReadyToCast(spell);
+    }
 
-        Spell spell = new BloodCarnage(null);
+    public void testSetHealthChange(Spell spell) throws Exception {
+
         spell.setHealthChange(1);
         assertTrue(spell.getHealthChange() == 1);
 
@@ -45,70 +68,90 @@ public class SpellTest extends TestCase {
         assertTrue(spell.getHealthChange() == 10000);
     }
 
+    @Test
     public void testGetHealthChange() throws Exception {
         //NA. Tested in method above
     }
 
-    public void testPreparePlacing() throws Exception {
-        //Spell spell = new BloodCarnage(particleManager);
-        //ProximityVector pos = new ProximityVector(5,5);
-        //spell.preparePlacing(pos);
-
-        //assertTrue(spell.getPosition().equals(pos));
+    public void testPreparePlacing(Spell spell) {
+        spell.preparePlacing(new ProximityVector(100, 100));
+        assertTrue(spell.getPosition().x == 100);
+        assertTrue(spell.isPlaced());
     }
 
-    public void testGetCreepsWithinDistance() throws Exception {
+    public void testGetCreepsWithinDistance(Spell spell) throws Exception {
 
         List<Creep> creeps = new ArrayList<Creep>();
         Creep creep = new Line1(1, null, path);
+        creep.setPosition(new ProximityVector(10, 10));
         creeps.add(creep);
-        creep = new Line1(1, null, path);
-        creeps.add(creep);
-        creep = new Line1(1, null, path);
-        creeps.add(creep);
-
-        Spell spell = new BloodCarnage(null);
         spell.setCreeps(creeps);
 
         ProximityVector pos = new ProximityVector(5,5);
-        int range = 60;
+        int range = 50;
 
+        //Expected 1
         List<Creep> creepList = spell.getCreepsWithinDistance(pos, range);
-        //assertTrue(creepList.size() > 0);
-    }
+        assertTrue(creepList.size() == 1);
 
-    public void testGetTowersWithinDistance() throws Exception {
+        creep = new Line1(1, null, path);
+        creep.setPosition(new ProximityVector(100, 100));
+        creeps.add(creep);
+        spell.setCreeps(creeps);
+        //Still expected one.
+        creepList = spell.getCreepsWithinDistance(pos, range);
+        assertTrue(creepList.size() == 1);
 
-    }
-
-    public void testResetCooldown() throws Exception {
-
-    }
-
-    public void testUpdateCooldown() throws Exception {
-
-    }
-
-    public void testGetCooldownPercent() throws Exception {
+        //Expected 0.
+        creepList = spell.getCreepsWithinDistance(null, range);
+        assertTrue(creepList.size() == 0);
 
     }
 
-    public void testIsReadyToCast() throws Exception {
+    public void testGetTowersWithinDistance(Spell spell) throws Exception {
+
+        List<Tower> towers = new ArrayList<Tower>();
+        Tower tower = new BulletTower(new ProximityVector(10, 10), null, null);
+        towers.add(tower);
+        spell.setTowers(towers);
+
+        ProximityVector pos = new ProximityVector(5,5);
+        int range = 50;
+
+        //Expected 1
+        List<Tower> towerList = spell.getTowersWithinDistance(pos, range);
+        assertTrue(towerList.size() == 1);
+
+        tower = new BulletTower(new ProximityVector(100, 100), null, null);
+        towers.add(tower);
+        spell.setTowers(towers);
+        //Still expected one.
+        towerList = spell.getTowersWithinDistance(pos, range);
+        assertTrue(towerList.size() == 1);
+
+        //Expected 0.
+        towerList = spell.getTowersWithinDistance(null, range);
+        assertTrue(towerList.size() == 0);
+    }
+
+    public void testIsReadyToCast(Spell spell) throws Exception {
+        //TODO: fix spell.isReadyToCast test
+        //boolean ready = spell.isReadyToCast();
+        //assertTrue(ready);
 
     }
 
-    public void testStartCooldown() throws Exception {
-
-    }
-
+    @Test
     public void testPlayParticleEffect() throws Exception {
+        //Cant test this
+    }
+
+    public void testGetRange(Spell spell) throws Exception {
+        assertTrue(spell.getRange() > 0);
 
     }
 
-    public void testGetRange() throws Exception {
-
-    }
-
+    //I don't consider the methods below to have much test value.
     public void testGetControlPanelImage() throws Exception {
 
     }

@@ -44,7 +44,8 @@ public class FrostField extends Spell {
 
     @Override
     public void playParticleEffect() {
-        getParticleManager().getFrostField().createEffect(getPosition());
+        if (getParticleManager() != null)
+            getParticleManager().getFrostField().createEffect(getPosition());
     }
     @Override
     public double getRange() {
