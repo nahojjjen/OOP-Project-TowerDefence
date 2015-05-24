@@ -16,9 +16,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
 public class SniperBullet extends Projectile {
     private static Image img = new Image(Constants.FILE_PATH + "Projectiles/bullet.png");
     private static ProximitySound sound = new ProximitySound(Constants.FILE_PATH + "Sounds/poof.ogg");
-    private static int health = 1;
-    private static final int level2Health = 3;
-    private static final int level3Health = 8;
+    private static int baseHealth = 1;
 
     private static int speed = 30;
     /**
@@ -30,15 +28,9 @@ public class SniperBullet extends Projectile {
      */
     public SniperBullet(ProximityVector position, double angle, Creep target, ParticleManager particleManager) {
         //Arguments: ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, ProximityVector position, double angle, Creep target
-        super(particleManager.getBulletEffect(), health, speed, sound, img, position, angle);
+        super(particleManager.getBulletEffect(), baseHealth, speed, sound, img, position, angle);
     }
 
-    public void setToBullet2(){
-        this.health = level2Health;
-    }
-    public void setToBullet3(){
-        this.health = level2Health;
-    }
     @Override
     public void reAngle() { //bullets keep their angle
     }

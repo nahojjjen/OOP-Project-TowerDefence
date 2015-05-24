@@ -3,6 +3,7 @@ package edu.chl.proximity.Models.Map.Spells;
 import com.badlogic.gdx.graphics.Color;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
+import edu.chl.proximity.Models.Map.Spells.ConcreteSpells.Cooldown;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Utilities.PointCalculations;
@@ -22,6 +23,7 @@ import java.util.List;
  * 07/05 modified by Linda Evaldsson. Spell has a control panel Image.
  * 15/5 modified by johan, spells now have a cooldown pattern
  * 18/05 modified by Linda Evaldsson. Removed Map and added towers and creep-lists instead.
+ * 24/05 modified by Linda Evaldsson. Removed spell cooldown implementation, moved it to Cooldown class instead.
  */
 public abstract class Spell extends PersistentObject implements Holdable {
 
@@ -33,12 +35,25 @@ public abstract class Spell extends PersistentObject implements Holdable {
     private Resources resourcesChange=new Resources(0,0,0);
     private Resources cost = new Resources(0, 0, 0);
     private boolean isPlaced = false;
+    private boolean isReady = false;
+    private Cooldown cooldown;
 
-    public Spell(Image icon, int counter, ParticleManager particleManager) {
+    public Spell(Image icon, int counter, Cooldown cooldown, ParticleManager particleManager) {
         super(null, null, counter);
+        this.cooldown = cooldown;
         controlPanelImage = icon;
         this.particleManager = particleManager;
 
+    }
+
+
+
+    public boolean isReadyToCast() {
+        return cooldown.isReady();
+    }
+
+    public Cooldown getCooldown() {
+        return cooldown;
     }
 
     public void setHealthChange(int newHealthChange) {
@@ -51,7 +66,7 @@ public abstract class Spell extends PersistentObject implements Holdable {
     @Override
     public void preparePlacing(ProximityVector position) {
         if (isReadyToCast()){
-            startCooldown();
+            cooldown.startCooldown();
             this.setPosition(position);
             this.start();
             playParticleEffect(); //important that this is after setPosition
@@ -91,13 +106,10 @@ public abstract class Spell extends PersistentObject implements Holdable {
         return towersInRange;
     }
 
-public abstract void resetCooldown();
-public abstract void updateCooldown();
-    public abstract int getCooldownPercent();
-    public abstract boolean isReadyToCast();
-    public abstract void startCooldown();
     public abstract void playParticleEffect();
     public abstract double getRange();
+
+    public void unPlace() {isPlaced = false; }
 
     public Image getControlPanelImage() {
         return controlPanelImage;

@@ -35,10 +35,11 @@ public abstract class Faction {
      */
     public abstract Base getNewBase(Path path, ParticleManager particleManager);
 
-    public void resetSpellCooldowns(){
+    public void resetSpellCooldowns() {
+        /*
         for (Spell spell:spells){
             spell.resetCooldown();
-        }
+        }*/
     }
     public abstract void configureSpells(ParticleManager particleManager);
 

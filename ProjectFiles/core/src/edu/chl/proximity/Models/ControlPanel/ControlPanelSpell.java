@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.ControlPanel;
 
 
+import edu.chl.proximity.Models.Map.Spells.ConcreteSpells.Cooldown;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Spells.Spell;
@@ -9,16 +10,31 @@ import edu.chl.proximity.Models.Map.Spells.Spell;
  * @author Linda Evaldsson
  * @date 2015-05-07
  * ControlPanelSpell is a class that can display Spell
+ *
+ * 24/05 modified by Linda Evaldsson. This class can now handle a little bit more of cooldowns through the Cooldown class.
  */
 public class ControlPanelSpell extends BoardObject {
 
     Spell spell;
 
+    private Cooldown cooldown;
+
     public ControlPanelSpell(ProximityVector position, Spell spell) {
         super(position, spell.getControlPanelImage(), 0);
 
         this.spell = spell;
+        cooldown = spell.getCooldown();
         spell.setPosition(position);
+    }
+    public int getCooldownPercent() {
+        return cooldown.getCooldownPercent();
+    }
+
+
+    public void updateCooldown() {
+
+        cooldown.update();
+
     }
 
     /**
@@ -26,10 +42,11 @@ public class ControlPanelSpell extends BoardObject {
      * @return a copy of tower
      */
     public Spell getSpell(){
+
         try {
             return (Spell)spell.clone();
-        } catch (CloneNotSupportedException e){
-            System.out.println("ControlPanelSpell: Error, Clone not supported");
+        } catch (CloneNotSupportedException e) {
+            System.out.println("Clone not supported when placing item: " + e);
         }
         return null;
     }

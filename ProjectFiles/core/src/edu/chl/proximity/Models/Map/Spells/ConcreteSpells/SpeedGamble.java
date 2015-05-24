@@ -13,6 +13,8 @@ import java.util.List;
 /**
  * @author Hanna Romer
  * @date 2015-05-22
+ *
+ * 24/05 modified by Linda Evaldsson. Removed spell cooldown implementation, moved it to Cooldown class instead.
  */
 public class SpeedGamble extends Spell{
     private static double range = 100f;
@@ -23,7 +25,7 @@ public class SpeedGamble extends Spell{
     private int effect;
 
     public SpeedGamble(ParticleManager particleManager) {
-        super(image, duration, particleManager);
+        super(image, duration, new Cooldown(maxCooldown), particleManager);
 
     }
 
@@ -55,30 +57,6 @@ public class SpeedGamble extends Spell{
         }
     }
 
-    @Override
-    public void updateCooldown() {
-        if (currentCooldown > 0) currentCooldown--;
-    }
-
-    @Override
-    public int getCooldownPercent() {
-        return 100 - ((currentCooldown * 100) / maxCooldown);
-    }
-
-    @Override
-    public void startCooldown() {
-        currentCooldown = maxCooldown;
-    }
-
-    @Override
-    public boolean isReadyToCast() {
-        return (currentCooldown <= 0);
-    }
-
-    @Override
-    public void resetCooldown() {
-        currentCooldown = 0;
-    }
 
     public void playParticleEffect() {
         getParticleManager().getFireFieldEffect().createEffect(getPosition());

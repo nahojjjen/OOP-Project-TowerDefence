@@ -6,6 +6,7 @@ import edu.chl.proximity.Models.Map.Spells.Spell;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
  * A spell which creates a circle where all creeps inside gets devolved 1 step, and gives the base 1 more health for each devolved creep
@@ -18,6 +19,7 @@ import edu.chl.proximity.Utilities.PointCalculations;
  * 03-05-2015 Modified by Simon Gislen. Spells have range.
  * 15/5 modified by johan, spells now have a cooldown pattern
  * 18/05 modified by Linda Evaldsson. Removed Map.
+ * 24/05 modified by Linda Evaldsson. Removed spell cooldown implementation, moved it to Cooldown class instead.
  */
 public class BloodPool extends Spell {
 
@@ -25,12 +27,10 @@ public class BloodPool extends Spell {
     private static double range = 120f;
     private static int duration = 1;
     private static Image image = new Image(Constants.FILE_PATH + "Spells/bloodpool.png");
-    private static  int maxCooldown = 30;
-    private static int currentCooldown = 0;
-    private static final int baseCooldown = 30;
+    private static int maxCooldown = 30;
 
     public BloodPool(ParticleManager particleManager) {
-        super(image, duration, particleManager);
+        super(image, duration, new Cooldown(maxCooldown), particleManager);
     }
 
     @Override
@@ -47,36 +47,14 @@ public class BloodPool extends Spell {
 
             fixCustomCooldownLogic(hitCreeps);
         }
+
     }
 
     private void fixCustomCooldownLogic(int hitCreeps){
-        currentCooldown += 30*hitCreeps; //plus base cooldown because that method gets called
-        maxCooldown = currentCooldown;
-    }
-    @Override
-    public void updateCooldown() {
-        if (currentCooldown>0)currentCooldown--;
+        getCooldown().setMaxCooldown(maxCooldown*(hitCreeps+1));
     }
 
-    @Override
-    public int getCooldownPercent() {
-        return 100-((currentCooldown*100) / maxCooldown);
-    }
 
-    @Override
-    public void startCooldown() {
-        currentCooldown = baseCooldown;
-    }
-
-    @Override
-    public boolean isReadyToCast() {
-        return (currentCooldown<= 0);
-    }
-
-    @Override
-    public void resetCooldown() {
-        currentCooldown =0;
-    }
     @Override
     public void playParticleEffect() {
         getParticleManager().getBloodPoolEffect().createEffect(getPosition());

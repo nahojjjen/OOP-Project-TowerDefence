@@ -48,9 +48,9 @@ public class MainController implements InputProcessor{
     public MainController(Map map, Viewport v, Game game) {
         this.game = game;
         this.map = map;
-        controlPanelController = new ControlPanelController(map, game,viewport);
+        controlPanelController = new ControlPanelController(map);
         waveController = new WaveController(map);
-        mapController = new MapController(map, game, v);
+        mapController = new MapController(map);
         handController = new HandController(map);
 
         viewport=v;

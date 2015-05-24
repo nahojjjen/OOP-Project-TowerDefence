@@ -43,6 +43,7 @@ public class ControlPanelTower extends BoardObject{
      * @return a copy of tower
      */
     public Tower getTower(){
+
         try {
             return (Tower)tower.clone();
         } catch (CloneNotSupportedException e){

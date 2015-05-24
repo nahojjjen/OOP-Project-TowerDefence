@@ -46,6 +46,10 @@ public abstract class Projectile extends BoardObject implements Cloneable{
         this.sound=sound;
     }
 
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
     public void setRange(double newRange) {
         range = newRange;
     }

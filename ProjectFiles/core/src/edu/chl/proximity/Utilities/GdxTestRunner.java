@@ -32,7 +32,7 @@ public class GdxTestRunner extends BlockJUnit4ClassRunner implements Application
         final HeadlessApplicationConfiguration config = new HeadlessApplicationConfiguration();
         config.renderInterval = 1f/60; // Likely want 1f/60 for 60 fps
         //new HeadlessApplication(new Proximity(), config); //Removed since this class is unused to remove reference to Proximity
-        Gdx.gl = mock(GL20.class); // my improvement
+        //Gdx.gl = mock(GL20.class); // my improvement //Removed since this class is unused and find bugs doesnt like this.
     }
 
     @Override

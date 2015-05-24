@@ -76,7 +76,7 @@ public class SpellPanel extends BoardObject {
      */
     private void updateCooldownIndicators(){
         for(ControlPanelSpell cpSpell : controlPanelSpellList) {
-            spellCooldownBars.get(cpSpell).setPercent((int) cpSpell.getSpell().getCooldownPercent());
+            spellCooldownBars.get(cpSpell).setPercent((int) cpSpell.getCooldownPercent());
         }
     }
 
@@ -85,7 +85,7 @@ public class SpellPanel extends BoardObject {
      */
     private void updateSpellCooldowns(){
         for(ControlPanelSpell cpSpell : controlPanelSpellList) {
-            cpSpell.getSpell().updateCooldown();
+            cpSpell.updateCooldown();
         }
     }
 

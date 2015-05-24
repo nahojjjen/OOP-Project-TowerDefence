@@ -130,7 +130,7 @@ public class Renderer {
      */
     private void renderBase(ProximityBatch batch) {
         Base base = map.getBase();
-        if (base.getImage() != null && base != null){
+        if (base != null){
             base.render(batch);
         } else{
             System.out.println("In Renderer: There was no base to be found");

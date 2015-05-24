@@ -38,7 +38,7 @@ public class SniperTower2 extends ShootingTower {
     @Override
     public Projectile createProjectile() {
         SniperBullet bullet= new SniperBullet(getCenter(), PointCalculations.getVectorAngle(getPosition(), getTarget().getPosition()), getTarget(), getParticleManager());
-        bullet.setToBullet2();
+        bullet.setHealth(3);
         return bullet;
       }
 

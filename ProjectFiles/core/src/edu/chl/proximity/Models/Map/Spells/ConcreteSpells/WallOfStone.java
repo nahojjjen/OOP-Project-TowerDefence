@@ -16,6 +16,7 @@ import java.util.List;
  * 10-05-2015 Modified by Johan swanberg. Makes spell work again, was broken by change in Map interface
  * 15/5 modified by johan, spells now have a cooldown pattern
  * 18/05 modified by Linda Evaldsson. Removed Map.
+ * 24/05 modified by Linda Evaldsson. Removed spell cooldown implementation, moved it to Cooldown class instead.
  */
 public class WallOfStone extends Spell {
 
@@ -27,7 +28,7 @@ public class WallOfStone extends Spell {
     private static int currentCooldown = 0;
 
     public WallOfStone(ParticleManager particleManager) {
-        super(image, duration, particleManager); //600 frames = 10 seconds @ 60 fps
+        super(image, duration, new Cooldown(maxCooldown), particleManager); //600 frames = 10 seconds @ 60 fps
     }
 
     @Override
@@ -47,30 +48,7 @@ public class WallOfStone extends Spell {
             getMap().getParticleManager().getDirtSmokeEffect().createEffect(c.getCenter());
         }
         */
-        @Override
-        public void updateCooldown() {
-            if (currentCooldown>0)currentCooldown--;
-        }
 
-    @Override
-    public int getCooldownPercent() {
-        return 100-((currentCooldown*100) / maxCooldown);
-    }
-
-    @Override
-    public void startCooldown() {
-        currentCooldown = maxCooldown;
-    }
-
-    @Override
-    public boolean isReadyToCast() {
-        return (currentCooldown<= 0);
-    }
-
-    @Override
-    public void resetCooldown() {
-        currentCooldown =0;
-    }
     @Override
     public void playParticleEffect() {
         getParticleManager().getWallOfStone().createEffect(getPosition());

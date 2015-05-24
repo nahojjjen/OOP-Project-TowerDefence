@@ -40,7 +40,7 @@ public class PercentBar {
         if(newPercent >= 0) {
             percent = newPercent;
         } else {
-            percent = 1;
+            percent = 0;
         }
     }
 
@@ -52,7 +52,9 @@ public class PercentBar {
         batch.renderRepeatedly(background, position, width, height);
 
         int foregroundWidth = (int) ((width / 100.0) * percent);
-        batch.renderRepeatedly(foreground, new ProximityVector(position.x+border, position.y+border),foregroundWidth - border*2, height - border*2);
+        if(foregroundWidth - border*2 > 0)
+            foregroundWidth -= border*2;
+        batch.renderRepeatedly(foreground, new ProximityVector(position.x+border, position.y+border),foregroundWidth, height - border*2);
 
         text.draw(batch);
     }

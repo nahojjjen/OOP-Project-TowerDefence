@@ -29,15 +29,11 @@ import java.util.List;
 public class MapController implements ClickHandler {
 
     private Background model;
-    private Game game;
-    private Viewport viewport;
     private List<BoardObject> models = new ArrayList<BoardObject>();
     private Map map;
 
-    public MapController(Map map, Game game, Viewport viewport) {
+    public MapController(Map map) {
         this.map = map;
-        this.game=game;
-        this.viewport = viewport;
         model = new Background(null);
         model.setPosition(new ProximityVector(0,0));
         model.setWidth(Constants.GAME_WIDTH - 300);
@@ -87,7 +83,10 @@ public class MapController implements ClickHandler {
         if (map.getHand().canPlayerAffordTheHand()) {
             GameData.getInstance().getPlayer().getResources().removeResources(item.getCost());
             item.preparePlacing(clickedPoint);
+
+
             map.add((BoardObject)item);
+
             map.getHand().setItem(null);
             if(item instanceof Tower){
                 ((Tower) item).setAsPlaced(true);

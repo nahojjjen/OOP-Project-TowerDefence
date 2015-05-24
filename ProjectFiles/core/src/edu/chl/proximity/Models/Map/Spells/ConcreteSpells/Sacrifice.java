@@ -13,6 +13,7 @@ import java.util.List;
  * @date 2015-05-10
  * 15/5 modified by johan, spells now have a cooldown pattern
  * 18/05 modified by Linda Evaldsson. Removed Map.
+ * 24/05 modified by Linda Evaldsson. Removed spell cooldown implementation, moved it to Cooldown class instead.
  */
 public class Sacrifice extends Spell {
     private static double range=30f;
@@ -22,7 +23,7 @@ public class Sacrifice extends Spell {
     private static int currentCooldown = 0;
 
     public Sacrifice(ParticleManager particleManager){
-        super(image, duration, particleManager);
+        super(image, duration, new Cooldown(maxCooldown), particleManager);
     }
 
     public void performEffect(int counter){
@@ -37,30 +38,7 @@ public class Sacrifice extends Spell {
 
         }
     }
-    @Override
-    public void updateCooldown() {
-        if (currentCooldown>0)currentCooldown--;
-    }
 
-    @Override
-    public int getCooldownPercent() {
-        return 100-((currentCooldown*100) / maxCooldown);
-    }
-
-    @Override
-    public void startCooldown() {
-        currentCooldown = maxCooldown;
-    }
-
-    @Override
-    public boolean isReadyToCast() {
-        return (currentCooldown<= 0);
-    }
-
-    @Override
-    public void resetCooldown() {
-        currentCooldown =0;
-    }
     public void playParticleEffect(){
         getParticleManager().getBloodCarnageCreepEffect().createEffect(getPosition());
         getParticleManager().getSacrificeEffect().createEffect(getPosition());

@@ -40,14 +40,10 @@ public class ControlPanelController implements ClickHandler {
     private TowerPanel towerPanel;
 
     private Map map;
-    private Viewport viewport;
     private List<BoardObject> controlPanels = new ArrayList<BoardObject>();
-    private Game game;
 
-    public ControlPanelController(Map map, Game g, Viewport viewport) {
-        this.viewport=viewport;
+    public ControlPanelController(Map map) {
         this.map = map;
-        this.game=g;
 
         propertiesPanel = new PropertiesPanel(GameData.getInstance().getPlayer().getSettings());
         controlPanel = new ControlPanel(map);

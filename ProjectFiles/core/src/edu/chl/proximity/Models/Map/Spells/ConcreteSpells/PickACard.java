@@ -16,17 +16,19 @@ import java.util.List;
 /**
  * @author Hanna Romer
  * @date 2015-05-22
+ *
+ * 24/05 modified by Linda Evaldsson. Removed spell cooldown implementation, moved it to Cooldown class instead.
  */
 public class PickACard extends Spell {
     private static double range = 100f;
     private static int duration = 240;
     private static Image image = new Image(Constants.FILE_PATH + "Spells/TarotCards.png");
     private static final int maxCooldown = 60 * 5;
-    private static int currentCooldown = 0;
+    private int currentCooldown = 0;
     private int effect;
 
     public PickACard(ParticleManager particleManager) {
-        super(image, duration, particleManager);
+        super(image, duration, new Cooldown(maxCooldown), particleManager);
 
     }
 
@@ -92,30 +94,6 @@ public class PickACard extends Spell {
         }
     }
 
-    @Override
-    public void updateCooldown() {
-        if (currentCooldown > 0) currentCooldown--;
-    }
-
-    @Override
-    public int getCooldownPercent() {
-        return 100 - ((currentCooldown * 100) / maxCooldown);
-    }
-
-    @Override
-    public void startCooldown() {
-        currentCooldown = maxCooldown;
-    }
-
-    @Override
-    public boolean isReadyToCast() {
-        return (currentCooldown <= 0);
-    }
-
-    @Override
-    public void resetCooldown() {
-        currentCooldown = 0;
-    }
 
     public void playParticleEffect() {
         switch (effect) {

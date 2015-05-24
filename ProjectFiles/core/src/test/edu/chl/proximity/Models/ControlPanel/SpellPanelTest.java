@@ -30,16 +30,16 @@ public class SpellPanelTest {
         faction.configureSpells(new ParticleManager(new Settings()));
         SpellPanel spellPanel = new SpellPanel(faction);
         Spell spell = spellPanel.getSpellBoundTo("E");
-        int cooldownBefore = spell.getCooldownPercent();
+        int cooldownBefore = spell.getCooldown().getCooldownPercent();
         spellPanel.updateCooldowns();
-        int cooldown = spell.getCooldownPercent();
+        int cooldown = spell.getCooldown().getCooldownPercent();
         assertTrue(cooldown == spellPanel.getCooldownBarForSpellBoundTo("E").getPercent());
         assertTrue(cooldownBefore == cooldown);
 
         spell.preparePlacing(new ProximityVector(0, 0));
-        cooldownBefore = spell.getCooldownPercent();
+        cooldownBefore = spell.getCooldown().getCooldownPercent();
         spellPanel.updateCooldowns();
-        cooldown = spell.getCooldownPercent();
+        cooldown = spell.getCooldown().getCooldownPercent();
         assertTrue(cooldown > cooldownBefore);
     }
 

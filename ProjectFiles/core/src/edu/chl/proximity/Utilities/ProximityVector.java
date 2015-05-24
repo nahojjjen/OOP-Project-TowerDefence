@@ -34,6 +34,11 @@ public class ProximityVector {
         return false;
     }
 
+    @Override
+    public int hashCode() {
+        return ((int)this.x*7) + ((int)this.y * 13);
+    }
+
     /**
      * create a new vector which is identical to the supplied vector
      * Clone constructor

@@ -12,16 +12,17 @@ import java.util.List;
 /**
  * @author Hanna Romer
  * @date 2015-05-22
+ *
+ * 24/05 modified by Linda Evaldsson. Removed spell cooldown implementation, moved it to Cooldown class instead.
  */
 public class BloodSipper extends Spell {
     private static double range=80f;
     private static int duration=120;
     private static Image image=new Image(Constants.FILE_PATH + "Spells/bloodpool.png");
     private static final int maxCooldown = 60;
-    private static int currentCooldown = 0;
 
     public BloodSipper(ParticleManager particleManager){
-        super(image, duration, particleManager);
+        super(image, duration, new Cooldown(maxCooldown), particleManager);
     }
 
     public void performEffect(int counter){
@@ -33,30 +34,8 @@ public class BloodSipper extends Spell {
             c.slowDown(10,Integer.MAX_VALUE);
         }
     }
-    @Override
-    public void updateCooldown() {
-        if (currentCooldown>0)currentCooldown--;
-    }
 
-    @Override
-    public int getCooldownPercent() {
-        return 100-((currentCooldown*100) / maxCooldown);
-    }
 
-    @Override
-    public void startCooldown() {
-        currentCooldown = maxCooldown;
-    }
-
-    @Override
-    public boolean isReadyToCast() {
-        return (currentCooldown<= 0);
-    }
-
-    @Override
-    public void resetCooldown() {
-        currentCooldown =0;
-    }
     public void playParticleEffect(){
         getParticleManager().getWallOfStone().createEffect(getPosition());
     }
