@@ -21,6 +21,7 @@ import java.util.List;
  *
  * 08/05 modified by Hanna Romer. Removed mapName.
  * 24/05 modified by Hanna Romer. Added nullcheckers
+ * 24%5 modified by Johan. Added text under boxes explaining how far one has reached - read from savefile (new, locked, won etc)
  */
 public class MapSelect extends BoardObject{
     private static ProximityVector pos=new ProximityVector(0,0);
@@ -45,7 +46,8 @@ public class MapSelect extends BoardObject{
 
     private void initiateMapTexts(){
         for(MapSelectIcon mapIcon:maps){
-            double completion = GameData.getInstance().getPlayer().howManyWavesHasPlayerReached(mapIcon.getMap());
+            double completionDouble = GameData.getInstance().getPlayer().howManyWavesHasPlayerReached(mapIcon.getMap());
+            int completion = (int)completionDouble;
             String completionString = String.valueOf(completion);
             ProximityVector textPosition = new ProximityVector(mapIcon.getPosition().x,mapIcon.getPosition().y+40);
             String fullText;
@@ -54,7 +56,7 @@ public class MapSelect extends BoardObject{
                 fullText = completionString + " - won";}
 
                 else if(completion > 0){
-                    fullText = completionString;
+                    fullText = completionString + "/" + GameData.getInstance().getPlayer().winCondition;
                 }else if (!GameData.getInstance().getPlayer().hasPlayerWonPreviousMap(mapIcon.getMap())){
                 fullText = "Locked";
             } else{

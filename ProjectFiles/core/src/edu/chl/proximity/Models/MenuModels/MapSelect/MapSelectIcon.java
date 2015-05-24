@@ -28,6 +28,7 @@ public class MapSelectIcon extends BoardObject{
         this.map=map;
         this.pos=pos;
         name= new ProximityFont(new ProximityVector(pos.x, pos.y-20), map.getName());
+
     }
 
     public Map getMap(){
@@ -43,7 +44,7 @@ public class MapSelectIcon extends BoardObject{
     public void setAsSelected(){
         setImage(selected);
     }
-    public void setCompletionText(ProximityFont text){completion = text;}
+    public void setCompletionText(ProximityFont text){completion = text; completion.setSize(10);}
 
     public void render(ProximityBatch batch){
         super.render(batch);
