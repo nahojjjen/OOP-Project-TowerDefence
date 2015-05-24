@@ -29,8 +29,9 @@ import java.util.List;
  * 29/04 modified by Hanna Romer. Removed PropertiesPanel instance and setter since it's a singleton.
  * 07/05 modified by Linda Evaldsson. Removed all the setters and getters for ControlPanels, replaced with setControlPanel.
  * 08/05 modified by Hanna Romer. Added renderChoosenTowerRange
+ * 24/05 modified by Linda Evaldsson. Moved rendering Path-functionality to Path. Removed unused methods, changed order of rendering.
  */
-public class Renderer {
+public class GameRenderer {
 
     private Map map;
     private ParticleManager particleManager ;
@@ -39,7 +40,7 @@ public class Renderer {
     /**
      * create a new renderer that can show everything in a game instance
      */
-    public Renderer(Map map) {
+    public GameRenderer(Map map) {
         this.map = map;
         this.particleManager = map.getParticleManager();
 
@@ -51,26 +52,12 @@ public class Renderer {
      */
     public void render(ProximityBatch batch, ProximityShapeRenderer shapeRenderer) {
 
-        renderBackground(batch);
 
-        batch.end(); //spritebatch needs to end  for shaperenderer to work
-        shapeRenderer.begin();
-        renderPath(shapeRenderer);
-        shapeRenderer.end();
+        //Renders the map and everything that is on it
+        map.render(batch, shapeRenderer);
 
-        shapeRenderer.begin(ProximityShapeRenderer.Shape.Filled);
-        //renderChosenTowerRange(shapeRenderer);
-        //renderAllTowerRanges(shapeRenderer);
-        //debugRenderAllCentersAndUpperLeftCorners(shapeRenderer);
-        shapeRenderer.end();
-
-
-        batch.begin();
-        renderBase(batch);
-        renderBase(batch);
-        renderParticles(batch);
         renderControlPanels(batch);
-        map.render(batch);
+        renderParticles(batch);
 
         //Render the hand and its range.
         Hand hand = map.getHand();
@@ -80,18 +67,16 @@ public class Renderer {
             batch.end();
             shapeRenderer.begin(ProximityShapeRenderer.Shape.Filled);
             hand.render(shapeRenderer);
-            //renderRangeIndicator(shapeRenderer, hand.getRangeIndicatorColor(), hand.getPosition(), handItem.getRange());
             shapeRenderer.end();
             batch.begin();
         }
-
-
     }
 
     public void setControlPanels(List<BoardObject> controlPanels) { this.controlPanels.addAll(controlPanels); }
 
 
     public void addControlPanel(BoardObject controlPanel) { controlPanels.add(controlPanel); }
+
     /**
      * Draws out the control panel
      * @param batch what graphics batch object that should draw on the screen
@@ -100,45 +85,7 @@ public class Renderer {
         for(BoardObject panel : controlPanels) {
             panel.render(batch);
         }
-
     }
-
-
-    /**
-     * automatically renders the lines between the waypoints of the current path
-     * Uses the shaperenderer, so you need to stop the SpriteBatch before calling this method,
-     * or you get a completely white blank screen.
-     * @param shapeRenderer what shaperenderer to use to draw the lines
-     */
-    private void renderPath(ProximityShapeRenderer shapeRenderer){
-        List<ProximityVector> waypoints = map.getPath().getWaypoints();
-
-        shapeRenderer.setColor(new Color(0.4f, 0.6f, 0.9f, 0));
-
-        for (int i = 1; i<waypoints.size(); i++){
-            shapeRenderer.renderLine(waypoints.get(i-1).x  ,waypoints.get(i-1).y, waypoints.get(i).x,waypoints.get(i).y);
-        }
-    }
-
-    private void renderBackground(ProximityBatch batch) {
-        map.getBackground().render(batch);
-    }
-
-    /**
-     * render the current base
-     * @param batch what graphics batch object that should draw on the screen
-     */
-    private void renderBase(ProximityBatch batch) {
-        Base base = map.getBase();
-        if (base != null){
-            base.render(batch);
-        } else{
-            System.out.println("In Renderer: There was no base to be found");
-        }
-
-    }
-
-
     /**
      * render all particles that are on the map
      * @param batch what graphics batch object that should draw on the creen

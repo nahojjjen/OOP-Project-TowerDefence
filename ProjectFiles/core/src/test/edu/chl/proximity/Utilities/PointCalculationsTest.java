@@ -62,6 +62,6 @@ public class PointCalculationsTest {
 
     @Test
     public void testCreatePathTool() {
-        assertTrue(PointCalculations.createPathTool(100,100).equals("waypoint.add(new ProximityVector(100, 100));"));
+        assertTrue(PointCalculations.createPathTool(100,100).equals("waypoints.add(new ProximityVector(100, 100));"));
     }
 }

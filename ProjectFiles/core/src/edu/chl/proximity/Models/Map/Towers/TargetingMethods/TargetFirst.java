@@ -43,7 +43,7 @@ public class TargetFirst extends TargetingMethod{
             double distanceToWaypoint = 9999999999.9; //the first creep does not have to be checked, more efficient to hard-code in dummy data
             int waypointNumberOfFirstCreep = 0;
 
-            //cycle through all creeps, get what waypoint they're on, remember the one with the highest waypoint & shortest distance to waypoint
+            //cycle through all creeps, get what waypoints they're on, remember the one with the highest waypoints & shortest distance to waypoints
             for (Creep creep:inRange){
                     if ((creep.getDistanceToNextWayPoint() < distanceToWaypoint && creep.getNextWayPointID() == waypointNumberOfFirstCreep)|| creep.getNextWayPointID() >= waypointNumberOfFirstCreep){
                         target = creep;

@@ -13,12 +13,12 @@ public class DifficultJuggPath extends Path {
 
     @Override
     public void initiatePoints() {
-        if (waypoint != null) {
-            if (waypoint.isEmpty()) {
-                waypoint.add(new ProximityVector(972, 8));
-                waypoint.add(new ProximityVector(341, 530));
-                waypoint.add(new ProximityVector(640, 525));
-                waypoint.add(new ProximityVector(161, 134));
+        if (waypoints != null) {
+            if (waypoints.isEmpty()) {
+                waypoints.add(new ProximityVector(972, 8));
+                waypoints.add(new ProximityVector(341, 530));
+                waypoints.add(new ProximityVector(640, 525));
+                waypoints.add(new ProximityVector(161, 134));
             }
         }
     }

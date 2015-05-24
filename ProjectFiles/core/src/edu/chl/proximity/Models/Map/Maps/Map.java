@@ -3,6 +3,7 @@ package edu.chl.proximity.Models.Map.Maps;
 import edu.chl.proximity.Models.Map.Spells.Spell;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
+import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Holdables.Hand;
 import edu.chl.proximity.Models.Map.Background;
@@ -334,7 +335,17 @@ public abstract class Map {
      * Notice that the particles are handeled seperately
      * @param batch What batch should be used to draw the images corresponding to the items on the map
      */
-    public void render(ProximityBatch batch) {
+    public void render(ProximityBatch batch, ProximityShapeRenderer shapeRenderer) {
+        background.render(batch);
+
+        batch.end();
+        shapeRenderer.begin();
+        path.render(shapeRenderer);
+        shapeRenderer.end();
+        batch.begin();
+
+
+
 
         if (towers != null){
             for (Tower tower : towers) {
@@ -352,7 +363,11 @@ public abstract class Map {
                 creep.render(batch);
             }
         }
-
+        if (base != null){
+            base.render(batch);
+        } else{
+            System.out.println("In Map: There was no base to be found");
+        }
 
     }
 

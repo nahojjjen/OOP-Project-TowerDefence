@@ -13,22 +13,22 @@ public class TestPath extends Path {
 
     @Override
     public void initiatePoints() {
-        if(waypoint != null) {
-            if (waypoint.isEmpty()) {
-                waypoint.add(new ProximityVector(140, 99));
-                waypoint.add(new ProximityVector(267, 56));
-                waypoint.add(new ProximityVector(414, 43));
-                waypoint.add(new ProximityVector(320, 200));
-                waypoint.add(new ProximityVector(68, 211));
-                waypoint.add(new ProximityVector(72, 108));
-                waypoint.add(new ProximityVector(184, 302));
-                waypoint.add(new ProximityVector(87, 380));
-                waypoint.add(new ProximityVector(92, 460));
-                waypoint.add(new ProximityVector(386, 431));
-                waypoint.add(new ProximityVector(500, 336));
-                waypoint.add(new ProximityVector(564, 420));
-                waypoint.add(new ProximityVector(594, 239));
-                waypoint.add(new ProximityVector(594, 78));
+        if(waypoints != null) {
+            if (waypoints.isEmpty()) {
+                waypoints.add(new ProximityVector(140, 99));
+                waypoints.add(new ProximityVector(267, 56));
+                waypoints.add(new ProximityVector(414, 43));
+                waypoints.add(new ProximityVector(320, 200));
+                waypoints.add(new ProximityVector(68, 211));
+                waypoints.add(new ProximityVector(72, 108));
+                waypoints.add(new ProximityVector(184, 302));
+                waypoints.add(new ProximityVector(87, 380));
+                waypoints.add(new ProximityVector(92, 460));
+                waypoints.add(new ProximityVector(386, 431));
+                waypoints.add(new ProximityVector(500, 336));
+                waypoints.add(new ProximityVector(564, 420));
+                waypoints.add(new ProximityVector(594, 239));
+                waypoints.add(new ProximityVector(594, 78));
             }
         }
     }

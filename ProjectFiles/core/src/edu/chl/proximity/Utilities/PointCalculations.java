@@ -31,8 +31,8 @@ public class PointCalculations {
      * @param y Y position for a point on the path
      */
     public static String createPathTool(int x, int y) {
-        System.out.println("waypoint.add(new ProximityVector(" + x + ", " + y + "));");
-        return new String("waypoint.add(new ProximityVector(" + x + ", " + y + "));");
+        System.out.println("waypoints.add(new ProximityVector(" + x + ", " + y + "));");
+        return new String("waypoints.add(new ProximityVector(" + x + ", " + y + "));");
     }
 
     /**

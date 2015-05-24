@@ -25,7 +25,7 @@ public abstract class Base extends BoardObject{
 
         this.damageEffect = damageEffect;
         ProximityVector basePosition = new ProximityVector(path.getWaypoint(path.getWaypoints().size()-1));
-        basePosition.add(-1*getWidth()/2f, -1* getHeight()/2f); //position the base centered at last waypoint
+        basePosition.add(-1*getWidth()/2f, -1* getHeight()/2f); //position the base centered at last waypoints
         setPosition(basePosition);
     }
 

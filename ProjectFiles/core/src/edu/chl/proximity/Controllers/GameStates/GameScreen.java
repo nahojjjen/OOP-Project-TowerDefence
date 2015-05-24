@@ -15,7 +15,7 @@ import edu.chl.proximity.Controllers.ScreenChanger.ScreenChangerListener;
 import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
-import edu.chl.proximity.Viewers.Renderer;
+import edu.chl.proximity.Viewers.GameRenderer;
 
 /**
  * @author Johan Swanberg and Linda Evaldsson
@@ -36,7 +36,7 @@ public class GameScreen implements Screen, ScreenChangerListener{
 
     private ProximityBatch batch = new ProximityBatch();
     private ProximityShapeRenderer shapeRenderer = new ProximityShapeRenderer();
-    private Renderer renderer;
+    private GameRenderer gameRenderer;
     private Game game;
     private Map map;
 
@@ -52,7 +52,7 @@ public class GameScreen implements Screen, ScreenChangerListener{
         this.map = map;
 
         GameData.getInstance().setPlayer(player);
-        this.renderer = new Renderer(map);
+        this.gameRenderer = new GameRenderer(map);
 
         fixCamera();
         //TODO fix this viewport scaling issue
@@ -65,8 +65,8 @@ public class GameScreen implements Screen, ScreenChangerListener{
         */
 
         mainController = new MainController(map, this.viewport, g);
-        renderer.setControlPanels(mainController.getControlPanels());
-        renderer.addControlPanel(mainController.getWavePanel());
+        gameRenderer.setControlPanels(mainController.getControlPanels());
+        gameRenderer.addControlPanel(mainController.getWavePanel());
         map.setBase(player.getFaction().getNewBase(map.getPath(), map.getParticleManager()));
         player.getFaction().configureSpells(map.getParticleManager());
         player.getFaction().resetSpellCooldowns();
@@ -117,7 +117,7 @@ public class GameScreen implements Screen, ScreenChangerListener{
         batch.setProjectionMatrix(camera.combined);
 
         batch.begin();
-        renderer.render(batch, shapeRenderer);
+        gameRenderer.render(batch, shapeRenderer);
 
         batch.end();
         for (int i=0; i<settings.getGameSpeed(); i++){

@@ -73,9 +73,9 @@ public abstract class Creep extends BoardObject {
     }
 
     /**
-     * get the number of the waypoint this creep is currently traveling towards
+     * get the number of the waypoints this creep is currently traveling towards
      * Guaranteed to be >=0
-     * @return (int) the number of the waypoint the creep is traveling towards
+     * @return (int) the number of the waypoints the creep is traveling towards
      *
      */
     public int getNextWayPointID(){
@@ -84,16 +84,16 @@ public abstract class Creep extends BoardObject {
 
     /**
      * get the distance this creep has to the next waypoing (squared because of calculation optimization)
-     * This value can be negative since for one frame the creep is considered to have "passed" the waypoint,
-     * and not yet chosen the next waypoint.
-     * @return (double) the distance this creep has to the next waypoint
+     * This value can be negative since for one frame the creep is considered to have "passed" the waypoints,
+     * and not yet chosen the next waypoints.
+     * @return (double) the distance this creep has to the next waypoints
      */
     public double getDistanceToNextWayPoint(){
         return distanceToNextWayPoint;
     }
 
     /**
-     * Give the creep the first angle & direction to the first waypoint
+     * Give the creep the first angle & direction to the first waypoints
      */
     private void initiateMovement() {
         this.setCenter(new ProximityVector(path.getWaypoint(0)));
@@ -141,14 +141,14 @@ public abstract class Creep extends BoardObject {
 
     /**
      * move the creep based on its speed
-     * The movement direction is based on what waypoint is the next
-     * step for the creep, the new movement angle to the next waypoint is calculated when
-     * the creep is "on" its current waypoint //implementation comment, but relevant for using method
+     * The movement direction is based on what waypoints is the next
+     * step for the creep, the new movement angle to the next waypoints is calculated when
+     * the creep is "on" its current waypoints //implementation comment, but relevant for using method
      */
     public void move() {
         //System.out.println(path.getWaypoint(nextWayPointID));
         if (reachedWaypoint(path.getWaypoint((nextWayPointID)))){
-            distanceToNextWayPoint = Double.MAX_VALUE; //this is a way of resetting the lenght, to make sure that the creep doesn't misstake the old lenght when approaching a new waypoint - remove to see bug
+            distanceToNextWayPoint = Double.MAX_VALUE; //this is a way of resetting the lenght, to make sure that the creep doesn't misstake the old lenght when approaching a new waypoints - remove to see bug
             aimTowardsNextWaypoint();
         }
         repositionCreep();
@@ -157,7 +157,7 @@ public abstract class Creep extends BoardObject {
     }
     /**
      * Get the angle the creep requires to to travel from origin point to next
-     * waypoint.
+     * waypoints.
      *
      * This method is a wrapper method for PointCalculations.getVectorAngle so that this
      * method exists in Path.
@@ -204,7 +204,7 @@ public abstract class Creep extends BoardObject {
     }
 
     /**
-     * Sets the moveAngle of the creep to face the next waypoint
+     * Sets the moveAngle of the creep to face the next waypoints
      */
     private void aimTowardsNextWaypoint(){
 
@@ -218,16 +218,16 @@ public abstract class Creep extends BoardObject {
     }
 
     /**
-     * See if the creep has reached the next waypoint
+     * See if the creep has reached the next waypoints
      *
-     * @param waypoint what waypoint to check for
-     * @return true if within distance of waypoint
+     * @param waypoint what waypoints to check for
+     * @return true if within distance of waypoints
      */
     private boolean reachedWaypoint(ProximityVector waypoint){
 
         double olddistanceToNextWayPoint = distanceToNextWayPoint;
         distanceToNextWayPoint = PointCalculations.distanceBetweenNoSqrt(getCenter(), waypoint);
-        if (distanceToNextWayPoint > olddistanceToNextWayPoint){ //if you're no longer approaching the waypoint, you're leaving it
+        if (distanceToNextWayPoint > olddistanceToNextWayPoint){ //if you're no longer approaching the waypoints, you're leaving it
             return true;
         }
         return false;
