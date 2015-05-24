@@ -27,8 +27,8 @@ public class GameOver {
     public GameOver(Map map){
         this.map=map;
 
-        mainMenu=new Button(mmPos, new Image(Constants.FILE_PATH + "Buttons/ResumeButton.png"));
-        resume=new Button(rPos, new Image(Constants.FILE_PATH + "Buttons/ResumeButton.png"));
+        mainMenu=new Button(mmPos, new Image(Constants.FILE_PATH + "Buttons/PropertiesPanelButton.png"));
+        resume=new Button(rPos, new Image(Constants.FILE_PATH + "Buttons/PropertiesPanelButton.png"));
     }
 
     public String getButtonActionOnPosition(ProximityVector position) {

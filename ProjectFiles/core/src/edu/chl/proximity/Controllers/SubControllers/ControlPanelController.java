@@ -208,7 +208,7 @@ public class ControlPanelController implements ClickHandler {
             touchedButton = propertiesPanel.getButtonOnPosition(clickedPoint);
             propertiesPanel.pressButton(touchedButton);
 
-            if (touchedButton instanceof MainMenuButton)
+            if (touchedButton == propertiesPanel.getMainMenuButton())
                 ScreenChanger.changeScreen(ScreenChanger.ScreenType.MainMenu);
 
         }

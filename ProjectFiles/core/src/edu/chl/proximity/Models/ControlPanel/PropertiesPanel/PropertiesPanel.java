@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.ControlPanel.PropertiesPanel;
 
 import edu.chl.proximity.Models.Utils.ProximityBatch;
+import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Player.Players.GameData;
@@ -17,17 +18,22 @@ import java.util.ArrayList;
  * 24/04 modified by Hanna Romer. Added SoundButton, MainMenuButton and Sound-bars
  * 29/04 modified by Hanna Romer. Made into singleton.
  * 01/05 modified by Hanna Romer. MainMenuButton now takes you to the mainMenu
+ * 24/05 modified by Linda Evaldsson. Fixed the design of this panel.
  */
 public class PropertiesPanel extends BoardObject{
 
-    private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/TempPropPanel.png");
-    private static ProximityVector position=new ProximityVector(300,200);
-    private ProximityVector resumePos=new ProximityVector(position.x+95,position.y+20);
-    private ProximityVector mainMenuPos = new ProximityVector(position.x+95,resumePos.y+100);
-    private ProximityVector soundPos = new ProximityVector(position.x + 100, mainMenuPos.y+100);
+    private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/square.png");
+    private static int width = 300;
+    private static int height = 400;
+    private static ProximityVector position=new ProximityVector((Constants.GAME_WIDTH-300-width)/2, (Constants.GAME_HEIGHT-100-height)/2); //350, 200
 
-    private ResumeButton resumeButton;
-    private MainMenuButton mainMenuButton;
+    private ProximityFont headline = new ProximityFont(new ProximityVector(position.x + 45, position.y + 20), "Options");
+    private ProximityVector resumePos=new ProximityVector(position.x+40,position.y + 70);
+    private ProximityVector mainMenuPos = new ProximityVector(resumePos.x, resumePos.y+80);
+    private ProximityVector soundPos = new ProximityVector(position.x + 45, mainMenuPos.y+80);
+
+    private PropertiesPanelButton resumeButton;
+    private PropertiesPanelButton mainMenuButton;
     private SoundButton soundButton;
 
     private ArrayList<SoundBar> bars=new ArrayList<SoundBar>();
@@ -40,10 +46,11 @@ public class PropertiesPanel extends BoardObject{
      * Create a new properies panel
      */
     public PropertiesPanel(Settings settings){
-        super(position, background, 0);
+        super(position, background, 0, width, height);
+        headline.setSize(40);
         this.settings = settings;
-        resumeButton = new ResumeButton(resumePos);
-        mainMenuButton = new MainMenuButton(mainMenuPos);
+        resumeButton = new PropertiesPanelButton(resumePos, "Resume");
+        mainMenuButton = new PropertiesPanelButton(mainMenuPos, "Main menu");
         soundButton = new SoundButton(soundPos);
         initBars();
         setBarsAt((int)settings.getGameVolume());
@@ -96,10 +103,10 @@ public class PropertiesPanel extends BoardObject{
     }
 
     public void pressButton(BoardObject button) {
-        if(button instanceof ResumeButton) {
+        if(button == resumeButton) {
             pressedResumeButton();
         }
-        else if(button instanceof MainMenuButton) {
+        else if(button == mainMenuButton) {
             pressedMainMenuButton();
         }
         else if(button instanceof SoundButton) {
@@ -109,6 +116,10 @@ public class PropertiesPanel extends BoardObject{
             pressedBar(((SoundBar)button).getLevel());
         }
 
+    }
+
+    public PropertiesPanelButton getMainMenuButton() {
+        return mainMenuButton;
     }
 
     /**
@@ -179,10 +190,11 @@ public class PropertiesPanel extends BoardObject{
     public void render(ProximityBatch batch){
 
         if(isVisible) {
-            super.render(batch);
+            batch.renderRepeatedly(background, getPosition(), width, height);
             resumeButton.render(batch);
             mainMenuButton.render(batch);
             soundButton.render(batch);
+            headline.draw(batch);
             for (SoundBar bar : bars) {
                 bar.render(batch);
             }
