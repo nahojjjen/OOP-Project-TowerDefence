@@ -12,7 +12,8 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @author Hanna Romer
  * @date 2015-05-15
  *
- * 17/05 added map, player, viewport, game, buttons resume and mainMenu.
+ * 17/05 modified by Hanna Romer. Added map, player, viewport, game, buttons resume and mainMenu.
+ * 24/05 modified by Hanna Romer. Added nullchecker to getButtonActionOnPosition.
  */
 public class GameOver {
     private Map map;
@@ -32,10 +33,12 @@ public class GameOver {
     }
 
     public String getButtonActionOnPosition(ProximityVector position) {
-        if (resume.containsPoint(position)) {
-            return "Resume";
-        } else if (mainMenu.containsPoint(position)) {
-            return "MainMenu";
+        if(position!=null) {
+            if (resume.containsPoint(position)) {
+                return "Resume";
+            } else if (mainMenu.containsPoint(position)) {
+                return "MainMenu";
+            }
         }
         return null;
     }
