@@ -241,7 +241,7 @@ public abstract class Creep extends BoardObject {
     public void slowDown(double percentage, int nbrOfTicks) {
         Double newSpeed = (1 - percentage / 100) * backUpSpeed;
         if(slowDownTime<0 || newSpeed.intValue()<=speed) {
-            speed = newSpeed.intValue();
+            speed = newSpeed;
             slowDownTime = nbrOfTicks;
         }
     }

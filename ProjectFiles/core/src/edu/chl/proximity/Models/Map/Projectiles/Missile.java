@@ -56,7 +56,10 @@ public class Missile extends Projectile {
 
     @Override
     public void attack(Creep creep) {
-        creep.devolve();
+        if (creep != null){
+            creep.devolve();
+        }
+
     }
 
 

@@ -25,7 +25,10 @@ public class ProximityAudioPlayer {
 
     public static void playSound(ProximitySound sound, float pitch, float pan){
         Sound rawSound = sound.getSound();
-        rawSound.play(settings.getTranslatedGameVolume(), pitch, pan);
+        if (rawSound != null){
+            rawSound.play(settings.getTranslatedGameVolume(), pitch, pan);
+        }
+
     }
 
     public static void playGameMusic(){

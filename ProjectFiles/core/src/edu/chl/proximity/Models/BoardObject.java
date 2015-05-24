@@ -167,7 +167,10 @@ public abstract class BoardObject implements Cloneable {
      * @return the vector in center of this BoardObject
      */
     public ProximityVector getCenter() {
-        return new ProximityVector(this.getPosition().x+(this.getWidth()/2), this.getPosition().y + (this.getHeight()/2));
+        if (this.position != null){
+            return new ProximityVector(this.getPosition().x+(this.getWidth()/2), this.getPosition().y + (this.getHeight()/2));
+        }
+        return null;
     }
 
     public void setCenter(ProximityVector pos) {

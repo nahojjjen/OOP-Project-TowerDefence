@@ -31,6 +31,7 @@ public class Bullet extends Projectile {
     public Bullet(ProximityVector position, double angle, Creep target, ParticleManager particleManager) {
         //Arguments: ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, ProximityVector position, double angle, Creep target
         super(particleManager.getBulletEffect(), 1, 20, sound, img, position, angle);
+
     }
 
     @Override
@@ -39,7 +40,9 @@ public class Bullet extends Projectile {
 
     @Override
     public void attack(Creep creep) {
-        creep.devolve();
+        if (creep != null){
+            creep.devolve();
+        }
     }
 
 }

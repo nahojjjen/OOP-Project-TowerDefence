@@ -71,7 +71,12 @@ public abstract class Projectile extends BoardObject implements Cloneable{
      * @return true if the projectile intersects the given area
      */
     public boolean collidesWith(Creep creep) {
-        return (PointCalculations.distanceBetweenNoSqrt(getCenter(), creep.getCenter()) < 20*20); //radious 10
+        if (creep != null){
+            if (creep.getCenter() != null){
+                return (PointCalculations.distanceBetweenNoSqrt(getCenter(), creep.getCenter()) <= 20*20); //radious 10
+            }
+        }
+       return false; // if the creep has no position, it doesnt collide.
     }
 
     /**

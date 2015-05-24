@@ -54,7 +54,10 @@ public class SlowDownBullet extends Projectile{
     }
 
     public void attack(Creep creep){
-        creep.slowDown(percent, time);
+
+        if (creep != null){
+            creep.slowDown(percent, time);
+        }
     }
 
 
