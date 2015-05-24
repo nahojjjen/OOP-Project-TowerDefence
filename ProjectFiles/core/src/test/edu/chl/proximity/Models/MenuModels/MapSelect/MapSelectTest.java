@@ -9,6 +9,8 @@ import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
+
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -47,8 +49,13 @@ public class MapSelectTest {
         ParticleManager pm=new ParticleManager(new Settings());
         MapSelect ms=new MapSelect(pm);
 
-        ms.mapClicked(3);
-        assertTrue(ms.getSelected() instanceof SmallSpiralMap);
+        ms.mapClicked(3); // will fail if the map is not unlocked
+        if (GameData.getInstance().getPlayer().hasPlayerWonPreviousMap(new SmallSpiralMap(new ParticleManager(new Settings())))){
+            assertTrue(ms.getSelected() instanceof SmallSpiralMap);
+        }else{
+            assertFalse(ms.getSelected() instanceof SmallSpiralMap);
+        }
+
 
         ms.mapClicked(0);
         assertTrue(ms.getSelected() instanceof StandardMap);
