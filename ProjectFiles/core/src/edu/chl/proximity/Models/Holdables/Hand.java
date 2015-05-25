@@ -67,8 +67,7 @@ public class Hand {
 
     public Color getRangeIndicatorColor() {
         if(currentItem instanceof Tower && path!=null) {
-            if(isTowerOnLine()){//path.isPointInHitbox(position)){
-                System.out.println("Hello?");
+            if(isTowerOnLine()){
                 return new Color(0.9f, 0.7f, 0.1f, 0.2f);
             }
         }
@@ -80,10 +79,13 @@ public class Hand {
         }
     }
 
+    /**
+     * Check if a tower intersects any part of the current path
+     * @return true if the tower is on the path
+     */
     private boolean isTowerOnLine(){
         if(currentItem instanceof Tower){
             Tower t=(Tower) currentItem;
-            System.out.println("Width: " + t.getWidth() + " Height: " + t.getHeight());
             ProximityVector pos=new ProximityVector(getPosition().x-t.getWidth()/2, getPosition().y-t.getHeight()/2);
             for(int x=0; x<t.getWidth();x++){
                 if(path.isPointOnPath(new ProximityVector(pos.x+x,pos.y))){
@@ -119,7 +121,11 @@ public class Hand {
 
     public void render(ProximityShapeRenderer shapeRenderer) {
         if(!(currentItem.isPlaced())) {
-            shapeRenderer.renderRangeIndicator(getPosition(), getItem().getRange(), getRangeIndicatorColor());
+            if (currentItem.getRange() < 9999){
+                shapeRenderer.renderRangeIndicator(getPosition(), getItem().getRange(), getRangeIndicatorColor());
+            }else{
+                shapeRenderer.renderRangeIndicator(getPosition(), 34, getRangeIndicatorColor());
+            }
         } else {
             shapeRenderer.renderRangeIndicator(currentItem.getCenter(), getItem().getRange(), new Color(0.4f, 0.2f, 0.9f, 0.2f));
         }
