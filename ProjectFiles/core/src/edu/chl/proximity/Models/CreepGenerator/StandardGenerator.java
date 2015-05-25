@@ -1,9 +1,6 @@
 package edu.chl.proximity.Models.CreepGenerator;
 
-import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Circle;
-import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line1;
-import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line2;
-import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Triangle;
+import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.*;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Waves.Wave;
@@ -60,7 +57,6 @@ public class StandardGenerator {
             for (int i = 0; i < 5; i++) {
                 creeps.add(new Line1(1, map.getParticleManager(), map.getPath()));
             }
-            //creeps.add(new Triangle());
 
             switch (waveIndex) {
                 case 2: {
@@ -143,6 +139,16 @@ public class StandardGenerator {
             }
             for (int i = 0; i < (int)(waveIndex/5); i++) {
                 creeps.add(new Line1(5, map.getParticleManager(), map.getPath()));
+            }
+
+            //Spawn boss creeps
+            if (waveIndex >= 20) {
+                if (waveIndex % 5 == 0) {
+                    int bossCount = (((waveIndex - 20) / 5) * 2) + 1;
+                    for (int i = 0; i < bossCount; i++) {
+                        creeps.add(new Boss1(map.getParticleManager(), map.getPath()));
+                    }
+                }
             }
 
             r = ProximityRandom.getRandomDouble()*0.4;

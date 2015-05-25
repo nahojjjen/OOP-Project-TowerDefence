@@ -46,9 +46,19 @@ public class Line1 extends Creep {
      * Constructor to create a Line1 creep with properties from another creep.
      * @param oldCreep a Creep object from which position is used.
      */
-    public Line1(Line1 oldCreep) {
+    public Line1(Creep oldCreep) {
         super(img, speed, oldCreep);
         this.creepLineIndex = oldCreep.getCreepLineIndex() - 1;
+        setImage(getCreepImage());
+    }
+
+    /**
+     * Constructor to create a Line1 creep with properties from another creep.
+     * @param oldCreep a Creep object from which position is used.
+     */
+    public Line1(Creep oldCreep, int creepLineIndex) {
+        super(img, speed, oldCreep);
+        this.creepLineIndex = creepLineIndex;
         setImage(getCreepImage());
     }
 

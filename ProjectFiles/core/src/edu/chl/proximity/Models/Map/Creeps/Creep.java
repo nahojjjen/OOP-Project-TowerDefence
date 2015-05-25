@@ -130,6 +130,11 @@ public abstract class Creep extends BoardObject {
     public abstract void devolve();
 
     /**
+     * Get the current creep line index (creep devolution index)
+     */
+    public abstract int getCreepLineIndex();
+
+    /**
      * @return Resources the player gets when the player kills the creep.
      */
     public abstract Resources getCreepResource();
@@ -211,6 +216,7 @@ public abstract class Creep extends BoardObject {
         nextWayPointID++;
         if(reachedLastWayPoint()) {
             devolve();
+            moveAngle = getAngleToNextPoint();
         }
         else {
             moveAngle = getAngleToNextPoint();

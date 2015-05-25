@@ -37,6 +37,11 @@ public class Triangle extends Creep {
         }
     }
 
+    @Override
+    public int getCreepLineIndex() {
+        return 0;
+    }
+
     //Logic to obtain creep resource
     public Resources getCreepResource() {
         return new Resources(20, 10, 0);

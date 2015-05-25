@@ -39,7 +39,7 @@ public class Line2 extends Creep {
      * Constructor to create a Line1 creep with properties from another creep.
      * @param oldCreep a Creep object from which position is used.
      */
-    public Line2(Line2 oldCreep) {
+    public Line2(Creep oldCreep) {
         super(img, speed, oldCreep);
         this.creepLineIndex = oldCreep.getCreepLineIndex() - 1;
         setImage(getCreepImage());

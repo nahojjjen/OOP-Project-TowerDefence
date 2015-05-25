@@ -38,6 +38,11 @@ public class Circle extends Creep {
         }
     }
 
+    @Override
+    public int getCreepLineIndex() {
+        return 0;
+    }
+
     //Logic to obtain creep resource
     public Resources getCreepResource() {
         return new Resources(10, 20, 0);
