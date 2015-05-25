@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Matrix4;
-import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
@@ -14,13 +13,13 @@ import edu.chl.proximity.Utilities.ProximityVector;
  *
  * A service for drawing images and fonts.
  */
-public class ProximityBatch {
+public class ProximityBatch implements ProximityDisposable{
 
 
     private SpriteBatch batch = new SpriteBatch();
 
     public ProximityBatch() {
-
+        DisposableCollector.add(this);
     }
 
     public void setProjectionMatrix(Matrix4 projection) {

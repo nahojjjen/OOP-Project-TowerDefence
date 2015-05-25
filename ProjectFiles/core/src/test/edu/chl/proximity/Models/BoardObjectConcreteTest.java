@@ -1,8 +1,6 @@
 package test.edu.chl.proximity.Models;
 
-import com.badlogic.gdx.math.Vector2;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 /**

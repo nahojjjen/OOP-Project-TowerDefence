@@ -1,8 +1,6 @@
 package edu.chl.proximity.Controllers.SubControllers;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.utils.viewport.Viewport;
-import edu.chl.proximity.Models.Holdables.Hand;
+
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Map.Towers.Tower;

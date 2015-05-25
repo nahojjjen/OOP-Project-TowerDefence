@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.Rectangle;
 
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 
@@ -25,7 +24,6 @@ import edu.chl.proximity.Utilities.ProximityVector;
 public abstract class Path {
 
     protected List<ProximityVector> waypoints = new ArrayList();
-    protected List<Rectangle> pathHitbox =  new ArrayList();
 
     /**
      * get an instance of this path

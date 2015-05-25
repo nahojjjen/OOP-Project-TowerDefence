@@ -1,8 +1,6 @@
 package edu.chl.proximity.Controllers.SubControllers;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.ControlPanel.*;
 import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.*;

@@ -57,8 +57,6 @@ public class GameOverScreen implements Screen, ScreenChangerListener {
 
     @Override
     public void dispose() {
-        batch.dispose();
-        shapeRenderer.dispose();
 
     }
 
@@ -96,7 +94,6 @@ public class GameOverScreen implements Screen, ScreenChangerListener {
     @Override
     public void screenChanged(ScreenChanger.ScreenType newScreen) {
 
-        this.dispose();
 
         switch(newScreen) {
             case MainMenu: game.setScreen(new MenuScreen(game, GameData.getInstance().getPlayer(), viewport)); break;

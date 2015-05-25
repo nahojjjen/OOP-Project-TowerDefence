@@ -1,10 +1,8 @@
 package edu.chl.proximity.Models.Utils;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Utilities.TestChecker;
@@ -18,7 +16,7 @@ import edu.chl.proximity.Utilities.TestChecker;
  * 08/05 modified by Linda Evaldsson. Added scale method.
  * 19/05 modified by Linda Evaldsson. Changed so this class uses FreeTypeFontGenerator to create fonts which makes changin sizes easier. Scaling removed.
  */
-public class ProximityFont {
+public class ProximityFont implements ProximityDisposable {
 
     private BitmapFont font;
     private String str;
@@ -44,6 +42,7 @@ public class ProximityFont {
             parameter.flip = true;
             generateFont();
         }
+        DisposableCollector.add(this);
     }
 
     private void generateFont() {
@@ -61,6 +60,12 @@ public class ProximityFont {
     public void setColor(Color color) {
         this.color = color;
         generateFont();
+    }
+
+    public void dispose() {
+        font.dispose();
+        generator.dispose();
+
     }
 
     public void setPosition(ProximityVector newPosition) {

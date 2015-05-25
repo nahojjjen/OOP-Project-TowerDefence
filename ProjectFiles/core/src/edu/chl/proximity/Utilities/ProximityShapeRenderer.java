@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Matrix4;
+import edu.chl.proximity.Models.Utils.DisposableCollector;
+import edu.chl.proximity.Models.Utils.ProximityDisposable;
 
 /**
  * @author Linda Evaldsson
@@ -12,7 +14,7 @@ import com.badlogic.gdx.math.Matrix4;
  *
  * A service for drawing shapes.
  */
-public class ProximityShapeRenderer {
+public class ProximityShapeRenderer implements ProximityDisposable {
 
     public enum Shape {
         Filled
@@ -25,6 +27,7 @@ public class ProximityShapeRenderer {
             shapeRenderer = new ShapeRenderer();
             shapeRenderer.setAutoShapeType(true);
         }
+        DisposableCollector.add(this);
 
     }
 

@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.ControlPanel;
 
-import com.badlogic.gdx.graphics.Texture;
+
 import edu.chl.proximity.Models.Map.Spells.Spell;
 import edu.chl.proximity.Models.Utils.PercentBar;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
@@ -94,7 +94,6 @@ public class SpellPanel extends BoardObject {
      * @param batch
      */
     public void render(ProximityBatch batch) {
-        background.getTexture().setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
         batch.renderRepeatedly(background, position, width, height);
         for(ControlPanelSpell cpSpell : controlPanelSpellList) {
 

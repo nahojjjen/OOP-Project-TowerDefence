@@ -11,7 +11,7 @@ import edu.chl.proximity.Utilities.TestChecker;
  *
  * A service class for sound
  */
-public class ProximitySound {
+public class ProximitySound implements ProximityDisposable{
     private Sound sound;
     /**
      * create a new sound file from a file
@@ -21,9 +21,14 @@ public class ProximitySound {
         if(TestChecker.isJUnitTest())
             return;
         sound = Gdx.audio.newSound(Constants.getFile(filePath));
+        DisposableCollector.add(this);
     }
     public Sound getSound(){
         return sound;
+    }
+
+    public void dispose() {
+        sound.dispose();
     }
 
     public void play(float pitch, float pan){

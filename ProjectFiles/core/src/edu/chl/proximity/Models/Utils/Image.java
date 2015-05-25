@@ -1,10 +1,7 @@
 package edu.chl.proximity.Models.Utils;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import edu.chl.proximity.Utilities.Constants;
-import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Utilities.TestChecker;
 
 import java.io.File;
@@ -46,7 +43,8 @@ public class Image implements Cloneable {
         this(f.getPath());
     }
 
-    public void render(SpriteBatch batch, ProximityVector p, double angle) {
+    /*
+    public void render(ProximityBatch batch, ProximityVector p, double angle) {
         batch.draw(texture, (int) p.x, (int) p.y, texture.getWidth() / 2f,
                 texture.getHeight() / 2f, texture.getWidth(), texture.getHeight(),
                 1, 1, (int) angle, 0, 0, texture.getWidth(), texture.getHeight(), false, false);
@@ -56,7 +54,7 @@ public class Image implements Cloneable {
     public void renderRepeatedly(SpriteBatch batch, ProximityVector p, int width, int height) {
         texture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
         batch.draw(texture, p.x, p.y, texture.getWidth(), texture.getHeight(), width, height);
-    }
+    }*/
     public Texture getTexture(){ return texture; }
 
     public Object clone() throws CloneNotSupportedException {

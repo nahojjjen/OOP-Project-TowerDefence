@@ -1,6 +1,8 @@
 package edu.chl.proximity.Controllers.ScreenChanger;
 
 
+import edu.chl.proximity.Models.Utils.DisposableCollector;
+
 /**
  * @author Linda Evaldsson
  * @date 2015-05-23
@@ -16,6 +18,7 @@ public class ScreenChanger {
 
     public static void changeScreen(ScreenType screen) {
         newScreen = screen;
+        DisposableCollector.disposeAll();
         notifyListeners();
     }
 

@@ -45,12 +45,14 @@ public class GameOverController implements InputProcessor{
         Vector2 pos = viewport.unproject(new Vector2(x,y));
         ProximityVector translatedPosition = new ProximityVector(pos.x,pos.y);
         String action= gameOver.getButtonActionOnPosition(translatedPosition);
-        if(action.equals("Resume")){
-            ScreenChanger.changeScreen(ScreenChanger.ScreenType.Play);
-            player.initiateNewMap();
-        }else if(action.equals("MainMenu")){
-            ScreenChanger.changeScreen(ScreenChanger.ScreenType.MainMenu);
-            System.out.println("Main menu pressed");
+        if(action != null) {
+            if (action.equals("Resume")) {
+                ScreenChanger.changeScreen(ScreenChanger.ScreenType.Play);
+                player.initiateNewMap();
+            } else if (action.equals("MainMenu")) {
+                ScreenChanger.changeScreen(ScreenChanger.ScreenType.MainMenu);
+                System.out.println("Main menu pressed");
+            }
         }
         return true;
     }
