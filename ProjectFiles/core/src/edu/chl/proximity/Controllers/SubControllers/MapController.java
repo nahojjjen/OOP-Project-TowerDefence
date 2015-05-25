@@ -35,7 +35,7 @@ public class MapController implements ClickHandler, UpdateHandler {
     public MapController(Map map) {
         this.map = map;
         model = new Background(null);
-        model.setPosition(new ProximityVector(0,0));
+        model.setPosition(new ProximityVector(0, 0));
         model.setWidth(Constants.GAME_WIDTH - 300);
         model.setHeight(Constants.GAME_HEIGHT);
         models.add(model);
@@ -57,6 +57,7 @@ public class MapController implements ClickHandler, UpdateHandler {
 
     @Override
     public void touchDown(ProximityVector clickedPoint, int pointer, int button) {
+        System.out.println("I AM ON PATH: "+map.getPath().isPointInHitbox(clickedPoint));
         //Checks if the click is within the map
         if (model.containsPoint(clickedPoint)) {
 
@@ -69,6 +70,7 @@ public class MapController implements ClickHandler, UpdateHandler {
             if(clickedObject instanceof Tower) {
                 map.setChosenTower((Tower) clickedObject);
             }
+
 
             //If there is something in the hand and no tower was clicked on the map
             if (heldItem != null && !(clickedObject instanceof Tower)) {
