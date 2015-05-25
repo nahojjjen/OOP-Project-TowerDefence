@@ -39,7 +39,9 @@ public class FireField extends Spell {
 
         List<Creep> creeps = getCreepsWithinDistance(getPosition(), range);
         for (Creep creep:creeps){
+            if (getParticleManager() != null) {
                 getParticleManager().getFireCreepEffect().createEffect(creep.getCenter());
+            }
                 if(counter % 10 ==0)
                     creep.devolve();
         }

@@ -10,7 +10,6 @@ import edu.chl.proximity.Models.Map.Spells.Spell;
 import edu.chl.proximity.Models.Map.Towers.BulletTower;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Utilities.ProximityVector;
-import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -35,6 +34,7 @@ public class SpellTest {
 
     @Test
     public void testAllSpells() throws Exception {
+
         testSpell(new BloodCarnage(null));
         testSpell(new BloodPool(null));
         testSpell(new BloodSipper(null));
@@ -55,14 +55,18 @@ public class SpellTest {
         testGetCreepsWithinDistance(spell);
         testGetTowersWithinDistance(spell);
         testIsReadyToCast(spell);
+
         testGetRange(spell);
         testGetCreeps(spell);
         testGetTowers(spell);
 
+        for (int i=30; i>0; i--){
+            spell.preparePlacing(new ProximityVector(100,100));
+            spell.performEffect(i);
+        }
     }
 
     public void testSetHealthChange(Spell spell) throws Exception {
-
         spell.setHealthChange(1);
         assertTrue(spell.getHealthChange() == 1);
 
@@ -74,10 +78,6 @@ public class SpellTest {
         assertTrue(spell.getHealthChange() == 10000);
     }
 
-    @Test
-    public void testGetHealthChange() throws Exception {
-        //NA. Tested in method above
-    }
 
     public void testPreparePlacing(Spell spell) {
         spell.preparePlacing(new ProximityVector(100, 100));
@@ -147,19 +147,12 @@ public class SpellTest {
 
     }
 
-    @Test
-    public void testPlayParticleEffect() throws Exception {
-        //Cant test this
-    }
 
     public void testGetRange(Spell spell) throws Exception {
         assertTrue(spell.getRange() > 0);
 
     }
 
-    public void testGetControlPanelImage(Spell spell) throws Exception {
-        //NA in tests
-    }
 
     public void testGetCreeps(Spell spell) throws Exception {
         List<Creep> creeps = spell.getCreeps();
@@ -172,14 +165,6 @@ public class SpellTest {
 
     }
 
-    public void testSetCreeps() throws Exception {
-        //Tested in method above
-    }
-
-    public void testGetParticleManager() throws Exception {
-        //NA
-    }
-
     public void testGetTowers(Spell spell) throws Exception {
         List<Tower> towers = spell.getTowers();
         assertNull(towers);
@@ -190,7 +175,4 @@ public class SpellTest {
         assertEquals(tower, spell.getTowers().get(0));
     }
 
-    public void testSetTowers() throws Exception {
-        //Tested in method above
-    }
 }

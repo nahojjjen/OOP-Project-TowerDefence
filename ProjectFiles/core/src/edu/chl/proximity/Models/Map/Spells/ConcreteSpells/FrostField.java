@@ -37,7 +37,9 @@ public class FrostField extends Spell {
         for (Creep creep:creeps){
             creep.slowDown(60,1);
             if(counter % 10 ==0){ //only create the visual effect every 10th frame for visual purpose
-                getParticleManager().getFrostBlastEffect().createEffect(creep.getCenter());
+                if (getParticleManager() != null) {
+                    getParticleManager().getFrostBlastEffect().createEffect(creep.getCenter());
+                }
             }
         }
     }

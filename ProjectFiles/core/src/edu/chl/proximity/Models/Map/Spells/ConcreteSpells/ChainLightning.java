@@ -50,7 +50,9 @@ public class ChainLightning extends Spell {
             for (Creep creep : creeps){
                 if (charges >= 0){
                     creepsWithinRange = getCreepsWithinDistance(creep.getCenter(), range);
-                    getParticleManager().getLightningCreepEffect().createEffect(creep.getCenter());
+                    if (getParticleManager() != null){
+                        getParticleManager().getLightningCreepEffect().createEffect(creep.getCenter());
+                    }
                     creep.devolve();//devolve all creeps in range
                     charges--;
                 }

@@ -37,7 +37,9 @@ public class WallOfStone extends Spell {
 
         for (Creep creep : creepsWithinRange) {
             creep.slowDown(100, 1);
-            getParticleManager().getDirtSmokeEffect().createEffect(creep.getCenter());
+            if (getParticleManager() != null) {
+                getParticleManager().getDirtSmokeEffect().createEffect(creep.getCenter());
+            }
         }
     }
         /*

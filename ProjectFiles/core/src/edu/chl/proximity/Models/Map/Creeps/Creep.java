@@ -107,7 +107,9 @@ public abstract class Creep extends BoardObject {
      * show the "poof" particleEffect that creeps do when they die
      */
     public void displayDeathEffect(){
-        particleManager.getCreepDiesEffect().createEffect(this.getCenter());
+        if (particleManager != null){
+            particleManager.getCreepDiesEffect().createEffect(this.getCenter());
+        }
     }
 
     /**

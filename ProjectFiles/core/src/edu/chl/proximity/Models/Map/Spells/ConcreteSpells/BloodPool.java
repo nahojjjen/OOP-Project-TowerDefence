@@ -42,7 +42,9 @@ public class BloodPool extends Spell {
                 hitCreeps++;
                 creep.devolve();
                 setHealthChange(1);
-                getParticleManager().getBloodPoolCreepEffect().createEffect(creep.getCenter());
+                if (getParticleManager() != null) {
+                    getParticleManager().getBloodPoolCreepEffect().createEffect(creep.getCenter());
+                }
             }
 
             fixCustomCooldownLogic(hitCreeps);
