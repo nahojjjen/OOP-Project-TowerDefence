@@ -16,6 +16,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -151,28 +153,40 @@ public class SpellTest {
 
     }
 
-    //I don't consider the methods below to have much test value.
-    public void testGetControlPanelImage() throws Exception {
-
+    public void testGetControlPanelImage(Spell spell) throws Exception {
+        //NA in tests
     }
 
-    public void testGetCreeps() throws Exception {
+    public void testGetCreeps(Spell spell) throws Exception {
+        List<Creep> creeps = spell.getCreeps();
+        assertNull(creeps);
+        creeps = new ArrayList<Creep>();
+        Creep creep = new Line1(1, null, null);
+        creeps.add(creep);
+        spell.setCreeps(creeps);
+        assertEquals(creep, spell.getCreeps().get(0));
 
     }
 
     public void testSetCreeps() throws Exception {
-
+        //Tested in method above
     }
 
     public void testGetParticleManager() throws Exception {
-
+        //NA
     }
 
-    public void testGetTowers() throws Exception {
-
+    public void testGetTowers(Spell spell) throws Exception {
+        List<Tower> towers = spell.getTowers();
+        assertNull(towers);
+        towers = new ArrayList<Tower>();
+        Tower tower = new BulletTower(null, null, null);
+        towers.add(tower);
+        spell.setTowers(towers);
+        assertEquals(tower, spell.getTowers().get(0));
     }
 
     public void testSetTowers() throws Exception {
-
+        //Tested in method above
     }
 }
