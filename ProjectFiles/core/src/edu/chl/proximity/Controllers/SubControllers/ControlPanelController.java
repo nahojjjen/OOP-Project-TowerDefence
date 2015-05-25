@@ -11,6 +11,7 @@ import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.*;
 import edu.chl.proximity.Controllers.ScreenChanger.ScreenChanger;
+import edu.chl.proximity.Models.Utils.MouseOverBox;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.ArrayList;
@@ -95,7 +96,7 @@ public class ControlPanelController implements ClickHandler, UpdateHandler {
     @Override
     public void mouseMoved(ProximityVector newPosition) {
 
-    }
+     }
 
     public void keyDown(int keycode) {
 

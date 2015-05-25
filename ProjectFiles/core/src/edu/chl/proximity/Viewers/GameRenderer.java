@@ -7,6 +7,7 @@ import edu.chl.proximity.Models.Holdables.Hand;
 import edu.chl.proximity.Models.Holdables.Holdable;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
+import edu.chl.proximity.Models.Utils.InformationCollector;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Utilities.ProximityVector;
@@ -59,17 +60,32 @@ public class GameRenderer {
         renderControlPanels(batch);
         renderParticles(batch);
 
-        //Render the hand and its range.
-        Hand hand = map.getHand();
-        Holdable handItem = hand.getItem();
-        if (handItem != null) {
-            hand.render(batch);
-            batch.end();
-            shapeRenderer.begin(ProximityShapeRenderer.Shape.Filled);
-            hand.render(shapeRenderer);
-            shapeRenderer.end();
-            batch.begin();
-        }
+        renderHand(batch, shapeRenderer);
+
+        renderInformation(batch);
+
+    }
+
+    /**
+     * Render the hand and its range
+     * @param batch The ProximityBatch to use for rendering
+     * @param shapeRenderer The ProximityShapeRenderer to use for rendering
+     */
+    private void renderHand(ProximityBatch batch, ProximityShapeRenderer shapeRenderer) {
+         Hand hand = map.getHand();
+         Holdable handItem = hand.getItem();
+         if (handItem != null) {
+             hand.render(batch);
+             batch.end();
+             shapeRenderer.begin(ProximityShapeRenderer.Shape.Filled);
+             hand.render(shapeRenderer);
+             shapeRenderer.end();
+             batch.begin();
+         }
+    }
+
+    private void renderInformation(ProximityBatch batch) {
+        InformationCollector.render(batch);
     }
 
     public void setControlPanels(List<BoardObject> controlPanels) { this.controlPanels.addAll(controlPanels); }
