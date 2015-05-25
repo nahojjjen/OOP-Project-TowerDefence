@@ -55,7 +55,7 @@ public abstract class Creep extends BoardObject {
      * @param speed what speed the creep will have
      * @param oldCreep The old creep from which the location on the screen is taken.
      */
-    public Creep(Image image, int speed, Creep oldCreep) {
+    public Creep(Image image, double speed, Creep oldCreep) {
 
         this(null, image, speed, oldCreep.getParticleManager(), oldCreep.getPath());
         

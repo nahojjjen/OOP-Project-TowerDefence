@@ -2,7 +2,7 @@ package test.edu.chl.proximity.Models.Map.Maps;
 
 import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.Map.Bases.ShardBase;
-import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Triangle;
+import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line1;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Maps.StandardMap;
@@ -37,7 +37,7 @@ public class MapTest {
     @Test
     public void testAdd() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
-        Creep creep = new Triangle(map.getParticleManager(), map.getPath());
+        Creep creep = new Line1(1, map.getParticleManager(), map.getPath());
         Tower tower = new BulletTower(new ProximityVector(0, 0), new TargetClosest(), map.getParticleManager());
         Spell spell = new WallOfStone(map.getParticleManager());
         Projectile projectile = new Bullet(new ProximityVector(0, 0), 0, null, map.getParticleManager());
@@ -75,7 +75,7 @@ public class MapTest {
     @Test
     public void testGetCreeps() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
-        Creep creep = new Triangle(map.getParticleManager(), map.getPath());
+        Creep creep = new Line1(1, map.getParticleManager(), map.getPath());
         map.add(creep);
         assertTrue(map.getCreeps().size() == 1);
         assertEquals(map.getCreeps().get(0), creep);
@@ -85,7 +85,7 @@ public class MapTest {
     public void testGetObjectOnPosition() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
 
-        Creep creep = new Triangle(map.getParticleManager(), map.getPath());
+        Creep creep = new Line1(1, map.getParticleManager(), map.getPath());
 
         assertTrue(map.getObjectOnPosition(new ProximityVector(0, 0)) == null);
         TargetingMethod targetingMethod = new TargetClosest();
@@ -108,11 +108,11 @@ public class MapTest {
     @Test
     public void testGetCreepsWithinDistance() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
-        Creep creep1 = new Triangle(map.getParticleManager(), map.getPath());
-        Creep creep2 = new Triangle(map.getParticleManager(), map.getPath());
-        Creep creep3 = new Triangle(map.getParticleManager(), map.getPath());
-        Creep creep4 = new Triangle(map.getParticleManager(), map.getPath());
-        Creep creep5 = new Triangle(map.getParticleManager(), map.getPath());
+        Creep creep1 = new Line1(1, map.getParticleManager(), map.getPath());
+        Creep creep2 = new Line1(1, map.getParticleManager(), map.getPath());
+        Creep creep3 = new Line1(1, map.getParticleManager(), map.getPath());
+        Creep creep4 = new Line1(1, map.getParticleManager(), map.getPath());
+        Creep creep5 = new Line1(1, map.getParticleManager(), map.getPath());
         creep1.setPosition(new ProximityVector(50, 50));
         creep2.setPosition(new ProximityVector(60, 50));
         creep3.setPosition(new ProximityVector(40, 50));
@@ -190,11 +190,11 @@ public class MapTest {
     @Test
     public void testClearRemoveStack() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
-        Creep creep1 = new Triangle(map.getParticleManager(), map.getPath());
-        Creep creep2 = new Triangle(map.getParticleManager(), map.getPath());
-        Creep creep3 = new Triangle(map.getParticleManager(), map.getPath());
-        Creep creep4 = new Triangle(map.getParticleManager(), map.getPath());
-        Creep creep5 = new Triangle(map.getParticleManager(), map.getPath());
+        Creep creep1 = new Line1(1, map.getParticleManager(), map.getPath());
+        Creep creep2 = new Line1(1, map.getParticleManager(), map.getPath());
+        Creep creep3 = new Line1(1, map.getParticleManager(), map.getPath());
+        Creep creep4 = new Line1(1, map.getParticleManager(), map.getPath());
+        Creep creep5 = new Line1(1, map.getParticleManager(), map.getPath());
 
         map.add(creep1);
         map.add(creep2);
@@ -236,11 +236,11 @@ public class MapTest {
     @Test
     public void testClearAddStack() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
-        Creep creep1 = new Triangle(map.getParticleManager(), map.getPath());
-        Creep creep2 = new Triangle(map.getParticleManager(), map.getPath());
-        Creep creep3 = new Triangle(map.getParticleManager(), map.getPath());
-        Creep creep4 = new Triangle(map.getParticleManager(), map.getPath());
-        Creep creep5 = new Triangle(map.getParticleManager(), map.getPath());
+        Creep creep1 = new Line1(1, map.getParticleManager(), map.getPath());
+        Creep creep2 = new Line1(1, map.getParticleManager(), map.getPath());
+        Creep creep3 = new Line1(1, map.getParticleManager(), map.getPath());
+        Creep creep4 = new Line1(1, map.getParticleManager(), map.getPath());
+        Creep creep5 = new Line1(1, map.getParticleManager(), map.getPath());
         Projectile projectile = new Bullet(new ProximityVector(0, 0), 0, null, map.getParticleManager());
         Tower tower = new BulletTower(new ProximityVector(0, 0), new TargetClosest(), map.getParticleManager());
         Spell spell = new WallOfStone(map.getParticleManager());

@@ -55,6 +55,10 @@ public class SpellTest {
         testGetCreepsWithinDistance(spell);
         testGetTowersWithinDistance(spell);
         testIsReadyToCast(spell);
+        testGetRange(spell);
+        testGetCreeps(spell);
+        testGetTowers(spell);
+
     }
 
     public void testSetHealthChange(Spell spell) throws Exception {
@@ -63,8 +67,8 @@ public class SpellTest {
         assertTrue(spell.getHealthChange() == 1);
 
         //Cant go lower than zero
-        //spell.setHealthChange(-1);
-        //assertTrue(spell.getHealthChange() == 0);
+        spell.setHealthChange(-1);
+        assertTrue(spell.getHealthChange() == 0);
 
         spell.setHealthChange(10000);
         assertTrue(spell.getHealthChange() == 10000);
@@ -138,7 +142,7 @@ public class SpellTest {
 
     public void testIsReadyToCast(Spell spell) throws Exception {
         //TODO: fix spell.isReadyToCast test
-        //boolean ready = spell.isReadyToCast();
+        boolean ready = spell.isReadyToCast();
         //assertTrue(ready);
 
     }

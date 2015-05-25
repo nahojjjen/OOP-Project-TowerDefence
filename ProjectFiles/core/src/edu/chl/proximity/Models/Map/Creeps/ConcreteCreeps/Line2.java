@@ -1,7 +1,5 @@
 package edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.Path;
@@ -23,7 +21,7 @@ public class Line2 extends Creep {
 
     private int creepLineIndex;
     private static Image img = new Image(Constants.FILE_PATH + "Creeps/Line2/6.png"); //dummy image to get correct resolution
-    private static int speed = 3;
+    private static double speed = 3;
 
     public Line2(int creepLineIndex, ParticleManager particleManager, Path path) {
         super(null, img, speed, particleManager, path);

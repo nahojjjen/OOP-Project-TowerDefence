@@ -1,6 +1,5 @@
 package test.edu.chl.proximity.Models.Map.Towers;
 
-import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Circle;
 import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line1;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
@@ -33,7 +32,7 @@ public class BulletTower3Test {
         assertTrue(test.getAngle() == angle); //targeting nothing should not have changed the angle
         test.target(null);
         assertTrue(test.getAngle() == angle); //targeting nothing should not have changed the angle
-        Creep creep = new Circle(new ParticleManager(new Settings()), new FirstPath());
+        Creep creep = new Line1(1, new ParticleManager(new Settings()), new FirstPath());
         list.add(creep);
         creep.setPosition(new ProximityVector(100, 100));
         test.setPosition(new ProximityVector(110, 100)); // place the tower to the left of the creep
@@ -48,7 +47,7 @@ public class BulletTower3Test {
         test.shoot(null); //make sure it can handle a null argument
         List list = new ArrayList<Creep>();
         test.shoot(list);
-        Creep creep = new Circle(new ParticleManager(new Settings()), new FirstPath());
+        Creep creep = new Line1(1, new ParticleManager(new Settings()), new FirstPath());
         creep.setPosition(new ProximityVector(100,100));
         list.add(creep);
         test.preparePlacing(new FirstPath().getWaypoint(0));

@@ -21,7 +21,7 @@ public class Boss1 extends Creep {
 
     private int creepLineIndex;
     private static Image img = new Image(Constants.FILE_PATH + "Creeps/Boss1/boss1.png"); //dummy image to get correct resolution
-    private static int speed = 2;
+    private static double speed = 2;
 
     public Boss1(ParticleManager particleManager, Path path) {
         super(null, img, speed, particleManager, path);
@@ -34,14 +34,14 @@ public class Boss1 extends Creep {
     @Override
     public void devolve() {
         if (!isRemoved()){
-            System.out.println("Line index = " + creepLineIndex);
             if (creepLineIndex <= 0) {
 
                 for (int i = 0; i < 20; i++) {
                     Creep creep = new Line1(this, 6);
-                    float randX = (float) ProximityRandom.getRandomDoubleBetween(-15, 15);
-                    float randY = (float) ProximityRandom.getRandomDoubleBetween(-15, 15);
+                    float randX = (float) ProximityRandom.getRandomDoubleBetween(-15, 0);
+                    float randY = (float) ProximityRandom.getRandomDoubleBetween(-15, 0);
                     creep.setPosition(new ProximityVector(this.getCenter().x + randX, this.getCenter().y + randY));
+                    creep.setAngle(creep.getAngleToNextPoint());
                     add(creep);
                 }
 

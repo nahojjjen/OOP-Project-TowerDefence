@@ -27,14 +27,15 @@ public class StandardGeneratorTest extends TestCase {
     public void testGenerateWaveForWaveIndex() throws Exception {
         StandardGenerator generator = new StandardGenerator(map);
 
-        int firstWaveIndex = 1;
-        Wave wave = generator.generateWaveForWaveIndex(firstWaveIndex);
-        assertNotNull(wave.getCreeps());
-        assertTrue(wave.getCooldownTimeInterval() >= 0f);
-        assertTrue(wave.getSpawnInterval() >= 0f);
+        for (int waveIndex = 1; waveIndex < 10; waveIndex++) {
+            Wave wave = generator.generateWaveForWaveIndex(waveIndex);
+            assertNotNull(wave.getCreeps());
+            assertTrue(wave.getCooldownTimeInterval() >= 0f);
+            assertTrue(wave.getSpawnInterval() >= 0f);
+        }
 
         int highWaveIndex = 999;
-        wave = generator.generateWaveForWaveIndex(highWaveIndex);
+        Wave wave = generator.generateWaveForWaveIndex(highWaveIndex);
         assertNotNull(wave.getCreeps());
         assertTrue(wave.getCooldownTimeInterval() >= 0f);
         assertTrue(wave.getSpawnInterval() >= 0f);
