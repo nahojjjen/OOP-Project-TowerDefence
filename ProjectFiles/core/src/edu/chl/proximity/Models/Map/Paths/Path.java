@@ -66,27 +66,32 @@ public abstract class Path {
         //the last one by default if out of bounds.
     }
     public boolean isPointInHitbox(ProximityVector point){
+
+        /*
         for(int p1=0;p1<waypoints.size()-1;p1++){
             int p2=p1+1;
-            System.out.println("Distance again: " + getDistanceToLinePQ(getWaypoint(p1),getWaypoint(p2) ,point));
             if(getDistanceToLinePQ(getWaypoint(p1),getWaypoint(p2) ,point) < 10){
                 System.out.println("Distance again: " + getDistanceToLinePQ(getWaypoint(p1),getWaypoint(p2) ,point));
                 return true;
             }
         }
+        */
         return false;
+
     }
 
     private double getDistanceToLinePQ(ProximityVector p, ProximityVector q,ProximityVector pointToCheck){
-        ProximityVector q_p=new ProximityVector(p.x-q.x,p.y-q.y);
+
         ProximityVector p_q=new ProximityVector(q.x-p.x,q.y-p.y);
         ProximityVector p_ptc=new ProximityVector(p.x-pointToCheck.x,p.y-pointToCheck.y);
-        ProximityVector q_ptc=new ProximityVector(q.x-pointToCheck.x,q.y-pointToCheck.y);
-        if(getAngle(p_q,p_ptc)>=90) {
-            return PointCalculations.distanceBetweenNoSqrt(p, pointToCheck);
-        }else if(getAngle(q_p,q_ptc)>=90){
-            return PointCalculations.distanceBetweenNoSqrt(q,pointToCheck);
-        }else {
+
+        ProximityVector ptcL=new ProximityVector(0,0);//p.x,p.y);
+        ptcL.add(p_q.times((p_ptc.x*p_q.x+p_ptc.y*p_q.y)/(p_q.x*p_q.x + p_q.y*p_q.y)));
+        double pqDistance=Math.sqrt(PointCalculations.distanceBetweenNoSqrt(p,q));
+        double pptcLDistance=Math.sqrt(PointCalculations.distanceBetweenNoSqrt(p,ptcL));
+        double qptcLDistance=Math.sqrt(PointCalculations.distanceBetweenNoSqrt(q,ptcL));
+
+        if((Math.abs(pptcLDistance)+Math.abs(qptcLDistance))-Math.abs(pqDistance) <5) {
             double x0 = pointToCheck.x;
             double y0 = pointToCheck.y;
 
@@ -94,12 +99,40 @@ public abstract class Path {
             double b = q.x - p.x;
             double c = p.x * q.y - q.x * p.y;
             double distance = (Math.abs(a * x0 + b * y0 + c) / Math.sqrt(a * a + b * b));
+            System.out.println("TO LINE: " + distance);
             return distance;
+        }else{
+            System.out.println("TO POINT: ");
+            if(pptcLDistance<qptcLDistance){
+                return Math.sqrt(PointCalculations.distanceBetweenNoSqrt(p, pointToCheck));
+            }else{
+                return Math.sqrt(PointCalculations.distanceBetweenNoSqrt(q,pointToCheck));
+            }
         }
+
     }
 
+    private ProximityVector getClosestPoint(ProximityVector A, ProximityVector B, ProximityVector P){
+        ProximityVector a_to_p= new ProximityVector(P.x-A.x,P.y-A.y); //Storing vector A->P
+        ProximityVector a_to_b= new ProximityVector(B.x-A.x,B.x-A.x); //Storing vector A->B
+
+        float atb2 = (a_to_b.x*a_to_b.x + a_to_b.y*a_to_b.y); //Finding sqared magnitude of a_to_b
+
+        float atp_dot_atb = (a_to_p.x*a_to_b.x+a_to_p.y*a_to_b.y);//Finding dot-product of a_to_p and a_to_b
+
+        float distance= atp_dot_atb/atb2;
+        float x=A.x+a_to_b.x*distance;
+        float y=A.y+a_to_b.y*distance;
+        return new ProximityVector(x,y);
+
+    }
+
+
+
     private double getAngle(ProximityVector first, ProximityVector second){
-        double ans= Math.toDegrees(Math.atan2(first.x-second.x,first.y-second.y));
+        double ans=PointCalculations.getVectorAngle(first,second);
+
+        //ans= Math.toDegrees(Math.atan2(first.x-second.x,first.y-second.y));
         if(ans<0){
             ans+=360;
         }

@@ -93,4 +93,9 @@ public class ProximityVector {
         this.y = -this.y;
 
     }
+
+    public ProximityVector times(float d){
+
+        return new ProximityVector(x*d,y*d);
+    }
 }
