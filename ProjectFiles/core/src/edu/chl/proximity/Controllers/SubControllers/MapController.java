@@ -2,7 +2,9 @@ package edu.chl.proximity.Controllers.SubControllers;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import edu.chl.proximity.Models.Holdables.Hand;
 import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Map.Background;
 import edu.chl.proximity.Models.BoardObject;
@@ -57,7 +59,6 @@ public class MapController implements ClickHandler, UpdateHandler {
 
     @Override
     public void touchDown(ProximityVector clickedPoint, int pointer, int button) {
-        System.out.println("I AM ON PATH: "+map.getPath().isPointInHitbox(clickedPoint));
         //Checks if the click is within the map
         if (model.containsPoint(clickedPoint)) {
 
@@ -74,9 +75,13 @@ public class MapController implements ClickHandler, UpdateHandler {
 
             //If there is something in the hand and no tower was clicked on the map
             if (heldItem != null && !(clickedObject instanceof Tower)) {
-                if(heldItem instanceof Tower && heldItem.isPlaced()) {
-                    map.setChosenTower(null);
-                } else {
+                if(heldItem instanceof Tower) {
+                    if(heldItem.isPlaced()) {
+                        map.setChosenTower(null);
+                    }else if(!isTowerOnLine()){
+                        placeHandObject(heldItem,clickedPoint);
+                    }
+                }else {
                     placeHandObject(heldItem, clickedPoint);
                 }
             }
@@ -100,6 +105,32 @@ public class MapController implements ClickHandler, UpdateHandler {
             //TODO: display error?
         }
     }
+    private boolean isTowerOnLine(){
+        Holdable currentItem=map.getHand().getItem();
+        Path path=map.getPath();
+        if(currentItem instanceof Tower){
+            Tower t=(Tower) currentItem;
+            System.out.println("Width: " + t.getWidth() + " Height: " + t.getHeight());
+            ProximityVector pos=new ProximityVector(map.getHand().getPosition().x-t.getWidth()/2, map.getHand().getPosition().y-t.getHeight()/2);
+            for(int x=0; x<t.getWidth();x++){
+                if(path.isPointOnPath(new ProximityVector(pos.x+x,pos.y))){
+                    return true;
+                }
+                if(path.isPointOnPath(new ProximityVector(pos.x+x,pos.y+t.getHeight()))){
+                    return true;
+                }
+            }for(int y=0;y<t.getHeight();y++){
+                if(path.isPointOnPath(new ProximityVector(pos.x,pos.y+y))){
+                    return true;
+                }
+                if(path.isPointOnPath(new ProximityVector(pos.x+t.getWidth(),pos.y+y))){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 
 
     @Override

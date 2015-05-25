@@ -65,6 +65,26 @@ public abstract class Path {
         //the last waypoints and attempt to get a waypoints after the last one, so now it error corrects by simply returning
         //the last one by default if out of bounds.
     }
+
+    public boolean isPointOnPath(ProximityVector point){
+        for(int a=0;a<waypoints.size()-1;a++){
+            if(isPointBetween(waypoints.get(a), waypoints.get(a+1),point)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isPointBetween(ProximityVector a, ProximityVector b, ProximityVector p){
+        Double atb=Math.sqrt(PointCalculations.distanceBetweenNoSqrt(a,b));
+        Double atp=Math.sqrt(PointCalculations.distanceBetweenNoSqrt(a,p));
+        Double btp=Math.sqrt(PointCalculations.distanceBetweenNoSqrt(b,p));
+        return ((atp+btp)-atb < 2);
+    }
+
+
+
+
     public boolean isPointInHitbox(ProximityVector point){
 
         /*

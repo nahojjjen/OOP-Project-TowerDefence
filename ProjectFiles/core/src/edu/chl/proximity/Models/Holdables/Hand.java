@@ -67,7 +67,8 @@ public class Hand {
 
     public Color getRangeIndicatorColor() {
         if(currentItem instanceof Tower && path!=null) {
-            if(path.isPointInHitbox(position)){
+            if(isTowerOnLine()){//path.isPointInHitbox(position)){
+                System.out.println("Hello?");
                 return new Color(0.9f, 0.7f, 0.1f, 0.2f);
             }
         }
@@ -77,6 +78,30 @@ public class Hand {
         else {
             return new Color(0.9f, 0.1f, 0.1f, 0.2f);
         }
+    }
+
+    private boolean isTowerOnLine(){
+        if(currentItem instanceof Tower){
+            Tower t=(Tower) currentItem;
+            System.out.println("Width: " + t.getWidth() + " Height: " + t.getHeight());
+            ProximityVector pos=new ProximityVector(getPosition().x-t.getWidth()/2, getPosition().y-t.getHeight()/2);
+            for(int x=0; x<t.getWidth();x++){
+                if(path.isPointOnPath(new ProximityVector(pos.x+x,pos.y))){
+                    return true;
+                }
+                if(path.isPointOnPath(new ProximityVector(pos.x+x,pos.y+t.getHeight()))){
+                    return true;
+                }
+            }for(int y=0;y<t.getHeight();y++){
+                if(path.isPointOnPath(new ProximityVector(pos.x,pos.y+y))){
+                    return true;
+                }
+                if(path.isPointOnPath(new ProximityVector(pos.x+t.getWidth(),pos.y+y))){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public void setIfHandAfforded(Resources playerResources) {
