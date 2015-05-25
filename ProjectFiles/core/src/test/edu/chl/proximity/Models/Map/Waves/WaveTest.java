@@ -10,7 +10,7 @@ import junit.framework.TestCase;
 import java.util.*;
 
 /**
- * @author simongislen.
+ * @author Simon Gislen.
  * @date 21/05/15.
  *
  *

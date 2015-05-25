@@ -8,7 +8,7 @@ import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
- * @author simongislen
+ * @author Simon Gislen
  * @date 18/05/15.
  *
  * A class representing a fast bullet that snipes creeps

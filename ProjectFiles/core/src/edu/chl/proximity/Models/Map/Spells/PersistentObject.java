@@ -5,7 +5,7 @@ import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Utils.Image;
 
 /**
- * @author simongislen
+ * @author Simon Gislen
  * @date 23/04/15.
  * Defines a marker that effects nearby objects
  *

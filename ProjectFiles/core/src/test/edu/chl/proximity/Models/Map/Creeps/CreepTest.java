@@ -19,7 +19,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
 import junit.framework.TestCase;
 
 /**
- * @author simongislen.
+ * @author Simon Gislen.
  * @date 18/05/15.
  *
  *

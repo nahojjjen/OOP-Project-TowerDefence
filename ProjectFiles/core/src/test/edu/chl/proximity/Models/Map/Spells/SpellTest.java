@@ -19,7 +19,7 @@ import java.util.List;
 import static org.junit.Assert.assertTrue;
 
 /**
- * @author simongislen.
+ * @author Simon Gislen.
  * @date 21/05/15.
  *
  *

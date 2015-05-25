@@ -10,7 +10,7 @@ import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
- * Created by simongislen on 13/05/15.
+ * Created by Simon Gislen on 13/05/15.
  */
 public class SlowTower2 extends ShootingTower {
 

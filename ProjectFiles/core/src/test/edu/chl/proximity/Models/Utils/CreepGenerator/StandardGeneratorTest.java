@@ -9,7 +9,7 @@ import edu.chl.proximity.Models.Utils.Settings;
 import junit.framework.TestCase;
 
 /**
- * @author simongislen
+ * @author Simon Gislen
  * @date 18/05/15.
  *
  * A Test class for StandardGenerator.

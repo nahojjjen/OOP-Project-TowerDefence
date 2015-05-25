@@ -11,7 +11,7 @@ import edu.chl.proximity.Utilities.PointCalculations;
 import java.util.List;
 
 /**
- * @author simongislen
+ * @author Simon Gislen
  * @date 04/05/15.
  *
  * Abstract tower class that handles shooting of projectiles
