@@ -45,8 +45,13 @@ public class ProximityVector {
      * @param clone What vector to create a duplicate of
      */
     public ProximityVector(ProximityVector clone){
-        this.x = clone.x;
-        this.y = clone.y;
+        if (clone != null){
+            this.x = clone.x;
+            this.y = clone.y;
+        }else{
+            throw new IllegalArgumentException("Attempting to clone null vector");
+        }
+
     }
 
     /**

@@ -57,14 +57,15 @@ public abstract class Path {
      * @return a point corresponding to the number input
      */
     public ProximityVector getWaypoint(int waypointNumber) {
-        if(waypoints != null && waypoints.size() > waypointNumber) {
-            return waypoints.get(waypointNumber);
+        if (waypoints != null) {
+            if (waypoints.size() > waypointNumber) {
+                return waypoints.get(waypointNumber);
+            }
+            return waypoints.get(waypoints.size() - 1); //give last waypoint if searching for after last
         }
-        return waypoints.get(waypoints.size()-1); //test-wise we only get to this line of code
-        //if we run the program at around x10000 speed, and then the creeps sometimes accidentally skip
-        //the last waypoints and attempt to get a waypoints after the last one, so now it error corrects by simply returning
-        //the last one by default if out of bounds.
-    }
+            return null;
+        }
+
 
     public boolean isPointOnPath(ProximityVector point){
         for(int a=0;a<waypoints.size()-1;a++){

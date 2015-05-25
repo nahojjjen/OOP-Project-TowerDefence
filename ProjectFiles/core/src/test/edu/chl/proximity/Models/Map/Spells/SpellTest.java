@@ -155,6 +155,7 @@ public class SpellTest {
 
 
     public void testGetCreeps(Spell spell) throws Exception {
+        spell.setCreeps(null);
         List<Creep> creeps = spell.getCreeps();
         assertNull(creeps);
         creeps = new ArrayList<Creep>();

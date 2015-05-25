@@ -6,8 +6,10 @@ import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
+import edu.chl.proximity.Utilities.ProximityRandom;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.List;
@@ -21,17 +23,36 @@ public class MobileTower extends ShootingTower{
     private ParticleManager particleManager;
     private ProximityVector origPos;
 
-    private int speed=2;
+    private int speed=4;
     private Creep currentTarget =null;
-    private int counter=60;
+    private int counter=20;
     private boolean counterTicking=false;
+    private float blade1Rotation = 0.4f;
 
+    private static final Image blades=new Image(Constants.FILE_PATH + "Towers/Mobile/blade.png");
     private static final Image image=new Image(Constants.FILE_PATH + "Towers/Mobile/1.png");
 
     public MobileTower(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager){
-        super(pos,image,100,targetingMethod,1,new Resources(100,100,0),"Tank Tower");
+        super(pos,image,100,targetingMethod,1,new Resources(0,0,1),"Tank Tower");
         this.targetingMethod = targetingMethod;
         this.particleManager=particleManager;
+        //make the blade spin a random direction
+        if (ProximityRandom.getRandomDoubleBetween(-1,1) > 0){
+            blade1Rotation = -0.4f;
+        }
+    }
+
+    @Override
+    public void render(ProximityBatch batch){
+        super.render(batch);
+        if(blades != null) {
+            batch.render(blades, new ProximityVector(getPosition().x-1, getPosition().y-4), blade1Rotation);
+            if (this.isPlaced()){
+                blade1Rotation += 4;
+            }
+
+        }
+
     }
     public void update(List<Creep> creeps){
         if(creeps!=null) {
