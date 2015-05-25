@@ -1,6 +1,8 @@
 package edu.chl.proximity.Models.Holdables;
 
 import com.badlogic.gdx.graphics.Color;
+import edu.chl.proximity.Models.Map.Paths.Path;
+import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
@@ -22,8 +24,14 @@ public class Hand {
     private Holdable currentItem;
     private boolean handAfforded = false;
 
+    private Path path;
+
     public Hand(){
         currentItem = null;
+    }
+
+    public void setPath(Path path){
+        this.path=path;
     }
 
     public void setItem(Holdable item) {
@@ -58,6 +66,11 @@ public class Hand {
     }
 
     public Color getRangeIndicatorColor() {
+        if(currentItem instanceof Tower && path!=null) {
+            if(path.isPointInHitbox(position)){
+                return new Color(0.9f, 0.7f, 0.1f, 0.2f);
+            }
+        }
         if (canPlayerAffordTheHand()) {
             return currentItem.getColor();
         }
@@ -80,7 +93,6 @@ public class Hand {
     }
 
     public void render(ProximityShapeRenderer shapeRenderer) {
-
         if(!(currentItem.isPlaced())) {
             shapeRenderer.renderRangeIndicator(getPosition(), getItem().getRange(), getRangeIndicatorColor());
         } else {

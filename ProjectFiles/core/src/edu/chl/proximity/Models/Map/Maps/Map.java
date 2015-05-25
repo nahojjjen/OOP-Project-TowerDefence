@@ -63,6 +63,7 @@ public abstract class Map {
      */
     public Map(Path path, Background background, String name, ParticleManager particleManager){
         this.path = path;
+        hand.setPath(path);
         this.background = background;
         this.name=name;
         this.particleManager = particleManager;
