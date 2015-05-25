@@ -28,6 +28,9 @@ public class ProximityShapeRenderer {
 
     }
 
+    public void dispose() {
+        shapeRenderer.dispose();
+    }
 
 
     public void setProjectionMatrix(Matrix4 projection) {

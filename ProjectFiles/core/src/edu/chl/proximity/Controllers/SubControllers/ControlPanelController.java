@@ -95,7 +95,9 @@ public class ControlPanelController implements ClickHandler, UpdateHandler {
 
     @Override
     public void mouseMoved(ProximityVector newPosition) {
-
+        if(spellPanel.containsPoint(newPosition)) {
+            spellPanel.mouseOverPosition(newPosition);
+        }
      }
 
     public void keyDown(int keycode) {

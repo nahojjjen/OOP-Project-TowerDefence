@@ -154,4 +154,12 @@ public class SpellPanel extends BoardObject {
             return spellCooldownBars.get(spell);
         return null;
     }
+
+    public void mouseOverPosition(ProximityVector position) {
+        for(ControlPanelSpell cpSpell : controlPanelSpellList) {
+            if(cpSpell.containsPoint(position)) {
+                cpSpell.hover();
+            }
+        }
+    }
 }

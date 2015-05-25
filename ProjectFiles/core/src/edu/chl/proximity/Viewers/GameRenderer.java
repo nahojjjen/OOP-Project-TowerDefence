@@ -58,11 +58,11 @@ public class GameRenderer {
         map.render(batch, shapeRenderer);
 
         renderControlPanels(batch);
-        renderParticles(batch);
 
         renderHand(batch, shapeRenderer);
 
         renderInformation(batch);
+        renderParticles(batch);
 
     }
 

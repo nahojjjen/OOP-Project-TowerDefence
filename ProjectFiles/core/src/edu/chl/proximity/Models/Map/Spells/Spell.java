@@ -46,6 +46,10 @@ public abstract class Spell extends PersistentObject implements Holdable {
 
     }
 
+    public String getHelpInfo() {
+        return "No help info added";
+    }
+
 
 
     public boolean isReadyToCast() {

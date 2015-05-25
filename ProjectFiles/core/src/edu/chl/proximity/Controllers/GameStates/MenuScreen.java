@@ -103,10 +103,13 @@ public class MenuScreen implements Screen, ScreenChangerListener {
     }
 
     public void screenChanged(ScreenChanger.ScreenType type) {
+
+        this.dispose();
         switch(type) {
             case Play: game.setScreen(new GameScreen(game, mainMenu.getMap(), GameData.getInstance().getPlayer(), viewport)); break;
             default: break;
         }
+
 
     }
 
@@ -133,6 +136,10 @@ public class MenuScreen implements Screen, ScreenChangerListener {
 
     @Override
     public void dispose() {
+
+        batch.dispose();
+        shapeRenderer.dispose();
+        
 
     }
 }

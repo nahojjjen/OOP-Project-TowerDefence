@@ -1,5 +1,6 @@
 package edu.chl.proximity.Models.Utils;
 
+import com.badlogic.gdx.Gdx;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
@@ -18,12 +19,12 @@ public class MouseOverBox extends BoardObject {
     private static Image background = new Image(Constants.FILE_PATH + "Backgrounds/InfoBackground.png");
     private List<ProximityFont> infoTextList = new ArrayList<ProximityFont>();
 
-    public MouseOverBox(ProximityVector position, int width, int height, String info) {
-        super(position, background, 0, width, height);
+    public MouseOverBox(int width, int height, String info) {
+        super(new ProximityVector(0, 0), background, 0, width, height);
 
         String[] parts = info.split("\n");
         for(int i = 0; i < parts.length; i++) {
-            infoTextList.add(new ProximityFont(new ProximityVector(position.x + 5, position.y + 5 + (i*15)), parts[i]));
+            infoTextList.add(new ProximityFont(new ProximityVector(getPosition().x + 5, getPosition().y + 5 + (i*15)), parts[i]));
         }
         InformationCollector.addBox(this);
 
@@ -38,6 +39,12 @@ public class MouseOverBox extends BoardObject {
     }
 
     public void enable() {
+        if(!enabled) {
+            setPosition(new ProximityVector(Gdx.input.getX() - getWidth()/2, Gdx.input.getY() - getHeight() + 10));
+            for(int i = 0; i < infoTextList.size(); i++) {
+                infoTextList.get(i).setPosition(new ProximityVector(getPosition().x + 5, getPosition().y + 5 + (i*15)));
+            }
+        }
         enabled = true;
     }
 

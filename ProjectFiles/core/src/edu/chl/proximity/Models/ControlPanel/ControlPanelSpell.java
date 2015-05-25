@@ -2,6 +2,7 @@ package edu.chl.proximity.Models.ControlPanel;
 
 
 import edu.chl.proximity.Models.Map.Spells.ConcreteSpells.Cooldown;
+import edu.chl.proximity.Models.Utils.MouseOverBox;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Spells.Spell;
@@ -18,6 +19,7 @@ public class ControlPanelSpell extends BoardObject {
     Spell spell;
 
     private Cooldown cooldown;
+    private MouseOverBox hoverBox;
 
     public ControlPanelSpell(ProximityVector position, Spell spell) {
         super(position, spell.getControlPanelImage(), 0);
@@ -25,6 +27,7 @@ public class ControlPanelSpell extends BoardObject {
         this.spell = spell;
         cooldown = spell.getCooldown();
         spell.setPosition(position);
+        hoverBox = new MouseOverBox(100, 100, spell.getHelpInfo());
     }
     public int getCooldownPercent() {
         return cooldown.getCooldownPercent();
@@ -49,6 +52,10 @@ public class ControlPanelSpell extends BoardObject {
             System.out.println("Clone not supported when placing item: " + e);
         }
         return null;
+    }
+
+    public void hover() {
+        hoverBox.enable();
     }
 
 }
