@@ -27,7 +27,8 @@ public class MobileTower extends ShootingTower{
     private Creep currentTarget =null;
     private int counter=20;
     private boolean counterTicking=false;
-    private float blade1Rotation = 0.4f;
+    private float blade1Rotation = 0;
+    private boolean reverseBlade = false;
 
     private static final Image blades=new Image(Constants.FILE_PATH + "Towers/Mobile/blade.png");
     private static final Image image=new Image(Constants.FILE_PATH + "Towers/Mobile/1.png");
@@ -36,10 +37,7 @@ public class MobileTower extends ShootingTower{
         super(pos,image,100,targetingMethod,1,new Resources(0,0,1),"Tank Tower");
         this.targetingMethod = targetingMethod;
         this.particleManager=particleManager;
-        //make the blade spin a random direction
-        if (ProximityRandom.getRandomDoubleBetween(-1,1) > 0){
-            blade1Rotation = -0.4f;
-        }
+
     }
 
     @Override
@@ -48,7 +46,12 @@ public class MobileTower extends ShootingTower{
         if(blades != null) {
             batch.render(blades, new ProximityVector(getPosition().x-1, getPosition().y-4), blade1Rotation);
             if (this.isPlaced()){
-                blade1Rotation += 4;
+                if (reverseBlade){
+                    blade1Rotation += 3;
+                }else{
+                    blade1Rotation-=3;
+                }
+
             }
 
         }
@@ -100,6 +103,7 @@ public class MobileTower extends ShootingTower{
             if (this.containsPoint(currentTarget.getCenter())){
                 currentTarget.devolve();
                 counterTicking=true;
+                particleManager.getBloodPoolCreepEffect().createEffect(currentTarget.getCenter());
             }
         }
     }
@@ -117,5 +121,10 @@ public class MobileTower extends ShootingTower{
         this.setCenter(position);
         origPos=position;
         super.setAsPlaced(true);
+
+        //make the blade spin a random direction
+        if (ProximityRandom.getRandomDouble() > 0.5){
+            reverseBlade = true;
+        }
     }
 }
