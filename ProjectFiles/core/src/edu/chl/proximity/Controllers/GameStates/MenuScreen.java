@@ -27,27 +27,30 @@ import edu.chl.proximity.Viewers.MenuRenderer;
  * and initiates the models required for the main menu, such as the faction selector. The main menu also creates a menuRenderer
  * and MenuController. If the player starts a game, a new GameScreen is created.
  *
+ * ---
  * 08/04 Modified by Johan Swanberg. Switch to ScreenType from GameState.
  * 25/04 modified by Hanna Romer. Added Game,MainMenu, SpriteBatch, ShapeRenderer,MenuRenderer,MainController, OrthographicCamera and FitViewport
  */
 public class MenuScreen implements Screen, ScreenChangerListener {
 
-    Game game;
-    private MainMenu mainMenu;
-    private ProximityBatch batch = new ProximityBatch();
-    private ProximityShapeRenderer shapeRenderer = new ProximityShapeRenderer();
+    //View/Renderer
     private MenuRenderer menuRenderer;
-    private MainMenuController mainMenuController;
     private OrthographicCamera camera;
     private Viewport viewport;
+
+    //Controller
+    private Game game;
+    private MainMenuController mainMenuController;
+
+    //Model
+    private ProximityBatch batch;
+    private ProximityShapeRenderer shapeRenderer;
+    private MainMenu mainMenu;
+    private Player player;
 
     public MenuScreen(Game g, Player player, Viewport viewport){
         game = g;
         GameData.getInstance().setPlayer(player);
-        this.mainMenu=new MainMenu(new ParticleManager(player.getSettings()));
-
-        //Configurates view and controller
-        menuRenderer=new MenuRenderer(mainMenu);
 
         //Fix of camera and graphics
         if (viewport == null){
@@ -57,15 +60,32 @@ public class MenuScreen implements Screen, ScreenChangerListener {
             this.camera = (OrthographicCamera)viewport.getCamera();
         }
 
+        initiateNew(player);
+    }
 
+    public void initiateNew(Player player) {
+        this.player = player;
+        initiateModel();
+        initiateController();
+        initiateView();
+    }
+
+    private void initiateModel() {
+        this.mainMenu=new MainMenu(new ParticleManager(player.getSettings()));
+        ProximityAudioPlayer.pauseGameMusic();
+    }
+
+    private void initiateController() {
         mainMenuController=new MainMenuController(this.viewport);
         mainMenuController.setMainMenu(mainMenu);
         Gdx.input.setInputProcessor(mainMenuController);
-
-        ProximityAudioPlayer.pauseGameMusic();
         ScreenChanger.setListener(this);
+    }
 
-
+    private void initiateView() {
+        batch = new ProximityBatch();
+        shapeRenderer = new ProximityShapeRenderer();
+        menuRenderer=new MenuRenderer(mainMenu);
     }
 
     /**
@@ -98,7 +118,7 @@ public class MenuScreen implements Screen, ScreenChangerListener {
 
     public void screenChanged(ScreenChanger.ScreenType type) {
         switch(type) {
-            case Play: game.setScreen(new GameScreen(game, mainMenu.getMap(), GameData.getInstance().getPlayer(), viewport)); break;
+            case Play: ScreenCollector.setGameScreen(game, mainMenu.getMap(), GameData.getInstance().getPlayer(), viewport); break;
             default: break;
         }
     }

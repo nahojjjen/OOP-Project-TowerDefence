@@ -23,22 +23,24 @@ import edu.chl.proximity.Viewers.GameOverRenderer;
  * @date 2015-05-15
  */
 public class GameOverScreen implements Screen, ScreenChangerListener {
-    private ProximityBatch batch = new ProximityBatch();
-    private ProximityShapeRenderer shapeRenderer = new ProximityShapeRenderer();
+
+    //View
     private GameOverRenderer gameOverRenderer;
-
-    private GameOverController gameOverController;
-    private GameOver gameOver;
-    private Map map;
-    private Game game;
-
     private OrthographicCamera camera;
     private Viewport viewport;
 
+    //Controller
+    private GameOverController gameOverController;
+
+    //Model
+    private ProximityBatch batch;
+    private ProximityShapeRenderer shapeRenderer;
+    private GameOver gameOver;
+    private Map map;
+    private Game game;
+    private Player player;
+
     public GameOverScreen(Game g, Map map, Player player, Viewport viewport){
-        this.map = map;
-        this.game = g;
-        GameData.getInstance().setPlayer(player);
 
         //Fix of camera and graphics
         if (viewport == null){
@@ -47,12 +49,28 @@ public class GameOverScreen implements Screen, ScreenChangerListener {
             this.viewport = viewport;
             this.camera = (OrthographicCamera)viewport.getCamera();
         }
+        initiateNew(g, map, player);
+
+    }
+
+    public void initiateNew(Game g, Map map, Player player) {
+        this.game = g;
+        this.map = map;
+        this.player = player;
+    }
+    private void initiateModel() {
 
         gameOver=new GameOver(map);
-        gameOverRenderer=new GameOverRenderer(gameOver);
-        gameOverController=new GameOverController(g,viewport,gameOver,player);
+    }
+    private void initiateController() {
+        gameOverController=new GameOverController(game, viewport, gameOver, player);
         Gdx.input.setInputProcessor(gameOverController);
         ScreenChanger.setListener(this);
+    }
+    private void initiateView() {
+        batch = new ProximityBatch();
+        shapeRenderer = new ProximityShapeRenderer();
+        gameOverRenderer=new GameOverRenderer(gameOver);
     }
 
     private void fixCamera(){
@@ -100,8 +118,8 @@ public class GameOverScreen implements Screen, ScreenChangerListener {
     @Override
     public void screenChanged(ScreenChanger.ScreenType newScreen) {
         switch(newScreen) {
-            case MainMenu: game.setScreen(new MenuScreen(game, GameData.getInstance().getPlayer(), viewport)); break;
-            case Play: game.setScreen(new GameScreen(game, map.getNew(), GameData.getInstance().getPlayer(), viewport)); break;
+            case MainMenu: ScreenCollector.setMenuScreen(game, GameData.getInstance().getPlayer(), viewport); break;
+            case Play: ScreenCollector.setGameScreen(game, map.getNew(), GameData.getInstance().getPlayer(), viewport); break;
             default: break;
         }
 

@@ -21,7 +21,7 @@ import edu.chl.proximity.Viewers.GameRenderer;
  * @author Johan Swanberg and Linda Evaldsson
  * @date 2015-04-07
  *
- * A class for handling the GameScreen, the screen that is showed when a game is played.
+ * A class for handling the GameScreen, the screen that handles the logic when the game is playing.
  *
  * ---
  * 08/04 Modified by Johan Swanberg. Switch to ScreenType from GameState.
@@ -34,25 +34,27 @@ import edu.chl.proximity.Viewers.GameRenderer;
  */
 public class GameScreen implements Screen, ScreenChangerListener{
 
-    private ProximityBatch batch = new ProximityBatch();
-    private ProximityShapeRenderer shapeRenderer = new ProximityShapeRenderer();
+    //View/Renderer
     private GameRenderer gameRenderer;
-    private Game game;
-    private Map map;
-
-
-    private MainController mainController;
     private OrthographicCamera camera;
     private Viewport viewport;
+
+    //Controller
+    private MainController mainController;
+
+    //Model
+    private ProximityBatch batch;
+    private ProximityShapeRenderer shapeRenderer;
+    private Game game;
+    private Map map;
     private Settings settings;
+    private Player player;
 
     public GameScreen(Game g, Map map, Player player, Viewport viewport){
+        this.player = player;
         this.settings = player.getSettings();
         this.game = g;
         this.map = map;
-
-        GameData.getInstance().setPlayer(player);
-        this.gameRenderer = new GameRenderer(map);
 
         //Fix of camera and graphics
         if (viewport == null){
@@ -61,19 +63,35 @@ public class GameScreen implements Screen, ScreenChangerListener{
             this.viewport = viewport;
             this.camera = (OrthographicCamera)viewport.getCamera();
         }
+        initiateNew(map, player);
+    }
+    public void initiateNew(Map map, Player player) {
+        this.map = map;
+        this.player = player;
 
+        initiateModel();
+        initiateController();
+        initiateView();
+    }
 
+    private void initiateController() {
         mainController = new MainController(map, this.viewport);
-        gameRenderer.setControlPanels(mainController.getControlPanels());
-        gameRenderer.addControlPanel(mainController.getWavePanel());
+        Gdx.input.setInputProcessor(mainController);
+        ScreenChanger.setListener(this);
+    }
+
+    private void initiateModel() {
         map.setBase(player.getFaction().getNewBase(map.getPath(), map.getParticleManager()));
         player.getFaction().configureSpells(map.getParticleManager());
         player.getFaction().resetSpellCooldowns();
-        Gdx.input.setInputProcessor(mainController);
-        ScreenChanger.setListener(this);
+    }
 
-
-
+    private void initiateView() {
+        batch = new ProximityBatch();
+        shapeRenderer = new ProximityShapeRenderer();
+        this.gameRenderer = new GameRenderer(map);
+        gameRenderer.setControlPanels(mainController.getControlPanels());
+        gameRenderer.addControlPanel(mainController.getWavePanel());
     }
 
 
@@ -131,8 +149,8 @@ public class GameScreen implements Screen, ScreenChangerListener{
     @Override
     public void screenChanged(ScreenChanger.ScreenType newScreen) {
         switch(newScreen) {
-            case MainMenu: game.setScreen(new MenuScreen(game, GameData.getInstance().getPlayer(), viewport)); break;
-            case GameOver: game.setScreen(new GameOverScreen(game, map, GameData.getInstance().getPlayer(), viewport)); break;
+            case MainMenu: ScreenCollector.setMenuScreen(game, GameData.getInstance().getPlayer(), viewport); break;
+            case GameOver: ScreenCollector.setGameOverScreen(game, map, GameData.getInstance().getPlayer(), viewport); break;
             default: break;
         }
     }
