@@ -67,7 +67,7 @@ public class ProximityEffect {
      * @param spread how focused the beam of particles should be (input 360 would throw particles in random direction)
      * @param effect what effect to set the angle at
      */
-    public void setAngle(float angle, float spread, ParticleEffect effect){
+    public static void setAngle(float angle, float spread, ParticleEffect effect){
         Array<ParticleEmitter> emitters = effect.getEmitters();
         for (int i=0; i<emitters.size; i++) {
             emitters.get(i).getAngle().setHighMax(angle + spread/2);
@@ -83,14 +83,14 @@ public class ProximityEffect {
      * @param angle how much to rotate the effect in degrees
      * @param effect what specific effect to rotate
      */
-    public void rotateEffect(float angle, ParticleEffect effect){
+    public static void rotateEffect(float angle, ParticleEffect effect){
         Array<ParticleEmitter> emitters = effect.getEmitters();
         for (int i=0; i<emitters.size; i++) {
             float startMax = emitters.get(i).getAngle().getHighMax();
             float startMin = emitters.get(i).getAngle().getHighMin();
 
-            emitters.get(i).getAngle().setHighMax(startMax+angle);
-            emitters.get(i).getAngle().setHighMin(startMin+angle);
+            emitters.get(i).getAngle().setHighMax(startMax + angle);
+            emitters.get(i).getAngle().setHighMin(startMin + angle);
         }
     }
 
@@ -103,6 +103,19 @@ public class ProximityEffect {
         for (int i=0; i<emitters.size; i++){
             emitters.get(i).flipY();
         }
+    }
+
+    /**
+     * create an effect with a certain angle
+     * @param position where to create the effect
+     * @param angle what angle the effect should shoot towards
+     * @param spread how much the effect should spread out
+     * @return the created effect
+     */
+    public ParticleEffect createEffect(ProximityVector position, float angle, float spread){
+        ParticleEffect effect = createEffect(position);
+        ProximityEffect.setAngle(angle, spread, effect);
+        return effect;
     }
 
     /**

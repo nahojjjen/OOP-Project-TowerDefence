@@ -2,41 +2,47 @@ FireBurst
 - Delay -
 active: false
 - Duration - 
-lowMin: 1000.0
-lowMax: 1000.0
+lowMin: 800.0
+lowMax: 800.0
 - Count - 
 min: 0
-max: 50
+max: 10
 - Emission - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 200.0
-highMax: 100.0
+highMin: 15.0
+highMax: 15.0
 relative: false
-scalingCount: 3
-scaling0: 0.6666667
-scaling1: 0.9019608
-scaling2: 0.60784316
-timelineCount: 3
+scalingCount: 5
+scaling0: 1.0
+scaling1: 0.8235294
+scaling2: 0.7647059
+scaling3: 0.0
+scaling4: 0.0
+timelineCount: 5
 timeline0: 0.0
-timeline1: 0.28082192
-timeline2: 0.6917808
+timeline1: 0.37671232
+timeline2: 0.6438356
+timeline3: 0.72602737
+timeline4: 0.9726027
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 500.0
+highMin: 300.0
 highMax: 300.0
 relative: false
-scalingCount: 4
-scaling0: 0.5686275
-scaling1: 0.88235295
-scaling2: 0.78431374
-scaling3: 0.47058824
-timelineCount: 4
+scalingCount: 5
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 0.8235294
+scaling3: 0.4509804
+scaling4: 0.0
+timelineCount: 5
 timeline0: 0.0
-timeline1: 0.12328767
-timeline2: 0.77397263
-timeline3: 1.0
+timeline1: 0.34931508
+timeline2: 0.5410959
+timeline3: 0.77397263
+timeline4: 1.0
 - Life Offset - 
 active: false
 - X Offset - 
@@ -87,7 +93,7 @@ timeline3: 1.0
 active: true
 lowMin: 80.0
 lowMax: 80.0
-highMin: 600.0
+highMin: 200.0
 highMax: 400.0
 relative: false
 scalingCount: 2
@@ -149,179 +155,20 @@ lowMax: 0.0
 highMin: 1.0
 highMax: 1.0
 relative: false
-scalingCount: 1
-scaling0: 1.0
-timelineCount: 1
-timeline0: 0.0
-- Options - 
-attached: false
-continuous: false
-aligned: false
-additive: true
-behind: false
-premultipliedAlpha: false
-- Image Path -
-rectForFlamethrower.png
-
-
-Gas
-- Delay -
-active: true
-lowMin: 0.0
-lowMax: 0.0
-- Duration - 
-lowMin: 1000.0
-lowMax: 1000.0
-- Count - 
-min: 0
-max: 20
-- Emission - 
-lowMin: 0.0
-lowMax: 0.0
-highMin: 50.0
-highMax: 50.0
-relative: false
-scalingCount: 1
-scaling0: 1.0
-timelineCount: 1
-timeline0: 0.0
-- Life - 
-lowMin: 0.0
-lowMax: 0.0
-highMin: 400.0
-highMax: 500.0
-relative: false
-scalingCount: 1
-scaling0: 1.0
-timelineCount: 1
-timeline0: 0.0
-- Life Offset - 
-active: false
-- X Offset - 
-active: false
-- Y Offset - 
-active: true
-lowMin: 0.0
-lowMax: 0.0
-highMin: 0.0
-highMax: 0.0
-relative: false
-scalingCount: 1
-scaling0: 1.0
-timelineCount: 1
-timeline0: 0.0
-- Spawn Shape - 
-shape: point
-- Spawn Width - 
-lowMin: 0.0
-lowMax: 0.0
-highMin: 0.0
-highMax: 0.0
-relative: false
-scalingCount: 1
-scaling0: 1.0
-timelineCount: 1
-timeline0: 0.0
-- Spawn Height - 
-lowMin: 0.0
-lowMax: 0.0
-highMin: 0.0
-highMax: 0.0
-relative: false
-scalingCount: 1
-scaling0: 1.0
-timelineCount: 1
-timeline0: 0.0
-- Scale - 
-lowMin: 0.0
-lowMax: 0.0
-highMin: 50.0
-highMax: 70.0
-relative: false
-scalingCount: 2
+scalingCount: 6
 scaling0: 0.0
 scaling1: 1.0
-timelineCount: 2
-timeline0: 0.0
-timeline1: 1.0
-- Velocity - 
-active: true
-lowMin: 0.0
-lowMax: 0.0
-highMin: 1000.0
-highMax: 1000.0
-relative: false
-scalingCount: 5
-scaling0: 1.0
-scaling1: 0.9411765
-scaling2: 0.5294118
-scaling3: 0.25490198
-scaling4: 0.3529412
-timelineCount: 5
-timeline0: 0.0
-timeline1: 0.25342464
-timeline2: 0.44520548
-timeline3: 0.70547944
-timeline4: 0.9794521
-- Angle - 
-active: true
-lowMin: 90.0
-lowMax: 90.0
-highMin: 120.0
-highMax: 60.0
-relative: false
-scalingCount: 2
-scaling0: 0.0
-scaling1: 1.0
-timelineCount: 2
-timeline0: 0.0
-timeline1: 1.0
-- Rotation - 
-active: true
-lowMin: -50.0
-lowMax: 50.0
-highMin: 0.0
-highMax: -360.0
-relative: false
-scalingCount: 2
-scaling0: 1.0
-scaling1: 0.0
-timelineCount: 2
-timeline0: 0.0
-timeline1: 1.0
-- Wind - 
-active: false
-- Gravity - 
-active: false
-- Tint - 
-colorsCount: 6
-colors0: 1.0
-colors1: 0.6431373
-colors2: 0.24313726
-colors3: 1.0
-colors4: 0.9137255
-colors5: 0.87058824
-timelineCount: 2
-timeline0: 0.0
-timeline1: 1.0
-- Transparency - 
-lowMin: 0.0
-lowMax: 0.0
-highMin: 1.0
-highMax: 1.0
-relative: false
-scalingCount: 5
-scaling0: 0.0
-scaling1: 0.3508772
-scaling2: 0.6315789
-scaling3: 0.9122807
+scaling2: 0.8596491
+scaling3: 0.68421054
 scaling4: 0.0
-timelineCount: 5
+scaling5: 0.0
+timelineCount: 6
 timeline0: 0.0
-timeline1: 0.2739726
-timeline2: 0.49315068
-timeline3: 0.6712329
-timeline4: 1.0
+timeline1: 0.1780822
+timeline2: 0.39726028
+timeline3: 0.58219177
+timeline4: 0.84931505
+timeline5: 1.0
 - Options - 
 attached: false
 continuous: false
@@ -330,4 +177,4 @@ additive: true
 behind: false
 premultipliedAlpha: false
 - Image Path -
-gas for explosion.png
+/C:/Users/Johan/Documents/GitHub/OOP-Project-TowerDefence/ProjectFiles/ParticleImages/rectForFlamethrower.png
