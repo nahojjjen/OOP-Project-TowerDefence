@@ -19,10 +19,10 @@ public class SoundBar extends BoardObject{
         filled=new Image(Constants.FILE_PATH + "Buttons/SoundBarFilled.png");
         empty = new Image(Constants.FILE_PATH + "Buttons/SoundBarEmpty.png");
         super.setImage(filled);
-        this.level=level;
+        this.level = level;
     }
 
-    public int getLevel(){
+    public int getLevel() {
         return level;
     }
 
@@ -32,5 +32,9 @@ public class SoundBar extends BoardObject{
 
     public void setEmpty(){
         super.setImage(empty);
+    }
+
+    public boolean isFilled() {
+        return getImage() == filled;
     }
 }

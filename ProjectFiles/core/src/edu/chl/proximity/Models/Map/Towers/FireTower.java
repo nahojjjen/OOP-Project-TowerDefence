@@ -45,7 +45,7 @@ public class FireTower extends Tower{
      * @return a list of creeps within fireRange of the tower
      */
     private List<Creep> targetsInRange(List<Creep> creeps){
-        List<Creep> list = new ArrayList<>();
+        List<Creep> list = new ArrayList<Creep>();
 
         for (Creep creep:creeps){
             if (targetingMethod.isWithinRange(creep, this.getCenter(), fireRange)){

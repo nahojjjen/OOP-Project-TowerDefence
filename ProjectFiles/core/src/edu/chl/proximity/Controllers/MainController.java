@@ -121,7 +121,6 @@ public class MainController implements InputProcessor{
         Vector2 clickedPoint = viewport.unproject(new Vector2(x, y));
         ProximityVector draggedPoint = new ProximityVector(clickedPoint.x, clickedPoint.y);
 
-        System.out.println("X: " + draggedPoint.x + ", Y: " + draggedPoint.y);
         for(ClickHandler controller : controlPanelClickHandlers) {
             controller.mouseMoved(draggedPoint);
         }

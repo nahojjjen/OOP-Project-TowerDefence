@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.ControlPanel.PropertiesPanel;
 
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.PropertiesButton;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
@@ -8,8 +9,10 @@ import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
+import edu.chl.proximity.Utilities.TestChecker;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Hanna Romer
@@ -52,6 +55,7 @@ public class PropertiesPanel extends BoardObject{
         super(position, background, 0, width, height);
         headline.setSize(40);
         this.settings = settings;
+        settings.setGameSpeed(0);
         initBars();
         updateSoundDisplay(settings.getGameVolume());
     }
@@ -95,6 +99,21 @@ public class PropertiesPanel extends BoardObject{
     }
 
     /**
+     * Method only for testing. Returns the current bar level set
+     * @return
+     */
+    public int getBarLevel() {
+        if(TestChecker.isJUnitTest()) {
+            for (int i = 0; i < bars.size(); i++) {
+                if (!bars.get(i).isFilled())
+                    return i;
+            }
+            return bars.size();
+        }
+        return 0;
+    }
+
+    /**
      * Get whether or not the panel is currently visible
      * @return true is it is visible, flase otherwise
      */
@@ -126,10 +145,6 @@ public class PropertiesPanel extends BoardObject{
 
     }
 
-    public PropertiesPanelButton getMainMenuButton() {
-        return mainMenuButton;
-    }
-
     /**
      * Get which button is on given position
      * @param position position to be checked for button
@@ -151,7 +166,44 @@ public class PropertiesPanel extends BoardObject{
         return null;
     }
 
-    public void pressedBar(int level){
+    /**
+     * Method only for testing
+     * @return the MainMenu button
+     */
+    public PropertiesPanelButton getMainMenuButton() {
+        if(TestChecker.isJUnitTest())
+            return mainMenuButton;
+        return null;
+    }
+
+    /**
+     * Method only for testing
+     * @return the Resume button
+     */
+    public PropertiesPanelButton getResumeButton() {
+        if(TestChecker.isJUnitTest())
+            return resumeButton;
+        return null;
+    }
+
+    /**
+     * Method only for testing
+     * @return the toggle sound button
+     */
+    public SoundButton getSoundButton() {
+        if(TestChecker.isJUnitTest())
+            return soundButton;
+        return null;
+    }
+
+    public List<SoundBar> getBars() {
+        if(TestChecker.isJUnitTest()) {
+            return bars;
+        }
+        return null;
+    }
+
+    private void pressedBar(int level){
         setSoundAt(level);
         updateSoundDisplay(level);
     }
@@ -159,23 +211,22 @@ public class PropertiesPanel extends BoardObject{
     /**
      * Called if the Resume-button is pressed. Resumes game
      */
-    public void pressedResumeButton(){
+    private void pressedResumeButton(){
         setVisibility(false);
-        GameData.getInstance().getPlayer().getSettings().togglePause();
+        settings.togglePause();
     }
 
     /**
      * Called if MainMenu-button is pressed
      */
-    public void pressedMainMenuButton(){
+    private void pressedMainMenuButton(){
         setVisibility(false);
     }
 
     /**
      * Called if Sound on/off button is pressed. Mutes/turns on sound
      */
-    public void pressedSoundButton(){
-        Settings settings = GameData.getInstance().getPlayer().getSettings();
+    private void pressedSoundButton(){
         settings.toggleSound();
         updateSoundDisplay(settings.getGameVolume());
     }

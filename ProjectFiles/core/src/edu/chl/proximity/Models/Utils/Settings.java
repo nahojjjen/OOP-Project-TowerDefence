@@ -65,8 +65,10 @@ public class Settings {
      */
     public void setGameVolume(int volume) {
         if(volume > 0){
-            gameVolume = volume;
-            ProximityAudioPlayer.setGameMusicVolume(getTranslatedGameVolume());
+            if(volumeTranslator.get(volume) != null) {
+                gameVolume = volume;
+                ProximityAudioPlayer.setGameMusicVolume(getTranslatedGameVolume());
+            }
         } else {
             toggleSound();
         }

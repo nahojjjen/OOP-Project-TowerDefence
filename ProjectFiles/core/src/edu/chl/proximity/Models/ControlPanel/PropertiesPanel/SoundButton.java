@@ -23,6 +23,9 @@ public class SoundButton extends BoardObject{
         super(position,onImage,0,width,height);
     }
 
+    public boolean isSoundOn() {
+        return onImage == getImage();
+    }
     /**
      * Set the button's image to the one for sound on
      */

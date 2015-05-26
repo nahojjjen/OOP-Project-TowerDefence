@@ -29,7 +29,7 @@ public class FireTowerTest {
         tower.setPosition(new ProximityVector(100, 100));
         List<Creep> creepList = null;
         tower.update(creepList); //a method that just calls the shoot method
-        creepList = new ArrayList<>();
+        creepList = new ArrayList<Creep>();
         tower.update(creepList);
         Creep creep = new Line2(6,new ParticleManager(new Settings()), new FirstPath());
         creep.setPosition(new ProximityVector(1000,1000)); //creep is out of range, should not have caused it to fire

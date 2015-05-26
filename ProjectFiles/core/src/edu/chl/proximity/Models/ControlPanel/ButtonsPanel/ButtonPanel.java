@@ -6,7 +6,9 @@ import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
+import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
+import edu.chl.proximity.Utilities.TestChecker;
 
 /**
  * @author Hanna Romer
@@ -21,13 +23,12 @@ public class ButtonPanel extends BoardObject {
     private static int width=300;
     private static int height=70;
 
-    private static ProximityVector position= new ProximityVector(Gdx.graphics.getWidth()-width, Gdx.graphics.getHeight()-height);
+    private static ProximityVector position= new ProximityVector(Constants.GAME_WIDTH-width, Constants.GAME_HEIGHT-height);
     private static ProximityVector pausePos=new ProximityVector(position.x+20, position.y);
     private static ProximityVector playPos=new ProximityVector(pausePos.x+60, position.y);
     private static ProximityVector speedPos=new ProximityVector(playPos.x+60, position.y);
     private static ProximityVector propPos=new ProximityVector(speedPos.x+70, position.y);
 
-    private boolean pause=false;
     private int speed=1;
 
     private PlayButton playButton;
@@ -50,14 +51,6 @@ public class ButtonPanel extends BoardObject {
     }
 
     /**
-     * Get wether or not the game is paused
-     * @return true if game is paused, false otherwise
-     */
-    public boolean isPaused(){
-        return pause;
-    }
-
-    /**
      * Get which button is on speciefies position, if any are
      * @param position position to be checked for buttons
      * @return button on specified position. If there is no button there, null is returned
@@ -70,6 +63,50 @@ public class ButtonPanel extends BoardObject {
         }else if(speedButton.containsPoint(position)){
             return speedButton;
         }else if(prButton.containsPoint(position)){
+            return prButton;
+        }
+        return null;
+    }
+
+    /**
+     * Method only for testing
+     * @return the play button
+     */
+    public PlayButton getPlayButton() {
+        if(TestChecker.isJUnitTest()) {
+            return playButton;
+        }
+        return null;
+    }
+
+    /**
+     * Method only for testing
+     * @return the pause button
+     */
+    public PauseButton getPauseButton() {
+        if(TestChecker.isJUnitTest()) {
+            return pauseButton;
+        }
+        return null;
+    }
+
+    /**
+     * Method only for testing
+     * @return the fast-forward button
+     */
+    public SpeedButton getSpeedButton() {
+        if(TestChecker.isJUnitTest()) {
+            return speedButton;
+        }
+        return null;
+    }
+
+    /**
+     * Method only for testing
+     * @return the properties button
+     */
+    public PropertiesButton getPropertiesButton() {
+        if(TestChecker.isJUnitTest()) {
             return prButton;
         }
         return null;

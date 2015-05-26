@@ -73,7 +73,7 @@ public class ProximityAudioPlayer {
      * @return a list of all the file names of mp3 files in the gamemusic folder
      */
     private static List<String> getAllMusicFiles(){
-        List<String> musicFiles = new ArrayList<>();
+        List<String> musicFiles = new ArrayList<String>();
 
         //get all mp3 files
         File folder = new File(Constants.FILE_PATH + "/GameMusic");

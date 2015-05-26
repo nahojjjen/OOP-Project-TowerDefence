@@ -10,7 +10,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @author Hanna Romer
  * @date 2015-05-18
  *
- * A button for selling towers. Displays what resouces the choosen tower will be sold for
+ * A simple button for selling towers.
  */
 public class SellButton extends BoardObject{
 

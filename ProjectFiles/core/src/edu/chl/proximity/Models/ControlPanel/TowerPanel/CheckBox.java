@@ -23,6 +23,10 @@ public class CheckBox extends BoardObject{
         this.text.setSize(12);
     }
 
+    public boolean isChecked() {
+        return getImage() == checked;
+    }
+
 
     public void setAsChecked(){
         super.setImage(checked);
