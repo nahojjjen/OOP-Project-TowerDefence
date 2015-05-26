@@ -95,14 +95,10 @@ public class GameOverScreen implements Screen, ScreenChangerListener {
         gameOverRenderer.render(batch);
         batch.end();
 
-        //stage.act(delta);
-        //stage.draw();
     }
 
     @Override
     public void screenChanged(ScreenChanger.ScreenType newScreen) {
-
-
         switch(newScreen) {
             case MainMenu: game.setScreen(new MenuScreen(game, GameData.getInstance().getPlayer(), viewport)); break;
             case Play: game.setScreen(new GameScreen(game, map.getNew(), GameData.getInstance().getPlayer(), viewport)); break;
