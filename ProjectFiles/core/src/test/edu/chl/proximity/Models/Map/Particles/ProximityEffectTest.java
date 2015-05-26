@@ -6,7 +6,7 @@ import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Johan on 2015-05-19.

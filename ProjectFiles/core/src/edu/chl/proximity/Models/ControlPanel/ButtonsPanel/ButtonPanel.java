@@ -1,12 +1,12 @@
 package edu.chl.proximity.Models.ControlPanel.ButtonsPanel;
 
 import com.badlogic.gdx.Gdx;
-import edu.chl.proximity.Models.Utils.ProximityBatch;
-import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Utils.Image;
-import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
  * @author Hanna Romer

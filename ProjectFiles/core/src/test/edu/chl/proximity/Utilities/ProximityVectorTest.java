@@ -4,7 +4,8 @@ import edu.chl.proximity.Utilities.ProximityRandom;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  *@author Johan

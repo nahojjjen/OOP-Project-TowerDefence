@@ -3,11 +3,7 @@ package edu.chl.proximity;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.utils.viewport.Viewport;
-import edu.chl.proximity.Controllers.GameStates.GameOverScreen;
-import edu.chl.proximity.Controllers.GameStates.GameScreen;
 import edu.chl.proximity.Controllers.GameStates.MenuScreen;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.Player;
 
 /**

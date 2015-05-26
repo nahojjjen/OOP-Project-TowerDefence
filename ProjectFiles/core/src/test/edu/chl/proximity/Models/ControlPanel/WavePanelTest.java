@@ -3,7 +3,7 @@ package test.edu.chl.proximity.Models.ControlPanel;
 import edu.chl.proximity.Models.ControlPanel.WavePanel;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Linda Evaldsson

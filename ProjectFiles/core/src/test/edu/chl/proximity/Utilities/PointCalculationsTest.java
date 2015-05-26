@@ -1,14 +1,10 @@
 package test.edu.chl.proximity.Utilities;
 
-import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line1;
-import edu.chl.proximity.Models.Map.Particles.ParticleManager;
-import edu.chl.proximity.Models.Map.Paths.ConcretePaths.FirstPath;
 import edu.chl.proximity.Utilities.PointCalculations;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Johan on 2015-05-02.

@@ -8,8 +8,8 @@ import edu.chl.proximity.Models.Map.Paths.ConcretePaths.FirstPath;
 import edu.chl.proximity.Models.Map.Towers.*;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetClosest;
 import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Filler;
-import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.Player.Players.GameData;
+import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
@@ -17,7 +17,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @authoor Johan

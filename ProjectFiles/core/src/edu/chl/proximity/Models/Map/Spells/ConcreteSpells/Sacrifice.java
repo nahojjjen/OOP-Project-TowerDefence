@@ -1,8 +1,8 @@
 package edu.chl.proximity.Models.Map.Spells.ConcreteSpells;
 
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
-import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Map.Spells.Spell;
+import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 

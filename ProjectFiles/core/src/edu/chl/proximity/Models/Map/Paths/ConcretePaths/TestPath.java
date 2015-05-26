@@ -1,7 +1,7 @@
 package edu.chl.proximity.Models.Map.Paths.ConcretePaths;
 
-import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Paths.Path;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
  * @author Linda Evaldsson

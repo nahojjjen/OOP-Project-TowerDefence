@@ -11,6 +11,7 @@ import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.ProximityRandom;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 /**

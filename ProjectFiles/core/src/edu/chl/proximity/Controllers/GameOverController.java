@@ -4,8 +4,8 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Controllers.ScreenChanger.ScreenChanger;
+import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.WonLostModels.GameOver;
 import edu.chl.proximity.Utilities.ProximityVector;
 

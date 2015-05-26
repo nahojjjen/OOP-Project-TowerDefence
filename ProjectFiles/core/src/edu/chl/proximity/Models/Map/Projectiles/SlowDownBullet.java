@@ -1,11 +1,11 @@
 package edu.chl.proximity.Models.Map.Projectiles;
 
-import edu.chl.proximity.Models.Map.Particles.ParticleManager;
-import edu.chl.proximity.Models.Utils.ProximitySound;
-import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Models.Utils.ProximitySound;
 import edu.chl.proximity.Utilities.Constants;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
  * @author Hanna Romer

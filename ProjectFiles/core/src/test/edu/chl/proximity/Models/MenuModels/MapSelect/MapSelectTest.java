@@ -1,11 +1,12 @@
 package test.edu.chl.proximity.Models.MenuModels.MapSelect;
 
-import edu.chl.proximity.Models.Map.Maps.*;
+import edu.chl.proximity.Models.Map.Maps.FillerMap;
+import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Map.Maps.SmallSpiralMap;
+import edu.chl.proximity.Models.Map.Maps.StandardMap;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.MenuModels.MapSelect.MapSelect;
-import edu.chl.proximity.Models.MenuModels.MapSelect.MapSelectIcon;
 import edu.chl.proximity.Models.Player.Players.GameData;
-import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;

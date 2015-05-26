@@ -1,8 +1,6 @@
 package edu.chl.proximity.Viewers;
 
-import com.badlogic.gdx.graphics.Color;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.Holdables.Hand;
 import edu.chl.proximity.Models.Holdables.Holdable;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -10,7 +8,6 @@ import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Utils.InformationCollector;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
-import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.ArrayList;
 import java.util.List;

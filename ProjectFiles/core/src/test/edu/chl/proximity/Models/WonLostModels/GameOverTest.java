@@ -1,7 +1,6 @@
 package test.edu.chl.proximity.Models.WonLostModels;
 
 import edu.chl.proximity.Models.Map.Maps.FillerMap;
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Models.WonLostModels.GameOver;

@@ -1,8 +1,8 @@
 package edu.chl.proximity.Models.Map.Towers.TargetingMethods;
 
-import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Utilities.PointCalculations;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.List;
 

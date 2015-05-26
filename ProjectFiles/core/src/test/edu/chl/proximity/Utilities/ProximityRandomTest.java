@@ -3,7 +3,7 @@ package test.edu.chl.proximity.Utilities;
 import edu.chl.proximity.Utilities.ProximityRandom;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Johan

@@ -1,16 +1,15 @@
 package edu.chl.proximity.Models.MenuModels.FactionChooser;
 
-import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.LadyLuck;
-import edu.chl.proximity.Models.Utils.ProximityBatch;
-import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Filler;
+import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.LadyLuck;
 import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Planes;
 import edu.chl.proximity.Models.Player.Factions.Faction;
 import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Utilities.Constants;
-import edu.chl.proximity.Utilities.PointCalculations;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.ArrayList;
 import java.util.List;

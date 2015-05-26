@@ -4,12 +4,9 @@ import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Spells.Spell;
 import edu.chl.proximity.Models.Map.Towers.Tower;
-import edu.chl.proximity.Models.Player.Players.GameData;
-import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityRandom;
-import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.List;
 

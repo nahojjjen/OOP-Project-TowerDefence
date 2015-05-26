@@ -4,11 +4,11 @@ import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.Map.Bases.ShardBase;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.Path;
-import edu.chl.proximity.Models.Player.Factions.Faction;
 import edu.chl.proximity.Models.Map.Spells.ConcreteSpells.ChainLightning;
 import edu.chl.proximity.Models.Map.Spells.ConcreteSpells.FireField;
 import edu.chl.proximity.Models.Map.Spells.ConcreteSpells.FrostField;
 import edu.chl.proximity.Models.Map.Spells.ConcreteSpells.WallOfStone;
+import edu.chl.proximity.Models.Player.Factions.Faction;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 

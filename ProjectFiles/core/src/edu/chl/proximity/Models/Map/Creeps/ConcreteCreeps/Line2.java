@@ -7,8 +7,6 @@ import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 
-import java.io.File;
-
 /**
  * @author Simon Gislen
  * @date 2015-05-13

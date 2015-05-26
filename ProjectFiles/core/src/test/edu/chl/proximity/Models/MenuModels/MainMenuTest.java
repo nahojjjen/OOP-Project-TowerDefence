@@ -9,11 +9,10 @@ import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Planes;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.Utils.Settings;
-import edu.chl.proximity.Proximity;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
-import static org.junit.Assert.assertFalse;
+
 import static org.junit.Assert.assertTrue;
 
 /**

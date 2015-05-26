@@ -1,6 +1,5 @@
 package edu.chl.proximity.Utilities;
 
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.RandomXS128;
 
 /**

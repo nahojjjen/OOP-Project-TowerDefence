@@ -1,6 +1,5 @@
 package edu.chl.proximity.Models.Map.Bases;
 
-import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Utils.Image;

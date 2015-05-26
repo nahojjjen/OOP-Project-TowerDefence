@@ -6,7 +6,7 @@ import edu.chl.proximity.Models.Map.Paths.ConcretePaths.TestPath;
 import edu.chl.proximity.Models.Map.Paths.Path;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Johan

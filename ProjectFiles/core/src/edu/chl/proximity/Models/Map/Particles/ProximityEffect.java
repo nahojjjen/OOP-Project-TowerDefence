@@ -5,11 +5,11 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
 import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
+import com.badlogic.gdx.utils.Array;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Models.Utils.Settings;
-import edu.chl.proximity.Utilities.ProximityVector;
-import com.badlogic.gdx.utils.Array;
 import edu.chl.proximity.Utilities.Constants;
+import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Utilities.TestChecker;
 
 import java.util.ArrayList;

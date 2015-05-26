@@ -7,7 +7,8 @@ import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Map.Waves.Wave;
 import junit.framework.TestCase;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Simon Gislen.

@@ -1,9 +1,9 @@
 
 package edu.chl.proximity.Models.Map.Waves;
 
-        import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Map.Creeps.Creep;
 
-        import java.util.List;
+import java.util.List;
 
 /**
  * @author Simon Gislén

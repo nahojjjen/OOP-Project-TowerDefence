@@ -1,9 +1,6 @@
 package edu.chl.proximity.Models.Utils;
 
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.files.FileHandle;
-import edu.chl.proximity.Models.Utils.ProximitySound;
-import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityRandom;
 

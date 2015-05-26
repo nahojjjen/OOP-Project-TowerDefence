@@ -1,14 +1,15 @@
 package edu.chl.proximity.Models.ControlPanel;
 
-import edu.chl.proximity.Models.Map.Towers.*;
-import edu.chl.proximity.Models.Utils.PercentBar;
-import edu.chl.proximity.Models.Utils.ProximityBatch;
-import edu.chl.proximity.Utilities.*;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Map.Towers.*;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingFactory;
-import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
+import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Models.Utils.PercentBar;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
+import edu.chl.proximity.Utilities.Constants;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.ArrayList;
 import java.util.List;

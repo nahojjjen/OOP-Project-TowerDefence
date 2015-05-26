@@ -1,5 +1,7 @@
 package test.edu.chl.proximity.Models.Map.Maps;
 
+import edu.chl.proximity.Models.Holdables.Hand;
+import edu.chl.proximity.Models.Map.Background;
 import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.Map.Bases.ShardBase;
 import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line1;
@@ -11,22 +13,21 @@ import edu.chl.proximity.Models.Map.Paths.ConcretePaths.TestPath;
 import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Map.Projectiles.Bullet;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
+import edu.chl.proximity.Models.Map.Spells.ConcreteSpells.WallOfStone;
+import edu.chl.proximity.Models.Map.Spells.Spell;
 import edu.chl.proximity.Models.Map.Towers.BulletTower;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetClosest;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Models.Map.Towers.Tower;
-import edu.chl.proximity.Models.Holdables.Hand;
-import edu.chl.proximity.Models.Map.Spells.ConcreteSpells.WallOfStone;
-import edu.chl.proximity.Models.Map.Spells.Spell;
-import edu.chl.proximity.Models.Map.Background;
 import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityRandom;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 import java.util.List;
+
+import static org.junit.Assert.*;
 
 
 /**

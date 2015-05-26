@@ -5,7 +5,7 @@ import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Floompa on 2015-05-23.

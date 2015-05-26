@@ -2,7 +2,6 @@ package edu.chl.proximity.Models.Map.Maps;
 
 import edu.chl.proximity.Models.Map.Background;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
-import edu.chl.proximity.Models.Map.Paths.ConcretePaths.SecondTestPath;
 import edu.chl.proximity.Models.Map.Paths.ConcretePaths.ZigZagPath;
 import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Utils.Image;

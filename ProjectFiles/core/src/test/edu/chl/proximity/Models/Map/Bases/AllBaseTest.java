@@ -7,7 +7,7 @@ import edu.chl.proximity.Models.Map.Paths.ConcretePaths.FirstPath;
 import edu.chl.proximity.Models.Utils.Settings;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @Johan

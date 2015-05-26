@@ -1,18 +1,19 @@
 package edu.chl.proximity.Models.ControlPanel.TowerPanel;
 
-import edu.chl.proximity.Models.ControlPanel.ResourceDisplayerCollection;
-import edu.chl.proximity.Models.Map.Towers.TargetingTower;
-import edu.chl.proximity.Models.Utils.ProximityBatch;
-import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.ControlPanel.ResourceDisplayerCollection;
 import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Map.Towers.TargetingMethods.*;
+import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingFactory;
+import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
+import edu.chl.proximity.Models.Map.Towers.TargetingTower;
 import edu.chl.proximity.Models.Map.Towers.Tower;
-import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Player.Players.GameData;
+import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Utilities.Constants;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.ArrayList;
 import java.util.HashMap;

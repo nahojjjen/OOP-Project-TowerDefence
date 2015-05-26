@@ -5,7 +5,7 @@ import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Player.Players.Player;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Linda Evaldsson

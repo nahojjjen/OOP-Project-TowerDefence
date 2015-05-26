@@ -5,7 +5,7 @@ import edu.chl.proximity.Models.Map.Particles.ProximityEffect;
 import edu.chl.proximity.Models.Utils.Settings;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Johan

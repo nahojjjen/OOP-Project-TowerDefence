@@ -11,15 +11,15 @@ package edu.chl.proximity.Models.ControlPanel;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import edu.chl.proximity.Models.Utils.Image;
-import edu.chl.proximity.Models.Utils.ProximityBatch;
-import edu.chl.proximity.Utilities.Constants;
-import edu.chl.proximity.Utilities.ProximityShapeRenderer;
-import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Player.Players.Player;
+import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Models.Utils.ProximityFont;
+import edu.chl.proximity.Utilities.Constants;
+import edu.chl.proximity.Utilities.ProximityShapeRenderer;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
  * @author Simon Gislen

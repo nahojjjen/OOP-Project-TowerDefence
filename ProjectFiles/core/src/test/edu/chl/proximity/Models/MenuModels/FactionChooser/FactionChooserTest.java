@@ -1,7 +1,6 @@
 package test.edu.chl.proximity.Models.MenuModels.FactionChooser;
 
 import edu.chl.proximity.Models.MenuModels.FactionChooser.FactionChooser;
-import edu.chl.proximity.Models.MenuModels.FactionChooser.NextPrevButton;
 import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Filler;
 import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.LadyLuck;
 import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Planes;
@@ -10,7 +9,6 @@ import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**

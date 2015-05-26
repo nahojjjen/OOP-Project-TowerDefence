@@ -1,6 +1,8 @@
 package edu.chl.proximity.Models.CreepGenerator;
 
-import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.*;
+import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Boss1;
+import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line1;
+import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line2;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Waves.Wave;

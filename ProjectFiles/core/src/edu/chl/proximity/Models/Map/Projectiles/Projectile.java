@@ -1,14 +1,13 @@
 package edu.chl.proximity.Models.Map.Projectiles;
 
-import edu.chl.proximity.Models.Utils.ProximitySound;
-import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
-import edu.chl.proximity.Models.Player.Players.GameData;
-import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Map.Particles.ProximityEffect;
+import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Models.Utils.ProximitySound;
 import edu.chl.proximity.Utilities.PointCalculations;
 import edu.chl.proximity.Utilities.ProximityRandom;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
  * @author Hanna Romer

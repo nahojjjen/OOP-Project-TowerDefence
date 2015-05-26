@@ -7,8 +7,6 @@ import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Towers.BulletTower;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetFirst;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
-import edu.chl.proximity.Models.Map.Towers.TargetingTower;
-import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
@@ -18,7 +16,8 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /*
  * @author Linda Evaldsson

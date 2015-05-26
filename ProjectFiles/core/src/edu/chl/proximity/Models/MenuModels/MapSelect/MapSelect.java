@@ -1,14 +1,12 @@
 package edu.chl.proximity.Models.MenuModels.MapSelect;
 
-import com.badlogic.gdx.Game;
+import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.*;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Utilities.ProximityVector;
-import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Utilities.PointCalculations;
 
 import java.util.ArrayList;
 import java.util.List;

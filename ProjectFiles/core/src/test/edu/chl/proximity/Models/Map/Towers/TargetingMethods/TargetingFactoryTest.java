@@ -3,7 +3,7 @@ package test.edu.chl.proximity.Models.Map.Towers.TargetingMethods;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.*;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Johan on 2015-05-19.

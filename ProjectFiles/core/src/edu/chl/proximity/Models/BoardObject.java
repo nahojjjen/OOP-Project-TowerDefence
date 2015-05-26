@@ -2,9 +2,9 @@ package edu.chl.proximity.Models;
 
 
 import edu.chl.proximity.Models.Utils.ProximityBatch;
-import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Utilities.PointCalculations;
-import java.lang.CloneNotSupportedException;
+import edu.chl.proximity.Utilities.ProximityVector;
+
 import java.util.ArrayList;
 import java.util.List;
 

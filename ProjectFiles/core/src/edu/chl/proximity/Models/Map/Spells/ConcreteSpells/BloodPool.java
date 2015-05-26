@@ -6,7 +6,6 @@ import edu.chl.proximity.Models.Map.Spells.Spell;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
-import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
  * A spell which creates a circle where all creeps inside gets devolved 1 step, and gives the base 1 more health for each devolved creep

@@ -3,8 +3,6 @@ package edu.chl.proximity.Controllers.SubControllers;
 
 import edu.chl.proximity.Utilities.ProximityVector;
 
-import java.util.List;
-
 /**
  * @author Linda Evaldsson
  * @date 2015-04-22

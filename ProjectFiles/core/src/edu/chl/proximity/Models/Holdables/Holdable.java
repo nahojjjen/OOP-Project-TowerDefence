@@ -2,9 +2,9 @@ package edu.chl.proximity.Models.Holdables;
 
 import com.badlogic.gdx.graphics.Color;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
+import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
-import edu.chl.proximity.Models.Utils.Image;
 
 /**
  * @author Linda Evaldsson

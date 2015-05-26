@@ -3,11 +3,9 @@ package edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.Path;
-import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
+import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
-
-import java.io.File;
 
 /**
  * @author Simon Gislén

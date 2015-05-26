@@ -1,13 +1,13 @@
 package edu.chl.proximity.Models.Map.Creeps;
 
-import edu.chl.proximity.Models.Map.Particles.ParticleManager;
-import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
+import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.PointCalculations;
 import edu.chl.proximity.Utilities.ProximityRandom;
+import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
  * @author Linda Evaldsson
