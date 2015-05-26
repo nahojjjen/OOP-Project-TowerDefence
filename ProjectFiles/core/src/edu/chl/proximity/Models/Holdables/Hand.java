@@ -121,12 +121,17 @@ public class Hand {
 
     public void render(ProximityShapeRenderer shapeRenderer) {
         if(!(currentItem.isPlaced())) {
-            if (currentItem.getRange() < 9999){
+            if (currentItem.getRange() < 9999){ //render normal tower ranges
                 shapeRenderer.renderRangeIndicator(getPosition(), getItem().getRange(), getRangeIndicatorColor());
-            }else{
+            }else{ //render sniper-like ranges
                 shapeRenderer.renderRangeIndicator(getPosition(), 34, getRangeIndicatorColor());
             }
-        } else {
+            if (currentItem instanceof Tower){ //render out build-hitbox if item is a tower
+                Tower t =(Tower)currentItem;
+                ProximityVector pos=new ProximityVector(getPosition().x-t.getWidth()/2, getPosition().y-t.getHeight()/2);
+                shapeRenderer.renderRectangle(pos, getItem().getImage().getTexture().getWidth(), getItem().getImage().getTexture().getHeight(), new Color(0.5f, 0.5f, 0.5f, 0.5f));
+            }
+        } else { //if the thing is placed, render from where its positioned instead of from the cursor position
             shapeRenderer.renderRangeIndicator(currentItem.getCenter(), getItem().getRange(), new Color(0.4f, 0.2f, 0.9f, 0.2f));
         }
     }

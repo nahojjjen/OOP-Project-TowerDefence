@@ -78,7 +78,7 @@ public abstract class Path {
         Double atb=Math.sqrt(PointCalculations.distanceBetweenNoSqrt(a,b));
         Double atp=Math.sqrt(PointCalculations.distanceBetweenNoSqrt(a,p));
         Double btp=Math.sqrt(PointCalculations.distanceBetweenNoSqrt(b,p));
-        return ((atp+btp)-atb <=0.1);
+        return ((atp+btp)-atb <=0.01);
     }
 
 
