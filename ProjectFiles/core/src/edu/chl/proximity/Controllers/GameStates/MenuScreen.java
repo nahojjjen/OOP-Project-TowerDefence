@@ -13,6 +13,7 @@ import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Controllers.ScreenChanger.ScreenChangerListener;
+import edu.chl.proximity.Models.Utils.DisposableCollector;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Models.Utils.ProximityAudioPlayer;
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
@@ -47,18 +48,14 @@ public class MenuScreen implements Screen, ScreenChangerListener {
         menuRenderer=new MenuRenderer(mainMenu);
 
         //Fix of camera and graphics
-        fixCamera();
-        //TODO fix this viewport scaling issue
-        /*
-        if(viewport==null) {
+        if (viewport == null){
             fixCamera();
         }else{
-            this.viewport=viewport;
-            this.camera=(OrthographicCamera) viewport.getCamera();
-            viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-            //viewport.apply();
+            this.viewport = viewport;
+            this.camera = (OrthographicCamera)viewport.getCamera();
         }
-        */
+
+
         mainMenuController=new MainMenuController(this.viewport);
         mainMenuController.setMainMenu(mainMenu);
         Gdx.input.setInputProcessor(mainMenuController);
@@ -89,27 +86,19 @@ public class MenuScreen implements Screen, ScreenChangerListener {
     @Override
     public void render(float delta) {
         camera.update();
-
         shapeRenderer.setProjectionMatrix(camera.combined);
         batch.setProjectionMatrix(camera.combined);
 
         batch.begin();
         menuRenderer.render(batch, shapeRenderer);
-
         batch.end();
-
-        //stage.act(delta);
-        //stage.draw();
     }
 
     public void screenChanged(ScreenChanger.ScreenType type) {
-
         switch(type) {
             case Play: game.setScreen(new GameScreen(game, mainMenu.getMap(), GameData.getInstance().getPlayer(), viewport)); break;
             default: break;
         }
-
-
     }
 
 
@@ -119,22 +108,16 @@ public class MenuScreen implements Screen, ScreenChangerListener {
     }
 
     @Override
-    public void pause() {
-
-    }
+    public void pause() {    }
 
     @Override
-    public void resume() {
-
-    }
+    public void resume() {    }
 
     @Override
-    public void hide() {
+    public void hide() {    }
 
-    }
-
+    //The disposeCollector handles disposing
     @Override
-    public void dispose() {
+    public void dispose(){     }
 
-    }
 }

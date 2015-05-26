@@ -54,15 +54,14 @@ public class GameScreen implements Screen, ScreenChangerListener{
         GameData.getInstance().setPlayer(player);
         this.gameRenderer = new GameRenderer(map);
 
-        fixCamera();
-        //TODO fix this viewport scaling issue
-        /*
-        this.viewport=viewport;
-        camera=(OrthographicCamera)viewport.getCamera();
-        camera.setToOrtho(true);
-        viewport.apply();
-        viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        */
+        //Fix of camera and graphics
+        if (viewport == null){
+            fixCamera();
+        }else{
+            this.viewport = viewport;
+            this.camera = (OrthographicCamera)viewport.getCamera();
+        }
+
 
         mainController = new MainController(map, this.viewport);
         gameRenderer.setControlPanels(mainController.getControlPanels());
@@ -73,24 +72,10 @@ public class GameScreen implements Screen, ScreenChangerListener{
         Gdx.input.setInputProcessor(mainController);
         ScreenChanger.setListener(this);
 
-        //runDebugCode();
 
 
     }
 
-    /**
-     * Debug code that adds towers, sets gamespeed and sets resources and such, that should not be available to the player
-     */
-    private void runDebugCode(){
-
-        //currentMap.addTower(new MissileTower(new Vector2(0, 0)));//cameraPointCoordinates));
-        //currentMap.addTower(new SlowTower(new Vector2(300, 300)));
-        //FrostField frostField = new FrostField();
-        //currentMap.addTower(new BulletTower(new Vector2(400,200)));
-        //currentMap.addTower(new BulletTower(new Vector2(400,300)));
-
-        //map.getSettings().setGameSpeed(1000);
-    }
 
     /**
      * Attatches a camera object that views the game-data and interprets it as visual information, and a viewport
@@ -132,30 +117,22 @@ public class GameScreen implements Screen, ScreenChangerListener{
     }
 
     @Override
-    public void pause() {
-
-    }
+    public void pause() {    }
 
     @Override
-    public void resume() {
-
-    }
+    public void resume() {    }
 
     @Override
-    public void hide() {
-
-    }
+    public void hide() {    }
 
     @Override
-    public void dispose() {
-
-    }
+    public void dispose() {    }
 
     @Override
     public void screenChanged(ScreenChanger.ScreenType newScreen) {
         switch(newScreen) {
             case MainMenu: game.setScreen(new MenuScreen(game, GameData.getInstance().getPlayer(), viewport)); break;
-            case GameOver: game.setScreen(new GameOverScreen(game, map, GameData.getInstance().getPlayer())); break;
+            case GameOver: game.setScreen(new GameOverScreen(game, map, GameData.getInstance().getPlayer(), viewport)); break;
             default: break;
         }
     }

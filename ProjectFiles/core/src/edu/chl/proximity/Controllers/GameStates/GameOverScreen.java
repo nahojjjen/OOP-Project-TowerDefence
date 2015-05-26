@@ -35,11 +35,19 @@ public class GameOverScreen implements Screen, ScreenChangerListener {
     private OrthographicCamera camera;
     private Viewport viewport;
 
-    public GameOverScreen(Game g, Map map, Player player){
+    public GameOverScreen(Game g, Map map, Player player, Viewport viewport){
         this.map = map;
         this.game = g;
         GameData.getInstance().setPlayer(player);
-        fixCamera();
+
+        //Fix of camera and graphics
+        if (viewport == null){
+            fixCamera();
+        }else{
+            this.viewport = viewport;
+            this.camera = (OrthographicCamera)viewport.getCamera();
+        }
+
         gameOver=new GameOver(map);
         gameOverRenderer=new GameOverRenderer(gameOver);
         gameOverController=new GameOverController(g,viewport,gameOver,player);
