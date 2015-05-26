@@ -1,29 +1,20 @@
 package edu.chl.proximity.Models.Map.Maps;
 
-<<<<<<< HEAD
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Holdables.Hand;
-=======
 import edu.chl.proximity.Models.Map.Spells.Spell;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Models.Utils.ProximityShapeRenderer;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Models.Map.Holdables.Hand;
->>>>>>> Minor restructuring
 import edu.chl.proximity.Models.Map.Background;
 import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
-import edu.chl.proximity.Models.Map.Spells.Spell;
 import edu.chl.proximity.Models.Map.Towers.Tower;
-import edu.chl.proximity.Models.ResourceSystem.Resources;
-import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.PointCalculations;
-import edu.chl.proximity.Utilities.ProximityShapeRenderer;
-import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.*;
 

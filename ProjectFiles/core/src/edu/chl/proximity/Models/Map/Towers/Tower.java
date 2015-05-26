@@ -2,16 +2,11 @@ package edu.chl.proximity.Models.Map.Towers;
 
 import com.badlogic.gdx.graphics.Color;
 import edu.chl.proximity.Models.BoardObject;
-<<<<<<< HEAD
-import edu.chl.proximity.Models.Holdables.Holdable;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
-=======
 import edu.chl.proximity.Models.Map.Holdables.Holdable;
 import edu.chl.proximity.Models.Utils.Image;
->>>>>>> Minor restructuring
 import edu.chl.proximity.Models.ResourceSystem.Resources;
-import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.List;

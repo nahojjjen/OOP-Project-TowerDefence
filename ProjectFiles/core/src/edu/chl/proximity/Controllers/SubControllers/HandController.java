@@ -2,11 +2,7 @@ package edu.chl.proximity.Controllers.SubControllers;
 
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.GameData;
-<<<<<<< HEAD
-import edu.chl.proximity.Models.Utils.InformationCollector;
-=======
 import edu.chl.proximity.Models.Map.MouseOver.InformationCollector;
->>>>>>> Minor restructuring
 import edu.chl.proximity.Utilities.ProximityVector;
 
 /**

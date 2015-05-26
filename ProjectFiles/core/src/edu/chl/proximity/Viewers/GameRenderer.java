@@ -1,22 +1,13 @@
 package edu.chl.proximity.Viewers;
 
 import edu.chl.proximity.Models.BoardObject;
-<<<<<<< HEAD
-import edu.chl.proximity.Models.Holdables.Hand;
-import edu.chl.proximity.Models.Holdables.Holdable;
-=======
 import edu.chl.proximity.Models.Map.Holdables.Hand;
 import edu.chl.proximity.Models.Map.Holdables.Holdable;
->>>>>>> Minor restructuring
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.MouseOver.InformationCollector;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
-<<<<<<< HEAD
-import edu.chl.proximity.Utilities.ProximityShapeRenderer;
-=======
 import edu.chl.proximity.Models.Utils.ProximityShapeRenderer;
->>>>>>> Minor restructuring
 
 import java.util.ArrayList;
 import java.util.List;
