@@ -17,12 +17,12 @@ public interface ClickHandler {
      * @param pointer the pointer for the event
      * @param button the button that was clicked
      */
-    public void touchDown (ProximityVector clickedPoint, int pointer, int button);
+    void touchDown (ProximityVector clickedPoint, int pointer, int button);
 
     /**
      * Method called when the mouse is moved
      * @param newPosition The position the mouse was moved to
      */
-    public void mouseMoved (ProximityVector newPosition);
+    void mouseMoved (ProximityVector newPosition);
 
 }

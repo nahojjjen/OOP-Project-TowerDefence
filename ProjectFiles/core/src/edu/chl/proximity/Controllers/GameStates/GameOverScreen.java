@@ -57,9 +57,11 @@ public class GameOverScreen implements Screen, ScreenChangerListener {
         this.game = g;
         this.map = map;
         this.player = player;
+        initiateModel();
+        initiateController();
+        initiateView();
     }
     private void initiateModel() {
-
         gameOver=new GameOver(map);
     }
     private void initiateController() {

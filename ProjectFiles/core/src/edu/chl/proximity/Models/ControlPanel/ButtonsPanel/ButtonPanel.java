@@ -135,8 +135,6 @@ public class ButtonPanel extends BoardObject {
      * Pauses game and tells the properiespanel to be visible
      */
     public void pressedPropertiesButton(){
-
-        pressedPause();
         propertiesPanel.setVisibility(true);
     }
 

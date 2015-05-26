@@ -16,7 +16,7 @@ import java.util.List;
  * @author Johan Swanberg and Linda Evaldsson
  * @date 2015-04-02
  *
- * MainController controls all the SubControllers in the game. It updates the
+ * MainController controls all the controllers (SubControllers) for the game view. It updates the
  * controllers 60 times per second and also handles input that is delegated to
  * the SubControllers.
  *

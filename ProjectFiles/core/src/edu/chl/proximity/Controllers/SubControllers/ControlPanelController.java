@@ -18,7 +18,7 @@ import java.util.List;
  * @author Linda Evaldsson
  * @date 2015-04-17
  *
- * A controller that controls the ControlPanels in the game
+ * A controller that controls the control panels in the game
  *
  * 29/04 modified by Linda Evaldsson. Merged this class with PropertiesPanelController (created by Hanna Romer 2015-04-23) and ButtonPanelController (created by Hanna Romer 2015-04-23).
  * 29/04 modified by Hanna Romer. Added Play and Pause Buttons to possible clicked buttons on ButtonsPanel. Removed PausePlayButton option.

@@ -20,7 +20,7 @@ import java.util.List;
  * @author Linda Evaldsson
  * @date 2015-04-22
  *
- * A controller that controls the map in the game
+ * A controller that controls the map and everything that is on it in the game
  *
  * 03-05-2015 Modified by Simon Gislen. Introducing: *Towers are not free*
  *

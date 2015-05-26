@@ -9,7 +9,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @author Linda Evaldsson
  * @date 2015-04-2
  *
- * A class for updating the hand
+ * A controller for updating the hand
  *
  */
 public class HandController implements ClickHandler, UpdateHandler {

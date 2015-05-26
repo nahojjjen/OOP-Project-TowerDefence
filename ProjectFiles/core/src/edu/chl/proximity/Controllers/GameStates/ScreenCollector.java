@@ -8,6 +8,9 @@ import edu.chl.proximity.Models.Player.Players.Player;
 /**
  * @author Linda Evaldsson
  * @date 2015-05-26
+ *
+ * A class that collects the screens, when a new screen is needed in
+ * one of the screens it can be gotten through this class.
  */
 public class ScreenCollector {
 
