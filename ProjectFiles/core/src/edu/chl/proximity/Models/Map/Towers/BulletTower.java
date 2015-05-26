@@ -37,6 +37,11 @@ public class BulletTower extends ShootingTower implements Cloneable {
         setParticleManager(particleManager);
     }
 
+    public String getDescription() {
+        return super.getDescription() + "\n " +
+                "A regular tower that shoots at creeps.";
+    }
+
 
     @Override
     public Projectile createProjectile() {

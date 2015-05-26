@@ -44,9 +44,10 @@ public class BulletTower3 extends Tower implements Cloneable, TargetingTower {
         this.targetingMethod = targetingMethod;
     }
 
-//    public BulletTower3(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager) {
-//        super(pos, img, range, targetingMethod, reloadTime, resources, "Bullet Tower 2");
-//    }
+    public String getDescription() {
+        return "\n" +
+                "A tower that shoots three bullets really quick and then reloads.";
+    }
 
     /**
      * Targets the closest creep, if one is in range.

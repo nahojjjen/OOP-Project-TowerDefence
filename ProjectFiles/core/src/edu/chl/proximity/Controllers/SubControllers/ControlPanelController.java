@@ -95,6 +95,12 @@ public class ControlPanelController implements ClickHandler, UpdateHandler {
         if(spellPanel.containsPoint(newPosition)) {
             spellPanel.mouseOverPosition(newPosition);
         }
+        if(controlPanel.containsPoint(newPosition)) {
+            controlPanel.mouseOverPosition(newPosition);
+        }
+        if(towerPanel.containsPoint(newPosition)) {
+            towerPanel.mouseOverPosition(newPosition);
+        }
      }
 
     public void keyDown(int keycode) {

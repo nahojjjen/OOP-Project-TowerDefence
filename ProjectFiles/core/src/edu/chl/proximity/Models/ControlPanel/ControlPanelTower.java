@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.ControlPanel;
 
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.MouseOver.MouseOverBox;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
@@ -24,6 +25,7 @@ public class ControlPanelTower extends BoardObject{
     private ProximityFont headline;
     private int key;
     private ProximityFont keyFont;
+    private MouseOverBox hoverBox;
 
     public ControlPanelTower(ProximityVector position, Tower tower) {
         super(position, bgImage, 0);
@@ -35,6 +37,7 @@ public class ControlPanelTower extends BoardObject{
         headline.setSize(11);
         keyFont = new ProximityFont(position, "");
         setPosition(position);
+        hoverBox = new MouseOverBox(150, tower.getHelpInfo());
     }
 
     /**
@@ -76,5 +79,9 @@ public class ControlPanelTower extends BoardObject{
         tower.render(batch);
         headline.draw(batch);
         keyFont.draw(batch);
+    }
+
+    public void hover() {
+        hoverBox.enable();
     }
 }

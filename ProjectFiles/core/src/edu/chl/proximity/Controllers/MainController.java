@@ -118,8 +118,10 @@ public class MainController implements InputProcessor{
      */
     @Override
     public boolean mouseMoved (int x, int y) {
-        Vector2 clickedPoint2 = viewport.unproject(new Vector2(x, y));
-        ProximityVector draggedPoint = new ProximityVector(clickedPoint2.x, clickedPoint2.y);
+        Vector2 clickedPoint = viewport.unproject(new Vector2(x, y));
+        ProximityVector draggedPoint = new ProximityVector(clickedPoint.x, clickedPoint.y);
+
+        System.out.println("X: " + draggedPoint.x + ", Y: " + draggedPoint.y);
         for(ClickHandler controller : controlPanelClickHandlers) {
             controller.mouseMoved(draggedPoint);
         }

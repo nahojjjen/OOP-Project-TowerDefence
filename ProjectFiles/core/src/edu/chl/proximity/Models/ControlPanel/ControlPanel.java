@@ -184,4 +184,12 @@ public class ControlPanel extends BoardObject{
         return null;
     }
 
+    public void mouseOverPosition(ProximityVector position) {
+        for(ControlPanelTower cpTower : controlPanelTowerList) {
+            if(cpTower.containsPoint(position)) {
+                cpTower.hover();
+            }
+        }
+    }
+
 }

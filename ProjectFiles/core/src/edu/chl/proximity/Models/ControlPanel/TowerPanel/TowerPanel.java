@@ -1,8 +1,10 @@
 package edu.chl.proximity.Models.ControlPanel.TowerPanel;
 
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.ControlPanel.ControlPanelTower;
 import edu.chl.proximity.Models.ControlPanel.ResourceDisplayerCollection;
 import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Map.MouseOver.MouseOverBox;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingFactory;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Models.Map.Towers.TargetingTower;
@@ -38,6 +40,9 @@ public class TowerPanel extends BoardObject{
     private ProximityFont towerName;
     private ProximityVector towerPosition;
 
+    private MouseOverBox upgradeHoverBox;
+    private MouseOverBox sellHoverBox = new MouseOverBox(150, "Click to destroy");
+
 
     private HashMap<CheckBox, TargetingMethod> checkBoxMap = new HashMap<CheckBox, TargetingMethod>();
 
@@ -69,8 +74,8 @@ public class TowerPanel extends BoardObject{
 
     private void initiateUpgrade() {
 
-        upgrade = new UpgradeButton(new ProximityVector(pos.x + 150, pos.y + 30));
-        upgradeText = new ProximityFont(new ProximityVector(pos.x + 150, pos.y+15),"Upgrade");
+        upgrade = new UpgradeButton(new ProximityVector(pos.x + 150, pos.y + 40));
+        upgradeText = new ProximityFont(new ProximityVector(pos.x + 150, pos.y+25),"Upgrade");
         upgradeText.setSize(12);
 
         upgradeCost = new ResourceDisplayerCollection(new ProximityVector(pos.x + 200, pos.y + 30), 15, 12, ResourceDisplayerCollection.Direction.Vertical);
@@ -187,8 +192,8 @@ public class TowerPanel extends BoardObject{
             towerImage=chosenTower.getImage();
             if(map.getChosenTower().getUpgrade() != null) {
                 upgrade.setImage(chosenTower.getUpgrade().getImage());
+                upgradeHoverBox = new MouseOverBox(150, chosenTower.getUpgrade().getHelpInfo());
                 Resources r = chosenTower.getUpgradeCost();
-
 
                 Resources p = GameData.getInstance().getPlayer().getResources();
                 if (r.getPolygons() > p.getPolygons() || r.getLines() > p.getLines() || r.getPoints() > p.getPoints()) {
@@ -212,6 +217,18 @@ public class TowerPanel extends BoardObject{
                     }
                 }
             }
+        }
+    }
+
+    /**
+     * A method that displays the correct HoverBox if the mouse is over the upgrade-button
+     * @param position
+     */
+    public void mouseOverPosition(ProximityVector position) {
+        if(upgrade.containsPoint(position)) {
+            upgradeHoverBox.enable();
+        } else if (sell.containsPoint(position)) {
+            sellHoverBox.enable();
         }
     }
 

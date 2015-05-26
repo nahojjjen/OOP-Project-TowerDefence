@@ -42,6 +42,17 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
 
     public abstract void update(List<Creep> creeps);
 
+    public String getHelpInfo() {
+
+        return getName() + "\n" +
+                "Range: " + (range > 900.0 ? "Infinity" : String.valueOf(range)) + "\n" +
+                getDescription();
+    }
+
+    public String getDescription() {
+        return "\n " +
+                "No description";
+    }
 
     public Resources getUpgradeCost() {
         return getUpgrade().getCost();

@@ -28,10 +28,14 @@ public class BulletTower2 extends ShootingTower implements Cloneable {
      *  double range, TargetingMethod targetingMethod, int reloadTime
      */
     public BulletTower2(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager) {
-        super(pos, img, range, targetingMethod, reloadTime, resources, "Bullet Tower");
+        super(pos, img, range, targetingMethod, reloadTime, resources, "Bullet Tower X2000");
         setParticleManager(particleManager);
     }
 
+    public String getDescription() {
+        return super.getDescription() + "\n " +
+                "A regular tower that shoots at creeps, slightly more effective than the base Bullet Tower.";
+    }
 
     @Override
     public Projectile createProjectile() {

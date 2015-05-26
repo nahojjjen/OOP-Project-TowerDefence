@@ -2,14 +2,10 @@ package edu.chl.proximity.Models.Map.Towers;
 
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
-import edu.chl.proximity.Models.Map.Projectiles.Bullet;
-import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
-import edu.chl.proximity.Utilities.PointCalculations;
-import edu.chl.proximity.Utilities.ProximityRandom;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.ArrayList;
@@ -24,7 +20,7 @@ import java.util.List;
 public class FireTower extends Tower{
     //Tower stats
     private static Resources resources = new Resources(100, 100, 2);
-    private static double range = 100f;
+    private static double fireRange = 100f;
     private static int reloadTime = 150;
     private static int emberTime = 50;
     private int currentEmber = 0;
@@ -36,6 +32,7 @@ public class FireTower extends Tower{
 
     public FireTower(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager) {
         super(pos, img, 0, "Flame Spire");
+        range = fireRange;
         setParticleManager(particleManager);
         this.cost = resources;
         this.targetingMethod = targetingMethod;
@@ -43,15 +40,15 @@ public class FireTower extends Tower{
 
 
     /**
-     * get all targets in range of the tower
+     * get all targets in fireRange of the tower
      * @param creeps what creeps should be searched among
-     * @return a list of creeps within range of the tower
+     * @return a list of creeps within fireRange of the tower
      */
     private List<Creep> targetsInRange(List<Creep> creeps){
         List<Creep> list = new ArrayList<>();
 
         for (Creep creep:creeps){
-            if (targetingMethod.isWithinRange(creep, this.getCenter(), range)){
+            if (targetingMethod.isWithinRange(creep, this.getCenter(), fireRange)){
                 list.add(creep);
             }
         }
@@ -120,12 +117,5 @@ public class FireTower extends Tower{
     public Tower getNewUpgrade() {
         return null;
     }
-
-    @Override
-    public double getRange(){
-        return range;
-    }
-
-
 
 }

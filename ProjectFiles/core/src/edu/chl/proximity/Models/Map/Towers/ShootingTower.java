@@ -25,6 +25,7 @@ public abstract class ShootingTower extends Tower implements TargetingTower{
 
     private TargetingMethod targetingMethod;
     private Creep currentTarget;
+    private double reloadTimeInSeconds;
 
     /**
      * Create a new type of tower
@@ -41,7 +42,11 @@ public abstract class ShootingTower extends Tower implements TargetingTower{
         this.targetingMethod = targetingMethod;
         this.reloadTime = reloadTime;
         this.cost = cost;
+        reloadTimeInSeconds = ((int)(reloadTime/60.0*100))/100.0;
+    }
 
+    public String getDescription() {
+        return "Reload time: " + reloadTimeInSeconds + "s\n";
 
     }
 
