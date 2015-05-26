@@ -3,7 +3,7 @@ package edu.chl.proximity.Viewers;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.MenuModels.MainMenu;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
-import edu.chl.proximity.Utilities.ProximityShapeRenderer;
+import edu.chl.proximity.Models.Utils.ProximityShapeRenderer;
 
 /**
  * @author Hanna Romer

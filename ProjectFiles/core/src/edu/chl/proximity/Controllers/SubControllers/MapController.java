@@ -8,6 +8,12 @@ import edu.chl.proximity.Models.Map.Background;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Map.Towers.Tower;
+<<<<<<< HEAD
+=======
+import edu.chl.proximity.Models.Map.Background;
+import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.Holdables.Holdable;
+>>>>>>> Minor restructuring
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;

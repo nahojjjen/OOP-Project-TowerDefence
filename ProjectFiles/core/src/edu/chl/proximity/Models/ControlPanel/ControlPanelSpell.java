@@ -3,8 +3,12 @@ package edu.chl.proximity.Models.ControlPanel;
 
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Spells.ConcreteSpells.Cooldown;
+<<<<<<< HEAD
 import edu.chl.proximity.Models.Map.Spells.Spell;
 import edu.chl.proximity.Models.Utils.MouseOverBox;
+=======
+import edu.chl.proximity.Models.Map.MouseOver.MouseOverBox;
+>>>>>>> Minor restructuring
 import edu.chl.proximity.Utilities.ProximityVector;
 
 /**

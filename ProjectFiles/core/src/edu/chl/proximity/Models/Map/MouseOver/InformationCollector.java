@@ -1,5 +1,6 @@
-package edu.chl.proximity.Models.Utils;
+package edu.chl.proximity.Models.Map.MouseOver;
 
+import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.ArrayList;

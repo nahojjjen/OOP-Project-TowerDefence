@@ -2,9 +2,14 @@ package edu.chl.proximity.Models.Map.Towers;
 
 import com.badlogic.gdx.graphics.Color;
 import edu.chl.proximity.Models.BoardObject;
+<<<<<<< HEAD
 import edu.chl.proximity.Models.Holdables.Holdable;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
+=======
+import edu.chl.proximity.Models.Map.Holdables.Holdable;
+import edu.chl.proximity.Models.Utils.Image;
+>>>>>>> Minor restructuring
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.ProximityVector;
@@ -52,6 +57,10 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
         if (position == null) throw new IllegalArgumentException();
         this.setCenter(position);
         isPlaced=true;
+    }
+
+    public boolean canBePlacedOnPath() {
+        return false;
     }
 
     @Override

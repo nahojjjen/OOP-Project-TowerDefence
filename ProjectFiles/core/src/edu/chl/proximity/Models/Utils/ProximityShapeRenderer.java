@@ -1,4 +1,4 @@
-package edu.chl.proximity.Utilities;
+package edu.chl.proximity.Models.Utils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Matrix4;
 import edu.chl.proximity.Models.Utils.DisposableCollector;
 import edu.chl.proximity.Models.Utils.ProximityDisposable;
+import edu.chl.proximity.Utilities.ProximityVector;
+import edu.chl.proximity.Utilities.TestChecker;
 
 /**
  * @author Linda Evaldsson

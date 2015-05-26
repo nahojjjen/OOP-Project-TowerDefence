@@ -1,11 +1,12 @@
 package test.edu.chl.proximity.Models.Map.Maps;
 
-import edu.chl.proximity.Models.Holdables.Hand;
+
 import edu.chl.proximity.Models.Map.Background;
 import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.Map.Bases.ShardBase;
 import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line1;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
+import edu.chl.proximity.Models.Map.Holdables.Hand;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Maps.StandardMap;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;

@@ -9,6 +9,11 @@ import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.ControlPanel.TowerPanel.TowerPanel;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.GameData;
+<<<<<<< HEAD
+=======
+import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.*;
+import edu.chl.proximity.Controllers.ScreenChanger.ScreenChanger;
+>>>>>>> Minor restructuring
 import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.ArrayList;

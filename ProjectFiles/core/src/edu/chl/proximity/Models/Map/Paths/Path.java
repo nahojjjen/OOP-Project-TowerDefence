@@ -1,6 +1,12 @@
 package edu.chl.proximity.Models.Map.Paths;
 
 import com.badlogic.gdx.graphics.Color;
+<<<<<<< HEAD
+=======
+
+import edu.chl.proximity.Models.Utils.ProximityShapeRenderer;
+
+>>>>>>> Minor restructuring
 import edu.chl.proximity.Utilities.PointCalculations;
 import edu.chl.proximity.Utilities.ProximityShapeRenderer;
 import edu.chl.proximity.Utilities.ProximityVector;

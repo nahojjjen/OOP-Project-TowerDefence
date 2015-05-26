@@ -10,6 +10,11 @@ import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.PointCalculations;
 import edu.chl.proximity.Utilities.ProximityVector;
+<<<<<<< HEAD
+=======
+import edu.chl.proximity.Models.Map.Holdables.Holdable;
+import edu.chl.proximity.Models.Utils.Image;
+>>>>>>> Minor restructuring
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +49,10 @@ public abstract class Spell extends PersistentObject implements Holdable {
         controlPanelImage = icon;
         this.particleManager = particleManager;
 
+    }
+
+    public boolean canBePlacedOnPath() {
+        return true;
     }
 
     public String getHelpInfo() {

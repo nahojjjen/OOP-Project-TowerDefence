@@ -1,7 +1,10 @@
-package edu.chl.proximity.Models.Utils;
+package edu.chl.proximity.Models.Map.MouseOver;
 
 import com.badlogic.gdx.Gdx;
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Utils.Image;
+import edu.chl.proximity.Models.Utils.ProximityBatch;
+import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 

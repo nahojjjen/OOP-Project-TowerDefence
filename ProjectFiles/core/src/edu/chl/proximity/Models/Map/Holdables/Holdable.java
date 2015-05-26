@@ -1,4 +1,4 @@
-package edu.chl.proximity.Models.Holdables;
+package edu.chl.proximity.Models.Map.Holdables;
 
 import com.badlogic.gdx.graphics.Color;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
@@ -27,6 +27,10 @@ public interface Holdable {
 
     public Image getImage();
 
+    public int getWidth();
+
+    public int getHeight();
+
     public boolean isPlaced();
 
     public Color getColor();
@@ -36,5 +40,7 @@ public interface Holdable {
     public Resources getCost();
 
     public ProximityVector getCenter();
+
+    public boolean canBePlacedOnPath();
 
 }
