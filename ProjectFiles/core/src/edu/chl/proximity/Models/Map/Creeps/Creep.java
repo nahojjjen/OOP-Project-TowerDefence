@@ -96,7 +96,9 @@ public abstract class Creep extends BoardObject {
      * Give the creep the first angle & direction to the first waypoints
      */
     private void initiateMovement() {
-        this.setCenter(new ProximityVector(path.getWaypoint(0)));
+        if (path != null){
+            this.setCenter(new ProximityVector(path.getWaypoint(0)));
+        }
         nextWayPointID = 0;
         aimTowardsNextWaypoint();
         distanceToNextWayPoint = Double.MAX_VALUE;
@@ -207,7 +209,10 @@ public abstract class Creep extends BoardObject {
     }
 
     public boolean reachedLastWayPoint() {
-        return nextWayPointID >= path.getWaypoints().size();
+        if (path != null){
+            return nextWayPointID >= path.getWaypoints().size();
+        }
+        return false; //if there is no path, it hasnt reached the next waypoint.
     }
 
     /**

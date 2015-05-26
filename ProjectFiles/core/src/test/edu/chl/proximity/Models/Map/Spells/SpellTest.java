@@ -62,6 +62,7 @@ public class SpellTest {
 
         for (int i=30; i>0; i--){
             spell.preparePlacing(new ProximityVector(100,100));
+            spell.start();
             spell.performEffect(i);
         }
     }
@@ -167,6 +168,7 @@ public class SpellTest {
     }
 
     public void testGetTowers(Spell spell) throws Exception {
+        spell.setTowers(null);
         List<Tower> towers = spell.getTowers();
         assertNull(towers);
         towers = new ArrayList<Tower>();
