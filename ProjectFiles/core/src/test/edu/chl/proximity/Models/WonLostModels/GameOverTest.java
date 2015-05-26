@@ -15,12 +15,13 @@ import static org.junit.Assert.assertTrue;
  */
 public class GameOverTest {
 
+
     @Test
     public void testGetButtonActionOnPosition() {
         ParticleManager pm = new ParticleManager(new Settings());
         GameOver go= new GameOver(new FillerMap(pm));
-        assertTrue(go.getButtonActionOnPosition(new ProximityVector(200,400)).equals("Resume"));
-        assertTrue(go.getButtonActionOnPosition(new ProximityVector(400,400)).equals("MainMenu"));
+        assertTrue(go.getButtonActionOnPosition(new ProximityVector(430,400)).equals("Resume"));
+        assertTrue(go.getButtonActionOnPosition(new ProximityVector(630,400)).equals("MainMenu"));
 
         assertTrue(go.getButtonActionOnPosition(null) == null);
         assertTrue(go.getButtonActionOnPosition(new ProximityVector(Integer.MIN_VALUE,Integer.MIN_VALUE)) == null);
