@@ -80,6 +80,8 @@ public abstract class ShootingTower extends Tower implements TargetingTower{
         return currentTarget;
     }
 
+    protected void setTarget(Creep target){this.currentTarget=target; }
+
     /**
      * create the projectile-type this tower should fire
      * @return a projectile corresponding to this towers type

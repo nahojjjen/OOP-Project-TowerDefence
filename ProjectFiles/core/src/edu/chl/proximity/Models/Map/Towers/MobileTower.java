@@ -37,6 +37,7 @@ public class MobileTower extends ShootingTower{
         super(pos,image,100,targetingMethod,1,new Resources(0,0,1),"Tank Tower");
         this.targetingMethod = targetingMethod;
         this.particleManager=particleManager;
+        setParticleManager(particleManager);
 
     }
 
@@ -89,7 +90,7 @@ public class MobileTower extends ShootingTower{
             float yLenght = (float) ((Math.sin(Math.toRadians(getAngle())) * speed));
             newPosition = new ProximityVector(getPosition().x + xLenght, getPosition().y + yLenght);
             setPosition(newPosition);
-        }else if(Math.abs(this.getCenter().x-origPos.x) > 1 || Math.abs(this.getCenter().y-origPos.y) > 1){
+        }else if(Math.abs(this.getCenter().x-origPos.x) > 2 || Math.abs(this.getCenter().y-origPos.y) > 2){
             ProximityVector newPosition;
             float xLenght = (float) ((Math.cos(Math.toRadians(getAngle())) * speed));
             float yLenght = (float) ((Math.sin(Math.toRadians(getAngle())) * speed));
@@ -112,7 +113,8 @@ public class MobileTower extends ShootingTower{
     }
 
     public Tower getNewUpgrade(){
-        return null;
+        return new MobileTower2(this.getPosition(),this.targetingMethod,particleManager);
+
     }
 
     @Override
