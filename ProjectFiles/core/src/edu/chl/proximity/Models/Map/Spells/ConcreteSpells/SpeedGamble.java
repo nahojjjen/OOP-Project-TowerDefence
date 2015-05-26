@@ -24,7 +24,7 @@ public class SpeedGamble extends Spell{
     private int effect;
 
     public SpeedGamble(ParticleManager particleManager) {
-        super(image, duration, new Cooldown(maxCooldown), particleManager);
+        super(image, "Speed Gamle", duration, new Cooldown(maxCooldown), particleManager);
 
     }
 

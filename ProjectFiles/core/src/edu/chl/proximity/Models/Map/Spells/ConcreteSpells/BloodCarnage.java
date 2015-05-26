@@ -29,7 +29,7 @@ public class BloodCarnage extends Spell {
     private boolean hasDamagedPlayer = false;
 
     public BloodCarnage(ParticleManager particleManager) {
-        super(image, duration, new Cooldown(maxCooldown), particleManager);
+        super(image, "Blood Carnage", duration, new Cooldown(maxCooldown), particleManager);
     }
 
     @Override
@@ -49,7 +49,6 @@ public class BloodCarnage extends Spell {
             }
         }
     }
-
 
     @Override
     public void playParticleEffect() {

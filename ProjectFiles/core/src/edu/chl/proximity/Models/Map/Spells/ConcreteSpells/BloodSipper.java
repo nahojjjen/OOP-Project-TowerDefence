@@ -21,7 +21,7 @@ public class BloodSipper extends Spell {
     private static final int maxCooldown = 60;
 
     public BloodSipper(ParticleManager particleManager){
-        super(image, duration, new Cooldown(maxCooldown), particleManager);
+        super(image, "Blood Sipper", duration, new Cooldown(maxCooldown), particleManager);
     }
 
     public void performEffect(int counter){

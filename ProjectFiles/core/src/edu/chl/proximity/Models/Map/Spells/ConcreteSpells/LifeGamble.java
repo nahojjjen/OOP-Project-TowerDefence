@@ -20,7 +20,7 @@ public class LifeGamble extends Spell {
     private int currentCooldown = 0;
 
     public LifeGamble(ParticleManager particleManager){
-        super(image, duration, new Cooldown(maxCooldown), particleManager);
+        super(image, "Life Gamle", duration, new Cooldown(maxCooldown), particleManager);
     }
 
     public void performEffect(int counter){

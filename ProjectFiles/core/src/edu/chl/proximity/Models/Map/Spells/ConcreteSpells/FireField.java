@@ -30,7 +30,7 @@ public class FireField extends Spell {
     private int currentCooldown = 0;
 
     public FireField(ParticleManager particleManager){
-        super(image, duration, new Cooldown(maxCooldown), particleManager); //600 frames = 10 seconds @ 60 fps
+        super(image, "Fire Field", duration, new Cooldown(maxCooldown), particleManager); //600 frames = 10 seconds @ 60 fps
 
     }
 

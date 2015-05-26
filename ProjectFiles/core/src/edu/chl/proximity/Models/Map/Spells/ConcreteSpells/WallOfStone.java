@@ -28,7 +28,7 @@ public class WallOfStone extends Spell {
     private static int currentCooldown = 0;
 
     public WallOfStone(ParticleManager particleManager) {
-        super(image, duration, new Cooldown(maxCooldown), particleManager); //600 frames = 10 seconds @ 60 fps
+        super(image, "Wall of Stone", duration, new Cooldown(maxCooldown), particleManager); //600 frames = 10 seconds @ 60 fps
     }
 
     @Override
@@ -41,6 +41,11 @@ public class WallOfStone extends Spell {
                 getParticleManager().getDirtSmokeEffect().createEffect(creep.getCenter());
             }
         }
+    }
+
+    @Override
+    public String getDescription() {
+        return "Makes creep in the area come to a halt for a short time.";
     }
         /*
         BoardObject o = getMap().getCreepsWithinDistance(getPosition(), range);

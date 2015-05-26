@@ -37,10 +37,12 @@ public abstract class Spell extends PersistentObject implements Holdable {
     private boolean isPlaced = false;
     private boolean isReady = false;
     private Cooldown cooldown;
+    private String name;
 
-    public Spell(Image icon, int counter, Cooldown cooldown, ParticleManager particleManager) {
+    public Spell(Image icon, String name, int counter, Cooldown cooldown, ParticleManager particleManager) {
         super(null, null, counter);
         this.cooldown = cooldown;
+        this.name = name;
         controlPanelImage = icon;
         this.particleManager = particleManager;
 
@@ -51,10 +53,19 @@ public abstract class Spell extends PersistentObject implements Holdable {
     }
 
     public String getHelpInfo() {
-        return "No help info added";
+        return getName() + "\n" +
+                "Cooldown: " + cooldown.getCooldownInSeconds() + "s\n" +
+                "\n" +
+                getDescription();
     }
 
+    public String getDescription() {
+        return "No description";
+    }
 
+    public String getName() {
+        return name;
+    }
 
     public boolean isReadyToCast() {
         return cooldown.isReady();

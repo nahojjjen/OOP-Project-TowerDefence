@@ -25,7 +25,7 @@ public class PickACard extends Spell {
     private int effect;
 
     public PickACard(ParticleManager particleManager) {
-        super(image, duration, new Cooldown(maxCooldown), particleManager);
+        super(image, "Pick a Card", duration, new Cooldown(maxCooldown), particleManager);
 
     }
 

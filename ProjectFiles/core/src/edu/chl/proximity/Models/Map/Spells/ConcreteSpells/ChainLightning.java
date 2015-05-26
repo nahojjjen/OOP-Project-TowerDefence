@@ -29,7 +29,7 @@ public class ChainLightning extends Spell {
     private int charges = 10;
 
     public ChainLightning(ParticleManager particleManager) {
-        super(image, duration, new Cooldown(maxCooldown), particleManager); //600 frames = 10 seconds @ 60 fps
+        super(image, "Chain Lightning", duration, new Cooldown(maxCooldown), particleManager); //600 frames = 10 seconds @ 60 fps
 
     }
 

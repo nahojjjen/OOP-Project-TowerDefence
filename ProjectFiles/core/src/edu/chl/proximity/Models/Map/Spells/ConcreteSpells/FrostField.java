@@ -27,7 +27,7 @@ public class FrostField extends Spell {
     private int currentCooldown = 0;
 
     public FrostField(ParticleManager particleManager){
-        super(image, duration, new Cooldown(maxCooldown), particleManager); //600 frames = 10 seconds @ 60 fps
+        super(image, "Frost Field", duration, new Cooldown(maxCooldown), particleManager); //600 frames = 10 seconds @ 60 fps
 
     }
 

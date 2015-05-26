@@ -29,7 +29,7 @@ public class BloodPool extends Spell {
     private static int maxCooldown = 30;
 
     public BloodPool(ParticleManager particleManager) {
-        super(image, duration, new Cooldown(maxCooldown), particleManager);
+        super(image, "Blood Pool", duration, new Cooldown(maxCooldown), particleManager);
     }
 
     @Override

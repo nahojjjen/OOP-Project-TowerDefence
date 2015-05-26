@@ -21,6 +21,9 @@ public class Cooldown {
         return currentCooldown == 0;
     }
 
+    public double getCooldownInSeconds() {
+        return maxCooldown/60.0;
+    }
     public int getCooldownPercent() {
         return 100 - ((currentCooldown*100) / maxCooldown);
     }

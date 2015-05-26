@@ -23,7 +23,7 @@ public class Sacrifice extends Spell {
     private static int currentCooldown = 0;
 
     public Sacrifice(ParticleManager particleManager){
-        super(image, duration, new Cooldown(maxCooldown), particleManager);
+        super(image, "Sacrifice", duration, new Cooldown(maxCooldown), particleManager);
     }
 
     public void performEffect(int counter){

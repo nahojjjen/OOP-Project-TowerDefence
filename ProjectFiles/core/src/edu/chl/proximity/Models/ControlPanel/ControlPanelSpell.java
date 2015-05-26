@@ -25,7 +25,7 @@ public class ControlPanelSpell extends BoardObject {
         this.spell = spell;
         cooldown = spell.getCooldown();
         spell.setPosition(position);
-        hoverBox = new MouseOverBox(100, 100, spell.getHelpInfo());
+        hoverBox = new MouseOverBox(150, spell.getHelpInfo());
     }
     public int getCooldownPercent() {
         return cooldown.getCooldownPercent();

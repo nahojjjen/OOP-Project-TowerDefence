@@ -24,7 +24,7 @@ public class CoinFlip extends Spell{
     private int effect;
 
     public CoinFlip(ParticleManager particleManager) {
-        super(image, duration, new Cooldown(maxCooldown), particleManager);
+        super(image, "Coin Flip", duration, new Cooldown(maxCooldown), particleManager);
 
     }
 
