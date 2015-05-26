@@ -54,10 +54,12 @@ public class MouseOverBox extends BoardObject {
                 String[] partsOfPart = part.split(" ");
                 String rowToAdd = "";
                 part = "";
+                boolean rowDone = false;
                 for(int k = 0; k < partsOfPart.length; k++) {
-                    if(rowToAdd.length() + partsOfPart[k].length() < signsAllowedOnARow) {
+                    if(rowToAdd.length() + partsOfPart[k].length() < signsAllowedOnARow && !rowDone) {
                         rowToAdd += partsOfPart[k] + " ";
                     } else {
+                        rowDone = true;
                         part += partsOfPart[k] + " ";
                     }
                 }
