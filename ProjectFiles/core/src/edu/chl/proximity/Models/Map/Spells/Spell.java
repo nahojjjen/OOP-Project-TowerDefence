@@ -60,12 +60,12 @@ public abstract class Spell extends PersistentObject implements Holdable {
         return cooldown;
     }
 
+    /**
+     * decrease or increase the player health
+     * @param newHealthChange how much health the player should recieve
+     */
     public void setHealthChange(int newHealthChange) {
-        if (newHealthChange < 0) {
-            healthChange = 0;
-        }else{
             healthChange = newHealthChange;
-        }
     }
     public int getHealthChange() {
         return healthChange;

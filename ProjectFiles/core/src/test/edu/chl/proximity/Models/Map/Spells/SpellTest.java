@@ -71,7 +71,7 @@ public class SpellTest {
 
         //Cant go lower than zero
         spell.setHealthChange(-1);
-        assertTrue(spell.getHealthChange() == 0);
+        assertTrue(spell.getHealthChange() == -1);
 
         spell.setHealthChange(10000);
         assertTrue(spell.getHealthChange() == 10000);
