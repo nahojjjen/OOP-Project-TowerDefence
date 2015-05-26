@@ -51,6 +51,13 @@ public class BloodCarnage extends Spell {
     }
 
     @Override
+    public String getDescription() {
+        return "Sacrifices 35 of your own health to create a storm of blood, which will deal great damage to an area for 5 seconds.";
+    }
+
+
+
+    @Override
     public void playParticleEffect() {
         if (getParticleManager() != null) {
             getParticleManager().getBloodCarnageEffect().createEffect(getPosition());

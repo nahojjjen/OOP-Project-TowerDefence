@@ -43,6 +43,11 @@ public class FrostField extends Spell {
             }
         }
     }
+    @Override
+    public String getDescription() {
+        return "Slows down all creeps in the area for 10 seconds.";
+    }
+
 
     @Override
     public void playParticleEffect() {

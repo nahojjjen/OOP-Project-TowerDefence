@@ -50,6 +50,11 @@ public class BloodPool extends Spell {
         }
 
     }
+    @Override
+    public String getDescription() {
+        return "Devoures the life essence of all creeps in the area, granting one life for each creep hit. The cooldown increases by 0.5 seconds for each creep hit.";
+    }
+
 
     private void fixCustomCooldownLogic(int hitCreeps){
         getCooldown().setMaxCooldown(maxCooldown*(hitCreeps+1));

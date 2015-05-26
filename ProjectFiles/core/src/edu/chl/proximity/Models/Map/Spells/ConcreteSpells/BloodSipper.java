@@ -39,6 +39,13 @@ public class BloodSipper extends Spell {
         if (getParticleManager() != null)
             getParticleManager().getWallOfStone().createEffect(getPosition());
     }
+
+    @Override
+    public String getDescription() {
+        return "Creates a field for two seconds where creeps are slowed and sometimes damaged..";
+    }
+
+
     public double getRange(){
         return range;
     }

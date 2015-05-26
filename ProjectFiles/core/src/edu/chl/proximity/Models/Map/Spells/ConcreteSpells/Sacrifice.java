@@ -38,6 +38,11 @@ public class Sacrifice extends Spell {
 
         }
     }
+    @Override
+    public String getDescription() {
+        return "Consumes all towers in the area, granting 20 hp per destroyed tower.";
+    }
+
 
     public void playParticleEffect(){
         if (getParticleManager() != null) {

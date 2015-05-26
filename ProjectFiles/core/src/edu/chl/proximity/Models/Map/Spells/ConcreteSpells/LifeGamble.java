@@ -50,6 +50,13 @@ public class LifeGamble extends Spell {
         }
     }
 
+    @Override
+    public String getDescription() {
+        return "A life gamble, your health will increase or decrease by a random amount. Your ability to manipulate luck makes favorable chances appear more often.";
+    }
+
+
+
     public void playParticleEffect(){}
 
     public double getRange(){

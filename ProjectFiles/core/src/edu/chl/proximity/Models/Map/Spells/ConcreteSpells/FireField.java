@@ -46,6 +46,11 @@ public class FireField extends Spell {
                     creep.devolve();
         }
     }
+    @Override
+    public String getDescription() {
+        return "Creates a burning field for two seconds which devolves all creeps that stay within.";
+    }
+
 
     @Override
     public void playParticleEffect() {

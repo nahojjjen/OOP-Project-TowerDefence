@@ -47,14 +47,7 @@ public class WallOfStone extends Spell {
     public String getDescription() {
         return "Makes creep in the area come to a halt for a short time.";
     }
-        /*
-        BoardObject o = getMap().getCreepsWithinDistance(getPosition(), range);
-        if(o instanceof Creep) {
-            Creep c = (Creep)o;
-            c.slowDown(100, 1);
-            getMap().getParticleManager().getDirtSmokeEffect().createEffect(c.getCenter());
-        }
-        */
+
 
     @Override
     public void playParticleEffect() {

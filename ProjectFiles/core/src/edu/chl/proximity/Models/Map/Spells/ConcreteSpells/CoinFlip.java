@@ -46,6 +46,11 @@ public class CoinFlip extends Spell{
             }
         }
     }
+    @Override
+    public String getDescription() {
+        return "Creates an area which will either damage creeps and grant extra resources, or simply drain your resources for each creep that enters the field.";
+    }
+
 
 
     public void playParticleEffect() {

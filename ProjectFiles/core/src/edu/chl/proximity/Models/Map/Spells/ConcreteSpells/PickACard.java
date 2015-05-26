@@ -49,6 +49,11 @@ public class PickACard extends Spell {
             default: break;
         }
     }
+    @Override
+    public String getDescription() {
+        return "Creates a field for 4 seconds which can have one of the following effects: Slow, Damage, change health, destroy towers or perform miracle.";
+    }
+
 
     private void performSlowEffect() {
         List<Creep> creeps = this.getCreepsWithinDistance(this.getPosition(), range);

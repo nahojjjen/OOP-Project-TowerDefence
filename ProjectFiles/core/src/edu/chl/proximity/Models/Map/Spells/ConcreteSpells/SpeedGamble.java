@@ -24,7 +24,7 @@ public class SpeedGamble extends Spell{
     private int effect;
 
     public SpeedGamble(ParticleManager particleManager) {
-        super(image, "Speed Gamle", duration, new Cooldown(maxCooldown), particleManager);
+        super(image, "Speed Gamble", duration, new Cooldown(maxCooldown), particleManager);
 
     }
 
@@ -57,6 +57,11 @@ public class SpeedGamble extends Spell{
             }
         }
     }
+    @Override
+    public String getDescription() {
+        return "Creates a field for 4 seconds which will either slow down or speed up creeps by a random amount";
+    }
+
 
 
     public void playParticleEffect() {

@@ -58,6 +58,12 @@ public class ChainLightning extends Spell {
         }
 
     }
+    @Override
+    public String getDescription() {
+        return "Creates a lightning surge which strikes around the map, damaging creeps.";
+    }
+
+
 
 
     @Override
