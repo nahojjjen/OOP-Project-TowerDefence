@@ -55,7 +55,6 @@ public class PropertiesPanel extends BoardObject{
         super(position, background, 0, width, height);
         headline.setSize(40);
         this.settings = settings;
-        settings.setGameSpeed(0);
         initBars();
         updateSoundDisplay(settings.getGameVolume());
     }
@@ -94,8 +93,13 @@ public class PropertiesPanel extends BoardObject{
      * Set whether or not the panel should be visible
      * @param isVisible true if it should be visible, false otherwise
      */
-    public void setVisibility(boolean isVisible){
-        this.isVisible=isVisible;
+    public void setVisibility(boolean isVisible){ this.isVisible=isVisible;
+        if(isVisible) {
+            settings.setGameSpeed(0);
+        }
+        if(!isVisible) {
+            settings.togglePause();
+        }
     }
 
     /**
@@ -167,13 +171,11 @@ public class PropertiesPanel extends BoardObject{
     }
 
     /**
-     * Method only for testing
+     * Method to get the main menu button
      * @return the MainMenu button
      */
     public PropertiesPanelButton getMainMenuButton() {
-        if(TestChecker.isJUnitTest())
-            return mainMenuButton;
-        return null;
+        return mainMenuButton;
     }
 
     /**
@@ -213,7 +215,6 @@ public class PropertiesPanel extends BoardObject{
      */
     private void pressedResumeButton(){
         setVisibility(false);
-        settings.togglePause();
     }
 
     /**

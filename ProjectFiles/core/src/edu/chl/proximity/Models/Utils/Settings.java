@@ -38,7 +38,7 @@ public class Settings {
      * @param speed how fast the game logic should update
      */
     public void setGameSpeed(int speed){
-        if(speed > 0){
+        if(speed > 0 || gameSpeed == 0){
             gameSpeed = speed;
         } else {
             togglePause();
