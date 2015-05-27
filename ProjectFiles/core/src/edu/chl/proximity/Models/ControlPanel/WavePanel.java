@@ -21,8 +21,7 @@ public class WavePanel extends BoardObject {
 
     public WavePanel() {
         super(new ProximityVector(position), null, 0);
-        waves = new ProximityFont(position, "Wave 0");
-        waves.setSize(30);
+        waves = new ProximityFont(position, "Wave 0",30, 1,1,1);
 
     }
 

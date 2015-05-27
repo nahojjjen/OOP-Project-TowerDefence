@@ -29,7 +29,7 @@ public class FactionChooser extends BoardObject{
 
     private List<Faction> factions= new ArrayList<Faction>();
 
-    private ProximityFont name=new ProximityFont(new ProximityVector(pos.x+180,pos.y+10),null);
+    private ProximityFont name=new ProximityFont(new ProximityVector(pos.x+180,pos.y+10),null,14, 1,1,1);
     private FactionImage factionImage;
     private NextPrevButton prev;
     private NextPrevButton next;

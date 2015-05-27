@@ -63,16 +63,13 @@ public class MouseOverBox extends BoardObject {
                         part += partsOfPart[k] + " ";
                     }
                 }
-                ProximityFont font = new ProximityFont(new ProximityVector(getPosition().x + 5, getPosition().y + 5 + (i*15)), rowToAdd);
-                font.setSize(11);
+                ProximityFont font = new ProximityFont(new ProximityVector(getPosition().x + 5, getPosition().y + 5 + (i*15)), rowToAdd,11, 1,1,1);
                 infoTextList.add(font);
             }
-            ProximityFont font = new ProximityFont(new ProximityVector(getPosition().x + 5, getPosition().y + 5 + (i*15)), part);
-            font.setSize(11);
+            ProximityFont font = new ProximityFont(new ProximityVector(getPosition().x + 5, getPosition().y + 5 + (i*15)), part,11, 1,1,1);
             infoTextList.add(font);
 
         }
-        infoTextList.get(0).setSize(14);
         setHeight(20 + infoTextList.size()*13);
         for(ProximityFont font : infoTextList) {
             System.out.println("Added: " + font.getText());

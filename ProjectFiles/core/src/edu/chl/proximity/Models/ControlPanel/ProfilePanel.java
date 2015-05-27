@@ -68,7 +68,7 @@ public class ProfilePanel extends BoardObject {
      * @return The created font
      */
     private ProximityFont createFont(float x, float y, String s){
-        return new ProximityFont(new ProximityVector(getPosition().x + x, getPosition().y + y), s);
+        return new ProximityFont(new ProximityVector(getPosition().x + x, getPosition().y + y), s,14, 1,1,1);
     }
 
     public void render(ProximityBatch batch) {

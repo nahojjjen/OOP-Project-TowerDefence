@@ -62,7 +62,7 @@ public class MapSelect extends BoardObject{
             }
 
 
-            ProximityFont text = new ProximityFont(textPosition, fullText);
+            ProximityFont text = new ProximityFont(textPosition, fullText,10, 1,1,1);
             mapIcon.setCompletionText(text);
         }
     }

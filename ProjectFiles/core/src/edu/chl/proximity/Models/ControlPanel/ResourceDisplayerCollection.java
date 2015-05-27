@@ -26,7 +26,7 @@ public class ResourceDisplayerCollection {
 
     private List<ResourceDisplayer> displayerList = new ArrayList<ResourceDisplayer>();
 
-    public ResourceDisplayerCollection(ProximityVector position, float spaceBetweenNumbers, int fontSize, Direction d) {
+    public ResourceDisplayerCollection(ProximityVector position, float spaceBetweenNumbers, Direction d) {
 
         if(d == Direction.Horizontal) {
             lineDisplayer = new ResourceDisplayer(new Image(Constants.FILE_PATH + "Resources/lines.png"), new ProximityVector(position.x, position.y));
@@ -43,7 +43,6 @@ public class ResourceDisplayerCollection {
         displayerList.add(pointDisplayer);
         displayerList.add(polygonDisplayer);
 
-        setFontSize(fontSize);
     }
 
     public void updateResources(Resources resources) {
@@ -54,11 +53,6 @@ public class ResourceDisplayerCollection {
         }
     }
 
-    private void setFontSize(int size) {
-        for(ResourceDisplayer displayer : displayerList) {
-            displayer.getFont().setSize(size);
-        }
-    }
 
     /**
      * This method is only for testing.

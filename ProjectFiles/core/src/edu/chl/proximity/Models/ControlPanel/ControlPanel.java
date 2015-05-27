@@ -79,7 +79,7 @@ public class ControlPanel extends BoardObject{
         percentBar = new PercentBar(new ProximityVector(position.x + 30, position.y + 30), width - 60, 32, HPforeground, HPbackground);
         percentBar.setText(HPtext);
 
-        resourceDisplayerCollection = new ResourceDisplayerCollection(new ProximityVector(getPosition().x + 30, getPosition().y + 80), 90, 18, ResourceDisplayerCollection.Direction.Horizontal);
+        resourceDisplayerCollection = new ResourceDisplayerCollection(new ProximityVector(getPosition().x + 30, getPosition().y + 80), 90, ResourceDisplayerCollection.Direction.Horizontal);
     }
 
     /**
@@ -103,7 +103,7 @@ public class ControlPanel extends BoardObject{
             cpTower.setKeyBind(i+1);
 
             ProximityVector resourcePosition = new ProximityVector(towerPosition.x + 60, towerPosition.y + 7);
-            ResourceDisplayerCollection towerResourceCollection = new ResourceDisplayerCollection(resourcePosition, 15, 12, ResourceDisplayerCollection.Direction.Vertical);
+            ResourceDisplayerCollection towerResourceCollection = new ResourceDisplayerCollection(resourcePosition, 15, ResourceDisplayerCollection.Direction.Vertical);
             towerResourceCollection.updateResources(cpTower.getTower().getCost());
             towerResourceCollections.add(towerResourceCollection);
 

@@ -38,9 +38,11 @@ public class ProximityFont implements ProximityDisposable {
      * @param position where the top left corner of the text should start
      * @param s what the text should say
      */
-    public ProximityFont(ProximityVector position, String s) {
+    public ProximityFont(ProximityVector position, String s, int size, float r, float g, float b) {
         str = s;
         this.position = position;
+        this.size = size;
+        this.color = new Color(r,g,b,1);
 
         if (!TestChecker.isJUnitTest()) {
             generator = new FreeTypeFontGenerator(Constants.getFile(Constants.FILE_PATH + "Fonts/Roboto-Regular.ttf"));
@@ -52,7 +54,6 @@ public class ProximityFont implements ProximityDisposable {
     }
 
     private void generateFont() {
-
         if (cache.containsKey(str+position.hashCode())) {
             font = cache.get(str+position.hashCode());
         }
@@ -64,16 +65,6 @@ public class ProximityFont implements ProximityDisposable {
         }
     }
 
-    public void setSize(int size) {
-        this.size = size;
-        if(!TestChecker.isJUnitTest())
-            generateFont();
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-        generateFont();
-    }
 
     public void dispose() {
         generator.dispose();

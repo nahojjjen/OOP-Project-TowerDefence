@@ -1,7 +1,6 @@
 package edu.chl.proximity.Models.ControlPanel.TowerPanel;
 
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.ControlPanel.ControlPanelTower;
 import edu.chl.proximity.Models.ControlPanel.ResourceDisplayerCollection;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.MouseOver.MouseOverBox;
@@ -67,18 +66,16 @@ public class TowerPanel extends BoardObject{
     }
 
     private void initiateTower() {
-        towerName = new ProximityFont(new ProximityVector(pos.x + 30, pos.y + 5),null);
-        towerName.setSize(16);
+        towerName = new ProximityFont(new ProximityVector(pos.x + 30, pos.y + 5),null,16, 1,1,1);
         towerPosition = new ProximityVector(pos.x + 30, pos.y + 30);
     }
 
     private void initiateUpgrade() {
 
         upgrade = new UpgradeButton(new ProximityVector(pos.x + 150, pos.y + 40));
-        upgradeText = new ProximityFont(new ProximityVector(pos.x + 150, pos.y+25),"Upgrade");
-        upgradeText.setSize(12);
+        upgradeText = new ProximityFont(new ProximityVector(pos.x + 150, pos.y+25),"Upgrade",12, 1,1,1);
 
-        upgradeCost = new ResourceDisplayerCollection(new ProximityVector(pos.x + 200, pos.y + 30), 15, 12, ResourceDisplayerCollection.Direction.Vertical);
+        upgradeCost = new ResourceDisplayerCollection(new ProximityVector(pos.x + 200, pos.y + 30), 15, ResourceDisplayerCollection.Direction.Vertical);
 
     }
     private void initiateCheckButtons() {

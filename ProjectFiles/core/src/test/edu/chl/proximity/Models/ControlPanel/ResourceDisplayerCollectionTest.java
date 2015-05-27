@@ -15,7 +15,7 @@ public class ResourceDisplayerCollectionTest {
     @Test
     public void testUpdateResourcesAndGetResources() throws Exception {
         ProximityVector defaultVector = new ProximityVector(0, 0);
-        ResourceDisplayerCollection resourceDisplayerCollection = new ResourceDisplayerCollection(defaultVector, 0f, 12, ResourceDisplayerCollection.Direction.Horizontal);
+        ResourceDisplayerCollection resourceDisplayerCollection = new ResourceDisplayerCollection(defaultVector, 0f, ResourceDisplayerCollection.Direction.Horizontal);
 
         assertTrue(resourceDisplayerCollection.getResources() == null);
 

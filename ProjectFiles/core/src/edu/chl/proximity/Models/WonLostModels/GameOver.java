@@ -33,9 +33,9 @@ public class GameOver {
         this.map=map;
 
         mainMenu=new Button(mmPos, new Image(Constants.FILE_PATH + "Buttons/PropertiesPanelButton.png"));
-        mainMenuText = new ProximityFont(new ProximityVector(700,430),"Main Menu");
+        mainMenuText = new ProximityFont(new ProximityVector(700,430),"Main Menu",14, 1,1,1);
         resume=new Button(rPos, new Image(Constants.FILE_PATH + "Buttons/PropertiesPanelButton.png"));
-        resumeText = new ProximityFont(new ProximityVector(500,430),"Start Over");
+        resumeText = new ProximityFont(new ProximityVector(500,430),"Start Over",14, 1,1,1);
     }
 
     public String getButtonActionOnPosition(ProximityVector position) {

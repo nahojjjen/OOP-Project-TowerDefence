@@ -16,7 +16,6 @@ import edu.chl.proximity.Utilities.ProximityVector;
  */
 public class MapSelectIcon extends BoardObject{
     private Map map;
-    private ProximityVector pos;
     private static Image selectable = new Image(Constants.FILE_PATH + "Buttons/MapSelectable.png");
     private static Image notSelectable = new Image(Constants.FILE_PATH + "Buttons/MapNotSelectable.png");
     private static Image selected= new Image(Constants.FILE_PATH + "Buttons/MapSelected.png");
@@ -26,8 +25,8 @@ public class MapSelectIcon extends BoardObject{
     public MapSelectIcon(Map map, ProximityVector pos){
         super(pos,notSelectable,0);
         this.map=map;
-        this.pos=pos;
-        name= new ProximityFont(new ProximityVector(pos.x, pos.y-20), map.getName());
+        this.setPosition(pos);
+        name= new ProximityFont(new ProximityVector(pos.x, pos.y-20), map.getName(),14, 1,1,1);
 
     }
 
@@ -44,7 +43,7 @@ public class MapSelectIcon extends BoardObject{
     public void setAsSelected(){
         setImage(selected);
     }
-    public void setCompletionText(ProximityFont text){completion = text; completion.setSize(10);}
+    public void setCompletionText(ProximityFont text){completion = text;}
 
     public void render(ProximityBatch batch){
         super.render(batch);

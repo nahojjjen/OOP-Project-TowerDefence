@@ -35,7 +35,7 @@ public class PropertiesPanel extends BoardObject{
     private Settings settings;
 
     //Headline font
-    private ProximityFont headline = new ProximityFont(new ProximityVector(position.x + 45, position.y + 20), "Options");
+    private ProximityFont headline = new ProximityFont(new ProximityVector(position.x + 45, position.y + 20), "Options",40, 1,1,1);
 
     //Button positions
     private ProximityVector resumePos=new ProximityVector(position.x+40,position.y + 70);
@@ -53,7 +53,6 @@ public class PropertiesPanel extends BoardObject{
      */
     public PropertiesPanel(Settings settings){
         super(position, background, 0, width, height);
-        headline.setSize(40);
         this.settings = settings;
         initBars();
         updateSoundDisplay(settings.getGameVolume());

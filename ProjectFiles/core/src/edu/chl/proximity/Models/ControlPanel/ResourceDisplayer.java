@@ -20,7 +20,7 @@ public class ResourceDisplayer {
     public ResourceDisplayer(Image image, ProximityVector position) {
         this.position = position;
         this.image = image;
-        font = new ProximityFont(new ProximityVector(position.x + 20, position.y+2), "");
+        font = new ProximityFont(new ProximityVector(position.x + 20, position.y+2), "",12, 1,1,1);
     }
 
     public ProximityFont getFont() {

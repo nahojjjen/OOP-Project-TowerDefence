@@ -33,9 +33,8 @@ public class ControlPanelTower extends BoardObject{
             throw new IllegalArgumentException("ControlPanelTower: Tower cannot be null");
         }
         this.tower = tower;
-        headline = new ProximityFont(position, tower.getName());
-        headline.setSize(11);
-        keyFont = new ProximityFont(position, "");
+        headline = new ProximityFont(position, tower.getName(), 11, 1,1,1);
+        keyFont = new ProximityFont(position, "", 14, 1,1,1);
         setPosition(position);
         hoverBox = new MouseOverBox(150, tower.getHelpInfo());
     }
