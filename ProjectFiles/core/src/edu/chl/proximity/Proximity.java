@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import edu.chl.proximity.Controllers.GameStates.MenuScreen;
+import edu.chl.proximity.Controllers.GameStates.ScreenCollector;
 import edu.chl.proximity.Models.Player.Players.Player;
 
 /**
@@ -21,7 +22,7 @@ public class Proximity extends Game {
 	@Override
 	public void create () {
 		Player player = new Player(null);
-		this.setScreen(new MenuScreen(this, player, null));
+        ScreenCollector.setMenuScreen(this, player, null);
 	}
 
 	@Override

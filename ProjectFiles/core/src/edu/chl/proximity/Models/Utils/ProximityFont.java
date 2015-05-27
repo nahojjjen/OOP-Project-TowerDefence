@@ -7,6 +7,8 @@ import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 import edu.chl.proximity.Utilities.TestChecker;
 
+import java.util.HashMap;
+
 /**
  * @author Linda Evaldsson
  * @date 2015-04-17
@@ -27,6 +29,10 @@ public class ProximityFont implements ProximityDisposable {
     private Color color = Color.WHITE;
     private int size = 14;
 
+
+    private static HashMap<String, BitmapFont> cache = new HashMap<String, BitmapFont>();
+
+
     /**
      * create a new text on the given position, and the given message
      * @param position where the top left corner of the text should start
@@ -46,9 +52,16 @@ public class ProximityFont implements ProximityDisposable {
     }
 
     private void generateFont() {
-        parameter.size = size;
-        parameter.color = color;
-        font = generator.generateFont(parameter);
+
+        if (cache.containsKey(str+position.hashCode())) {
+            font = cache.get(str+position.hashCode());
+        }
+        else {
+            parameter.size = size;
+            parameter.color = color;
+            font = generator.generateFont(parameter);
+            cache.put(str+position.hashCode(), font);
+        }
     }
 
     public void setSize(int size) {
@@ -63,7 +76,6 @@ public class ProximityFont implements ProximityDisposable {
     }
 
     public void dispose() {
-        font.dispose();
         generator.dispose();
 
     }

@@ -47,6 +47,7 @@ public class MenuScreen implements Screen, ScreenChangerListener {
     private ProximityShapeRenderer shapeRenderer;
     private MainMenu mainMenu;
     private Player player;
+    private ParticleManager particleManager;
 
     public MenuScreen(Game g, Player player, Viewport viewport){
         game = g;
@@ -71,7 +72,10 @@ public class MenuScreen implements Screen, ScreenChangerListener {
     }
 
     private void initiateModel() {
-        this.mainMenu=new MainMenu(new ParticleManager(player.getSettings()));
+        if (this.particleManager == null){
+            this.particleManager = new ParticleManager(player.getSettings());
+        }
+        this.mainMenu=new MainMenu(particleManager);
         ProximityAudioPlayer.pauseGameMusic();
     }
 

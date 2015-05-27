@@ -18,21 +18,22 @@ public class ScreenCollector {
     private static GameScreen gameScreen;
     private static GameOverScreen gameOverScreen;
 
-    protected static void setMenuScreen(Game g, Player player, Viewport viewport) {
+
+    public static void setMenuScreen(Game g, Player player, Viewport viewport) {
         if(menuScreen == null) {
             menuScreen = new MenuScreen(g, player, viewport);
         }
         menuScreen.initiateNew(player);
         g.setScreen(menuScreen);
     }
-    protected static void setGameScreen(Game g, Map map, Player player, Viewport viewport) {
+    public static void setGameScreen(Game g, Map map, Player player, Viewport viewport) {
         if(gameScreen == null) {
             gameScreen = new GameScreen(g, map, player, viewport);
         }
         gameScreen.initiateNew(map, player);
         g.setScreen(gameScreen);
     }
-    protected static void setGameOverScreen(Game g, Map map, Player player, Viewport viewport) {
+    public static void setGameOverScreen(Game g, Map map, Player player, Viewport viewport) {
         if(gameOverScreen == null) {
             gameOverScreen = new GameOverScreen(g, map, player, viewport);
         }
