@@ -202,8 +202,9 @@ public abstract class Creep extends BoardObject {
      * @return
      */
     public boolean reachedLastWayPoint() {
+
         if (path != null){
-            return PointCalculations.distanceBetweenNoSqrt(path.getWaypoint(path.getWaypoints().size()-1), this.getCenter() )< 2*2;
+            return reachedWaypoint(path.getWaypoint(path.getWaypoints().size()-1));
         }
         return false; //if there is no path, it hasnt reached the last waypoint.
     }
@@ -237,7 +238,7 @@ public abstract class Creep extends BoardObject {
         //    return true;
         //}
         //return false;
-        return PointCalculations.distanceBetweenNoSqrt(this.getCenter(),waypoint) < 2*2;
+        return PointCalculations.distanceBetweenNoSqrt(this.getCenter(),waypoint) < 5*5;
     }
 
     /**
