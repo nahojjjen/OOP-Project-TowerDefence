@@ -61,7 +61,6 @@ public class MenuScreen implements Screen, ScreenChangerListener {
             this.camera = (OrthographicCamera)viewport.getCamera();
         }
 
-        initiateNew(player);
     }
 
     public void initiateNew(Player player) {

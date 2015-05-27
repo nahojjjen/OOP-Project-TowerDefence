@@ -63,7 +63,6 @@ public class GameScreen implements Screen, ScreenChangerListener{
             this.viewport = viewport;
             this.camera = (OrthographicCamera)viewport.getCamera();
         }
-        initiateNew(map, player);
     }
     public void initiateNew(Map map, Player player) {
         this.map = map;
