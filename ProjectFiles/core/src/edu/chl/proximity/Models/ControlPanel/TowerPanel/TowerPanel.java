@@ -225,10 +225,12 @@ public class TowerPanel extends BoardObject{
      * @param position
      */
     public void mouseOverPosition(ProximityVector position) {
-        if(upgrade.containsPoint(position)) {
-            upgradeHoverBox.enable();
-        } else if (sell.containsPoint(position)) {
-            sellHoverBox.enable();
+        if(map.getChosenTower().getUpgrade()!=null) {
+            if (upgrade.containsPoint(position)) {
+                upgradeHoverBox.enable();
+            } else if (sell.containsPoint(position)) {
+                sellHoverBox.enable();
+            }
         }
     }
 
@@ -237,9 +239,10 @@ public class TowerPanel extends BoardObject{
             setInfo();
             batch.renderRepeatedly(background, pos, width, height);
 
-            for (HashMap.Entry<CheckBox, TargetingMethod> entry : checkBoxMap.entrySet())
-            {
-                entry.getKey().render(batch);
+            if(map.getChosenTower() instanceof TargetingTower) {
+                for (HashMap.Entry<CheckBox, TargetingMethod> entry : checkBoxMap.entrySet()) {
+                    entry.getKey().render(batch);
+                }
             }
             towerName.draw(batch);
             batch.render(towerImage, towerPosition, 0);
