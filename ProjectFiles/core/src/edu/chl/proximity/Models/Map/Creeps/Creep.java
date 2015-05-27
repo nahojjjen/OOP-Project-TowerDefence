@@ -59,7 +59,7 @@ public abstract class Creep extends BoardObject {
 
         this(null, image, speed, oldCreep.getParticleManager(), oldCreep.getPath());
         
-        this.setPosition(new ProximityVector(oldCreep.getPosition().x, oldCreep.getPosition().y));
+        this.setCenter(new ProximityVector(oldCreep.getCenter().x, oldCreep.getCenter().y));
         nextWayPointID = oldCreep.nextWayPointID;
         distanceToNextWayPoint = oldCreep.distanceToNextWayPoint;
         moveAngle = getAngleToNextPoint();
@@ -191,28 +191,21 @@ public abstract class Creep extends BoardObject {
      * move() method.
      */
     private void repositionCreep(){
-        ProximityVector newPosition;
-        //do not remove below comments, useful for misc debugging:
-        //System.out.println("real x movement:" + (Math.cos(Math.toRadians(moveAngle)) * speed));
-        //System.out.println("real y movement:" + (Math.sin(Math.toRadians(moveAngle)) * speed));
-
-
-        //System.out.println("x movement= " + xLenght + " y-momement:" + yLenght);
-
-        float xLength = (float)(Math.cos(Math.toRadians(moveAngle)) * speed); //+0.5 to round to correct int aka 0.9 is 1
+        float xLength = (float)(Math.cos(Math.toRadians(moveAngle)) * speed);
         float yLength = (float)(Math.sin(Math.toRadians(moveAngle)) * speed);
         velocity = new ProximityVector(xLength, yLength);
-
-        //System.out.println(velocity);
         this.setPosition(new ProximityVector(getPosition().x + velocity.x, getPosition().y + velocity.y));
-
     }
 
+    /**
+     * returns true if the distance to the last waypoint is less than 2
+     * @return
+     */
     public boolean reachedLastWayPoint() {
         if (path != null){
-            return nextWayPointID >= path.getWaypoints().size();
+            return PointCalculations.distanceBetweenNoSqrt(path.getWaypoint(path.getWaypoints().size()-1), this.getCenter() )< 2*2;
         }
-        return false; //if there is no path, it hasnt reached the next waypoint.
+        return false; //if there is no path, it hasnt reached the last waypoint.
     }
 
     /**
@@ -240,10 +233,11 @@ public abstract class Creep extends BoardObject {
 
         double olddistanceToNextWayPoint = distanceToNextWayPoint;
         distanceToNextWayPoint = PointCalculations.distanceBetweenNoSqrt(getCenter(), waypoint);
-        if (distanceToNextWayPoint > olddistanceToNextWayPoint){ //if you're no longer approaching the waypoints, you're leaving it
-            return true;
-        }
-        return false;
+        //if (distanceToNextWayPoint > olddistanceToNextWayPoint){ //if you're no longer approaching the waypoints, you're leaving it
+        //    return true;
+        //}
+        //return false;
+        return PointCalculations.distanceBetweenNoSqrt(this.getCenter(),waypoint) < 2*2;
     }
 
     /**

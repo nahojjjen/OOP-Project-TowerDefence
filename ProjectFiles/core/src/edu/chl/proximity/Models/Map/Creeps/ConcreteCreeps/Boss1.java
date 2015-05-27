@@ -32,22 +32,23 @@ public class Boss1 extends Creep {
     //Logic for devolving line1 creeps
     @Override
     public void devolve() {
+        creepLineIndex--;
+        setImage(getCreepImage());
         if (!isRemoved()){
             if (creepLineIndex <= 0) {
 
                 for (int i = 0; i < 20; i++) {
                     Creep creep = new Line1(this, 6);
-                    float randX = (float) ProximityRandom.getRandomDoubleBetween(-15, 0);
-                    float randY = (float) ProximityRandom.getRandomDoubleBetween(-15, 0);
-                    creep.setPosition(new ProximityVector(this.getCenter().x + randX, this.getCenter().y + randY));
-                    creep.setAngle(creep.getAngleToNextPoint());
+                    for(int y = 0; y<i; y++){
+                      creep.move();
+                        creep.move();
+                    }
                     add(creep);
                 }
 
                 destroy();
             }
-            creepLineIndex--;
-            setImage(getCreepImage());
+
         }
     }
 

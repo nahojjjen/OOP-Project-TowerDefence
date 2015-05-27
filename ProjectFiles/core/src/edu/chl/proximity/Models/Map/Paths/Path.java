@@ -52,10 +52,13 @@ public abstract class Path {
      */
     public ProximityVector getWaypoint(int waypointNumber) {
         if (waypoints != null) {
-            if (waypoints.size() > waypointNumber) {
+            if (waypoints.size() > waypointNumber && waypointNumber >= 0) {
                 return waypoints.get(waypointNumber);
             }
-            return waypoints.get(waypoints.size() - 1); //give last waypoint if searching for after last
+            if (waypointNumber >= waypoints.size()){
+                return waypoints.get(waypoints.size() - 1); //give last waypoint if searching for after last
+            }
+            return waypoints.get(0); // return waypoint 0 if searching for waypoint below 0.
         }
             return null;
         }
