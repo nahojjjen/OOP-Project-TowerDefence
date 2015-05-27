@@ -37,6 +37,7 @@ public class Line2 extends Creep {
      */
     public Line2(Creep oldCreep) {
         super(img, speed, oldCreep);
+        this.creepLineIndex = oldCreep.getCreepLineIndex()-1;
         setImage(getCreepImage());
     }
 
