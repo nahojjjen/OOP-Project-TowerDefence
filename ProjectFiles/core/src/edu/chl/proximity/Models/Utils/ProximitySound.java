@@ -21,7 +21,6 @@ public class ProximitySound implements ProximityDisposable{
         if(TestChecker.isJUnitTest())
             return;
         sound = Gdx.audio.newSound(Constants.getFile(filePath));
-        DisposableCollector.add(this);
     }
     public Sound getSound(){
         return sound;
