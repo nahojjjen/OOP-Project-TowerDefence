@@ -25,6 +25,7 @@ public class ScreenCollector {
         }
         menuScreen.initiateNew(player);
         g.setScreen(menuScreen);
+        System.gc();
     }
     public static void setGameScreen(Game g, Map map, Player player, Viewport viewport) {
         if(gameScreen == null) {
@@ -32,6 +33,7 @@ public class ScreenCollector {
         }
         gameScreen.initiateNew(map, player);
         g.setScreen(gameScreen);
+        System.gc();
     }
     public static void setGameOverScreen(Game g, Map map, Player player, Viewport viewport) {
         if(gameOverScreen == null) {
@@ -39,5 +41,6 @@ public class ScreenCollector {
         }
         gameOverScreen.initiateNew(g, map, player);
         g.setScreen(gameOverScreen);
+        System.gc();
     }
 }
