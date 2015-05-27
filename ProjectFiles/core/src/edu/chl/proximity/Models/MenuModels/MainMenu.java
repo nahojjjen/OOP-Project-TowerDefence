@@ -29,6 +29,7 @@ public class MainMenu {
     private FactionChooser factionChooser;
     private MapSelect mapSelect;
     private Image background;
+    private ProximityVector backgroundLocation;
 
 
     public MainMenu(ParticleManager particleManager){
@@ -39,6 +40,7 @@ public class MainMenu {
         mapSelect=new MapSelect(particleManager);
         map=mapSelect.getSelected();
         startButton = new StartButton(new ProximityVector((Constants.GAME_WIDTH/2-150),440));
+        backgroundLocation = new ProximityVector(0,0);
 
     }
 
@@ -71,7 +73,7 @@ public class MainMenu {
     public void pressedMap(ProximityVector pos){mapSelect.pressed(pos);}
 
     public void render(ProximityBatch batch){
-        batch.render(background, new ProximityVector(0,0), 0);
+        batch.render(background, backgroundLocation, 0);
         startButton.render(batch);
         factionChooser.render(batch);
         mapSelect.render(batch);

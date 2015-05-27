@@ -12,6 +12,7 @@ import edu.chl.proximity.Controllers.ScreenChanger.ScreenChangerListener;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Player.Players.Player;
+import edu.chl.proximity.Models.Utils.ProximityAudioPlayer;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Models.Utils.ProximityShapeRenderer;
@@ -71,6 +72,7 @@ public class GameScreen implements Screen, ScreenChangerListener{
         initiateModel();
         initiateController();
         initiateView();
+        ProximityAudioPlayer.playGameMusic();
     }
 
     private void initiateController() {

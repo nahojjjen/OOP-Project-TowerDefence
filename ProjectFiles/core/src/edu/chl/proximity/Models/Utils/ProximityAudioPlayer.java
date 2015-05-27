@@ -1,6 +1,9 @@
 package edu.chl.proximity.Models.Utils;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.files.FileHandle;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityRandom;
 
@@ -15,7 +18,7 @@ import java.util.List;
  */
 public class ProximityAudioPlayer {
     private static Settings settings = new Settings();
-    private static ProximitySound gameMusic;
+    private static Music gameMusic;
     private static long soundID = 0;
 
     /**
@@ -33,6 +36,9 @@ public class ProximityAudioPlayer {
      * @param pan what pan the sound should play (position, left / right)
      */
     public static void playSound(ProximitySound sound, float pitch, float pan){
+        if (gameMusic != null){
+            gameMusic.dispose();
+        }
         Sound rawSound = sound.getSound();
         if (rawSound != null){
             rawSound.play(settings.getTranslatedGameVolume(), pitch, pan);
@@ -44,14 +50,14 @@ public class ProximityAudioPlayer {
      * starts a new random song from the game music folder
      */
     public static void playGameMusic(){
-
         List<String> musicFiles = getAllMusicFiles();
         gameMusic = getRandomSong(musicFiles);
 
         if (gameMusic != null){
-            Sound rawSound = gameMusic.getSound();
-            rawSound.stop();
-            soundID = rawSound.loop(settings.getTranslatedGameVolume()/3);
+            gameMusic.stop();
+            gameMusic.play();
+            gameMusic.setLooping(true);
+            gameMusic.setVolume(settings.getTranslatedGameVolume()/3);
         }
 
     }
@@ -61,10 +67,12 @@ public class ProximityAudioPlayer {
      * @param musicFiles the list containing the music names
      * @return one of the music files, with random distributed chance
      */
-    private static ProximitySound getRandomSong(List<String> musicFiles){
+    private static Music getRandomSong(List<String> musicFiles){
+
         double randomMusic = ProximityRandom.getRandomDoubleBetween(0, musicFiles.size() - 0.0000000001);
         int randomSelected = (int)(randomMusic);
-        return new ProximitySound(Constants.FILE_PATH + "GameMusic/" +musicFiles.get(randomSelected));
+        FileHandle handle =  new FileHandle(Constants.FILE_PATH + "GameMusic/" +musicFiles.get(randomSelected));
+        return Gdx.audio.newMusic(handle);
 
     }
 
@@ -92,8 +100,7 @@ public class ProximityAudioPlayer {
      */
     public static void pauseGameMusic(){
         if (gameMusic != null){
-            Sound rawSound = gameMusic.getSound();
-            rawSound.pause();
+            gameMusic.pause();
         }
     }
 
@@ -104,8 +111,7 @@ public class ProximityAudioPlayer {
      */
     public static void setGameMusicVolume(float volume){
         if (gameMusic != null){
-            Sound rawSound = gameMusic.getSound();
-            rawSound.setVolume(soundID,volume/3);
+            gameMusic.setVolume(volume/3);
         }
     }
 
@@ -114,8 +120,7 @@ public class ProximityAudioPlayer {
      */
     public static void resumeGameMusic(){
         if (gameMusic != null){
-            Sound rawSound = gameMusic.getSound();
-            rawSound.resume();
+            gameMusic.play();
         }
     }
 }

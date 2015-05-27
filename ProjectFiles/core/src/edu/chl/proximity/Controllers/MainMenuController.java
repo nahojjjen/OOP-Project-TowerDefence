@@ -52,7 +52,8 @@ public class MainMenuController implements InputProcessor{
         if(touchedButton instanceof StartButton){
             mainMenu.pressedStart();
             ScreenChanger.changeScreen(ScreenChanger.ScreenType.Play);
-            ProximityAudioPlayer.playGameMusic();
+
+
         }else if(touchedButton instanceof FactionChooser){
             mainMenu.pressedFactionChooser(translatedPosition);
         }else if(touchedButton instanceof MapSelect){
