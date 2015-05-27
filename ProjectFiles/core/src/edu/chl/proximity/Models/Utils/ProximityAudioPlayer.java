@@ -19,7 +19,6 @@ import java.util.List;
 public class ProximityAudioPlayer {
     private static Settings settings = new Settings();
     private static Music gameMusic;
-    private static long soundID = 0;
 
     /**
      * change the settings to use another configuration
@@ -36,9 +35,7 @@ public class ProximityAudioPlayer {
      * @param pan what pan the sound should play (position, left / right)
      */
     public static void playSound(ProximitySound sound, float pitch, float pan){
-        if (gameMusic != null){
-            gameMusic.dispose();
-        }
+
         Sound rawSound = sound.getSound();
         if (rawSound != null){
             rawSound.play(settings.getTranslatedGameVolume(), pitch, pan);
@@ -50,6 +47,11 @@ public class ProximityAudioPlayer {
      * starts a new random song from the game music folder
      */
     public static void playGameMusic(){
+
+        if (gameMusic != null){
+            gameMusic.dispose();
+        }
+
         List<String> musicFiles = getAllMusicFiles();
         gameMusic = getRandomSong(musicFiles);
 
