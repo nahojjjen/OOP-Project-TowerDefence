@@ -49,7 +49,6 @@ public class GameOverController implements InputProcessor{
                 player.initiateNewMap();
             } else if (action.equals("MainMenu")) {
                 ScreenChanger.changeScreen(ScreenChanger.ScreenType.MainMenu);
-                System.out.println("Main menu pressed");
             }
         }
         return true;

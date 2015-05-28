@@ -138,11 +138,8 @@ public abstract class Projectile extends BoardObject implements Cloneable{
      */
     public void move() {
         ProximityVector newPosition;
-        //System.out.println("real x movement:" + (Math.cos(Math.toRadians(angle)) * speed));
-        //System.out.println("real y movement:" + (Math.sin(Math.toRadians(angle)) * speed));
         float xLenght = (float) ((Math.cos(Math.toRadians(getAngle())) * speed));
         float yLenght = (float) ((Math.sin(Math.toRadians(getAngle())) * speed));
-        //System.out.println("x movement= " + xLenght + " y-momement:" + yLenght);
         newPosition = new ProximityVector(getPosition().x + xLenght, getPosition().y + yLenght);
         setPosition(newPosition);
 

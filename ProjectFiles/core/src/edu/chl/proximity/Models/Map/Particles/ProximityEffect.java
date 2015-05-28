@@ -133,12 +133,6 @@ public class ProximityEffect {
                 effect.start();
                 return effect;
             }
-            else{
-                System.out.println(effectPool.getFree() + "<- amount of free particles");
-                System.out.println("Could not create effect, pool empty! Skipping. Effect that could not be created: " + effectFile);
-            }
-
-
         }
         return null;
     }

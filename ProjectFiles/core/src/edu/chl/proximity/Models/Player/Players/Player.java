@@ -55,7 +55,6 @@ public class Player {
         }
         if (waveIndex > previousWon){
             saveManager.write(name, (float)waveIndex);
-            System.out.println("Progress saved!: " + name + " wave index: " + waveIndex);
         }
     }
 
@@ -117,11 +116,8 @@ public class Player {
 
         Thread shutdownHook = new Thread("Proximity-Shutdown-Save-Logic" ) {
             public void run() {
-                System.out.println("Starting save...");
                 saveAllSpecifiedVariables();
-
                 saveManager.save(saveFileNumber);
-                System.out.println("Save Complete!");
             }
         };
         Runtime.getRuntime().addShutdownHook( shutdownHook );

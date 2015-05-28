@@ -47,7 +47,6 @@ public class SaveManager {
             return saveMap.get(input);
         }
         else{
-            System.out.println("Loaded no value from " + "\"" + input + "\"" + ", no value on savefile" );
             return null;
         }
 
@@ -89,7 +88,6 @@ public class SaveManager {
                 try {
                     obj_out.close();
                 } catch (IOException e) {
-                    System.out.println("Failed to close stream.");
                 }
             }
         }
@@ -106,7 +104,6 @@ public class SaveManager {
 
         if (!doesSaveExist(1)){
            save(number); //create an empty save-file
-            System.out.println("creating file for first time");
         }
 
 

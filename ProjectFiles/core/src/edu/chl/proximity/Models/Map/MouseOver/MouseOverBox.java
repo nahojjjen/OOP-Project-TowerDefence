@@ -72,9 +72,6 @@ public class MouseOverBox extends BoardObject {
 
         }
         setHeight(20 + infoTextList.size()*13);
-        for(ProximityFont font : infoTextList) {
-            System.out.println("Added: " + font.getText());
-        }
     }
 
     public boolean containsPoint(ProximityVector point) {

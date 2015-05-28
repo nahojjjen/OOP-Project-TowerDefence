@@ -23,7 +23,6 @@ public class ButtonPanelTest {
 
         assertEquals(buttonPanel.getPauseButton(), buttonPanel.getButtonOnPosition(buttonPanel.getPauseButton().getCenter()));
         assertEquals(buttonPanel.getPlayButton(), buttonPanel.getButtonOnPosition(buttonPanel.getPlayButton().getCenter()));
-        System.out.println( buttonPanel.getButtonOnPosition(buttonPanel.getPropertiesButton().getCenter()));
         assertEquals(buttonPanel.getPropertiesButton(), buttonPanel.getButtonOnPosition(buttonPanel.getPropertiesButton().getCenter()));
         assertEquals(buttonPanel.getSpeedButton(), buttonPanel.getButtonOnPosition(buttonPanel.getSpeedButton().getCenter()));
 
@@ -56,7 +55,6 @@ public class ButtonPanelTest {
         settings.setGameSpeed(7);
         buttonPanel.pressedPause();
         buttonPanel.pressedPause();
-        System.out.println(settings.getGameSpeed());
         assertTrue(settings.getGameSpeed() == 0);
 
     }

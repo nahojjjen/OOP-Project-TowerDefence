@@ -366,10 +366,7 @@ public abstract class Map {
         }
         if (base != null){
             base.render(batch);
-        } else{
-            System.out.println("In Map: There was no base to be found");
         }
-
     }
 
     /**

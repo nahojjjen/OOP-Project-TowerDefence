@@ -47,7 +47,6 @@ public class ControlPanelSpell extends BoardObject {
         try {
             return (Spell)spell.clone();
         } catch (CloneNotSupportedException e) {
-            System.out.println("Clone not supported when placing item: " + e);
         }
         return null;
     }

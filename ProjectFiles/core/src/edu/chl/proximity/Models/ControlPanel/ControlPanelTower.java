@@ -48,7 +48,6 @@ public class ControlPanelTower extends BoardObject{
         try {
             return (Tower)tower.clone();
         } catch (CloneNotSupportedException e){
-            System.out.println("ControlPanelTower: Error, Clone not supported");
         }
         return null;
     }
