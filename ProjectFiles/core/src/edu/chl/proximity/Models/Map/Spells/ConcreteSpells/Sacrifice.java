@@ -18,7 +18,7 @@ import java.util.List;
 public class Sacrifice extends Spell {
     private static double range=30f;
     private static int duration=10;
-    private static Image image=new Image(Constants.FILE_PATH + "Spells/bloodpool.png");
+    private static Image image=new Image(Constants.FILE_PATH + "Spells/sacrifice.png");
     private static final int maxCooldown = 60*10;
     private static int currentCooldown = 0;
 
