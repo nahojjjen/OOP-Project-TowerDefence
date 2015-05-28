@@ -12,3 +12,5 @@ gitinspector/translations/messages.pot
 ProjectFiles/core/ProximitySave.txt
 ProjectFiles/ProximitySave1.data
 *.data
+*.db
+*.db
