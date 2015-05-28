@@ -89,9 +89,11 @@ public class ProximityAudioPlayer {
         File folder = new File(Constants.FILE_PATH + "/GameMusic");
         File[] listOfFiles = folder.listFiles();
 
-        for (int i = 0; i < listOfFiles.length; i++) {
-            if (listOfFiles[i].isFile() && listOfFiles[i].getName().contains(".mp3")) {
-                musicFiles.add(listOfFiles[i].getName());
+        if (listOfFiles != null) {
+            for (File listOfFile : listOfFiles) {
+                if (listOfFile.isFile() && listOfFile.getName().contains(".mp3")) {
+                    musicFiles.add(listOfFile.getName());
+                }
             }
         }
         return musicFiles;
@@ -109,7 +111,7 @@ public class ProximityAudioPlayer {
 
     /**
      * changes the music volume
-     * @param volume
+     * @param volume volume to be set
      */
     public static void setGameMusicVolume(float volume){
         if (gameMusic != null){

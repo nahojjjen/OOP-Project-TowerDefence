@@ -50,19 +50,20 @@ public class MouseOverBox extends BoardObject {
         String[] parts = storedInfo.split("\n");
         for(int i = 0; i < parts.length; i++) {
             String part = parts[i];
+            StringBuilder partBuilder = new StringBuilder();
             while(part.length() > signsAllowedOnARow) {
                 String[] partsOfPart = part.split(" ");
                 String rowToAdd = "";
-                part = "";
                 boolean rowDone = false;
-                for(int k = 0; k < partsOfPart.length; k++) {
-                    if(rowToAdd.length() + partsOfPart[k].length() < signsAllowedOnARow && !rowDone) {
-                        rowToAdd += partsOfPart[k] + " ";
+                for (String aPartsOfPart : partsOfPart) {
+                    if (rowToAdd.length() + aPartsOfPart.length() < signsAllowedOnARow && !rowDone) {
+                        rowToAdd += aPartsOfPart + " ";
                     } else {
                         rowDone = true;
-                        part += partsOfPart[k] + " ";
+                        partBuilder.append(aPartsOfPart).append(" ");
                     }
                 }
+                part = partBuilder.toString();
                 ProximityFont font = new ProximityFont(new ProximityVector(getPosition().x + 5, getPosition().y + 5 + (i*15)), rowToAdd,11, 1,1,1);
                 infoTextList.add(font);
             }

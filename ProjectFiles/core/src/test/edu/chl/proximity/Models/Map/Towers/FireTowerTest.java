@@ -35,7 +35,7 @@ public class FireTowerTest {
         creep.setPosition(new ProximityVector(1000,1000)); //creep is out of range, should not have caused it to fire
         creepList.add(creep);
         tower.update(creepList);
-        assertTrue(creep.isRemoved() == false);
+        assertTrue(!creep.isRemoved());
         creep.setPosition(tower.getPosition());
         tower.update(creepList);
         assertTrue(creep.isRemoved()); //now that the tower has fired close to the creep, the creep should be marked for deletion
@@ -44,7 +44,7 @@ public class FireTowerTest {
     @Test
     public void testGetNewUpgrade() throws Exception {
         FireTower tower = new FireTower(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
-        assertTrue(tower.getNewUpgrade() instanceof Tower || tower.getNewUpgrade() == null);
+        assertTrue(tower.getNewUpgrade() instanceof Tower || tower.getNewUpgrade() == null); // Findbugs false warnings
     }
 
     @Test

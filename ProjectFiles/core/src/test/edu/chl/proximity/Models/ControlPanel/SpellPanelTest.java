@@ -49,12 +49,11 @@ public class SpellPanelTest {
         faction.configureSpells(new ParticleManager(new Settings()));
         SpellPanel spellPanel = new SpellPanel(faction);
 
-        ProximityRandom random = new ProximityRandom();
         ProximityVector vector;
         for(int i = 0; i < 1000; i++) {
-            vector = new ProximityVector((float)random.getRandomDoubleBetween(0, Constants.GAME_WIDTH), (float)random.getRandomDoubleBetween(0, Constants.GAME_HEIGHT));
+            vector = new ProximityVector((float)ProximityRandom.getRandomDoubleBetween(0, Constants.GAME_WIDTH), (float)ProximityRandom.getRandomDoubleBetween(0, Constants.GAME_HEIGHT));
             ControlPanelSpell spell = spellPanel.getSpellOnPosition(vector);
-            assertTrue(spell == null || spell instanceof ControlPanelSpell);
+            assertTrue(spell == null || spell instanceof ControlPanelSpell); //Findbugs false warning
         }
     }
 

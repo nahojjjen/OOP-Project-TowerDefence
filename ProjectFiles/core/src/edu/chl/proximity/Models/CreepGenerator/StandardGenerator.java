@@ -120,7 +120,8 @@ public class StandardGenerator {
                     spawnInterval = 0.8;
                 }
                 break;
-
+                default:
+                break;
 
             }
 
@@ -130,16 +131,16 @@ public class StandardGenerator {
             for (int i = 0; i < Math.max(0, waveIndex/2f - r); i++) {
                 creeps.add(new Line1(6, map.getParticleManager(), map.getPath()));
             }
-            for (int i = 0; i < (int)(waveIndex/5); i++) {
+            for (int i = 0; i < waveIndex/5; i++) {
                 creeps.add(new Line1(6, map.getParticleManager(), map.getPath()));
             }
-            for (int i = 0; i < (int)(waveIndex/5); i++) {
+            for (int i = 0; i < waveIndex/5; i++) {
                 creeps.add(new Line2(7, map.getParticleManager(), map.getPath()));
             }
-            for (int i = 0; i < (int)(waveIndex/5); i++) {
+            for (int i = 0; i < waveIndex/5; i++) {
                 creeps.add(new Line2(6, map.getParticleManager(), map.getPath()));
             }
-            for (int i = 0; i < (int)(waveIndex/5); i++) {
+            for (int i = 0; i < waveIndex/5; i++) {
                 creeps.add(new Line1(5, map.getParticleManager(), map.getPath()));
             }
 

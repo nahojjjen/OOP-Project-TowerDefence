@@ -1,7 +1,9 @@
 package edu.chl.proximity.Models.Map.Towers;
 
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
+import edu.chl.proximity.Models.Map.Particles.ProximityEffect;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
@@ -73,7 +75,7 @@ public class MobileTower extends ShootingTower{
     }
 
     public void target(List<Creep> creeps){
-        currentTarget =targetingMethod.getTarget(creeps, getPosition(),range);
+        currentTarget = targetingMethod.getTarget(creeps, getPosition(),range);
         if (currentTarget != null && !counterTicking) {
             this.setAngle(PointCalculations.getVectorAngle(this.getCenter(), currentTarget.getCenter()));
         }else{
@@ -98,11 +100,16 @@ public class MobileTower extends ShootingTower{
     }
 
     public void checkIfCollision(){
-        if(currentTarget!=null && !counterTicking) {
-            if (this.containsPoint(currentTarget.getCenter())){
-                currentTarget.devolve();
-                counterTicking=true;
-                particleManager.getBloodPoolCreepEffect().createEffect(currentTarget.getCenter());
+        if (currentTarget != null) {
+            if (!counterTicking) {
+                if (this.containsPoint(currentTarget.getCenter())) {
+                    currentTarget.devolve();
+                    counterTicking = true;
+                    ProximityEffect effect = particleManager.getBloodPoolCreepEffect(); //Findbugs error
+                    if (effect != null) {
+                        effect.createEffect(currentTarget.getCenter());
+                    }
+                }
             }
         }
     }

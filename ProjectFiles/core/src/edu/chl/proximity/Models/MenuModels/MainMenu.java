@@ -22,7 +22,6 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * 22/05 modified by Simon Gislen. Changed starting price.
  */
 public class MainMenu {
-    private Faction faction;
     private Player player;
     private Map map;
     private StartButton startButton;

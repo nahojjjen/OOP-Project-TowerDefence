@@ -27,7 +27,7 @@ public class ControlPanelSpellTest {
         assertTrue(cpSpell1.getSpell() != null);
 
         try {
-            ControlPanelSpell cpSpell2 = new ControlPanelSpell(new ProximityVector(0, 0), null);
+            new ControlPanelSpell(new ProximityVector(0, 0), null);
             fail("It should not be possible to create a ControlPanelSpell with spell null");
         } catch (NullPointerException e){
             assertTrue(true);

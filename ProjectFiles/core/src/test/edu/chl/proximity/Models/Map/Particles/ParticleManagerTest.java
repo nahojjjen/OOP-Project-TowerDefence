@@ -18,24 +18,24 @@ public class ParticleManagerTest {
     public void testParticleManager(){
         ParticleManager test = new ParticleManager(new Settings());
 
-        assertTrue(test.getBaseCracksEffect() instanceof ProximityEffect);
-        assertTrue(test.getBaseDamageEffect()  instanceof ProximityEffect);
-        assertTrue(test.getBloodCarnageCreepEffect()  instanceof ProximityEffect);
-        assertTrue(test.getBloodCarnageEffect() instanceof ProximityEffect);
-        assertTrue(test.getBloodPoolCreepEffect() instanceof ProximityEffect);
-        assertTrue(test.getBloodPoolEffect() instanceof ProximityEffect);
-        assertTrue(test.getBulletEffect() instanceof ProximityEffect);
-        assertTrue(test.getCreepDiesEffect() instanceof ProximityEffect);
-        assertTrue(test.getDirtSmokeEffect() instanceof ProximityEffect);
-        assertTrue(test.getExplosionEffect() instanceof ProximityEffect);
-        assertTrue(test.getFireCreepEffect() instanceof ProximityEffect);
-        assertTrue(test.getFireFieldEffect() instanceof ProximityEffect);
-        assertTrue(test.getFrostBlastEffect() instanceof ProximityEffect);
-        assertTrue(test.getFrostField() instanceof ProximityEffect);
-        assertTrue(test.getLightningCreepEffect() instanceof ProximityEffect);
-        assertTrue(test.getLightningOriginSpellEffect() instanceof ProximityEffect);
-        assertTrue(test.getSacrificeEffect() instanceof ProximityEffect);
-        assertTrue(test.getWallOfStone() instanceof ProximityEffect);
+        assertTrue(test.getBaseCracksEffect() != null);
+        assertTrue(test.getBaseDamageEffect() != null);
+        assertTrue(test.getBloodCarnageCreepEffect() != null);
+        assertTrue(test.getBloodCarnageEffect() != null);
+        assertTrue(test.getBloodPoolCreepEffect() != null);
+        assertTrue(test.getBloodPoolEffect() != null);
+        assertTrue(test.getBulletEffect() != null);
+        assertTrue(test.getCreepDiesEffect() != null);
+        assertTrue(test.getDirtSmokeEffect() != null);
+        assertTrue(test.getExplosionEffect() != null);
+        assertTrue(test.getFireCreepEffect() != null);
+        assertTrue(test.getFireFieldEffect() != null);
+        assertTrue(test.getFrostBlastEffect() != null);
+        assertTrue(test.getFrostField() != null);
+        assertTrue(test.getLightningCreepEffect() != null);
+        assertTrue(test.getLightningOriginSpellEffect() != null);
+        assertTrue(test.getSacrificeEffect() != null);
+        assertTrue(test.getWallOfStone() != null);
 
     }
 }

@@ -23,9 +23,9 @@ public class ControlPanelTowerTest {
     public void testCreatingControlPanelTower() throws Exception {
         ProximityVector defaultVector = new ProximityVector(0, 0);
         Tower tower = new BulletTower(defaultVector, new TargetClosest(), new ParticleManager(new Settings()));
-        ControlPanelTower cpTower = new ControlPanelTower(defaultVector, tower);
+        new ControlPanelTower(defaultVector, tower);
         try {
-            cpTower = new ControlPanelTower(defaultVector, null);
+            new ControlPanelTower(defaultVector, null);
             fail("It should not be possible to create a ControlPanelTower with tower set to null");
         } catch (IllegalArgumentException e) {
             assertTrue(true);

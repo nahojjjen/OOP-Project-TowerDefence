@@ -74,7 +74,7 @@ public class FactionChooserTest {
     @Test
     public void testGetCurrentlyShownReturnsFaction(){
         FactionChooser fc = new FactionChooser();
-        assertTrue(fc.getCurrentlyShown() instanceof Faction);
+        assertTrue(fc.getCurrentlyShown() != null);
     }
 
     /*

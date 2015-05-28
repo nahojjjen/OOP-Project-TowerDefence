@@ -94,8 +94,7 @@ public class MapTest {
 
         ProximityVector vector;
         for(int i = 0; i < 1000; i++) {
-            ProximityRandom random = new ProximityRandom();
-            vector = new ProximityVector((float)random.getRandomDoubleBetween(0, Constants.GAME_WIDTH), (float)random.getRandomDoubleBetween(0, Constants.GAME_HEIGHT));
+            vector = new ProximityVector((float)ProximityRandom.getRandomDoubleBetween(0, Constants.GAME_WIDTH), (float)ProximityRandom.getRandomDoubleBetween(0, Constants.GAME_HEIGHT));
             Tower tower = new BulletTower(vector, targetingMethod, map.getParticleManager());
             map.add(tower);
             assertTrue(map.getObjectOnPosition(tower.getCenter()).equals(tower) || map.getObjectOnPosition(tower.getCenter()).containsPoint(tower.getCenter()));
@@ -139,7 +138,7 @@ public class MapTest {
     @Test
     public void testGetPath() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
-        assertTrue(map.getPath() instanceof Path);
+        assertTrue(map.getPath() != null);
     }
     @Test
     public void testSetPath() throws Exception {
@@ -158,7 +157,7 @@ public class MapTest {
     @Test
     public void testGetBackground() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
-        assertTrue(map.getBackground() instanceof Background);
+        assertTrue(map.getBackground() != null);
 
     }
 

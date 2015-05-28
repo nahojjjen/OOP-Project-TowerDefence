@@ -15,9 +15,8 @@ public class ProximityRandomTest {
 
     @Test
     public void testGetRandomDouble() throws Exception {
-        ProximityRandom test = new ProximityRandom();
         for(int i =0; i<1000; i++){
-            double aNumber = test.getRandomDouble();
+            double aNumber = ProximityRandom.getRandomDouble();
             assertTrue(aNumber >= 0 && aNumber <= 1);
         }
     }
@@ -25,9 +24,8 @@ public class ProximityRandomTest {
     @Test
     public void testGetRandomFloat() throws Exception {
 
-        ProximityRandom test = new ProximityRandom();
         for(int i =0; i<1000; i++){
-            float aNumber = test.getRandomFloat();
+            float aNumber = ProximityRandom.getRandomFloat();
             assertTrue(aNumber >= 0 && aNumber <= 1);
         }
 
@@ -35,7 +33,6 @@ public class ProximityRandomTest {
 
     @Test (expected=IllegalArgumentException.class)
     public void testGetRandomDoubleBetween() throws Exception {
-        ProximityRandom test = new ProximityRandom();
 
         //tests a normal case between 0 and 1
         double upperLimit = 1;
@@ -43,7 +40,7 @@ public class ProximityRandomTest {
         boolean hasReachedLow1 = false;
         boolean hasReachedhigh1 = false;
         for (int i = 0; i< 100000; i++){
-            double test1 = test.getRandomDoubleBetween(lowerLimit,upperLimit);
+            double test1 = ProximityRandom.getRandomDoubleBetween(lowerLimit,upperLimit);
             assertTrue(test1 >= lowerLimit && test1 <= upperLimit);
 
             if (test1 < lowerLimit+0.1)
@@ -59,7 +56,7 @@ public class ProximityRandomTest {
         boolean hasReachedLow2 = false;
         boolean hasReachedhigh2 = false;
         for (int i = 0; i< 10000; i++){
-            double test2 = test.getRandomDoubleBetween(lowerLimit2,upperLimit2);
+            double test2 = ProximityRandom.getRandomDoubleBetween(lowerLimit2,upperLimit2);
             assertTrue(test2 >= lowerLimit2 && test2 <= upperLimit2);
 
             if (test2 < lowerLimit2+0.1)
@@ -75,7 +72,7 @@ public class ProximityRandomTest {
         boolean hasReachedLow3 = false;
         boolean hasReachedhigh3 = false;
         for (int i = 0; i< 10000; i++){
-            double test3 = test.getRandomDoubleBetween(lowerLimit3,upperLimit3);
+            double test3 = ProximityRandom.getRandomDoubleBetween(lowerLimit3,upperLimit3);
             assertTrue(test3 >= lowerLimit3 && test3 <= upperLimit3);
 
             if (test3 < lowerLimit3+0.1)
@@ -85,12 +82,7 @@ public class ProximityRandomTest {
         }
         assertTrue(hasReachedhigh3 && hasReachedLow3);
 
-        double same = test.getRandomDoubleBetween(1,1);
+        double same = ProximityRandom.getRandomDoubleBetween(1,1);
         assertTrue(same == 1);
-
-
-        double error = test.getRandomDoubleBetween(1,-1);
-
-
     }
 }

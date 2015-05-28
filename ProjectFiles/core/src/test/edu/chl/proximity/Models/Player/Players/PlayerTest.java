@@ -45,11 +45,10 @@ public class PlayerTest {
         double zero = Math.abs(p.getExperience() - e - 253);
         assertTrue(zero <= 0.00000000001);
 
-        e=p.getExperience();
+        e = p.getExperience();
         p.addExperiencePoints(-535);
-        assertTrue(p.getExperience() == e - 535);
-
-
+        zero = Math.abs(p.getExperience() - e + 535);
+        assertTrue(zero <= 0.00000000001);
     }
 
     @Test
@@ -57,7 +56,7 @@ public class PlayerTest {
         Player p = new Player(new Planes());
         p.initiateNewMap();  //causes the player to get a resources instance
         p.getResources().setResources(10, 10, 10);
-        assertTrue(p.getResources() instanceof Resources);
+        assertTrue(p.getResources() != null);
         assertTrue(p.getResources().getPoints()==10 && p.getResources().getLines()==10 && p.getResources().getPolygons()==10);
 
     }
@@ -96,8 +95,7 @@ public class PlayerTest {
     @Test
     public void testGetSettings() {
         Player p = new Player(new Planes());
-        assertTrue(p.getSettings() instanceof Settings);
-
+        assertTrue(p.getSettings() != null);
         Settings s= new Settings();
         p.setSettings(s);
         assertTrue(p.getSettings().equals(s));

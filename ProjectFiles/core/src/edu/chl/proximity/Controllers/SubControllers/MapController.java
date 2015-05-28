@@ -107,21 +107,25 @@ public class MapController implements ClickHandler, UpdateHandler {
         Holdable currentItem=map.getHand().getItem();
         Path path=map.getPath();
         if(currentItem instanceof Tower){
-            Tower t=(Tower) currentItem;
-            System.out.println("Width: " + t.getWidth() + " Height: " + t.getHeight());
-            ProximityVector pos=new ProximityVector(map.getHand().getPosition().x-t.getWidth()/2, map.getHand().getPosition().y-t.getHeight()/2);
-            for(int x=0; x<t.getWidth();x++){
-                if(path.isPointOnPath(new ProximityVector(pos.x+x,pos.y))){
+            Tower t = (Tower) currentItem;
+            double x = map.getHand().getPosition().x - t.getWidth()/2f;
+            double y = map.getHand().getPosition().y - t.getHeight()/2f;
+
+            ProximityVector pos = new ProximityVector((float)x, (float)y);
+            for(int i=0; i<t.getWidth();i++){
+                if(path.isPointOnPath(new ProximityVector(pos.x+i,pos.y))){
                     return true;
                 }
-                if(path.isPointOnPath(new ProximityVector(pos.x+x,pos.y+t.getHeight()))){
+                if(path.isPointOnPath(new ProximityVector(pos.x+i,pos.y+t.getHeight()))){
                     return true;
                 }
-            }for(int y=0;y<t.getHeight();y++){
-                if(path.isPointOnPath(new ProximityVector(pos.x,pos.y+y))){
+            }
+
+            for(int iy = 0; iy < t.getHeight(); iy++){
+                if (path.isPointOnPath(new ProximityVector(pos.x,pos.y + iy))) {
                     return true;
                 }
-                if(path.isPointOnPath(new ProximityVector(pos.x+t.getWidth(),pos.y+y))){
+                if (path.isPointOnPath(new ProximityVector(pos.x + t.getWidth(),pos.y + iy))) {
                     return true;
                 }
             }

@@ -39,7 +39,6 @@ public class MainController implements InputProcessor{
     private List<ClickHandler> controlPanelClickHandlers = new ArrayList<ClickHandler>();
     private List<UpdateHandler> updateHandlers = new ArrayList<UpdateHandler>();
 
-    private Map map;
     private Viewport viewport; //used for translating scaled click-position to model click position
 
 
@@ -85,7 +84,7 @@ public class MainController implements InputProcessor{
      * Handles a click event in the game
      * @param x where the window was clicked in x coordinate
      * @param y where the window was clicked in y coordinate
-     * @param pointer
+     * @param pointer mouse button
      * @param button Which button was pressed
      * @return true, unless program crashes
      */

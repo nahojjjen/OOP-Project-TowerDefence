@@ -19,6 +19,8 @@ import static org.junit.Assert.*;
  * @date 2015-05-19
  *
  * A class for testing the ControlPanel class
+ *
+ * 28/05/15 Modified by Simon Gislen. Bug fixes.
  */
 public class ControlPanelTest {
 
@@ -31,7 +33,7 @@ public class ControlPanelTest {
         assertEquals(map, cp.getMap());
 
         try {
-            ControlPanel cp2 = new ControlPanel(null);
+            new ControlPanel(null);
             fail();
         } catch (IllegalArgumentException e) {
             assertTrue(true);
@@ -80,11 +82,9 @@ public class ControlPanelTest {
     public void testGetTowerOnPosition() throws Exception {
 
         ControlPanel cp = new ControlPanel(new StandardMap(new ParticleManager(new Settings())));
-        ProximityVector vector = new ProximityVector(0, 0);
         for(int i = 0; i < 1000; i++) {
-            ProximityRandom random = new ProximityRandom();
-            vector = new ProximityVector((float)random.getRandomDoubleBetween(cp.getPosition().x, cp.getPosition().x + cp.getWidth()), (float)random.getRandomDoubleBetween(cp.getPosition().y, cp.getPosition().y + cp.getHeight()));
-            assertTrue(cp.getTowerOnPosition(vector) == null || cp.getTowerOnPosition(vector) instanceof ControlPanelTower);
+            ProximityVector vector = new ProximityVector((float)ProximityRandom.getRandomDoubleBetween(cp.getPosition().x, cp.getPosition().x + cp.getWidth()), (float)ProximityRandom.getRandomDoubleBetween(cp.getPosition().y, cp.getPosition().y + cp.getHeight()));
+            assertTrue(cp.getTowerOnPosition(vector) == null || cp.getTowerOnPosition(vector) instanceof ControlPanelTower); //Findbugs false warning
         }
 
     }

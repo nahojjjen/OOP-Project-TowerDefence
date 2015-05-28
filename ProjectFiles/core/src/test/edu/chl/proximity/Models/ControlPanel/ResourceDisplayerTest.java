@@ -8,7 +8,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Created by Floompa on 2015-05-23.
+ * @author Linda
+ * @date 2015-05-23.
  */
 public class ResourceDisplayerTest {
 
@@ -16,6 +17,6 @@ public class ResourceDisplayerTest {
     public void testGetFont() throws Exception {
         ResourceDisplayer resourceDisplayer = new ResourceDisplayer(null, new ProximityVector(0, 0));
 
-        assertTrue(resourceDisplayer.getFont() instanceof ProximityFont);
+        assertTrue(resourceDisplayer.getFont() != null);
     }
 }

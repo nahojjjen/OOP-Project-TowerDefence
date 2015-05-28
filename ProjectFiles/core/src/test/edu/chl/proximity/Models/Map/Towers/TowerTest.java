@@ -20,7 +20,7 @@ import java.util.List;
 import static org.junit.Assert.assertTrue;
 
 /**
- * @authoor Johan
+ * @author Johan
  * @date 2015-05-19.
  *
  * This test class is mostly redundant since it tests methods the same way the  test classes for concrete towers preform the tests
@@ -80,7 +80,7 @@ public class TowerTest {
     @Test
     public void testGetColor() throws Exception {
         Tower  tower = new BulletTower(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
-        assertTrue(tower.getColor() instanceof Color);
+        assertTrue(tower.getColor() != null);
     }
 
     @Test

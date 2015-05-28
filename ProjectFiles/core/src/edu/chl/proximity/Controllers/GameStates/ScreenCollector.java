@@ -12,12 +12,12 @@ import edu.chl.proximity.Models.Player.Players.Player;
  * A class that collects the screens, when a new screen is needed in
  * one of the screens it can be gotten through this class.
  */
+
 public class ScreenCollector {
 
     private static MenuScreen menuScreen;
     private static GameScreen gameScreen;
     private static GameOverScreen gameOverScreen;
-
 
     public static void setMenuScreen(Game g, Player player, Viewport viewport) {
         if(menuScreen == null) {
@@ -25,7 +25,7 @@ public class ScreenCollector {
         }
         menuScreen.initiateNew(player);
         g.setScreen(menuScreen);
-        System.gc();
+        System.gc(); //Findbugs explicit GC warning not applicable in manual handling of memory in games.
     }
     public static void setGameScreen(Game g, Map map, Player player, Viewport viewport) {
         if(gameScreen == null) {
@@ -33,7 +33,7 @@ public class ScreenCollector {
         }
         gameScreen.initiateNew(map, player);
         g.setScreen(gameScreen);
-        System.gc();
+        System.gc(); //Findbugs explicit GC warning not applicable in manual handling of memory in games.
     }
     public static void setGameOverScreen(Game g, Map map, Player player, Viewport viewport) {
         if(gameOverScreen == null) {
@@ -41,6 +41,6 @@ public class ScreenCollector {
         }
         gameOverScreen.initiateNew(g, map, player);
         g.setScreen(gameOverScreen);
-        System.gc();
+        System.gc(); //Findbugs explicit GC warning not applicable in manual handling of memory in games.
     }
 }

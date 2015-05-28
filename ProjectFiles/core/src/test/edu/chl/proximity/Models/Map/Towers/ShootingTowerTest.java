@@ -76,7 +76,7 @@ public class ShootingTowerTest {
         ShootingTower towerCopy = (ShootingTower)tower.clone();
 
         assertTrue(tower.getPosition().equals(towerCopy.getPosition()));
-        tower.setPosition(new ProximityVector(1010, 0100));
+        tower.setPosition(new ProximityVector(1010, 100));
         assertFalse(tower.getPosition().equals(towerCopy.getPosition()));
 
         assertTrue(tower.getAngle() == towerCopy.getAngle());
@@ -96,7 +96,7 @@ public class ShootingTowerTest {
      * @throws Exception
      */
     private void testGetNewUpgrade(ShootingTower tower) throws Exception {
-        assertTrue(tower.getUpgrade() instanceof Tower || tower.getNewUpgrade() == null);
+        assertTrue(tower.getUpgrade() instanceof Tower || tower.getNewUpgrade() == null); //Findbugs false warnings
 
         if (tower.getNewUpgrade() != null){
             assertFalse(tower.getClass().equals(tower.getUpgrade().getClass()));

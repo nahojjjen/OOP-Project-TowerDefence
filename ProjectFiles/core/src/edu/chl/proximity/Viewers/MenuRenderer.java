@@ -11,8 +11,6 @@ import edu.chl.proximity.Models.Utils.ProximityShapeRenderer;
  */
 public class MenuRenderer {
     private MainMenu mainMenu;
-    private ParticleManager particleManager ;
-
     public MenuRenderer(MainMenu mainMenu){
         this.mainMenu = mainMenu;
     }
