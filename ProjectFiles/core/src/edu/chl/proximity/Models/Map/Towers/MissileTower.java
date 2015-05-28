@@ -42,7 +42,10 @@ public class MissileTower extends ShootingTower {
         return new Missile(getCenter(), getAngle(), getTarget(), getParticleManager());
 
     }
-
+    public String getDescription() {
+        return super.getDescription() + "\n " +
+                "A tower which shoots target-guided missiles, the missiles explode on impact.";
+    }
     public Tower getNewUpgrade() {
         return new MissileTower2(this.getPosition(), this.getTargetingMethod(), getParticleManager());
     }

@@ -46,7 +46,7 @@ public class BulletTower3 extends Tower implements Cloneable, TargetingTower {
 
     public String getDescription() {
         return "\n" +
-                "A tower that shoots three bullets really quick and then reloads.";
+                "A tower that shoots three bullets really quick and then reloads. Has a long range";
     }
 
     /**

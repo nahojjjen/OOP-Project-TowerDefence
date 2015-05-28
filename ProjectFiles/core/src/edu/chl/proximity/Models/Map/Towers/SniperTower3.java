@@ -30,7 +30,7 @@ public class SniperTower3 extends ShootingTower {
      *  double range, TargetingMethod targetingMethod, int reloadTime
      */
     public SniperTower3(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager) {
-        super(pos, img, range, targetingMethod, reloadTime, resources, "Sniper Tower");
+        super(pos, img, range, targetingMethod, reloadTime, resources, "Scalpel Tower");
         setParticleManager(particleManager);
     }
 
@@ -46,6 +46,12 @@ public class SniperTower3 extends ShootingTower {
     public Object clone() throws CloneNotSupportedException{
         return super.clone();
     }
+
+    public String getDescription() {
+        return super.getDescription() + "\n " +
+                "Makes the sniper bullets pierce its initial target and hit 7 additional targets behind.";
+    }
+
     public Tower getNewUpgrade() {
         return null;
         //return new SniperTower(this.getPosition(), this.getTargetingMethod(), getParticleManager());

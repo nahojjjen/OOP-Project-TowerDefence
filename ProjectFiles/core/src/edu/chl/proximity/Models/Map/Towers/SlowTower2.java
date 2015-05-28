@@ -40,7 +40,10 @@ public class SlowTower2 extends ShootingTower {
         projectile.setAsSlow2();
         return projectile;
     }
-
+    public String getDescription() {
+        return super.getDescription() + "\n " +
+                "Makes the freezing bullets freeze a large area on impact. Also increases slow effect to 60% for 2 seconds.";
+    }
     public Tower getNewUpgrade(){
         return null;
     }

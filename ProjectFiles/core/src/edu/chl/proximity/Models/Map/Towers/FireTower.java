@@ -107,7 +107,9 @@ public class FireTower extends Tower{
             getParticleManager().getFireBurstEffect().createEffect(getCenter(), angle, 30);
         }
     }
-
+    public String getDescription() {
+        return  "\n " + "A fire spire that creates waves of flame that burn alla enemies in a circle around it";
+    }
     @Override
     public void update(List<Creep> creeps) {
         shoot(creeps);

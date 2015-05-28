@@ -44,6 +44,12 @@ public class SniperTower extends ShootingTower {
     public Object clone() throws CloneNotSupportedException{
         return super.clone();
     }
+
+    public String getDescription() {
+        return super.getDescription() + "\n " +
+                "A tower which has global range, fires slowly.";
+    }
+
     public Tower getNewUpgrade() {
         return new SniperTower2(this.getPosition(), this.getTargetingMethod(), getParticleManager());
         //return new SniperTower(this.getPosition(), this.getTargetingMethod(), getParticleManager());

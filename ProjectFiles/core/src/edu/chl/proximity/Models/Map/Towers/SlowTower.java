@@ -45,7 +45,10 @@ public class SlowTower extends ShootingTower {
 
         return new SlowDownBullet(getCenter(), getAngle(), getTarget(), slowDownPercent, slowDownTime, getParticleManager());
     }
-
+    public String getDescription() {
+        return super.getDescription() + "\n " +
+                "A tower which shoots freezing bullets that slow enemies for 50% for 1.5 seconds, or until they devolve.";
+    }
     public Tower getNewUpgrade(){
         return new SlowTower2(this.getPosition(),this.getTargetingMethod(), getParticleManager());
     }

@@ -50,7 +50,7 @@ public class MobileTower2 extends ShootingTower{
      * @param particleManager Particle manager the ower should use.
      */
     public MobileTower2(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager) {
-        super(pos, img, range, targetingMethod, reloadTime, resources, "Bullet Tower");
+        super(pos, img, range, targetingMethod, reloadTime, resources, "Warfare Tank");
         setParticleManager(particleManager);
         origPos=this.getCenter();
         if (ProximityRandom.getRandomDouble() > 0.5){
@@ -144,7 +144,10 @@ public class MobileTower2 extends ShootingTower{
             }
         }
     }
-
+    public String getDescription() {
+        return super.getDescription() + "\n " +
+                "Gives the tank a missile launcher, because why not?.";
+    }
     @Override
     public void render(ProximityBatch batch){
         super.render(batch);

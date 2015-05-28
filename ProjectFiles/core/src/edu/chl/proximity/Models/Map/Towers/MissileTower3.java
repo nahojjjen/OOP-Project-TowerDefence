@@ -28,7 +28,7 @@ public class MissileTower3 extends ShootingTower {
      *  double range, TargetingMethod targetingMethod, int reloadTime
      */
     public MissileTower3(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager) {
-        super(pos, img, range, targetingMethod, reloadTime, resources, "Missile Tower");
+        super(pos, img, range, targetingMethod, reloadTime, resources, "Veteran Missile");
         setParticleManager(particleManager);
 
     }
@@ -39,6 +39,10 @@ public class MissileTower3 extends ShootingTower {
 
     }
 
+    public String getDescription() {
+        return super.getDescription() + "\n " +
+                "Doubles the range and greatly increases explosion radious.";
+    }
     public Tower getNewUpgrade() {
         return null;
         //return new MissileTower(this.getPosition(), this.getTargetingMethod(), getParticleManager());

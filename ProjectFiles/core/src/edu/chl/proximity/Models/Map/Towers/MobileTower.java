@@ -148,7 +148,10 @@ public class MobileTower extends ShootingTower{
         return new MobileTower2(this.getPosition(),this.targetingMethod,getParticleManager());
 
     }
-
+    public String getDescription() {
+        return super.getDescription() + "\n " +
+                "A tower which kills creeps by running them over.";
+    }
     @Override
     public void preparePlacing(ProximityVector position) {
         if (position == null) throw new IllegalArgumentException();
