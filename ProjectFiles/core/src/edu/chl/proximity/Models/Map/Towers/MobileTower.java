@@ -133,7 +133,7 @@ public class MobileTower extends ShootingTower{
                 if (this.containsPoint(currentTarget.getCenter())) {
                     currentTarget.devolve();
                     counterTicking = true;
-                    ProximityEffect effect = particleManager.getBloodPoolCreepEffect(); //Findbugs error
+                    ProximityEffect effect = particleManager.getBloodPoolCreepEffect(); //Find bugs shows an error here which we don't really understand.
                     if (effect != null) {
                         effect.createEffect(currentTarget.getCenter());
                     }

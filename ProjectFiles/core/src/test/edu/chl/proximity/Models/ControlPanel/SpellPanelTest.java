@@ -53,7 +53,7 @@ public class SpellPanelTest {
         for(int i = 0; i < 1000; i++) {
             vector = new ProximityVector((float)ProximityRandom.getRandomDoubleBetween(0, Constants.GAME_WIDTH), (float)ProximityRandom.getRandomDoubleBetween(0, Constants.GAME_HEIGHT));
             ControlPanelSpell spell = spellPanel.getSpellOnPosition(vector);
-            assertTrue(spell == null || spell instanceof ControlPanelSpell); //Findbugs false warning
+            assertTrue(spell == null || spell instanceof ControlPanelSpell); //Findbugs gives a warning here but we want this functionality
         }
     }
 

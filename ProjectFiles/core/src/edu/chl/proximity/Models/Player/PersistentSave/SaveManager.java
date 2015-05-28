@@ -127,12 +127,11 @@ public class SaveManager {
         //Load the object
         Object readObject = null;
         try {
-            readObject = objectInputStream.readObject(); //findbugs false warning, ignore.
+            //We consider the following line pretty safe to call even if find bugs complains, since its in a try catch block
+            readObject = objectInputStream.readObject();
 
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException | NullPointerException e) {
             e.printStackTrace();
         }
 
