@@ -48,10 +48,11 @@ public class SpellTest {
 
     private void testSpell(Spell spell) throws Exception{
         testSetHealthChange(spell);
+        testIsReadyToCast(spell);
         testPreparePlacing(spell);
         testGetCreepsWithinDistance(spell);
         testGetTowersWithinDistance(spell);
-        testIsReadyToCast(spell);
+
 
         testGetRange(spell);
         testGetCreeps(spell);
@@ -139,9 +140,8 @@ public class SpellTest {
     }
 
     public void testIsReadyToCast(Spell spell) throws Exception {
-        //TODO: fix spell.isReadyToCast test
         boolean ready = spell.isReadyToCast();
-        //assertTrue(ready);
+        assertTrue(ready);
 
     }
 

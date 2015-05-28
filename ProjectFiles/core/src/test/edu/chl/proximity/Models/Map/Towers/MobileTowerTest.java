@@ -7,9 +7,8 @@ import static org.junit.Assert.*;
 /**
  * @author simongislen.
  * @date 28/05/15.
- * <p/>
- * <p/>
- * A MobileTowerTest class that is responsible for...
+ *
+ * A test class for MobileTower
  */
 public class MobileTowerTest {
 
