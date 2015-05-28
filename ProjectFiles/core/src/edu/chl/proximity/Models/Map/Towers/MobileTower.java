@@ -26,7 +26,6 @@ import java.util.List;
  */
 public class MobileTower extends ShootingTower{
     private TargetingMethod targetingMethod;
-    private ParticleManager particleManager;
     private ProximityVector origPos;
 
     private int speed=4;
@@ -133,7 +132,7 @@ public class MobileTower extends ShootingTower{
                 if (this.containsPoint(currentTarget.getCenter())) {
                     currentTarget.devolve();
                     counterTicking = true;
-                    ProximityEffect effect = particleManager.getBloodPoolCreepEffect(); //Find bugs shows an error here which we don't really understand.
+                    ProximityEffect effect = getParticleManager().getBloodPoolCreepEffect();
                     if (effect != null) {
                         effect.createEffect(currentTarget.getCenter());
                     }
@@ -146,7 +145,7 @@ public class MobileTower extends ShootingTower{
     }
 
     public Tower getNewUpgrade(){
-        return new MobileTower2(this.getPosition(),this.targetingMethod,particleManager);
+        return new MobileTower2(this.getPosition(),this.targetingMethod,getParticleManager());
 
     }
 
