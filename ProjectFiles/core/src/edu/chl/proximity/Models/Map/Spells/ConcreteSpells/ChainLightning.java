@@ -25,7 +25,6 @@ public class ChainLightning extends Spell {
     private static int duration = 2;
     private static Image image = new Image(Constants.FILE_PATH + "Spells/chainlightning.png");
     private static final int maxCooldown = 60*40;
-    private int currentCooldown = 0;
     private int charges = 10;
 
     public ChainLightning(ParticleManager particleManager) {

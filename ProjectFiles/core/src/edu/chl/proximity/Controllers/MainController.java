@@ -45,7 +45,6 @@ public class MainController implements InputProcessor{
 
 
     public MainController(Map map, Viewport v) {
-        this.map = map;
         viewport=v;
 
         controlPanelController = new ControlPanelController(map);

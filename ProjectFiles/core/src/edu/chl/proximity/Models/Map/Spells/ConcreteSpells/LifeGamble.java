@@ -17,7 +17,6 @@ public class LifeGamble extends Spell {
     private static int duration=1;
     private static Image image=new Image(Constants.FILE_PATH + "Spells/dice.png");
     private static final int maxCooldown = 60*2;
-    private int currentCooldown = 0;
 
     public LifeGamble(ParticleManager particleManager){
         super(image, "Life Gamle", duration, new Cooldown(maxCooldown), particleManager);

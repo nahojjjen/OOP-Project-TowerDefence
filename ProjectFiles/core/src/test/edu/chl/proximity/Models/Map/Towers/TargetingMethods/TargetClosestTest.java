@@ -43,7 +43,7 @@ public class TargetClosestTest {
 
 
         tower.target(list);
-        assertTrue(tower.getAngle() == 79.29864501953125 );
+        assertTrue(Math.abs(tower.getAngle() - 79.29864501953125) <= 0.0000000000000001);
         //if the tower targets the right creep in this situation, its angle should have changed to 79.29864501953125 degrees
     }
 }

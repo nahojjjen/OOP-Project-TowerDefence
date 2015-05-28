@@ -27,7 +27,6 @@ public class FireField extends Spell {
     private static int duration = 120;
     private static Image image = new Image(Constants.FILE_PATH + "Spells/firefield.png");
     private static final int maxCooldown = 60*30;
-    private int currentCooldown = 0;
 
     public FireField(ParticleManager particleManager){
         super(image, "Fire Field", duration, new Cooldown(maxCooldown), particleManager); //600 frames = 10 seconds @ 60 fps

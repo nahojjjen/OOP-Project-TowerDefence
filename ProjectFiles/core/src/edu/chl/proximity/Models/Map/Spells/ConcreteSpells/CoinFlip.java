@@ -20,7 +20,6 @@ public class CoinFlip extends Spell{
     private static int duration = 120;
     private static Image image = new Image(Constants.FILE_PATH + "Spells/Coins.png");
     private static final int maxCooldown = 60 * 6;
-    private int currentCooldown = 0;
     private int effect;
 
     public CoinFlip(ParticleManager particleManager) {

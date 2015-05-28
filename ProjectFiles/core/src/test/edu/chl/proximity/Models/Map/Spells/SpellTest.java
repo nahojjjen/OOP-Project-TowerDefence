@@ -28,7 +28,6 @@ import static org.junit.Assert.*;
 public class SpellTest {
 
     private Path path = new FirstPath();
-    private ParticleManager particleManager = null;
 
     @Test
     public void testAllSpells() throws Exception {

@@ -16,13 +16,11 @@ import edu.chl.proximity.Utilities.ProximityVector;
 public class GameOverController implements InputProcessor{
     private Viewport viewport;
     private GameOver gameOver;
-    private Game game;
     private Player player;
 
     public GameOverController(Game g,Viewport v, GameOver go, Player player){
         viewport=v;
         gameOver=go;
-        game=g;
         this.player=player;
     }
 

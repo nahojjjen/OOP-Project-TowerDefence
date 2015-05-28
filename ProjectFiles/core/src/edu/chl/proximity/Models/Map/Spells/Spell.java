@@ -35,7 +35,6 @@ public abstract class Spell extends PersistentObject implements Holdable {
     private Resources resourcesChange=new Resources(0,0,0);
     private Resources cost = new Resources(0, 0, 0);
     private boolean isPlaced = false;
-    private boolean isReady = false;
     private Cooldown cooldown;
     private String name;
 

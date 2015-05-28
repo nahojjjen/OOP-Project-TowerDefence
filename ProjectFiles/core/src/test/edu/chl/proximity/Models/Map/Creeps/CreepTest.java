@@ -4,8 +4,6 @@ import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Boss1;
 import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line1;
 import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line2;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
-import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Map.Maps.StandardMap;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Paths.ConcretePaths.FirstPath;
 import edu.chl.proximity.Models.Map.Paths.Path;
@@ -28,12 +26,10 @@ import junit.framework.TestCase;
  */
 public class CreepTest extends TestCase {
 
-    private Map map;
     private Path path;
     @Override
     public void setUp() throws Exception {
         super.setUp();
-        map = new StandardMap(new ParticleManager(new Settings()));
         path = new FirstPath();
     }
 

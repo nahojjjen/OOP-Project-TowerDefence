@@ -32,7 +32,7 @@ public class PointCalculations {
      */
     public static String createPathTool(int x, int y) {
         System.out.println("waypoints.add(new ProximityVector(" + x + ", " + y + "));");
-        return new String("waypoints.add(new ProximityVector(" + x + ", " + y + "));");
+        return "waypoints.add(new ProximityVector(" + x + ", " + y + "));";
     }
 
     /**

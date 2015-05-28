@@ -24,7 +24,7 @@ public class ControlPanelSpellTest {
         ControlPanelSpell cpSpell1 = new ControlPanelSpell(new ProximityVector(0, 0), spell);
 
         assertFalse(spell == cpSpell1.getSpell());
-        assertTrue(cpSpell1.getSpell() instanceof Spell);
+        assertTrue(cpSpell1.getSpell() != null);
 
         try {
             ControlPanelSpell cpSpell2 = new ControlPanelSpell(new ProximityVector(0, 0), null);

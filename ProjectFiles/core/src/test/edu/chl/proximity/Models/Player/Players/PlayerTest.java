@@ -42,7 +42,7 @@ public class PlayerTest {
 
         double e=p.getExperience();
         p.addExperiencePoints(253);
-        assertTrue(p.getExperience() == e + 253);
+        assertTrue(Math.abs(p.getExperience() - e + 253) <= 0.0000001);
 
         e=p.getExperience();
         p.addExperiencePoints(-535);

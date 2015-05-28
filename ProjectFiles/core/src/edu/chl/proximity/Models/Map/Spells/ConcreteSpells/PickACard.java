@@ -21,7 +21,6 @@ public class PickACard extends Spell {
     private static int duration = 240;
     private static Image image = new Image(Constants.FILE_PATH + "Spells/TarotCards.png");
     private static final int maxCooldown = 60 * 5;
-    private int currentCooldown = 0;
     private int effect;
 
     public PickACard(ParticleManager particleManager) {

@@ -21,7 +21,7 @@ public class PointCalculationsTest {
         assertTrue(PointCalculations.getVectorAngle(v2, null) == 0); //a point with null should default to 0 degrees            (null case)
         assertTrue(PointCalculations.getVectorAngle(v1, v2) == 90); //straight up, aka 90 degrees                               (normal case)
         assertTrue(PointCalculations.getVectorAngle(v2, v1) == -90); //straight down, aka -90 degrees                           (negative case )
-        assertTrue(PointCalculations.getVectorAngle(v3, v4) == 23.79483413696289); //difficult case, precision                   (difficult normal case)
+        assertTrue(Math.abs(PointCalculations.getVectorAngle(v3, v4) - 23.79483413696289) <= 0.00000000000000001); //difficult case, precision                   (difficult normal case)
         assertTrue(Math.round(PointCalculations.getVectorAngle(v1,v4)-180) ==  Math.round(PointCalculations.getVectorAngle(v4, v1))); //angle from point a to b is the opposite of from b to a. (logical case)
         //above test fails precision, but only after approximately 4 decimals because of double rounding, is not considered significant so does not require fixing.
     }

@@ -59,9 +59,10 @@ public abstract class Path {
                 return waypoints.get(waypoints.size() - 1); //give last waypoint if searching for after last
             }
             return waypoints.get(0); // return waypoint 0 if searching for waypoint below 0.
+
         }
-            return null;
-        }
+        return null;
+    }
 
 
     public boolean isPointOnPath(ProximityVector point){
