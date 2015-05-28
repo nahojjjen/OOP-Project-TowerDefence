@@ -6,7 +6,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Created by Johan on 2015-05-19.
+ * @author Johan
+ * @date 2015-05-19.
  */
 public class TargetingFactoryTest {
 

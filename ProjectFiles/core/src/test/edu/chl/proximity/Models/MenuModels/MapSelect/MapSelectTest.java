@@ -6,7 +6,9 @@ import edu.chl.proximity.Models.Map.Maps.SmallSpiralMap;
 import edu.chl.proximity.Models.Map.Maps.StandardMap;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.MenuModels.MapSelect.MapSelect;
+import edu.chl.proximity.Models.Player.Factions.ConcreteFactions.Filler;
 import edu.chl.proximity.Models.Player.Players.GameData;
+import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
@@ -32,17 +34,20 @@ public class MapSelectTest {
         ParticleManager pm=new ParticleManager(new Settings());
         MapSelect ms=new MapSelect(pm);
 
-        ms.pressed(new ProximityVector(300,210));//Should set selected map as FillerMap (Since it's on that position)
-        assertTrue(ms.getSelected() instanceof FillerMap);
+        Player player = new Player(new Filler());
+        ms.pressed(new ProximityVector(300, 210));//Should set selected map as FillerMap (Since it's on that position)
+        if (player.hasPlayerWonPreviousMap(new FillerMap(pm))){
+            assertTrue(ms.getSelected() instanceof FillerMap);
+            ms.pressed(null);
+            assertTrue(ms.getSelected() instanceof FillerMap);//Should not change anything since nothing was pressed
+            ms.pressed(new ProximityVector(Integer.MAX_VALUE, Integer.MIN_VALUE));//Should not change selected map since no map was pressed
+            assertTrue(ms.getSelected() instanceof FillerMap);
 
-        ms.pressed(null);
-        assertTrue(ms.getSelected() instanceof FillerMap);//Should not change anything since nothing was pressed
+            ms.pressed(new ProximityVector(Integer.MIN_VALUE, Integer.MIN_VALUE));//Should not change selected map since no map was pressed
+            assertTrue(ms.getSelected() instanceof FillerMap);
+        }
 
-        ms.pressed(new ProximityVector(Integer.MAX_VALUE, Integer.MIN_VALUE));//Should not change selected map since no map was pressed
-        assertTrue(ms.getSelected() instanceof FillerMap);
 
-        ms.pressed(new ProximityVector(Integer.MIN_VALUE, Integer.MIN_VALUE));//Should not change selected map since no map was pressed
-        assertTrue(ms.getSelected() instanceof FillerMap);
     }
 
     @Test

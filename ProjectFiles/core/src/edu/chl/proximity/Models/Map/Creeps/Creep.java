@@ -180,7 +180,7 @@ public abstract class Creep extends BoardObject {
             double angle = PointCalculations.getVectorAngle(this.getCenter(), path.getWaypoint(nextWayPointID));
             return angle;
         }
-        throw new IllegalStateException("In Creep: Error in abstractCreep: trying to get angle to next point- invalid point, trying to calculate angle to null");
+        return 0;
         //dont handle this as exception because try-catch takes resources & the error is not fatal, instead default to no angle
     }
 

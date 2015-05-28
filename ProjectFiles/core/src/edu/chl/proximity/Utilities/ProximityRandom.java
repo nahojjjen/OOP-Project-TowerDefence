@@ -33,10 +33,10 @@ public class ProximityRandom {
      * get a random double between two bounds
      * @param lowest the lowest allowed return value
      * @param highest the highest allowed return value
-     * @return a "random" value between or equals to the specified bounds
+     * @return a "random" value between or equals to the specified bounds, if lower input is
+     * higher than highest input, illegal argument exvception is thrown. (for instance the argument 5,2)
      */
     public static double getRandomDoubleBetween(double lowest, double highest){
-
         if (lowest < highest){
             return (rndGenerator.nextDouble()*(highest-lowest))+lowest;
         } if (lowest == highest ){

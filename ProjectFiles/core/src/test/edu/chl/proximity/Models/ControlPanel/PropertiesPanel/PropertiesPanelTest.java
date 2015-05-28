@@ -64,9 +64,10 @@ public class PropertiesPanelTest {
         assertTrue(propertiesPanel.getBarLevel() == soundBarsBefore);
 
         //Pressing Resume
-        assertTrue(settings.getGameSpeed() == 0);
-        propertiesPanel.pressButton(propertiesPanel.getResumeButton());
         assertTrue(settings.getGameSpeed() == 1);
+        propertiesPanel.pressButton(propertiesPanel.getResumeButton());
+        System.out.println(settings.getGameSpeed());
+        assertTrue(settings.getGameSpeed() == 0);
         assertFalse(propertiesPanel.isVisible());
 
         //Pressing every bar

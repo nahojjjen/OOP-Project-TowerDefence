@@ -31,7 +31,7 @@ public class TargetLastTest {
         assertTrue(tower.getAngle() == firstAngle);
 
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100; i++) {
             Creep creep = new Line2(5, new ParticleManager(new Settings()), new FirstPath());
             for (int y = 0; y < i; y++) {
                 creep.move(); //make sure all creeps are standing on differenty positions

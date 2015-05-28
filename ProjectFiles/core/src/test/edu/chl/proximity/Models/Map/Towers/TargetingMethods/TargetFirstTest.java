@@ -31,7 +31,7 @@ public class TargetFirstTest {
         tower.target(list);
         assertTrue(tower.getAngle() == firstAngle);
 
-        for (int i = 0; i<1000; i++){
+        for (int i = 0; i<100; i++){
             Creep creep = new Line2(5, new ParticleManager(new Settings()), new FirstPath());
             for (int y = 0; y<i; y++){
                 creep.move(); //make sure all creeps are standing on differenty positions
@@ -43,8 +43,8 @@ public class TargetFirstTest {
 
 
         double angle = tower.getAngle();
-                tower.target(list);
-        assertTrue(tower.getAngle() == 45 && tower.getAngle() != angle);
-        //if the tower targets the right creep in this situation, its angle should have changed to 45 degrees
+        tower.target(list);
+        assertTrue(tower.getAngle() == -135 && tower.getAngle() != angle);
+        //if the tower targets the right creep in this situation, its angle should have changed to -135 degrees
     }
 }

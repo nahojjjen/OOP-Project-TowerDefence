@@ -31,7 +31,7 @@ public class ProximityRandomTest {
 
     }
 
-    @Test (expected=IllegalArgumentException.class)
+    @Test
     public void testGetRandomDoubleBetween() throws Exception {
 
         //tests a normal case between 0 and 1
@@ -47,6 +47,9 @@ public class ProximityRandomTest {
                 hasReachedLow1 = true;
             if (test1 > upperLimit- 0.1)
                 hasReachedhigh1 = true;
+            if (hasReachedhigh1 && hasReachedLow1){
+                break;
+            }
         }
         assertTrue(hasReachedhigh1 && hasReachedLow1);
 
@@ -66,7 +69,7 @@ public class ProximityRandomTest {
         }
         assertTrue(hasReachedhigh2 && hasReachedLow2);
 
-        //tests a normal case between 0 and 1
+        //tests a normal case between -10 and -100
         double upperLimit3 = -10;
         double lowerLimit3 = -100;
         boolean hasReachedLow3 = false;
