@@ -12,6 +12,7 @@ import edu.chl.proximity.Controllers.ScreenChanger.ScreenChangerListener;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Player.Players.Player;
+import edu.chl.proximity.Models.Utils.ProximityAudioPlayer;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Models.WonLostModels.GameOver;
 import edu.chl.proximity.Models.Utils.ProximityShapeRenderer;
@@ -49,7 +50,6 @@ public class GameOverScreen implements Screen, ScreenChangerListener {
             this.viewport = viewport;
             this.camera = (OrthographicCamera)viewport.getCamera();
         }
-        initiateNew(g, map, player);
 
     }
 
@@ -60,6 +60,7 @@ public class GameOverScreen implements Screen, ScreenChangerListener {
         initiateModel();
         initiateController();
         initiateView();
+        ProximityAudioPlayer.pauseGameMusic();
     }
     private void initiateModel() {
         gameOver=new GameOver(map);

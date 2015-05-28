@@ -21,8 +21,6 @@ public class GameOver {
     private ProximityVector rPos=new ProximityVector(430,400);
 
     private Button mainMenu;
-    private ProximityFont mainMenuText;
-    private ProximityFont resumeText;
 
     private Image defeatImage = new Image(Constants.FILE_PATH + "Backgrounds/defeated.png");
 
@@ -32,10 +30,8 @@ public class GameOver {
     public GameOver(Map map){
         this.map=map;
 
-        mainMenu=new Button(mmPos, new Image(Constants.FILE_PATH + "Buttons/PropertiesPanelButton.png"));
-        mainMenuText = new ProximityFont(new ProximityVector(700,430),"Main Menu",14, 1,1,1);
-        resume=new Button(rPos, new Image(Constants.FILE_PATH + "Buttons/PropertiesPanelButton.png"));
-        resumeText = new ProximityFont(new ProximityVector(500,430),"Start Over",14, 1,1,1);
+        mainMenu=new Button(mmPos, new Image(Constants.FILE_PATH + "Buttons/mainMenu.png"));
+        resume=new Button(rPos, new Image(Constants.FILE_PATH + "Buttons/startOver.png"));
     }
 
     public String getButtonActionOnPosition(ProximityVector position) {
@@ -57,8 +53,7 @@ public class GameOver {
     public void render(ProximityBatch batch){
         mainMenu.render(batch);
         resume.render(batch);
-        mainMenuText.draw(batch);
-        resumeText.draw(batch);
-        batch.render(defeatImage, new ProximityVector(500,120),0);
+        batch.render(defeatImage, new ProximityVector(500, 120), 0);
+
     }
 }
