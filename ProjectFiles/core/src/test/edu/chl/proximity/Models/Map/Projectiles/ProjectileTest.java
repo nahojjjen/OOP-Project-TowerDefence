@@ -37,8 +37,8 @@ public class ProjectileTest {
     public void testSetAndGetRange() throws Exception {
 
         Projectile projectile = new Bullet(new ProximityVector(100,100), 0f, null,  new ParticleManager(new Settings()));
-        projectile.setRange(5);
-        assertTrue(projectile.getRange() == 5);
+        projectile.setAreaOfEffectRange(5);
+        assertTrue(projectile.getAreaOfEffectSize() == 5);
     }
     @Test
     public void testCollidesWith() throws Exception {

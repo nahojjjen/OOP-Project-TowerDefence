@@ -36,11 +36,12 @@ public class SlowTower2 extends ShootingTower {
 
     @Override
     public Projectile createProjectile() {
-        return new SlowDownBullet(getCenter(), getAngle(), getTarget(), slowDownPercent, slowDownTime, getParticleManager());
+        SlowDownBullet projectile = new SlowDownBullet(getCenter(), getAngle(), getTarget(), slowDownPercent, slowDownTime, getParticleManager());
+        projectile.setAsSlow2();
+        return projectile;
     }
 
     public Tower getNewUpgrade(){
         return null;
-        //return new SlowTower2(this.getPosition(),this.getTargetingMethod(), getParticleManager());
     }
 }

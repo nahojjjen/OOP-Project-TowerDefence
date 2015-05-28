@@ -39,6 +39,13 @@ public class SlowDownBullet extends Projectile{
         this.time=slowDownTime;
     }
 
+    /**
+     * upgrades the bullet to a level 2 bullet
+     */
+    public void setAsSlow2(){
+        this.setAreaOfEffectRange(70);
+        this.percent = 70;
+    }
 
     public void reAngle() {
         if (target != null) {

@@ -26,7 +26,7 @@ public abstract class Projectile extends BoardObject implements Cloneable{
     private int health;
     private int speed;
     private ProximitySound sound;
-    private double range = 0;
+    private double areaOfEffectRange = 0;
     /**
      * Create a new projectile type
      * @param particleEffect what effect should be played when the bullet hits
@@ -49,12 +49,12 @@ public abstract class Projectile extends BoardObject implements Cloneable{
         this.health = health;
     }
 
-    public void setRange(double newRange) {
-        range = newRange;
+    public void setAreaOfEffectRange(double areaOfEffectRange) {
+        this.areaOfEffectRange = areaOfEffectRange;
     }
 
-    public double getRange() {
-        return range;
+    public double getAreaOfEffectSize() {
+        return areaOfEffectRange;
     }
 
 

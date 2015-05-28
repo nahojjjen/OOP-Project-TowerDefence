@@ -33,7 +33,7 @@ public class Missile3 extends Projectile {
         //Arguments: ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, ProximityVector position, double angle, Creep target
         super(particleManager.getExplosionEffect(), 1, 8, sound, img, position, angle);
         this.target = target;
-        setRange(range);
+        setAreaOfEffectRange(range);
     }
 
     @Override
