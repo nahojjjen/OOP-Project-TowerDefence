@@ -158,7 +158,7 @@ public class SpellPanel extends BoardObject {
     public void mouseOverPosition(ProximityVector position) {
         for(ControlPanelSpell cpSpell : controlPanelSpellList) {
             if(cpSpell.containsPoint(position)) {
-                cpSpell.hover();
+                cpSpell.hover(position);
             }
         }
     }

@@ -79,7 +79,7 @@ public class ControlPanelTower extends BoardObject{
         keyFont.draw(batch);
     }
 
-    public void hover() {
-        hoverBox.enable();
+    public void hover(ProximityVector position) {
+        hoverBox.enable(position);
     }
 }

@@ -51,8 +51,8 @@ public class ControlPanelSpell extends BoardObject {
         return null;
     }
 
-    public void hover() {
-        hoverBox.enable();
+    public void hover(ProximityVector position) {
+        hoverBox.enable(position);
     }
 
 }

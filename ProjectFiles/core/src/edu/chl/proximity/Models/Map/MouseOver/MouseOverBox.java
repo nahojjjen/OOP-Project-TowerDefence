@@ -1,6 +1,5 @@
 package edu.chl.proximity.Models.Map.MouseOver;
 
-import com.badlogic.gdx.Gdx;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
@@ -82,11 +81,11 @@ public class MouseOverBox extends BoardObject {
         return enabled;
     }
 
-    public void enable() {
+    public void enable(ProximityVector position) {
         if(!fontsInitiated())
             initiateFonts();
         if(!enabled) {
-            setPosition(new ProximityVector(Gdx.input.getX() - getWidth()/2, Gdx.input.getY() - getHeight() + 10));
+            setPosition(new ProximityVector(position.x - getWidth()/2, position.y - getHeight() + 10));
             for(int i = 0; i < infoTextList.size(); i++) {
                 infoTextList.get(i).setPosition(new ProximityVector(getPosition().x + 5, getPosition().y + 5 + (i*15)));
             }

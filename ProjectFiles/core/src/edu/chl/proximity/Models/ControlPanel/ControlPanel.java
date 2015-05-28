@@ -187,7 +187,7 @@ public class ControlPanel extends BoardObject{
     public void mouseOverPosition(ProximityVector position) {
         for(ControlPanelTower cpTower : controlPanelTowerList) {
             if(cpTower.containsPoint(position)) {
-                cpTower.hover();
+                cpTower.hover(position);
             }
         }
     }

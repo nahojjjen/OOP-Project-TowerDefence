@@ -243,9 +243,9 @@ public class TowerPanel extends BoardObject{
     public void mouseOverPosition(ProximityVector position) {
         if(map.getChosenTower().getUpgrade()!=null) {
             if (upgrade.containsPoint(position)) {
-                upgradeHoverBox.enable();
+                upgradeHoverBox.enable(position);
             } else if (sell.containsPoint(position)) {
-                sellHoverBox.enable();
+                sellHoverBox.enable(position);
             }
         }
     }
