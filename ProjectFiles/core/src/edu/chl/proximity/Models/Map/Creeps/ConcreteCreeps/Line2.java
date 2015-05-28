@@ -19,7 +19,7 @@ public class Line2 extends Creep {
 
     private int creepLineIndex;
     private static Image img = new Image(Constants.FILE_PATH + "Creeps/Line2/6.png"); //dummy image to get correct resolution
-    private static double speed = 3;
+    private static double speed = 4;
 
     public Line2(int creepLineIndex, ParticleManager particleManager, Path path) {
         super(null, img, speed, particleManager, path);
@@ -38,6 +38,16 @@ public class Line2 extends Creep {
     public Line2(Creep oldCreep) {
         super(img, speed, oldCreep);
         this.creepLineIndex = oldCreep.getCreepLineIndex()-1;
+        setImage(getCreepImage());
+    }
+
+    /**
+     * Constructor to create a Line2 creep with properties from another creep.
+     * @param oldCreep a Creep object from which position is used.
+     */
+    public Line2(Creep oldCreep, int creepLineIndex) {
+        super(img, speed, oldCreep);
+        this.creepLineIndex = creepLineIndex;
         setImage(getCreepImage());
     }
 
@@ -62,7 +72,7 @@ public class Line2 extends Creep {
 
     //Helpers
     public Image getCreepImage() {
-        return new Image(Constants.FILE_PATH + "Creeps/Line3/" + creepLineIndex + ".png");
+        return new Image(Constants.FILE_PATH + "Creeps/Line2/" + creepLineIndex + ".png");
     }
 
     //Logic to obtain creep resource

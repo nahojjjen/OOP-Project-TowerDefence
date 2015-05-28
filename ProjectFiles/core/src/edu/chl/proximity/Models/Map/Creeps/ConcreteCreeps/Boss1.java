@@ -32,24 +32,31 @@ public class Boss1 extends Creep {
     //Logic for devolving line1 creeps
     @Override
     public void devolve() {
-        creepLineIndex--;
-        setImage(getCreepImage());
         if (!isRemoved()){
+            creepLineIndex--;
+            setImage(getCreepImage());
             if (creepLineIndex <= 0) {
+                spawnHoard();
+             }
+         }
+    }
 
-                for (int i = 0; i < 20; i++) {
-                    Creep creep = new Line1(this, 6);
-                    for(int y = 0; y<i; y++){
-                      creep.move();
-                        creep.move();
-                    }
-                    add(creep);
-                }
-
-                destroy();
+    /**
+     * spawns 20 creeps at the boss location
+     */
+    private void spawnHoard(){
+        for (int i = 0; i < 10; i++) {
+            Creep creep = new Line1(this, 6);
+            Creep creep2 = new Line2(this, 6);
+            for(int y = 0; y<i; y++){
+                creep.move();
+                creep2.move();
+                creep2.move();
             }
-
+            add(creep);
+            add(creep2);
         }
+        destroy();
     }
 
     //Getters

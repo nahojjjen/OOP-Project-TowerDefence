@@ -25,7 +25,7 @@ public class Line1 extends Creep {
 
     private int creepLineIndex;
     private static Image img = new Image(Constants.FILE_PATH + "Creeps/Line3/6.png"); //dummy image to get correct resolution
-    private static double speed = 3;
+    private static double speed = 2;
 
     public Line1(int creepLineIndex, ParticleManager particleManager, Path path) {
         super(null, img, speed, particleManager, path);

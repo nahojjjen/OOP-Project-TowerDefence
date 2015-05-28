@@ -192,7 +192,7 @@ public abstract class Map {
                 if (projectile.collidesWith(creep)) {
                     projectile.collide(creep);
 
-                    double range = projectile.getRange();
+                    double range = projectile.getAreaOfEffectSize();
                     if(range <= 0) {
                         projectile.attack(creep);
                     }
@@ -261,15 +261,18 @@ public abstract class Map {
             if(object.isRemoved()) {
 
                 if(object instanceof Creep) {
+
                     Creep creep = (Creep) object;
-                    mapIterator.remove();
                     if (creep.reachedLastWayPoint()) {
                         getBase().damage();
+                        creep.devolve();
                     }
                     else {
                         collectedResources.addResources(creep.getCreepResource());
                         collectedExperience += creep.getCreepExperiencePoints();
                     }
+                    mapIterator.remove();
+
                 }
                 if(object instanceof Tower) {
                     mapIterator.remove();

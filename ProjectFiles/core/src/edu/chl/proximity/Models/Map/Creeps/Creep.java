@@ -51,21 +51,22 @@ public abstract class Creep extends BoardObject {
     }
 
     /**
+     * Create a new creep, but copy the position on the path from another creep
      * @param image what image the creep should have (it will rotate a random amount automatically)
      * @param speed what speed the creep will have
      * @param oldCreep The old creep from which the location on the screen is taken.
      */
     public Creep(Image image, double speed, Creep oldCreep) {
-
         this(null, image, speed, oldCreep.getParticleManager(), oldCreep.getPath());
-        
         this.setCenter(new ProximityVector(oldCreep.getCenter().x, oldCreep.getCenter().y));
         nextWayPointID = oldCreep.nextWayPointID;
         distanceToNextWayPoint = oldCreep.distanceToNextWayPoint;
         moveAngle = getAngleToNextPoint();
     }
 
-    //Setup method that is common to constructors
+    /**
+     * setup method for things that does not change normally
+     */
     public void setupCreep(double speed) {
         this.speed = speed;
         this.backUpSpeed = speed;
@@ -155,15 +156,15 @@ public abstract class Creep extends BoardObject {
      * the creep is "on" its current waypoints //implementation comment, but relevant for using method
      */
     public void move() {
-        //System.out.println(path.getWaypoint(nextWayPointID));
         if (reachedWaypoint(path.getWaypoint((nextWayPointID)))){
-            distanceToNextWayPoint = Double.MAX_VALUE; //this is a way of resetting the lenght, to make sure that the creep doesn't misstake the old lenght when approaching a new waypoints - remove to see bug
+            distanceToNextWayPoint = Double.MAX_VALUE; //this is a way of resetting the length
             aimTowardsNextWaypoint();
         }
         repositionCreep();
         checkIfSpeedUp();
-
+        checkIfReachedBase();
     }
+
     /**
      * Get the angle the creep requires to to travel from origin point to next
      * waypoints.
@@ -177,24 +178,30 @@ public abstract class Creep extends BoardObject {
     public  double getAngleToNextPoint() {
         if (this.getPosition() != null && path.getWaypoint(nextWayPointID)!= null) {
             double angle = PointCalculations.getVectorAngle(this.getCenter(), path.getWaypoint(nextWayPointID));
-            //System.out.println("angle:" + angle);
             return angle;
-
         }
-        System.out.println("In Creep: Error in abstractCreep: trying to get angle to next point- invalid point, trying to calculate angle to null");
-        //dont handle this as exception because try-catch takes resources & the error is not fatal, instead default to no rotation.
-        return 0;
+        throw new IllegalStateException("In Creep: Error in abstractCreep: trying to get angle to next point- invalid point, trying to calculate angle to null");
+        //dont handle this as exception because try-catch takes resources & the error is not fatal, instead default to no angle
     }
 
     /**
-     * the method that changes the value "position" of the creep, used in the
-     * move() method.
+     * Makes the creep reposition one step closer to the base, by following its current movement direction
      */
     private void repositionCreep(){
         float xLength = (float)(Math.cos(Math.toRadians(moveAngle)) * speed);
         float yLength = (float)(Math.sin(Math.toRadians(moveAngle)) * speed);
-        velocity = new ProximityVector(xLength, yLength);
-        this.setPosition(new ProximityVector(getPosition().x + velocity.x, getPosition().y + velocity.y));
+        this.setPosition(new ProximityVector(getPosition().x + xLength, getPosition().y + yLength));
+    }
+
+    /**
+     * Checks if the creep has reached the base, and mark itself as dead if it does.
+     * The controller checks all creeps when they die if they die from projectiles
+     * or colliding with the base, and acts accordingly
+     */
+    private void checkIfReachedBase(){
+        if (reachedLastWayPoint()){
+            this.devolve();
+        }
     }
 
     /**
@@ -202,9 +209,8 @@ public abstract class Creep extends BoardObject {
      * @return
      */
     public boolean reachedLastWayPoint() {
-
         if (path != null){
-            return reachedWaypoint(path.getWaypoint(path.getWaypoints().size()-1));
+            return reachedWaypoint(path.getWaypoint(path.getWaypoints().size()));
         }
         return false; //if there is no path, it hasnt reached the last waypoint.
     }
@@ -213,15 +219,8 @@ public abstract class Creep extends BoardObject {
      * Sets the moveAngle of the creep to face the next waypoints
      */
     private void aimTowardsNextWaypoint(){
-
         nextWayPointID++;
-        if(reachedLastWayPoint()) {
-            devolve();
-            moveAngle = getAngleToNextPoint();
-        }
-        else {
-            moveAngle = getAngleToNextPoint();
-        }
+        moveAngle = getAngleToNextPoint();
     }
 
     /**
@@ -231,13 +230,7 @@ public abstract class Creep extends BoardObject {
      * @return true if within distance of waypoints
      */
     private boolean reachedWaypoint(ProximityVector waypoint){
-
-        double olddistanceToNextWayPoint = distanceToNextWayPoint;
-        distanceToNextWayPoint = PointCalculations.distanceBetweenNoSqrt(getCenter(), waypoint);
-        //if (distanceToNextWayPoint > olddistanceToNextWayPoint){ //if you're no longer approaching the waypoints, you're leaving it
-        //    return true;
-        //}
-        //return false;
+        distanceToNextWayPoint = PointCalculations.distanceBetweenNoSqrt(getCenter(), waypoint); //used for targeting methods
         return PointCalculations.distanceBetweenNoSqrt(this.getCenter(),waypoint) < 5*5;
     }
 
@@ -248,7 +241,7 @@ public abstract class Creep extends BoardObject {
      */
     public void slowDown(double percentage, int nbrOfTicks) {
         Double newSpeed = (1 - percentage / 100) * backUpSpeed;
-        if(slowDownTime<0 || newSpeed.intValue()<=speed) {
+        if(slowDownTime<0 || newSpeed<=speed) {
             speed = newSpeed;
             slowDownTime = nbrOfTicks;
         }
