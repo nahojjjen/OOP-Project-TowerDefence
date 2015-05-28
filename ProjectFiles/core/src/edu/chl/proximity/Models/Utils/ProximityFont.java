@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.Utils;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import edu.chl.proximity.Utilities.Constants;
@@ -39,18 +40,27 @@ public class ProximityFont implements ProximityDisposable {
      * @param s what the text should say
      */
     public ProximityFont(ProximityVector position, String s, int size, float r, float g, float b) {
-        str = s;
+
+                str = s;
         this.position = position;
         this.size = size;
         this.color = new Color(r,g,b,1);
 
         if (!TestChecker.isJUnitTest()) {
-            generator = new FreeTypeFontGenerator(Constants.getFile(Constants.FILE_PATH + "Fonts/Roboto-Regular.ttf"));
             parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
             parameter.flip = true;
+
+            parameter.size = (int)Math.ceil(size);
+
+            generator = new FreeTypeFontGenerator(Constants.getFile(Constants.FILE_PATH + "Fonts/Roboto-Regular.ttf"));
+            parameter.minFilter = Texture.TextureFilter.Linear;
+            this.parameter.magFilter = Texture.TextureFilter.Linear;
+            generator.scaleForPixelHeight((int)Math.ceil(size));
             generateFont();
+
         }
         DisposableCollector.add(this);
+
     }
 
     private void generateFont() {
