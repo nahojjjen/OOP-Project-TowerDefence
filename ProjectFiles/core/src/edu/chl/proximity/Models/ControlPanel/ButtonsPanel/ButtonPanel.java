@@ -17,6 +17,7 @@ import edu.chl.proximity.Utilities.TestChecker;
  * Class used for managing the buttons to the far bottom right. Keeps track of the game's speed
  *
  * 29/04 modified by Hanna Romer. Buttons themselves now keeps track if what image they should have. Replaced PLayPauseButton with a play and a pause button.
+ * 28/05 modified by Hanna Romer. Added comments.
  */
 public class ButtonPanel extends BoardObject {
     private static Image background = null;
@@ -112,9 +113,14 @@ public class ButtonPanel extends BoardObject {
         return null;
     }
 
+    /**
+     * Called if the play-button is pressed.
+     * Speed is set to 1.
+     */
     public void pressedPlay(){
         GameData.getInstance().getPlayer().getSettings().setGameSpeed(1);
     }
+
     public void pressedPause(){
         GameData.getInstance().getPlayer().getSettings().setGameSpeed(0);
         playButton.setRightImage();

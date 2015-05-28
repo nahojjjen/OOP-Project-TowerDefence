@@ -18,7 +18,11 @@ import java.util.List;
 
 /**
  * @author Hanna Romer
- * @date
+ * @date 2015-05-23
+ *
+ * Respresents a mobile Tower that chases the enemies and drives over them to damage them.
+ *
+ * 28/05 modified by Hanna Romer. Added comments.
  */
 public class MobileTower extends ShootingTower{
     private TargetingMethod targetingMethod;
@@ -35,6 +39,12 @@ public class MobileTower extends ShootingTower{
     private static final Image blades=new Image(Constants.FILE_PATH + "Towers/Mobile/blade.png");
     private static final Image image=new Image(Constants.FILE_PATH + "Towers/Mobile/1.png");
 
+    /**
+     * Create a new mobile tower
+     * @param pos Starting position of mobile-tower
+     * @param targetingMethod what targeting method the tower should employ
+     * @param particleManager what particle manager the tower should use.
+     */
     public MobileTower(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager){
         super(pos,image,100,targetingMethod,1,new Resources(0,0,1),"Tank Tower");
         this.targetingMethod = targetingMethod;
@@ -58,6 +68,11 @@ public class MobileTower extends ShootingTower{
 
         }
     }
+
+    /**
+     * Updates the tower
+     * @param creeps list of creeps currently on map during this update
+     */
     public void update(List<Creep> creeps){
         if(creeps!=null) {
             if(counterTicking){
@@ -74,6 +89,10 @@ public class MobileTower extends ShootingTower{
 
     }
 
+    /**
+     * Targets a creep using the tower's targeting method
+     * @param creeps list of creeps to choose a taget from
+     */
     public void target(List<Creep> creeps){
         currentTarget = targetingMethod.getTarget(creeps, getPosition(),range);
         if (currentTarget != null && !counterTicking) {
@@ -83,6 +102,10 @@ public class MobileTower extends ShootingTower{
         }
     }
 
+    /**
+     * Moves the tower towards its target.
+     * If target==null or the tower has killed a target within its "reload time" then its target is its original position.
+     */
     public void move(){
         if(currentTarget!=null && !counterTicking) {
             ProximityVector newPosition;
@@ -99,6 +122,11 @@ public class MobileTower extends ShootingTower{
         }
     }
 
+    /**
+     * Checks if the tower has collided with a creep.
+     * If its "reload time" is not done yet nothing happens
+     * Otherwise the creep is devolved and the counter for the towers "reload time" has started.
+     */
     public void checkIfCollision(){
         if (currentTarget != null) {
             if (!counterTicking) {

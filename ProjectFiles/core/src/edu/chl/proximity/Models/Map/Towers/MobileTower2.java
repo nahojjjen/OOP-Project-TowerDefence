@@ -19,6 +19,10 @@ import java.util.List;
 /**
  * @author Hanna Romer
  * @date 2015-05-26.
+ *
+ * Represents an upgraded version of mobileTower, that chases the enemies and drives over them and shoots missiles at them to damage them.
+ *
+ * 28/05 modified by Hanna Romer. Added comments.
  */
 public class MobileTower2 extends ShootingTower{
 
@@ -40,8 +44,10 @@ public class MobileTower2 extends ShootingTower{
     private static Image blades = new Image(Constants.FILE_PATH+"Towers/Mobile/blade2.png");
 
     /**
-     * @param pos
-     *  double range, TargetingMethod targetingMethod, int reloadTime
+     * Create a new upgraded mobile tower.
+     * @param pos Position for tower to start at
+     * @param targetingMethod Targeting method the tower should employ
+     * @param particleManager Particle manager the ower should use.
      */
     public MobileTower2(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager) {
         super(pos, img, range, targetingMethod, reloadTime, resources, "Bullet Tower");
@@ -53,6 +59,10 @@ public class MobileTower2 extends ShootingTower{
 
     }
 
+    /**
+     * Updates the tower
+     * @param creeps list of creeps currently on map during this update
+     */
     @Override
     public void update(List<Creep> creeps){
         super.update(creeps);
@@ -86,7 +96,10 @@ public class MobileTower2 extends ShootingTower{
         return null;
     }
 
-
+    /**
+     * Targets a creep using the tower's targeting method
+     * @param creeps list of creeps to choose a taget from
+     */
     public void target(List<Creep> creeps) {
 
         super.setTarget(super.getTargetingMethod().getTarget(creeps, getPosition(),range));
@@ -97,6 +110,10 @@ public class MobileTower2 extends ShootingTower{
         }
     }
 
+    /**
+     * Moves the tower towards its target.
+     * If target==null or the tower has killed a target within its "reload time" then its target is its original position.
+     */
     public void move(){
         if(super.getTarget()!=null && !counterTicking) {
             ProximityVector newPosition;
@@ -113,6 +130,11 @@ public class MobileTower2 extends ShootingTower{
         }
     }
 
+    /**
+     * Checks if the tower has collided with a creep.
+     * If its "reload time" is not done yet nothing happens
+     * Otherwise the creep is devolved and the counter for the towers "reload time" has started.
+     */
     public void checkIfCollision(){
         if(super.getTarget()!=null && !counterTicking) {
             if (this.containsPoint(super.getTarget().getCenter())) {

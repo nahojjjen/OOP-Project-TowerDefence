@@ -132,6 +132,10 @@ public class PropertiesPanel extends BoardObject{
         settings.setGameVolume(level);
     }
 
+    /**
+     * Is called when given button is pressed
+     * @param button The pressed button
+     */
     public void pressButton(BoardObject button) {
         if(button == resumeButton) {
             pressedResumeButton();
@@ -204,6 +208,10 @@ public class PropertiesPanel extends BoardObject{
         return null;
     }
 
+    /**
+     * Called when one of the sound-bars is pressed
+     * @param level what level the pressed sound-bar represents.
+     */
     private void pressedBar(int level){
         setSoundAt(level);
         updateSoundDisplay(level);

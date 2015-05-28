@@ -10,6 +10,10 @@ import edu.chl.proximity.Utilities.ProximityVector;
 /**
  * @author Hanna Romer
  * @date 2015-04-29
+ *
+ * Respresents the Pause-Button. Checks itself what its image should be depending on the game-speed.
+ *
+ * 28/05 modified by Hanna Romer. Added comments.
  */
 public class PauseButton extends BoardObject{
     public static final Image upImage = new Image(Constants.FILE_PATH + "Buttons/PauseButton.png");

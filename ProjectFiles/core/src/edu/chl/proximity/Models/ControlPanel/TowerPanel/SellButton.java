@@ -11,12 +11,14 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @date 2015-05-18
  *
  * A simple button for selling towers.
+ *
+ * 28/05 modified by Hanna Romer. Removed unused map in signature.
  */
 public class SellButton extends BoardObject{
 
     private static Image image=new Image(Constants.FILE_PATH + "Resources/trash.png");
 
-    public SellButton(ProximityVector pos, Map map){
+    public SellButton(ProximityVector pos){
         super(pos,image,0);
     }
 

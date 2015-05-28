@@ -12,11 +12,17 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @date 2015-04-23
  *
  * 24/05 modified by Linda Evaldsson. Made this more general and renamed it to PropertisPanelButton. It replaces former MainMenuButton.
+ * 28/05 modified by Hanna Romer. Added comments.
  */
 public class PropertiesPanelButton extends BoardObject{
     private static Image image=new Image(Constants.FILE_PATH + "Buttons/PropertiesButtonBackground.png");
     private ProximityFont font;
 
+    /**
+     * Create a new PropertiesPanelButton, with given position and text.
+     * @param position Position button will be placed at.
+     * @param s Text button will display
+     */
     public PropertiesPanelButton(ProximityVector position, String s){
         super(position,image,0);
         float x = position.x + (getWidth() - s.length()*17) / 2f;

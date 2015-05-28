@@ -27,6 +27,8 @@ import java.util.List;
  * A panel that handles changing settings and upgradings of towers
  *
  * 22/05 modified by Linda Evaldsson. Fixed bugs. Also redesigned Panel and moved it to ControlPanel (graphically).
+ *
+ * 28/05 modified by Hanna Romer. Added comments.
  */
 public class TowerPanel extends BoardObject{
     private Map map;
@@ -53,6 +55,10 @@ public class TowerPanel extends BoardObject{
 
     private boolean afford;
 
+    /**
+     * Create a new TowerPanel
+     * @param map Currenly played map.
+     */
     public TowerPanel(Map map){
         super(pos,background,0,width,height);
         this.map=map;
@@ -79,9 +85,9 @@ public class TowerPanel extends BoardObject{
 
     }
     private void initiateCheckButtons() {
-        checkBoxMap.put(new CheckBox(new ProximityVector(pos.x+30, pos.y + 80), map, "Target first"), targetingFactory.getTargetFirst());
-        checkBoxMap.put(new CheckBox(new ProximityVector(pos.x+30, pos.y + 105), map, "Target closest"), targetingFactory.getTargetClosest());
-        checkBoxMap.put(new CheckBox(new ProximityVector(pos.x+30, pos.y + 130), map, "Target last"), targetingFactory.getTargetLast());
+        checkBoxMap.put(new CheckBox(new ProximityVector(pos.x+30, pos.y + 80), "Target first"), targetingFactory.getTargetFirst());
+        checkBoxMap.put(new CheckBox(new ProximityVector(pos.x+30, pos.y + 105), "Target closest"), targetingFactory.getTargetClosest());
+        checkBoxMap.put(new CheckBox(new ProximityVector(pos.x+30, pos.y + 130), "Target last"), targetingFactory.getTargetLast());
 
     }
 
@@ -114,7 +120,7 @@ public class TowerPanel extends BoardObject{
     }
 
     private void initiateSell() {
-        sell=new SellButton(new ProximityVector(pos.x+150,pos.y+115),map);
+        sell=new SellButton(new ProximityVector(pos.x+150,pos.y+115));
     }
 
 
@@ -153,6 +159,9 @@ public class TowerPanel extends BoardObject{
         return map.getChosenTower() != null && super.containsPoint(point);
     }
 
+    /**
+     * Called when upgrade-button is pressed.
+     */
     private void pressedUpgrade(){
         Tower tower = map.getChosenTower();
         if(tower != null && afford) {
@@ -173,15 +182,25 @@ public class TowerPanel extends BoardObject{
         }
     }
 
+    /**
+     * Called when Sell Tower-button is pressed
+     */
     private void pressedSell(){
         map.getChosenTower().remove();
         map.setChosenTower(null);
     }
 
+    /**
+     * Get currently shown tower's name
+     * @return
+     */
     public String getTowerName() {
         return towerName.getText();
     }
 
+    /**
+     * Sets all relevant info about the currently shown tower.
+     */
     public void setInfo(){
         Tower chosenTower = map.getChosenTower();
         if(chosenTower != null){

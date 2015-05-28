@@ -10,6 +10,10 @@ import edu.chl.proximity.Utilities.ProximityVector;
 /**
  * @author Hanna Romer
  * @date 2015-04-29
+ *
+ * Respresents a Play-button. Keeps track itself what it's image should be depending on the current game-speed.
+ *
+ * 28/05 modified by Hanna Romer. Added comments.
  */
 public class PlayButton extends BoardObject{
     public static final Image upImage = new Image(Constants.FILE_PATH + "Buttons/PlayButton.png");

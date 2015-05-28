@@ -8,12 +8,19 @@ import edu.chl.proximity.Utilities.ProximityVector;
 /**
  * @author Hanna Romer
  * @date 2015-04-24
+ *
+ * 28/05 modified by Hanna Romer. Added comments.
  */
 public class SoundBar extends BoardObject{
     private Image filled;
     private Image empty;
     private int level;
 
+    /**
+     * Create a new Sound-bar with given position and level to prepresent
+     * @param position Position sound bar is to be placed at
+     * @param level What level of volume to represent.
+     */
     public SoundBar(ProximityVector position, int level){
         super(position,null,0,16,32);
         filled=new Image(Constants.FILE_PATH + "Buttons/SoundBarFilled.png");
@@ -22,6 +29,10 @@ public class SoundBar extends BoardObject{
         this.level = level;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getLevel() {
         return level;
     }
