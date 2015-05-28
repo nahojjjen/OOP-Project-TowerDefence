@@ -99,8 +99,6 @@ public class MapController implements ClickHandler, UpdateHandler {
                 map.setChosenTower((Tower) item);
 
             }
-        } else {
-            //TODO: display error?
         }
     }
     private boolean isTowerOnLine(){

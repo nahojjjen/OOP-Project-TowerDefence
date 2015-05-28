@@ -30,12 +30,7 @@ public class Sacrifice extends Spell {
         List<Tower> towers= getTowersWithinDistance(this.getPosition(), range);
         for(Tower t: towers){
             t.remove();
-
-            //Todo: Set chosen tower to null some other way
-            //getMap().setChosenTower(null);
-
             setHealthChange(20);
-
         }
     }
     @Override
