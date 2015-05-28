@@ -36,8 +36,6 @@ public class MobileTower extends ShootingTower{
     public MobileTower(ProximityVector pos, TargetingMethod targetingMethod, ParticleManager particleManager){
         super(pos,image,100,targetingMethod,1,new Resources(0,0,1),"Tank Tower");
         this.targetingMethod = targetingMethod;
-<<<<<<< HEAD
-        this.particleManager=particleManager;
         setParticleManager(particleManager);
 
     }
@@ -57,9 +55,6 @@ public class MobileTower extends ShootingTower{
             }
 
         }
-
-=======
->>>>>>> Bug fixes
     }
     public void update(List<Creep> creeps){
         if(creeps!=null) {

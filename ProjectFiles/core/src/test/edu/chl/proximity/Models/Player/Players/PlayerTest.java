@@ -40,9 +40,10 @@ public class PlayerTest {
     public void testAddExperiencePoints() {
         Player p = new Player(new Planes());
 
-        double e=p.getExperience();
+        double e = p.getExperience();
         p.addExperiencePoints(253);
-        assertTrue(Math.abs(p.getExperience() - e + 253) <= 0.0000001);
+        double zero = Math.abs(p.getExperience() - e - 253);
+        assertTrue(zero <= 0.00000000001);
 
         e=p.getExperience();
         p.addExperiencePoints(-535);

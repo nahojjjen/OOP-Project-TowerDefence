@@ -24,7 +24,7 @@ public class MapSelectTest {
     public void testGetSelectedReturnsMap(){
         ParticleManager pm=new ParticleManager(new Settings());
         MapSelect ms=new MapSelect(pm);
-        assertTrue(ms.getSelected() instanceof Map);
+        assertTrue(ms.getSelected() != null);
     }
 
     @Test
