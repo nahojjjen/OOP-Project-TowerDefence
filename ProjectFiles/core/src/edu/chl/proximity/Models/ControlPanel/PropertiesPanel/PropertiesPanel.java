@@ -16,7 +16,7 @@ import java.util.List;
  * @author Hanna Romer
  * @date 2015-04-23
  *
- * 24/04 modified by Hanna Romer. Added SoundButton, MainMenuButton and Sound-bars
+ * 24/04 modified by Hanna Romer. Added SoundButton, MainMenuButton and Sound-musicBars
  * 29/04 modified by Hanna Romer. Made into singleton.
  * 01/05 modified by Hanna Romer. MainMenuButton now takes you to the mainMenu
  * 24/05 modified by Linda Evaldsson. Fixed the design of this panel. Also fixed toggling music issue (it wasnt working properly).
@@ -38,13 +38,22 @@ public class PropertiesPanel extends BoardObject{
     //Button positions
     private ProximityVector resumePos=new ProximityVector(position.x+40,position.y + 70);
     private ProximityVector mainMenuPos = new ProximityVector(resumePos.x, resumePos.y+80);
-    private ProximityVector soundPos = new ProximityVector(mainMenuPos.x + 5, mainMenuPos.y+80);
+    private ProximityVector musicSoundPos = new ProximityVector(mainMenuPos.x + 5, mainMenuPos.y+80);
+    private ProximityVector effectSoundPos=new ProximityVector(musicSoundPos.x,musicSoundPos.y + 70);
 
     //Buttons
     private PropertiesPanelButton resumeButton = new PropertiesPanelButton(resumePos, "Resume");
     private PropertiesPanelButton mainMenuButton = new PropertiesPanelButton(mainMenuPos, "Main menu");
-    private SoundButton soundButton = new SoundButton(soundPos);
-    private ArrayList<SoundBar> bars=new ArrayList<SoundBar>();
+
+    private Image onMusic=new Image(Constants.FILE_PATH + "Buttons/SoundOnButton.png");
+    private Image offMusic= new Image(Constants.FILE_PATH + "Buttons/SoundOffButton.png");
+    private SoundButton musicSoundButton = new SoundButton(musicSoundPos,onMusic,offMusic);
+    private ArrayList<SoundBar> musicBars =new ArrayList<>();
+
+    private Image onEffects=new Image(Constants.FILE_PATH + "Buttons/SoundOnButton.png");
+    private Image offEffects= new Image(Constants.FILE_PATH + "Buttons/SoundOffButton.png");
+    private SoundButton effectSoundButton=new SoundButton(effectSoundPos,onEffects,offEffects);
+    private ArrayList<SoundBar> effectBars=new ArrayList<>();
 
     /**
      * Create a new properies panel
@@ -52,36 +61,69 @@ public class PropertiesPanel extends BoardObject{
     public PropertiesPanel(Settings settings){
         super(position, background, 0, width, height);
         this.settings = settings;
-        initBars();
-        updateSoundDisplay(settings.getMusicVolume());
+        initMusicBars();
+        updateMusicSoundDisplay(settings.getMusicVolume());
+
+        initEffectBars();
+        updateEffectSoundDisplay(settings.getMusicVolume());
     }
 
     /**
-     * Initiates the sound bars for selecting music volume
+     * Initiates the sound musicBars for selecting music volume
      */
-    private void initBars(){
-        ProximityVector pos=new ProximityVector(soundPos.x+50,soundPos.y+15);
+    private void initMusicBars(){
+        ProximityVector pos=new ProximityVector(musicSoundPos.x+50, musicSoundPos.y+15);
         for (int n=1; n<9; n++) {
-            bars.add(new SoundBar(new ProximityVector(pos.x + n * 17, pos.y), n));
+            musicBars.add(new SoundBar(new ProximityVector(pos.x + n * 17, pos.y), n));
         }
     }
 
     /**
-     * Visually sets the bars at the correct volume level taken as parameter
+     * Initiates the effect music bars for selecting effects volume
+     */
+    private void initEffectBars(){
+        ProximityVector pos=new ProximityVector(effectSoundPos.x+50,effectSoundPos.y+15);
+        for(int n=1;n<9;n++){
+            effectBars.add(new SoundBar(new ProximityVector(pos.x + n * 17, pos.y), n));
+        }
+    }
+
+    /**
+     * Visually sets the musicBars at the correct volume level taken as parameter
      * @param level The new volume level
      */
-    private void setBarsAt(int level){
-        setBarsEmpty();
+    private void setMusicBarsAt(int level){
+        setMusicBarsEmpty();
         for(int n=0;n<level;n++){
-            bars.get(n).setFilled();
+            musicBars.get(n).setFilled();
         }
     }
 
     /**
-     * Clear all bars
+     * Clear all musicBars
      */
-    private void setBarsEmpty(){
-        for(SoundBar bar:bars){
+    private void setMusicBarsEmpty(){
+        for(SoundBar bar: musicBars){
+            bar.setEmpty();
+        }
+    }
+
+    /**
+     * Visually sets the effectBars at the correct volume level taken as parameter.
+     * @param level The new volume level
+     */
+    private void setEffctBarsAt(int level){
+        setEffectBarsEmpty();
+        for(int n=0;n<level;n++){
+            effectBars.get(n).setFilled();
+        }
+    }
+
+    /**
+     * Clear all effectBars
+     */
+    private void setEffectBarsEmpty(){
+        for(SoundBar bar: effectBars){
             bar.setEmpty();
         }
     }
@@ -103,13 +145,13 @@ public class PropertiesPanel extends BoardObject{
      * Method only for testing. Returns the current bar level set
      * @return
      */
-    public int getBarLevel() {
+    public int getMusicBarLevel() {
         if(TestChecker.isJUnitTest()) {
-            for (int i = 0; i < bars.size(); i++) {
-                if (!bars.get(i).isFilled())
+            for (int i = 0; i < musicBars.size(); i++) {
+                if (!musicBars.get(i).isFilled())
                     return i;
             }
-            return bars.size();
+            return musicBars.size();
         }
         return 0;
     }
@@ -123,11 +165,19 @@ public class PropertiesPanel extends BoardObject{
     }
 
     /**
-     * Set the sound at a specified level
-     * @param level What volume level the sound is to be set at
+     * Set the music sound at a specified level
+     * @param level What volume level the music sound is to be set at
      */
-    public void setSoundAt(int level){
+    public void setMusicSoundAt(int level){
         settings.setMusicVolume(level);
+    }
+
+    /**
+     * Set the effect sound ar a specified level
+     * @param level What volume level the meffect sound is to be set at
+     */
+    public void setEffectSoundAt(int level){
+        settings.setEffectsVolume(level);
     }
 
     /**
@@ -142,10 +192,18 @@ public class PropertiesPanel extends BoardObject{
             pressedMainMenuButton();
         }
         else if(button instanceof SoundButton) {
-            pressedSoundButton();
+            if(button==effectSoundButton){
+                pressedEffectSoundButton();
+            }else {
+                pressedMusicSoundButton();
+            }
         }
         else if(button instanceof SoundBar) {
-            pressedBar(((SoundBar)button).getLevel());
+            if(musicBars.contains(button)) {
+                pressedMusicBar(((SoundBar) button).getLevel());
+            }else if(effectBars.contains(button)){
+                pressedEffectBar(((SoundBar) button).getLevel());
+            }
         }
 
     }
@@ -156,17 +214,24 @@ public class PropertiesPanel extends BoardObject{
      * @return Button on given position, null if none are
      */
     public BoardObject getButtonOnPosition(ProximityVector position){
-        for(SoundBar bar:bars){
+        for(SoundBar bar: musicBars){
             if(bar.containsPoint(position)){
                 return bar;
+            }
+        }
+        for(SoundBar eBar:effectBars){
+            if(eBar.containsPoint(position)){
+                return eBar;
             }
         }
         if(resumeButton.containsPoint(position)) {
             return resumeButton;
         }else if(mainMenuButton.containsPoint(position)){
             return mainMenuButton;
-        }else if(soundButton.containsPoint(position)){
-            return soundButton;
+        }else if(musicSoundButton.containsPoint(position)){
+            return musicSoundButton;
+        }else if(effectSoundButton.containsPoint(position)){
+            return effectSoundButton;
         }
         return null;
     }
@@ -193,26 +258,31 @@ public class PropertiesPanel extends BoardObject{
      * Method only for testing
      * @return the toggle sound button
      */
-    public SoundButton getSoundButton() {
+    public SoundButton getMusicSoundButton() {
         if(TestChecker.isJUnitTest())
-            return soundButton;
+            return musicSoundButton;
         return null;
     }
 
-    public List<SoundBar> getBars() {
+    public List<SoundBar> getMusicBars() {
         if(TestChecker.isJUnitTest()) {
-            return bars;
+            return musicBars;
         }
         return null;
     }
 
     /**
-     * Called when one of the sound-bars is pressed
+     * Called when one of the sound-musicBars is pressed
      * @param level what level the pressed sound-bar represents.
      */
-    private void pressedBar(int level){
-        setSoundAt(level);
-        updateSoundDisplay(level);
+    private void pressedMusicBar(int level){
+        setMusicSoundAt(level);
+        updateMusicSoundDisplay(level);
+    }
+
+    private void pressedEffectBar(int level){
+        setEffectSoundAt(level);
+        updateEffectSoundDisplay(level);
     }
 
     /**
@@ -232,21 +302,35 @@ public class PropertiesPanel extends BoardObject{
     /**
      * Called if Sound on/off button is pressed. Mutes/turns on sound
      */
-    private void pressedSoundButton(){
+    private void pressedMusicSoundButton(){
         settings.toggleMusicVolume();
-        updateSoundDisplay(settings.getMusicVolume());
+        updateMusicSoundDisplay(settings.getMusicVolume());
+    }
+
+    private void pressedEffectSoundButton(){
+        settings.toggleEffectVolume();
+        updateEffectSoundDisplay(settings.getEffectsVolume());
     }
 
     /**
      * Visually updates the soundbars and the SoundButton to a volume
      * @param volume the new music volume
      */
-    private void updateSoundDisplay(int volume) {
-        setBarsAt(volume);
+    private void updateMusicSoundDisplay(int volume) {
+        setMusicBarsAt(volume);
         if(volume > 0) {
-            soundButton.setSoundOn();
+            musicSoundButton.setSoundOn();
         } else {
-            soundButton.setSoundOff();
+            musicSoundButton.setSoundOff();
+        }
+    }
+
+    private void updateEffectSoundDisplay(int volume){
+        setEffctBarsAt(volume);
+        if(volume > 0){
+            effectSoundButton.setSoundOn();
+        }else{
+            effectSoundButton.setSoundOff();
         }
     }
 
@@ -269,10 +353,14 @@ public class PropertiesPanel extends BoardObject{
             batch.renderRepeatedly(background, getPosition(), width, height);
             resumeButton.render(batch);
             mainMenuButton.render(batch);
-            soundButton.render(batch);
+            musicSoundButton.render(batch);
             headline.draw(batch);
-            for (SoundBar bar : bars) {
+            for (SoundBar bar : musicBars) {
                 bar.render(batch);
+            }
+            effectSoundButton.render(batch);
+            for(SoundBar eBar: effectBars){
+                eBar.render(batch);
             }
         }
     }

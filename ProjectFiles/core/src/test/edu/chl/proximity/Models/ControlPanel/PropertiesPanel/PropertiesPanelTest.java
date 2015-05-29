@@ -28,13 +28,13 @@ public class PropertiesPanelTest {
     public void testSetSoundAt() throws Exception {
         Settings settings = new Settings();
         PropertiesPanel propertiesPanel = new PropertiesPanel(settings);
-        propertiesPanel.setSoundAt(5);
+        propertiesPanel.setMusicSoundAt(5);
         assertTrue(settings.getMusicVolume() == 5);
-        propertiesPanel.setSoundAt(-5);
+        propertiesPanel.setMusicSoundAt(-5);
         assertTrue(settings.getMusicVolume() == 0);
-        propertiesPanel.setSoundAt(-5);
+        propertiesPanel.setMusicSoundAt(-5);
         assertTrue(settings.getMusicVolume() == 5);
-        propertiesPanel.setSoundAt(100);
+        propertiesPanel.setMusicSoundAt(100);
         assertTrue(settings.getMusicVolume() == 5);
 
 
@@ -52,14 +52,14 @@ public class PropertiesPanelTest {
 
         //Pressing Toggle sound
         int soundBefore = settings.getMusicVolume();
-        int soundBarsBefore = propertiesPanel.getBarLevel();
-        propertiesPanel.pressButton(propertiesPanel.getSoundButton());
+        int soundBarsBefore = propertiesPanel.getMusicBarLevel();
+        propertiesPanel.pressButton(propertiesPanel.getMusicSoundButton());
         assertTrue(settings.getMusicVolume() == 0);
-        assertTrue(propertiesPanel.getBarLevel() == 0);
+        assertTrue(propertiesPanel.getMusicBarLevel() == 0);
 
-        propertiesPanel.pressButton(propertiesPanel.getSoundButton());
+        propertiesPanel.pressButton(propertiesPanel.getMusicSoundButton());
         assertTrue(settings.getMusicVolume() == soundBefore);
-        assertTrue(propertiesPanel.getBarLevel() == soundBarsBefore);
+        assertTrue(propertiesPanel.getMusicBarLevel() == soundBarsBefore);
 
         //Pressing Resume
         assertTrue(settings.getGameSpeed() == 1);
@@ -68,10 +68,10 @@ public class PropertiesPanelTest {
         assertFalse(propertiesPanel.isVisible());
 
         //Pressing every bar
-        for(int i = 0; i < propertiesPanel.getBars().size(); i++) {
-            propertiesPanel.pressButton(propertiesPanel.getBars().get(i));
+        for(int i = 0; i < propertiesPanel.getMusicBars().size(); i++) {
+            propertiesPanel.pressButton(propertiesPanel.getMusicBars().get(i));
             assertTrue(settings.getMusicVolume() == i+1);
-            assertTrue(propertiesPanel.getBarLevel() == i+1);
+            assertTrue(propertiesPanel.getMusicBarLevel() == i+1);
         }
 
     }
@@ -82,9 +82,9 @@ public class PropertiesPanelTest {
         PropertiesPanel propertiesPanel = new PropertiesPanel(new Settings());
         assertEquals(propertiesPanel.getMainMenuButton(), propertiesPanel.getButtonOnPosition(propertiesPanel.getMainMenuButton().getCenter()));
         assertEquals(propertiesPanel.getResumeButton(), propertiesPanel.getButtonOnPosition(propertiesPanel.getResumeButton().getCenter()));
-        assertEquals(propertiesPanel.getSoundButton(), propertiesPanel.getButtonOnPosition(propertiesPanel.getSoundButton().getCenter()));
+        assertEquals(propertiesPanel.getMusicSoundButton(), propertiesPanel.getButtonOnPosition(propertiesPanel.getMusicSoundButton().getCenter()));
 
-        for(SoundBar bar : propertiesPanel.getBars()) {
+        for(SoundBar bar : propertiesPanel.getMusicBars()) {
             assertEquals(bar, propertiesPanel.getButtonOnPosition(bar.getCenter()));
         }
 
