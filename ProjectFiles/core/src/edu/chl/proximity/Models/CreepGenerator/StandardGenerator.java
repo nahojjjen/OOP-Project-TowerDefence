@@ -1,6 +1,7 @@
 package edu.chl.proximity.Models.CreepGenerator;
 
 import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Boss1;
+import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Boss2;
 import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line1;
 import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line2;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
@@ -150,6 +151,18 @@ public class StandardGenerator {
                     int bossCount = (((waveIndex - 20) / 5) * 2) + 1;
                     for (int i = 0; i < bossCount; i++) {
                         creeps.add(new Boss1(map.getParticleManager(), map.getPath()));
+                    }
+                }
+                if (waveIndex >= 36) {
+                    if (waveIndex == 39 || waveIndex % 7 == 0) {
+                        int bossCount = (((waveIndex - 35) / 7) * 2);
+
+                        if (waveIndex >= 50) {
+                            bossCount = (int) Math.pow(bossCount, 2);
+                        }
+                        for (int i = 0; i < bossCount; i++) {
+                            creeps.add(new Boss2(map.getParticleManager(), map.getPath()));
+                        }
                     }
                 }
             }

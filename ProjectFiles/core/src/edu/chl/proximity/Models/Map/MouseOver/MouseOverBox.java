@@ -54,15 +54,17 @@ public class MouseOverBox extends BoardObject {
                 String[] partsOfPart = part.split(" ");
                 String rowToAdd = "";
                 part = "";
+                StringBuilder buf = new StringBuilder();
                 boolean rowDone = false;
                 for(int k = 0; k < partsOfPart.length; k++) {
                     if(rowToAdd.length() + partsOfPart[k].length() < signsAllowedOnARow && !rowDone) {
                         rowToAdd += partsOfPart[k] + " ";
                     } else {
                         rowDone = true;
-                        part += partsOfPart[k] + " ";
+                        buf.append(partsOfPart[k]).append(" ");
                     }
                 }
+                part = buf.toString();
                 ProximityFont font = new ProximityFont(new ProximityVector(getPosition().x + 5, getPosition().y + 5 + (i*15)), rowToAdd,11, 1,1,1);
                 infoTextList.add(font);
             }
