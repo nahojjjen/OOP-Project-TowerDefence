@@ -153,7 +153,10 @@ public class ProximityEffect {
      * @param vector The vector point where this effect should be created
      */
     public ParticleEffect createEffect(ProximityVector vector) {
-        return createEffect(vector.x, vector.y);
+        if (vector != null){
+            return createEffect(vector.x, vector.y);
+        }
+       return null;
     }
 
     /**

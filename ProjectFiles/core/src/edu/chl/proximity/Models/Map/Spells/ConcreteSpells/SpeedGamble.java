@@ -30,6 +30,11 @@ public class SpeedGamble extends Spell{
 
     public void performEffect(int counter) {
         List<Creep> creeps = getCreepsWithinDistance(this.getPosition(),range);
+        if (effect <= 4 && counter == duration){
+            playParticleEffectGood();
+        }else if (counter == duration){
+            playParticleEffectBad();
+        }
         for(Creep c: creeps) {
             switch (effect) {
                 case 0:
@@ -62,11 +67,15 @@ public class SpeedGamble extends Spell{
         return "Creates a field for 4 seconds which will either slow down or speed up creeps by a random amount";
     }
 
+    private void playParticleEffectGood(){
+        getParticleManager().getLuckWGood().createEffect(getPosition());
+    }
 
+    private void playParticleEffectBad(){
+        getParticleManager().getLuckWBad().createEffect(getPosition());
+    }
 
     public void playParticleEffect() {
-        if (getParticleManager() != null)
-            getParticleManager().getFireFieldEffect().createEffect(getPosition());
     }
 
     public double getRange() {

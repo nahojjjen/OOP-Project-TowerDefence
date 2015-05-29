@@ -9,6 +9,7 @@ import edu.chl.proximity.Models.Map.Spells.ConcreteSpells.*;
 import edu.chl.proximity.Models.Map.Spells.Spell;
 import edu.chl.proximity.Models.Map.Towers.BulletTower;
 import edu.chl.proximity.Models.Map.Towers.Tower;
+import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
 
@@ -31,19 +32,19 @@ public class SpellTest {
 
     @Test
     public void testAllSpells() throws Exception {
-
-        testSpell(new BloodCarnage(null));
-        testSpell(new BloodPool(null));
-        testSpell(new BloodSipper(null));
-        testSpell(new ChainLightning(null));
-        testSpell(new CoinFlip(null));
-        testSpell(new FireField(null));
-        testSpell(new FrostField(null));
-        testSpell(new LifeGamble(null));
-        testSpell(new PickACard(null));
-        testSpell(new Sacrifice(null));
-        testSpell(new SpeedGamble(null));
-        testSpell(new WallOfStone(null));
+        ParticleManager manager = new ParticleManager(new Settings());
+        testSpell(new BloodCarnage(manager));
+        testSpell(new BloodPool(manager));
+        testSpell(new BloodSipper(manager));
+        testSpell(new ChainLightning(manager));
+        testSpell(new CoinFlip(manager));
+        testSpell(new FireField(manager));
+        testSpell(new FrostField(manager));
+        testSpell(new LifeGamble(manager));
+        testSpell(new PickACard(manager));
+        testSpell(new Sacrifice(manager));
+        testSpell(new SpeedGamble(manager));
+        testSpell(new WallOfStone(manager));
     }
 
     private void testSpell(Spell spell) throws Exception{

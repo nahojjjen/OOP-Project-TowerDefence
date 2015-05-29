@@ -20,7 +20,8 @@ import java.util.List;
  * 18/05 modified by Linda Evaldsson. Removed Map.
  * 24/05 modified by Linda Evaldsson. Removed spell cooldown implementation, moved it to Cooldown class instead.
  */
-public class FireField extends Spell {
+public class
+        FireField extends Spell {
 
     //Spell stats
     private static double range = 100f;

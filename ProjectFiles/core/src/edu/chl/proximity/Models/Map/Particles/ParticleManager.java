@@ -39,6 +39,12 @@ public class ParticleManager {
         allEffects.add(new ProximityEffect("BloodCarnageCreepEffect", 300));
         allEffects.add(new ProximityEffect("Chomp", 10));
         allEffects.add(new ProximityEffect("fireburst", 400));
+        allEffects.add(new ProximityEffect("dustCreepEffect", 400));
+        allEffects.add(new ProximityEffect("bloodSipper", 20));
+        allEffects.add(new ProximityEffect("luckQGood", 20));
+        allEffects.add(new ProximityEffect("luckQBad", 20));
+        allEffects.add(new ProximityEffect("luckWGood", 20));
+        allEffects.add(new ProximityEffect("luckWBad", 20));
 
         for(ProximityEffect effect : allEffects) {
             effect.setSettings(settings);
@@ -83,6 +89,12 @@ public class ParticleManager {
     public ProximityEffect getBloodCarnageCreepEffect() {return allEffects.get(16);}
     public ProximityEffect getSacrificeEffect(){return allEffects.get(17);}
     public ProximityEffect getFireBurstEffect(){return allEffects.get(18);}
+    public ProximityEffect getDustCreepEffect(){return allEffects.get(19);}
+    public ProximityEffect getBloodSipperEffect(){return allEffects.get(20);}
+    public ProximityEffect getLuckQGood(){return allEffects.get(21);}
+    public ProximityEffect getLuckQBad(){return allEffects.get(22);}
+    public ProximityEffect getLuckWGood(){return allEffects.get(23);}
+    public ProximityEffect getLuckWBad(){return allEffects.get(24);}
 
 }
 

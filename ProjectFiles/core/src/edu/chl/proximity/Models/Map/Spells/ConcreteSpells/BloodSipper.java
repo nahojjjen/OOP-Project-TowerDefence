@@ -37,7 +37,7 @@ public class BloodSipper extends Spell {
 
     public void playParticleEffect(){
         if (getParticleManager() != null)
-            getParticleManager().getWallOfStone().createEffect(getPosition());
+            getParticleManager().getBloodSipperEffect().createEffect(getPosition());
     }
 
     @Override

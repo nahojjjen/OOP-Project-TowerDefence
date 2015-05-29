@@ -254,7 +254,7 @@ public abstract class Creep extends BoardObject {
         if(slowDownTime>0){
             slowDownTime--;
             if (slowDownTime % 15 == 0){
-                particleManager.getFrostBlastEffect().createEffect(getCenter());
+                particleManager.getDustCreepEffect().createEffect(getCenter());
             }
 
         }else if(slowDownTime==0) {

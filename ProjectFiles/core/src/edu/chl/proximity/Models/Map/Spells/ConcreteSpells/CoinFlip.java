@@ -29,11 +29,17 @@ public class CoinFlip extends Spell{
 
     public void performEffect(int counter) {
         List<Creep> creeps = getCreepsWithinDistance(this.getPosition(),range);
+        if (counter== duration && effect == 0){
+            playParticleEffectGood();
+        }else if(counter==duration){
+            playParticleEffectBad();
+        }
         for(Creep c: creeps) {
             switch (effect) {
                 case 0:
                     c.devolve();
                     this.setResourcesChange(10,10,0);
+
                     break;
                 case 1:
                     if(counter%10==0) {
@@ -50,11 +56,15 @@ public class CoinFlip extends Spell{
         return "Creates an area which will either damage creeps and grant extra resources, or simply drain your resources for each creep that enters the field.";
     }
 
+    private void playParticleEffectGood(){
+        getParticleManager().getLuckWGood().createEffect(getPosition());
+    }
 
+    private void playParticleEffectBad(){
+        getParticleManager().getLuckWBad().createEffect(getPosition());
+    }
 
     public void playParticleEffect() {
-        if (getParticleManager() != null)
-            getParticleManager().getFireFieldEffect().createEffect(getPosition());
     }
 
     public double getRange() {

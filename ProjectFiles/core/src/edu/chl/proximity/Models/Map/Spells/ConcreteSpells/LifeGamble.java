@@ -27,23 +27,29 @@ public class LifeGamble extends Spell {
         switch (diceNbr.intValue()){
             case 0:
                 this.setHealthChange(20);
+                playParticleEffectGood();
                 break;
             case 1:
                 this.setHealthChange(10);
+                playParticleEffectGood();
                 break;
             case 2:
                 this.setHealthChange(5);
+                playParticleEffectGood();
                 break;
             case 3:
                 break;
             case 4:
                 this.setHealthChange(-10);
+                playParticleEffectBad();
                 break;
             case 5:
                 this.setHealthChange(-20);
+                playParticleEffectBad();
                 break;
             case 6:
                 this.setHealthChange(-100);
+                playParticleEffectBad();
                 break;
             default: break;
         }
@@ -57,6 +63,13 @@ public class LifeGamble extends Spell {
 
 
     public void playParticleEffect(){}
+    private void playParticleEffectGood(){
+        getParticleManager().getLuckQGood().createEffect(getPosition());
+    }
+    private void playParticleEffectBad(){
+
+        getParticleManager().getLuckQBad().createEffect(getPosition());
+    }
 
     public double getRange(){
         return range;
