@@ -9,6 +9,7 @@ import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Map.Holdables.Holdable;
 import edu.chl.proximity.Models.Player.Players.GameData;
+import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 
@@ -48,11 +49,14 @@ public class MapController implements ClickHandler, UpdateHandler {
         GameData.getInstance().getPlayer().addExperiencePoints(map.getCollectedExperience());
         map.clearCollectedResources();
         map.clearCollectedExperience();
-        if(map.getBase().getLife() <= 0)
-            ScreenChanger.changeScreen(ScreenChanger.ScreenType.GameOver);
 
         map.clearAddStack();
         map.clearRemoveStack();
+
+        if(map.getBase().getLife() <= 0){
+            GameData.getInstance().getPlayer().getSettings().setGameSpeed(1);
+            ScreenChanger.changeScreen(ScreenChanger.ScreenType.GameOver);
+        }
     }
 
     @Override
