@@ -15,9 +15,9 @@ ________________________________________________________________________________
 ______________________________________________________________________________________________________________
 Group members: 
 	Johan Swanberg
-	Hanna RÃ¶mer
+	Hanna Römer
 	Linda Evaldsson
-	Simon GislÃ©n
+	Simon Gislén
 
 ______________________________________________________________________________________________________________
 
@@ -199,7 +199,7 @@ The application timer method (proximity.java render()) tells the GameScreen rend
 
 			The map resources are added
 
-			The map experience is added
+			The map experiance is added
 
 			The map gets told to add any items created during this frame to the model
 
