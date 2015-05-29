@@ -28,7 +28,7 @@ Contents:
 	3. Git structure
 	4. Program structure
 
-____________________________________________________________________________________________
+___________________________________________________________________________________________
 
 1. Short description of readme
 Running this project should be pretty straigtforward, simply naviate to the ProgramFiles 
@@ -170,7 +170,6 @@ method to run.
 			
 			All particles types are told to render, in a for loop.
 
-___________________________________________________________________________________________
 
 	The main game controller (MainController.java) is told to update all handler 
 	controllers. This pretty much means that the controller goes through all models,
@@ -201,7 +200,6 @@ ________________________________________________________________________________
 		The mapController is told to update
 
 
-___________________________________________________________________________________________
 
 			The map is told to update
 
