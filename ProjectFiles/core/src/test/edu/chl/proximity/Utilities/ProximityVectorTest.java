@@ -1,6 +1,6 @@
 package test.edu.chl.proximity.Utilities;
 
-import edu.chl.proximity.Utilities.ProximityRandom;
+import edu.chl.proximity.Models.Utils.ProximityRandom;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
 

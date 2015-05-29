@@ -1,7 +1,6 @@
 package test.edu.chl.proximity.Models.Map.Maps;
 
 
-import edu.chl.proximity.Models.Map.Background;
 import edu.chl.proximity.Models.Map.Bases.Base;
 import edu.chl.proximity.Models.Map.Bases.ShardBase;
 import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line1;
@@ -22,7 +21,7 @@ import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.Utils.Settings;
 import edu.chl.proximity.Utilities.Constants;
-import edu.chl.proximity.Utilities.ProximityRandom;
+import edu.chl.proximity.Models.Utils.ProximityRandom;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
 

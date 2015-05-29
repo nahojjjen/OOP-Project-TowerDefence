@@ -2,7 +2,6 @@ package edu.chl.proximity.Models.Map.Towers;
 
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
-import edu.chl.proximity.Models.Map.Projectiles.Bullet;
 import edu.chl.proximity.Models.Map.Projectiles.Missile;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
 import edu.chl.proximity.Models.Map.Towers.TargetingMethods.TargetingMethod;
@@ -11,7 +10,7 @@ import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
-import edu.chl.proximity.Utilities.ProximityRandom;
+import edu.chl.proximity.Models.Utils.ProximityRandom;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.List;

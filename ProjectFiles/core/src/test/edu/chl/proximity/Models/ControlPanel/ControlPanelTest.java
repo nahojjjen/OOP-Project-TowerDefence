@@ -8,7 +8,7 @@ import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Towers.BulletTower;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.Settings;
-import edu.chl.proximity.Utilities.ProximityRandom;
+import edu.chl.proximity.Models.Utils.ProximityRandom;
 import edu.chl.proximity.Utilities.ProximityVector;
 import org.junit.Test;
 

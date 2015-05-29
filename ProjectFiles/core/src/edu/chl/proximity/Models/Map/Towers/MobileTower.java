@@ -1,6 +1,5 @@
 package edu.chl.proximity.Models.Map.Towers;
 
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Particles.ProximityEffect;
@@ -11,7 +10,7 @@ import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
-import edu.chl.proximity.Utilities.ProximityRandom;
+import edu.chl.proximity.Models.Utils.ProximityRandom;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 import java.util.List;

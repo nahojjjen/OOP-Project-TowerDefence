@@ -36,6 +36,18 @@ public class ParticleManagerTest {
         assertTrue(test.getLightningOriginSpellEffect() != null);
         assertTrue(test.getSacrificeEffect() != null);
         assertTrue(test.getWallOfStone() != null);
+        assertTrue(test.getBloodPoolEffect() != null);
+        assertTrue(test.getBloodPoolCreepEffect() != null);
+        assertTrue(test.getBloodCarnageEffect() != null);
+        assertTrue(test.getBloodCarnageCreepEffect() != null);
+        assertTrue(test.getSacrificeEffect() != null);
+        assertTrue(test.getFireBurstEffect() != null);
+        assertTrue(test.getDustCreepEffect() != null);
+        assertTrue(test.getBloodSipperEffect() != null);
+        assertTrue(test.getLuckQGood() != null);
+        assertTrue(test.getLuckQBad() != null);
+        assertTrue(test.getLuckWGood() != null);
+        assertTrue(test.getLuckWBad() != null);
 
     }
 }

@@ -7,7 +7,7 @@ import edu.chl.proximity.Models.Map.Creeps.ConcreteCreeps.Line2;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Waves.Wave;
-import edu.chl.proximity.Utilities.ProximityRandom;
+import edu.chl.proximity.Models.Utils.ProximityRandom;
 
 import java.util.ArrayList;
 
