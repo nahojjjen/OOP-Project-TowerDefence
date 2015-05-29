@@ -33,6 +33,7 @@ public class CreepTest extends TestCase {
         path = new FirstPath();
     }
 
+
     public void testSetupCreep() throws Exception {
 
         Creep creep = new Line2(1, null, path);
@@ -85,8 +86,11 @@ public class CreepTest extends TestCase {
     }
 
     public void testRotate() throws Exception {
+
         Creep creep = new Line1(1, new ParticleManager(new Settings()), new FirstPath());
+        double angle = creep.getAngle();
         creep.rotate(5);
+        assertTrue(creep.getAngle()-5 == angle);
 
         creep = new Line2(1, new ParticleManager(new Settings()), new FirstPath());
         creep.rotate(5);
@@ -94,13 +98,16 @@ public class CreepTest extends TestCase {
         creep = new Boss1(new ParticleManager(new Settings()), new FirstPath());
         creep.rotate(5);
 
+        double angle2 = creep.getAngle();
+        creep.rotate();
+        assertTrue(creep.getAngle() != angle2);
+
 
     }
 
 
 
     public void testGetCreepResource() throws Exception {
-        GameData.getInstance();
         GameData.getInstance().setPlayer(new Player(new Filler()));
         Creep creep = new Line1(1, new ParticleManager(new Settings()), new FirstPath());
         Resources gotten = creep.getCreepResource();

@@ -10,9 +10,7 @@ import edu.chl.proximity.Utilities.Constants;
 /**
  * @author simongislen.
  * @date 25/05/15.
- * <p/>
- * <p/>
- * A Boss1 class that is responsible for...
+ * A class which represent a creep of the type boss2
  */
 public class Boss2 extends Creep {
 

@@ -99,8 +99,4 @@ public class ProximityVector {
 
     }
 
-    public ProximityVector times(float d){
-
-        return new ProximityVector(x*d,y*d);
-    }
 }

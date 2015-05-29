@@ -79,7 +79,7 @@ public class MouseOverBox extends BoardObject {
         return super.containsPoint(point) && enabled;
     }
 
-    public boolean isEnabled() {
+    public boolean isEnabled(){
         return enabled;
     }
 

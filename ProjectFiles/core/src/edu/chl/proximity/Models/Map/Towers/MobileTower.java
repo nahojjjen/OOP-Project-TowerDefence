@@ -111,12 +111,16 @@ public class MobileTower extends ShootingTower{
             float yLenght = (float) ((Math.sin(Math.toRadians(getAngle())) * speed));
             newPosition = new ProximityVector(getPosition().x + xLenght, getPosition().y + yLenght);
             setPosition(newPosition);
-        }else if(Math.abs(this.getCenter().x-origPos.x) > 2 || Math.abs(this.getCenter().y-origPos.y) > 2){
-            ProximityVector newPosition;
-            float xLenght = (float) ((Math.cos(Math.toRadians(getAngle())) * speed));
-            float yLenght = (float) ((Math.sin(Math.toRadians(getAngle())) * speed));
-            newPosition = new ProximityVector(getPosition().x + xLenght, getPosition().y + yLenght);
-            setPosition(newPosition);
+
+        }
+        if(this.getPosition() != null && origPos != null){
+            if((Math.abs(this.getCenter().x-origPos.x) > 2 || Math.abs(this.getCenter().y-origPos.y) > 2)){
+                ProximityVector newPosition;
+                float xLenght = (float) ((Math.cos(Math.toRadians(getAngle())) * speed));
+                float yLenght = (float) ((Math.sin(Math.toRadians(getAngle())) * speed));
+                newPosition = new ProximityVector(getPosition().x + xLenght, getPosition().y + yLenght);
+                setPosition(newPosition);
+            }
         }
     }
 

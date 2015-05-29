@@ -69,7 +69,6 @@ public class GameScreen implements Screen, ScreenChangerListener{
         this.map = map;
         map.getParticleManager().clearAllParticles();
         this.player = player;
-        player.getFaction().resetSpellCooldowns();
 
         initiateModel();
         initiateController();
@@ -86,7 +85,6 @@ public class GameScreen implements Screen, ScreenChangerListener{
     private void initiateModel() {
         map.setBase(player.getFaction().getNewBase(map.getPath(), map.getParticleManager()));
         player.getFaction().configureSpells(map.getParticleManager());
-        player.getFaction().resetSpellCooldowns();
     }
 
     private void initiateView() {

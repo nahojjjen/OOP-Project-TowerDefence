@@ -131,7 +131,6 @@ public abstract class Spell extends PersistentObject implements Holdable {
     public abstract void playParticleEffect();
     public abstract double getRange();
 
-    public void unPlace() {isPlaced = false; }
 
     public Image getControlPanelImage() {
         return controlPanelImage;

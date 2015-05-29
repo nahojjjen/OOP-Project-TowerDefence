@@ -66,6 +66,9 @@ public abstract class Path {
 
 
     public boolean isPointOnPath(ProximityVector point){
+        if (point == null){
+            return false;
+        }
         for(int a=0;a<waypoints.size()-1;a++){
             if(isPointBetween(waypoints.get(a), waypoints.get(a+1),point)){
                 return true;
@@ -75,6 +78,9 @@ public abstract class Path {
     }
 
     public boolean isPointBetween(ProximityVector a, ProximityVector b, ProximityVector p){
+        if (a == null || b == null || p == null) {
+            return false;
+        }
         Double atb=Math.sqrt(PointCalculations.distanceBetweenNoSqrt(a,b));
         Double atp=Math.sqrt(PointCalculations.distanceBetweenNoSqrt(a,p));
         Double btp=Math.sqrt(PointCalculations.distanceBetweenNoSqrt(b,p));

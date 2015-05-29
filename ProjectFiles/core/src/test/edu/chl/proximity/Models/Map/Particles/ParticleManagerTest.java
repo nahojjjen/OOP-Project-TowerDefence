@@ -15,7 +15,14 @@ import static org.junit.Assert.assertTrue;
 public class ParticleManagerTest {
 
     @Test
-    public void testParticleManager(){
+    public void testClearEffects(){
+
+        ParticleManager test = new ParticleManager(new Settings());
+        test.clearAllParticles();
+    }
+
+        @Test
+        public void testParticleManager(){
         ParticleManager test = new ParticleManager(new Settings());
 
         assertTrue(test.getBaseCracksEffect() != null);
