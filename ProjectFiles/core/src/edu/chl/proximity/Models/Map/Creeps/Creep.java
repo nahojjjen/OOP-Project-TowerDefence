@@ -253,6 +253,10 @@ public abstract class Creep extends BoardObject {
     public void checkIfSpeedUp(){
         if(slowDownTime>0){
             slowDownTime--;
+            if (slowDownTime % 15 == 0){
+                particleManager.getFrostBlastEffect().createEffect(getCenter());
+            }
+
         }else if(slowDownTime==0) {
             speed = backUpSpeed;
             slowDownTime = -1;
