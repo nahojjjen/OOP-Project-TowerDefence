@@ -1,8 +1,6 @@
 package edu.chl.proximity.Models.ControlPanel.PropertiesPanel;
 
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.ControlPanel.ButtonsPanel.PropertiesButton;
-import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Models.Utils.ProximityFont;
@@ -55,7 +53,7 @@ public class PropertiesPanel extends BoardObject{
         super(position, background, 0, width, height);
         this.settings = settings;
         initBars();
-        updateSoundDisplay(settings.getGameVolume());
+        updateSoundDisplay(settings.getMusicVolume());
     }
 
     /**
@@ -129,7 +127,7 @@ public class PropertiesPanel extends BoardObject{
      * @param level What volume level the sound is to be set at
      */
     public void setSoundAt(int level){
-        settings.setGameVolume(level);
+        settings.setMusicVolume(level);
     }
 
     /**
@@ -235,8 +233,8 @@ public class PropertiesPanel extends BoardObject{
      * Called if Sound on/off button is pressed. Mutes/turns on sound
      */
     private void pressedSoundButton(){
-        settings.toggleSound();
-        updateSoundDisplay(settings.getGameVolume());
+        settings.toggleMusicVolume();
+        updateSoundDisplay(settings.getMusicVolume());
     }
 
     /**

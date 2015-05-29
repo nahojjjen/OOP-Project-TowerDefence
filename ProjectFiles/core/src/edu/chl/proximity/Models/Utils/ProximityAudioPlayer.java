@@ -38,7 +38,7 @@ public class ProximityAudioPlayer {
 
         Sound rawSound = sound.getSound();
         if (rawSound != null){
-            rawSound.play(settings.getTranslatedGameVolume(), pitch, pan);
+            rawSound.play(settings.getTranslatedGameVolume(settings.getMusicVolume()), pitch, pan);
         }
 
     }
@@ -59,7 +59,7 @@ public class ProximityAudioPlayer {
             gameMusic.stop();
             gameMusic.play();
             gameMusic.setLooping(true);
-            gameMusic.setVolume(settings.getTranslatedGameVolume()/3);
+            gameMusic.setVolume(settings.getTranslatedGameVolume(settings.getMusicVolume())/3);
         }
 
     }
@@ -117,6 +117,14 @@ public class ProximityAudioPlayer {
         if (gameMusic != null){
             gameMusic.setVolume(volume/3);
         }
+    }
+
+    /**
+     * changes the effects volume
+     * @param volume volume to be set
+     */
+    public static void setEffectsVolume(float volume){
+        //Todo: Write this function
     }
 
     /**

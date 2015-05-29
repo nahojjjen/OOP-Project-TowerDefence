@@ -5,8 +5,6 @@ import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.SoundBar;
 import edu.chl.proximity.Models.Utils.Settings;
 import org.junit.Test;
 
-import javax.xml.bind.SchemaOutputResolver;
-
 import static org.junit.Assert.*;
 
 /**
@@ -31,13 +29,13 @@ public class PropertiesPanelTest {
         Settings settings = new Settings();
         PropertiesPanel propertiesPanel = new PropertiesPanel(settings);
         propertiesPanel.setSoundAt(5);
-        assertTrue(settings.getGameVolume() == 5);
+        assertTrue(settings.getMusicVolume() == 5);
         propertiesPanel.setSoundAt(-5);
-        assertTrue(settings.getGameVolume() == 0);
+        assertTrue(settings.getMusicVolume() == 0);
         propertiesPanel.setSoundAt(-5);
-        assertTrue(settings.getGameVolume() == 5);
+        assertTrue(settings.getMusicVolume() == 5);
         propertiesPanel.setSoundAt(100);
-        assertTrue(settings.getGameVolume() == 5);
+        assertTrue(settings.getMusicVolume() == 5);
 
 
     }
@@ -53,14 +51,14 @@ public class PropertiesPanelTest {
         assertTrue(propertiesPanel.isVisible() == false);
 
         //Pressing Toggle sound
-        int soundBefore = settings.getGameVolume();
+        int soundBefore = settings.getMusicVolume();
         int soundBarsBefore = propertiesPanel.getBarLevel();
         propertiesPanel.pressButton(propertiesPanel.getSoundButton());
-        assertTrue(settings.getGameVolume() == 0);
+        assertTrue(settings.getMusicVolume() == 0);
         assertTrue(propertiesPanel.getBarLevel() == 0);
 
         propertiesPanel.pressButton(propertiesPanel.getSoundButton());
-        assertTrue(settings.getGameVolume() == soundBefore);
+        assertTrue(settings.getMusicVolume() == soundBefore);
         assertTrue(propertiesPanel.getBarLevel() == soundBarsBefore);
 
         //Pressing Resume
@@ -72,7 +70,7 @@ public class PropertiesPanelTest {
         //Pressing every bar
         for(int i = 0; i < propertiesPanel.getBars().size(); i++) {
             propertiesPanel.pressButton(propertiesPanel.getBars().get(i));
-            assertTrue(settings.getGameVolume() == i+1);
+            assertTrue(settings.getMusicVolume() == i+1);
             assertTrue(propertiesPanel.getBarLevel() == i+1);
         }
 

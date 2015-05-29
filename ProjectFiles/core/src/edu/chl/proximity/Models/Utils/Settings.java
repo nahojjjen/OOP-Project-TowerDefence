@@ -12,15 +12,24 @@ import java.util.HashMap;
  */
 public class Settings {
 
+    //Game speed
     private int storedGameSpeed;
-    private int storedVolume;
     private int gameSpeed;
-    private int gameVolume;
+
+    //Music volume
+    private int storedMusicVolume;
+    private int musicVolume;
+
+    //Effects volume
+    private int storedEffectsVolume;
+    private int effectsVolume;
+
     private HashMap<Integer, Float> volumeTranslator = new HashMap<Integer, Float>();
 
     public Settings() {
         gameSpeed = 1;
-        gameVolume = 4;
+        musicVolume = 4;
+        effectsVolume = 4;
 
         volumeTranslator.put(0, 0f);
         volumeTranslator.put(1, 0.0125f);
@@ -48,8 +57,11 @@ public class Settings {
         return gameSpeed;
     }
 
-    public int getGameVolume() {
-        return gameVolume;
+    public int getMusicVolume() {
+        return musicVolume;
+    }
+    public int getEffectsVolume() {
+        return effectsVolume;
     }
 
     /**
@@ -57,22 +69,36 @@ public class Settings {
      * int to an actual volume level used by the music player
      * @return the translate volume
      */
-    public float getTranslatedGameVolume() { return volumeTranslator.get(gameVolume); }
+    public float getTranslatedGameVolume(int volume) { return volumeTranslator.get(volume); }
 
     /**
-     * Sets the level of game volume
+     * Sets the level of game music volume
      * @param volume the new volume
      */
-    public void setGameVolume(int volume) {
+    public void setMusicVolume(int volume) {
         if(volume > 0){
             if(volumeTranslator.get(volume) != null) {
-                gameVolume = volume;
-                ProximityAudioPlayer.setGameMusicVolume(getTranslatedGameVolume());
+                musicVolume = volume;
+                ProximityAudioPlayer.setGameMusicVolume(getTranslatedGameVolume(musicVolume));
             }
         } else {
-            toggleSound();
+            toggleMusicVolume();
         }
+    }
 
+    /**
+     * Sets the level of game music volume
+     * @param volume the new volume
+     */
+    public void setEffectsVolume(int volume) {
+        if(volume > 0){
+            if(volumeTranslator.get(volume) != null) {
+                effectsVolume = volume;
+                ProximityAudioPlayer.setEffectsVolume(getTranslatedGameVolume(effectsVolume));
+            }
+        } else {
+            toggleEffectVolume();
+        }
     }
 
     /**
@@ -90,22 +116,35 @@ public class Settings {
     /**
      * Toggles the game volume
      */
-    public void toggleSound() {
-        if(gameVolume > 0) {
-            storedVolume = gameVolume;
-            gameVolume = 0;
-            ProximityAudioPlayer.setGameMusicVolume(getTranslatedGameVolume());
+    public void toggleMusicVolume() {
+        if(musicVolume > 0) {
+            storedMusicVolume = musicVolume;
+            musicVolume = 0;
+            ProximityAudioPlayer.setGameMusicVolume(getTranslatedGameVolume(musicVolume));
         } else {
-            setGameVolume(storedVolume);
+            setMusicVolume(storedMusicVolume);
         }
     }
 
+    /**
+     * Toggles the game volume
+     */
+    public void toggleEffectVolume() {
+        if(effectsVolume > 0) {
+            storedEffectsVolume = effectsVolume;
+            effectsVolume = 0;
+            ProximityAudioPlayer.setEffectsVolume(getTranslatedGameVolume(effectsVolume));
+        } else {
+            setEffectsVolume(storedEffectsVolume);
+        }
+    }
     /**
      * Takes an instance of Settings and copies the settings from it to this instance of Settings.
      * @param settings the Settings-instance with the settings wanted
      */
     public void cloneSettings(Settings settings) {
         this.gameSpeed = settings.getGameSpeed();
-        this.gameVolume = settings.getGameVolume();
+        this.musicVolume = settings.getMusicVolume();
+        this.effectsVolume = settings.getEffectsVolume();
     }
 }
