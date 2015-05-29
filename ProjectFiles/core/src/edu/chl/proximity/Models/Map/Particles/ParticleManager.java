@@ -54,6 +54,15 @@ public class ParticleManager {
             effect.renderAllActiveEffects(batch);
         }
     }
+    /**
+     * Removes all particles from showing up on the screen, and puts them back in the pool
+     */
+    public void clearAllParticles(){
+        for(ProximityEffect effect:allEffects){
+            effect.clearEffects();
+        }
+    }
+
 
     public ProximityEffect getExplosionEffect() {return allEffects.get(0);}
     public ProximityEffect getCreepDiesEffect() {return allEffects.get(1);}

@@ -136,6 +136,17 @@ public class ProximityEffect {
         }
         return null;
     }
+
+    /**
+     * Clears all effects of this type from being displated
+     */
+    public void clearEffects(){
+        for (int i = 0; i<effects.size(); i++) {
+            ParticleEffectPool.PooledEffect effect = effects.get(i);
+            effect.free(); //put the effect back in the pool if it is done )
+            effects.remove(effect); //remove the finished effect from the list of active effects
+        }
+    }
     /**
      * Create a new ParticleEffect at the given location
      *
