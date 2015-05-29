@@ -99,8 +99,10 @@ public class ProximityShapeRenderer implements ProximityDisposable {
     public void renderRangeIndicator(ProximityVector position, double range, Color color) {
         if(range<1500) {
             Gdx.gl.glEnable(GL20.GL_BLEND); //enables transparency
-            shapeRenderer.setColor(color);
-            shapeRenderer.circle(position.x, position.y, (float) range);
+            if (position != null && color != null && shapeRenderer != null){
+                shapeRenderer.setColor(color);
+                shapeRenderer.circle(position.x, position.y, (float) range);
+            }
         }
     }
 
