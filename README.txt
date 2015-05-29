@@ -33,7 +33,11 @@ ________________________________________________________________________________
 1. Short description of readme
 Running this project should be pretty straigtforward, simply naviate to the ProgramFiles 
 folder and run ./gradlew build, ./gradlew run, or ./gradlew test. You can also download 
-the bytecode (.JAR) from the project website, see the Links section.
+the bytecode (.JAR) from the project website, see the Links section. There's also
+a simple guide on how to play the game in the links section.
+
+When reading gitinspector information, please take note that floompa and Linda 
+are both accounts belonging to Linda Evaldsson.
 
 This readme aims to give auxillary information, such as a short description of how we 
 structured the git repository, A normal libGdx application structure and how the program 
