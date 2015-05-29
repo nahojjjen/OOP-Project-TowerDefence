@@ -45,15 +45,17 @@ public class PropertiesPanel extends BoardObject{
     private PropertiesPanelButton resumeButton = new PropertiesPanelButton(resumePos, "Resume");
     private PropertiesPanelButton mainMenuButton = new PropertiesPanelButton(mainMenuPos, "Main menu");
 
-    private Image onMusic=new Image(Constants.FILE_PATH + "Buttons/SoundOnButton.png");
-    private Image offMusic= new Image(Constants.FILE_PATH + "Buttons/SoundOffButton.png");
+    private Image onMusic=new Image(Constants.FILE_PATH + "Buttons/musicOn.png");
+    private Image offMusic= new Image(Constants.FILE_PATH + "Buttons/musicOff.png");
     private SoundButton musicSoundButton = new SoundButton(musicSoundPos,onMusic,offMusic);
     private ArrayList<SoundBar> musicBars =new ArrayList<>();
+    private ProximityFont musicFont = new ProximityFont(new ProximityVector(470,342), "Music volume", 10, 1,1,1 );
 
-    private Image onEffects=new Image(Constants.FILE_PATH + "Buttons/SoundOnButton.png");
-    private Image offEffects= new Image(Constants.FILE_PATH + "Buttons/SoundOffButton.png");
+    private Image onEffects=new Image(Constants.FILE_PATH + "Buttons/soundEffectsOn.png");
+    private Image offEffects= new Image(Constants.FILE_PATH + "Buttons/soundEffectsOff.png");
     private SoundButton effectSoundButton=new SoundButton(effectSoundPos,onEffects,offEffects);
     private ArrayList<SoundBar> effectBars=new ArrayList<>();
+    private ProximityFont effectsFont = new ProximityFont(new ProximityVector(470,412), "Effects volume", 10, 1,1,1 );
 
     /**
      * Create a new properies panel
@@ -355,6 +357,8 @@ public class PropertiesPanel extends BoardObject{
             mainMenuButton.render(batch);
             musicSoundButton.render(batch);
             headline.draw(batch);
+            musicFont.draw(batch);
+            effectsFont.draw(batch);
             for (SoundBar bar : musicBars) {
                 bar.render(batch);
             }

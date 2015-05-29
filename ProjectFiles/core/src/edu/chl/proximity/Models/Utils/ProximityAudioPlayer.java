@@ -38,7 +38,7 @@ public class ProximityAudioPlayer {
 
         Sound rawSound = sound.getSound();
         if (rawSound != null){
-            rawSound.play(settings.getTranslatedGameVolume(settings.getMusicVolume()), pitch, pan);
+            rawSound.play(settings.getTranslatedGameVolume(settings.getEffectsVolume()), pitch, pan);
         }
 
     }

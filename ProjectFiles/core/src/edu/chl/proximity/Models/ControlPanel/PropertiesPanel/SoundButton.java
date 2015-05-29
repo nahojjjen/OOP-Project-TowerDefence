@@ -12,8 +12,8 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * Represent the sound button that toggles sound on/off
  */
 public class SoundButton extends BoardObject{
-    private static Image onImage;   //= new Image(Constants.FILE_PATH + "Buttons/SoundOnButton.png");
-    private static Image offImage;   //= new Image(Constants.FILE_PATH + "Buttons/SoundOffButton.png");
+    private  Image onImage;   //= new Image(Constants.FILE_PATH + "Buttons/SoundOnButton.png");
+    private  Image offImage;   //= new Image(Constants.FILE_PATH + "Buttons/SoundOffButton.png");
     private static int height=50;
     private static int width=50;
 
