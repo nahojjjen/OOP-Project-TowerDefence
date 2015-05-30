@@ -39,6 +39,7 @@ public abstract class Projectile extends BoardObject implements Cloneable{
      */
     public Projectile(ProximityEffect particleEffect, int health, int speed, ProximitySound sound, Image image, ProximityVector position, double angle){
         super(position, image, angle);
+        this.setCenter(position);
         this.effect=particleEffect;
         this.health=health;
         this.speed=speed;
