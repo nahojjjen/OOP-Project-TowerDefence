@@ -101,6 +101,7 @@ public class ControlPanelController implements ClickHandler, UpdateHandler {
         if(towerPanel.containsPoint(newPosition)) {
             towerPanel.mouseOverPosition(newPosition);
         }
+        controlPanel.setResources(GameData.getInstance().getPlayer().getResources());
      }
 
     public void keyDown(int keycode) {
@@ -165,35 +166,32 @@ public class ControlPanelController implements ClickHandler, UpdateHandler {
     @Override
     public void touchDown (ProximityVector clickedPoint, int pointer, int button) {
 
-        //Not handling clicks if game is paused
-        if (GameData.getInstance().getPlayer().getSettings().getGameSpeed() != 0) {
 
-            if(controlPanel.containsPoint(clickedPoint)) {
-                ControlPanelTower cpTower = controlPanel.getTowerOnPosition(clickedPoint);
+        if(controlPanel.containsPoint(clickedPoint)) {
+            ControlPanelTower cpTower = controlPanel.getTowerOnPosition(clickedPoint);
 
-                if (cpTower != null) {
-                    map.getHand().setItem(cpTower.getTower());
-                }
-                else if (!towerPanel.containsPoint(clickedPoint)){
-                    map.getHand().setItem(null);
-                }
+            if (cpTower != null) {
+                map.getHand().setItem(cpTower.getTower());
             }
-
-            if(spellPanel.containsPoint(clickedPoint)) {
-                ControlPanelSpell cpSpell = spellPanel.getSpellOnPosition(clickedPoint);
-
-                if (cpSpell != null) {
-                    map.getHand().setItem(cpSpell.getSpell());
-                } else {
-                    map.getHand().setItem(null);
-                }
+            else if (!towerPanel.containsPoint(clickedPoint)){
+                map.getHand().setItem(null);
             }
+        }
 
-            if(towerPanel.containsPoint(clickedPoint)) {
-                towerPanel.pressedPosition(clickedPoint);
+        if(spellPanel.containsPoint(clickedPoint)) {
+            ControlPanelSpell cpSpell = spellPanel.getSpellOnPosition(clickedPoint);
+
+            if (cpSpell != null) {
+                map.getHand().setItem(cpSpell.getSpell());
+            } else {
+                map.getHand().setItem(null);
             }
+        }
 
-        } //End checking if game is paused
+        if(towerPanel.containsPoint(clickedPoint)) {
+            towerPanel.pressedPosition(clickedPoint);
+        }
+
 
 
         if (buttonPanel.containsPoint(clickedPoint) && !propertiesPanel.isVisible()) {

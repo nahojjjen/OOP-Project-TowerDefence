@@ -130,6 +130,7 @@ public class MainController implements InputProcessor{
         for(ClickHandler controller : controlPanelClickHandlers) {
             controller.mouseMoved(draggedPoint);
         }
+        mapController.mouseMoved(draggedPoint);
         return true;
     }
 

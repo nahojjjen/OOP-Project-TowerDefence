@@ -84,7 +84,8 @@ public class MapController implements ClickHandler, UpdateHandler {
                         placeHandObject(heldItem,clickedPoint); //place it if possible
                     }
                 }else { //if its not a tower selected
-                    placeHandObject(heldItem, clickedPoint); //place it (spell etc)
+
+                    placeHandObject(heldItem, clickedPoint);
                 }
             }else { //if heldItem was null
                 if (clickedObject instanceof Tower) {
@@ -143,6 +144,6 @@ public class MapController implements ClickHandler, UpdateHandler {
 
     @Override
     public void mouseMoved(ProximityVector newPosition) {
-
+        map.getHand().setIfHandAfforded(GameData.getInstance().getPlayer().getResources());
     }
 }
