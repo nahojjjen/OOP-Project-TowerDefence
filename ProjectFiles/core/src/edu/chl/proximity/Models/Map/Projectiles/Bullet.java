@@ -23,12 +23,10 @@ public class Bullet extends Projectile {
 
     /**
      * create a new bullet projectile
-     *
-     * @param position where to create the bullet projectile
+     *  @param position where to create the bullet projectile
      * @param angle    what angle the image & movement should start at
-     * @param target   what creep the projectile should see it it hits etc.
      */
-    public Bullet(ProximityVector position, double angle, Creep target, ParticleManager particleManager) {
+    public Bullet(ProximityVector position, double angle, ParticleManager particleManager) {
         //Arguments: ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, ProximityVector position, double angle, Creep target
         super(particleManager.getBulletEffect(), 1, 20, sound, img, position, angle);
 

@@ -21,12 +21,10 @@ public class SniperBullet extends Projectile {
     private static int speed = 30;
     /**
      * create a new bullet projectile
-     *
-     * @param position where to create the bullet projectile
+     *  @param position where to create the bullet projectile
      * @param angle    what angle the image & movement should start at
-     * @param target   what creep the projectile should see it it hits etc.
      */
-    public SniperBullet(ProximityVector position, double angle, Creep target, ParticleManager particleManager) {
+    public SniperBullet(ProximityVector position, double angle, ParticleManager particleManager) {
         //Arguments: ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, ProximityVector position, double angle, Creep target
         super(particleManager.getSniperBulletEffect(), baseHealth, speed, sound, img, position, angle);
     }

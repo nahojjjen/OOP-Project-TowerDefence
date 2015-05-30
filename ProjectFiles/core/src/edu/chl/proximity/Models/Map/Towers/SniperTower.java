@@ -37,7 +37,7 @@ public class SniperTower extends ShootingTower {
 
     @Override
     public Projectile createProjectile() {
-        return new SniperBullet(getCenter(), PointCalculations.getVectorAngle(getPosition(), getTarget().getPosition()), getTarget(), getParticleManager());
+        return new SniperBullet(getCenter(),  PointCalculations.getVectorAngle(getCenter(),getTarget().getCenter()), getParticleManager());
     }
 
     @Override

@@ -21,7 +21,7 @@ public class BulletTest {
     @Test
     public void testReAngle() throws Exception {
 
-        Projectile projectile = new Bullet(new ProximityVector(100,100), 0f, null, new ParticleManager(new Settings()));
+        Projectile projectile = new Bullet(new ProximityVector(100,100), 0f, new ParticleManager(new Settings()));
         double angle = projectile.getAngle();
         projectile.reAngle();
         assertTrue(projectile.getAngle() == angle);
@@ -30,7 +30,7 @@ public class BulletTest {
     @Test
     public void testAttack() throws Exception {
 
-        Projectile projectile = new Bullet(new ProximityVector(100,100), 0f, null, new ParticleManager(new Settings()));
+        Projectile projectile = new Bullet(new ProximityVector(100,100), 0f, new ParticleManager(new Settings()));
         Creep creep = new Line1(1,new ParticleManager(new Settings()),new FirstPath());
         projectile.attack(creep);
         assertTrue(creep.isRemoved());

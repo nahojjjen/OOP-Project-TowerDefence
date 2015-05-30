@@ -89,7 +89,7 @@ public class BulletTower3 extends Tower implements Cloneable, TargetingTower {
     }
 
     public Projectile createProjectile(ProximityVector pos) {
-        return new Bullet(pos, PointCalculations.getVectorAngle(getPosition(), getTarget().getPosition()), getTarget(), getParticleManager());
+        return new Bullet(pos,  PointCalculations.getVectorAngle(getCenter(),getTarget().getCenter()), getParticleManager());
     }
 
     @Override

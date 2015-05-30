@@ -41,7 +41,7 @@ public class MapTest {
         Creep creep = new Line1(1, map.getParticleManager(), map.getPath());
         Tower tower = new BulletTower(new ProximityVector(0, 0), new TargetClosest(), map.getParticleManager());
         Spell spell = new WallOfStone(map.getParticleManager());
-        Projectile projectile = new Bullet(new ProximityVector(0, 0), 0, null, map.getParticleManager());
+        Projectile projectile = new Bullet(new ProximityVector(0, 0), 0, map.getParticleManager());
 
         int i = map.getNumberOfObjectsOnMap();
         map.add(creep);
@@ -215,7 +215,7 @@ public class MapTest {
 
         Tower tower = new BulletTower(new ProximityVector(0, 0), new TargetClosest(), map.getParticleManager());
         Spell spell = new WallOfStone(map.getParticleManager());
-        Projectile projectile = new Bullet(new ProximityVector(0, 0), 0, null, map.getParticleManager());
+        Projectile projectile = new Bullet(new ProximityVector(0, 0), 0, map.getParticleManager());
 
         map.add(tower);
         map.add(spell);
@@ -241,7 +241,7 @@ public class MapTest {
         Creep creep3 = new Line1(1, map.getParticleManager(), map.getPath());
         Creep creep4 = new Line1(1, map.getParticleManager(), map.getPath());
         Creep creep5 = new Line1(1, map.getParticleManager(), map.getPath());
-        Projectile projectile = new Bullet(new ProximityVector(0, 0), 0, null, map.getParticleManager());
+        Projectile projectile = new Bullet(new ProximityVector(0, 0), 0, map.getParticleManager());
         Tower tower = new BulletTower(new ProximityVector(0, 0), new TargetClosest(), map.getParticleManager());
         Spell spell = new WallOfStone(map.getParticleManager());
 

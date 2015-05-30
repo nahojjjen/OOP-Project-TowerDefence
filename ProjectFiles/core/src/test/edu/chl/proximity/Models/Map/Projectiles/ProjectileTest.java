@@ -24,7 +24,7 @@ public class ProjectileTest {
     @Test
     public void testSetHealthAndCollide() throws Exception {
 
-        Projectile projectile = new Bullet(new ProximityVector(100,100), 0f, null,  new ParticleManager(new Settings()));
+        Projectile projectile = new Bullet(new ProximityVector(100,100), 0f, new ParticleManager(new Settings()));
         projectile.setHealth(2);
         assertFalse(projectile.isRemoved());
         projectile.collide(null); //causes bullet to lose 1 health
@@ -36,14 +36,14 @@ public class ProjectileTest {
     @Test
     public void testSetAndGetRange() throws Exception {
 
-        Projectile projectile = new Bullet(new ProximityVector(100,100), 0f, null,  new ParticleManager(new Settings()));
+        Projectile projectile = new Bullet(new ProximityVector(100,100), 0f, new ParticleManager(new Settings()));
         projectile.setAreaOfEffectRange(5);
         assertTrue(projectile.getAreaOfEffectSize() == 5);
     }
     @Test
     public void testCollidesWith() throws Exception {
 
-        Projectile projectile = new Bullet(new ProximityVector(100,100), 0f, null, new ParticleManager(new Settings()));
+        Projectile projectile = new Bullet(new ProximityVector(100,100), 0f, new ParticleManager(new Settings()));
         Creep creep = new Line1(1,new ParticleManager(new Settings()),new FirstPath());
         ProximityVector position = new ProximityVector(100,100);
         projectile.setPosition(position);
@@ -62,21 +62,21 @@ public class ProjectileTest {
     @Test
     public void testPlayParticleEffect() throws Exception {
 
-        Projectile projectile = new Bullet(new ProximityVector(100,100), 0f, null, new ParticleManager(new Settings()));
+        Projectile projectile = new Bullet(new ProximityVector(100,100), 0f, new ParticleManager(new Settings()));
         projectile.playParticleEffect();
     }
 
     @Test
     public void testPlaySound() throws Exception {
 
-        Projectile projectile = new Bullet(new ProximityVector(100,100), 0f, null, new ParticleManager(new Settings()));
+        Projectile projectile = new Bullet(new ProximityVector(100,100), 0f, new ParticleManager(new Settings()));
         projectile.playSound();
     }
 
     @Test
     public void testMove() throws Exception {
 
-        Projectile projectile = new Bullet(new ProximityVector(100,100), 0f, null, new ParticleManager(new Settings()));
+        Projectile projectile = new Bullet(new ProximityVector(100,100), 0f, new ParticleManager(new Settings()));
         ProximityVector firstPosition = projectile.getPosition();
         projectile.move();
         ProximityVector secondPosition = projectile.getPosition();
