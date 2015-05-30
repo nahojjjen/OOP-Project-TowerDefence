@@ -161,7 +161,10 @@ public abstract class Spell extends PersistentObject implements Holdable {
     }
 
     public Color getColor() {
-        return new Color(0.2f, 0.9f, 0.2f, 0.2f);
+        if (cooldown.isReady()){
+            return new Color(0.2f, 0.9f, 0.2f, 0.2f);
+        }
+        return new Color(0.9f, 0.2f, 0.2f, 0.2f);
     }
 
     public boolean isPlaced() {

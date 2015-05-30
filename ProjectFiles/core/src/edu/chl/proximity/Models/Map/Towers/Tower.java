@@ -108,7 +108,7 @@ public abstract class Tower extends BoardObject implements Holdable, Cloneable{
     }
 
     public Color getColor() {
-        return new Color(0.4f, 0.2f, 0.9f, 0.2f);
+        return new Color(0.2f, 0.9f, 0.3f, 0.2f);
     }
 
 }

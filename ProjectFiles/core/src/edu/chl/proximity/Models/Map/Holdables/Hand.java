@@ -64,10 +64,14 @@ public class Hand {
 
     }
 
+    /**
+     * Gets the color of the hand items indicator
+     * @return
+     */
     public Color getRangeIndicatorColor() {
         if(!currentItem.canBePlacedOnPath() && path!=null) {
             if(isObjectOnLine()){
-                return new Color(0.9f, 0.7f, 0.1f, 0.2f);
+                return new Color(0.9f, 0.7f, 0.1f, 0.2f); //if & hand on path
             }
         }
         if (canPlayerAffordTheHand()) {

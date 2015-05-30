@@ -70,22 +70,23 @@ public class MapController implements ClickHandler, UpdateHandler {
             //Checks if anything was clicked on the board (Ex towers)
             BoardObject clickedObject = map.getObjectOnPosition(clickedPoint);
 
-
-
-
             //If there is something in the hand
             if (heldItem != null) {
-                if(heldItem instanceof Tower) {
-                    if(heldItem.isPlaced()) {
-                        map.setChosenTower(null);
-                    }else if(!isTowerOnLine()){
-                        placeHandObject(heldItem,clickedPoint);
+                if(heldItem instanceof Tower) { //if its a tower
+                    if(heldItem.isPlaced()) { //if its on the map
+                        if (clickedObject instanceof Tower){
+                            map.setChosenTower((Tower)clickedObject); //if you clicked another tower, select that instead
+                        }else{
+                            map.setChosenTower(null); //otherwise deselect everything
+                        }
+
+                    }else if(!isTowerOnLine()){ //if the tower in hand isnt placed yet
+                        placeHandObject(heldItem,clickedPoint); //place it if possible
                     }
-                }else {
-                    placeHandObject(heldItem, clickedPoint);
+                }else { //if its not a tower selected
+                    placeHandObject(heldItem, clickedPoint); //place it (spell etc)
                 }
-            }
-            if(heldItem == null) {
+            }else { //if heldItem was null
                 if (clickedObject instanceof Tower) {
                     map.setChosenTower((Tower) clickedObject);
                 }
