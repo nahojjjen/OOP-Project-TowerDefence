@@ -122,9 +122,11 @@ public class ButtonPanel extends BoardObject {
     }
 
     public void pressedPause(){
-        GameData.getInstance().getPlayer().getSettings().setGameSpeed(0);
-        playButton.setRightImage();
-        speedButton.setRightImage();
+        if(GameData.getInstance().getPlayer().getSettings().getGameSpeed() != 0) {
+            GameData.getInstance().getPlayer().getSettings().setGameSpeed(0);
+            playButton.setRightImage();
+            speedButton.setRightImage();
+        }
     }
 
 
