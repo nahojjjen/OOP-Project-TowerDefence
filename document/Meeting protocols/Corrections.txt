@@ -1,0 +1,7 @@
+The following errors were found in the meeting protocols:
+
+Protocol 14 states that it occured 18/5, but in reality 
+the meeting was held 21/5, the date on the document is wrong.
+
+Protocol 15 states that it occured 25/5, but in reality 
+the meeting was held 26/5, the date on the document is wrong.
