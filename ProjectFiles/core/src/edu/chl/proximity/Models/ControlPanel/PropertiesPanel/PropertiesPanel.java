@@ -31,6 +31,7 @@ public class PropertiesPanel extends BoardObject{
     private static ProximityVector position=new ProximityVector((Constants.GAME_WIDTH-300-width)/2f, (Constants.GAME_HEIGHT-100-height)/2f);
     private boolean isVisible=false;
     private Settings settings;
+    private int storedSpeed;
 
     //Headline font
     private ProximityFont headline = new ProximityFont(new ProximityVector(position.x + 45, position.y + 20), "Options",40, 1,1,1);
@@ -136,10 +137,11 @@ public class PropertiesPanel extends BoardObject{
      */
     public void setVisibility(boolean isVisible){ this.isVisible=isVisible;
         if(isVisible) {
+            storedSpeed = settings.getGameSpeed();
             settings.setGameSpeed(0);
         }
         if(!isVisible) {
-            settings.togglePause();
+            settings.setGameSpeed(storedSpeed);
         }
     }
 
