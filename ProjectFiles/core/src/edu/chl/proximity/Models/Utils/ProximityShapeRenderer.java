@@ -79,7 +79,7 @@ public class ProximityShapeRenderer implements ProximityDisposable {
     public void renderRectangle(ProximityVector position, float width, float height, Color color){
         Gdx.gl.glEnable(GL20.GL_BLEND); //enables transparency
         shapeRenderer.setColor(color);
-        shapeRenderer.rect(position.x,position.y,width,height);
+        shapeRenderer.rect(position.x, position.y, width, height);
     }
 
     public void end() {
@@ -89,7 +89,6 @@ public class ProximityShapeRenderer implements ProximityDisposable {
     public void setColor(Color color) {
         shapeRenderer.setColor(color);
     }
-
     /**
      * renders a range indicator, which is a semi transparent circle with a radious.
      * @param position where the circle center should be
@@ -97,13 +96,22 @@ public class ProximityShapeRenderer implements ProximityDisposable {
      * @param color the color of the circle
      */
     public void renderRangeIndicator(ProximityVector position, double range, Color color) {
-        if(range<1500) {
+        if (range < 1500) {
             Gdx.gl.glEnable(GL20.GL_BLEND); //enables transparency
-            if (position != null && color != null && shapeRenderer != null){
+            if (position != null && color != null && shapeRenderer != null) {
                 shapeRenderer.setColor(color);
                 shapeRenderer.circle(position.x, position.y, (float) range);
             }
+        }else{
+                    //render a small circle to show which tower if tower has ultra range
+            Gdx.gl.glEnable(GL20.GL_BLEND);
+            if (position != null && color != null && shapeRenderer != null) {
+                shapeRenderer.setColor(color);
+                shapeRenderer.circle(position.x, position.y, (float) 20);
+            }
+
         }
+
     }
 
     /**
