@@ -19,7 +19,7 @@ import java.util.List;
  *
  * 26/05 modified by Linda Evaldsson. Added automatic row changing and fixed so only one Box can be displayed at any one time.
  */
-public class MouseOverBox extends BoardObject {
+public class MouseOverBox extends BoardObject implements HoverBox {
 
 
     private boolean enabled = false;

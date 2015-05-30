@@ -64,7 +64,7 @@ public class PropertiesPanelTest {
         //Pressing Resume
         assertTrue(settings.getGameSpeed() == 1);
         propertiesPanel.pressButton(propertiesPanel.getResumeButton());
-        assertTrue(settings.getGameSpeed() == 0);
+        assertTrue(settings.getGameSpeed() == 1);
         assertFalse(propertiesPanel.isVisible());
 
         //Pressing every bar

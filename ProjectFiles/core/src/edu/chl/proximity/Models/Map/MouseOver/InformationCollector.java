@@ -3,9 +3,6 @@ package edu.chl.proximity.Models.Map.MouseOver;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Utilities.ProximityVector;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author Linda Evaldsson
  * @date 2015-05-25
@@ -16,9 +13,9 @@ import java.util.List;
  */
 public class InformationCollector {
 
-    private static MouseOverBox currentBox;
+    private static HoverBox currentBox;
 
-    public static void displayBox(MouseOverBox newBox) {
+    public static void displayBox(HoverBox newBox) {
 
         if(currentBox != null) {
             currentBox.disable();
