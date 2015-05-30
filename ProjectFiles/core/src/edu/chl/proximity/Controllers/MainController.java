@@ -6,6 +6,8 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chl.proximity.Controllers.SubControllers.*;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Maps.Map;
+import edu.chl.proximity.Models.Player.Players.GameData;
+import edu.chl.proximity.Models.Player.Players.Player;
 import edu.chl.proximity.Utilities.PointCalculations;
 import edu.chl.proximity.Utilities.ProximityVector;
 
@@ -58,6 +60,12 @@ public class MainController implements InputProcessor{
         updateHandlers.add(handController);
         updateHandlers.add(controlPanelController);
         updateHandlers.add(mapController);
+    }
+
+    public void initiateNewMap(Map map) {
+        Player player = GameData.getInstance().getPlayer();
+        player.initiateNewMap();
+        player.getFaction().configureSpells(map.getParticleManager());
     }
 
     public List<BoardObject> getControlPanels() {

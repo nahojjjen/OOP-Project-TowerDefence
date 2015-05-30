@@ -78,6 +78,7 @@ public class GameScreen implements Screen, ScreenChangerListener{
 
     private void initiateController() {
         mainController = new MainController(map, this.viewport);
+        mainController.initiateNewMap(map);
         Gdx.input.setInputProcessor(mainController);
         ScreenChanger.setListener(this);
     }

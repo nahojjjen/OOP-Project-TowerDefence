@@ -55,10 +55,7 @@ public class MainMenu {
     public void pressedStart(){
         player.setFacton(factionChooser.getCurrentlyShown());
         map=mapSelect.getSelected();
-        player.getFaction().configureSpells(map.getParticleManager());
-
         GameData.getInstance().setPlayer(player);
-        player.initiateNewMap();
     }
 
     public Map getMap(){

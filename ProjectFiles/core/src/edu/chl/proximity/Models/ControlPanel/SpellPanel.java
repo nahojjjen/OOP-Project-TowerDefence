@@ -50,7 +50,6 @@ public class SpellPanel extends BoardObject {
         addSpellsToControlPanel(faction);
     }
 
-
     /**
      * Reads the current factions spells, and creates representing images for them
      * @param faction

@@ -1,4 +1,4 @@
-package edu.chl.proximity.Models.Map.Spells.ConcreteSpells;
+package edu.chl.proximity.Models.Map.Spells;
 
 /**
  * @author Linda Evaldsson
@@ -7,6 +7,7 @@ package edu.chl.proximity.Models.Map.Spells.ConcreteSpells;
  * A class for handling cooldowns in the game
  *
  * 24/05 modified by Linda Evaldsson. Removed spell cooldown implementation, moved it to Cooldown class instead.
+ * 30/05 modified by Linda Evaldsson. Added reset-method.
  */
 public class Cooldown {
 
@@ -36,6 +37,9 @@ public class Cooldown {
         this.maxCooldown = maxCooldown;
     }
 
+    public void reset() {
+        currentCooldown = 0;
+    }
     public void update() {
         if (currentCooldown > 0) {
             currentCooldown--;

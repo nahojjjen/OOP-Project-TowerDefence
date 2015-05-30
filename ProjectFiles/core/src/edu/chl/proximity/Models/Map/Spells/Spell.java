@@ -3,7 +3,6 @@ package edu.chl.proximity.Models.Map.Spells;
 import com.badlogic.gdx.graphics.Color;
 import edu.chl.proximity.Models.Map.Creeps.Creep;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
-import edu.chl.proximity.Models.Map.Spells.ConcreteSpells.Cooldown;
 import edu.chl.proximity.Models.Map.Towers.Tower;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.Image;
@@ -45,6 +44,10 @@ public abstract class Spell extends PersistentObject implements Holdable {
         controlPanelImage = icon;
         this.particleManager = particleManager;
 
+    }
+
+    public void resetCooldown() {
+        cooldown.reset();
     }
 
     public boolean canBePlacedOnPath() {

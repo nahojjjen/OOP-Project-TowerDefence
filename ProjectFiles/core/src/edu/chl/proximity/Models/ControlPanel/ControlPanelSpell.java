@@ -1,6 +1,6 @@
 package edu.chl.proximity.Models.ControlPanel;
 import edu.chl.proximity.Models.BoardObject;
-import edu.chl.proximity.Models.Map.Spells.ConcreteSpells.Cooldown;
+import edu.chl.proximity.Models.Map.Spells.Cooldown;
 import edu.chl.proximity.Models.Map.Spells.Spell;
 import edu.chl.proximity.Models.Map.MouseOver.MouseOverBox;
 import edu.chl.proximity.Utilities.ProximityVector;
@@ -26,6 +26,7 @@ public class ControlPanelSpell extends BoardObject {
         cooldown = spell.getCooldown();
         spell.setPosition(position);
         hoverBox = new MouseOverBox(150, spell.getHelpInfo());
+        spell.resetCooldown();
     }
     public int getCooldownPercent() {
         return cooldown.getCooldownPercent();
