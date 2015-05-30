@@ -55,6 +55,8 @@ public class ParticleManagerTest {
         assertTrue(test.getLuckQBad() != null);
         assertTrue(test.getLuckWGood() != null);
         assertTrue(test.getLuckWBad() != null);
+        assertTrue(test.getExplosionBigEffect() != null);
+            assertTrue(test.getSniperBulletEffect() != null);
 
     }
 }

@@ -119,7 +119,10 @@ public abstract class Creep extends BoardObject {
      * destroys the creep
      */
     public void destroy() {
-        displayDeathEffect();
+        if (this.getCreepLineIndex() == 1){
+            displayDeathEffect();
+        }
+
         this.remove();
     }
     /**
