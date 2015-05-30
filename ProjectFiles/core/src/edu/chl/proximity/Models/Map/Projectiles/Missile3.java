@@ -18,7 +18,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
  */
 public class Missile3 extends Projectile {
 
-    private static Image img = new Image(Constants.FILE_PATH + "Projectiles/missile.png");
+    private static Image img = new Image(Constants.FILE_PATH + "Projectiles/missile2.png");
     private static ProximitySound sound = new ProximitySound(Constants.FILE_PATH + "Sounds/explosion.ogg");
     private static double range = 100f;
     private Creep target;
@@ -31,7 +31,7 @@ public class Missile3 extends Projectile {
      */
     public Missile3(ProximityVector position, double angle, Creep target, ParticleManager particleManager) {
         //Arguments: ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, ProximityVector position, double angle, Creep target
-        super(particleManager.getExplosionEffect(), 1, 8, sound, img, position, angle);
+        super(particleManager.getExplosionBigEffect(), 1, 8, sound, img, position, angle);
         this.target = target;
         setAreaOfEffectRange(range);
     }

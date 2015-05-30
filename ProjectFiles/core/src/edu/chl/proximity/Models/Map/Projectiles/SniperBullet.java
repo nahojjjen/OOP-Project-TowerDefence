@@ -14,7 +14,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * A class representing a fast bullet that snipes creeps
  */
 public class SniperBullet extends Projectile {
-    private static Image img = new Image(Constants.FILE_PATH + "Projectiles/bullet.png");
+    private static Image img = new Image(Constants.FILE_PATH + "Projectiles/blast.png");
     private static ProximitySound sound = new ProximitySound(Constants.FILE_PATH + "Sounds/poof.ogg");
     private static int baseHealth = 1;
 
@@ -28,7 +28,7 @@ public class SniperBullet extends Projectile {
      */
     public SniperBullet(ProximityVector position, double angle, Creep target, ParticleManager particleManager) {
         //Arguments: ProximityEffect particleEffect, int health, int speed, Sound sound, Image image, ProximityVector position, double angle, Creep target
-        super(particleManager.getBulletEffect(), baseHealth, speed, sound, img, position, angle);
+        super(particleManager.getSniperBulletEffect(), baseHealth, speed, sound, img, position, angle);
     }
 
     @Override

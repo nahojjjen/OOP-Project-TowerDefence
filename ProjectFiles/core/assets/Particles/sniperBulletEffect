@@ -60,8 +60,8 @@ timeline0: 0.0
 - Scale - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 1.0
-highMax: 10.0
+highMin: 7.0
+highMax: 17.0
 relative: false
 scalingCount: 2
 scaling0: 1.0
@@ -73,7 +73,7 @@ timeline1: 0.98630136
 active: true
 lowMin: 10.0
 lowMax: 20.0
-highMin: 30.0
+highMin: 80.0
 highMax: 150.0
 relative: false
 scalingCount: 2
@@ -98,29 +98,35 @@ timeline1: 1.0
 - Rotation - 
 active: true
 lowMin: 0.0
-lowMax: 0.0
+lowMax: 360.0
 highMin: 0.0
-highMax: 0.0
+highMax: 360.0
 relative: false
-scalingCount: 1
+scalingCount: 2
 scaling0: 1.0
-timelineCount: 1
+scaling1: 0.0
+timelineCount: 2
 timeline0: 0.0
+timeline1: 1.0
 - Wind - 
 active: false
 - Gravity - 
 active: false
 - Tint - 
-colorsCount: 6
+colorsCount: 9
 colors0: 0.28235295
-colors1: 0.79607844
-colors2: 1.0
-colors3: 0.0
-colors4: 0.0
-colors5: 0.0
-timelineCount: 2
+colors1: 1.0
+colors2: 0.44705883
+colors3: 0.28235295
+colors4: 1.0
+colors5: 0.43529412
+colors6: 0.0
+colors7: 0.0
+colors8: 0.0
+timelineCount: 3
 timeline0: 0.0
-timeline1: 1.0
+timeline1: 0.6919105
+timeline2: 1.0
 - Transparency - 
 lowMin: 0.0
 lowMax: 0.0
@@ -129,7 +135,7 @@ highMax: 1.0
 relative: false
 scalingCount: 2
 scaling0: 1.0
-scaling1: 0.0877193
+scaling1: 1.0
 timelineCount: 2
 timeline0: 0.0
 timeline1: 1.0
@@ -141,4 +147,4 @@ additive: true
 behind: false
 premultipliedAlpha: false
 - Image Path -
-/C:/Users/Johan/Documents/GitHub/OOP-Project-TowerDefence/ProjectFiles/ParticleImages/particle.png
+/C:/Users/Johan/Documents/GitHub/OOP-Project-TowerDefence/ProjectFiles/ParticleImages/bolt.png

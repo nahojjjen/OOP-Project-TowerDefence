@@ -18,7 +18,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
  */
 public class Missile extends Projectile {
 
-    private static Image img = new Image(Constants.FILE_PATH + "Projectiles/missile.png");
+    private static Image img = new Image(Constants.FILE_PATH + "Projectiles/missile2s.png");
     private static ProximitySound sound = new ProximitySound(Constants.FILE_PATH + "Sounds/explosion.ogg");
     private static double range = 60;
     private Creep target;

@@ -6,19 +6,19 @@ lowMin: 500.0
 lowMax: 500.0
 - Count - 
 min: 0
-max: 2
+max: 1
 - Emission - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 50.0
-highMax: 50.0
+highMin: 9999.0
+highMax: 9999.0
 relative: false
 scalingCount: 2
-scaling0: 0.60784316
+scaling0: 1.0
 scaling1: 0.0
 timelineCount: 2
 timeline0: 0.0
-timeline1: 0.20547946
+timeline1: 0.001
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
@@ -62,8 +62,8 @@ timeline0: 0.0
 - Scale - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 60.0
-highMax: 60.0
+highMin: 100.0
+highMax: 100.0
 relative: false
 scalingCount: 2
 scaling0: 1.0
@@ -100,20 +100,12 @@ active: false
 - Gravity - 
 active: false
 - Tint - 
-colorsCount: 9
-colors0: 0.78431374
-colors1: 0.6901961
-colors2: 0.38039216
-colors3: 0.7176471
-colors4: 0.654902
-colors5: 0.64705884
-colors6: 0.4392157
-colors7: 0.1254902
-colors8: 0.105882354
-timelineCount: 3
+colorsCount: 3
+colors0: 0.36078432
+colors1: 0.25882354
+colors2: 0.1764706
+timelineCount: 1
 timeline0: 0.0
-timeline1: 0.39173013
-timeline2: 1.0
 - Transparency - 
 lowMin: 0.0
 lowMax: 0.0
@@ -141,7 +133,7 @@ premultipliedAlpha: false
 /C:/Users/Johan/Documents/GitHub/OOP-Project-TowerDefence/ProjectFiles/ParticleImages/highResCircle.png
 
 
-Untitled
+swirl
 - Delay -
 active: false
 - Duration - 
@@ -149,17 +141,19 @@ lowMin: 500.0
 lowMax: 500.0
 - Count - 
 min: 0
-max: 3
+max: 1
 - Emission - 
 lowMin: 0.0
 lowMax: 0.0
 highMin: 50.0
 highMax: 50.0
 relative: false
-scalingCount: 1
+scalingCount: 2
 scaling0: 1.0
-timelineCount: 1
+scaling1: 0.0
+timelineCount: 2
 timeline0: 0.0
+timeline1: 0.001
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
@@ -201,8 +195,8 @@ timeline0: 0.0
 - Scale - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 60.0
-highMax: 60.0
+highMin: 100.0
+highMax: 100.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -237,24 +231,28 @@ timeline1: 1.0
 - Rotation - 
 active: true
 lowMin: 0.0
-lowMax: 360.0
-highMin: 0.0
-highMax: 360.0
+lowMax: 0.0
+highMin: 120.0
+highMax: 120.0
 relative: false
-scalingCount: 2
-scaling0: 1.0
-scaling1: 0.0
-timelineCount: 2
+scalingCount: 4
+scaling0: 0.0
+scaling1: 0.3529412
+scaling2: 0.47058824
+scaling3: 0.5294118
+timelineCount: 4
 timeline0: 0.0
-timeline1: 1.0
+timeline1: 0.37671232
+timeline2: 0.67808217
+timeline3: 1.0
 - Wind - 
 active: false
 - Gravity - 
 active: false
 - Tint - 
 colorsCount: 3
-colors0: 0.49803922
-colors1: 0.19215687
+colors0: 0.4627451
+colors1: 0.22352941
 colors2: 0.023529412
 timelineCount: 1
 timeline0: 0.0
@@ -278,4 +276,4 @@ additive: true
 behind: false
 premultipliedAlpha: false
 - Image Path -
-/C:/Users/Johan/Documents/GitHub/OOP-Project-TowerDefence/ProjectFiles/ParticleImages/explosion.png
+/C:/Users/Johan/Documents/GitHub/OOP-Project-TowerDefence/ProjectFiles/ParticleImages/twirl.png

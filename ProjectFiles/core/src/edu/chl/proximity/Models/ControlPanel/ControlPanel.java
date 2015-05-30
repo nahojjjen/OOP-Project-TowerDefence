@@ -130,7 +130,7 @@ public class ControlPanel extends BoardObject{
         if(percent <= 0)
             percent = 0;
         percentBar.setPercent(percent);
-        percentBar.setText(percent + "%");
+        percentBar.setText("HP " +percent + "%");
     }
 
     public int getHealthPercent() {

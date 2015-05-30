@@ -80,7 +80,7 @@ public class MapController implements ClickHandler, UpdateHandler {
                             map.setChosenTower(null); //otherwise deselect everything
                         }
 
-                    }else if(!isTowerOnLine()){ //if the tower in hand isnt placed yet
+                    }else if(!isTowerOnLine() && !(clickedObject instanceof Tower)){ //if the tower in hand isnt placed yet
                         placeHandObject(heldItem,clickedPoint); //place it if possible
                     }
                 }else { //if its not a tower selected

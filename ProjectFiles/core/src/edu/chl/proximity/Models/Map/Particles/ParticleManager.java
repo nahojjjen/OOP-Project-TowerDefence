@@ -45,6 +45,8 @@ public class ParticleManager {
         allEffects.add(new ProximityEffect("luckQBad", 20));
         allEffects.add(new ProximityEffect("luckWGood", 20));
         allEffects.add(new ProximityEffect("luckWBad", 20));
+        allEffects.add(new ProximityEffect("explosionBig", 300));
+        allEffects.add(new ProximityEffect("sniperBulletEffect", 300));
 
         for(ProximityEffect effect : allEffects) {
             effect.setSettings(settings);
@@ -95,6 +97,8 @@ public class ParticleManager {
     public ProximityEffect getLuckQBad(){return allEffects.get(22);}
     public ProximityEffect getLuckWGood(){return allEffects.get(23);}
     public ProximityEffect getLuckWBad(){return allEffects.get(24);}
+    public ProximityEffect getExplosionBigEffect(){return allEffects.get(25);}
+    public ProximityEffect getSniperBulletEffect(){return allEffects.get(26);}
 
 }
 
