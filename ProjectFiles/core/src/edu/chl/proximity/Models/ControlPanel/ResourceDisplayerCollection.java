@@ -3,6 +3,7 @@ package edu.chl.proximity.Models.ControlPanel;
 import edu.chl.proximity.Models.ResourceSystem.Resources;
 import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
+import edu.chl.proximity.Models.Utils.ProximityFont;
 import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 
@@ -23,15 +24,17 @@ public class ResourceDisplayerCollection {
     private ResourceDisplayer lineDisplayer;
     private ResourceDisplayer pointDisplayer;
     private ResourceDisplayer polygonDisplayer;
+    private ProximityFont resourcesFont;
 
     private List<ResourceDisplayer> displayerList = new ArrayList<ResourceDisplayer>();
 
     public ResourceDisplayerCollection(ProximityVector position, float spaceBetweenNumbers, Direction d) {
 
         if(d == Direction.Horizontal) {
-            lineDisplayer = new ResourceDisplayer(new Image(Constants.FILE_PATH + "Resources/lines.png"), new ProximityVector(position.x, position.y));
-            pointDisplayer = new ResourceDisplayer(new Image(Constants.FILE_PATH + "Resources/points.png"), new ProximityVector(position.x + spaceBetweenNumbers, position.y));
-            polygonDisplayer = new ResourceDisplayer(new Image(Constants.FILE_PATH + "Resources/polygons.png"), new ProximityVector(position.x + spaceBetweenNumbers*2, position.y));
+            lineDisplayer = new ResourceDisplayer(new Image(Constants.FILE_PATH + "Resources/lines.png"), new ProximityVector(position.x, position.y+20));
+            pointDisplayer = new ResourceDisplayer(new Image(Constants.FILE_PATH + "Resources/points.png"), new ProximityVector(position.x + spaceBetweenNumbers, position.y+20));
+            polygonDisplayer = new ResourceDisplayer(new Image(Constants.FILE_PATH + "Resources/polygons.png"), new ProximityVector(position.x + spaceBetweenNumbers*2, position.y+20));
+            resourcesFont =  new ProximityFont(position,"Your resources: ", 12, 0.8f, 0.8f, 0.8f);
         }
         else {
             lineDisplayer = new ResourceDisplayer(new Image(Constants.FILE_PATH + "Resources/lines.png"), new ProximityVector(position.x, position.y));
@@ -42,6 +45,9 @@ public class ResourceDisplayerCollection {
         displayerList.add(lineDisplayer);
         displayerList.add(pointDisplayer);
         displayerList.add(polygonDisplayer);
+
+
+
 
     }
 
@@ -68,5 +74,9 @@ public class ResourceDisplayerCollection {
         for(ResourceDisplayer displayer : displayerList) {
             displayer.render(batch);
         }
+        if (resourcesFont != null){
+            resourcesFont.draw(batch);
+        }
+
     }
 }
