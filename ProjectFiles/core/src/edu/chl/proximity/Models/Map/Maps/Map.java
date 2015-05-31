@@ -350,7 +350,10 @@ public abstract class Map {
 
         if (towers != null){
             for (Tower tower : towers) {
-                tower.render(batch);
+                if (!tower.isRemoved()){
+                    tower.render(batch);
+                }
+
 
             }
         }
@@ -361,7 +364,10 @@ public abstract class Map {
         }
         if (creeps != null){
             for (Creep creep : creeps) {
-                creep.render(batch);
+                if (!creep.isRemoved()){
+                    creep.render(batch);
+                }
+
             }
         }
         if (base != null){
