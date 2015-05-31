@@ -43,6 +43,14 @@ This readme aims to give auxillary information, such as a short description of h
 structured the git repository, A normal libGdx application structure and how the program 
 is structured.
 
+If you want to check out the maps, without dont want to spend time unlocking them,
+change the static int "winCondition" (default value 40) in the Player class to something
+lower, like 0.
+
+If you want to try all the towers, give yourself more starting resources by
+changing the "new Resources" value in the "initiateNewMap()"-method in the Player class. 
+For instance, resources = new Resources(999999,999999,999999);
+
 ___________________________________________________________________________________________
 2. Links
 Our project has a website for various information. www.foh-proximity.se
