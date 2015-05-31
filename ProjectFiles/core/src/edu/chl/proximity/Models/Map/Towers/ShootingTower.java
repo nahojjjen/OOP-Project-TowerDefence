@@ -75,7 +75,7 @@ public abstract class ShootingTower extends Tower implements TargetingTower{
         if (creeps != null){
             currentTarget = targetingMethod.getTarget(creeps, getCenter(), range);
             if (currentTarget != null) {
-                this.setAngle(PointCalculations.getVectorAngle(this.getPosition(), currentTarget.getPosition()));
+                this.setAngle(PointCalculations.getVectorAngle(this.getCenter(), currentTarget.getCenter()));
             }
         }
 
