@@ -15,10 +15,10 @@ ________________________________________________________________________________
  	                                                         |___/ 
 ___________________________________________________________________________________________
 Group members - Git Usernames
-	Johan Swanberg - nahojjjen
-	Hanna Römer - IndigoBB
-	Linda Evaldsson - floompa (Linda Evaldsson)
-	Simon Gislén - simongislen
+	Johan Swanberg 		- Nahojjjen
+	Hanna Römer	 	- IndigoBB
+	Linda Evaldsson		- floompa (Linda Evaldsson)
+	Simon Gislén 		- Simongislen
 
 ___________________________________________________________________________________________
 
@@ -43,7 +43,7 @@ This readme aims to give auxillary information, such as a short description of h
 structured the git repository, A normal libGdx application structure and how the program 
 is structured.
 
-If you want to check out the maps, without dont want to spend time unlocking them,
+If you want to check out the maps, but dont want to spend time unlocking them,
 change the static int "winCondition" (default value 40) in the Player class to something
 lower, like 0.
 
