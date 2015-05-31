@@ -57,7 +57,7 @@ Our project has a website for various information. www.foh-proximity.se
 On the website you can find the following information about the project:
 
 Game guide (How to play):....... http://www.foh-proximity.se/gameplay-guide/
-Runnable jar (bytecode):........ http://www.foh-proximity.se/download/
+Runnable jar (bytecode):........ http://foh-proximity.se/information/
 Gitinspector history:........... http://foh-proximity.se/gitinspector/
 Group work schedule:............ http://foh-proximity.se/schedule/
 
