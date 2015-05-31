@@ -41,7 +41,7 @@ public class BloodPool extends Spell {
             if (PointCalculations.distanceBetweenNoSqrt(creep.getCenter(), getPosition()) < range * range) {
                 hitCreeps++;
                 creep.devolve();
-                setHealthChange(1);
+                setHealthChange(getHealthChange() + 1);
                 if (getParticleManager() != null) {
                     getParticleManager().getBloodPoolCreepEffect().createEffect(creep.getCenter());
                 }
@@ -53,7 +53,7 @@ public class BloodPool extends Spell {
     }
     @Override
     public String getDescription() {
-        return "Devoures the life essence of all creeps in the area, granting one life for each creep hit. The cooldown increases by 0.5 seconds for each creep hit.";
+        return "Devoures the life essence of all creeps in the area, stealing one life for each creep. The cooldown increases by 0.5 seconds for each creep hit for the next spellcast.";
     }
 
 
