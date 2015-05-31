@@ -22,7 +22,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
 public class BulletTower extends ShootingTower implements Cloneable {
 
     //Tower stats
-    private static Resources resources = new Resources(100, 0, 0);
+    private static Resources resources = new Resources(90, 0, 0);
     private static double range = 75f;
     private static int reloadTime = 60;
 

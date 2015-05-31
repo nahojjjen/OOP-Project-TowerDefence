@@ -17,7 +17,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
 public class MissileTower2 extends ShootingTower {
 
     //Tower stats
-    private static Resources resources = new Resources(50, 200, 0);
+    private static Resources resources = new Resources(50, 70, 0);
     private static double range = 100f;
     private static int reloadTime = 50;
 

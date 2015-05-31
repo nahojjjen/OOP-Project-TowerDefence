@@ -22,7 +22,7 @@ public class BulletTower3 extends Tower implements Cloneable, TargetingTower {
 
 
     //Tower stats
-    private static Resources resources = new Resources(500, 0, 0);
+    private static Resources resources = new Resources(200, 0, 0);
     private static double range = 160f;
     private static int reloadTime = 10;
     private static int overHeatTime = 50;

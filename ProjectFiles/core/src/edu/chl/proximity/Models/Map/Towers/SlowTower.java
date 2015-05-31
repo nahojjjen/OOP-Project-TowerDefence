@@ -21,7 +21,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
 public class SlowTower extends ShootingTower {
 
     //Tower stats
-    protected static final Resources resources = new Resources(400, 400, 0);
+    protected static final Resources resources = new Resources(100, 100, 0);
     protected static final double range = 140f;
     protected static final int reloadTime = 50;
 
