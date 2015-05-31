@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Johan
- * @date 2015-05-26.
+ * @author Johan Swanberg
+ * @date 2015-05-26
  *
  * A tower which shoots fire whenever creeps come close
  */

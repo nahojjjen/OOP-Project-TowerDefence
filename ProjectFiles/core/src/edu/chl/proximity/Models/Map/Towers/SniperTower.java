@@ -12,7 +12,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
  * @author Simon Gislen
- * @date 18/05/15.
+ * @date 2015-05-18
  *
  * A class representing a tower that has long range and snipes creeps
  */

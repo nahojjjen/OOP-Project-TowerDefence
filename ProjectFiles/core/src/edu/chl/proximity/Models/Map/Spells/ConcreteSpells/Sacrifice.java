@@ -12,7 +12,11 @@ import java.util.List;
 /**
  * @author Hanna Romer
  * @date 2015-05-10
- * 15/5 modified by johan, spells now have a cooldown pattern
+ *
+ * A class for a concrete spell.
+ *
+ * ---
+ * 15/5 modified by Johan Swanberg, spells now have a cooldown pattern
  * 18/05 modified by Linda Evaldsson. Removed Map.
  * 24/05 modified by Linda Evaldsson. Removed spell cooldown implementation, moved it to Cooldown class instead.
  */

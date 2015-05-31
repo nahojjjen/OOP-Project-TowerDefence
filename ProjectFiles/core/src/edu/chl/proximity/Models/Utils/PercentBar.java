@@ -8,6 +8,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
  *
  * A class for drawing a partly filled bar, for example a health bar
  *
+ * ---
  * 08/05 modified by Linda Evaldsson. Changed percentBar to use textures (images).
  */
 public class PercentBar {

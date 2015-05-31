@@ -13,8 +13,10 @@ import java.util.HashMap;
 /**
  * @author Linda Evaldsson
  * @date 2015-04-17
+ *
  * A class defining text in the game, is has a font, position and a string
  *
+ * ---
  * Unknown date modified by Johan Swanberg
  * 08/05 modified by Linda Evaldsson. Added scale method.
  * 19/05 modified by Linda Evaldsson. Changed so this class uses FreeTypeFontGenerator to create fonts which makes changin sizes easier. Scaling removed.

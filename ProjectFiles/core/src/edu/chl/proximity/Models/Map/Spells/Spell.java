@@ -14,13 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * @author Johan Swanberg
+ * @date 2015-04-28
+ *
  * An abstract class for all spells, all spells are holdable objects (can be created by cursor, "hand")
  * and are persistent objects, their effect lasts during a couple of frames.
- * @author Johan on 2015-04-28.
  *
- * 03-05-2015 Modified by Simon Gislen. Spell has a area range, could be infinite.
+ * 03/05 modified by Simon Gislen. Spell has a area range, could be infinite.
  * 07/05 modified by Linda Evaldsson. Spell has a control panel Image.
- * 15/5 modified by johan, spells now have a cooldown pattern
+ * 15/5 modified by Johan Swanberg, spells now have a cooldown pattern
  * 18/05 modified by Linda Evaldsson. Removed Map and added towers and creep-lists instead.
  * 24/05 modified by Linda Evaldsson. Removed spell cooldown implementation, moved it to Cooldown class instead.
  */

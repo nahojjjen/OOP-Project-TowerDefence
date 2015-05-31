@@ -20,6 +20,9 @@ import java.util.Map;
  * @author Linda Evaldsson
  * @date 2015-05-07
  *
+ * A class for the control panel for the spells (showed in the bottom of the screen).
+ *
+ * ---
  * 13/05 Added spell cooldown indicator
  * 15/5 modified by johan, added javadoc
  */

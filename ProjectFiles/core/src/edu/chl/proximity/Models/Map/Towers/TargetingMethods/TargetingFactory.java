@@ -5,6 +5,9 @@ package edu.chl.proximity.Models.Map.Towers.TargetingMethods;
  * @author Linda Evaldsson
  * @date 2015-05-06
  *
+ * A targeting factory that can handle all the targeting methods
+ *
+ * ---
  * 18/05 modified by Linda Evaldsson. Removed Map.
  */
 public class TargetingFactory {

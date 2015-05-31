@@ -3,8 +3,10 @@ package edu.chl.proximity.Models.ResourceSystem;
 /**
  * @author Hanna Romer
  * @date 2015-04-15.
+ *
  * Class containing the different resources in the game; points, lines and polygons
  *
+ * ---
  * 08/05 modified by Hanna Romer. Added a way to set resources as given amounts.
  * 21/05 modified by Hanna Romer. Added nullcheckers in addResources and removeResources.
  */

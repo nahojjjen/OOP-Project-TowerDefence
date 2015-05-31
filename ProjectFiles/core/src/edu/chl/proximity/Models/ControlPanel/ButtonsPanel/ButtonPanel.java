@@ -13,8 +13,10 @@ import edu.chl.proximity.Utilities.TestChecker;
  * @author Hanna Romer
  * @date 2015-04-22
  *
- * Class used for managing the buttons to the far bottom right. Keeps track of the game's speed
+ * Class used for managing the buttons to the far bottom right that can change
+ * speed and open the properties panel
  *
+ * ---
  * 29/04 modified by Hanna Romer. Buttons themselves now keeps track if what image they should have. Replaced PLayPauseButton with a play and a pause button.
  * 28/05 modified by Hanna Romer. Added comments.
  */

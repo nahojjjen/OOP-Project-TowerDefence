@@ -13,6 +13,7 @@ import java.util.HashMap;
  *
  * A service for handling images in Proximity
  *
+ * ---
  * 08/05 modified by Linda Evaldsson. Added renderRepatedly-method.
  */
 public class Image implements Cloneable {

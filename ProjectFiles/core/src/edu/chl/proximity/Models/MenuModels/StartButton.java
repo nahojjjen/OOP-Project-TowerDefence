@@ -9,6 +9,9 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @author Hanna Romer
  * @date 2015-04-25
  *
+ * A class for handling the start button on the main menu
+ *
+ * ---
  * 21/05 modified by Hanna Romer. Removed map in constructor.
  */
 public class StartButton extends BoardObject{

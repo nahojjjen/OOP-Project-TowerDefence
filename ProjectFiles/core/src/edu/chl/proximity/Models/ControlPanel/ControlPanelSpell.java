@@ -9,8 +9,10 @@ import edu.chl.proximity.Utilities.ProximityVector;
 /**
  * @author Linda Evaldsson
  * @date 2015-05-07
- * ControlPanelSpell is a class that can display Spell
  *
+ * ControlPanelSpell is a class that can display a Spell
+ *
+ * ---
  * 24/05 modified by Linda Evaldsson. This class can now handle a little bit more of cooldowns through the Cooldown class.
  */
 public class ControlPanelSpell extends BoardObject {

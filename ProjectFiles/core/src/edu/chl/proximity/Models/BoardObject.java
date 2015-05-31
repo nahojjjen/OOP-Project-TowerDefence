@@ -12,12 +12,12 @@ import java.util.List;
  * @author Johan Swanberg and Linda Evaldsson
  * @date 2015-04-02
  *
- * An object that can be placed on the board.
+ * An object that can be placed on the board. All objects on the board should extend this class.
  *
  * ---
- * 02/04 modified by Simon Gislén. Added properties.
+ * 02/04 modified by Simon Gislen. Added properties.
  * 08/04 modified by Linda Evaldsson. Getters for width and height created.
- * 23/04 modified Simon Gislén. Added empty constructor.
+ * 23/04 modified Simon Gislen. Added empty constructor.
  * 12/05 modified by Linda Evaldsson. Removed Map, added remove/add-methods instead.
  * 13/05 Modified by Simon Gislen. Crash fixes that occur under tests.
  * 20/05 modified by Linda Evaldsson. Removed isPointInObject from containsObject-method and added the actual code instead.

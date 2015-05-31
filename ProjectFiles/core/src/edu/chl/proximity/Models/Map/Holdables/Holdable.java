@@ -13,7 +13,8 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * Classes that implement the Holdable interface are objects that the user is about to place on the map.
  * For example, towers and spells.
  *
- * 03-05-2015 Modified by Simon Gislen. Introducing: *Towers are not free*
+ * ---
+ * 03/05 modified by Simon Gislen. Introducing: *Towers are not free*
  *
  */
 public interface Holdable {

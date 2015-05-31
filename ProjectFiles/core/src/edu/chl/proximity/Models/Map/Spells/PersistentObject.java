@@ -6,12 +6,14 @@ import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
  * @author Simon Gislen
- * @date 23/04/15.
- * Defines a marker that effects nearby objects
+ * @date 2015-04-23
  *
- * 24/04 Modified by Johan, added position & makes the object add itself to map on creation
- * 27/04 Modified by Johan, persistentobject now uses addStack
- * 28/4 Modified by Johan, persistant objects now have to be started
+ * An object which is left on the screen for a limited amount of time, then removed.
+ *
+ * ---
+ * 24/04 Modified by Johan Swanberg, added position & makes the object add itself to map on creation
+ * 27/04 Modified by Johan Swanberg, persistentobject now uses addStack
+ * 28/4 Modified by Johan Swanberg, persistant objects now have to be started
  */
 
 public abstract class PersistentObject extends BoardObject {

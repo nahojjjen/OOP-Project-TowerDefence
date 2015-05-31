@@ -6,8 +6,10 @@ import edu.chl.proximity.Utilities.ProximityVector;
 /**
  * @author Linda Evaldsson and Johan Swanberg
  * @date 2015-04-13
+ *
+ * A class for handling a concrete path.
  */
-public class SecondTestPath extends Path{
+public class StandardPath extends Path{
 
 
     @Override

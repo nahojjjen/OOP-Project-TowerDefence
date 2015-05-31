@@ -17,13 +17,12 @@ import java.util.ArrayList;
  * @author Simon Gislen
  * @date 2015-04-08
  *
- * Unknown date modified by Johan Swanberg
+ * A class that generates creep waves.
  *
  * ---
- * 16/04 modified by Simon Gislén. Modified purpose of class to handle creep spawning logic.
- * 21/04 modified by Simon Gislén.
- *
- * A class that generates creep waves.
+ * Unknown date modified by Johan Swanberg
+ * 16/04 modified by Simon Gislen. Modified purpose of class to handle creep spawning logic.
+ * 21/04 modified by Simon Gislen.
  */
 public class StandardGenerator {
     private Map map;
@@ -34,8 +33,6 @@ public class StandardGenerator {
     }
 
     /**
-     * @author Simon Gislen
-     *
      * Method that generates creep waves
      *
      * @param waveIndex the wave number that the player is on

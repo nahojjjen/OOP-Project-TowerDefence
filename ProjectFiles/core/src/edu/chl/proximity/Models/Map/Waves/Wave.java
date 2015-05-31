@@ -6,7 +6,7 @@ import edu.chl.proximity.Models.Map.Creeps.Creep;
 import java.util.List;
 
 /**
- * @author Simon Gislén
+ * @author Simon Gislen
  * @date 2015-04-02
  *
  * Class that describes a creep wave

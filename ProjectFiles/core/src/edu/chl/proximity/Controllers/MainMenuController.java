@@ -15,6 +15,9 @@ import edu.chl.proximity.Utilities.ProximityVector;
 /**
  * @author Hanna Romer
  * @date 2015-05-01
+ *
+ * A class (controller) for the Main menu screen, it handles everything on the Main menu Screen.
+ * It handles input and checks if a button is pressed.
  */
 public class MainMenuController implements InputProcessor{
     private MainMenu mainMenu;

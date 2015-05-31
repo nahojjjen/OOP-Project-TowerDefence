@@ -9,12 +9,15 @@ import edu.chl.proximity.Utilities.Constants;
 import java.util.List;
 
 /**
- * A circle where all creeps inside are slowed.
- * @author by Johan on 2015-04-24.
+ * @author Johan Swanberg
+ * @date 2015-04-24
  *
- * 03-05-2015 Modified by Simon Gislen. Spells have range.
- * 10-05-2015 Modified by Johan swanberg. Spell now uses new more efficient getCreepsWithinDistance method
- * 15/5 modified by johan, spells now have a cooldown pattern
+ * A circle where all creeps inside are slowed.
+ *
+ * ---
+ * 03/05 modified by Simon Gislen. Spells have range.
+ * 10/05 modified by Johan Swanberg. Spell now uses new more efficient getCreepsWithinDistance method
+ * 15/5 modified by Johan Swanberg, spells now have a cooldown pattern
  * 18/05 modified by Linda Evaldsson. Removed Map.
  * 24/05 modified by Linda Evaldsson. Removed spell cooldown implementation, moved it to Cooldown class instead.
  */

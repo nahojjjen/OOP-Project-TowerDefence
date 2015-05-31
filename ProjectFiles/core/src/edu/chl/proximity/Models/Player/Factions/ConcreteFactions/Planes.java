@@ -16,6 +16,7 @@ import edu.chl.proximity.Utilities.Constants;
  * @author Johan Swanberg
  * @date 2015-04-16
  *
+ * A concrete faction; Planes
  */
 public class Planes extends Faction {
 

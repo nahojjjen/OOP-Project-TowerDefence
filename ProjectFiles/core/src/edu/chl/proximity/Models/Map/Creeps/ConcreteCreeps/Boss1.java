@@ -8,11 +8,10 @@ import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
- * @author simongislen.
- * @date 25/05/15.
- * <p/>
- * <p/>
- * A Boss1 class that is responsible for...
+ * @author Simon Gislen
+ * @date 2015-05-25
+ *
+ * A Boss1 class that is responsible for a boss.
  */
 public class Boss1 extends Creep {
 

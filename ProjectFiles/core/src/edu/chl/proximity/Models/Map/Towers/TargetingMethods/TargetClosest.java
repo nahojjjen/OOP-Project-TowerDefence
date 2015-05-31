@@ -11,6 +11,9 @@ import java.util.List;
  * @author Johan Swanberg and Linda Evaldsson (group work)
  * @date 2015-04-11
  *
+ * A targeting method that targets the closest creep
+ *
+ * ---
  * 18/05 modified by Linda Evaldsson. Removed Map.
  *
  */

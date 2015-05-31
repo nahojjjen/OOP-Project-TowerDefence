@@ -23,6 +23,7 @@ import java.util.List;
  * in ParticleManager.  One "proximityEffect" keeps track of all effects of its given type.
  * To create an effect, call  GameData.getInstance().getMap().getParticleManager().getEFFECTNAME().createEffect(Position);
  *
+ * ---
  * 04/24 Modified by Johan, adds working rotation & angle modification and createeffect returns the created effect
  * 05/10 Modified by Johan, fixes memory leak and limits particle creation to pool size
  * 13/05 Modified by Simon Gislen. Crash fixes that occur under tests.

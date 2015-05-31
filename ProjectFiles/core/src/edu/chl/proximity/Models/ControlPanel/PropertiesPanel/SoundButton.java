@@ -8,6 +8,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @author Hanna Romer
  * @date 2015-04-23
  *
+ * ---
  * Represent the sound button that toggles sound on/off
  */
 public class SoundButton extends BoardObject{

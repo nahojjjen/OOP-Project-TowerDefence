@@ -13,6 +13,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
  *
  * Represents a checkbox -has an checked and unckecked image that can be toggled
  *
+ * ---
  * 28/05 modified by Hanna Romer. Added comments + removed unused map in signature.
  */
 public class CheckBox extends BoardObject{

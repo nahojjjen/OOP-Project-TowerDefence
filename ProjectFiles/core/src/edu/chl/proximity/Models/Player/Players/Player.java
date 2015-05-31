@@ -10,8 +10,10 @@ import edu.chl.proximity.Models.Utils.Settings;
 /**
  * @author Hanna Romer
  * @date 2015-04-15
+ *
  * A class representing the player.
  *
+ * ---
  * 23/04 Modified by Simon. Adding depth to leveling up
  * 28/04 Modified by Simon. Adding level
  * 11/5 Modified by Johan, enables saving information to harddrive && autosave on close

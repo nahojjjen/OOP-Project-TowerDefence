@@ -12,9 +12,11 @@ import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
  * @author Johan Swanberg and Linda Evaldsson
- *
  * @date 2015-04-09
  *
+ * A concrete tower.
+ *
+ * ---
  * 03-05-2015 Modified by Simon Gislen. Introducing: Towers aren't free.
  * 04-05-2015 Modified by Simon Gislen. Moved projectile functionality to ShootingTower
  * 10/05 modified by Hanna Romer. Added method getUpgrade

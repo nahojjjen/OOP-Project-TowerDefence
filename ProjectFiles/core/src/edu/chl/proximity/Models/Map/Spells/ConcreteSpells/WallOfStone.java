@@ -10,12 +10,14 @@ import edu.chl.proximity.Utilities.Constants;
 import java.util.List;
 
 /**
- * Creates a circle where all creeps inside and who collide in it has to stop. Seen as 100% slow.
- * @author Johan on 2015-04-25.
+ * @author Johan Swanberg
+ * @date 2015-04-25
  *
- * 03-05-2015 Modified by Simon Gislen. Spells have range.
- * 10-05-2015 Modified by Johan swanberg. Makes spell work again, was broken by change in Map interface
- * 15/5 modified by johan, spells now have a cooldown pattern
+ * Creates a circle where all creeps inside and who collide in it has to stop. Seen as 100% slow.
+ *
+ * 03/05 modified by Simon Gislen. Spells have range.
+ * 10/05 modified by Johan Swanberg. Makes spell work again, was broken by change in Map interface
+ * 15/5 modified by Johan Swanberg, spells now have a cooldown pattern
  * 18/05 modified by Linda Evaldsson. Removed Map.
  * 24/05 modified by Linda Evaldsson. Removed spell cooldown implementation, moved it to Cooldown class instead.
  */

@@ -13,13 +13,16 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @author Hanna Romer
  * @date 2015-04-02
  *
+ * An abstract class for projectiles. All projectiles extend this class.
+ *
+ * ---
  * 08/04 modified by Linda Evaldsson. Refactoring to Projectile instead of AbstractProjectile.
  * Unknown date modified by Linda Evaldsson
  * Unknown date modified by Johan Swanberg
  * 04-24 modified by Johan Swanberg, fixed projectile hitbox origin to center
  * 12/05 modified by Linda Evaldsson. Removed Map from constructor.
  *
- * An abstract class for projectiles. All projectiles extend this class.
+ *
  */
 public abstract class Projectile extends BoardObject implements Cloneable{
     private ProximityEffect effect;

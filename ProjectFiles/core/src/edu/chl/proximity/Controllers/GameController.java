@@ -17,19 +17,20 @@ import java.util.List;
  * @author Johan Swanberg and Linda Evaldsson
  * @date 2015-04-02
  *
- * MainController controls all the controllers (SubControllers) for the game view. It updates the
+ * GameController controls all the controllers (SubControllers) for the game view. It updates the
  * controllers 60 times per second and also handles input that is delegated to
  * the SubControllers.
  *
+ * ---
  * 07/04 Modified by Johan Swanberg. Updated so it doesn't crash the program on run.
- * 21/04 Modified by Simon Gislén. Addded WaveController
+ * 21/04 Modified by Simon Gislen. Addded WaveController
  * 21/04 Modified by Hanna Romer.
  * 23/04 Modified by Simon Gislen Added PersistentObjectController
  * 23/04 Modified by Linda Evaldsson. Added unprojection to the mouseMoved-method.
  * 29/04 modified by Linda Evaldsson. Updated how the clicking sends signals to the controllers that handle clicks.
  * 07/05 modofied by Linda Evaldsson. Added key handling
  */
-public class MainController implements InputProcessor{
+public class GameController implements InputProcessor{
 
 
     private ControlPanelController controlPanelController;
@@ -44,7 +45,7 @@ public class MainController implements InputProcessor{
 
 
 
-    public MainController(Map map, Viewport v) {
+    public GameController(Map map, Viewport v) {
         viewport=v;
 
         controlPanelController = new ControlPanelController(map);

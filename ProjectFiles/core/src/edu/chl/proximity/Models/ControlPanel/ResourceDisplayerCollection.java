@@ -14,7 +14,8 @@ import java.util.List;
  * @author Linda Evaldsson
  * @date 2015-05-21
  *
- * A class for handling three ResourceDisplayers
+ * A class for handling three ResourceDisplayers that are displayed after each other
+ * on the screen
  */
 public class ResourceDisplayerCollection {
 

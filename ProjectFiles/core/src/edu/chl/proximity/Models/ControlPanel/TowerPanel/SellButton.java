@@ -11,6 +11,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
  *
  * A simple button for selling towers.
  *
+ * ---
  * 28/05 modified by Hanna Romer. Removed unused map in signature.
  */
 public class SellButton extends BoardObject{

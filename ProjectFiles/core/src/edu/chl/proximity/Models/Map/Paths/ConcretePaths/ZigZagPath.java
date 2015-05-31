@@ -4,8 +4,10 @@ import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
- * @author Johan
- * @date 5/22/2015.
+ * @author Johan Swanberg
+ * @date 2015-05-22
+ *
+ * A class for handling a concrete path.
  */
 public class ZigZagPath extends Path {
 

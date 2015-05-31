@@ -9,6 +9,10 @@ import java.util.List;
 /**
  * Created by Johan on 2015-04-11. Group work with Linda
  *
+ * An abstract targeting class used by towers for handling targeting logic that all concrete
+ * targeting methods extends.
+ *
+ * ---
  * 18/05 modified by Linda Evaldsson. Removed Map.
  */
 public abstract class TargetingMethod {

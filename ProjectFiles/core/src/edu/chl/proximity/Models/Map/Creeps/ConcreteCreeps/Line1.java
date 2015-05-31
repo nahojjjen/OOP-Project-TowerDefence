@@ -8,7 +8,7 @@ import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
- * @author Simon Gislén
+ * @author Simon Gislen
  * @date 2015-04-21
  *
  * A class which describes an evolutionary line of monsters, or so called "creeps", the creeps
@@ -16,8 +16,8 @@ import edu.chl.proximity.Utilities.Constants;
  * a level 4 creep takes its place, it "devolves", same for level 3, 2 etc.
  *
  * 23/04 Modified by Simon. Adding resources and XP when killing creeps
- * 24/4 Modified by Johan Swanberg - Makes creeps correctly follow path by making getCenter work correctly- fixing images
- * 27-4 Modified by Johan Swanberg - Crashfix for when a creep gets hit by several projectiles the same frame
+ * 24/04 Modified by Johan Swanberg - Makes creeps correctly follow path by making getCenter work correctly- fixing images
+ * 27/04 Modified by Johan Swanberg - Crashfix for when a creep gets hit by several projectiles the same frame
  * 12/05 modified by Linda Evaldsson. Removed Map from constructor, added ParticleManager and Path
  * 22/05 modified by Linda Evaldsson. Changed how the images are handled.
  */

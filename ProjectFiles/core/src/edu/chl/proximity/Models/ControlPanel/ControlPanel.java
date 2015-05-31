@@ -19,8 +19,10 @@ import java.util.List;
  * @author Linda Evaldsson
  * @date 2015-04-17
  *
- * The class manages the information to the right of the screen
+ * The class manages parts of the control-panel to the right of the screen, it manages
+ * the purchasing tower-logic and also the player resources and base health.
  *
+ * ---
  * Unknown date modified by Johan Swanberg
  * 08/05 modified by Linda Evaldsson. Changed percentBar to use textures (images). Moved some rendering to Image class.
  * 18/05 modified by Simon to add a sniper tower

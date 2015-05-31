@@ -19,8 +19,9 @@ import java.util.List;
  * @author Hanna Romer
  * @date 2015-05-23
  *
- * Respresents a mobile Tower that chases the enemies and drives over them to damage them.
+ * Represents a mobile Tower that chases the enemies and drives over them to damage them.
  *
+ * ---
  * 28/05 modified by Hanna Romer. Added comments.
  */
 public class MobileTower extends ShootingTower{

@@ -6,6 +6,9 @@ import java.util.List;
 /**
  * @author Linda Evaldsson
  * @date 2015-05-25
+ *
+ * A class that collects all the disposable active items. Can be called
+ * to dispose of all these items at once.
  */
 public class DisposableCollector {
 

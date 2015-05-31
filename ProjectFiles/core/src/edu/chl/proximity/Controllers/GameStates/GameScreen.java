@@ -6,7 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import edu.chl.proximity.Controllers.MainController;
+import edu.chl.proximity.Controllers.GameController;
 import edu.chl.proximity.Controllers.ScreenChanger.ScreenChanger;
 import edu.chl.proximity.Controllers.ScreenChanger.ScreenChangerListener;
 import edu.chl.proximity.Models.Map.Maps.Map;
@@ -22,7 +22,8 @@ import edu.chl.proximity.Viewers.GameRenderer;
  * @author Johan Swanberg and Linda Evaldsson
  * @date 2015-04-07
  *
- * A class for handling the GameScreen, the screen that handles the logic when the game is playing.
+ * A class for handling the GameScreen, the screen that handles the logic when the game
+ * is playing. It handles the controllers, models and renderers for the game.
  *
  * ---
  * 08/04 Modified by Johan Swanberg. Switch to ScreenType from GameState.
@@ -41,7 +42,7 @@ public class GameScreen implements Screen, ScreenChangerListener{
     private Viewport viewport;
 
     //Controller
-    private MainController mainController;
+    private GameController mainController;
 
     //Model
     private ProximityBatch batch;
@@ -77,7 +78,7 @@ public class GameScreen implements Screen, ScreenChangerListener{
     }
 
     private void initiateController() {
-        mainController = new MainController(map, this.viewport);
+        mainController = new GameController(map, this.viewport);
         mainController.initiateNewMap(map);
         Gdx.input.setInputProcessor(mainController);
         ScreenChanger.setListener(this);

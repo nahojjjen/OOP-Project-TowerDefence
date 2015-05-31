@@ -7,7 +7,10 @@ import edu.chl.proximity.Utilities.Constants;
 
 /**
  * @author Hanna Romer
- * @date 2015-05-01.
+ * @date 2015-05-01
+ *
+ * A representation of the FillerBase for the Beast faction
+ *
  */
 public class FillerBase extends Base{
     public FillerBase(Path path, ParticleManager particleManager){

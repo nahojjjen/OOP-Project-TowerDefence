@@ -14,9 +14,10 @@ import edu.chl.proximity.Utilities.ProximityVector;
 import java.util.List;
 
 /**
- * @author simon gislen
+ * @author Simon Gislen
+ * @date 2015-05-13
  *
- * @date 13/05/15.
+ * A concrete tower.
  */
 public class BulletTower3 extends Tower implements Cloneable, TargetingTower {
 

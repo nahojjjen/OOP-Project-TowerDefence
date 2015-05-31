@@ -1,13 +1,5 @@
 package edu.chl.proximity.Models.ControlPanel;
 
-/**
- * @author Simon Gislen
- * @date 2015-04-28
- *
- * A panel that shows the players profile in the bottom left corner
- *
- */
-
 import com.badlogic.gdx.graphics.Color;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Player.Players.GameData;
@@ -25,6 +17,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
  *
  * The class displaying the profile image, level and experience
  *
+ * ---
  * 12/05 Modified by Simon Gislen. Added a more visual profile view
  * 22/05 Modified by Simon Gislen. Bug fix
  *

@@ -9,6 +9,8 @@ import edu.chl.proximity.Utilities.ProximityVector;
 /**
  * @author Hanna Romer
  * @date 2015-05-08
+ *
+ * A class that represents the Upgrade button pressed to upgrade a tower
  */
 public class UpgradeButton extends BoardObject{
     private static Image image=new Image(Constants.FILE_PATH + "Towers/Missile/1.png");

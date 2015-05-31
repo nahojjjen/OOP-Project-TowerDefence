@@ -7,6 +7,8 @@ import edu.chl.proximity.Models.Utils.ProximityShapeRenderer;
 /**
  * @author Hanna Romer
  * @date 2015-04-25
+ *
+ * A class that handles the rendering of the main menu screen
  */
 public class MenuRenderer {
     private MainMenu mainMenu;

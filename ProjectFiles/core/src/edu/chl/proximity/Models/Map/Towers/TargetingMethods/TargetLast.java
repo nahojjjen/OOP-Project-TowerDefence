@@ -10,6 +10,10 @@ import java.util.List;
  * @author Johan Swanberg
  * @date 2015-04-11
  *
+ * A class for targeting the last creep (the creep that is closest to the beginning,
+ * furthest from reaching the base).
+ *
+ * ---
  * 18/05 modified by Linda Evaldsson. Removed Map.
  */
 public class TargetLast extends TargetingMethod {

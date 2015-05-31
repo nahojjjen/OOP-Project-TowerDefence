@@ -10,6 +10,9 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @author Hanna Romer
  * @date 2015-05-15
  *
+ * A class for representing the game over screen
+ *
+ * ---
  * 17/05 modified by Hanna Romer. Added map, player, viewport, game, buttons resume and mainMenu.
  * 24/05 modified by Hanna Romer. Added nullchecker to getButtonActionOnPosition.
  */

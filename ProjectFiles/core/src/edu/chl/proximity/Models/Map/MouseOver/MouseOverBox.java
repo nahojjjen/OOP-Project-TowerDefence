@@ -17,6 +17,7 @@ import java.util.List;
  * A class for handling a MouseOverBox that can be temporarily shown if the mouse hovers over an item.
  * If the mouse leaves the box the box disappears.
  *
+ * ---
  * 26/05 modified by Linda Evaldsson. Added automatic row changing and fixed so only one Box can be displayed at any one time.
  */
 public class MouseOverBox extends BoardObject implements HoverBox {

@@ -10,10 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Johan
+ * @author Johan Swanberg
  *
+ * An abstract class for handling a faction, which is a sort of "clan". Depending
+ * on chosen faction the player receives different spells.
+ *
+ * ---
  * 01/05 modified by Hanna Romer. Added string name and ShowImage
- * 15/5 modified by johan, spells now have a cooldown pattern, cooldowns are reset on game start
+ * 15/5 modified by Johan Swanberg, spells now have a cooldown pattern, cooldowns are reset on game start
  */
 public abstract class Faction {
     //also has spells

@@ -6,6 +6,8 @@ import edu.chl.proximity.Utilities.ProximityVector;
 /**
  *  @author Johan Swanberg
  *  @date 2015-04-02
+ *
+ *  A class for handling a concrete path.
  */
 public class FirstPath extends Path {
 

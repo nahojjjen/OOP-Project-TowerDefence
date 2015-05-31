@@ -12,10 +12,11 @@ import java.util.List;
 
 /**
  * @author Simon Gislen
- * @date 04/05/15.
+ * @date 2015-05-04
  *
  * Abstract tower class that handles shooting of projectiles
  *
+ * ---
  * 08/05 modified by Hanna Romer. Added setter and getter for targetingMethod.
  */
 public abstract class ShootingTower extends Tower implements TargetingTower{

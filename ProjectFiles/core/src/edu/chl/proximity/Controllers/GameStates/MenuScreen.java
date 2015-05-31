@@ -22,14 +22,12 @@ import edu.chl.proximity.Viewers.MenuRenderer;
  * @author Johan Swanberg
  * @date 2015-04-07
  *
- * A class for handling the MenuScreen, the screen for the menu. This is in normal cases the first screen set by the application,
- * so it handles creating the viewport (which ensures the application behaves correctly even when rescaled to new resolutions)
- * and initiates the models required for the main menu, such as the faction selector. The main menu also creates a menuRenderer
- * and MenuController. If the player starts a game, a new GameScreen is created.
+ * A class for handling the MenuScreen, the screen for the menu. It handles the
+ * controllers, models and renderers for the main menu.
  *
  * ---
  * 08/04 Modified by Johan Swanberg. Switch to ScreenType from GameState.
- * 25/04 modified by Hanna Romer. Added Game,MainMenu, SpriteBatch, ShapeRenderer,MenuRenderer,MainController, OrthographicCamera and FitViewport
+ * 25/04 modified by Hanna Romer. Added Game,MainMenu, SpriteBatch, ShapeRenderer,MenuRenderer,GameController, OrthographicCamera and FitViewport
  */
 public class MenuScreen implements Screen, ScreenChangerListener {
 

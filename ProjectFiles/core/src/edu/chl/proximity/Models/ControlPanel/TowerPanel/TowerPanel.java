@@ -26,8 +26,8 @@ import java.util.List;
  *
  * A panel that handles changing settings and upgradings of towers
  *
+ * ---
  * 22/05 modified by Linda Evaldsson. Fixed bugs. Also redesigned Panel and moved it to ControlPanel (graphically).
- *
  * 28/05 modified by Hanna Romer. Added comments.
  */
 public class TowerPanel extends BoardObject{

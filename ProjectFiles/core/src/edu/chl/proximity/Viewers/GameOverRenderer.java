@@ -6,6 +6,9 @@ import edu.chl.proximity.Models.WonLostModels.GameOver;
 /**
  * @author Hanna Romer
  * @date 2015-05-15
+ *
+ * A class that handles the rendering of the game over screen
+ *
  */
 public class GameOverRenderer {
     private GameOver gameOver;

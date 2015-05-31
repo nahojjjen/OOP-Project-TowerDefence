@@ -1,10 +1,12 @@
 package edu.chl.proximity.Utilities;
 
 /**
- * @author Johan
- * @date 2015-05-10.
+ * @author Johan Swanberg
+ * @date 2015-05-10
  *
  * A class which describes a position
+ *
+ * ---
  * 13/05 Modified by Simon. More flexibility when adding and subracting.
  */
 public class ProximityVector {

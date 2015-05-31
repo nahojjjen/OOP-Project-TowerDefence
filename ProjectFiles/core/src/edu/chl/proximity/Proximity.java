@@ -7,10 +7,13 @@ import edu.chl.proximity.Controllers.GameStates.ScreenCollector;
 import edu.chl.proximity.Models.Player.Players.Player;
 
 /**
+ * @author Simon Gislen (generated file)
+ *
  * This is the entry point of the appliaction. On application start a new Player is created, and the menu is loaded.
  * The Game model does not load until the player enters a game. The player is loaded because the main menu items
  * adjust depending on the player save data.
  *
+ * ---
  * 08/04 Modified by Johan Swanberg. Switch to ScreenType from GameState.
  * 08/04 modified by Linda Evaldsson. Changes in structure, removed SpriteBatch.
  * 24/04 modified by Hanna Romer. Added method to change screen, between GameScreen and MenuScreen

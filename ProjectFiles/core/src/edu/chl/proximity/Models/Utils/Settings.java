@@ -6,7 +6,7 @@ import java.util.HashMap;
  * @author Linda Evaldsson
  * @date 2015-05-07
  *
- * This is a class for keeping track of all the settings in the game. Initially used for sound and game speed.
+ * This is a class for keeping track of all the settings in the game. Used for sound volume and game speed.
  *
  * 24/05 modified by Linda Evaldsson. Added the functionality of toggling music.
  */

@@ -15,6 +15,8 @@ import edu.chl.proximity.Utilities.Constants;
 /**
  * @author Hanna Romer
  * @date 2015-05-22
+ *
+ * A concrete faction; Lady Luck
  */
 public class LadyLuck extends Faction{
     public LadyLuck(){

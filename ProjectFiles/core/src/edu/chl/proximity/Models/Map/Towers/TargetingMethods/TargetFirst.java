@@ -10,6 +10,9 @@ import java.util.List;
  * @author Johan
  * @date 2015-04-11.
  *
+ * A targeting method that targets the creep that is first (closest to reaching the base).
+ *
+ * ---
  * 18/05 modified by Linda Evaldsson. Removed Map.
  */
 

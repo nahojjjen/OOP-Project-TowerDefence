@@ -12,7 +12,8 @@ import edu.chl.proximity.Utilities.ProximityVector;
 /**
  * @author Simon Gislen
  * @date 2015-05-22
- * The second upgrade to MissileTower
+ *
+ * The second upgrade for MissileTower
  */
 public class MissileTower2 extends ShootingTower {
 

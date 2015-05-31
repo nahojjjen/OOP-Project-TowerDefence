@@ -16,8 +16,9 @@ import java.util.List;
  * @author Johan Swanberg
  * @date 2015-04-02
  *
- * ---
+ * A class that handles the rendering of the game screen
  *
+ * ---
  * 07/04 Modified by Johan Swanberg. Updated so it doesn't crash the program on run.
  * 08/04 Modified by Johan Swanberg. Switch to ScreenType from GameState.
  * 08/04 modified by Linda Evaldsson. Made methods non-static.

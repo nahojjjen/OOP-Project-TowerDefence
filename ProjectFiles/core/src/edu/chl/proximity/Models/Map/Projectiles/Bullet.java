@@ -12,9 +12,11 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @author Linda Evaldsson and Johan Swanberg
  * @date 2015-04-13
  *
+ * A bullet is a simple bullet that has a static angle and kills one creep.
+ *
+ * ---
  * 12/05 modified by Linda Evaldsson. Removed map from constructor.
  *
- * A bullet is a simple bullet that has a static angle and kills one creep.
  */
 public class Bullet extends Projectile {
 

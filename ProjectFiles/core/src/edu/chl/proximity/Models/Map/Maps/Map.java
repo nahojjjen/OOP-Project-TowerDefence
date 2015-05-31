@@ -19,7 +19,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
 import java.util.*;
 
 /**
- * @author Simon Gislén
+ * @author Simon Gislen
  * @author Linda Evaldsson, Johan Swanberg (revised)
  * @date 2015-04-02
  *

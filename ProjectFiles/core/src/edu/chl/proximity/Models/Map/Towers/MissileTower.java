@@ -13,10 +13,12 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @author Linda Evaldsson and Johan Swanberg
  * @date 2015-04-08
  *
- * 03-05-2015 Modified by Simon Gislen. Introducing: Towers aren't free.
- * 04-05-2015 Modified by Simon Gislen. Moved projectile functionality to ShootingTower
+ * A concrete tower that shoots missiles.
+ *
+ * ---
+ * 03/05 modified by Simon Gislen. Introducing: Towers aren't free.
+ * 04/05 modified by Simon Gislen. Moved projectile functionality to ShootingTower
  * 10/05 modified by Hanna Romer. Added method getUpgrade
- * 22/05 added missile tower 2
  */
 public class MissileTower extends ShootingTower {
 

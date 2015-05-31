@@ -13,8 +13,9 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @author Linda Evaldsson
  * @date 2015-04-18
  *
- * ControlPanelTower is a class that can display Towers
+ * ControlPanelTower is a class that can display a Tower
  *
+ * ---
  * 21/05 modified by Linda Evaldsson. Added a separate background image and a font.
  * 22/05 modified by Linda Evaldsson. Added handling of key bindnings.
  */

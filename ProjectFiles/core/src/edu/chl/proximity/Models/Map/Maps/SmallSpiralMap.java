@@ -8,8 +8,10 @@ import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
- * @author Johan
- * @date 5/22/2015.
+ * @author Johan Swanberg
+ * @date 2015-05-22
+ *
+ * A class for handling a concrete map.
  */
 public class SmallSpiralMap extends Map{
 

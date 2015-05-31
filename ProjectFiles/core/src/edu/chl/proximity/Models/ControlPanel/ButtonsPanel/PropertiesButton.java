@@ -8,6 +8,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
 /**
  * @author Hanna Romer
  * @date 2015-04-23
+ *
  * Represents the  visuals for a properties button
  */
 public class PropertiesButton extends BoardObject{

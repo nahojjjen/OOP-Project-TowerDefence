@@ -9,6 +9,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
  *
  * A class for collecting all MouseOverBoxes that should be rendered
  *
+ * ---
  * 26/05 modified by Linda Evaldsson. Changed function so only one MouseOverBox can be visible at any one time.
  */
 public class InformationCollector {

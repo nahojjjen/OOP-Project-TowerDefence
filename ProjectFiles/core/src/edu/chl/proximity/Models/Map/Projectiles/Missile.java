@@ -11,10 +11,12 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @author Linda Evaldsson
  * @date 2015-04-08
  *
+ * A missile is a target-following projectile that kills all creeps in a radius.
+ *
+ * ---
  * Unknown date modified by Johan Swanberg
  * 12/05 modified by Linda Evaldsson. Removed Map from constructor.
  *
- * A missile is a target-following projectile that kills all creeps in a radius.
  */
 public class Missile extends Projectile {
 

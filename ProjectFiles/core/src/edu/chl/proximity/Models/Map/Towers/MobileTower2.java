@@ -17,10 +17,11 @@ import java.util.List;
 
 /**
  * @author Hanna Romer
- * @date 2015-05-26.
+ * @date 2015-05-26
  *
  * Represents an upgraded version of mobileTower, that chases the enemies and drives over them and shoots missiles at them to damage them.
  *
+ * ---
  * 28/05 modified by Hanna Romer. Added comments.
  */
 public class MobileTower2 extends ShootingTower{

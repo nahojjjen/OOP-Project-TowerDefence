@@ -10,8 +10,10 @@ import edu.chl.proximity.Utilities.ProximityVector;
 /**
  * @author Hanna Romer
  * @date 2015-04-23
- * Respresents a Speed-button. Keeps track itself what it's image should be depending on the current game-speed.
  *
+ * Represents a Speed-button. Keeps track itself what it's image should be depending on the current game-speed.
+ *
+ * ---
  * 29/04 modified Hanna Romer. Button keeps track of what image it should have
  * 28/05 modified by Hanna Romer. Added comments.
  */

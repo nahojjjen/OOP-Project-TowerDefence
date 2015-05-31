@@ -16,6 +16,9 @@ import java.util.List;
  * @author Johan Swanberg
  * @date 2015-04-02
  *
+ * A class for an abstract tower. Concrete towers extends this class. Handles
+ * all the shared logic of towers.
+ *
  * ---
  * 08/04 modified by Linda Evaldsson. Refactoring to Tower instead of AbstracTower. Removed Projectile as parameter for the constructor.
  * 03-05-2015 Modified by Simon Gislen. Tiny spell check.

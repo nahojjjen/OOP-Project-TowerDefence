@@ -11,6 +11,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @author Hanna Romer
  * @date 2015-04-23
  *
+ * ---
  * 24/05 modified by Linda Evaldsson. Made this more general and renamed it to PropertisPanelButton. It replaces former MainMenuButton.
  * 28/05 modified by Hanna Romer. Added comments.
  */

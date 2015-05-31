@@ -9,8 +9,9 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @author Linda Evaldsson
  * @date 2015-05-22
  *
- * A playing for displaying what wave is currently attacking
+ * A panel for displaying what wave is currently attacking
  *
+ * ---
  * 24/05 modified by Linda Evaldsson. Added win condition display.
  */
 public class WavePanel extends BoardObject {

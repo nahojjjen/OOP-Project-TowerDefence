@@ -4,8 +4,9 @@ import java.io.*;
 import java.util.HashMap;
 
 /**
- * @author Johan
- * @date 2015-05-09.
+ * @author Johan Swanberg
+ * @date 2015-05-09
+ *
  * A class which can load and save a hashmap to disk
  * This is used for saving the player game data to the harddrive
  *

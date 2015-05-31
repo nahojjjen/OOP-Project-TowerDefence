@@ -3,11 +3,13 @@ package edu.chl.proximity.Models.Utils;
 import com.badlogic.gdx.math.RandomXS128;
 
 /**
+ * @author Johan Swanberg
+ * @date 2015-05-08.
+ *
  * This is a service class for random implementation
  * Because of the requirements of this application, the random algorithm this service depends on
  * has a higher requirement on speed than random quality.
- * @author Johan Swanberg
- * @date 2015-05-08.
+ *
  */
 public class ProximityRandom {
     private static RandomXS128 rndGenerator = new RandomXS128();

@@ -16,6 +16,10 @@ import java.util.List;
  * @author Hanna Romer
  * @date 2015-04-23
  *
+ * A class that represents the properties panel; the in-game menu that appears
+ * when the gear icon in the bottom right is clicked.
+ *
+ * ---
  * 24/04 modified by Hanna Romer. Added SoundButton, MainMenuButton and Sound-musicBars
  * 29/04 modified by Hanna Romer. Made into singleton.
  * 01/05 modified by Hanna Romer. MainMenuButton now takes you to the mainMenu

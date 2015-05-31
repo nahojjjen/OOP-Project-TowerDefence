@@ -9,7 +9,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @author Linda Evaldsson
  * @date 2015-05-21
  *
- * A class for displaying resources with an image
+ * A class for displaying a resource with an image
  */
 public class ResourceDisplayer {
 

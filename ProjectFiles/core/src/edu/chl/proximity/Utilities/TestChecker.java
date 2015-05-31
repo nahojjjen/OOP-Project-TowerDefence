@@ -1,8 +1,8 @@
 package edu.chl.proximity.Utilities;
 
 /**
- * Linda Evaldsson
- * @date 2015-05-19.
+ * @author Linda Evaldsson (code taken from method in Image)
+ * @date 2015-05-19
  *
  * A class for testing whether the current run is a test
  */

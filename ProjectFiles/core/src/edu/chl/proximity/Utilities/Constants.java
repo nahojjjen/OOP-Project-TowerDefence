@@ -11,6 +11,9 @@ import java.util.List;
  * @author Johan Swanberg and Linda Evaldsson
  * @date 2015-04-02
  *
+ * A class for handling constant data that should not change in the game.
+ *
+ * ---
  * 07/05 modified by Linda Evaldsson. Added GAME_HEIGHT and GAME_WIDTH.
  */
 public class Constants {

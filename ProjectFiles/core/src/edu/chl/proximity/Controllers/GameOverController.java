@@ -12,6 +12,9 @@ import edu.chl.proximity.Utilities.ProximityVector;
 /**
  * @author Hanna Romer
  * @date 2015-05-15
+ *
+ * A class (controller) for the Game Over screen, it handles everything on the Game Over Screen.
+ * It handles input and checks if a button is pressed.
  */
 public class GameOverController implements InputProcessor{
     private Viewport viewport;

@@ -13,6 +13,9 @@ import edu.chl.proximity.Utilities.ProximityVector;
 /**
  * @author Linda Evaldsson
  * @date 2015-05-22
+ *
+ * A concrete tower.
+ *
  */
 public class BulletTower2 extends ShootingTower implements Cloneable {
 

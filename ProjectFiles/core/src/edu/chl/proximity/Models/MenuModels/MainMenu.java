@@ -16,6 +16,9 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @author Hanna Romer
  * @date 2105-04-25
  *
+ * A class for handling the main menu, the menu that is shown on startup.
+ *
+ * ---
  * 01/05 modified by Hanna Romer. Added FactionChooser.
  * 03/05 modified by Hanna Romer. Added MapSelect.
  * 22/05 modified by Simon Gislen. Changed starting price.

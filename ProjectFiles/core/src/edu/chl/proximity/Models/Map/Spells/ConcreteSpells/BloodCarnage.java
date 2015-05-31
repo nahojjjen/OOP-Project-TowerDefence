@@ -11,10 +11,14 @@ import edu.chl.proximity.Utilities.PointCalculations;
 import java.util.List;
 
 /**
+ * @author Johan Swanberg
+ * @date 2015-05-28
+ *
  * A spell which creates a field where all normal creeps completely devolve, at the cost of base hp.
- * @author Johan on 2015-04-28.
- * 03-05-2015 Modified by Simon Gislen. Spells have range.
- * 15/5 modified by johan, spells now have a cooldown pattern
+ *
+ * ---
+ * 03/05 modified by Simon Gislen. Spells have range.
+ * 15/5 modified by Johan Swanberg, spells now have a cooldown pattern
  * 18/05 modified by Linda Evaldsson. Removed Map.
  * 24/05 modified by Linda Evaldsson. Removed spell cooldown implementation, moved it to Cooldown class instead.
  */

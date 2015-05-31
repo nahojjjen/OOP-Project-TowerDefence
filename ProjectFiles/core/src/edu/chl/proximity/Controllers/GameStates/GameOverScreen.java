@@ -22,6 +22,10 @@ import edu.chl.proximity.Viewers.GameOverRenderer;
 /**
  * @author Hanna Romer
  * @date 2015-05-15
+ *
+ * A class that handles the GameOverScreen and everything that is on it. It handles
+ * the controllers, models and renderers for the game over screen.
+ *
  */
 public class GameOverScreen implements Screen, ScreenChangerListener {
 

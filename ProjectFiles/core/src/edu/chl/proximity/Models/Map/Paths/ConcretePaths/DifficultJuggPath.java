@@ -5,7 +5,9 @@ import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
  * @author Johan
- * @date 5/22/2015.
+ * @date 2015-05-22
+ *
+ * A class for handling a concrete path.
  */
 public class DifficultJuggPath extends Path {
 

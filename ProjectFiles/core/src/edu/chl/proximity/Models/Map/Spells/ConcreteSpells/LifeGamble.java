@@ -11,6 +11,9 @@ import edu.chl.proximity.Utilities.Constants;
  * @author Hanna Romer
  * @date 2015-05-22
  *
+ * A class for a concrete spell.
+ *
+ * ---
  * 24/05 modified by Linda Evaldsson. Removed spell cooldown implementation, moved it to Cooldown class instead.
  */
 public class LifeGamble extends Spell {

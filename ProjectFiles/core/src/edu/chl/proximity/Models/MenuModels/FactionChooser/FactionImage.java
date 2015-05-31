@@ -7,6 +7,8 @@ import edu.chl.proximity.Utilities.ProximityVector;
 /**
  * @author Hanna Romer
  * @date 2015-05-01
+ *
+ * A class for handling the faction image
  */
 public class FactionImage extends BoardObject{
     private static Image image= null;

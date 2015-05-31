@@ -12,9 +12,11 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @author Linda Evaldsson
  * @date 2015-04-22
  *
- * This is a class for handling what is currently picked upp, "in the hand".
+ * This is a class for handling what is currently picked up, "in the hand".
+ * It is displayed as the cursor object for the player.
  *
- * 03-05-2015 Modified by Simon Gislen. Introducing: *Towers are not free*
+ * ---
+ * 03/05 modified by Simon Gislen. Introducing: *Towers are not free*
  */
 public class Hand {
 

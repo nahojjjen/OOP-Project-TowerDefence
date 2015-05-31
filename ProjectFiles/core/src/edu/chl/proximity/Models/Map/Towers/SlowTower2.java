@@ -10,7 +10,10 @@ import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
- * Created by Simon Gislen on 13/05/15.
+ * @author Simon Gislen
+ * @date 2015-05-13
+ *
+ * A class representing a concrete tower.
  */
 public class SlowTower2 extends ShootingTower {
 

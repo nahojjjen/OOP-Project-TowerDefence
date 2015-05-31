@@ -8,9 +8,11 @@ import edu.chl.proximity.Models.Utils.Image;
 import edu.chl.proximity.Utilities.Constants;
 
 /**
- * @author simongislen.
- * @date 25/05/15.
+ * @author Simon Gislen
+ * @date 2015-05-25
+ *
  * A class which represent a creep of the type boss2
+ *
  */
 public class Boss2 extends Creep {
 

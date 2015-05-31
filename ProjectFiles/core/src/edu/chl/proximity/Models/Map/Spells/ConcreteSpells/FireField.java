@@ -11,13 +11,16 @@ import java.util.List;
 
 
 /**
+ * @author Johan Swanberg
+ * @date 2015-04-24
+ *
  * A spell which creates a circle of flames, where creeps slowly devolve, but inside this field the
  * creeps run slightly faster.
- * @author by Johan on 2015-04-24.
  *
- * 03-05-2015 Modified by Simon Gislen. Spells have range.
- * 10-05-2015 Modified by Johan swanberg. Spell now uses new more efficient getCreepsWithinRange method
- * 15/5 modified by johan, spells now have a cooldown pattern
+ * ---
+ * 03/05 modified by Simon Gislen. Spells have range.
+ * 10/05 modified by Johan Swanberg. Spell now uses new more efficient getCreepsWithinRange method
+ * 15/5 modified by Johan Swanberg, spells now have a cooldown pattern
  * 18/05 modified by Linda Evaldsson. Removed Map.
  * 24/05 modified by Linda Evaldsson. Removed spell cooldown implementation, moved it to Cooldown class instead.
  */

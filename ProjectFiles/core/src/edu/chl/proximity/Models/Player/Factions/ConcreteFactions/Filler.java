@@ -15,6 +15,8 @@ import edu.chl.proximity.Utilities.Constants;
 /**
  * @author Hanna Romer
  * @date 2015-05-01.
+ *
+ * A concrete faction; Beast
  */
 public class Filler extends Faction {
     public Filler(){

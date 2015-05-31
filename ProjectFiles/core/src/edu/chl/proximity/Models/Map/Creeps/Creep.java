@@ -13,16 +13,15 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @author Linda Evaldsson
  * @date 2015-04-02
  *
+ * An abstract class for creeps. Concrete creeps extends this class.
+ *
  * ---
  * Unknown date modified by Johan Swanberg
- *
  * 08/04 modified by Linda Evaldsson. Refactoring to Creep instead of AbstractCreep. speed-variable changed to int instead of double.
- * 16/04 modified by Simon Gislén. Added support for creep devolution.
+ * 16/04 modified by Simon Gislen. Added support for creep devolution.
  * 23/04 Modified by Simon. Adding resources and XP when killing creeps
  * 24/04 modified by Johan, creeps now use their center when calculating movement instead of upper left corner
  * 12/05 modified by Linda Evaldsson. Removed Map. Added Path and ParticleManager instead.
- * 
- * An abstract class for creeps. Concrete creeps extends this class.
  */
 public abstract class Creep extends BoardObject {
 

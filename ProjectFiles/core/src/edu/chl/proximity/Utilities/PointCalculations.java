@@ -6,6 +6,11 @@ import com.badlogic.gdx.math.MathUtils;
  * @author Johan Swanberg
  * @author Linda Evaldsson (revised)
  * @date 2015-04-02
+ *
+ * A class for handling point calculations, like calculating angle between two points
+ * or distance between two points.
+ *
+ * ---
  * 25/04 modified by Johan Swanberg, made distance calculation use vector 2 in all steps
  * 20/05 modified by Linda Evaldsson. Removed isPointInObject-method, it is instead in BoardObject
  */

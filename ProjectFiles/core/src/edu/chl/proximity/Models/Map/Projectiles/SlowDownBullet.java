@@ -11,10 +11,10 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @author Hanna Romer
  * @date 2015-04-18
  *
- * 12/05 modified by Linda Evaldsson. Removed map from constructor.
- *
  * A class representing a bullet that slows down it's target a certain percentage
  *
+ * ---
+ * 12/05 modified by Linda Evaldsson. Removed map from constructor.
  *
  */
 public class SlowDownBullet extends Projectile{

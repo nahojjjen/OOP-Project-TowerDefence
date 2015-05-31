@@ -9,15 +9,18 @@ import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.PointCalculations;
 
 /**
+ * @author Johan Swanberg
+ * @date 2015-04-28
+ *
  * A spell which creates a circle where all creeps inside gets devolved 1 step, and gives the base 1 more health for each devolved creep
  * For every creep hit, the cooldown will take half a second.(plus a base of half seconds)
  *
  * Example: The spell gets used and hits 5 creeps: the player base regenerates 5 life, the 5 creeps devolve and the spell
  * is put on a 3 second cooldown. (2.5 seconds for 5 creeps + 0.5 seconds base.)
- * @author Johan on 2015-04-28.
  *
- * 03-05-2015 Modified by Simon Gislen. Spells have range.
- * 15/5 modified by johan, spells now have a cooldown pattern
+ * ---
+ * 03/05 modified by Simon Gislen. Spells have range.
+ * 15/5 modified by Johan Swanberg, spells now have a cooldown pattern
  * 18/05 modified by Linda Evaldsson. Removed Map.
  * 24/05 modified by Linda Evaldsson. Removed spell cooldown implementation, moved it to Cooldown class instead.
  */

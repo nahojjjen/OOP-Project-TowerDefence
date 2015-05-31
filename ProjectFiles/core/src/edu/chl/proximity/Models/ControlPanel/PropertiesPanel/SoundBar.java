@@ -9,6 +9,7 @@ import edu.chl.proximity.Utilities.ProximityVector;
  * @author Hanna Romer
  * @date 2015-04-24
  *
+ * ---
  * 28/05 modified by Hanna Romer. Added comments.
  */
 public class SoundBar extends BoardObject{

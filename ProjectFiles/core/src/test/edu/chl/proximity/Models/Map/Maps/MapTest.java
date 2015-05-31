@@ -9,7 +9,7 @@ import edu.chl.proximity.Models.Map.Holdables.Hand;
 import edu.chl.proximity.Models.Map.Maps.Map;
 import edu.chl.proximity.Models.Map.Maps.StandardMap;
 import edu.chl.proximity.Models.Map.Particles.ParticleManager;
-import edu.chl.proximity.Models.Map.Paths.ConcretePaths.TestPath;
+import edu.chl.proximity.Models.Map.Paths.ConcretePaths.FillerPath;
 import edu.chl.proximity.Models.Map.Paths.Path;
 import edu.chl.proximity.Models.Map.Projectiles.Bullet;
 import edu.chl.proximity.Models.Map.Projectiles.Projectile;
@@ -142,7 +142,7 @@ public class MapTest {
     @Test
     public void testSetPath() throws Exception {
         Map map = new StandardMap(new ParticleManager(new Settings()));
-        Path path = new TestPath();
+        Path path = new FillerPath();
         map.setPath(path);
         assertEquals(path, map.getPath());
         try {

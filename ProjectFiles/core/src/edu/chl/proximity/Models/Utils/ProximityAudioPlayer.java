@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * @author Johan Swanberg
  * @date 22/5/2015
+ *
  * A static class for playing sound files
  */
 public class ProximityAudioPlayer {
