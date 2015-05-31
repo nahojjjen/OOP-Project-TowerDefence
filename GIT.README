@@ -14,23 +14,23 @@ ________________________________________________________________________________
  	                                                          __/ |
  	                                                         |___/ 
 ___________________________________________________________________________________________
-Group members: 
-	Johan Swanberg
-	Hanna Römer
-	Linda Evaldsson
-	Simon Gislén
+Group members - Git Usernames
+	Johan Swanberg - nahojjjen
+	Hanna Römer - IndigoBB
+	Linda Evaldsson - floompa (Linda Evaldsson)
+	Simon Gislén - simongislen
 
 ___________________________________________________________________________________________
 
 Contents:
-	1. Short description of readme
+	1. Introduction
 	2. Links
 	3. Git structure
 	4. Program structure
 
 ___________________________________________________________________________________________
 
-1. Short description of readme
+1. Introduction
 Running this project should be pretty straigtforward, simply naviate to the ProgramFiles 
 folder and run ./gradlew build, ./gradlew run, or ./gradlew test. You can also download 
 the bytecode (.JAR) from the project website, see the Links section. There's also
@@ -58,17 +58,11 @@ ________________________________________________________________________________
 3. Git structure
 
 document........................ Contains RAD, SDD, Report and meeting protocols.
-
 ProjectFiles.................... Contains source code and framework/gradle files
-
 ......Core...................... Contains source files
-
 ........... assets.............. Contains the project assets (images, music etc.)
-
 ........... src................. Contains the source code for application and tests
-
 ......Desktop................... Required by libGDX to create a desktop application
-
 ......Gradle.................... Gradle files
 
 Root structure:
