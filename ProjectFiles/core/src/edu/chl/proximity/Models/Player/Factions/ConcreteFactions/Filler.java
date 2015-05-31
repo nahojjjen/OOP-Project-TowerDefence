@@ -18,7 +18,7 @@ import edu.chl.proximity.Utilities.Constants;
  */
 public class Filler extends Faction {
     public Filler(){
-        super("Filler", new Image(Constants.FILE_PATH + "Bases/cocobase.png"));
+        super("Beast", new Image(Constants.FILE_PATH + "Bases/cocobase.png"));
     }
 
     @Override

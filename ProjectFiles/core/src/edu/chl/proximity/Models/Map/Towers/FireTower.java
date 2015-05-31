@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class FireTower extends Tower{
     //Tower stats
-    private static Resources resources = new Resources(100, 100, 2);
+    private static Resources resources = new Resources(1000, 1000, 2);
     private static double fireRange = 100f;
     private static int reloadTime = 150;
     private static int emberTime = 50;

@@ -189,7 +189,7 @@ public abstract class Map {
             projectile.reAngle();
             projectile.move();
             for (Creep creep : creeps) {
-                if (projectile.collidesWith(creep)) {
+                if (projectile.collidesWith(creep) && !projectile.isRemoved()) {
                     projectile.collide(creep);
 
                     double range = projectile.getAreaOfEffectSize();
