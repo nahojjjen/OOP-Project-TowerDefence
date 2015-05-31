@@ -21,7 +21,7 @@ import java.util.List;
 public class BloodSipper extends Spell {
     private static double range=80f;
     private static int duration=120;
-    private static Image image=new Image(Constants.FILE_PATH + "Spells/bloodsipper.png");
+    private static Image image=new Image(Constants.FILE_PATH + "Spells/blood-sipper.png");
     private static final int maxCooldown = 60;
 
     public BloodSipper(ParticleManager particleManager){
