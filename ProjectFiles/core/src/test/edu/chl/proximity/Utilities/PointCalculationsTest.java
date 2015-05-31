@@ -39,23 +39,6 @@ public class PointCalculationsTest {
         assertTrue(PointCalculations.distanceBetweenNoSqrt(null,null) == 0);  //  (null case 2)
     }
 
-    /*
-    @Test
-    public void testIsPointInObject() throws Exception {
-        BoardObject test = new Line1(1,new ParticleManager(), new FirstPath());
-        test.setHeight(10);
-        test.setWidth(10);
-        test.setPosition(new ProximityVector(50, 50));
-
-        assertTrue(PointCalculations.isPointInObject(new ProximityVector(55, 55), test));
-        assertTrue(PointCalculations.isPointInObject(new ProximityVector(59,59), test));
-        assertTrue(PointCalculations.isPointInObject(new ProximityVector(50,50), test));
-        assertTrue(PointCalculations.isPointInObject(new ProximityVector(60,60), test));
-        assertFalse(PointCalculations.isPointInObject(new ProximityVector(61, 61), test));
-        assertFalse(PointCalculations.isPointInObject(null, test));
-
-    }*/
-
     @Test
     public void testCreatePathTool() {
         assertTrue(PointCalculations.createPathTool(100,100).equals("waypoints.add(new ProximityVector(100, 100));"));

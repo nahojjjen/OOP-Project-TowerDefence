@@ -17,20 +17,14 @@ public class FillerPath extends Path {
     public void initiatePoints() {
         if(waypoints != null) {
             if (waypoints.isEmpty()) {
-                waypoints.add(new ProximityVector(140, 99));
-                waypoints.add(new ProximityVector(267, 56));
-                waypoints.add(new ProximityVector(414, 43));
-                waypoints.add(new ProximityVector(320, 200));
-                waypoints.add(new ProximityVector(68, 211));
-                waypoints.add(new ProximityVector(72, 108));
-                waypoints.add(new ProximityVector(184, 302));
-                waypoints.add(new ProximityVector(87, 380));
-                waypoints.add(new ProximityVector(92, 460));
-                waypoints.add(new ProximityVector(386, 431));
-                waypoints.add(new ProximityVector(500, 336));
-                waypoints.add(new ProximityVector(564, 420));
-                waypoints.add(new ProximityVector(594, 239));
-                waypoints.add(new ProximityVector(594, 78));
+
+                waypoints.add(new ProximityVector(132, 0));
+                waypoints.add(new ProximityVector(169, 258));
+                waypoints.add(new ProximityVector(337, 265));
+                waypoints.add(new ProximityVector(738, 319));
+                waypoints.add(new ProximityVector(638, 556));
+                waypoints.add(new ProximityVector(186, 611));
+                waypoints.add(new ProximityVector(678, 38));
             }
         }
     }
