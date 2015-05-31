@@ -6,7 +6,6 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import edu.chl.proximity.Utilities.Constants;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,54 +45,54 @@ public class ProximityAudioPlayer {
      * starts a new random song from the game music folder
      */
     public static void playGameMusic(){
-
         if (gameMusic != null){
             gameMusic.dispose();
         }
-
-        List<String> musicFiles = getAllMusicFiles();
+        List<String> musicFiles = getAllMusicFileNames();
         gameMusic = getRandomSong(musicFiles);
-
         if (gameMusic != null){
             gameMusic.stop();
             gameMusic.play();
             gameMusic.setLooping(true);
-            gameMusic.setVolume(settings.getTranslatedGameVolume(settings.getMusicVolume())/3);
+            gameMusic.setVolume(settings.getTranslatedGameVolume(settings.getMusicVolume()) / 3);
         }
-
     }
 
     /**
-     * gets a random string out of a list of strings
+     * gets a random music file out of a list of strings
      * @param musicFiles the list containing the music names
      * @return one of the music files, with random distributed chance
      */
     private static Music getRandomSong(List<String> musicFiles){
+        if (musicFiles != null){
+            if (musicFiles.size() > 0){
+                double randomMusic = ProximityRandom.getRandomDoubleBetween(0, musicFiles.size() - 0.0000000001);
+                int randomSelected = (int) (randomMusic);
 
-        double randomMusic = ProximityRandom.getRandomDoubleBetween(0, musicFiles.size() - 0.0000000001);
-        int randomSelected = (int)(randomMusic);
-        FileHandle handle =  new FileHandle(Constants.FILE_PATH + "GameMusic/" +musicFiles.get(randomSelected));
-        return Gdx.audio.newMusic(handle);
+                return Gdx.audio.newMusic(Constants.getFile(musicFiles.get(randomSelected)));
+            }
 
+        }
+     return null;
     }
 
     /**
      * get all files with the file type .mp3 within the GameMusic folder
      * @return a list of all the file names of mp3 files in the gamemusic folder
      */
-    private static List<String> getAllMusicFiles(){
+    private static List<String> getAllMusicFileNames(){
         List<String> musicFiles = new ArrayList<String>();
-
         //get all mp3 files
-        File folder = new File(Constants.FILE_PATH + "/GameMusic");
-        File[] listOfFiles = folder.listFiles();
 
-        if (listOfFiles != null) {
-            for (File listOfFile : listOfFiles) {
-                if (listOfFile.isFile() && listOfFile.getName().contains(".mp3")) {
-                    musicFiles.add(listOfFile.getName());
-                }
-            }
+        FileHandle[] listOfFiles = new FileHandle[5];
+        listOfFiles[0]  =  Gdx.files.internal(Constants.FILE_PATH + "/GameMusic/cosmos.mp3");
+        listOfFiles[1]  =  Gdx.files.internal(Constants.FILE_PATH + "/GameMusic/frontier.mp3");
+        listOfFiles[2]  =  Gdx.files.internal(Constants.FILE_PATH + "/GameMusic/hello.mp3");
+        listOfFiles[3]  =  Gdx.files.internal(Constants.FILE_PATH + "/GameMusic/madnap.mp3");
+        listOfFiles[4]  =  Gdx.files.internal(Constants.FILE_PATH + "/GameMusic/time.mp3");
+
+        for (FileHandle file :listOfFiles){
+            musicFiles.add(file.toString());
         }
         return musicFiles;
     }
