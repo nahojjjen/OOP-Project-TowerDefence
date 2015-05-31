@@ -4,8 +4,8 @@ import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.Spells.Cooldown;
 import edu.chl.proximity.Models.Map.Spells.Spell;
 import edu.chl.proximity.Models.Utils.Image;
-import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Models.Utils.ProximityRandom;
+import edu.chl.proximity.Utilities.Constants;
 
 /**
  * @author Hanna Romer

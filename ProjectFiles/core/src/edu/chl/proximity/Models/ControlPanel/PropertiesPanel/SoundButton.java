@@ -2,7 +2,6 @@ package edu.chl.proximity.Models.ControlPanel.PropertiesPanel;
 
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Utils.Image;
-import edu.chl.proximity.Utilities.Constants;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 /**

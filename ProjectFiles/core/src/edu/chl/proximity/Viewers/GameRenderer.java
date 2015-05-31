@@ -4,8 +4,8 @@ import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Map.Holdables.Hand;
 import edu.chl.proximity.Models.Map.Holdables.Holdable;
 import edu.chl.proximity.Models.Map.Maps.Map;
-import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Map.MouseOver.InformationCollector;
+import edu.chl.proximity.Models.Map.Particles.ParticleManager;
 import edu.chl.proximity.Models.Utils.ProximityBatch;
 import edu.chl.proximity.Models.Utils.ProximityShapeRenderer;
 

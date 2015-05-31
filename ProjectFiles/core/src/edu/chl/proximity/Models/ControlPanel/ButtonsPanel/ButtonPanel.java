@@ -1,6 +1,5 @@
 package edu.chl.proximity.Models.ControlPanel.ButtonsPanel;
 
-import com.badlogic.gdx.Gdx;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.ControlPanel.PropertiesPanel.PropertiesPanel;
 import edu.chl.proximity.Models.Player.Players.GameData;

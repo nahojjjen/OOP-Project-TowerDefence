@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import edu.chl.proximity.Models.Utils.ProximityShapeRenderer;
 import edu.chl.proximity.Utilities.PointCalculations;
 import edu.chl.proximity.Utilities.ProximityVector;
+
 import java.util.ArrayList;
 import java.util.List;
 

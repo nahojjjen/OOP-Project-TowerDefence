@@ -1,8 +1,9 @@
 package edu.chl.proximity.Models.ControlPanel;
+
 import edu.chl.proximity.Models.BoardObject;
+import edu.chl.proximity.Models.Map.MouseOver.MouseOverBox;
 import edu.chl.proximity.Models.Map.Spells.Cooldown;
 import edu.chl.proximity.Models.Map.Spells.Spell;
-import edu.chl.proximity.Models.Map.MouseOver.MouseOverBox;
 import edu.chl.proximity.Utilities.ProximityVector;
 
 /**
