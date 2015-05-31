@@ -44,7 +44,7 @@ public class FireTowerTest {
     @Test
     public void testGetNewUpgrade() throws Exception {
         FireTower tower = new FireTower(new ProximityVector(0,0), new TargetClosest(), new ParticleManager(new Settings()));
-        assertTrue(tower.getNewUpgrade() instanceof Tower || tower.getNewUpgrade() == null); //Findbugs gives a warning here, but we want this functionality
+        assertTrue(tower.getNewUpgrade() == null);
     }
 
     @Test

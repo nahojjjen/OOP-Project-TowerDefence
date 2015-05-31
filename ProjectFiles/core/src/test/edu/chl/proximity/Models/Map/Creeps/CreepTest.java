@@ -90,7 +90,7 @@ public class CreepTest extends TestCase {
         Creep creep = new Line1(1, new ParticleManager(new Settings()), new FirstPath());
         double angle = creep.getAngle();
         creep.rotate(5);
-        assertTrue(creep.getAngle()-5 == angle);
+        assertTrue(Math.abs(creep.getAngle() - 5 - angle) < 0.001f);
 
         creep = new Line2(1, new ParticleManager(new Settings()), new FirstPath());
         creep.rotate(5);

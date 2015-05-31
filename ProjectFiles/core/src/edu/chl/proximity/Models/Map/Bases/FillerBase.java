@@ -11,7 +11,7 @@ import edu.chl.proximity.Utilities.Constants;
  */
 public class FillerBase extends Base{
     public FillerBase(Path path, ParticleManager particleManager){
-        super(path, new Image(Constants.FILE_PATH + "Bases/cocobase.png"), particleManager.getBaseDamageEffect(), particleManager.getBaseCracksEffect());
+        super(path, new Image(Constants.FILE_PATH + "Bases/stackedbase.png"), particleManager.getBaseDamageEffect(), particleManager.getBaseCracksEffect());
 
     }
 }

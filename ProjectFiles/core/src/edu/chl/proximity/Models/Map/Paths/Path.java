@@ -97,7 +97,8 @@ public abstract class Path {
      */
     public void render(ProximityShapeRenderer shapeRenderer) {
 
-        shapeRenderer.setColor(new Color(0.4f, 0.6f, 0.9f, 0));
+        shapeRenderer.enableTransparency();
+        shapeRenderer.setColor(new Color(1f, 1f, 1f, 0.2f));
 
         for (int i = 1; i<waypoints.size(); i++){
             shapeRenderer.renderLine(waypoints.get(i-1).x  ,waypoints.get(i-1).y, waypoints.get(i).x,waypoints.get(i).y);

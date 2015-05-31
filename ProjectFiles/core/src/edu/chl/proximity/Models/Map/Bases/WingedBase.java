@@ -11,7 +11,7 @@ import edu.chl.proximity.Utilities.Constants;
  */
 public class WingedBase extends Base{
     public WingedBase(Path path, ParticleManager particleManager){
-        super(path, new Image(Constants.FILE_PATH + "Bases/WingedBase.png"), particleManager.getBaseDamageEffect(), particleManager.getBaseCracksEffect());
+        super(path, new Image(Constants.FILE_PATH + "Bases/wingedbase.png"), particleManager.getBaseDamageEffect(), particleManager.getBaseCracksEffect());
 
     }
 }

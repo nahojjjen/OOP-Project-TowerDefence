@@ -8,9 +8,7 @@ package edu.chl.proximity.Models.ControlPanel;
  *
  */
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import edu.chl.proximity.Models.BoardObject;
 import edu.chl.proximity.Models.Player.Players.GameData;
 import edu.chl.proximity.Models.Player.Players.Player;
@@ -80,7 +78,6 @@ public class ProfilePanel extends BoardObject {
         double temp = player.getLevel();
         double anglePercentage = (temp-(int)(temp)) * 100;
         double angle = (anglePercentage)/10 * 9;
-        Gdx.gl.glEnable(GL20.GL_BLEND);
 
         shapeRenderer.begin(ProximityShapeRenderer.Shape.Filled);
         shapeRenderer.setColor(new Color(0.95f, 0.95f, 0.95f, 1f));

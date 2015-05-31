@@ -19,7 +19,7 @@ import java.util.List;
 public class CoinFlip extends Spell{
     private static double range = 60f;
     private static int duration = 120;
-    private static Image image = new Image(Constants.FILE_PATH + "Spells/Coins.png");
+    private static Image image = new Image(Constants.FILE_PATH + "Spells/coins.png");
     private static final int maxCooldown = 60 * 6;
     private int effect;
 

@@ -31,7 +31,7 @@ public class Sacrifice extends Spell {
         List<Tower> towers= getTowersWithinDistance(this.getPosition(), range);
         for(Tower t: towers){
             t.remove();
-            setHealthChange(20);
+            setHealthChange(getHealthChange() + 20);
         }
     }
     @Override

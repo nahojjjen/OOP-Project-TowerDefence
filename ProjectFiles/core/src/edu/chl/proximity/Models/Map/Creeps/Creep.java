@@ -32,7 +32,6 @@ public abstract class Creep extends BoardObject {
     private double backUpSpeed;
     private double moveAngle;
     private double randomRotation;
-    private ProximityVector velocity;
     private int slowDownTime;
     private ParticleManager particleManager;
     private Path path;

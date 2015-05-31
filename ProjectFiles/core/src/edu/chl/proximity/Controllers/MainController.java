@@ -102,9 +102,6 @@ public class MainController implements InputProcessor{
         Vector2 clickedPointVector2 = viewport.unproject(new Vector2(x, y));
         ProximityVector clickedPoint = new ProximityVector(clickedPointVector2.x, clickedPointVector2.y);
 
-        //For creating paths during the developing state
-        PointCalculations.createPathTool((int) clickedPoint.x, (int) clickedPoint.y);
-
         //Runs through the clickable controllers and informs them if their models is clicked
         for(ClickHandler controller : controlPanelClickHandlers) {
             controller.touchDown(clickedPoint, pointer, button);

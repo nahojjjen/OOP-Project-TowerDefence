@@ -36,7 +36,9 @@ public class Line2Test extends TestCase {
 
     public void testGetCreepImage() throws Exception {
         Line2 creep = new Line2(6,new ParticleManager(new Settings()), new FirstPath());
-        assertTrue(creep.getImage() instanceof Image);
+        Image img = creep.getImage();
+        assertTrue(img != null);
+        //Testing that it is possible to get the image without crash
 
     }
 

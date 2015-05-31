@@ -97,14 +97,14 @@ public class ProximityShapeRenderer implements ProximityDisposable {
      */
     public void renderRangeIndicator(ProximityVector position, double range, Color color) {
         if (range < 1500) {
-            Gdx.gl.glEnable(GL20.GL_BLEND); //enables transparency
+            enableTransparency();
             if (position != null && color != null && shapeRenderer != null) {
                 shapeRenderer.setColor(color);
                 shapeRenderer.circle(position.x, position.y, (float) range);
             }
         }else{
-                    //render a small circle to show which tower if tower has ultra range
-            Gdx.gl.glEnable(GL20.GL_BLEND);
+            //render a small circle to show which tower if tower has ultra range
+            enableTransparency();
             if (position != null && color != null && shapeRenderer != null) {
                 shapeRenderer.setColor(color);
                 shapeRenderer.circle(position.x, position.y, (float) 20);
@@ -112,6 +112,14 @@ public class ProximityShapeRenderer implements ProximityDisposable {
 
         }
 
+    }
+
+    public void enableTransparency() {
+        Gdx.gl.glEnable(GL20.GL_BLEND);
+    }
+
+    public void disableTransparency() {
+        Gdx.gl.glDisable(GL20.GL_BLEND);
     }
 
     /**

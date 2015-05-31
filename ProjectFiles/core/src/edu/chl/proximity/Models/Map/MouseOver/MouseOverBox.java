@@ -87,7 +87,7 @@ public class MouseOverBox extends BoardObject implements HoverBox {
         if(!fontsInitiated())
             initiateFonts();
         if(!enabled) {
-            setPosition(new ProximityVector(position.x - getWidth()/2, position.y - getHeight() + 10));
+            setPosition(new ProximityVector(position.x - getWidth()/2f, position.y - getHeight() + 10));
             for(int i = 0; i < infoTextList.size(); i++) {
                 infoTextList.get(i).setPosition(new ProximityVector(getPosition().x + 5, getPosition().y + 5 + (i*15)));
             }

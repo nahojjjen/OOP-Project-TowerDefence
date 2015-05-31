@@ -48,13 +48,24 @@ public class SpellPanelTest {
         Faction faction = new Filler();
         faction.configureSpells(new ParticleManager(new Settings()));
         SpellPanel spellPanel = new SpellPanel(faction);
-
         ProximityVector vector;
-        for(int i = 0; i < 1000; i++) {
-            vector = new ProximityVector((float)ProximityRandom.getRandomDoubleBetween(0, Constants.GAME_WIDTH), (float)ProximityRandom.getRandomDoubleBetween(0, Constants.GAME_HEIGHT));
-            ControlPanelSpell spell = spellPanel.getSpellOnPosition(vector);
-            assertTrue(spell == null || spell instanceof ControlPanelSpell); //Findbugs gives a warning here but we want this functionality
+
+        int spellCounter = 0;
+        int nullCounter = 0;
+
+        for(int x = 0; x < spellPanel.getWidth(); x++) {
+            for(int y = 0; y < spellPanel.getHeight(); y++) {
+                vector = new ProximityVector(spellPanel.getPosition().x + x, spellPanel.getPosition().y + y);
+                ControlPanelSpell spell = spellPanel.getSpellOnPosition(vector);
+                if(spell == null) {
+                    nullCounter++; }
+                else {
+                    spellCounter++; }
+            }
         }
+        assertTrue(spellCounter > 0);
+        assertTrue(nullCounter > spellCounter);
+
     }
 
     @Test

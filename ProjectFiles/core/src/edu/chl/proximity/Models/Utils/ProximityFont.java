@@ -49,13 +49,10 @@ public class ProximityFont implements ProximityDisposable {
         if (!TestChecker.isJUnitTest()) {
             parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
             parameter.flip = true;
-
-            parameter.size = (int)Math.ceil(size);
-
             generator = new FreeTypeFontGenerator(Constants.getFile(Constants.FILE_PATH + "Fonts/Roboto-Regular.ttf"));
             parameter.minFilter = Texture.TextureFilter.Linear;
             this.parameter.magFilter = Texture.TextureFilter.Linear;
-            generator.scaleForPixelHeight((int)Math.ceil(size));
+            generator.scaleForPixelHeight(size);
             generateFont();
 
         }

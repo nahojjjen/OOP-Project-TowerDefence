@@ -32,17 +32,18 @@ public class Boss2Test extends TestCase {
 
     public void testGetCreepImage() throws Exception {
         Boss2 creep = new Boss2(new ParticleManager(new Settings()), new FirstPath());
-        assertTrue(creep.getImage() instanceof Image);
         for (int i = 0; i<40; i++){
             creep.unRemove();
             creep.devolve();
         }
-        assertTrue(creep.getImage() instanceof Image);
+        Image img = creep.getImage();
+        assertTrue(img != null);
         for (int i = 0; i<30; i++){
             creep.unRemove();
             creep.devolve();
         }
-        assertTrue(creep.getImage() instanceof Image);
+        Image img2 = creep.getImage();
+        assertTrue(img2 != null);
     }
 
     public void testGetCreepResource() throws Exception {

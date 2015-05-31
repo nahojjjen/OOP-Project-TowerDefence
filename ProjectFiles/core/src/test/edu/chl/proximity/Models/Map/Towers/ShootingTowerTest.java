@@ -96,7 +96,9 @@ public class ShootingTowerTest {
      * @throws Exception
      */
     private void testGetNewUpgrade(ShootingTower tower) throws Exception {
-        assertTrue(tower.getUpgrade() instanceof Tower || tower.getNewUpgrade() == null); //Findbugs gives a warning here, but we want this functionality
+        Tower towerUpgrade = tower.getUpgrade();
+        if(towerUpgrade != null)
+            assertFalse(towerUpgrade.equals(tower.getNewUpgrade()));
 
         if (tower.getNewUpgrade() != null){
             assertFalse(tower.getClass().equals(tower.getUpgrade().getClass()));

@@ -18,7 +18,7 @@ import edu.chl.proximity.Utilities.Constants;
  */
 public class LadyLuck extends Faction{
     public LadyLuck(){
-        super("Lady Luck", new Image(Constants.FILE_PATH + "Bases/wingedBase.png"));
+        super("Lady Luck", new Image(Constants.FILE_PATH + "Bases/wingedbase.png"));
     }
 
     @Override

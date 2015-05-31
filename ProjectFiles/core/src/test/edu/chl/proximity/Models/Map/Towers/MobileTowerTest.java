@@ -87,7 +87,7 @@ public class MobileTowerTest {
     @Test
     public void testGetNewUpgrade() throws Exception {
         MobileTower tower = new MobileTower(new ProximityVector(100,100),new TargetClosest(), new ParticleManager(new Settings()));
-        assertTrue(tower.getUpgrade() instanceof Tower);
+        assertTrue(tower.getUpgrade() != null);
     }
 
     @Test

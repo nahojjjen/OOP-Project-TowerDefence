@@ -25,7 +25,7 @@ public class ScreenCollector {
         }
         menuScreen.initiateNew(player);
         g.setScreen(menuScreen);
-        System.gc(); //Findbugs explicit GC warning not applicable in manual handling of memory in games.
+        garbageCollect();
     }
     public static void setGameScreen(Game g, Map map, Player player, Viewport viewport) {
         if(gameScreen == null) {
@@ -33,14 +33,25 @@ public class ScreenCollector {
         }
         gameScreen.initiateNew(map, player);
         g.setScreen(gameScreen);
-        System.gc(); //Findbugs explicit GC warning not applicable in manual handling of memory in games.
+        garbageCollect();
     }
     public static void setGameOverScreen(Game g, Map map, Player player, Viewport viewport) {
-        if(gameOverScreen == null) {
+        if (gameOverScreen == null) {
             gameOverScreen = new GameOverScreen(g, map, player, viewport);
         }
         gameOverScreen.initiateNew(g, map, player);
         g.setScreen(gameOverScreen);
-        System.gc(); //Findbugs explicit GC warning not applicable in manual handling of memory in games.
+        garbageCollect();
+    }
+
+    /**
+     * This method simply calls the java garbage collector
+     *
+     * FindBugs comment: If this is not here the program heap size goes up to 6GB and does not garbage collect.
+     * Findbugs explicit GC warning not applicable in manual handling of memory in games. This is a known bug.
+     * This method will only be called when the screen is changed. Does not cause performance issue
+     */
+    private static void garbageCollect() {
+        System.gc();
     }
 }

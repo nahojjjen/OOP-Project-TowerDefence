@@ -20,7 +20,7 @@ import java.util.List;
 public class PickACard extends Spell {
     private static double range = 100f;
     private static int duration = 240;
-    private static Image image = new Image(Constants.FILE_PATH + "Spells/TarotCards.png");
+    private static Image image = new Image(Constants.FILE_PATH + "Spells/tarotcards.png");
     private static final int maxCooldown = 60 * 5;
     private int effect;
 
